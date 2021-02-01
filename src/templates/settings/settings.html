@@ -1,0 +1,347 @@
+<form onsubmit="event.preventDefault();" class="{{classes}}" autocomplete="off">
+    <nav class="sheet-tabs tabs">
+        <a class='item' data-tab='pc-sheet'>{{localize 'LVL0MF.Settings.Tab.PCS.Title'}}</a>
+        <a class='item' data-tab='npc-sheet'>{{localize 'LVL0MF.Settings.Tab.NPC.Title'}}</a>
+        <a class='item gm-only' data-tab='gm-options'>{{localize 'LVL0MF.Settings.Tab.Options.Title'}}</a>
+        <a class='item' data-tab='info'>{{localize 'LVL0MF.Settings.Tab.Info.Title'}}</a>
+    </nav>
+
+    <section class='tab' data-tab='pc-sheet'>
+        <h2>{{localize 'LVL0MF.Settings.PCS.Title'}}</h2>
+        <section>
+            <h3>{{localize 'LVL0MF.Settings.PCS.Class.Title'}}</h3>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Class.Base.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassChampion' id='showClassChampion' {{checked settings.showClassChampion}}>
+                    <div class="description">
+                        <label for="showClassChampion">{{localize 'LVL0MF.Settings.PCS.Class.Champion.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Champion.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassWarrior' id='showClassWarrior' {{checked settings.showClassWarrior}}>
+                    <div class="description">
+                        <label for="showClassWarrior">{{localize 'LVL0MF.Settings.PCS.Class.Warrior.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Warrior.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassRanger' id='showClassRanger' {{checked settings.showClassRanger}}>
+                    <div class="description">
+                        <label for="showClassRanger">{{localize 'LVL0MF.Settings.PCS.Class.Ranger.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Ranger.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassMage' id='showClassMage' {{checked settings.showClassMage}}>
+                    <div class="description">
+                        <label for="showClassMage">{{localize 'LVL0MF.Settings.PCS.Class.Mage.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Mage.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassRogue' id='showClassRogue' {{checked settings.showClassRogue}}>
+                    <div class="description">
+                        <label for="showClassRogue">{{localize 'LVL0MF.Settings.PCS.Class.Rogue.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Rogue.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Class.Advance.Title'}}</h4>
+                <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Advance.hint'}}</p>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassJester' id='showClassJester' {{checked settings.showClassJester}}>
+                    <div class="description">
+                        <label for="showClassJester">{{localize 'LVL0MF.Settings.PCS.Class.Jester.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Jester.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassElementalist' id='showClassElementalist' {{checked settings.showClassElementalist}}>
+                    <div class="description">
+                        <label for="showClassElementalist">{{localize 'LVL0MF.Settings.PCS.Class.Elementalist.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Elementalist.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassEnchanting' id='showClassEnchanting' {{checked settings.showClassEnchanting}}>
+                    <div class="description">
+                        <label for="showClassEnchanting">{{localize 'LVL0MF.Settings.PCS.Class.Enchanting.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Enchanting.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassNecromancer' id='showClassNecromancer' {{checked settings.showClassNecromancer}}>
+                    <div class="description">
+                        <label for="showClassNecromancer">{{localize 'LVL0MF.Settings.PCS.Class.Necromancer.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Necromancer.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showClassWitch' id='showClassWitch' {{checked settings.showClassWitch}}>
+                    <div class="description">
+                        <label for="showClassWitch">{{localize 'LVL0MF.Settings.PCS.Class.Witch.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Class.Witch.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+        </section>
+        <section>
+            <h3>{{localize 'LVL0MF.Settings.PCS.Race.Title'}}</h3>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Race.Base.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceHalfElf' id='showRaceHalfElf' {{checked settings.showRaceHalfElf}}>
+                    <div class="description">
+                        <label for="showRaceHalfElf">{{localize 'LVL0MF.Settings.PCS.Race.HalfElf.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.HalfElf.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceElf' id='showRaceElf' {{checked settings.showRaceElf}}>
+                    <div class="description">
+                        <label for="showRaceElf">{{localize 'LVL0MF.Settings.PCS.Race.Elf.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Elf.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceHauflin' id='showRaceHauflin' {{checked settings.showRaceHauflin}}>
+                    <div class="description">
+                        <label for="showRaceHauflin">{{localize 'LVL0MF.Settings.PCS.Race.Hauflin.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Hauflin.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceHuman' id='showRaceHuman' {{checked settings.showRaceHuman}}>
+                    <div class="description">
+                        <label for="showRaceHuman">{{localize 'LVL0MF.Settings.PCS.Race.Human.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Human.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceDwarf' id='showRaceDwarf' {{checked settings.showRaceDwarf}}>
+                    <div class="description">
+                        <label for="showRaceDwarf">{{localize 'LVL0MF.Settings.PCS.Race.Dwarf.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Dwarf.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Race.Anthropomorphic.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceKatachas' id='showRaceKatachas' {{checked settings.showRaceKatachas}}>
+                    <div class="description">
+                        <label for="showRaceKatachas">{{localize 'LVL0MF.Settings.PCS.Race.Katachas.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Katachas.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceCanissabilys' id='showRaceCanissabilys' {{checked settings.showRaceCanissabilys}}>
+                    <div class="description">
+                        <label for="showRaceCanissabilys">{{localize 'LVL0MF.Settings.PCS.Race.Canissabilys.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Canissabilys.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceEkydeos' id='showRaceEkydeos' {{checked settings.showRaceEkydeos}}>
+                    <div class="description">
+                        <label for="showRaceEkydeos">{{localize 'LVL0MF.Settings.PCS.Race.Ekydeos.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Ekydeos.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceGryvolier' id='showRaceGryvolier' {{checked settings.showRaceGryvolier}}>
+                    <div class="description">
+                        <label for="showRaceGryvolier">{{localize 'LVL0MF.Settings.PCS.Race.Gryvolier.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Gryvolier.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceZelosaur' id='showRaceZelosaur' {{checked settings.showRaceZelosaur}}>
+                    <div class="description">
+                        <label for="showRaceZelosaur">{{localize 'LVL0MF.Settings.PCS.Race.Zelosaur.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Zelosaur.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Race.Fantastic.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceLeprechaun' id='showRaceLeprechaun' {{checked settings.showRaceLeprechaun}}>
+                    <div class="description">
+                        <label for="showRaceLeprechaun">{{localize 'LVL0MF.Settings.PCS.Race.Leprechaun.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Leprechaun.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceFairy' id='showRaceFairy' {{checked settings.showRaceFairy}}>
+                    <div class="description">
+                        <label for="showRaceFairy">{{localize 'LVL0MF.Settings.PCS.Race.Fairy.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Fairy.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceGnome' id='showRaceGnome' {{checked settings.showRaceGnome}}>
+                    <div class="description">
+                        <label for="showRaceGnome">{{localize 'LVL0MF.Settings.PCS.Race.Gnome.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Gnome.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRacePixie' id='showRacePixie' {{checked settings.showRacePixie}}>
+                    <div class="description">
+                        <label for="showRacePixie">{{localize 'LVL0MF.Settings.PCS.Race.Pixie.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Pixie.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRacePooka' id='showRacePooka' {{checked settings.showRacePooka}}>
+                    <div class="description">
+                        <label for="showRacePooka">{{localize 'LVL0MF.Settings.PCS.Race.Pooka.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Pooka.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Race.Goblinoids.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceHalfOrc' id='showRaceHalfOrc' {{checked settings.showRaceHalfOrc}}>
+                    <div class="description">
+                        <label for="showRaceHalfOrc">{{localize 'LVL0MF.Settings.PCS.Race.HalfOrc.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.HalfOrc.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceGoblin' id='showRaceGoblin' {{checked settings.showRaceGoblin}}>
+                    <div class="description">
+                        <label for="showRaceGoblin">{{localize 'LVL0MF.Settings.PCS.Race.Goblin.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Goblin.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceHobgoblin' id='showRaceHobgoblin' {{checked settings.showRaceHobgoblin}}>
+                    <div class="description">
+                        <label for="showRaceHobgoblin">{{localize 'LVL0MF.Settings.PCS.Race.Hobgoblin.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Hobgoblin.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceKorrigan' id='showRaceKorrigan' {{checked settings.showRaceKorrigan}}>
+                    <div class="description">
+                        <label for="showRaceKorrigan">{{localize 'LVL0MF.Settings.PCS.Race.Korrigan.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Korrigan.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceOrc' id='showRaceOrc' {{checked settings.showRaceOrc}}>
+                    <div class="description">
+                        <label for="showRaceOrc">{{localize 'LVL0MF.Settings.PCS.Race.Orc.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Orc.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <h4>{{localize 'LVL0MF.Settings.PCS.Race.Monsters.Title'}}</h4>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceBonhemSeptar' id='showRaceBonhemSeptar' {{checked settings.showRaceBonhemSeptar}}>
+                    <div class="description">
+                        <label for="showRaceBonhemSeptar">{{localize 'LVL0MF.Settings.PCS.Race.BonhemSeptar.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.BonhemSeptar.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceCambion' id='showRaceCambion' {{checked settings.showRaceCambion}}>
+                    <div class="description">
+                        <label for="showRaceCambion">{{localize 'LVL0MF.Settings.PCS.Race.Cambion.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Cambion.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceDokalben' id='showRaceDokalben' {{checked settings.showRaceDokalben}}>
+                    <div class="description">
+                        <label for="showRaceDokalben">{{localize 'LVL0MF.Settings.PCS.Race.Dokalben.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Dokalben.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceDokalben' id='showRaceDokalben' {{checked settings.showRaceDokalben}}>
+                    <div class="description">
+                        <label for="showRaceDokalben">{{localize 'LVL0MF.Settings.PCS.Race.Dokalben.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Dokalben.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceKnacker' id='showRaceKnacker' {{checked settings.showRaceKnacker}}>
+                    <div class="description">
+                        <label for="showRaceKnacker">{{localize 'LVL0MF.Settings.PCS.Race.Knacker.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Knacker.hint'}}</p>
+                    </div>
+                </article>
+                <article class="setting">
+                    <input type="checkbox" data-dtype='boolean' name='showRaceRevenant' id='showRaceRevenant' {{checked settings.showRaceRevenant}}>
+                    <div class="description">
+                        <label for="showRaceRevenant">{{localize 'LVL0MF.Settings.PCS.Race.Revenant.name'}}</label>
+                        <p class="notes">{{localize 'LVL0MF.Settings.PCS.Race.Revenant.hint'}}</p>
+                    </div>
+                </article>
+            </section>
+        </section>
+        <section>
+            <h3>{{localize 'LVL0MF.Settings.PCS.Display.title'}}</h3>
+            <article class="setting">
+                <input type="checkbox" data-dtype='boolean' name='displayAdvanceView' id='displayAdvanceView' {{checked settings.displayAdvanceView}}>
+                <div class="description">
+                    <label for="displayAdvanceView">{{localize 'LVL0MF.Settings.PCS.Display.name'}}</label>
+                    <p class="notes">{{localize 'LVL0MF.Settings.PCS.Display.hint'}}</p>
+                </div>
+            </article>
+        </section>
+    </section>
+    <section class='tab' data-tab='npc-sheet'>
+        <h2>{{localize 'LVL0MF.Settings.NPC.Title'}}</h2>
+        <section>
+            <h3>{{localize 'LVL0MF.Settings.NPC.Class.Title'}}</h3>
+            <article class="setting">
+                <input type="checkbox" data-dtype='boolean' name='showClassBase' id='showClassBase' {{checked settings.showClassBase}}>
+                <div class="description">
+                    <label for="showClassBase">{{localize 'LVL0MF.Settings.NPC.Class.Base.name'}}</label>
+                    <p class="notes">{{localize 'LVL0MF.Settings.NPC.Class.Base.hint'}}</p>
+                </div>
+            </article>
+            <article class="setting">
+                <input type="checkbox" data-dtype='boolean' name='showClassAdvance' id='showClassAdvance' {{checked settings.showClassAdvance}}>
+                <div class="description">
+                    <label for="showClassAdvance">{{localize 'LVL0MF.Settings.NPC.Class.Advance.name'}}</label>
+                    <p class="notes">{{localize 'LVL0MF.Settings.NPC.Class.Advance.hint'}}</p>
+                </div>
+            </article>
+            <article class="setting">
+                <input type="checkbox" data-dtype='boolean' name='showClassMonster' id='showClassMonster' {{checked settings.showClassMonster}}>
+                <div class="description">
+                    <label for="showClassMonster">{{localize 'LVL0MF.Settings.NPC.Class.Monster.name'}}</label>
+                    <p class="notes">{{localize 'LVL0MF.Settings.NPC.Class.Monster.hint'}}</p>
+                </div>
+            </article>
+            <article class="setting">
+                <input type="checkbox" data-dtype='boolean' name='showClassJob' id='showClassJob' {{checked settings.showClassJob}}>
+                <div class="description">
+                    <label for="showClassJob">{{localize 'LVL0MF.Settings.NPC.Class.Job.name'}}</label>
+                    <p class="notes">{{localize 'LVL0MF.Settings.NPC.Class.Job.hint'}}</p>
+                </div>
+            </article>
+        </section>
+
+    </section>
+
+    <section class='tab' data-tab='info'>
+        <h2>Module Info</h2>
+    </section>
+
+    <footer class="sheet-footer flexrow">
+        <button type="submit" name="submit">
+            <i class="fas fa-save"></i>Save
+        </button>
+    </footer>
+</form>
