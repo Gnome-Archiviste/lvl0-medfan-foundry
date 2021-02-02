@@ -122,7 +122,12 @@
   "LVL0MF.Settings.NPC.Race.Monsters.hint" : "",
   "LVL0MF.Settings.NPC.Race.Bestiary1.title" : "Bestiary monsters and animals",
   "LVL0MF.Settings.NPC.Race.Bestiary1.hint" : "",
-  
+
+  "LVL0MF.Sheet.Tab.Character.title" : "Character",
+  "LVL0MF.Sheet.Tab.Equipment.title" : "Equipment",
+  "LVL0MF.Sheet.Tab.Inventory.title" : "Inventory",
+  "LVL0MF.Sheet.Tab.Notes.title" : "Notes",
+
   "LVL0MF.End" : "End of Translation"
 
 }

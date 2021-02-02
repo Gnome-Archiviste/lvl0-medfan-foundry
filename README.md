@@ -10,17 +10,16 @@ there are plenty of settings from dark mode, health visualization and user speci
 I tried to make each settings description as clear as possible so you should be able to carefully
 read an pick what you want.
 
-
-## Attribution
-Additional Translations generously provided by:
-English: @ph-il
-French: @ph-il
-
 Thank you very much!
 
 ## License
 This Foundry VTT module, written by Gnome Archiviste, is licensed under a Creative Commons
 Attribution 4.0 International License.
+
+All source code (*.html, *.css, *.js, *.json) is copyright 2021 Gnome Archiviste, with the exception of individual
+contributions which remain the copyright of their respective contributors, as specified in the CONTRIBUTORS file.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This work is licensed under Foundry Virtual Tabletop EULA -
 Limited License Agreement for module development v 0.1.6.
