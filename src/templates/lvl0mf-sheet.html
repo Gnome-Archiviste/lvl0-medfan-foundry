@@ -11,11 +11,11 @@
             <section class="sheet-header">
                 <section class="sheet-character-name">
                     <span class="sheet-label">Nom</span>
-                    <span class="sheet-value"><input type="text" name="attr_character_name"/></span>
+                    <span class="sheet-value"><input type="text" name="data.character.name" value="{{data.character.name}}"/></span>
                 </section>
                 <section class="sheet-player-name">
                     <span class="sheet-label">Joueur</span>
-                    <span class="sheet-value"><input type="text" name="attr_player_name"/></span>
+                    <span class="sheet-value"><input type="text" name="data.player.name" value="{{data.player.name}}/></span>
                 </section>
                 <section class="sheet-race">
                     <span class="sheet-label">Race</span>
@@ -86,15 +86,15 @@
 
                 <section class="sheet-age">
                     <span class="sheet-label">Age</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.age" value="{{data.attributes.age}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.age" value="{{data.attributes.age}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
                 </section>
                 <section class="sheet-level">
                     <span class="sheet-label">Niveau</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
                 </section>
                 <section class="sheet-size">
                     <span class="sheet-label">Taille</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
                 </section>
             </section>
 
@@ -111,36 +111,36 @@
                 </section>
                 <section class="sheet-stat sheet-str">
                     <div class="sheet-label">Physique</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.str.base" value="{{data.attributes.str.base}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.str.base" value="{{data.attributes.str.mod}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-base"><input type="text" name="data.attributes.phy.base" value="{{data.attributes.phy.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-bonus"><input type="text" name="data.attributes.phy.mod" value="{{data.attributes.phy.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                 </section>
                 <section class="sheet-stat sheet-dex">
                     <div class="sheet-label">Dextérité</div>
-                    <div class="sheet-base"><input type="number" name="attr_DEX_Base" value="0"/></div>
-                    <div class="sheet-bonus"><input type="number" name="attr_DEX_Mod" value="0"/></div>
-                    <div class="sheet-armor-mod"><input type="number" name="attr_DEX_Armor" value="0"/></div>
+                    <div class="sheet-base"><input type="text" name="data.attributes.dex.base" value="{{data.attributes.dex.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-bonus"><input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-armor-mod"><input type="text" name="data.attributes.dex.armor_mod" value="{{data.attributes.dex.armor_mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                 </section>
                 <section class="sheet-stat sheet-int">
                     <div class="sheet-label">Intelligence</div>
-                    <div class="sheet-base"><input type="number" name="attr_INT_Base" value="0"/></div>
-                    <div class="sheet-bonus"><input type="number" name="attr_INT_Mod" value="0"/></div>
+                    <div class="sheet-base"><input type="text" name="data.attributes.int.base" value="{{data.attributes.int.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-bonus"><input type="text" name="data.attributes.int.mod" value="{{data.attributes.int.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                 </section>
                 <section class="sheet-stat sheet-cha">
                     <div class="sheet-label">Charisme</div>
-                    <div class="sheet-base"><input type="number" name="attr_CHA_Base" value="0"/></div>
-                    <div class="sheet-bonus"><input type="number" name="attr_CHA_Mod" value="0"/></div>
+                    <div class="sheet-base"><input type="text" name="data.attributes.cha.base" value="{{data.attributes.cha.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-bonus"><input type="text" name="data.attributes.cha.mod" value="{{data.attributes.cha.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                 </section>
                 <section class="sheet-stat sheet-per">
                     <div class="sheet-label">Perception</div>
-                    <div class="sheet-base"><input type="number" name="attr_PER_Base" value="0"/></div>
-                    <div class="sheet-bonus"><input type="number" name="attr_PER_Mod" value="0"/></div>
+                    <div class="sheet-base"><input type="text" name="data.attributes.per.base" value="{{data.attributes.per.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
+                    <div class="sheet-bonus"><input type="text" name="data.attributes.per.mod" value="{{data.attributes.per.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                 </section>
                 <section style="display: none">
-                    <input type="number" name="attr_STR" disabled value="(@{STR_Base}+@{STR_Mod})">
-                    <input type="number" name="attr_DEX" disabled value="(@{DEX_Base}+@{DEX_Mod}+@{DEX_Armor})">
-                    <input type="number" name="attr_INT" disabled value="(@{INT_Base}+@{INT_Mod})">
-                    <input type="number" name="attr_CHA" disabled value="(@{CHA_Base}+@{CHA_Mod})">
-                    <input type="number" name="attr_PER" disabled value="(@{PER_Base}+@{PER_Mod})">
+                    <input type="number" name="data.attributes.phy" disabled value="{{data.attributes.phy.base + data.attributes.phy.mod}})">
+                    <input type="number" name="data.attributes.dex" disabled value="{{data.attributes.dex.base + data.attributes.dex.mod} + data.attributes.dex.armor_mod})">
+                    <input type="number" name="data.attributes.int" disabled value="{{data.attributes.int.base + data.attributes.int.mod}})">
+                    <input type="number" name="data.attributes.cha" disabled value="{{data.attributes.cha.base + data.attributes.cha.mod}})">
+                    <input type="number" name="data.attributes.per" disabled value="{{data.attributes.per.base + data.attributes.per.mod}})">
                 </section>
 
                 <div class="sheet-mv">
@@ -148,8 +148,8 @@
                     <div class="sheet-label">
                         <span class="sheet-str">Phy</span> + <span class="sheet-dex">Dex</span>
                     </div>
-                    <div class="sheet-value"><input type="number" name="attr_Movement"
-                                                    value="(@{STR}+@{DEX})"
+                    <div class="sheet-value"><input type="number" name="data.attributes.mouvement"
+                                                    value="{{data.attributes.phy + data.attributes.dex}}"
                                                     disabled="true"/></div>
                 </div>
             </section>
@@ -194,11 +194,11 @@
             <section class="sheet-xp">
                 <h3>Expérience</h3>
                 <div class="sheet-xp-value">
-                    <div class="sheet-value"><input type="number" name="attr_Xp" value="0"/></div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.xp" value="{{data.attributes.xp}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
                 </div>
                 <div class="sheet-xp-to-next-level">
                     Prochain niveau:
-                    <div class="sheet-value"><input type="number" name="attr_NextLevelXp" value="10"/></div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.xp.next_level" value="{{data.attributes.xp.next_level}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
                 </div>
             </section>
 
@@ -208,9 +208,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Attaque de bouclier</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_champion_ShieldAttack_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_ShieldAttack_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_ShieldAttack_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.1" value="1" {{checked data.attributes.skill.champion.shield_attack.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.2" value="1" {{checked data.attributes.skill.champion.shield_attack.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.3" value="1" {{checked data.attributes.skill.champion.shield_attack.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-str">Phy</span>
@@ -230,9 +230,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Commandement</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_champion_Commandment_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_Commandment_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_Commandment_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.1" value="1" {{checked data.attributes.skill.champion.commandment.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.2" value="1" {{checked data.attributes.skill.champion.commandment.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.3" value="1" {{checked data.attributes.skill.champion.commandment.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
@@ -252,9 +252,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Désarmer</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_champion_Disarm_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_Disarm_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_Disarm_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.1" value="1" {{checked data.attributes.skill.champion.disarm.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.2" value="1" {{checked data.attributes.skill.champion.disarm.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.3" value="1" {{checked data.attributes.skill.champion.disarm.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -274,9 +274,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Détection motivation</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_champion_DetectMotivation_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_DetectMotivation_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_champion_DetectMotivation_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.1" value="1" {{checked data.attributes.skill.champion.detect_motivation.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.2" value="1" {{checked data.attributes.skill.champion.detect_motivation.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.3" value="1" {{checked data.attributes.skill.champion.detect_motivation.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -298,9 +298,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Camouflage</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_ranger_Stealth_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_Stealth_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_Stealth_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.1" value="1" {{checked data.attributes.skill.ranger.stealth.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.2" value="1" {{checked data.attributes.skill.ranger.stealth.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.3" value="1" {{checked data.attributes.skill.ranger.stealth.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -320,9 +320,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Déplacement silencieux</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_ranger_SilentMovement_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_SilentMovement_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_SilentMovement_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.1" value="1" {{checked data.attributes.skill.ranger.move_silently.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.2" value="1" {{checked data.attributes.skill.ranger.move_silently.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.3" value="1" {{checked data.attributes.skill.ranger.move_silently.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -342,9 +342,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Maîtrise des animaux</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_ranger_AnimalTaming_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_AnimalTaming_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_AnimalTaming_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.1" value="1" {{checked data.attributes.skill.ranger.amimal_taming.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.2" value="1" {{checked data.attributes.skill.ranger.amimal_taming.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.3" value="1" {{checked data.attributes.skill.ranger.amimal_taming.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -364,9 +364,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Pister</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_ranger_Track_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_Track_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_ranger_Track_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.1" value="1" {{checked data.attributes.skill.ranger.tracking.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.2" value="1" {{checked data.attributes.skill.ranger.tracking.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.3" value="1" {{checked data.attributes.skill.ranger.tracking.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-per">Per</span>
@@ -388,9 +388,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Charge</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_warrior_Charge_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Charge_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Charge_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.1" value="1" {{checked data.attributes.skill.warrior.charge.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.2" value="1" {{checked data.attributes.skill.warrior.charge.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.3" value="1" {{checked data.attributes.skill.warrior.charge.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-str">Phy</span>
@@ -410,9 +410,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Combat à deux mains</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_warrior_TwoHandedCombat_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_TwoHandedCombat_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_TwoHandedCombat_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.1" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.2" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.3" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-str">Phy</span>
@@ -432,9 +432,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Intimidation</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_warrior_Intimidation_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Intimidation_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Intimidation_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.1" value="1" {{checked data.attributes.skill.warrior.intimidation.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.2" value="1" {{checked data.attributes.skill.warrior.intimidation.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.3" value="1" {{checked data.attributes.skill.warrior.intimidation.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
@@ -454,9 +454,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Provocation</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_warrior_Provocation_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Provocation_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_warrior_Provocation_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.1" value="1" {{checked data.attributes.skill.warrior.provocation.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.2" value="1" {{checked data.attributes.skill.warrior.provocation.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.3" value="1" {{checked data.attributes.skill.warrior.provocation.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
@@ -479,9 +479,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Concentration</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_mage_Focus_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_Focus_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_Focus_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.1" value="1" {{checked data.attributes.skill.mage.focus.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.2" value="1" {{checked data.attributes.skill.mage.focus.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.3" value="1" {{checked data.attributes.skill.mage.focus.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -501,9 +501,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Connnaissance</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_mage_Knowledge_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_Knowledge_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_Knowledge_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.1" value="1" {{checked data.attributes.skill.mage.knowledge.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.2" value="1" {{checked data.attributes.skill.mage.knowledge.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.3" value="1" {{checked data.attributes.skill.mage.knowledge.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -523,9 +523,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Création d'items magiques</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_mage_MagicItem_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_MagicItem_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_MagicItem_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.1" value="1" {{checked data.attributes.skill.mage.magic_item.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.2" value="1" {{checked data.attributes.skill.mage.magic_item.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.3" value="1" {{checked data.attributes.skill.mage.magic_item.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -545,9 +545,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Détection de la magie</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_mage_DetectMagic_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_DetectMagic_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_mage_DetectMagic_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.1" value="1" {{checked data.attributes.skill.mage.detect_magic.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.2" value="1" {{checked data.attributes.skill.mage.detect_magic.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.3" value="1" {{checked data.attributes.skill.mage.detect_magic.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -570,9 +570,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Déplacement silencieux</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_rogue_SilentMove_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_SilentMove_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_SilentMove_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.1" value="1" {{checked data.attributes.skill.rogue.move_silently.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.2" value="1" {{checked data.attributes.skill.rogue.move_silently.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.3" value="1" {{checked data.attributes.skill.rogue.move_silently.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -592,9 +592,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Évaluation</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_rogue_Evaluation_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_Evaluation_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_Evaluation_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.1" value="1" {{checked data.attributes.skill.rogue.evaluation.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.2" value="1" {{checked data.attributes.skill.rogue.evaluation.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.3" value="1" {{checked data.attributes.skill.rogue.evaluation.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -614,9 +614,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Faux-semblant</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_rogue_FakePaper_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_FakePaper_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_FakePaper_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.1" value="1" {{checked data.attributes.skill.rogue.forgery.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.2" value="1" {{checked data.attributes.skill.rogue.forgery.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.3" value="1" {{checked data.attributes.skill.rogue.forgery.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
@@ -636,9 +636,9 @@
                     <div class="sheet-skill">
                         <div class="sheet-skill-label">Larcin</div>
                         <div class="sheet-skill-levels">
-                            <input type="checkbox" name="attr_skill_rogue_Larceny_1" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_Larceny_2" value="1"/>
-                            <input type="checkbox" name="attr_skill_rogue_Larceny_3" value="1"/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.1" value="1" {{checked data.attributes.skill.rogue.larceny.1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.2" value="1" {{checked data.attributes.skill.rogue.larceny.2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.3" value="1" {{checked data.attributes.skill.rogue.larceny.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
@@ -713,9 +713,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Combat mains nues</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_combat_HandCombat_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_HandCombat_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_HandCombat_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.1" value="1" {{checked data.attributes.skill.combat.hand_combat.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.2" value="1" {{checked data.attributes.skill.combat.hand_combat.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.3" value="1" {{checked data.attributes.skill.combat.hand_combat.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-str">Phy</span>
@@ -735,9 +735,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Combat mêlée</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_combat_MeleeCombat_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_MeleeCombat_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_MeleeCombat_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.1" value="1" {{checked data.attributes.skill.combat.melee_combat.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.2" value="1" {{checked data.attributes.skill.combat.melee_combat.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.3" value="1" {{checked data.attributes.skill.combat.melee_combat.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-str">Phy</span>
@@ -756,9 +756,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Lancer/ tir</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_combat_Shot_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Shot_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Shot_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.1" value="1" {{checked data.attributes.skill.combat.throw_shoot.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.2" value="1" {{checked data.attributes.skill.combat.throw_shoot.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.3" value="1" {{checked data.attributes.skill.combat.throw_shoot.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -778,9 +778,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Éviter</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_combat_Avoidance_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Avoidance_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Avoidance_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.1" value="1" {{checked data.attributes.skill.combat.dodge.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.2" value="1" {{checked data.attributes.skill.combat.dodge.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.3" value="1" {{checked data.attributes.skill.combat.dodge.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -800,9 +800,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Résilience</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_combat_Resilience_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Resilience_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_combat_Resilience_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.1" value="1" {{checked data.attributes.skill.combat.resilience.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.2" value="1" {{checked data.attributes.skill.combat.resilience.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.3" value="1" {{checked data.attributes.skill.combat.resilience.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -826,9 +826,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Artisanat</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Crafting_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Crafting_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Crafting_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.1" value="1" {{checked data.attributes.skill.misc.crafting.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.2" value="1" {{checked data.attributes.skill.misc.crafting.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.3" value="1" {{checked data.attributes.skill.misc.crafting.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -848,9 +848,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Athlétique</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Athletic_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Athletic_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Athletic_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.1" value="1" {{checked data.attributes.skill.misc.athletic.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.2" value="1" {{checked data.attributes.skill.misc.athletic.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.3" value="1" {{checked data.attributes.skill.misc.athletic.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-str">Phy</span>
@@ -872,9 +872,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Cuisiner</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Cooking_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Cooking_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Cooking_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.1" value="1" {{checked data.attributes.skill.misc.cooking.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.2" value="1" {{checked data.attributes.skill.misc.cooking.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.3" value="1" {{checked data.attributes.skill.misc.cooking.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -894,9 +894,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Déguisement</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Disguise_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Disguise_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Disguise_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.1" value="1" {{checked data.attributes.skill.misc.disguise.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.2" value="1" {{checked data.attributes.skill.misc.disguise.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.3" value="1" {{checked data.attributes.skill.misc.disguise.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
@@ -916,9 +916,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Écouter</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Listening_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Listening_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Listening_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.1" value="1" {{checked data.attributes.skill.misc.listening.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.2" value="1" {{checked data.attributes.skill.misc.listening.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.3" value="1" {{checked data.attributes.skill.misc.listening.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-per">Per</span>
@@ -938,9 +938,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Éloquence</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Eloquence_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Eloquence_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Eloquence_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.1" value="1" {{checked data.attributes.skill.misc.eloquence.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.2" value="1" {{checked data.attributes.skill.misc.eloquence.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.3" value="1" {{checked data.attributes.skill.misc.eloquence.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
@@ -962,9 +962,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Équitation</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Riding_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Riding_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Riding_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.1" value="1" {{checked data.attributes.skill.misc.riding.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.2" value="1" {{checked data.attributes.skill.misc.riding.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.3" value="1" {{checked data.attributes.skill.misc.riding.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -984,9 +984,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Évasion</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Evade_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Evade_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Evade_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.1" value="1" {{checked data.attributes.skill.misc.escape.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.2" value="1" {{checked data.attributes.skill.misc.escape.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.3" value="1" {{checked data.attributes.skill.misc.escape.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-str">Phy</span>
@@ -1006,9 +1006,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Forgeron</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_BlackSmith_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_BlackSmith_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_BlackSmith_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.1" value="1" {{checked data.attributes.skill.misc.blacksmith.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.2" value="1" {{checked data.attributes.skill.misc.blacksmith.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.3" value="1" {{checked data.attributes.skill.misc.blacksmith.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-str">Phy</span>
@@ -1028,9 +1028,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Gymnastique</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Gymnastic_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Gymnastic_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Gymnastic_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.1" value="1" {{checked data.attributes.skill.misc.gymnastic.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.2" value="1" {{checked data.attributes.skill.misc.gymnastic.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.3" value="1" {{checked data.attributes.skill.misc.gymnastic.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -1052,9 +1052,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Herboriste</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Herbalism_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Herbalism_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Herbalism_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.1" value="1" {{checked data.attributes.skill.misc.herbalism.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.2" value="1" {{checked data.attributes.skill.misc.herbalism.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.3" value="1" {{checked data.attributes.skill.misc.herbalism.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1074,9 +1074,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Langage</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Langage_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Langage_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Langage_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.1" value="1" {{checked data.attributes.skill.misc.langage.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.2" value="1" {{checked data.attributes.skill.misc.langage.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.3" value="1" {{checked data.attributes.skill.misc.langage.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1096,9 +1096,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Manipulation des cordes</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_RopeHandling_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_RopeHandling_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_RopeHandling_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.1" value="1" {{checked data.attributes.skill.misc.rope_handling.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.2" value="1" {{checked data.attributes.skill.misc.rope_handling.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.3" value="1" {{checked data.attributes.skill.misc.rope_handling.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -1118,9 +1118,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Marchandage</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Trading_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Trading_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Trading_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.1" value="1" {{checked data.attributes.skill.misc.trading.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.2" value="1" {{checked data.attributes.skill.misc.trading.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.3" value="1" {{checked data.attributes.skill.misc.trading.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
@@ -1142,9 +1142,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Monstrologie</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Monster_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Monster_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Monster_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.1" value="1" {{checked data.attributes.skill.misc.monster_lore.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.2" value="1" {{checked data.attributes.skill.misc.monster_lore.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.3" value="1" {{checked data.attributes.skill.misc.monster_lore.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1164,9 +1164,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Naviguer</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Navigate_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Navigate_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Navigate_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.1" value="1" {{checked data.attributes.skill.misc.navigate.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.2" value="1" {{checked data.attributes.skill.misc.navigate.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.3" value="1" {{checked data.attributes.skill.misc.navigate.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1186,9 +1186,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Observer</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Observation_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Observation_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Observation_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.1" value="1" {{checked data.attributes.skill.misc.observation.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.2" value="1" {{checked data.attributes.skill.misc.observation.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.3" value="1" {{checked data.attributes.skill.misc.observation.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-per">Per</span>
@@ -1208,9 +1208,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Orientation</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Orientation_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Orientation_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Orientation_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.1" value="1" {{checked data.attributes.skill.misc.orientation.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.2" value="1" {{checked data.attributes.skill.misc.orientation.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.3" value="1" {{checked data.attributes.skill.misc.orientation.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1232,9 +1232,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Performance</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Performance_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Performance_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Performance_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.1" value="1" {{checked data.attributes.skill.misc.performance.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.2" value="1" {{checked data.attributes.skill.misc.performance.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.3" value="1" {{checked data.attributes.skill.misc.performance.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
@@ -1254,9 +1254,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Se cacher</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Hiding_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Hiding_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Hiding_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.1" value="1" {{checked data.attributes.skill.misc.hiding.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.2" value="1" {{checked data.attributes.skill.misc.hiding.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.3" value="1" {{checked data.attributes.skill.misc.hiding.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
@@ -1276,9 +1276,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Science</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Science_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Science_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Science_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.1" value="1" {{checked data.attributes.skill.misc.science.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.2" value="1" {{checked data.attributes.skill.misc.science.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.3" value="1" {{checked data.attributes.skill.misc.science.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1298,9 +1298,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Soins</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Care_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Care_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Care_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.1" value="1" {{checked data.attributes.skill.misc.care.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.2" value="1" {{checked data.attributes.skill.misc.care.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.3" value="1" {{checked data.attributes.skill.misc.care.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
@@ -1322,9 +1322,9 @@
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Survie</div>
                     <div class="sheet-skill-levels">
-                        <input type="checkbox" name="attr_skill_misc_Survival_1" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Survival_2" value="1"/>
-                        <input type="checkbox" name="attr_skill_misc_Survival_3" value="1"/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.1" value="1" {{checked data.attributes.skill.misc.survival.1}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.2" value="1" {{checked data.attributes.skill.misc.survival.2}}/>
+                        <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.3" value="1" {{checked data.attributes.skill.misc.survival.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
