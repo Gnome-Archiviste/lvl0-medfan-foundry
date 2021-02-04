@@ -69,3 +69,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.txz
+
+node_modules
+
