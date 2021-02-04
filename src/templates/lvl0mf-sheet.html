@@ -109,7 +109,7 @@
                     <div class="sheet-">Bonus</div>
                     <div class="sheet-">Armure</div>
                 </section>
-                <section class="sheet-stat sheet-str">
+                <section class="sheet-stat sheet-phy">
                     <div class="sheet-label">Physique</div>
                     <div class="sheet-base"><input type="text" name="data.attributes.phy.base" value="{{data.attributes.phy.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
                     <div class="sheet-bonus"><input type="text" name="data.attributes.phy.mod" value="{{data.attributes.phy.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
@@ -146,7 +146,7 @@
                 <div class="sheet-mv">
                     <div class="sheet-label">Mouvement</div>
                     <div class="sheet-label">
-                        <span class="sheet-str">Phy</span> + <span class="sheet-dex">Dex</span>
+                        <span class="sheet-phy">Phy</span> + <span class="sheet-dex">Dex</span>
                     </div>
                     <div class="sheet-value"><input type="number" name="data.attributes.mouvement"
                                                     value="{{data.attributes.phy + data.attributes.dex}}"
@@ -213,12 +213,12 @@
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.3" value="1" {{checked data.attributes.skill.champion.shield_attack.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
-                            + <span class="sheet-str">Phy</span>
+                            + <span class="sheet-phy">Phy</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_champion_ShieldAttack_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_champion_ShieldAttack"
-                                   value="(@{STR}+@{skill_champion_ShieldAttack_1}+@{skill_champion_ShieldAttack_2}+@{skill_champion_ShieldAttack_3}+@{skill_champion_ShieldAttack_extra})"
+                            <input type="number" name="data.attributes.skill.champion.shield_attack.extra" style="display: none" value="{{data.attributes.skill.champion.shield_attack.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.shield_attack"
+                                   value="{{data.attributes.phy + data.attributes.skill.champion.shield_attack.1 + data.attributes.skill.champion.shield_attack.2 + data.attributes.skill.champion.shield_attack.3 + data.attributes.skill.champion.shield_attack.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -238,9 +238,9 @@
                             + <span class="sheet-cha">Cha</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_champion_Commandment_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_champion_Commandment"
-                                   value="(@{CHA}+@{skill_champion_Commandment_1}+@{skill_champion_Commandment_2}+@{skill_champion_Commandment_3}+@{skill_champion_Commandment_extra})"
+                            <input type="number" name="data.attributes.skill.champion.commandment.extra" style="display: none" value="{{data.attributes.skill.champion.commandment.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.commandment"
+                                   value="{{data.attributes.cha + data.attributes.skill.champion.commandment.1 + data.attributes.skill.champion.commandment.2 + data.attributes.skill.champion.commandment.3 + data.attributes.skill.champion.commandment.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -260,9 +260,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_champion_Disarm_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_champion_Disarm"
-                                   value="(@{DEX}+@{skill_champion_Disarm_1}+@{skill_champion_Disarm_2}+@{skill_champion_Disarm_3}+@{skill_champion_Disarm_extra})"
+                            <input type="number" name="data.attributes.skill.champion.disarm.extra" style="display: none" value="{{data.attributes.skill.champion.disarm.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.disarm"
+                                   value="{{data.attributes.dex + data.attributes.skill.champion.disarm.1 + data.attributes.skill.champion.disarm.2 + data.attributes.skill.champion.disarm.3 + data.attributes.skill.champion.disarm.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -282,9 +282,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_champion_DetectMotivation_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_champion_DetectMotivation"
-                                   value="(@{INT}+@{skill_champion_DetectMotivation_1}+@{skill_champion_DetectMotivation_2}+@{skill_champion_DetectMotivation_3}+@{skill_champion_DetectMotivation_extra})"
+                            <input type="number" name="data.attributes.skill.champion.detect_motivation.extra" style="display: none" value="{{data.attributes.skill.champion.detect_motivation.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.detect_motivation"
+                                   value="{{data.attributes.int + data.attributes.skill.champion.detect_motivation.1 + data.attributes.skill.champion.detect_motivation.2 + data.attributes.skill.champion.detect_motivation.3 + data.attributes.skill.champion.detect_motivation.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -306,9 +306,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_ranger_Stealth_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_ranger_Stealth"
-                                   value="(@{DEX}+@{skill_ranger_Stealth_1}+@{skill_ranger_Stealth_2}+@{skill_ranger_Stealth_3}+@{skill_ranger_Stealth_extra})"
+                            <input type="number" name="data.attributes.skill.ranger.stealth.extra" style="display: none" value="{{data.attributes.skill.ranger.stealth.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.stealth"
+                                   value="{{data.attributes.dex + data.attributes.skill.ranger.stealth.1 + data.attributes.skill.ranger.stealth.2 + data.attributes.skill.ranger.stealth.3 + data.attributes.skill.ranger.stealth.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -328,9 +328,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_ranger_SilentMovement_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_ranger_SilentMovement"
-                                   value="(@{DEX}+@{skill_ranger_SilentMovement_1}+@{skill_ranger_SilentMovement_2}+@{skill_ranger_SilentMovement_3}+@{skill_ranger_SilentMovement_extra})"
+                            <input type="number" name="data.attributes.skill.ranger.move_silently.extra" style="display: none" value="{{data.attributes.skill.ranger.move_silently.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.move_silently"
+                                   value="{{data.attributes.dex + data.attributes.skill.ranger.move_silently.1 + data.attributes.skill.ranger.move_silently.2 + data.attributes.skill.ranger.move_silently.3 + data.attributes.skill.ranger.move_silently.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -350,9 +350,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_ranger_AnimalTaming_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_ranger_AnimalTaming"
-                                   value="(@{INT}+@{skill_ranger_AnimalTaming_1}+@{skill_ranger_AnimalTaming_2}+@{skill_ranger_AnimalTaming_3}+@{skill_ranger_AnimalTaming_extra})"
+                            <input type="number" name="data.attributes.skill.ranger.amimal_taming.extra" style="display: none" value="{{data.attributes.skill.ranger.amimal_taming.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.amimal_taming"
+                                   value="{{data.attributes.int + data.attributes.skill.ranger.amimal_taming.1 + data.attributes.skill.ranger.amimal_taming.2 + data.attributes.skill.ranger.amimal_taming.3 + data.attributes.skill.ranger.amimal_taming.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -372,9 +372,9 @@
                             + <span class="sheet-per">Per</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_ranger_Track_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_ranger_Track"
-                                   value="(@{PER}+@{skill_ranger_Track_1}+@{skill_ranger_Track_2}+@{skill_ranger_Track_3}+@{skill_ranger_Track_extra})"
+                            <input type="number" name="data.attributes.skill.ranger.tracking.extra" style="display: none" value="{{data.attributes.skill.ranger.tracking.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.tracking"
+                                   value="{{data.attributes.per + data.attributes.skill.ranger.tracking.1 + data.attributes.skill.ranger.tracking.2 + data.attributes.skill.ranger.tracking.3 + data.attributes.skill.ranger.tracking.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -393,12 +393,12 @@
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.3" value="1" {{checked data.attributes.skill.warrior.charge.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
-                            + <span class="sheet-str">Phy</span>
+                            + <span class="sheet-phy">Phy</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_warrior_Charge_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_warrior_Charge"
-                                   value="(@{STR}+@{skill_warrior_Charge_1}+@{skill_warrior_Charge_2}+@{skill_warrior_Charge_3}+@{skill_warrior_Charge_extra})"
+                            <input type="number" name="data.attributes.skill.warrior.charge.extra" style="display: none" value="{{data.attributes.skill.warrior.charge.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.charge"
+                                   value="{{data.attributes.phy + data.attributes.skill.warrior.charge.1 + data.attributes.skill.warrior.charge.2 + data.attributes.skill.warrior.charge.3 + data.attributes.skill.warrior.charge.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -415,12 +415,12 @@
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.3" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
-                            + <span class="sheet-str">Phy</span>
+                            + <span class="sheet-phy">Phy</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_warrior_TwoHandedCombat_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_warrior_TwoHandedCombat"
-                                   value="(@{STR}+@{skill_warrior_TwoHandedCombat_1}+@{skill_warrior_TwoHandedCombat_2}+@{skill_warrior_TwoHandedCombat_3}+@{skill_warrior_TwoHandedCombat_extra})"
+                            <input type="number" name="data.attributes.skill.warrior.two_handed_combat.extra" style="display: none" value="{{data.attributes.skill.warrior.two_handed_combat.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.two_handed_combat"
+                                   value="{{data.attributes.phy + data.attributes.skill.warrior.two_handed_combat.1 + data.attributes.skill.warrior.two_handed_combat.2 + data.attributes.skill.warrior.two_handed_combat.3 + data.attributes.skill.warrior.two_handed_combat.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -440,9 +440,9 @@
                             + <span class="sheet-cha">Cha</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_warrior_Intimidation_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_warrior_Intimidation"
-                                   value="(@{CHA}+@{skill_warrior_Intimidation_1}+@{skill_warrior_Intimidation_2}+@{skill_warrior_Intimidation_3}+@{skill_warrior_Intimidation_extra})"
+                            <input type="number" name="data.attributes.skill.warrior.intimidation.extra" style="display: none" value="{{data.attributes.skill.warrior.intimidation.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.intimidation"
+                                   value="{{data.attributes.cha + data.attributes.skill.warrior.intimidation.1 + data.attributes.skill.warrior.intimidation.2 + data.attributes.skill.warrior.intimidation.3 + data.attributes.skill.warrior.intimidation.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -462,9 +462,9 @@
                             + <span class="sheet-cha">Cha</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_warrior_Provocation_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_warrior_Provocation"
-                                   value="(@{CHA}+@{skill_warrior_Provocation_1}+@{skill_warrior_Provocation_2}+@{skill_warrior_Provocation_3}+@{skill_warrior_Provocation_extra})"
+                            <input type="number" name="data.attributes.skill.warrior.provocation.extra" style="display: none" value="{{data.attributes.skill.warrior.provocation.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.provocation"
+                                   value="{{data.attributes.cha + data.attributes.skill.warrior.provocation.1 + data.attributes.skill.warrior.provocation.2 + data.attributes.skill.warrior.provocation.3 + data.attributes.skill.warrior.provocation.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -487,9 +487,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_mage_Focus_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_mage_Focus"
-                                   value="(@{INT}+@{skill_mage_Focus_1}+@{skill_mage_Focus_2}+@{skill_mage_Focus_3}+@{skill_mage_Focus_extra})"
+                            <input type="number" name="data.attributes.skill.mage.focus.extra" style="display: none" value="{{data.attributes.skill.mage.focus.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.focus"
+                                   value="{{data.attributes.int + data.attributes.skill.mage.focus.1 + data.attributes.skill.mage.focus.2 + data.attributes.skill.mage.provocation.3 + data.attributes.skill.mage.focus.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -509,9 +509,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_mage_Knowledge_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_mage_Knowledge"
-                                   value="(@{INT}+@{skill_mage_Knowledge_1}+@{skill_mage_Knowledge_2}+@{skill_mage_Knowledge_3}+@{skill_mage_Knowledge_extra})"
+                            <input type="number" name="data.attributes.skill.mage.knowledge.extra" style="display: none" value="{{data.attributes.skill.mage.knowledge.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.knowledge"
+                                   value="{{data.attributes.int + data.attributes.skill.mage.knowledge.1 + data.attributes.skill.mage.knowledge.2 + data.attributes.skill.mage.knowledge.3 + data.attributes.skill.mage.knowledge.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -531,9 +531,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_mage_MagicItem_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_mage_MagicItem"
-                                   value="(@{DEX}+@{skill_mage_MagicItem_1}+@{skill_mage_MagicItem_2}+@{skill_mage_MagicItem_3}+@{skill_mage_MagicItem_extra})"
+                            <input type="number" name="data.attributes.skill.mage.magic_item.extra" style="display: none" value="{{data.attributes.skill.mage.magic_item.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.magic_item"
+                                   value="{{data.attributes.dex + data.attributes.skill.mage.magic_item.1 + data.attributes.skill.mage.magic_item.2 + data.attributes.skill.mage.magic_item.3 + data.attributes.skill.mage.magic_item.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -550,12 +550,12 @@
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.3" value="1" {{checked data.attributes.skill.mage.detect_magic.3}}/>
                         </div>
                         <div class="sheet-skill-stat">
-                            + <span class="sheet-dex">Dex</span>
+                            + <span class="sheet-per">Per</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_mage_DetectMagic_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_mage_DetectMagic"
-                                   value="(@{DEX}+@{skill_mage_DetectMagic_1}+@{skill_mage_DetectMagic_2}+@{skill_mage_DetectMagic_3}+@{skill_mage_DetectMagic_extra})"
+                            <input type="number" name="data.attributes.skill.mage.detect_magic.extra" style="display: none" value="{{data.attributes.skill.mage.detect_magic.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.detect_magic"
+                                   value="{{data.attributes.per + data.attributes.skill.mage.detect_magic.1 + data.attributes.skill.mage.detect_magic.2 + data.attributes.skill.mage.detect_magic.3 + data.attributes.skill.mage.detect_magic.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -578,9 +578,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_rogue_SilentMove_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_rogue_SilentMove"
-                                   value="(@{DEX}+@{skill_rogue_SilentMove_1}+@{skill_rogue_SilentMove_2}+@{skill_rogue_SilentMove_3}+@{skill_rogue_SilentMove_extra})"
+                            <input type="number" name="data.attributes.skill.rogue.move_silently.extra" style="display: none" value="{{data.attributes.skill.rogue.move_silently.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.move_silently"
+                                   value="{{data.attributes.per + data.attributes.skill.rogue.move_silently.1 + data.attributes.skill.rogue.move_silently.2 + data.attributes.skill.rogue.move_silently.3 + data.attributes.skill.rogue.move_silently.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -600,9 +600,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_rogue_Evaluation_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_rogue_Evaluation"
-                                   value="(@{INT}+@{skill_rogue_Evaluation_1}+@{skill_rogue_Evaluation_2}+@{skill_rogue_Evaluation_3}+@{skill_rogue_Evaluation_extra})"
+                            <input type="number" name="data.attributes.skill.rogue.evaluation.extra" style="display: none" value="{{data.attributes.skill.rogue.evaluation.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.evaluation"
+                                   value="{{data.attributes.int + data.attributes.skill.rogue.evaluation.1 + data.attributes.skill.rogue.evaluation.2 + data.attributes.skill.rogue.evaluation.3 + data.attributes.skill.rogue.evaluation.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -622,9 +622,9 @@
                             + <span class="sheet-int">Int</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_rogue_FakePaper_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_rogue_FakePaper"
-                                   value="(@{INT}+@{skill_rogue_FakePaper_1}+@{skill_rogue_FakePaper_2}+@{skill_rogue_FakePaper_3}+@{skill_rogue_FakePaper_extra})"
+                            <input type="number" name="data.attributes.skill.rogue.forgery.extra" style="display: none" value="{{data.attributes.skill.rogue.forgery.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.forgery"
+                                   value="{{data.attributes.int + data.attributes.skill.rogue.forgery.1 + data.attributes.skill.rogue.forgery.2 + data.attributes.skill.rogue.forgery.3 + data.attributes.skill.rogue.forgery.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -644,9 +644,9 @@
                             + <span class="sheet-dex">Dex</span>
                         </div>
                         <div class="sheet-skill-level">
-                            <input type="number" name="attr_skill_rogue_Larceny_extra" style="display: none" value="0" />
-                            <input type="number" name="attr_skill_rogue_Larceny"
-                                   value="(@{DEX}+@{skill_rogue_Larceny_1}+@{skill_rogue_Larceny_2}+@{skill_rogue_Larceny_3}+@{skill_rogue_Larceny_extra})"
+                            <input type="number" name="data.attributes.skill.rogue.larceny.extra" style="display: none" value="{{data.attributes.skill.rogue.larceny.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.larceny"
+                                   value="{{data.attributes.dex + data.attributes.skill.rogue.larceny.1 + data.attributes.skill.rogue.larceny.2 + data.attributes.skill.rogue.larceny.3 + data.attributes.skill.rogue.larceny.extra}}"
                                    disabled/>
                         </div>
                         <div class="sheet-skill-rerolls">
@@ -718,7 +718,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.3" value="1" {{checked data.attributes.skill.combat.hand_combat.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
-                        + <span class="sheet-str">Phy</span>
+                        + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
                         <input type="number" name="attr_skill_combat_HandCombat_extra" style="display: none" value="0" />
@@ -740,7 +740,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.3" value="1" {{checked data.attributes.skill.combat.melee_combat.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
-                        + <span class="sheet-str">Phy</span>
+                        + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
                         <input type="number" name="attr_skill_combat_MeleeCombat_extra" style="display: none" value="0" />
@@ -853,7 +853,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.3" value="1" {{checked data.attributes.skill.misc.athletic.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
-                        + <span class="sheet-str">Phy</span>
+                        + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
                         <input type="number" name="attr_skill_misc_Athletic_extra" style="display: none" value="0" />
@@ -989,7 +989,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.3" value="1" {{checked data.attributes.skill.misc.escape.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
-                        + <span class="sheet-str">Phy</span>
+                        + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
                         <input type="number" name="attr_skill_misc_Evade_extra" style="display: none" value="0" />
@@ -1011,7 +1011,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.3" value="1" {{checked data.attributes.skill.misc.blacksmith.3}}/>
                     </div>
                     <div class="sheet-skill-stat">
-                        + <span class="sheet-str">Phy</span>
+                        + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
                         <input type="number" name="attr_skill_misc_BlackSmith_extra" style="display: none" value="0" />
