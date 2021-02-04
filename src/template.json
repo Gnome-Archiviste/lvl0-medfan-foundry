@@ -1,0 +1,83 @@
+{
+  "Actor": {
+    "types": [
+      "character"
+    ],
+    "templates": {
+      "basics": {
+        "life": {
+          "min": 0,
+          "value": 10,
+          "max": 10
+        },
+        "mana": {
+          "min": 0,
+          "value": 0,
+          "max": 0
+        },
+        "experience": {
+          "min": 0,
+          "value": 10
+        },
+        "level": {
+          "min": 0,
+          "value": 1,
+          "max": 70
+        }
+      },
+      "stats": {
+        "phy": {
+          "min": 0,
+          "value": 0
+        },
+        "dex": {
+          "min": 0,
+          "value": 0
+        },
+        "int": {
+          "min": 0,
+          "value": 0
+        },
+        "cha": {
+          "min": 0,
+          "value": 0
+        },
+        "per": {
+          "min": 0,
+          "value": 0
+        }
+      },
+      "championSkills": {
+        "skill_champion__shield_attack": {
+          "min": 0,
+          "value": 0
+        }
+      }
+    },
+    "character": {
+      "templates": [
+        "basics",
+        "stats",
+        "championSkills",
+        "combatSkills",
+        "miscSkills"
+      ]
+    }
+  },
+  "Item": {
+    "types": [
+      "weapon",
+      "spell"
+    ],
+    "templates": {
+    },
+    "weapon": {
+      "templates": [],
+      "damage": 5
+    },
+    "spell": {
+      "templates": [],
+      "cost": 2
+    }
+  }
+}

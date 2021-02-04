@@ -6,17 +6,19 @@
   "author": "Gnome Archiviste",
   "minimumCoreVersion": "0.7.6",
   "compatibleCoreVersion": "0.7.9",
-  "system": "lvl0mf",
   "esmodules": [
-    "./scripts/handlebars.js",
-    "./scripts/lvl0mf-sheet.js",
-    "./scripts/lvl0mf-npc.js",
-    "./scripts/lvl0mf-item.js"
+    "scripts/init.js",
+    "scripts/handlebars.js",
+    "scripts/lvl0mf-sheet.js",
+    "scripts/lvl0mf-npc.js",
+    "scripts/lvl0mf-item.js"
   ],
+  "scripts": [],
   "styles": [
-    "./css/lvl0mf.css",
-    "./css/lvl0mf-dark.css"
+    "css/lvl0mf.css",
+    "css/lvl0mf-dark.css"
   ],
+  "packs": [],
   "languages": [
     {
       "lang": "en",
@@ -29,6 +31,10 @@
       "path": "lang/fr.json"
     }
   ],
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "resources.life",
+  "secondaryTokenAttribute": "resources.mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
   "manifest": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/latest/download/module.json",
   "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/latest/download/module.zip"
