@@ -19,6 +19,11 @@
           "min": 0,
           "value": 10
         },
+        "next_level": {
+          "min": 10,
+          "value": 10,
+          "max": 25
+        },
         "level": {
           "min": 0,
           "value": 1,

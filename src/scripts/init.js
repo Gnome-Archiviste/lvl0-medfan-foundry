@@ -1,6 +1,6 @@
-import {Level0ActorSheet} from "../modules/level0-actor-sheet.js";
+import {Lvl0mfActorSheet} from "../modules/lvl0mf-actor-sheet.js";
 
 Hooks.once("init", async function () {
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("naheulbook", Level0ActorSheet, {makeDefault: true});
+    Actors.registerSheet("lvl0mf", Lvl0mfActorSheet, {makeDefault: true});
 });

@@ -15,3 +15,312 @@ input[type=number] {
 .charsheet {
   padding: 10px;
 }
+
+.sheet-character {
+  display: grid;
+  grid-template-columns: 250px 90px 170px 170px;
+  gap: 8px;
+  grid-template-areas:
+          "header header header logo"
+          "stats health health xp"
+          "stats magic magic xp"
+          "jobs-skills jobs-skills combat-skills combat-skills"
+          "jobs-skills jobs-skills misc-skills misc-skills"
+          "specialities specialities misc-skills misc-skills";
+
+  .sheet-header {
+    grid-area: header;
+  }
+  .sheet-stats {
+    grid-area: stats;
+  }
+  .sheet-health {
+    grid-area: health;
+  }
+  .sheet-magic {
+    grid-area: magic;
+  }
+  .sheet-xp {
+    grid-area: xp;
+  }
+  .sheet-jobs-skills {
+    grid-area: jobs-skills;
+  }
+  .sheet-specialities {
+    grid-area: specialities;
+  }
+  .sheet-combat-skills {
+    grid-area: combat-skills;
+  }
+  .sheet-misc-skills {
+    grid-area: misc-skills;
+  }
+}
+
+.sheet-phy {
+  font-weight: bold;
+  color: #cf2541;
+}
+
+.sheet-dex {
+  font-weight: bold;
+  color: #3da610;
+}
+
+.sheet-int {
+  font-weight: bold;
+  color: #0633ff;
+}
+
+.sheet-cha {
+  font-weight: bold;
+  color: #ff9500;
+}
+
+.sheet-per {
+  font-weight: bold;
+  color: #ab31d8;
+}
+
+.sheet-header {
+
+  padding: 8px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-areas: "character-name level" "player-name empty" "race age" "job size";
+  grid-template-columns: minmax(150px, 1fr) 120px;
+  grid-row-gap: 8px;
+  grid-column-gap: 16px;
+
+  .sheet-label {
+    font-size: 18px;
+    display: inline-block;
+    min-width: 60px;
+  }
+
+  .sheet-character-name {
+    grid-area: character-name;
+  }
+
+  .sheet-player-name {
+    grid-area: player-name;
+  }
+
+  .sheet-race {
+    grid-area: race;
+  }
+
+  .sheet-job {
+    grid-area: job;
+  }
+
+  .sheet-age {
+    grid-area: age;
+  }
+
+  .sheet-level {
+    grid-area: level;
+  }
+
+  .sheet-size {
+    grid-area: size;
+  }
+
+  .sheet-character-name,
+  .sheet-player-name,
+  .sheet-job,
+  .sheet-race {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+
+    input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .sheet-size,
+  .sheet-level,
+  .sheet-age {
+    .sheet-value {
+      input {
+        display: inline-block;
+        max-width: 50px;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
+
+.sheet-stats {
+  border: 1px solid black;
+
+  .sheet-stat {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 100px 48px 48px 48px;
+    align-items: center;
+    justify-items: center;
+
+    input {
+      font-size: 22px;
+      border: 0;
+      width: calc(100% - 4px);
+      height: 100%;
+      text-align: center;
+    }
+
+    .sheet-base {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      border-bottom: 0;
+    }
+
+    .sheet-bonus, .sheet-armor-mod {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    .sheet-armor-mod {
+      padding-top: 1px;
+      border-bottom: 1px solid black;
+      height: 37px;
+      padding-bottom: 1px;
+    }
+  }
+
+  .sheet-stat:nth-child(6) {
+    .sheet-base, .sheet-bonus {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .sheet-mv {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 100px 80px 56px;
+
+    .sheet-label {
+      align-items: center;
+      justify-items: center;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.sheet-health {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header header header" "maximum damage armor";
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  h3 {
+    grid-area: header;
+  }
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .sheet-health-max {
+    grid-area: maximum;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-health-damage {
+    grid-area: damage;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-health-armor {
+    grid-area: armor;
+    border-top: 1px solid black;
+  }
+}
+
+.sheet-magic {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header header header" "maximum left level";
+  h3 {
+    grid-area: header;
+  }
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  .sheet-magic-max {
+    grid-area: maximum;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-magic-left {
+    grid-area: left;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-magic-level {
+    grid-area: level;
+    border-top: 1px solid black;
+  }
+
+}
+
+.sheet-xp {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas: "header" "xp" "next-level";
+
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  .sheet-xp-value {
+    grid-area: xp;
+  }
+  .sheet-xp-to-next-level {
+    grid-area: next-level;
+  }
+}
