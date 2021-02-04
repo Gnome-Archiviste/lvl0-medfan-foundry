@@ -9,15 +9,15 @@
 
         <section class="sheet-character tab" data-tab="sheet_character">
             <section class="sheet-header">
-                <section class="sheet-character-name">
-                    <label class="sheet-label" forname="data.character.name">Nom</label>
+                <label class="sheet-character-name">
+                    <span>Nom</span>
                     <span class="sheet-value"><input type="text" name="data.character.name" value="{{data.character.name}}"/></span>
-                </section>
-                <section class="sheet-player-name">
-                    <label class="sheet-label" forname="data.player.name">Joueur</label>
+                </label>
+                <label class="sheet-player-name">
+                    <span class="sheet-label">Joueur</span>
                     <span class="sheet-value"><input type="text" name="data.player.name" value="{{data.player.name}}"/></span>
-                </section>
-                <section class="sheet-race">
+                </label>
+                <label class="sheet-race">
                     <span class="sheet-label">Race</span>
                     <span class="sheet-value">
                         <select name="data.attributes.race">
@@ -61,8 +61,8 @@
 
                         <input type="text" name="data.attributes.race.name" value={{ data.attributes.race.name }}/>
                     </span>
-                </section>
-                <section class="sheet-job">
+                </label>
+                <label class="sheet-job">
                     <span class="sheet-label">Classe:</span>
                     <span class="sheet-value">
                         <select name="attr_job_name">
@@ -82,20 +82,20 @@
                         </select>
                         <input type="text" name="attr_sub_classe_name advance-classes"/>
                     </span>
-                </section>
+                </label>
 
-                <section class="sheet-age">
+                <label class="sheet-age">
                     <span class="sheet-label">Age</span>
                     <span class="sheet-value"><input type="text" name="data.attributes.age" value="{{data.attributes.age}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
-                </section>
-                <section class="sheet-level">
+                </label>
+                <label class="sheet-level">
                     <span class="sheet-label">Niveau</span>
                     <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
-                </section>
-                <section class="sheet-size">
+                </label>
+                <label class="sheet-size">
                     <span class="sheet-label">Taille</span>
                     <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
-                </section>
+                </label>
             </section>
 
             <section class="sheet-logo">
@@ -109,64 +109,64 @@
                     <div class="sheet-">Bonus</div>
                     <div class="sheet-">Armure</div>
                 </section>
-                <section class="sheet-stat sheet-phy">
-                    <div class="sheet-label">Physique</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.phy.base" value="{{data.attributes.phy.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.phy.mod" value="{{data.attributes.phy.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                </section>
-                <section class="sheet-stat sheet-dex">
-                    <div class="sheet-label">Dextérité</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.dex.base" value="{{data.attributes.dex.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-armor-mod"><input type="text" name="data.attributes.dex.armor_mod" value="{{data.attributes.dex.armor_mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                </section>
-                <section class="sheet-stat sheet-int">
-                    <div class="sheet-label">Intelligence</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.int.base" value="{{data.attributes.int.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.int.mod" value="{{data.attributes.int.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                </section>
-                <section class="sheet-stat sheet-cha">
-                    <div class="sheet-label">Charisme</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.cha.base" value="{{data.attributes.cha.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.cha.mod" value="{{data.attributes.cha.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                </section>
-                <section class="sheet-stat sheet-per">
-                    <div class="sheet-label">Perception</div>
-                    <div class="sheet-base"><input type="text" name="data.attributes.per.base" value="{{data.attributes.per.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                    <div class="sheet-bonus"><input type="text" name="data.attributes.per.mod" value="{{data.attributes.per.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></div>
-                </section>
+                <label class="sheet-stat sheet-phy">
+                    <span class="sheet-label">Physique</span>
+                    <span class="sheet-base"><input type="text" name="data.attributes.phy.base" value="{{data.attributes.phy.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-bonus"><input type="text" name="data.attributes.phy.mod" value="{{data.attributes.phy.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                </label>
+                <label class="sheet-stat sheet-dex">
+                    <span class="sheet-label">Dextérité</span>
+                    <span class="sheet-base"><input type="text" name="data.attributes.dex.base" value="{{data.attributes.dex.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-bonus"><input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-armor-mod"><input type="text" name="data.attributes.dex.armor_mod" value="{{data.attributes.dex.armor_mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                </label>
+                <label class="sheet-stat sheet-int">
+                    <span class="sheet-label">Intelligence</span>
+                    <span class="sheet-base"><input type="text" name="data.attributes.int.base" value="{{data.attributes.int.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-bonus"><input type="text" name="data.attributes.int.mod" value="{{data.attributes.int.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                </label>
+                <label class="sheet-stat sheet-cha">
+                    <span class="sheet-label">Charisme</span>
+                    <span class="sheet-base"><input type="text" name="data.attributes.cha.base" value="{{data.attributes.cha.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-bonus"><input type="text" name="data.attributes.cha.mod" value="{{data.attributes.cha.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                </label>
+                <label class="sheet-stat sheet-per">
+                    <span class="sheet-label">Perception</span>
+                    <span class="sheet-base"><input type="text" name="data.attributes.per.base" value="{{data.attributes.per.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-bonus"><input type="text" name="data.attributes.per.mod" value="{{data.attributes.per.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                </label>
                 <section style="display: none">
-                    <input type="number" name="data.attributes.phy" disabled value="{{data.attributes.phy.base + data.attributes.phy.mod}}">
-                    <input type="number" name="data.attributes.dex" disabled value="{{data.attributes.dex.base + data.attributes.dex.mod + data.attributes.dex.armor_mod}}">
-                    <input type="number" name="data.attributes.int" disabled value="{{data.attributes.int.base + data.attributes.int.mod}}">
-                    <input type="number" name="data.attributes.cha" disabled value="{{data.attributes.cha.base + data.attributes.cha.mod}}">
-                    <input type="number" name="data.attributes.per" disabled value="{{data.attributes.per.base + data.attributes.per.mod}}">
+                    <input type="number" name="data.attributes.phy" disabled value="{{math data.attributes.phy.base "+" data.attributes.phy.mod}}">
+                    <input type="number" name="data.attributes.dex" disabled value="{{math data.attributes.dex.base "+" data.attributes.dex.mod "+" data.attributes.dex.armor_mod}}">
+                    <input type="number" name="data.attributes.int" disabled value="{{math data.attributes.int.base "+" data.attributes.int.mod}}">
+                    <input type="number" name="data.attributes.cha" disabled value="{{math data.attributes.cha.base "+" data.attributes.cha.mod}}">
+                    <input type="number" name="data.attributes.per" disabled value="{{math data.attributes.per.base "+" data.attributes.per.mod}}">
                 </section>
 
-                <div class="sheet-mv">
-                    <div class="sheet-label">Mouvement</div>
-                    <div class="sheet-label">
+                <section class="sheet-mv">
+                    <span class="sheet-label">Mouvement</span>
+                    <label class="sheet-label">
                         <span class="sheet-phy">Phy</span> + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-value"><input type="number" name="data.attributes.mouvement"
-                                                    value="{{data.attributes.phy + data.attributes.dex}}"
-                                                    disabled="true"/></div>
-                </div>
+                    </label>
+                    <span class="sheet-value"><input type="number" name="data.attributes.mouvement"
+                                                    value="{{math data.attributes.phy "+" data.attributes.dex}}"
+                                                    disabled="true"/></span>
+                </section>
             </section>
             <section class="sheet-health">
                 <h3>Point de vie</h3>
-                <div class="sheet-health-max">
-                    <div class="sheet-label"><label>Maximum</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.hp.max" value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
-                </div>
-                <div class="sheet-health-damage">
-                    <div class="sheet-label">Restant</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.hp.value" value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
-                </div>
-                <div class="sheet-health-armor">
-                    <div class="sheet-label">Armure</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.armor.total" value="{{data.attributes.armor.total}}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
-                </div>
+                <label class="sheet-health-max">
+                    <span class="sheet-label">Maximum</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.hp.max" value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></span>
+                </label>
+                <label class="sheet-health-damage">
+                    <span class="sheet-label">Restant</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.hp.value" value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></span>
+                </label>
+                <label class="sheet-health-armor">
+                    <span class="sheet-label">Armure</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.armor.total" value="{{data.attributes.armor.total}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
+                </label>
                 <div class="hp-bar" style="background: linear-gradient(
                             								-90deg,
                             								transparent 0%,
@@ -178,490 +178,490 @@
 
             <section class="sheet-magic">
                 <h3>Point de mana</h3>
-                <div class="sheet-magic-max">
-                    <div class="sheet-label">Maximum</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.magic.max" value="{{data.attributes.magic.max}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
-                </div>
-                <div class="sheet-magic-left">
-                    <div class="sheet-label">Restant</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.magic.value" value="{{data.attributes.magic.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
-                </div>
-                <div class="sheet-magic-level">
-                    <div class="sheet-label">Arcane</div>
-                    <div class="sheet-value"><input type="text" name="data.attributes.magic.arcane" value="{{data.attributes.magic.arcane}}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
-                </div>
+                <label class="sheet-magic-max">
+                    <span class="sheet-label">Maximum</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.magic.max" value="{{data.attributes.magic.max}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                </label>
+                <label class="sheet-magic-left">
+                    <span class="sheet-label">Restant</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.magic.value" value="{{data.attributes.magic.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                </label>
+                <label class="sheet-magic-level">
+                    <span class="sheet-label">Arcane</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.magic.arcane" value="{{data.attributes.magic.arcane}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
+                </label>
             </section>
             <section class="sheet-xp">
                 <h3>Expérience</h3>
-                <div class="sheet-xp-value">
-                    <div class="sheet-value"><input type="text" name="data.attributes.xp" value="{{data.attributes.xp}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
-                </div>
-                <div class="sheet-xp-to-next-level">
-                    Prochain niveau:
-                    <div class="sheet-value"><input type="text" name="data.attributes.xp.next_level" value="{{data.attributes.xp.next_level}}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
-                </div>
+                <label class="sheet-xp-value">
+                    <span class="sheet-value"><input type="text" name="data.attributes.xp" value="{{data.attributes.xp}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                </label>
+                <label class="sheet-xp-to-next-level">
+                    <span>Prochain niveau:</span>
+                    <span class="sheet-value"><input type="text" name="data.attributes.xp.next_level" value="{{data.attributes.xp.next_level}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
+                </label>
             </section>
 
-            <div class="sheet-jobs-skills">
-                <div class="sheet-job-skills">
+            <section class="sheet-jobs-skills">
+                <section class="sheet-job-skills">
                     <h4>Champion</h4>
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Attaque de bouclier</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Attaque de bouclier</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.step1" value="1" {{checked data.attributes.skill.champion.shield_attack.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.step2" value="1" {{checked data.attributes.skill.champion.shield_attack.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.step3" value="1" {{checked data.attributes.skill.champion.shield_attack.step2}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-phy">Phy</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.champion.shield_attack.extra" style="display: none" value="{{data.attributes.skill.champion.shield_attack.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.shield_attack"
-                                   value="{{data.attributes.phy + data.attributes.skill.champion.shield_attack.1 + data.attributes.skill.champion.shield_attack.2 + data.attributes.skill.champion.shield_attack.3 + data.attributes.skill.champion.shield_attack.extra}}"
+                                   value="{{math data.attributes.base "+" data.attributes.skill.champion.shield_attack.step1 "+" data.attributes.skill.champion.shield_attack.step2 "+" data.attributes.skill.champion.shield_attack.step3 "+" data.attributes.skill.champion.shield_attack.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.reroll.master" {{checked data.attributes.skill.champion.shield_attack.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.shield_attack.reroll.prodige" {{checked data.attributes.skill.champion.shield_attack.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Commandement</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Commandement</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.step1" value="1" {{checked data.attributes.skill.champion.commandment.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.step2" value="1" {{checked data.attributes.skill.champion.commandment.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.step3" value="1" {{checked data.attributes.skill.champion.commandment.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.champion.commandment.extra" style="display: none" value="{{data.attributes.skill.champion.commandment.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.commandment"
-                                   value="{{data.attributes.cha + data.attributes.skill.champion.commandment.1 + data.attributes.skill.champion.commandment.2 + data.attributes.skill.champion.commandment.3 + data.attributes.skill.champion.commandment.extra}}"
+                                   value="{{math data.attributes.cha "+" data.attributes.skill.champion.commandment.step1 "+" data.attributes.skill.champion.commandment.step2 "+" data.attributes.skill.champion.commandment.step3 "+" data.attributes.skill.champion.commandment.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.reroll.master" {{checked data.attributes.skill.champion.commandment.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.commandment.reroll.prodige" {{checked data.attributes.skill.champion.commandment.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Désarmer</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Désarmer</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.step1" value="1" {{checked data.attributes.skill.champion.disarm.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.step2" value="1" {{checked data.attributes.skill.champion.disarm.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.step3" value="1" {{checked data.attributes.skill.champion.disarm.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.champion.disarm.extra" style="display: none" value="{{data.attributes.skill.champion.disarm.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.disarm"
-                                   value="{{data.attributes.dex + data.attributes.skill.champion.disarm.1 + data.attributes.skill.champion.disarm.2 + data.attributes.skill.champion.disarm.3 + data.attributes.skill.champion.disarm.extra}}"
+                                   value="{{math data.attributes.dex "+" data.attributes.skill.champion.disarm.step1 "+" data.attributes.skill.champion.disarm.step2 "+" data.attributes.skill.champion.disarm.step3 "+" data.attributes.skill.champion.disarm.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.reroll.master" {{checked data.attributes.skill.champion.disarm.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.disarm.reroll.prodige" {{checked data.attributes.skill.champion.disarm.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Détection motivation</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Détection motivation</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.step1" value="1" {{checked data.attributes.skill.champion.detect_motivation.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.step2" value="1" {{checked data.attributes.skill.champion.detect_motivation.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.step3" value="1" {{checked data.attributes.skill.champion.detect_motivation.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.champion.detect_motivation.extra" style="display: none" value="{{data.attributes.skill.champion.detect_motivation.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.detect_motivation"
-                                   value="{{data.attributes.int + data.attributes.skill.champion.detect_motivation.1 + data.attributes.skill.champion.detect_motivation.2 + data.attributes.skill.champion.detect_motivation.3 + data.attributes.skill.champion.detect_motivation.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.champion.detect_motivation.step1 "+" data.attributes.skill.champion.detect_motivation.step2 "+" data.attributes.skill.champion.detect_motivation.step3 "+" data.attributes.skill.champion.detect_motivation.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.reroll.master" {{checked data.attributes.skill.champion.detect_motivation.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.champion.detect_motivation.reroll.prodige" {{checked data.attributes.skill.champion.detect_motivation.reroll.prodige}}/>
-                        </div>
-                    </div>
-                </div>
-                <div class="sheet-job-skills">
+                        </span>
+                    </label>
+                </section>
+                <section class="sheet-job-skills">
                     <h4>Forestier</h4>
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Camouflage</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Camouflage</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.step1" value="1" {{checked data.attributes.skill.ranger.stealth.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.step2" value="1" {{checked data.attributes.skill.ranger.stealth.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.step3" value="1" {{checked data.attributes.skill.ranger.stealth.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.ranger.stealth.extra" style="display: none" value="{{data.attributes.skill.ranger.stealth.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.stealth"
-                                   value="{{data.attributes.dex + data.attributes.skill.ranger.stealth.1 + data.attributes.skill.ranger.stealth.2 + data.attributes.skill.ranger.stealth.3 + data.attributes.skill.ranger.stealth.extra}}"
+                                   value="{{math data.attributes.dex "+" data.attributes.skill.ranger.stealth.step1 "+" data.attributes.skill.ranger.stealth.step2 "+" data.attributes.skill.ranger.stealth.step3 "+" data.attributes.skill.ranger.stealth.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.reroll.master" {{checked data.attributes.skill.ranger.stealth.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.stealth.reroll.prodige" {{checked data.attributes.skill.ranger.stealth.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Déplacement silencieux</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Déplacement silencieux</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.step1" value="1" {{checked data.attributes.skill.ranger.move_silently.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.step2" value="1" {{checked data.attributes.skill.ranger.move_silently.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.step3" value="1" {{checked data.attributes.skill.ranger.move_silently.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.ranger.move_silently.extra" style="display: none" value="{{data.attributes.skill.ranger.move_silently.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.move_silently"
-                                   value="{{data.attributes.dex + data.attributes.skill.ranger.move_silently.1 + data.attributes.skill.ranger.move_silently.2 + data.attributes.skill.ranger.move_silently.3 + data.attributes.skill.ranger.move_silently.extra}}"
+                                   value="{{math data.attributes.dex "+" data.attributes.skill.ranger.move_silently.step1 "+" data.attributes.skill.ranger.move_silently.step2 "+" data.attributes.skill.ranger.move_silently.step3 "+" data.attributes.skill.ranger.move_silently.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.reroll.master" {{checked data.attributes.skill.ranger.move_silently.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.move_silently.reroll.prodige" {{checked data.attributes.skill.ranger.move_silently.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Maîtrise des animaux</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Maîtrise des animaux</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.step1" value="1" {{checked data.attributes.skill.ranger.amimal_taming.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.step2" value="1" {{checked data.attributes.skill.ranger.amimal_taming.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.step3" value="1" {{checked data.attributes.skill.ranger.amimal_taming.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.ranger.amimal_taming.extra" style="display: none" value="{{data.attributes.skill.ranger.amimal_taming.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.amimal_taming"
-                                   value="{{data.attributes.int + data.attributes.skill.ranger.amimal_taming.1 + data.attributes.skill.ranger.amimal_taming.2 + data.attributes.skill.ranger.amimal_taming.3 + data.attributes.skill.ranger.amimal_taming.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.ranger.amimal_taming.step1 "+" data.attributes.skill.ranger.amimal_taming.step2 "+" data.attributes.skill.ranger.amimal_taming.step3 "+" data.attributes.skill.ranger.amimal_taming.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.reroll.master" {{checked data.attributes.skill.ranger.amimal_taming.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.amimal_taming.reroll.prodige" {{checked data.attributes.skill.ranger.amimal_taming.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Pister</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Pister</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.step1" value="1" {{checked data.attributes.skill.ranger.tracking.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.step2" value="1" {{checked data.attributes.skill.ranger.tracking.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.step3" value="1" {{checked data.attributes.skill.ranger.tracking.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-per">Per</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.ranger.tracking.extra" style="display: none" value="{{data.attributes.skill.ranger.tracking.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.tracking"
-                                   value="{{data.attributes.per + data.attributes.skill.ranger.tracking.1 + data.attributes.skill.ranger.tracking.2 + data.attributes.skill.ranger.tracking.3 + data.attributes.skill.ranger.tracking.extra}}"
+                                   value="{{math data.attributes.per "+" data.attributes.skill.ranger.tracking.step1 "+" data.attributes.skill.ranger.tracking.step2 "+" data.attributes.skill.ranger.tracking.step3 "+" data.attributes.skill.ranger.tracking.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.reroll.master" {{checked data.attributes.skill.ranger.tracking.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.ranger.tracking.reroll.prodige" {{checked data.attributes.skill.ranger.tracking.reroll.prodige}}/>
-                        </div>
-                    </div>
-                </div>
-                <div class="sheet-job-skills">
+                        </span>
+                    </label>
+                </section>
+                <section class="sheet-job-skills">
                     <h4>Guerrier</h4>
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Charge</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Charge</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.step1" value="1" {{checked data.attributes.skill.warrior.charge.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.step2" value="1" {{checked data.attributes.skill.warrior.charge.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.step3" value="1" {{checked data.attributes.skill.warrior.charge.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-phy">Phy</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.warrior.charge.extra" style="display: none" value="{{data.attributes.skill.warrior.charge.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.charge"
-                                   value="{{data.attributes.phy + data.attributes.skill.warrior.charge.1 + data.attributes.skill.warrior.charge.2 + data.attributes.skill.warrior.charge.3 + data.attributes.skill.warrior.charge.extra}}"
+                                   value="{{math data.attributes.base "+" data.attributes.skill.warrior.charge.step1 "+" data.attributes.skill.warrior.charge.step2 "+" data.attributes.skill.warrior.charge.step3 "+" data.attributes.skill.warrior.charge.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.reroll.master" {{checked data.attributes.skill.warrior.charge.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.charge.reroll.prodige" {{checked data.attributes.skill.warrior.charge.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Combat à deux mains</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Combat à deux mains</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.step1" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.step2" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.step3" value="1" {{checked data.attributes.skill.warrior.two_handed_combat.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-phy">Phy</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.warrior.two_handed_combat.extra" style="display: none" value="{{data.attributes.skill.warrior.two_handed_combat.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.two_handed_combat"
-                                   value="{{data.attributes.phy + data.attributes.skill.warrior.two_handed_combat.1 + data.attributes.skill.warrior.two_handed_combat.2 + data.attributes.skill.warrior.two_handed_combat.3 + data.attributes.skill.warrior.two_handed_combat.extra}}"
+                                   value="{{math data.attributes.base "+" data.attributes.skill.warrior.two_handed_combat.step1 "+" data.attributes.skill.warrior.two_handed_combat.step2 "+" data.attributes.skill.warrior.two_handed_combat.step3 "+" data.attributes.skill.warrior.two_handed_combat.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.reroll.master" {{checked data.attributes.skill.warrior.two_handed_combat.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.two_handed_combat.reroll.prodige" {{checked data.attributes.skill.warrior.two_handed_combat.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Intimidation</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Intimidation</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.step1" value="1" {{checked data.attributes.skill.warrior.intimidation.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.step2" value="1" {{checked data.attributes.skill.warrior.intimidation.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.step3" value="1" {{checked data.attributes.skill.warrior.intimidation.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.warrior.intimidation.extra" style="display: none" value="{{data.attributes.skill.warrior.intimidation.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.intimidation"
-                                   value="{{data.attributes.cha + data.attributes.skill.warrior.intimidation.1 + data.attributes.skill.warrior.intimidation.2 + data.attributes.skill.warrior.intimidation.3 + data.attributes.skill.warrior.intimidation.extra}}"
+                                   value="{{math data.attributes.cha "+" data.attributes.skill.warrior.intimidation.step1 "+" data.attributes.skill.warrior.intimidation.step2 "+" data.attributes.skill.warrior.intimidation.step3 "+" data.attributes.skill.warrior.intimidation.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.reroll.master" {{checked data.attributes.skill.warrior.intimidation.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.intimidation.reroll.prodige" {{checked data.attributes.skill.warrior.intimidation.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Provocation</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Provocation</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.step1" value="1" {{checked data.attributes.skill.warrior.provocation.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.step2" value="1" {{checked data.attributes.skill.warrior.provocation.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.step3" value="1" {{checked data.attributes.skill.warrior.provocation.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-cha">Cha</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.warrior.provocation.extra" style="display: none" value="{{data.attributes.skill.warrior.provocation.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.provocation"
-                                   value="{{data.attributes.cha + data.attributes.skill.warrior.provocation.1 + data.attributes.skill.warrior.provocation.2 + data.attributes.skill.warrior.provocation.3 + data.attributes.skill.warrior.provocation.extra}}"
+                                   value="{{math data.attributes.cha "+" data.attributes.skill.warrior.provocation.step1 "+" data.attributes.skill.warrior.provocation.step2 "+" data.attributes.skill.warrior.provocation.step3 "+" data.attributes.skill.warrior.provocation.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.reroll.master" {{checked data.attributes.skill.warrior.provocation.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.warrior.provocation.reroll.prodige" {{checked data.attributes.skill.warrior.provocation.reroll.prodige}}/>
-                        </div>
-                    </div>
-                </div>
-                <div class="sheet-job-skills">
+                        </span>
+                    </label>
+                </section>
+                <section class="sheet-job-skills">
                     <h4>Magicien</h4>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Concentration</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Concentration</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.step1" value="1" {{checked data.attributes.skill.mage.focus.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.step2" value="1" {{checked data.attributes.skill.mage.focus.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.step3" value="1" {{checked data.attributes.skill.mage.focus.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.mage.focus.extra" style="display: none" value="{{data.attributes.skill.mage.focus.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.focus"
-                                   value="{{data.attributes.int + data.attributes.skill.mage.focus.1 + data.attributes.skill.mage.focus.2 + data.attributes.skill.mage.provocation.3 + data.attributes.skill.mage.focus.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.mage.focus.step1 "+" data.attributes.skill.mage.focus.step2 "+" data.attributes.skill.mage.provocation.step3 "+" data.attributes.skill.mage.focus.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.reroll.master" {{checked data.attributes.skill.mage.focus.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.focus.reroll.prodige" {{checked data.attributes.skill.mage.focus.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Connnaissance</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Connnaissance</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.step1" value="1" {{checked data.attributes.skill.mage.knowledge.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.step2" value="1" {{checked data.attributes.skill.mage.knowledge.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.step3" value="1" {{checked data.attributes.skill.mage.knowledge.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.mage.knowledge.extra" style="display: none" value="{{data.attributes.skill.mage.knowledge.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.knowledge"
-                                   value="{{data.attributes.int + data.attributes.skill.mage.knowledge.1 + data.attributes.skill.mage.knowledge.2 + data.attributes.skill.mage.knowledge.3 + data.attributes.skill.mage.knowledge.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.mage.knowledge.step1 "+" data.attributes.skill.mage.knowledge.step2 "+" data.attributes.skill.mage.knowledge.step3 "+" data.attributes.skill.mage.knowledge.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.reroll.master" {{checked data.attributes.skill.mage.knowledge.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.knowledge.reroll.prodige" {{checked data.attributes.skill.mage.knowledge.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Création d'items magiques</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Création d'items magiques</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.step1" value="1" {{checked data.attributes.skill.mage.magic_item.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.step2" value="1" {{checked data.attributes.skill.mage.magic_item.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.step3" value="1" {{checked data.attributes.skill.mage.magic_item.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.mage.magic_item.extra" style="display: none" value="{{data.attributes.skill.mage.magic_item.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.magic_item"
-                                   value="{{data.attributes.dex + data.attributes.skill.mage.magic_item.1 + data.attributes.skill.mage.magic_item.2 + data.attributes.skill.mage.magic_item.3 + data.attributes.skill.mage.magic_item.extra}}"
+                                   value="{{math data.attributes.dex "+" data.attributes.skill.mage.magic_item.step1 "+" data.attributes.skill.mage.magic_item.step2 "+" data.attributes.skill.mage.magic_item.step3 "+" data.attributes.skill.mage.magic_item.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.reroll.master" {{checked data.attributes.skill.mage.magic_item.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.magic_item.reroll.prodige" {{checked data.attributes.skill.mage.magic_item.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Détection de la magie</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Détection de la magie</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.step1" value="1" {{checked data.attributes.skill.mage.detect_magic.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.step2" value="1" {{checked data.attributes.skill.mage.detect_magic.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.step3" value="1" {{checked data.attributes.skill.mage.detect_magic.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-per">Per</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.mage.detect_magic.extra" style="display: none" value="{{data.attributes.skill.mage.detect_magic.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.detect_magic"
-                                   value="{{data.attributes.per + data.attributes.skill.mage.detect_magic.1 + data.attributes.skill.mage.detect_magic.2 + data.attributes.skill.mage.detect_magic.3 + data.attributes.skill.mage.detect_magic.extra}}"
+                                   value="{{math data.attributes.per "+" data.attributes.skill.mage.detect_magic.step1 "+" data.attributes.skill.mage.detect_magic.step2 "+" data.attributes.skill.mage.detect_magic.step3 "+" data.attributes.skill.mage.detect_magic.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.reroll.master" {{checked data.attributes.skill.mage.detect_magic.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.mage.detect_magic.reroll.prodige" {{checked data.attributes.skill.mage.detect_magic.reroll.prodige}}/>
-                        </div>
-                    </div>
-                </div>
-                <div class="sheet-job-skills">
+                        </span>
+                    </label>
+                </section>
+                <section class="sheet-job-skills">
                     <h4>Voleur</h4>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Déplacement silencieux</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Déplacement silencieux</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.step1" value="1" {{checked data.attributes.skill.rogue.move_silently.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.step2" value="1" {{checked data.attributes.skill.rogue.move_silently.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.step3" value="1" {{checked data.attributes.skill.rogue.move_silently.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.rogue.move_silently.extra" style="display: none" value="{{data.attributes.skill.rogue.move_silently.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.move_silently"
-                                   value="{{data.attributes.per + data.attributes.skill.rogue.move_silently.1 + data.attributes.skill.rogue.move_silently.2 + data.attributes.skill.rogue.move_silently.3 + data.attributes.skill.rogue.move_silently.extra}}"
+                                   value="{{math data.attributes.per "+" data.attributes.skill.rogue.move_silently.step1 "+" data.attributes.skill.rogue.move_silently.step2 "+" data.attributes.skill.rogue.move_silently.step3 "+" data.attributes.skill.rogue.move_silently.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.reroll.master" {{checked data.attributes.skill.rogue.move_silently.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.move_silently.reroll.prodige" {{checked data.attributes.skill.rogue.move_silently.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Évaluation</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Évaluation</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step1" value="1" {{checked data.attributes.skill.rogue.evaluation.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step2" value="1" {{checked data.attributes.skill.rogue.evaluation.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step3" value="1" {{checked data.attributes.skill.rogue.evaluation.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.rogue.evaluation.extra" style="display: none" value="{{data.attributes.skill.rogue.evaluation.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.evaluation"
-                                   value="{{data.attributes.int + data.attributes.skill.rogue.evaluation.1 + data.attributes.skill.rogue.evaluation.2 + data.attributes.skill.rogue.evaluation.3 + data.attributes.skill.rogue.evaluation.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.rogue.evaluation.step1 "+" data.attributes.skill.rogue.evaluation.step2 "+" data.attributes.skill.rogue.evaluation.step3 "+" data.attributes.skill.rogue.evaluation.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.reroll.master" {{checked data.attributes.skill.rogue.evaluation.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.reroll.prodige" {{checked data.attributes.skill.rogue.evaluation.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Faux-semblant</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Faux-semblant</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.step1" value="1" {{checked data.attributes.skill.rogue.forgery.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.step2" value="1" {{checked data.attributes.skill.rogue.forgery.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.step3" value="1" {{checked data.attributes.skill.rogue.forgery.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.rogue.forgery.extra" style="display: none" value="{{data.attributes.skill.rogue.forgery.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.forgery"
-                                   value="{{data.attributes.int + data.attributes.skill.rogue.forgery.1 + data.attributes.skill.rogue.forgery.2 + data.attributes.skill.rogue.forgery.3 + data.attributes.skill.rogue.forgery.extra}}"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.rogue.forgery.step1 "+" data.attributes.skill.rogue.forgery.step2 "+" data.attributes.skill.rogue.forgery.step3 "+" data.attributes.skill.rogue.forgery.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.reroll.master" {{checked data.attributes.skill.rogue.forgery.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.forgery.reroll.prodige" {{checked data.attributes.skill.rogue.forgery.reroll.prodige}}/>
-                        </div>
-                    </div>
+                        </span>
+                    </label>
                     <!-- -->
-                    <div class="sheet-skill">
-                        <div class="sheet-skill-label">Larcin</div>
-                        <div class="sheet-skill-levels">
+                    <label class="sheet-skill">
+                        <span class="sheet-skill-label">Larcin</span>
+                        <span class="sheet-skill-levels">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.step1" value="1" {{checked data.attributes.skill.rogue.larceny.step1}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.step2" value="1" {{checked data.attributes.skill.rogue.larceny.step2}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.step3" value="1" {{checked data.attributes.skill.rogue.larceny.step3}}/>
-                        </div>
-                        <div class="sheet-skill-stat">
+                        </span>
+                        <span class="sheet-skill-stat">
                             + <span class="sheet-dex">Dex</span>
-                        </div>
-                        <div class="sheet-skill-level">
+                        </span>
+                        <span class="sheet-skill-level">
                             <input type="number" name="data.attributes.skill.rogue.larceny.extra" style="display: none" value="{{data.attributes.skill.rogue.larceny.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.larceny"
-                                   value="{{data.attributes.dex + data.attributes.skill.rogue.larceny.1 + data.attributes.skill.rogue.larceny.2 + data.attributes.skill.rogue.larceny.3 + data.attributes.skill.rogue.larceny.extra}}"
+                                   value="{{math data.attributes.dex "+" data.attributes.skill.rogue.larceny.step1 "+" data.attributes.skill.rogue.larceny.step2 "+" data.attributes.skill.rogue.larceny.step3 "+" data.attributes.skill.rogue.larceny.extra}}"
                                    disabled/>
-                        </div>
-                        <div class="sheet-skill-rerolls">
+                        </span>
+                        <span class="sheet-skill-rerolls">
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.reroll.master" {{checked data.attributes.skill.rogue.larceny.reroll.master}}/>
                             <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.larceny.reroll.prodige" {{checked data.attributes.skill.rogue.larceny.reroll.prodige}}/>
-                        </div>
-                    </div>
-                </div>
+                        </span>
+                    </label>
+                </section>
 
-            </div>
-            <div class="sheet-specialities">
+            </section>
+            <section class="sheet-specialities">
                 <h3>Spécialités</h3>
                 <!-- -->
                 <fieldset class="repeating_specialities">
-                    <div class="sheet-speciality">
+                    <label class="sheet-speciality">
                         <select type="text" name="attr_speciality1_name">
                             <optgroup label="Tous les personnages">
                                 <option value="attaque-cinglante">Attaque cinglante</option>
@@ -704,596 +704,596 @@
                             Lambda
                         </select>
 
-                    </div>
+                    </label>
                 </fieldset>
-            </div>
-            <div class="sheet-combat-skills">
+            </section>
+            <section class="sheet-combat-skills">
                 <h3>Habilités de combat</h3>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Combat mains nues</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Combat mains nues</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.step1" value="1" {{checked data.attributes.skill.combat.hand_combat.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.step2" value="1" {{checked data.attributes.skill.combat.hand_combat.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.step3" value="1" {{checked data.attributes.skill.combat.hand_combat.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-phy">Phy</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.combat.hand_combat.extra" style="display: none" value="{{data.attributes.skill.combat.hand_combat.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.hand_combat"
-                               value="{{data.attributes.phy + data.attributes.skill.combat.hand_combat.1 + data.attributes.skill.combat.hand_combat.2 + data.attributes.skill.combat.hand_combat.3 + data.attributes.skill.combat.hand_combat.extra}}"
+                               value="{{data.attributes.base "+" data.attributes.skill.combat.hand_combat.step1 "+" data.attributes.skill.combat.hand_combat.step2 "+" data.attributes.skill.combat.hand_combat.step3 "+" data.attributes.skill.combat.hand_combat.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.reroll.master" {{checked data.attributes.skill.combat.hand_combat.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.hand_combat.reroll.prodige" {{checked data.attributes.skill.combat.hand_combat.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Combat mêlée</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Combat mêlée</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.step1" value="1" {{checked data.attributes.skill.combat.melee_combat.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.step2" value="1" {{checked data.attributes.skill.combat.melee_combat.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.step3" value="1" {{checked data.attributes.skill.combat.melee_combat.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-phy">Phy</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.combat.melee_combat.extra" style="display: none" value="{{data.attributes.skill.combat.melee_combat.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.melee_combat"
-                               value="{{data.attributes.phy + data.attributes.skill.combat.melee_combat.1 + data.attributes.skill.combat.melee_combat.2 + data.attributes.skill.combat.melee_combat.3 + data.attributes.skill.combat.melee_combat.extra}}"
+                               value="{{data.attributes.base "+" data.attributes.skill.combat.melee_combat.step1 "+" data.attributes.skill.combat.melee_combat.step2 "+" data.attributes.skill.combat.melee_combat.step3 "+" data.attributes.skill.combat.melee_combat.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.reroll.master" {{checked data.attributes.skill.combat.melee_combat.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.melee_combat.reroll.prodige" {{checked data.attributes.skill.combat.melee_combat.reroll.prodige}}/>
-                    </div>
-                </div>
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Lancer/ tir</div>
-                    <div class="sheet-skill-levels">
+                    </span>
+                </label>
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Lancer/ tir</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.step1" value="1" {{checked data.attributes.skill.combat.throw_shoot.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.step2" value="1" {{checked data.attributes.skill.combat.throw_shoot.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.step3" value="1" {{checked data.attributes.skill.combat.throw_shoot.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.combat.throw_shoot.extra" style="display: none" value="{{data.attributes.skill.combat.throw_shoot.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.throw_shoot"
-                               value="{{data.attributes.phy + data.attributes.skill.combat.throw_shoot.1 + data.attributes.skill.combat.throw_shoot.2 + data.attributes.skill.combat.throw_shoot.3 + data.attributes.skill.combat.throw_shoot.extra}}"
+                               value="{{data.attributes.base "+" data.attributes.skill.combat.throw_shoot.step1 "+" data.attributes.skill.combat.throw_shoot.step2 "+" data.attributes.skill.combat.throw_shoot.step3 "+" data.attributes.skill.combat.throw_shoot.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.reroll.master" {{checked data.attributes.skill.combat.throw_shoot.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.throw_shoot.reroll.prodige" {{checked data.attributes.skill.combat.throw_shoot.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Éviter</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Éviter</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.step1" value="1" {{checked data.attributes.skill.combat.dodge.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.step2" value="1" {{checked data.attributes.skill.combat.dodge.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.step3" value="1" {{checked data.attributes.skill.combat.dodge.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.combat.dodge.extra" style="display: none" value="{{data.attributes.skill.combat.dodge.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.dodge"
-                               value="{{data.attributes.dex + data.attributes.skill.combat.dodge.1 + data.attributes.skill.combat.dodge.2 + data.attributes.skill.combat.dodge.3 + data.attributes.skill.combat.dodge.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.combat.dodge.step1 "+" data.attributes.skill.combat.dodge.step2 "+" data.attributes.skill.combat.dodge.step3 "+" data.attributes.skill.combat.dodge.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.reroll.master" {{checked data.attributes.skill.combat.dodge.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.dodge.reroll.prodige" {{checked data.attributes.skill.combat.dodge.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Résilience</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Résilience</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.step1" value="1" {{checked data.attributes.skill.combat.resilience.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.step2" value="1" {{checked data.attributes.skill.combat.resilience.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.step3" value="1" {{checked data.attributes.skill.combat.resilience.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.combat.resilience.extra" style="display: none" value="{{data.attributes.skill.combat.resilience.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.resilience"
-                               value="{{data.attributes.int + data.attributes.skill.combat.resilience.1 + data.attributes.skill.combat.resilience.2 + data.attributes.skill.combat.resilience.3 + data.attributes.skill.combat.resilience.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.combat.resilience.step1 "+" data.attributes.skill.combat.resilience.step2 "+" data.attributes.skill.combat.resilience.step3 "+" data.attributes.skill.combat.resilience.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.reroll.master" {{checked data.attributes.skill.combat.resilience.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.combat.resilience.reroll.prodige" {{checked data.attributes.skill.combat.resilience.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
 
-            </div>
-            <div class="sheet-misc-skills">
+            </section>
+            <section class="sheet-misc-skills">
                 <h3>Habilités générales</h3>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Artisanat</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Artisanat</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.step1" value="1" {{checked data.attributes.skill.misc.crafting.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.step2" value="1" {{checked data.attributes.skill.misc.crafting.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.step3" value="1" {{checked data.attributes.skill.misc.crafting.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.crafting.extra" style="display: none" value="{{data.attributes.skill.misc.crafting.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.crafting"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.crafting.1 + data.attributes.skill.misc.crafting.2 + data.attributes.skill.misc.crafting.3 + data.attributes.skill.misc.crafting.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.crafting.step1 "+" data.attributes.skill.misc.crafting.step2 "+" data.attributes.skill.misc.crafting.step3 "+" data.attributes.skill.misc.crafting.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.reroll.master" {{checked data.attributes.skill.misc.crafting.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.crafting.reroll.prodige" {{checked data.attributes.skill.misc.crafting.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Athlétique</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Athlétique</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.step1" value="1" {{checked data.attributes.skill.misc.athletic.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.step2" value="1" {{checked data.attributes.skill.misc.athletic.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.step3" value="1" {{checked data.attributes.skill.misc.athletic.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-phy">Phy</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.athletic.extra" style="display: none" value="{{data.attributes.skill.misc.athletic.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.athletic"
-                               value="{{data.attributes.phy + data.attributes.skill.misc.athletic.1 + data.attributes.skill.misc.athletic.2 + data.attributes.skill.misc.athletic.3 + data.attributes.skill.misc.athletic.extra}}"
+                               value="{{data.attributes.base "+" data.attributes.skill.misc.athletic.step1 "+" data.attributes.skill.misc.athletic.step2 "+" data.attributes.skill.misc.athletic.step3 "+" data.attributes.skill.misc.athletic.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.reroll.master" {{checked data.attributes.skill.misc.athletic.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.athletic.reroll.prodige" {{checked data.attributes.skill.misc.athletic.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Cuisiner</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Cuisiner</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.step1" value="1" {{checked data.attributes.skill.misc.cooking.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.step2" value="1" {{checked data.attributes.skill.misc.cooking.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.step3" value="1" {{checked data.attributes.skill.misc.cooking.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.cooking.extra" style="display: none" value="{{data.attributes.skill.misc.cooking.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.cooking"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.cooking.1 + data.attributes.skill.misc.cooking.2 + data.attributes.skill.misc.cooking.3 + data.attributes.skill.misc.cooking.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.cooking.step1 "+" data.attributes.skill.misc.cooking.step2 "+" data.attributes.skill.misc.cooking.step3 "+" data.attributes.skill.misc.cooking.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.reroll.master" {{checked data.attributes.skill.misc.cooking.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.cooking.reroll.prodige" {{checked data.attributes.skill.misc.cooking.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Déguisement</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Déguisement</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.step1" value="1" {{checked data.attributes.skill.misc.disguise.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.step2" value="1" {{checked data.attributes.skill.misc.disguise.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.step3" value="1" {{checked data.attributes.skill.misc.disguise.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.disguise.extra" style="display: none" value="{{data.attributes.skill.misc.disguise.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.disguise"
-                               value="{{data.attributes.cha + data.attributes.skill.misc.disguise.1 + data.attributes.skill.misc.disguise.2 + data.attributes.skill.misc.disguise.3 + data.attributes.skill.misc.disguise.extra}}"
+                               value="{{math data.attributes.cha "+" data.attributes.skill.misc.disguise.step1 "+" data.attributes.skill.misc.disguise.step2 "+" data.attributes.skill.misc.disguise.step3 "+" data.attributes.skill.misc.disguise.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.reroll.master" {{checked data.attributes.skill.misc.disguise.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.disguise.reroll.prodige" {{checked data.attributes.skill.misc.disguise.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Écouter</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Écouter</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.step1" value="1" {{checked data.attributes.skill.misc.listening.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.step2" value="1" {{checked data.attributes.skill.misc.listening.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.step3" value="1" {{checked data.attributes.skill.misc.listening.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-per">Per</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.listening.extra" style="display: none" value="{{data.attributes.skill.misc.listening.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.listening"
-                               value="{{data.attributes.per + data.attributes.skill.misc.listening.1 + data.attributes.skill.misc.listening.2 + data.attributes.skill.misc.listening.3 + data.attributes.skill.misc.listening.extra}}"
+                               value="{{math data.attributes.per "+" data.attributes.skill.misc.listening.step1 "+" data.attributes.skill.misc.listening.step2 "+" data.attributes.skill.misc.listening.step3 "+" data.attributes.skill.misc.listening.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.reroll.master" {{checked data.attributes.skill.misc.listening.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.listening.reroll.prodige" {{checked data.attributes.skill.misc.listening.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Éloquence</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Éloquence</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.step1" value="1" {{checked data.attributes.skill.misc.eloquence.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.step2" value="1" {{checked data.attributes.skill.misc.eloquence.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.step3" value="1" {{checked data.attributes.skill.misc.eloquence.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.eloquence.extra" style="display: none" value="{{data.attributes.skill.misc.eloquence.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.eloquence"
-                               value="{{data.attributes.cha + data.attributes.skill.misc.eloquence.1 + data.attributes.skill.misc.eloquence.2 + data.attributes.skill.misc.eloquence.3 + data.attributes.skill.misc.eloquence.extra}}"
+                               value="{{math data.attributes.cha "+" data.attributes.skill.misc.eloquence.step1 "+" data.attributes.skill.misc.eloquence.step2 "+" data.attributes.skill.misc.eloquence.step3 "+" data.attributes.skill.misc.eloquence.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.reroll.master" {{checked data.attributes.skill.misc.eloquence.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.eloquence.reroll.prodige" {{checked data.attributes.skill.misc.eloquence.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Équitation</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Équitation</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.step1" value="1" {{checked data.attributes.skill.misc.riding.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.step2" value="1" {{checked data.attributes.skill.misc.riding.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.step3" value="1" {{checked data.attributes.skill.misc.riding.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.riding.extra" style="display: none" value="{{data.attributes.skill.misc.riding.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.riding"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.riding.1 + data.attributes.skill.misc.riding.2 + data.attributes.skill.misc.riding.3 + data.attributes.skill.misc.riding.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.riding.step1 "+" data.attributes.skill.misc.riding.step2 "+" data.attributes.skill.misc.riding.step3 "+" data.attributes.skill.misc.riding.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.reroll.master" {{checked data.attributes.skill.misc.riding.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.riding.reroll.prodige" {{checked data.attributes.skill.misc.riding.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Évasion</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Évasion</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.step1" value="1" {{checked data.attributes.skill.misc.escape.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.step2" value="1" {{checked data.attributes.skill.misc.escape.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.step3" value="1" {{checked data.attributes.skill.misc.escape.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-phy">Phy</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.escape.extra" style="display: none" value="{{data.attributes.skill.misc.escape.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.escape"
-                               value="{{data.attributes.psy + data.attributes.skill.misc.escape.1 + data.attributes.skill.misc.escape.2 + data.attributes.skill.misc.escape.3 + data.attributes.skill.misc.escape.extra}}"
+                               value="{{math data.attributes.phy "+" data.attributes.skill.misc.escape.step1 "+" data.attributes.skill.misc.escape.step2 "+" data.attributes.skill.misc.escape.step3 "+" data.attributes.skill.misc.escape.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.reroll.master" {{checked data.attributes.skill.misc.escape.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.escape.reroll.prodige" {{checked data.attributes.skill.misc.escape.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Forgeron</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Forgeron</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.step1" value="1" {{checked data.attributes.skill.misc.blacksmith.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.step2" value="1" {{checked data.attributes.skill.misc.blacksmith.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.step3" value="1" {{checked data.attributes.skill.misc.blacksmith.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-phy">Phy</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.blacksmith.extra" style="display: none" value="{{data.attributes.skill.misc.blacksmith.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.blacksmith"
-                               value="{{data.attributes.psy + data.attributes.skill.misc.blacksmith.1 + data.attributes.skill.misc.blacksmith.2 + data.attributes.skill.misc.blacksmith.3 + data.attributes.skill.misc.blacksmith.extra}}"
+                               value="{{math data.attributes.phy "+" data.attributes.skill.misc.blacksmith.step1 "+" data.attributes.skill.misc.blacksmith.step2 "+" data.attributes.skill.misc.blacksmith.step3 "+" data.attributes.skill.misc.blacksmith.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.reroll.master" {{checked data.attributes.skill.misc.blacksmith.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.blacksmith.reroll.prodige" {{checked data.attributes.skill.misc.blacksmith.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Gymnastique</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Gymnastique</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.step1" value="1" {{checked data.attributes.skill.misc.gymnastic.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.step2" value="1" {{checked data.attributes.skill.misc.gymnastic.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.step3" value="1" {{checked data.attributes.skill.misc.gymnastic.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.gymnastic.extra" style="display: none" value="{{data.attributes.skill.misc.gymnastic.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.gymnastic"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.gymnastic.1 + data.attributes.skill.misc.gymnastic.2 + data.attributes.skill.misc.gymnastic.3 + data.attributes.skill.misc.gymnastic.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.gymnastic.step1 "+" data.attributes.skill.misc.gymnastic.step2 "+" data.attributes.skill.misc.gymnastic.step3 "+" data.attributes.skill.misc.gymnastic.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.reroll.master" {{checked data.attributes.skill.misc.gymnastic.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.gymnastic.reroll.prodige" {{checked data.attributes.skill.misc.gymnastic.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Herboriste</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Herboriste</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.step1" value="1" {{checked data.attributes.skill.misc.herbalism.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.step2" value="1" {{checked data.attributes.skill.misc.herbalism.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.step3" value="1" {{checked data.attributes.skill.misc.herbalism.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.herbalism.extra" style="display: none" value="{{data.attributes.skill.misc.herbalism.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.herbalism"
-                               value="{{data.attributes.int + data.attributes.skill.misc.herbalism.1 + data.attributes.skill.misc.herbalism.2 + data.attributes.skill.misc.herbalism.3 + data.attributes.skill.misc.herbalism.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.herbalism.step1 "+" data.attributes.skill.misc.herbalism.step2 "+" data.attributes.skill.misc.herbalism.step3 "+" data.attributes.skill.misc.herbalism.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.reroll.master" {{checked data.attributes.skill.misc.herbalism.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.herbalism.reroll.prodige" {{checked data.attributes.skill.misc.herbalism.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Langage</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Langage</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.step1" value="1" {{checked data.attributes.skill.misc.langage.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.step2" value="1" {{checked data.attributes.skill.misc.langage.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.step3" value="1" {{checked data.attributes.skill.misc.langage.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.langage.extra" style="display: none" value="{{data.attributes.skill.misc.langage.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.langage"
-                               value="{{data.attributes.int + data.attributes.skill.misc.langage.1 + data.attributes.skill.misc.langage.2 + data.attributes.skill.misc.langage.3 + data.attributes.skill.misc.langage.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.langage.step1 "+" data.attributes.skill.misc.langage.step2 "+" data.attributes.skill.misc.langage.step3 "+" data.attributes.skill.misc.langage.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.reroll.master" {{checked data.attributes.skill.misc.langage.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.langage.reroll.prodige" {{checked data.attributes.skill.misc.langage.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Manipulation des cordes</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Manipulation des cordes</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.step1" value="1" {{checked data.attributes.skill.misc.rope_handling.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.step2" value="1" {{checked data.attributes.skill.misc.rope_handling.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.step3" value="1" {{checked data.attributes.skill.misc.rope_handling.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.rope_handling.extra" style="display: none" value="{{data.attributes.skill.misc.rope_handling.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.rope_handling"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.rope_handling.1 + data.attributes.skill.misc.rope_handling.2 + data.attributes.skill.misc.rope_handling.3 + data.attributes.skill.misc.rope_handling.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.rope_handling.step1 "+" data.attributes.skill.misc.rope_handling.step2 "+" data.attributes.skill.misc.rope_handling.step3 "+" data.attributes.skill.misc.rope_handling.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.reroll.master" {{checked data.attributes.skill.misc.rope_handling.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.rope_handling.reroll.prodige" {{checked data.attributes.skill.misc.rope_handling.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Marchandage</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Marchandage</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.step1" value="1" {{checked data.attributes.skill.misc.trading.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.step2" value="1" {{checked data.attributes.skill.misc.trading.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.step3" value="1" {{checked data.attributes.skill.misc.trading.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.trading.extra" style="display: none" value="{{data.attributes.skill.misc.trading.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.trading"
-                               value="{{data.attributes.cha + data.attributes.skill.misc.trading.1 + data.attributes.skill.misc.trading.2 + data.attributes.skill.misc.trading.3 + data.attributes.skill.misc.trading.extra}}"
+                               value="{{math data.attributes.cha "+" data.attributes.skill.misc.trading.step1 "+" data.attributes.skill.misc.trading.step2 "+" data.attributes.skill.misc.trading.step3 "+" data.attributes.skill.misc.trading.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.reroll.master" {{checked data.attributes.skill.misc.trading.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.trading.reroll.prodige" {{checked data.attributes.skill.misc.trading.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Monstrologie</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Monstrologie</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.step1" value="1" {{checked data.attributes.skill.misc.monster_lore.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.step2" value="1" {{checked data.attributes.skill.misc.monster_lore.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.step3" value="1" {{checked data.attributes.skill.misc.monster_lore.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.monster_lore.extra" style="display: none" value="{{data.attributes.skill.misc.monster_lore.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.monster_lore"
-                               value="{{data.attributes.int + data.attributes.skill.misc.monster_lore.1 + data.attributes.skill.misc.monster_lore.2 + data.attributes.skill.misc.monster_lore.3 + data.attributes.skill.misc.monster_lore.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.monster_lore.step1 "+" data.attributes.skill.misc.monster_lore.step2 "+" data.attributes.skill.misc.monster_lore.step3 "+" data.attributes.skill.misc.monster_lore.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.reroll.master" {{checked data.attributes.skill.misc.monster_lore.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.monster_lore.reroll.prodige" {{checked data.attributes.skill.misc.monster_lore.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Naviguer</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Naviguer</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.step1" value="1" {{checked data.attributes.skill.misc.navigate.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.step2" value="1" {{checked data.attributes.skill.misc.navigate.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.step3" value="1" {{checked data.attributes.skill.misc.navigate.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.navigate.extra" style="display: none" value="{{data.attributes.skill.misc.navigate.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.navigate"
-                               value="{{data.attributes.int + data.attributes.skill.misc.navigate.1 + data.attributes.skill.misc.navigate.2 + data.attributes.skill.misc.navigate.3 + data.attributes.skill.misc.navigate.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.navigate.step1 "+" data.attributes.skill.misc.navigate.step2 "+" data.attributes.skill.misc.navigate.step3 "+" data.attributes.skill.misc.navigate.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.reroll.master" {{checked data.attributes.skill.misc.navigate.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.navigate.reroll.prodige" {{checked data.attributes.skill.misc.navigate.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Observer</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Observer</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.step1" value="1" {{checked data.attributes.skill.misc.observation.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.step2" value="1" {{checked data.attributes.skill.misc.observation.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.step3" value="1" {{checked data.attributes.skill.misc.observation.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-per">Per</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.observation.extra" style="display: none" value="{{data.attributes.skill.misc.observation.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.observation"
-                               value="{{data.attributes.per + data.attributes.skill.misc.observation.1 + data.attributes.skill.misc.observation.2 + data.attributes.skill.misc.observation.3 + data.attributes.skill.misc.observation.extra}}"
+                               value="{{math data.attributes.per "+" data.attributes.skill.misc.observation.step1 "+" data.attributes.skill.misc.observation.step2 "+" data.attributes.skill.misc.observation.step3 "+" data.attributes.skill.misc.observation.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.reroll.master" {{checked data.attributes.skill.misc.observation.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.observation.reroll.prodige" {{checked data.attributes.skill.misc.observation.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Orientation</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Orientation</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.step1" value="1" {{checked data.attributes.skill.misc.orientation.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.step2" value="1" {{checked data.attributes.skill.misc.orientation.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.step3" value="1" {{checked data.attributes.skill.misc.orientation.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.orientation.extra" style="display: none" value="{{data.attributes.skill.misc.orientation.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.orientation"
-                               value="{{data.attributes.int + data.attributes.skill.misc.orientation.1 + data.attributes.skill.misc.orientation.2 + data.attributes.skill.misc.orientation.3 + data.attributes.skill.misc.orientation.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.orientation.step1 "+" data.attributes.skill.misc.orientation.step2 "+" data.attributes.skill.misc.orientation.step3 "+" data.attributes.skill.misc.orientation.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.reroll.master" {{checked data.attributes.skill.misc.orientation.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.orientation.reroll.prodige" {{checked data.attributes.skill.misc.orientation.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Performance</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Performance</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.step1" value="1" {{checked data.attributes.skill.misc.performance.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.step2" value="1" {{checked data.attributes.skill.misc.performance.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.step3" value="1" {{checked data.attributes.skill.misc.performance.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-cha">Cha</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.performance.extra" style="display: none" value="{{data.attributes.skill.misc.performance.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.performance"
-                               value="{{data.attributes.cha + data.attributes.skill.misc.performance.1 + data.attributes.skill.misc.performance.2 + data.attributes.skill.misc.performance.3 + data.attributes.skill.misc.performance.extra}}"
+                               value="{{math data.attributes.cha "+" data.attributes.skill.misc.performance.step1 "+" data.attributes.skill.misc.performance.step2 "+" data.attributes.skill.misc.performance.step3 "+" data.attributes.skill.misc.performance.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.reroll.master" {{checked data.attributes.skill.misc.performance.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.performance.reroll.prodige" {{checked data.attributes.skill.misc.performance.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Se cacher</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Se cacher</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.step1" value="1" {{checked data.attributes.skill.misc.hiding.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.step2" value="1" {{checked data.attributes.skill.misc.hiding.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.step3" value="1" {{checked data.attributes.skill.misc.hiding.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-dex">Dex</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.hiding.extra" style="display: none" value="{{data.attributes.skill.misc.hiding.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.hiding"
-                               value="{{data.attributes.dex + data.attributes.skill.misc.hiding.1 + data.attributes.skill.misc.hiding.2 + data.attributes.skill.misc.hiding.3 + data.attributes.skill.misc.hiding.extra}}"
+                               value="{{math data.attributes.dex "+" data.attributes.skill.misc.hiding.step1 "+" data.attributes.skill.misc.hiding.step2 "+" data.attributes.skill.misc.hiding.step3 "+" data.attributes.skill.misc.hiding.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.reroll.master" {{checked data.attributes.skill.misc.hiding.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.hiding.reroll.prodige" {{checked data.attributes.skill.misc.hiding.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Science</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Science</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.step1" value="1" {{checked data.attributes.skill.misc.science.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.step2" value="1" {{checked data.attributes.skill.misc.science.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.step3" value="1" {{checked data.attributes.skill.misc.science.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
+                    </span>
+                    <span class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.science.extra" style="display: none" value="{{data.attributes.skill.misc.science.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.science"
-                               value="{{data.attributes.int + data.attributes.skill.misc.science.1 + data.attributes.skill.misc.science.2 + data.attributes.skill.misc.science.3 + data.attributes.skill.misc.science.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.science.step1 "+" data.attributes.skill.misc.science.step2 "+" data.attributes.skill.misc.science.step3 "+" data.attributes.skill.misc.science.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.reroll.master" {{checked data.attributes.skill.misc.science.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.science.reroll.prodige" {{checked data.attributes.skill.misc.science.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-skill">
                     <div class="sheet-skill-label">Soins</div>
@@ -1308,7 +1308,7 @@
                     <div class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.care.extra" style="display: none" value="{{data.attributes.skill.misc.care.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.care"
-                               value="{{data.attributes.int + data.attributes.skill.misc.care.1 + data.attributes.skill.misc.care.2 + data.attributes.skill.misc.care.3 + data.attributes.skill.misc.care.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.care.step1 "+" data.attributes.skill.misc.care.step2 "+" data.attributes.skill.misc.care.step3 "+" data.attributes.skill.misc.care.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -1332,7 +1332,7 @@
                     <div class="sheet-skill-level">
                         <input type="number" name="data.attributes.skill.misc.survival.extra" style="display: none" value="{{data.attributes.skill.misc.survival.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.survival"
-                               value="{{data.attributes.int + data.attributes.skill.misc.survival.1 + data.attributes.skill.misc.survival.2 + data.attributes.skill.misc.survival.3 + data.attributes.skill.misc.survival.extra}}"
+                               value="{{math data.attributes.int "+" data.attributes.skill.misc.survival.step1 "+" data.attributes.skill.misc.survival.step2 "+" data.attributes.skill.misc.survival.step3 "+" data.attributes.skill.misc.survival.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -1340,7 +1340,7 @@
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.reroll.prodige" {{checked data.attributes.skill.misc.survival.reroll.prodige}}/>
                     </div>
                 </div>
-            </div>
+            </section>
         </section>
 
         <section class="sheet-equipment">
