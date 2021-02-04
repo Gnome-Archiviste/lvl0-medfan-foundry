@@ -27,30 +27,30 @@
       },
       "stats": {
         "phy": {
-          "min": 0,
           "value": 0
         },
         "dex": {
-          "min": 0,
           "value": 0
         },
         "int": {
-          "min": 0,
           "value": 0
         },
         "cha": {
-          "min": 0,
           "value": 0
         },
         "per": {
-          "min": 0,
           "value": 0
         }
       },
-      "championSkills": {
-        "skill_champion__shield_attack": {
-          "min": 0,
-          "value": 0
+      "skills": {
+        "skills": {
+          "champion": {
+            "shield_attack": {
+              "value": 0,
+              "master": false,
+              "prodigy": false
+            }
+          }
         }
       }
     },
@@ -58,9 +58,7 @@
       "templates": [
         "basics",
         "stats",
-        "championSkills",
-        "combatSkills",
-        "miscSkills"
+        "skills"
       ]
     }
   },
