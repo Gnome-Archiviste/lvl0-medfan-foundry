@@ -135,7 +135,7 @@
                     <span class="sheet-base"><input type="text" name="data.attributes.per.base" value="{{data.attributes.per.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.per.mod" value="{{data.attributes.per.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
-                <section style="display: none">
+                <section style="display: none;">
                     <input type="number" name="data.attributes.phy" disabled value="{{math data.attributes.phy.base "+" data.attributes.phy.mod}}">
                     <input type="number" name="data.attributes.dex" disabled value="{{math data.attributes.dex.base "+" data.attributes.dex.mod "+" data.attributes.dex.armor_mod}}">
                     <input type="number" name="data.attributes.int" disabled value="{{math data.attributes.int.base "+" data.attributes.int.mod}}">
@@ -150,7 +150,7 @@
                     </label>
                     <span class="sheet-value"><input type="number" name="data.attributes.mouvement"
                                                     value="{{math data.attributes.phy "+" data.attributes.dex}}"
-                                                    disabled="true"/></span>
+                                                    disabled/></span>
                 </section>
             </section>
             <section class="sheet-health">
@@ -216,7 +216,7 @@
                             + <span class="sheet-phy">Phy</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.champion.shield_attack.extra" style="display: none" value="{{data.attributes.skill.champion.shield_attack.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.shield_attack.extra" style="display: none;" value="{{data.attributes.skill.champion.shield_attack.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.shield_attack"
                                    value="{{math data.attributes.base "+" data.attributes.skill.champion.shield_attack.step1 "+" data.attributes.skill.champion.shield_attack.step2 "+" data.attributes.skill.champion.shield_attack.step3 "+" data.attributes.skill.champion.shield_attack.extra}}"
                                    disabled/>
@@ -238,7 +238,7 @@
                             + <span class="sheet-cha">Cha</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.champion.commandment.extra" style="display: none" value="{{data.attributes.skill.champion.commandment.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.commandment.extra" style="display: none;" value="{{data.attributes.skill.champion.commandment.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.commandment"
                                    value="{{math data.attributes.cha "+" data.attributes.skill.champion.commandment.step1 "+" data.attributes.skill.champion.commandment.step2 "+" data.attributes.skill.champion.commandment.step3 "+" data.attributes.skill.champion.commandment.extra}}"
                                    disabled/>
@@ -260,7 +260,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.champion.disarm.extra" style="display: none" value="{{data.attributes.skill.champion.disarm.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.disarm.extra" style="display: none;" value="{{data.attributes.skill.champion.disarm.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.disarm"
                                    value="{{math data.attributes.dex "+" data.attributes.skill.champion.disarm.step1 "+" data.attributes.skill.champion.disarm.step2 "+" data.attributes.skill.champion.disarm.step3 "+" data.attributes.skill.champion.disarm.extra}}"
                                    disabled/>
@@ -282,7 +282,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.champion.detect_motivation.extra" style="display: none" value="{{data.attributes.skill.champion.detect_motivation.extra}}" />
+                            <input type="number" name="data.attributes.skill.champion.detect_motivation.extra" style="display: none;" value="{{data.attributes.skill.champion.detect_motivation.extra}}" />
                             <input type="number" name="data.attributes.skill.champion.detect_motivation"
                                    value="{{math data.attributes.int "+" data.attributes.skill.champion.detect_motivation.step1 "+" data.attributes.skill.champion.detect_motivation.step2 "+" data.attributes.skill.champion.detect_motivation.step3 "+" data.attributes.skill.champion.detect_motivation.extra}}"
                                    disabled/>
@@ -306,7 +306,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.ranger.stealth.extra" style="display: none" value="{{data.attributes.skill.ranger.stealth.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.stealth.extra" style="display: none;" value="{{data.attributes.skill.ranger.stealth.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.stealth"
                                    value="{{math data.attributes.dex "+" data.attributes.skill.ranger.stealth.step1 "+" data.attributes.skill.ranger.stealth.step2 "+" data.attributes.skill.ranger.stealth.step3 "+" data.attributes.skill.ranger.stealth.extra}}"
                                    disabled/>
@@ -328,7 +328,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.ranger.move_silently.extra" style="display: none" value="{{data.attributes.skill.ranger.move_silently.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.move_silently.extra" style="display: none;" value="{{data.attributes.skill.ranger.move_silently.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.move_silently"
                                    value="{{math data.attributes.dex "+" data.attributes.skill.ranger.move_silently.step1 "+" data.attributes.skill.ranger.move_silently.step2 "+" data.attributes.skill.ranger.move_silently.step3 "+" data.attributes.skill.ranger.move_silently.extra}}"
                                    disabled/>
@@ -350,7 +350,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.ranger.amimal_taming.extra" style="display: none" value="{{data.attributes.skill.ranger.amimal_taming.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.amimal_taming.extra" style="display: none;" value="{{data.attributes.skill.ranger.amimal_taming.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.amimal_taming"
                                    value="{{math data.attributes.int "+" data.attributes.skill.ranger.amimal_taming.step1 "+" data.attributes.skill.ranger.amimal_taming.step2 "+" data.attributes.skill.ranger.amimal_taming.step3 "+" data.attributes.skill.ranger.amimal_taming.extra}}"
                                    disabled/>
@@ -372,7 +372,7 @@
                             + <span class="sheet-per">Per</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.ranger.tracking.extra" style="display: none" value="{{data.attributes.skill.ranger.tracking.extra}}" />
+                            <input type="number" name="data.attributes.skill.ranger.tracking.extra" style="display: none;" value="{{data.attributes.skill.ranger.tracking.extra}}" />
                             <input type="number" name="data.attributes.skill.ranger.tracking"
                                    value="{{math data.attributes.per "+" data.attributes.skill.ranger.tracking.step1 "+" data.attributes.skill.ranger.tracking.step2 "+" data.attributes.skill.ranger.tracking.step3 "+" data.attributes.skill.ranger.tracking.extra}}"
                                    disabled/>
@@ -396,7 +396,7 @@
                             + <span class="sheet-phy">Phy</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.warrior.charge.extra" style="display: none" value="{{data.attributes.skill.warrior.charge.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.charge.extra" style="display: none;" value="{{data.attributes.skill.warrior.charge.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.charge"
                                    value="{{math data.attributes.base "+" data.attributes.skill.warrior.charge.step1 "+" data.attributes.skill.warrior.charge.step2 "+" data.attributes.skill.warrior.charge.step3 "+" data.attributes.skill.warrior.charge.extra}}"
                                    disabled/>
@@ -418,7 +418,7 @@
                             + <span class="sheet-phy">Phy</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.warrior.two_handed_combat.extra" style="display: none" value="{{data.attributes.skill.warrior.two_handed_combat.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.two_handed_combat.extra" style="display: none;" value="{{data.attributes.skill.warrior.two_handed_combat.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.two_handed_combat"
                                    value="{{math data.attributes.base "+" data.attributes.skill.warrior.two_handed_combat.step1 "+" data.attributes.skill.warrior.two_handed_combat.step2 "+" data.attributes.skill.warrior.two_handed_combat.step3 "+" data.attributes.skill.warrior.two_handed_combat.extra}}"
                                    disabled/>
@@ -440,7 +440,7 @@
                             + <span class="sheet-cha">Cha</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.warrior.intimidation.extra" style="display: none" value="{{data.attributes.skill.warrior.intimidation.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.intimidation.extra" style="display: none;" value="{{data.attributes.skill.warrior.intimidation.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.intimidation"
                                    value="{{math data.attributes.cha "+" data.attributes.skill.warrior.intimidation.step1 "+" data.attributes.skill.warrior.intimidation.step2 "+" data.attributes.skill.warrior.intimidation.step3 "+" data.attributes.skill.warrior.intimidation.extra}}"
                                    disabled/>
@@ -462,7 +462,7 @@
                             + <span class="sheet-cha">Cha</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.warrior.provocation.extra" style="display: none" value="{{data.attributes.skill.warrior.provocation.extra}}" />
+                            <input type="number" name="data.attributes.skill.warrior.provocation.extra" style="display: none;" value="{{data.attributes.skill.warrior.provocation.extra}}" />
                             <input type="number" name="data.attributes.skill.warrior.provocation"
                                    value="{{math data.attributes.cha "+" data.attributes.skill.warrior.provocation.step1 "+" data.attributes.skill.warrior.provocation.step2 "+" data.attributes.skill.warrior.provocation.step3 "+" data.attributes.skill.warrior.provocation.extra}}"
                                    disabled/>
@@ -487,7 +487,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.mage.focus.extra" style="display: none" value="{{data.attributes.skill.mage.focus.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.focus.extra" style="display: none;" value="{{data.attributes.skill.mage.focus.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.focus"
                                    value="{{math data.attributes.int "+" data.attributes.skill.mage.focus.step1 "+" data.attributes.skill.mage.focus.step2 "+" data.attributes.skill.mage.provocation.step3 "+" data.attributes.skill.mage.focus.extra}}"
                                    disabled/>
@@ -509,7 +509,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.mage.knowledge.extra" style="display: none" value="{{data.attributes.skill.mage.knowledge.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.knowledge.extra" style="display: none;" value="{{data.attributes.skill.mage.knowledge.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.knowledge"
                                    value="{{math data.attributes.int "+" data.attributes.skill.mage.knowledge.step1 "+" data.attributes.skill.mage.knowledge.step2 "+" data.attributes.skill.mage.knowledge.step3 "+" data.attributes.skill.mage.knowledge.extra}}"
                                    disabled/>
@@ -531,7 +531,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.mage.magic_item.extra" style="display: none" value="{{data.attributes.skill.mage.magic_item.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.magic_item.extra" style="display: none;" value="{{data.attributes.skill.mage.magic_item.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.magic_item"
                                    value="{{math data.attributes.dex "+" data.attributes.skill.mage.magic_item.step1 "+" data.attributes.skill.mage.magic_item.step2 "+" data.attributes.skill.mage.magic_item.step3 "+" data.attributes.skill.mage.magic_item.extra}}"
                                    disabled/>
@@ -553,7 +553,7 @@
                             + <span class="sheet-per">Per</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.mage.detect_magic.extra" style="display: none" value="{{data.attributes.skill.mage.detect_magic.extra}}" />
+                            <input type="number" name="data.attributes.skill.mage.detect_magic.extra" style="display: none;" value="{{data.attributes.skill.mage.detect_magic.extra}}" />
                             <input type="number" name="data.attributes.skill.mage.detect_magic"
                                    value="{{math data.attributes.per "+" data.attributes.skill.mage.detect_magic.step1 "+" data.attributes.skill.mage.detect_magic.step2 "+" data.attributes.skill.mage.detect_magic.step3 "+" data.attributes.skill.mage.detect_magic.extra}}"
                                    disabled/>
@@ -578,7 +578,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.rogue.move_silently.extra" style="display: none" value="{{data.attributes.skill.rogue.move_silently.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.move_silently.extra" style="display: none;" value="{{data.attributes.skill.rogue.move_silently.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.move_silently"
                                    value="{{math data.attributes.per "+" data.attributes.skill.rogue.move_silently.step1 "+" data.attributes.skill.rogue.move_silently.step2 "+" data.attributes.skill.rogue.move_silently.step3 "+" data.attributes.skill.rogue.move_silently.extra}}"
                                    disabled/>
@@ -600,7 +600,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.rogue.evaluation.extra" style="display: none" value="{{data.attributes.skill.rogue.evaluation.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.evaluation.extra" style="display: none;" value="{{data.attributes.skill.rogue.evaluation.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.evaluation"
                                    value="{{math data.attributes.int "+" data.attributes.skill.rogue.evaluation.step1 "+" data.attributes.skill.rogue.evaluation.step2 "+" data.attributes.skill.rogue.evaluation.step3 "+" data.attributes.skill.rogue.evaluation.extra}}"
                                    disabled/>
@@ -622,7 +622,7 @@
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.rogue.forgery.extra" style="display: none" value="{{data.attributes.skill.rogue.forgery.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.forgery.extra" style="display: none;" value="{{data.attributes.skill.rogue.forgery.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.forgery"
                                    value="{{math data.attributes.int "+" data.attributes.skill.rogue.forgery.step1 "+" data.attributes.skill.rogue.forgery.step2 "+" data.attributes.skill.rogue.forgery.step3 "+" data.attributes.skill.rogue.forgery.extra}}"
                                    disabled/>
@@ -644,7 +644,7 @@
                             + <span class="sheet-dex">Dex</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.rogue.larceny.extra" style="display: none" value="{{data.attributes.skill.rogue.larceny.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.larceny.extra" style="display: none;" value="{{data.attributes.skill.rogue.larceny.extra}}" />
                             <input type="number" name="data.attributes.skill.rogue.larceny"
                                    value="{{math data.attributes.dex "+" data.attributes.skill.rogue.larceny.step1 "+" data.attributes.skill.rogue.larceny.step2 "+" data.attributes.skill.rogue.larceny.step3 "+" data.attributes.skill.rogue.larceny.extra}}"
                                    disabled/>
@@ -662,7 +662,7 @@
                 <!-- -->
                 <fieldset class="repeating_specialities">
                     <label class="sheet-speciality">
-                        <select type="text" name="attr_speciality1_name">
+                        <select name="attr_speciality1_name">
                             <optgroup label="Tous les personnages">
                                 <option value="attaque-cinglante">Attaque cinglante</option>
                                 <option value="attaque-precise">Attaque précise</option>
@@ -721,7 +721,7 @@
                         + <span class="sheet-phy">Phy</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.combat.hand_combat.extra" style="display: none" value="{{data.attributes.skill.combat.hand_combat.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.hand_combat.extra" style="display: none;" value="{{data.attributes.skill.combat.hand_combat.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.hand_combat"
                                value="{{data.attributes.base "+" data.attributes.skill.combat.hand_combat.step1 "+" data.attributes.skill.combat.hand_combat.step2 "+" data.attributes.skill.combat.hand_combat.step3 "+" data.attributes.skill.combat.hand_combat.extra}}"
                                disabled/>
@@ -743,7 +743,7 @@
                         + <span class="sheet-phy">Phy</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.combat.melee_combat.extra" style="display: none" value="{{data.attributes.skill.combat.melee_combat.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.melee_combat.extra" style="display: none;" value="{{data.attributes.skill.combat.melee_combat.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.melee_combat"
                                value="{{data.attributes.base "+" data.attributes.skill.combat.melee_combat.step1 "+" data.attributes.skill.combat.melee_combat.step2 "+" data.attributes.skill.combat.melee_combat.step3 "+" data.attributes.skill.combat.melee_combat.extra}}"
                                disabled/>
@@ -764,7 +764,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.combat.throw_shoot.extra" style="display: none" value="{{data.attributes.skill.combat.throw_shoot.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.throw_shoot.extra" style="display: none;" value="{{data.attributes.skill.combat.throw_shoot.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.throw_shoot"
                                value="{{data.attributes.base "+" data.attributes.skill.combat.throw_shoot.step1 "+" data.attributes.skill.combat.throw_shoot.step2 "+" data.attributes.skill.combat.throw_shoot.step3 "+" data.attributes.skill.combat.throw_shoot.extra}}"
                                disabled/>
@@ -786,7 +786,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.combat.dodge.extra" style="display: none" value="{{data.attributes.skill.combat.dodge.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.dodge.extra" style="display: none;" value="{{data.attributes.skill.combat.dodge.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.dodge"
                                value="{{math data.attributes.dex "+" data.attributes.skill.combat.dodge.step1 "+" data.attributes.skill.combat.dodge.step2 "+" data.attributes.skill.combat.dodge.step3 "+" data.attributes.skill.combat.dodge.extra}}"
                                disabled/>
@@ -808,7 +808,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.combat.resilience.extra" style="display: none" value="{{data.attributes.skill.combat.resilience.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.resilience.extra" style="display: none;" value="{{data.attributes.skill.combat.resilience.extra}}" />
                         <input type="number" name="data.attributes.skill.combat.resilience"
                                value="{{math data.attributes.int "+" data.attributes.skill.combat.resilience.step1 "+" data.attributes.skill.combat.resilience.step2 "+" data.attributes.skill.combat.resilience.step3 "+" data.attributes.skill.combat.resilience.extra}}"
                                disabled/>
@@ -834,7 +834,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.crafting.extra" style="display: none" value="{{data.attributes.skill.misc.crafting.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.crafting.extra" style="display: none;" value="{{data.attributes.skill.misc.crafting.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.crafting"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.crafting.step1 "+" data.attributes.skill.misc.crafting.step2 "+" data.attributes.skill.misc.crafting.step3 "+" data.attributes.skill.misc.crafting.extra}}"
                                disabled/>
@@ -856,7 +856,7 @@
                         + <span class="sheet-phy">Phy</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.athletic.extra" style="display: none" value="{{data.attributes.skill.misc.athletic.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.athletic.extra" style="display: none;" value="{{data.attributes.skill.misc.athletic.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.athletic"
                                value="{{data.attributes.base "+" data.attributes.skill.misc.athletic.step1 "+" data.attributes.skill.misc.athletic.step2 "+" data.attributes.skill.misc.athletic.step3 "+" data.attributes.skill.misc.athletic.extra}}"
                                disabled/>
@@ -880,7 +880,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.cooking.extra" style="display: none" value="{{data.attributes.skill.misc.cooking.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.cooking.extra" style="display: none;" value="{{data.attributes.skill.misc.cooking.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.cooking"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.cooking.step1 "+" data.attributes.skill.misc.cooking.step2 "+" data.attributes.skill.misc.cooking.step3 "+" data.attributes.skill.misc.cooking.extra}}"
                                disabled/>
@@ -902,7 +902,7 @@
                         + <span class="sheet-cha">Cha</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.disguise.extra" style="display: none" value="{{data.attributes.skill.misc.disguise.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.disguise.extra" style="display: none;" value="{{data.attributes.skill.misc.disguise.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.disguise"
                                value="{{math data.attributes.cha "+" data.attributes.skill.misc.disguise.step1 "+" data.attributes.skill.misc.disguise.step2 "+" data.attributes.skill.misc.disguise.step3 "+" data.attributes.skill.misc.disguise.extra}}"
                                disabled/>
@@ -924,7 +924,7 @@
                         + <span class="sheet-per">Per</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.listening.extra" style="display: none" value="{{data.attributes.skill.misc.listening.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.listening.extra" style="display: none;" value="{{data.attributes.skill.misc.listening.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.listening"
                                value="{{math data.attributes.per "+" data.attributes.skill.misc.listening.step1 "+" data.attributes.skill.misc.listening.step2 "+" data.attributes.skill.misc.listening.step3 "+" data.attributes.skill.misc.listening.extra}}"
                                disabled/>
@@ -946,7 +946,7 @@
                         + <span class="sheet-cha">Cha</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.eloquence.extra" style="display: none" value="{{data.attributes.skill.misc.eloquence.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.eloquence.extra" style="display: none;" value="{{data.attributes.skill.misc.eloquence.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.eloquence"
                                value="{{math data.attributes.cha "+" data.attributes.skill.misc.eloquence.step1 "+" data.attributes.skill.misc.eloquence.step2 "+" data.attributes.skill.misc.eloquence.step3 "+" data.attributes.skill.misc.eloquence.extra}}"
                                disabled/>
@@ -970,7 +970,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.riding.extra" style="display: none" value="{{data.attributes.skill.misc.riding.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.riding.extra" style="display: none;" value="{{data.attributes.skill.misc.riding.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.riding"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.riding.step1 "+" data.attributes.skill.misc.riding.step2 "+" data.attributes.skill.misc.riding.step3 "+" data.attributes.skill.misc.riding.extra}}"
                                disabled/>
@@ -992,7 +992,7 @@
                         + <span class="sheet-phy">Phy</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.escape.extra" style="display: none" value="{{data.attributes.skill.misc.escape.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.escape.extra" style="display: none;" value="{{data.attributes.skill.misc.escape.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.escape"
                                value="{{math data.attributes.phy "+" data.attributes.skill.misc.escape.step1 "+" data.attributes.skill.misc.escape.step2 "+" data.attributes.skill.misc.escape.step3 "+" data.attributes.skill.misc.escape.extra}}"
                                disabled/>
@@ -1014,7 +1014,7 @@
                         + <span class="sheet-phy">Phy</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.blacksmith.extra" style="display: none" value="{{data.attributes.skill.misc.blacksmith.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.blacksmith.extra" style="display: none;" value="{{data.attributes.skill.misc.blacksmith.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.blacksmith"
                                value="{{math data.attributes.phy "+" data.attributes.skill.misc.blacksmith.step1 "+" data.attributes.skill.misc.blacksmith.step2 "+" data.attributes.skill.misc.blacksmith.step3 "+" data.attributes.skill.misc.blacksmith.extra}}"
                                disabled/>
@@ -1036,7 +1036,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.gymnastic.extra" style="display: none" value="{{data.attributes.skill.misc.gymnastic.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.gymnastic.extra" style="display: none;" value="{{data.attributes.skill.misc.gymnastic.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.gymnastic"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.gymnastic.step1 "+" data.attributes.skill.misc.gymnastic.step2 "+" data.attributes.skill.misc.gymnastic.step3 "+" data.attributes.skill.misc.gymnastic.extra}}"
                                disabled/>
@@ -1060,7 +1060,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.herbalism.extra" style="display: none" value="{{data.attributes.skill.misc.herbalism.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.herbalism.extra" style="display: none;" value="{{data.attributes.skill.misc.herbalism.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.herbalism"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.herbalism.step1 "+" data.attributes.skill.misc.herbalism.step2 "+" data.attributes.skill.misc.herbalism.step3 "+" data.attributes.skill.misc.herbalism.extra}}"
                                disabled/>
@@ -1082,7 +1082,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.langage.extra" style="display: none" value="{{data.attributes.skill.misc.langage.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.langage.extra" style="display: none;" value="{{data.attributes.skill.misc.langage.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.langage"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.langage.step1 "+" data.attributes.skill.misc.langage.step2 "+" data.attributes.skill.misc.langage.step3 "+" data.attributes.skill.misc.langage.extra}}"
                                disabled/>
@@ -1104,7 +1104,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.rope_handling.extra" style="display: none" value="{{data.attributes.skill.misc.rope_handling.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.rope_handling.extra" style="display: none;" value="{{data.attributes.skill.misc.rope_handling.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.rope_handling"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.rope_handling.step1 "+" data.attributes.skill.misc.rope_handling.step2 "+" data.attributes.skill.misc.rope_handling.step3 "+" data.attributes.skill.misc.rope_handling.extra}}"
                                disabled/>
@@ -1126,7 +1126,7 @@
                         + <span class="sheet-cha">Cha</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.trading.extra" style="display: none" value="{{data.attributes.skill.misc.trading.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.trading.extra" style="display: none;" value="{{data.attributes.skill.misc.trading.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.trading"
                                value="{{math data.attributes.cha "+" data.attributes.skill.misc.trading.step1 "+" data.attributes.skill.misc.trading.step2 "+" data.attributes.skill.misc.trading.step3 "+" data.attributes.skill.misc.trading.extra}}"
                                disabled/>
@@ -1150,7 +1150,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.monster_lore.extra" style="display: none" value="{{data.attributes.skill.misc.monster_lore.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.monster_lore.extra" style="display: none;" value="{{data.attributes.skill.misc.monster_lore.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.monster_lore"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.monster_lore.step1 "+" data.attributes.skill.misc.monster_lore.step2 "+" data.attributes.skill.misc.monster_lore.step3 "+" data.attributes.skill.misc.monster_lore.extra}}"
                                disabled/>
@@ -1172,7 +1172,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.navigate.extra" style="display: none" value="{{data.attributes.skill.misc.navigate.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.navigate.extra" style="display: none;" value="{{data.attributes.skill.misc.navigate.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.navigate"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.navigate.step1 "+" data.attributes.skill.misc.navigate.step2 "+" data.attributes.skill.misc.navigate.step3 "+" data.attributes.skill.misc.navigate.extra}}"
                                disabled/>
@@ -1194,7 +1194,7 @@
                         + <span class="sheet-per">Per</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.observation.extra" style="display: none" value="{{data.attributes.skill.misc.observation.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.observation.extra" style="display: none;" value="{{data.attributes.skill.misc.observation.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.observation"
                                value="{{math data.attributes.per "+" data.attributes.skill.misc.observation.step1 "+" data.attributes.skill.misc.observation.step2 "+" data.attributes.skill.misc.observation.step3 "+" data.attributes.skill.misc.observation.extra}}"
                                disabled/>
@@ -1216,7 +1216,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.orientation.extra" style="display: none" value="{{data.attributes.skill.misc.orientation.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.orientation.extra" style="display: none;" value="{{data.attributes.skill.misc.orientation.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.orientation"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.orientation.step1 "+" data.attributes.skill.misc.orientation.step2 "+" data.attributes.skill.misc.orientation.step3 "+" data.attributes.skill.misc.orientation.extra}}"
                                disabled/>
@@ -1240,7 +1240,7 @@
                         + <span class="sheet-cha">Cha</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.performance.extra" style="display: none" value="{{data.attributes.skill.misc.performance.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.performance.extra" style="display: none;" value="{{data.attributes.skill.misc.performance.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.performance"
                                value="{{math data.attributes.cha "+" data.attributes.skill.misc.performance.step1 "+" data.attributes.skill.misc.performance.step2 "+" data.attributes.skill.misc.performance.step3 "+" data.attributes.skill.misc.performance.extra}}"
                                disabled/>
@@ -1262,7 +1262,7 @@
                         + <span class="sheet-dex">Dex</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.hiding.extra" style="display: none" value="{{data.attributes.skill.misc.hiding.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.hiding.extra" style="display: none;" value="{{data.attributes.skill.misc.hiding.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.hiding"
                                value="{{math data.attributes.dex "+" data.attributes.skill.misc.hiding.step1 "+" data.attributes.skill.misc.hiding.step2 "+" data.attributes.skill.misc.hiding.step3 "+" data.attributes.skill.misc.hiding.extra}}"
                                disabled/>
@@ -1284,7 +1284,7 @@
                         + <span class="sheet-int">Int</span>
                     </span>
                     <span class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.science.extra" style="display: none" value="{{data.attributes.skill.misc.science.extra}}" />
+                        <input type="number" name="data.attributes.skill.misc.science.extra" style="display: none;" value="{{data.attributes.skill.misc.science.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.science"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.science.step1 "+" data.attributes.skill.misc.science.step2 "+" data.attributes.skill.misc.science.step3 "+" data.attributes.skill.misc.science.extra}}"
                                disabled/>
@@ -1295,56 +1295,56 @@
                     </span>
                 </label>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Soins</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Soins</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.step1" value="1" {{checked data.attributes.skill.misc.care.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.step2" value="1" {{checked data.attributes.skill.misc.care.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.step3" value="1" {{checked data.attributes.skill.misc.care.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.care.extra" style="display: none" value="{{data.attributes.skill.misc.care.extra}}" />
+                    </span>
+                    <span class="sheet-skill-level">
+                        <input type="number" name="data.attributes.skill.misc.care.extra" style="display: none;" value="{{data.attributes.skill.misc.care.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.care"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.care.step1 "+" data.attributes.skill.misc.care.step2 "+" data.attributes.skill.misc.care.step3 "+" data.attributes.skill.misc.care.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.reroll.master" {{checked data.attributes.skill.misc.care.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.care.reroll.prodige" {{checked data.attributes.skill.misc.care.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
                 <!-- -->
                 <div class="sheet-separator"></div>
                 <!-- -->
-                <div class="sheet-skill">
-                    <div class="sheet-skill-label">Survie</div>
-                    <div class="sheet-skill-levels">
+                <label class="sheet-skill">
+                    <span class="sheet-skill-label">Survie</span>
+                    <span class="sheet-skill-levels">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.step1" value="1" {{checked data.attributes.skill.misc.survival.step1}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.step2" value="1" {{checked data.attributes.skill.misc.survival.step2}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.step3" value="1" {{checked data.attributes.skill.misc.survival.step3}}/>
-                    </div>
-                    <div class="sheet-skill-stat">
+                    </span>
+                    <span class="sheet-skill-stat">
                         + <span class="sheet-int">Int</span>
-                    </div>
-                    <div class="sheet-skill-level">
-                        <input type="number" name="data.attributes.skill.misc.survival.extra" style="display: none" value="{{data.attributes.skill.misc.survival.extra}}" />
+                    </span>
+                    <span class="sheet-skill-level">
+                        <input type="number" name="data.attributes.skill.misc.survival.extra" style="display: none;" value="{{data.attributes.skill.misc.survival.extra}}" />
                         <input type="number" name="data.attributes.skill.misc.survival"
                                value="{{math data.attributes.int "+" data.attributes.skill.misc.survival.step1 "+" data.attributes.skill.misc.survival.step2 "+" data.attributes.skill.misc.survival.step3 "+" data.attributes.skill.misc.survival.extra}}"
                                disabled/>
-                    </div>
-                    <div class="sheet-skill-rerolls">
+                    </span>
+                    <span class="sheet-skill-rerolls">
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.reroll.master" {{checked data.attributes.skill.misc.survival.reroll.master}}/>
                         <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.misc.survival.reroll.prodige" {{checked data.attributes.skill.misc.survival.reroll.prodige}}/>
-                    </div>
-                </div>
+                    </span>
+                </label>
             </section>
         </section>
 
         <section class="sheet-equipment">
-            <div class="sheet-weapons">
+            <section class="sheet-weapons">
                 <h4>Armes</h4>
                 <div class="sheet-weapons-line sheet-weapons-header">
                     <div>Nom</div>
@@ -1353,110 +1353,110 @@
                     <div>Encombrement</div>
                 </div>
                 <fieldset class="repeating_weapon">
-                    <div class="sheet-weapons-line">
-                        <div><input type="text" name="attr_weapon_name"/></div>
-                        <div><input type="text" name="attr_weapon_damage"/></div>
-                        <div><input type="number" name="attr_weapon_hand_count" value="1"/></div>
-                        <div><input type="number" name="attr_weapon_clutter"/></div>
-                    </div>
+                    <label class="sheet-weapons-line">
+                        <span><input type="text" name="attr_weapon_name"/></span>
+                        <span><input type="text" name="attr_weapon_damage"/></span>
+                        <span><input type="number" name="attr_weapon_hand_count" value="1"/></span>
+                        <span><input type="number" name="attr_weapon_clutter"/></span>
+                    </label>
 
                 </fieldset>
-            </div>
-            <div class="sheet-equipped-items">
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Tête</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+            </section>
+            <section class="sheet-equipped-items">
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Tête</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_head"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Cape</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Cape</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_cloak"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Cou</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Cou</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_necklace"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Corps</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Corps</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_armor"/>
-                    </div>
-                    <div class="sheet-equipment-slot-square">
+                    </span>
+                    <span class="sheet-equipment-slot-square">
                         <input type="text" name="attr_equipped_armor_value" min="0" max="6" step="1"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Ceinture</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Ceinture</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_belt"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Avant-bras / Mains</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Avant-bras / Mains</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_hand"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Bouclier</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Bouclier</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_shield"/>
-                    </div>
-                    <div class="sheet-equipment-slot-square">
+                    </span>
+                    <span class="sheet-equipment-slot-square">
                         <input type="number" name="attr_equipped_shield_reroll" min="0" max="4" step="1"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Bagues</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Bagues</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_ring_left"/>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_ring_right"/>
-                    </div>
-                </div>
-                <div class="sheet-equipment-slot">
-                    <div class="sheet-equipment-slot-label">
-                        <h4>Jambes/Pieds</h4>
-                    </div>
-                    <div class="sheet-equipment-slot-value">
+                    </span>
+                </label>
+                <label class="sheet-equipment-slot">
+                    <span class="sheet-equipment-slot-label">
+                        <span>Jambes/Pieds</span>
+                    </span>
+                    <span class="sheet-equipment-slot-value">
                         <input type="text" name="attr_equipped_boots"/>
-                    </div>
-                </div>
-            </div>
-            <div class="sheet-magic-arrows">
+                    </span>
+                </label>
+            </section>
+            <section class="sheet-magic-arrows">
                 <div class="sheet-magic-arrows-header">
                     <h4>Flèches magiques</h4>
                     <span>Encombrement 1 par 10 flèches</span>
                 </div>
                 <fieldset class="repeating_arrows">
-                    <div class="sheet-magic-arrow">
-                        <div>
+                    <label class="sheet-magic-arrow">
+                        <span>
                             <input type="text" name="attr_arrow_name"/>
-                        </div>
-                        <div class="sheet-checkboxes">
-                            <div>
+                        </span>
+                        <span class="sheet-checkboxes">
+                            <span>
                                 <input type="checkbox" value="1" name="attr_arrow_1">
                                 <input type="checkbox" value="1" name="attr_arrow_2">
                                 <input type="checkbox" value="1" name="attr_arrow_3">
@@ -1467,8 +1467,8 @@
                                 <input type="checkbox" value="1" name="attr_arrow_8">
                                 <input type="checkbox" value="1" name="attr_arrow_9">
                                 <input type="checkbox" value="1" name="attr_arrow_10">
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <input type="checkbox" value="1" name="attr_arrow_11">
                                 <input type="checkbox" value="1" name="attr_arrow_12">
                                 <input type="checkbox" value="1" name="attr_arrow_13">
@@ -1479,23 +1479,23 @@
                                 <input type="checkbox" value="1" name="attr_arrow_18">
                                 <input type="checkbox" value="1" name="attr_arrow_19">
                                 <input type="checkbox" value="1" name="attr_arrow_20">
-                            </div>
-                        </div>
-                    </div>
+                            </span>
+                        </span>
+                    </label>
                 </fieldset>
-            </div>
-            <div class="sheet-magic-marbles">
+            </section>
+            <section class="sheet-magic-marbles">
                 <div class="sheet-magic-marbles-header">
                     <h4>Billes et dards magiques</h4>
                     <span>Encombrement 1 par 20 billes/dard</span>
                 </div>
                 <fieldset class="repeating_marble">
-                    <div class="sheet-magic-marble">
-                        <div>
+                    <label class="sheet-magic-marble">
+                        <span>
                             <input type="text" name="attr_marble_name"/>
-                        </div>
-                        <div class="sheet-checkboxes">
-                            <div>
+                        </span>
+                        <span class="sheet-checkboxes">
+                            <span>
                                 <input type="checkbox" value="1" name="attr_marble_1">
                                 <input type="checkbox" value="1" name="attr_marble_2">
                                 <input type="checkbox" value="1" name="attr_marble_3">
@@ -1516,165 +1516,165 @@
                                 <input type="checkbox" value="1" name="attr_marble_18">
                                 <input type="checkbox" value="1" name="attr_marble_19">
                                 <input type="checkbox" value="1" name="attr_marble_20">
-                            </div>
-                        </div>
-                    </div>
+                            </span>
+                        </span>
+                    </label>
                 </fieldset>
-            </div>
-            <div class="sheet-food">
+            </section>
+            <section class="sheet-food">
                 <div class="sheet-food-header">
                     <h4>Rations</h4>
                     <span>Encombrement 1 par 5 jours</span>
                 </div>
-                <div class="sheet-checkboxes">
-                    <div>
+                <label class="sheet-checkboxes">
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_1">
                         <input type="checkbox" value="1" name="attr_food_2">
                         <input type="checkbox" value="1" name="attr_food_3">
                         <input type="checkbox" value="1" name="attr_food_4">
                         <input type="checkbox" value="1" name="attr_food_5">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_6">
                         <input type="checkbox" value="1" name="attr_food_7">
                         <input type="checkbox" value="1" name="attr_food_8">
                         <input type="checkbox" value="1" name="attr_food_9">
                         <input type="checkbox" value="1" name="attr_food_10">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_11">
                         <input type="checkbox" value="1" name="attr_food_12">
                         <input type="checkbox" value="1" name="attr_food_13">
                         <input type="checkbox" value="1" name="attr_food_14">
                         <input type="checkbox" value="1" name="attr_food_15">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_16">
                         <input type="checkbox" value="1" name="attr_food_17">
                         <input type="checkbox" value="1" name="attr_food_18">
                         <input type="checkbox" value="1" name="attr_food_19">
                         <input type="checkbox" value="1" name="attr_food_20">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_21">
                         <input type="checkbox" value="1" name="attr_food_22">
                         <input type="checkbox" value="1" name="attr_food_23">
                         <input type="checkbox" value="1" name="attr_food_24">
                         <input type="checkbox" value="1" name="attr_food_25">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_food_26">
                         <input type="checkbox" value="1" name="attr_food_27">
                         <input type="checkbox" value="1" name="attr_food_28">
                         <input type="checkbox" value="1" name="attr_food_29">
                         <input type="checkbox" value="1" name="attr_food_30">
-                    </div>
-                </div>
-            </div>
-            <div class="sheet-torch">
+                    </span>
+                </label>
+            </section>
+            <section class="sheet-torch">
                 <div class="sheet-torch-header">
                     <h4>Torches</h4>
                     <span>Encombrement 1 par 4 torches</span>
                 </div>
-                <div class="sheet-checkboxes">
-                    <div>
+                <label class="sheet-checkboxes">
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_1">
                         <input type="checkbox" value="1" name="attr_torch_2">
                         <input type="checkbox" value="1" name="attr_torch_3">
                         <input type="checkbox" value="1" name="attr_torch_4">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_5">
                         <input type="checkbox" value="1" name="attr_torch_6">
                         <input type="checkbox" value="1" name="attr_torch_7">
                         <input type="checkbox" value="1" name="attr_torch_8">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_9">
                         <input type="checkbox" value="1" name="attr_torch_10">
                         <input type="checkbox" value="1" name="attr_torch_11">
                         <input type="checkbox" value="1" name="attr_torch_12">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_13">
                         <input type="checkbox" value="1" name="attr_torch_14">
                         <input type="checkbox" value="1" name="attr_torch_15">
                         <input type="checkbox" value="1" name="attr_torch_16">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_17">
                         <input type="checkbox" value="1" name="attr_torch_18">
                         <input type="checkbox" value="1" name="attr_torch_19">
                         <input type="checkbox" value="1" name="attr_torch_20">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_21">
                         <input type="checkbox" value="1" name="attr_torch_22">
                         <input type="checkbox" value="1" name="attr_torch_23">
                         <input type="checkbox" value="1" name="attr_torch_24">
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         <input type="checkbox" value="1" name="attr_torch_25">
                         <input type="checkbox" value="1" name="attr_torch_26">
                         <input type="checkbox" value="1" name="attr_torch_27">
                         <input type="checkbox" value="1" name="attr_torch_28">
-                    </div>
-                </div>
-            </div>
-            <div class="sheet-potions">
+                    </span>
+                </label>
+            </section>
+            <section class="sheet-potions">
                 <div class="sheet-potions-header">
                     <h4>Potions</h4>
                     <span>Encombrement 1 par 2 potions</span>
                 </div>
                 <fieldset class="repeating_potions">
-                    <div class="sheet-potion">
-                        <div>
+                    <label class="sheet-potion">
+                        <span>
                             <input type="text" name="attr_potion_name"/>
-                        </div>
-                        <div class="sheet-checkboxes">
-                            <div>
+                        </span>
+                        <span class="sheet-checkboxes">
+                            <span>
                                 <input type="checkbox" value="1" name="attr_potion_1">
                                 <input type="checkbox" value="1" name="attr_potion_2">
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <input type="checkbox" value="1" name="attr_potion_3">
                                 <input type="checkbox" value="1" name="attr_potion_4">
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <input type="checkbox" value="1" name="attr_potion_5">
                                 <input type="checkbox" value="1" name="attr_potion_6">
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <input type="checkbox" value="1" name="attr_potion_7">
                                 <input type="checkbox" value="1" name="attr_potion_8">
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <input type="checkbox" value="1" name="attr_potion_9">
                                 <input type="checkbox" value="1" name="attr_potion_10">
-                            </div>
-                        </div>
-                    </div>
+                            </span>
+                        </span>
+                    </label>
                 </fieldset>
-            </div>
-            <div class="sheet-money">
+            </section>
+            <section class="sheet-money">
                 <h4>Oricaux</h4>
-                <div>
-                    <h5>Unitaire</h5>
+                <label>
+                    <span>Unitaire</span>
                     <input type="number" name="attr_oricaux_1" />
-                </div>
-                <div>
-                    <h5>100x</h5>
+                </label>
+                <label>
+                    <span>100x</span>
                     <input type="number" name="attr_oricaux_100" />
-                </div>
-                <div>
-                    <h5>500x</h5>
+                </label>
+                <label>
+                    <span>500x</span>
                     <input type="number" name="attr_oricaux_500" />
-                </div>
-                <div>
-                    <h5>1000x</h5>
+                </label>
+                <label>
+                    <span>1000x</span>
                     <input type="number" name="attr_oricaux_1000" />
-                </div>
-            </div>
+                </label>
+            </section>
         </section>
         <section class="sheet-inventory">
             <h3>Inventaire:</h3>
@@ -1684,10 +1684,10 @@
                 <div class="sheet-clutter">Encombrement</div>
             </div>
             <fieldset class="repeating_inventory">
-                <div class="sheet-inventory-slot">
+                <label class="sheet-inventory-slot">
                     <input class="sheet-item-name" type="text" name="attr_inventory_item_name" />
                     <input class="sheet-clutter" type="number" name="attr_inventory_clutter" />
-                </div>
+                </label>
             </fieldset>
         </section>
 
