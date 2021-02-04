@@ -721,9 +721,9 @@
                         + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
-                        <input type="number" name="attr_skill_combat_HandCombat_extra" style="display: none" value="0" />
-                        <input type="number" name="attr_skill_combat_HandCombat"
-                               value="(@{STR}+@{skill_combat_HandCombat_1}+@{skill_combat_HandCombat_2}+@{skill_combat_HandCombat_3}+@{skill_combat_HandCombat_extra})"
+                        <input type="number" name="data.attributes.skill.combat.hand_combat.extra" style="display: none" value="{{data.attributes.skill.combat.hand_combat.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.hand_combat"
+                               value="{{data.attributes.phy + data.attributes.skill.combat.hand_combat.1 + data.attributes.skill.combat.hand_combat.2 + data.attributes.skill.combat.hand_combat.3 + data.attributes.skill.combat.hand_combat.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -743,9 +743,9 @@
                         + <span class="sheet-phy">Phy</span>
                     </div>
                     <div class="sheet-skill-level">
-                        <input type="number" name="attr_skill_combat_MeleeCombat_extra" style="display: none" value="0" />
-                        <input type="number" name="attr_skill_combat_MeleeCombat"
-                               value="(@{STR}+@{skill_combat_MeleeCombat_1}+@{skill_combat_MeleeCombat_2}+@{skill_combat_MeleeCombat_3}+@{skill_combat_MeleeCombat_extra})"
+                        <input type="number" name="data.attributes.skill.combat.melee_combat.extra" style="display: none" value="{{data.attributes.skill.combat.melee_combat.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.melee_combat"
+                               value="{{data.attributes.phy + data.attributes.skill.combat.melee_combat.1 + data.attributes.skill.combat.melee_combat.2 + data.attributes.skill.combat.melee_combat.3 + data.attributes.skill.combat.melee_combat.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -764,9 +764,9 @@
                         + <span class="sheet-dex">Dex</span>
                     </div>
                     <div class="sheet-skill-level">
-                        <input type="number" name="attr_skill_combat_Shot_extra" style="display: none" value="0" />
-                        <input type="number" name="attr_skill_combat_Shot"
-                               value="(@{DEX}+@{skill_combat_Shot_1}+@{skill_combat_Shot_2}+@{skill_combat_Shot_3}+@{skill_combat_Shot_extra})"
+                        <input type="number" name="data.attributes.skill.combat.throw_shoot.extra" style="display: none" value="{{data.attributes.skill.combat.throw_shoot.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.throw_shoot"
+                               value="{{data.attributes.phy + data.attributes.skill.combat.throw_shoot.1 + data.attributes.skill.combat.throw_shoot.2 + data.attributes.skill.combat.throw_shoot.3 + data.attributes.skill.combat.throw_shoot.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -786,9 +786,9 @@
                         + <span class="sheet-dex">Dex</span>
                     </div>
                     <div class="sheet-skill-level">
-                        <input type="number" name="attr_skill_combat_Avoidance_extra" style="display: none" value="0" />
-                        <input type="number" name="attr_skill_combat_Avoidance"
-                               value="(@{DEX}+@{skill_combat_Avoidance_1}+@{skill_combat_Avoidance_2}+@{skill_combat_Avoidance_3}+@{skill_combat_Avoidance_extra})"
+                        <input type="number" name="data.attributes.skill.combat.dodge.extra" style="display: none" value="{{data.attributes.skill.combat.dodge.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.dodge"
+                               value="{{data.attributes.dex + data.attributes.skill.combat.dodge.1 + data.attributes.skill.combat.dodge.2 + data.attributes.skill.combat.dodge.3 + data.attributes.skill.combat.dodge.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
@@ -808,9 +808,9 @@
                         + <span class="sheet-int">Int</span>
                     </div>
                     <div class="sheet-skill-level">
-                        <input type="number" name="attr_skill_combat_Resilience_extra" style="display: none" value="0" />
-                        <input type="number" name="attr_skill_combat_Resilience"
-                               value="(@{INT}+@{skill_combat_Resilience_1}+@{skill_combat_Resilience_2}+@{skill_combat_Resilience_3}+@{skill_combat_Resilience_extra})"
+                        <input type="number" name="data.attributes.skill.combat.resilience.extra" style="display: none" value="{{data.attributes.skill.combat.resilience.extra}}" />
+                        <input type="number" name="data.attributes.skill.combat.resilience"
+                               value="{{data.attributes.int + data.attributes.skill.combat.resilience.1 + data.attributes.skill.combat.resilience.2 + data.attributes.skill.combat.resilience.3 + data.attributes.skill.combat.resilience.extra}}"
                                disabled/>
                     </div>
                     <div class="sheet-skill-rerolls">
