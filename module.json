@@ -8,6 +8,7 @@
   "compatibleCoreVersion": "0.7.9",
   "system": "lvl0mf",
   "esmodules": [
+    "./scripts/handlebars.js",
     "./scripts/lvl0mf-sheet.js",
     "./scripts/lvl0mf-npc.js",
     "./scripts/lvl0mf-item.js"
