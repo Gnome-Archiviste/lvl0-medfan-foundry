@@ -2,45 +2,55 @@ export default {
     base: {
         champion: {
             name: "Champion",
-            section: "champion"
+            section: "champion",
+            display_element: false
         },
         ranger: {
             name: "Forestier",
-            section: "ranger"
+            section: "ranger",
+            display_element: false
         },
         warrior: {
             name: "Guerrier",
-            section: "warrior"
+            section: "warrior",
+            display_element: false
         },
         mage: {
             name: "Magicien",
-            section: "mage"
+            section: "mage",
+            display_element: false
         },
         rogue: {
             name: "Voleur",
-            section: "rogue"
+            section: "rogue",
+            display_element: false
         }
     },
     advance: {
         jester: {
             name: "Bouffon",
-            section: "mage"
+            section: "mage",
+            display_element: false
         },
         elementalist: {
             name: "Élémentaliste",
-            section: "mage"
+            section: "mage",
+            display_element: true
         },
         enchanter: {
             name: "Enchanteur",
-            section: "mage"
+            section: "mage",
+            display_element: false
         },
         necromancer: {
             name: "Nécromancien",
-            section: "mage"
+            section: "mage",
+            display_element: false
         },
         witch: {
             name: "Sorcière",
-            section: "mage"
+            section: "mage",
+            display_element: false
         }
     }
 }
