@@ -592,22 +592,22 @@
                     <label class="sheet-skill">
                         <span class="sheet-skill-label">Évaluation</span>
                         <span class="sheet-skill-levels">
-                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step1" value="1" {{checked data.attributes.skill.rogue.evaluation.step1}}/>
-                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step2" value="1" {{checked data.attributes.skill.rogue.evaluation.step2}}/>
-                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.step3" value="1" {{checked data.attributes.skill.rogue.evaluation.step3}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.appraisal.step1" value="1" {{checked data.attributes.skill.rogue.appraisal.step1}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.appraisal.step2" value="1" {{checked data.attributes.skill.rogue.appraisal.step2}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.appraisal.step3" value="1" {{checked data.attributes.skill.rogue.appraisal.step3}}/>
                         </span>
                         <span class="sheet-skill-stat">
                             + <span class="sheet-int">Int</span>
                         </span>
                         <span class="sheet-skill-level">
-                            <input type="number" name="data.attributes.skill.rogue.evaluation.extra" style="display: none;" value="{{data.attributes.skill.rogue.evaluation.extra}}" />
-                            <input type="number" name="data.attributes.skill.rogue.evaluation"
-                                   value="{{math data.attributes.int "+" data.attributes.skill.rogue.evaluation.step1 "+" data.attributes.skill.rogue.evaluation.step2 "+" data.attributes.skill.rogue.evaluation.step3 "+" data.attributes.skill.rogue.evaluation.extra}}"
+                            <input type="number" name="data.attributes.skill.rogue.appraisal.extra" style="display: none;" value="{{data.attributes.skill.rogue.appraisal.extra}}" />
+                            <input type="number" name="data.attributes.skill.rogue.appraisal"
+                                   value="{{math data.attributes.int "+" data.attributes.skill.rogue.appraisal.step1 "+" data.attributes.skill.rogue.appraisal.step2 "+" data.attributes.skill.rogue.appraisal.step3 "+" data.attributes.skill.rogue.appraisal.extra}}"
                                    disabled/>
                         </span>
                         <span class="sheet-skill-rerolls">
-                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.reroll.master" {{checked data.attributes.skill.rogue.evaluation.reroll.master}}/>
-                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.evaluation.reroll.prodige" {{checked data.attributes.skill.rogue.evaluation.reroll.prodige}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.appraisal.reroll.master" {{checked data.attributes.skill.rogue.appraisal.reroll.master}}/>
+                            <input type="checkbox" data-dtype='boolean' name="data.attributes.skill.rogue.appraisal.reroll.prodige" {{checked data.attributes.skill.rogue.appraisal.reroll.prodige}}/>
                         </span>
                     </label>
                     <!-- -->
