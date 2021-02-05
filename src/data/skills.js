@@ -109,6 +109,96 @@ export default {
         resilience: {
             name: "Résilience",
             stat: "int"
+        }
+    },
+    general: {
+        crafting: {
+            name: "Artisanat",
+            stat: "dex"
+        },
+        athletic: {
+            name: "Athlétique",
+            stat: "phy"
+        },
+        cooking: {
+            name: "Cuisiner",
+            stat: "dex"
+        },
+        disguise: {
+            name: "Déguisement",
+            stat: "cha"
+        },
+        listening: {
+            name: "Écouter",
+            stat: "per"
+        },
+        eloquence: {
+            name: "Éloquence",
+            stat: "cha"
+        },
+        riding: {
+            name: "Équitation",
+            stat: "dex"
+        },
+        escape: {
+            name: "Évasion",
+            stat: "phy"
+        },
+        blacksmith: {
+            name: "Forgeron",
+            stat: "phy"
+        },
+        gymnastic: {
+            name: "Gymnastique",
+            stat: "dex"
+        },
+        langage: {
+            name: "Langage",
+            stat: "int"
+        },
+        rope_handling: {
+            name: "Manipulation des cordes",
+            stat: "dex"
+        },
+        haggling: {
+            name: "Marchandage",
+            stat: "cha"
+        },
+        monster_lore: {
+            name: "Monstrologie",
+            stat: "int"
+        },
+        navigate: {
+            name: "Naviguer",
+            stat: "int"
+        },
+        observation: {
+            name: "Observer",
+            stat: "per"
+        },
+        orientation: {
+            name: "Orientation",
+            stat: "int"
+        },
+        performance: {
+            name: "Performance",
+            stat: "cha"
+        },
+        hiding: {
+            name: "Se cacher",
+            stat: "dex"
+        },
+        science: {
+            name: "Science",
+            stat: "int"
+        },
+        healing: {
+            name: "Soins",
+            stat: "int"
+        },
+        survival: {
+            name: "Survie",
+            stat: "int"
         },
     },
 }
