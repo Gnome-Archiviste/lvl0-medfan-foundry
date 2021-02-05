@@ -89,4 +89,26 @@ export default {
             stat: "dex"
         }
     },
+    combat: {
+        hand_combat: {
+            name: "Combat mains nues",
+            stat: "phy"
+        },
+        melee_combat: {
+            name: "Combat mêlée",
+            stat: "phy"
+        },
+        throw_shoot: {
+            name: "Lancer/ tir",
+            stat: "dex"
+        },
+        dodge: {
+            name: "Éviter",
+            stat: "dex"
+        },
+        resilience: {
+            name: "Résilience",
+            stat: "int"
+        },
+    },
 }
