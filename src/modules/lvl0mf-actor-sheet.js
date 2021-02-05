@@ -1,3 +1,5 @@
+import skills from '../data/skills.js'
+
 export class Lvl0mfActorSheet extends ActorSheet {
     /** @override */
     static get defaultOptions() {
@@ -13,6 +15,8 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
     /** @override */
     getData(options) {
-        return super.getData(options);
+        const data = super.getData(options);
+
+        return {...data, skills}
     }
 }
