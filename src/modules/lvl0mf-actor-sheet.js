@@ -1,4 +1,5 @@
 import skills from '../data/skills.js'
+import jobs from '../data/jobs.js'
 
 export class Lvl0mfActorSheet extends ActorSheet {
     /** @override */
@@ -17,6 +18,6 @@ export class Lvl0mfActorSheet extends ActorSheet {
     getData(options) {
         const data = super.getData(options);
 
-        return {...data, skills}
+        return {...data, skills, jobs: jobs.base}
     }
 }

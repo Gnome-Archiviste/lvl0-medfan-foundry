@@ -5,7 +5,7 @@
     ],
     "templates": {
       "basics": {
-        "life": {
+        "health": {
           "min": 0,
           "value": 10,
           "max": 10
@@ -19,32 +19,33 @@
           "min": 0,
           "value": 10
         },
-        "next_level": {
-          "min": 10,
-          "value": 10,
-          "max": 25
-        },
         "level": {
-          "min": 0,
-          "value": 1,
-          "max": 70
+          "value": 1
+        },
+        "age": {
+          "value": 1
+        },
+        "size": {
+          "value": "1m"
         }
       },
       "stats": {
-        "phy": {
-          "value": 0
-        },
-        "dex": {
-          "value": 0
-        },
-        "int": {
-          "value": 0
-        },
-        "cha": {
-          "value": 0
-        },
-        "per": {
-          "value": 0
+        "baseStats": {
+          "phy": {
+            "value": 0
+          },
+          "dex": {
+            "value": 0
+          },
+          "int": {
+            "value": 0
+          },
+          "cha": {
+            "value": 0
+          },
+          "per": {
+            "value": 0
+          }
         }
       },
       "skills": {
@@ -57,13 +58,29 @@
             }
           }
         }
+      },
+      "computedData": {
+        "computedData": {
+          "leveling": {
+            "nextLevelExperience": 10,
+            "maximumSkillLevel": 2,
+            "canUseMaster": false,
+            "canUseProdigy": false,
+            "maximumSkillPoints": {
+              "combat": 0,
+              "general": 0,
+              "job": 0
+            }
+          }
+        }
       }
     },
     "character": {
       "templates": [
         "basics",
         "stats",
-        "skills"
+        "skills",
+        "computedData"
       ]
     }
   },
