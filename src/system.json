@@ -2,21 +2,22 @@
   "name": "lvl0mf-sheet",
   "title": "LVL0: Medfan Sheet",
   "description": "An Character Sheet for LVL0: Medieval-Fantasy (French & English)",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Gnome Archiviste",
   "minimumCoreVersion": "0.7.6",
   "compatibleCoreVersion": "0.7.9",
   "esmodules": [
     "scripts/init.js",
     "scripts/handlebars.js",
+    "modules/components.js",
     "scripts/lvl0mf-sheet.js",
     "scripts/lvl0mf-npc.js",
     "scripts/lvl0mf-item.js"
   ],
   "scripts": [],
   "styles": [
-    "css/lvl0mf.css",
-    "css/lvl0mf-dark.css"
+    "_scss/lvl0mf.css",
+    "_scss/lvl0mf-dark.css"
   ],
   "packs": [],
   "languages": [
@@ -33,7 +34,7 @@
   ],
   "gridDistance": 1,
   "gridUnits": "m",
-  "primaryTokenAttribute": "resources.life",
+  "primaryTokenAttribute": "resources.health",
   "secondaryTokenAttribute": "resources.mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
   "manifest": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/latest/download/module.json",

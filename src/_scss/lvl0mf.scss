@@ -324,3 +324,64 @@ input[type=number] {
     grid-area: next-level;
   }
 }
+
+.sheet-skill {
+  display: grid;
+  grid-template-columns: 145px auto;
+  align-items: center;
+
+  .sheet-skill-value {
+    display: grid;
+    grid-template-columns: 74px 40px 10px 48px;
+    grid-gap: 4px;
+    align-items: center;
+
+    input[type=checkbox] {
+      margin: 1px;
+    }
+  }
+}
+
+.sheet-jobs-skills {
+  border: 1px solid black;
+  padding: 8px;
+
+  .sheet-job-skills {
+    h4 {
+      margin: 8px 0;
+    }
+  }
+}
+
+.sheet-specialities {
+  border: 1px solid black;
+  padding: 8px;
+}
+.sheet-combat-skills {
+  border: 1px solid black;
+  padding: 8px;
+}
+.sheet-misc-skills {
+  border: 1px solid black;
+  padding: 8px;
+}
+.sheet-separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;
+}
+.sheet-health,
+.sheet-magic,
+.sheet-xp,
+.sheet-jobs-skills,
+.sheet-specialities,
+.sheet-combat-skills,
+.sheet-misc-skills {
+  h3 {
+    text-align: center;
+  }
+}

@@ -86,15 +86,15 @@
 
                 <label class="sheet-age">
                     <span class="sheet-label">Age</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.age" value="{{data.attributes.age}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
+                    <span class="sheet-value"><input type="text" name="data.age.value" value="{{data.age.value}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
                 </label>
                 <label class="sheet-level">
                     <span class="sheet-label">Niveau</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.level" value="{{data.attributes.level}}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
+                    <span class="sheet-value"><input type="text" name="data.level.value" value="{{data.level.value}}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
                 </label>
                 <label class="sheet-size">
                     <span class="sheet-label">Taille</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.size" value="{{data.attributes.size}}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
+                    <span class="sheet-value"><input type="text" name="data.size.value" value="{{data.size.value}}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
                 </label>
             </section>
 
@@ -111,28 +111,28 @@
                 </section>
                 <label class="sheet-stat sheet-phy">
                     <span class="sheet-label">Physique</span>
-                    <span class="sheet-base"><input type="text" name="data.attributes.phy.base" value="{{data.attributes.phy.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-base"><input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.phy.mod" value="{{data.attributes.phy.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
                 <label class="sheet-stat sheet-dex">
                     <span class="sheet-label">Dextérité</span>
-                    <span class="sheet-base"><input type="text" name="data.attributes.dex.base" value="{{data.attributes.dex.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-base"><input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-armor-mod"><input type="text" name="data.attributes.dex.armor_mod" value="{{data.attributes.dex.armor_mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
                 <label class="sheet-stat sheet-int">
                     <span class="sheet-label">Intelligence</span>
-                    <span class="sheet-base"><input type="text" name="data.attributes.int.base" value="{{data.attributes.int.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-base"><input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.int.mod" value="{{data.attributes.int.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
                 <label class="sheet-stat sheet-cha">
                     <span class="sheet-label">Charisme</span>
-                    <span class="sheet-base"><input type="text" name="data.attributes.cha.base" value="{{data.attributes.cha.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-base"><input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.cha.mod" value="{{data.attributes.cha.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
                 <label class="sheet-stat sheet-per">
                     <span class="sheet-label">Perception</span>
-                    <span class="sheet-base"><input type="text" name="data.attributes.per.base" value="{{data.attributes.per.base}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                    <span class="sheet-base"><input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus"><input type="text" name="data.attributes.per.mod" value="{{data.attributes.per.mod}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                 </label>
                 <section style="display: none;">
@@ -201,9 +201,91 @@
                     <span class="sheet-value"><input type="text" name="data.attributes.next_level" value="{{data.attributes.next_level}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
                 </label>
             </section>
+
+
+            <section class="sheet-jobs-skills">
+                {{#each jobs as | job | }}
+                    <section class="sheet-job-skills">
+                        <h4>{{job.name}}</h4>
+                        {{#each2 ../skills @key as | skill | }}
+                            <span class="sheet-skill">
+                                 <span class="sheet-skill-label">{{skill.name}}</span>
+                                {{skill-value skill ../../data @../key @key}}
+                            </span>
+                        {{/each2}}
+                    </section>
+                    <div class="sheet-separator"></div>
+                {{/each}}
+            </section>
+
+            <section class="sheet-combat-skills">
+                <h4>Combat</h4>
+                {{#each2 skills 'combat' as | skill | }}
+                    <span class="sheet-skill">
+                         <span class="sheet-skill-label">{{skill.name}}</span>
+                        {{skill-value skill ../data 'combat' @key}}
+                    </span>
+                {{/each2}}
+            </section>
+
+            <section class="sheet-misc-skills">
+                <h4>Général</h4>
+                {{#each2 skills 'general' as | skill | }}
+                    <span class="sheet-skill">
+                         <span class="sheet-skill-label">{{skill.name}}</span>
+                        {{skill-value skill ../data 'general' @key}}
+                    </span>
+                    {{#ifIsNthItem nth=4}}
+                        <div class="sheet-separator"></div>
+                    {{/ifIsNthItem}}
+                {{/each2}}
+            </section>
         </section>
 
-        {{skills.champion.shield_attack.name}}
+
+<!--
+        <section class="sheet-job-skills">
+            <h4>Champion</h4>
+            <label class="sheet-skill">
+            <span class="sheet-skill-label">Attaque de bouclier</span>
+            <span class="sheet-skill-levels">
+                            <input type="checkbox" data-dtype='boolean'
+                                   name="data.attributes.skill.champion.shield_attack.step1" value="1" {{checked
+                                    data.attributes.skill.champion.shield_attack.step1}}/>
+                            <input type="checkbox" data-dtype='boolean'
+                                   name="data.attributes.skill.champion.shield_attack.step2" value="1" {{checked
+                                    data.attributes.skill.champion.shield_attack.step2}}/>
+                            <input type="checkbox" data-dtype='boolean'
+                                   name="data.attributes.skill.champion.shield_attack.step3" value="1" {{checked
+                                    data.attributes.skill.champion.shield_attack.step2}}/>
+                        </span>
+            <span class="sheet-skill-stat">
+                            + <span class="sheet-phy">Phy</span>
+                        </span>
+            <span class="sheet-skill-level">
+                            <input type="number" name="data.attributes.skill.champion.shield_attack.extra"
+                                   style="display: none;"
+                                   value="{{data.attributes.skill.champion.shield_attack.extra}}"/>
+                            <input type="number" name="data.attributes.skill.champion.shield_attack"
+                                   value="{{math data.attributes.base "+"
+                                                 data.attributes.skill.champion.shield_attack.step1 "+"
+                                                 data.attributes.skill.champion.shield_attack.step2 "+"
+                                                 data.attributes.skill.champion.shield_attack.step3 "+"
+                                                 data.attributes.skill.champion.shield_attack.extra}}"
+                                   disabled/>
+                        </span>
+            <span class="sheet-skill-rerolls">
+                            <input type="checkbox" data-dtype='boolean'
+                                   name="data.attributes.skill.champion.shield_attack.reroll.master" {{checked
+                                    data.attributes.skill.champion.shield_attack.reroll.master}}/>
+                            <input type="checkbox" data-dtype='boolean'
+                                   name="data.attributes.skill.champion.shield_attack.reroll.prodige" {{checked
+                                    data.attributes.skill.champion.shield_attack.reroll.prodige}}/>
+                        </span>
+        </label>
+        </section>-->
+
+
         <section class="sheet-equipment">
         </section>
         <section class="sheet-inventory">
