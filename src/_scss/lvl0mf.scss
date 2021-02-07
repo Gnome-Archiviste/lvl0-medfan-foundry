@@ -24,6 +24,8 @@ input[type=number] {
           "header header header logo"
           "stats health health xp"
           "stats magic magic xp"
+          "stats mv mv xp"
+          "skill-points skill-points skill-points skill-points"
           "jobs-skills jobs-skills combat-skills combat-skills"
           "jobs-skills jobs-skills misc-skills misc-skills"
           "specialities specialities misc-skills misc-skills";
@@ -36,6 +38,12 @@ input[type=number] {
   }
   .sheet-health {
     grid-area: health;
+  }
+  .sheet-mv {
+    grid-area: mv;
+  }
+  .sheet-skill-points {
+    grid-area: skill-points;
   }
   .sheet-magic {
     grid-area: magic;
@@ -155,6 +163,7 @@ input[type=number] {
 
 .sheet-stats {
   border: 1px solid black;
+  padding-bottom: 16px;
 
   .sheet-stat {
     height: 40px;
@@ -207,23 +216,25 @@ input[type=number] {
     }
   }
 
-  .sheet-mv {
-    height: 50px;
-    display: grid;
-    grid-template-columns: 100px 80px 56px;
-
-    .sheet-label {
-      align-items: center;
-      justify-items: center;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-    }
-  }
 }
 
+.sheet-mv {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+
+  .sheet-label {
+    align-items: center;
+    justify-items: center;
+    font-weight: bold;
+  }
+
+  .sheet-value {
+    font-size: 22px;
+  }
+}
 .sheet-health {
   border: 1px solid black;
   display: grid;
@@ -247,16 +258,19 @@ input[type=number] {
     align-items: center;
   }
   .sheet-health-max {
+    display: grid;
     grid-area: maximum;
     border-top: 1px solid black;
     border-right: 1px solid black;
   }
   .sheet-health-damage {
+    display: grid;
     grid-area: damage;
     border-top: 1px solid black;
     border-right: 1px solid black;
   }
   .sheet-health-armor {
+    display: grid;
     grid-area: armor;
     border-top: 1px solid black;
   }
@@ -284,16 +298,19 @@ input[type=number] {
     height: 100%;
   }
   .sheet-magic-max {
+    display: grid;
     grid-area: maximum;
     border-top: 1px solid black;
     border-right: 1px solid black;
   }
   .sheet-magic-left {
+    display: grid;
     grid-area: left;
     border-top: 1px solid black;
     border-right: 1px solid black;
   }
   .sheet-magic-level {
+    display: grid;
     grid-area: level;
     border-top: 1px solid black;
   }
@@ -305,6 +322,7 @@ input[type=number] {
   display: grid;
   grid-template-rows: auto 1fr 1fr;
   grid-template-areas: "header" "xp" "next-level";
+  justify-items: center;
 
   div {
     display: grid;
@@ -385,4 +403,8 @@ input[type=number] {
   h3 {
     text-align: center;
   }
+}
+
+.skill-points:empty {
+  display: none;
 }

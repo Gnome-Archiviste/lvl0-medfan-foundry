@@ -123,28 +123,28 @@
                     <span class="sheet-base"><input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                     <span class="sheet-bonus">{{data.computedData.stats.baseStats.per.bonus}}</span>
                 </label>
+            </section>
 
-                <section class="sheet-mv">
-                    <span class="sheet-label">Mouvement</span>
-                    <label class="sheet-label">
-                        <span class="sheet-phy">Phy</span> + <span class="sheet-dex">Dex</span>
-                    </label>
-                    <span class="sheet-value">{{data.computedData.stats.movement.value}}</span>
-                </section>
+            <section class="sheet-mv">
+                <span class="sheet-label">Mouvement</span>
+                <label class="sheet-label">
+                    <span class="sheet-phy">Phy</span> + <span class="sheet-dex">Dex</span>
+                </label>
+                <span class="sheet-value">{{data.computedData.stats.movement.value}}</span>
             </section>
             <section class="sheet-health">
                 <h3>Point de vie</h3>
                 <label class="sheet-health-max">
-                    <span class="sheet-label">Maximum</span>
-                    <span class="sheet-value"><input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" placeholder="0" maxlength="4"/></span>
+                    <div class="sheet-label">Maximum</div>
+                    <div class="sheet-value"><input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
                 </label>
                 <label class="sheet-health-damage">
-                    <span class="sheet-label">Restant</span>
-                    <span class="sheet-value"><input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></span>
+                    <div class="sheet-label">Restant</div>
+                    <div class="sheet-value"><input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
                 </label>
                 <label class="sheet-health-armor">
-                    <span class="sheet-label">Armure</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.armor.total" value="{{data.attributes.armor.total}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
+                    <div class="sheet-label">Armure</div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.armor.total" value="{{data.attributes.armor.total}}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
                 </label>
                 <div class="hp-bar" style="background: linear-gradient(
                             								-90deg,
@@ -158,16 +158,16 @@
             <section class="sheet-magic">
                 <h3>Point de mana</h3>
                 <label class="sheet-magic-max">
-                    <span class="sheet-label">Maximum</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.magic.max" value="{{data.attributes.magic.max}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                    <div class="sheet-label">Maximum</div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.magic.max" value="{{data.attributes.magic.max}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
                 </label>
                 <label class="sheet-magic-left">
-                    <span class="sheet-label">Restant</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.magic.value" value="{{data.attributes.magic.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                    <div class="sheet-label">Restant</div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.magic.value" value="{{data.attributes.magic.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
                 </label>
                 <label class="sheet-magic-level">
-                    <span class="sheet-label">Arcane</span>
-                    <span class="sheet-value"><input type="text" name="data.attributes.magic.arcane" value="{{data.attributes.magic.arcane}}" data-dtype="Number" placeholder="0" maxlength="2"/></span>
+                    <div class="sheet-label">Arcane</div>
+                    <div class="sheet-value"><input type="text" name="data.attributes.magic.arcane" value="{{data.attributes.magic.arcane}}" data-dtype="Number" placeholder="0" maxlength="2"/></div>
                 </label>
             </section>
             <section class="sheet-xp">
@@ -180,6 +180,26 @@
                 </label>
             </section>
 
+
+            <section class="sheet-skill-points">
+                <ul>
+                    {{#if (gt data.computedData.skills.availableSkillPoints.job_combat 0)}}
+                        <li>{{data.computedData.skills.availableSkillPoints.job_combat}} points a placer dans les habilitées de combat où de métier</li>
+                    {{/if}}
+                    {{#if (gt data.computedData.skills.availableSkillPoints.general 0)}}
+                        <li>{{data.computedData.skills.availableSkillPoints.general}} points a placer dans les habilitées général</li>
+                    {{/if}}
+                    {{#if (gt data.computedData.skills.availableSkillPoints.all 0)}}
+                        <li>{{data.computedData.skills.availableSkillPoints.all}} points à placer n'importe où (3 première case seulement)</li>
+                    {{/if}}
+                    {{#if (gt data.computedData.skills.availableSkillPoints.master 0)}}
+                        <li>{{data.computedData.skills.availableSkillPoints.master}} points à placer n'importe où (possibilité de cocher les cases expertises "Maître")</li>
+                    {{/if}}
+                    {{#if (gt data.computedData.skills.availableSkillPoints.prodigy 0)}}
+                        <li>{{data.computedData.skills.availableSkillPoints.prodigy}} points à placer n'importe où, incluant les cases expertises "Maître" ou "Prodige")</li>
+                    {{/if}}
+                </ul>
+            </section>
 
             <section class="sheet-jobs-skills">
                 {{#each jobs as | job | }}
