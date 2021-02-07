@@ -20,6 +20,10 @@
  * @typedef {Object} Lvl0MonsterData
  */
 /**
+ * @typedef {Object} JobData
+ * @property {string} id
+ */
+/**
  * @typedef {Object} Lvl0CharacterData
  * @property {ComputedCharacterData} computedData
  * @property {Object.<string, Object.<string, SkillValue>>} skills
@@ -28,6 +32,8 @@
  * @property {MinMaxValue} mana
  * @property {Value} level
  * @property {Value} experience
+ * @property {JobData} job
+ * @property {string} race
  */
 /**
  * @typedef {Object} SkillDefinition
@@ -37,6 +43,12 @@
 /**
  * @typedef {Object} ComputedCharacterData
  * @property {ComputedCharacterLevelingData} leveling
+ * @property {ComputedCharacterSkillsData} skills
+ */
+/**
+ * @typedef {Object} ComputedCharacterSkillsData
+ * @property {Object.<string, number>} maximumSkillPoints
+ * @property {Object.<string, number>} availableSkillPoints
  */
 /**
  * @typedef {Object} ComputedCharacterLevelingData

@@ -6,7 +6,6 @@ CONFIG.Actor.entityClass = Lvl0Actor;
 Hooks.once("init", async function () {
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("lvl0mf", Lvl0mfActorSheet, {makeDefault: true});
-
 });
 
 
@@ -14,6 +13,4 @@ Hooks.once("ready", async function () {
     // FOR DEBUG
     await ui.sidebar.activateTab('actors');
     CONFIG.debug.hooks=true
-
-
 });

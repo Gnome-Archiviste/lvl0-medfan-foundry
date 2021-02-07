@@ -1,26 +1,3 @@
-Hooks.on('preUpdateActor',
-    /**
-     * @param {Lvl0Actor} actor
-     * @param {object} change
-     * @param {object} options
-     * @param {string} id
-     */
-    (actor, change, options, id) => {
-        if (!('custom-input' in change)) {
-            return;
-        }
-        if (!('skills' in change['custom-input'])) {
-            return;
-        }
-        let skills = change['custom-input']['skills'];
-        for (let [skillCategoryId, skillByCategories] of Object.entries(skills)) {
-            for (let [skillId, value] of Object.entries(skillByCategories)) {
-                console.log(skillCategoryId + '.' + skillId + '.' + value);
-            }
-        }
-    }
-);
-
 Hooks.on('renderActorSheet', (sheet, elements) => {
     /**
      * @type {HTMLElement}
@@ -50,6 +27,26 @@ function skillValueUpdateHiddenFieldValue(e) {
     }
 }
 
+/**
+ * @param {Lvl0CharacterData} characterData
+ * @param {string} skillCategoryId
+ * @return {'prodigy'|'master'|'normal'|undefined}
+ */
+function getAvailableAddPointLevel(characterData, skillCategoryId) {
+    console.log(characterData.computedData.skills.availableSkillPoints);
+    if (characterData.computedData.skills.availableSkillPoints['prodigy'] > 0)
+        return 'prodigy';
+    if (characterData.computedData.skills.availableSkillPoints['master'] > 0)
+        return 'master';
+    if (characterData.computedData.skills.availableSkillPoints['all'] > 0)
+        return 'normal';
+    if (characterData.computedData.skills.availableSkillPoints['job_combat'] > 0 && (skillCategoryId !== 'general'))
+        return 'normal';
+    if (characterData.computedData.skills.availableSkillPoints['general'] > 0 && (skillCategoryId === 'general'))
+        return 'normal';
+    return undefined;
+}
+
 Handlebars.registerHelper('skill-value',
     /**
      * @param {SkillDefinition} skillDefinition
@@ -63,6 +60,7 @@ Handlebars.registerHelper('skill-value',
          * @type {SkillValue}
          */
         let characterSkillData;
+        let newPointMaxLevel = getAvailableAddPointLevel(characterData, skillCategoryId);
 
         if (!(skillCategoryId in characterData.skills)) {
             characterSkillData = {master: false, prodigy: false, value: 0};
@@ -81,14 +79,23 @@ Handlebars.registerHelper('skill-value',
         }
 
         let skillLevel = +characterSkillData.value;
-        let masterEnabled = characterData.computedData.leveling.canUseMaster && skillLevel === 3 && !characterSkillData.prodigy;
-        let prodigyEnabled = characterData.computedData.leveling.canUseProdigy && skillLevel === 3 && characterSkillData.master;
+        let masterEnabled = characterData.computedData.leveling.canUseMaster
+            && skillLevel === 3
+            && !characterSkillData.prodigy
+            && (newPointMaxLevel === 'master' || newPointMaxLevel === 'prodigy' || (newPointMaxLevel === undefined && characterSkillData.master));
+        let prodigyEnabled = characterData.computedData.leveling.canUseProdigy
+            && skillLevel === 3
+            && characterSkillData.master
+            && (newPointMaxLevel === 'prodigy' || (newPointMaxLevel === undefined && characterSkillData.prodigy));
 
         // Only enable checkboxes that make sense
         let availableSkillLevel = [false, false, false];
         if (!characterSkillData.prodigy && !characterSkillData.master) {
             for (let i = 0; i < availableSkillLevel.length; i++) {
-                availableSkillLevel[i] = i < characterData.computedData.leveling.maximumSkillLevel;
+                if (newPointMaxLevel)
+                    availableSkillLevel[i] = i < characterData.computedData.leveling.maximumSkillLevel;
+                else
+                    availableSkillLevel[i] = (i+1) === skillLevel;
             }
             for (let i = 1; i < 3; i++) {
                 if (!checked[i - 1]) {

@@ -5,6 +5,13 @@
     ],
     "templates": {
       "basics": {
+        "job": {
+          "id": "warrior",
+          "element": ""
+        },
+        "race": {
+          "id": ""
+        },
         "health": {
           "min": 0,
           "value": 10,
@@ -61,16 +68,27 @@
       },
       "computedData": {
         "computedData": {
+          "skills": {
+            "maximumSkillPoints": {
+              "combat": 0,
+              "general": 0,
+              "job": 0,
+              "master": 0,
+              "prodigy": 0
+            },
+            "availableSkillPoints": {
+              "combat": 0,
+              "general": 0,
+              "job": 0,
+              "master": 0,
+              "prodigy": 0
+            }
+          },
           "leveling": {
             "nextLevelExperience": 10,
             "maximumSkillLevel": 2,
             "canUseMaster": false,
-            "canUseProdigy": false,
-            "maximumSkillPoints": {
-              "combat": 0,
-              "general": 0,
-              "job": 0
-            }
+            "canUseProdigy": false
           }
         }
       }
