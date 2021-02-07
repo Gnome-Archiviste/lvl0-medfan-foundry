@@ -129,6 +129,7 @@ input[type=number] {
       display: grid;
       align-content: center;
       justify-items: center;
+      font-size: 22px;
       width: 100%;
       height: 100%;
       border: 1px solid black;
@@ -137,7 +138,7 @@ input[type=number] {
     .sheet-stats .sheet-stat .sheet-armor-mod {
       padding-top: 1px;
       border-bottom: 1px solid black;
-      height: 37px;
+      height: 41px;
       padding-bottom: 1px; }
   .sheet-stats .sheet-stat:nth-child(6) .sheet-base, .sheet-stats .sheet-stat:nth-child(6) .sheet-bonus {
     border-bottom: 1px solid black; }

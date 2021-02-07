@@ -14,13 +14,11 @@
         },
         "health": {
           "min": 0,
-          "value": 10,
-          "max": 10
+          "value": 10
         },
         "mana": {
           "min": 0,
-          "value": 0,
-          "max": 0
+          "value": 0
         },
         "experience": {
           "min": 0,
@@ -82,6 +80,34 @@
               "job": 0,
               "master": 0,
               "prodigy": 0
+            }
+          },
+          "stats": {
+            "movement": {
+              "value": 0
+            },
+            "baseStats": {
+              "phy": {
+                "bonus": 0,
+                "value": 0
+              },
+              "dex": {
+                "bonus": 0,
+                "value": 0,
+                "armor": 0
+              },
+              "int": {
+                "bonus": 0,
+                "value": 0
+              },
+              "cha": {
+                "bonus": 0,
+                "value": 0
+              },
+              "per": {
+                "bonus": 0,
+                "value": 0
+              }
             }
           },
           "leveling": {

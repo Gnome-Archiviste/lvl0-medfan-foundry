@@ -33,7 +33,6 @@ function skillValueUpdateHiddenFieldValue(e) {
  * @return {'prodigy'|'master'|'normal'|undefined}
  */
 function getAvailableAddPointLevel(characterData, skillCategoryId) {
-    console.log(characterData.computedData.skills.availableSkillPoints);
     if (characterData.computedData.skills.availableSkillPoints['prodigy'] > 0)
         return 'prodigy';
     if (characterData.computedData.skills.availableSkillPoints['master'] > 0)
