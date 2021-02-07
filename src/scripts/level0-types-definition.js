@@ -44,11 +44,25 @@
  * @typedef {Object} ComputedCharacterData
  * @property {ComputedCharacterLevelingData} leveling
  * @property {ComputedCharacterSkillsData} skills
+ * @property {ComputedCharacterStatsData} stats
  */
 /**
  * @typedef {Object} ComputedCharacterSkillsData
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
+ */
+/**
+ * @typedef {Object} ComputedCharacterStatsData
+ * @property {ComputedCharacterBaseStatsData} baseStats
+ * @property {{value: number}} movement
+ */
+/**
+ * @typedef {Object} ComputedCharacterBaseStatsData
+ * @property {{value: number, bonus: number}} phy
+ * @property {{value: number, bonus: number, armor: number}} dex
+ * @property {{value: number, bonus: number}} int
+ * @property {{value: number, bonus: number}} cha
+ * @property {{value: number, bonus: number}} per
  */
 /**
  * @typedef {Object} ComputedCharacterLevelingData
