@@ -85,7 +85,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
             availableSkillPoints['master'] = 0
         }
 
-        availableSkillPoints['prodigy'] -= leftover;
+        availableSkillPoints['prodigy'] -= (leftover + usedPoints.prodigy);
 
         actorData.computedData.skills.availableSkillPoints = availableSkillPoints;
     }
