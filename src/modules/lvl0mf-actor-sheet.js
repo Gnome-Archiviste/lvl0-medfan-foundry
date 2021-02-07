@@ -18,6 +18,11 @@ export class Lvl0mfActorSheet extends ActorSheet {
     getData(options) {
         const data = super.getData(options);
 
-        return {...data, skills, jobs: jobs.base}
+        let jobsNamesById = Object.entries(jobs.base).reduce(((previousValue, currentValue) => {
+            previousValue[currentValue[0]] = currentValue[1].name;
+            return previousValue;
+        }), {})
+
+        return {...data, skills, jobs: jobs.base, jobsNamesById: jobsNamesById}
     }
 }

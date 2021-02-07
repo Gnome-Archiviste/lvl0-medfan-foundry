@@ -20,7 +20,7 @@
                 <label class="sheet-race">
                     <span class="sheet-label">Race</span>
                     <span class="sheet-value">
-                        <select name="data.attributes.race">
+                        <select name="data.race">
                             <option>Choisir un race</option>
                             <optgroup label="Bases">
                                 <option value="Demi-Elfe">Demi-Elfe</option>
@@ -59,28 +59,16 @@
                             </optgroup>
                         </select>
 
-                        <input type="text" name="data.attributes.race.name" value={{ data.attributes.race.name }} disabled style="display: none;"/>
+                        <input type="text" name="data.race.name" value={{ data.race.name }} disabled style="display: none;"/>
                     </span>
                 </label>
                 <label class="sheet-job">
                     <span class="sheet-label">Classe:</span>
                     <span class="sheet-value">
-                        <select name="data.attributes.job">
-                            <option></option>
-                            <option value="Champion" >Champion</option>
-                            <option value="Forestier" >Forestier</option>
-                            <option value="Guerrier" >Guerrier</option>
-                            <option value="Magicien" >Magicien</option>
-                            <option value="Voleur" >Voleur</option>
-                            <optgroup label="Classes Avancés (remplace magicien)" disabled>
-                                <option value="Bouffon" >Bouffon</option>
-                                <option value="Élémentaliste" >Élémentaliste</option>
-                                <option value="Enchanteur"> Enchanteur</option>
-                                <option value="Nécromancien" >Nécromancien</option>
-                                <option value="Sorcière" >Sorcière</option>
-                            </optgroup>
+                        <select name="data.job.id" data-dtype="String">
+                            {{selectOptions jobsNamesById selected=data.job.id}}
                         </select>
-                        <input type="text" name="data.attributes.job.element" disabled style="display: none;"/>
+                        <input type="text" name="data.job.element" disabled style="display: none;"/>
                     </span>
                 </label>
 
@@ -94,7 +82,7 @@
                 </label>
                 <label class="sheet-size">
                     <span class="sheet-label">Taille</span>
-                    <span class="sheet-value"><input type="text" name="data.size.value" value="{{data.size.value}}" data-dtype="Text" placeholder="1.00" maxlength="10"/></span>
+                    <span class="sheet-value"><input type="text" name="data.size.value" value="{{data.size.value}}" data-dtype="String" placeholder="1.00" maxlength="10"/></span>
                 </label>
             </section>
 

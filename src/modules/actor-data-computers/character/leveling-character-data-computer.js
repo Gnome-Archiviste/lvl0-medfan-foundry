@@ -27,5 +27,6 @@ export class LevelingCharacterDataComputer extends CharacterDataComputer {
             actorData.computedData.leveling.nextLevelExperience = 15;
         else
             actorData.computedData.leveling.nextLevelExperience = 20;
+
     }
 }
