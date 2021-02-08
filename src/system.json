@@ -9,10 +9,7 @@
   "esmodules": [
     "scripts/init.js",
     "scripts/handlebars.js",
-    "modules/components.js",
-    "scripts/lvl0mf-sheet.js",
-    "scripts/lvl0mf-npc.js",
-    "scripts/lvl0mf-item.js"
+    "modules/components.js"
   ],
   "scripts": [],
   "styles": [

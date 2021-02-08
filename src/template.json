@@ -131,17 +131,48 @@
   "Item": {
     "types": [
       "weapon",
-      "spell"
+      "ring",
+      "wand",
+      "cloak",
+      "armor",
+      "bag"
     ],
     "templates": {
+      "base": {
+        "name": "",
+        "price": 0,
+        "description": "",
+        "clutter": 0,
+        "quantifiable": false,
+        "quantity": 0
+      },
+      "statModifiers": {
+        "modifiers": []
+      }
+    },
+    "bag": {
+      "extraRows": 0,
+      "extraColumns": 0,
+      "noLimit": false
     },
     "weapon": {
-      "templates": [],
-      "damage": 5
+      "templates": ["base" ,"statModifiers"],
+      "damage": "1d+3"
     },
-    "spell": {
-      "templates": [],
-      "cost": 2
+    "armor": {
+      "templates": ["base" ,"statModifiers"],
+      "dexMalus": 0
+    },
+    "ring": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "cloak": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "wand": {
+      "templates": ["base"],
+      "charge": 10,
+      "spell": "spell_name"
     }
   }
 }
