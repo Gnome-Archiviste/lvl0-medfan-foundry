@@ -1,13 +1,13 @@
 <form class="{{cssClass}}" autocomplete="off">
     <div class="lvl0mf-sheet {{#if actor.flags.lvl0mf-sheet.allow-edit}}allow-edit{{/if}}">
-        <nav class="sheet-tabs tabs">
-            <a class='item' data-tab="sheet_character">{{localize 'LVL0MF.Sheet.Tab.Character.title'}}</a>
-            <a class='item' data-tab="sheet_equipment">{{localize 'LVL0MF.Sheet.Tab.Equipment.title'}}</a>
-            <a class='item' data-tab="sheet_inventory">{{localize 'LVL0MF.Sheet.Tab.Inventory.title'}}</a>
-            <a class='item' data-tab="sheet_notes">{{localize 'LVL0MF.Sheet.Tab.Notes.title'}}</a>
+        <nav class="sheet-tabs tabs" data-group="primary>
+            <a class='item active' data-tab="sheet-character">{{localize 'LVL0MF.Sheet.Tab.Character.title'}}</a>
+            <a class='item' data-tab="sheet-equipment">{{localize 'LVL0MF.Sheet.Tab.Equipment.title'}}</a>
+            <a class='item' data-tab="sheet-inventory">{{localize 'LVL0MF.Sheet.Tab.Inventory.title'}}</a>
+            <a class='item' data-tab="sheet0notes">{{localize 'LVL0MF.Sheet.Tab.Notes.title'}}</a>
         </nav>
 
-        <section class="sheet-character sheet-body" data-tab="sheet_character">
+        <section class="tab sheet-character sheet-body" data-group="primary" data-tab="sheet-character">
             <section class="sheet-header">
                 <label class="sheet-character-name">
                     <span class="sheet-label">Nom</span>
@@ -204,12 +204,13 @@
         </section>
 
         {{skills.champion.shield_attack.name}}
-        <section class="sheet-equipment">
+        <section class="tab sheet-equipment" data-group="primary" data-tab="sheet-equipment">
         </section>
-        <section class="sheet-inventory">
+        <section class="tab sheet-equipment" data-group="primary" data-tab="sheet-equipment">
         </section>
 
-        <section class="sheet-notes">
+        <section class="tab sheet-notes" data-group="primary"  data-tab="sheet-notes">
+            <textarea name="data.attributes.notes"></textarea>
         </section>
 
     </div>
