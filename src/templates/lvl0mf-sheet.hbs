@@ -12,7 +12,44 @@
                 equipment
             </div>
             <div class="tab sheet-inventory" data-tab="sheet_inventory">
-                inventory
+                <div class="item-line">
+                    <div class="name"><b>Nom</b></div>
+                    <div class="clutter"><b>Encombrement</b></div>
+                    <div class="quantity"><b>Qtt</b></div>
+                </div>
+                {{#each items as | item |}}
+                    <div class="item-line">
+                        <div class="icon">
+                            <img src="{{item.img}}" />
+                        </div>
+                        <div class="quantity">
+                            {{item.data.quantity}}
+                        </div>
+                        <div class="name">
+                            <div>
+                                {{item.name}}
+                            </div>
+                            <div>
+                                {{#if item.data.damage}}
+                                    <span>
+                                        {{item.data.damage}}
+                                    </span>
+                                {{/if}}
+                                {{#if item.data.description}}
+                                    <span>
+                                        {{item.data.description}}
+                                    </span>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="clutter">
+                            {{item.data.clutter}}
+                        </div>
+                        <div class="actions">
+                            <button>Del</button>
+                        </div>
+                    </div>
+                {{/each}}
             </div>
             <div class="tab sheet-notes" data-tab="sheet_notes">
             </div>
