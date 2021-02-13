@@ -52,6 +52,7 @@
                 {{/each}}
             </div>
             <div class="tab sheet-notes" data-tab="sheet_notes">
+                {{editor content=data.notes.content target="data.notes.content" button=true editable=editable owner=owner}}
             </div>
             <div class="tab" data-tab="sheet_character">
                 <div class="sheet-character">

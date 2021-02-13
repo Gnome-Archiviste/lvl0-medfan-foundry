@@ -32,6 +32,9 @@
         },
         "size": {
           "value": "1m"
+        },
+        "notes": {
+          "content": ""
         }
       },
       "stats": {

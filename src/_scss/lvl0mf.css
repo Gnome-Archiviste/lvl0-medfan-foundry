@@ -318,4 +318,9 @@ input[type=number] {
   .item-line .clutter {
     grid-area: clutter; }
 
+.sheet-notes {
+  height: 400px; }
+  .sheet-notes .editor {
+    height: 100%; }
+
 /*# sourceMappingURL=lvl0mf.css.map */
