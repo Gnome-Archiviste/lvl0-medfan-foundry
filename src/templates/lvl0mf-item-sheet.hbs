@@ -1,7 +1,69 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} sheet-item" autocomplete="off">
     <header class="sheet-header">
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
+    <pre>{{item.type}}</pre>
+    <div class="form-group">
+        <label>Description</label>
+        <input name="data.description" data-dtype="String" type="text" value="{{item.data.description}}" />
+    </div>
+    <div class="form-group">
+        <label>Encombrement</label>
+        <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{item.data.clutter}}" />
+    </div>
+    <div class="form-group">
+        <label>Prix</label>
+        <input name="data.price" data-dtype="Number" type="number" min="0" step="1" value="{{item.data.price}}" />
+    </div>
+    <div class="form-group">
+        <label>Quantifiable</label>
+        <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked data.quantifiable}}/>
+    </div>
 
+    {{#if (eq item.type 'weapon')}}
+        <div class="form-group">
+            <label>Dégâts</label>
+            <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
+        </div>
+    {{/if}}
+    {{#if (eq item.type 'armor')}}
+        <div class="form-group">
+            <label>Protection</label>
+            <input name="data.protection" data-dtype="String" type="text" value="{{item.data.protection}}" />
+        </div>
+        <div class="form-group">
+            <label>Malus dextérité</label>
+            <input name="data.dexMalus" data-dtype="String" type="text" value="{{item.data.dexMalus}}" />
+        </div>
+    {{/if}}
+    {{#if (eq item.type 'bag')}}
+        <div class="form-group">
+            <label>Lignes supplémentaires</label>
+            <input name="data.extraRows" data-dtype="Number" type="number" value="{{item.data.extraRows}}" />
+        </div>
+        <div class="form-group">
+            <label>Colones supplémentaires</label>
+            <input name="data.extraColumns" data-dtype="Number" type="number" value="{{item.data.extraColumns}}" />
+        </div>
+        <div class="form-group">
+            <label>Taille infini</label>
+            <input name="data.noLimit" data-dtype="String" type="text" value="{{item.data.noLimit}}" />
+        </div>
+    {{/if}}
+    {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak'))}}
+        <div>
+            <div>Modificateurs:</div>
+            <div class="modifier-values">
+                {{#each item.data.modifiers as | modifier |}}
+                    <div class="modifier-value">
+                        <input name="data.modifiers.[{{@index}}].stat" data-dtype="String" type="text" value="{{modifier.stat}}" />
+                        <span>+</span>
+                        <input name="data.modifiers.[{{@index}}].value" data-dtype="Number" type="number" value="{{modifier.value}}" />
+                    </div>
+                {{/each}}
+            </div>
+            <button data-lvl0-action="addItemModifier">Ajouter un modificateur</button>
+        </div>
+    {{/if}}
 </form>

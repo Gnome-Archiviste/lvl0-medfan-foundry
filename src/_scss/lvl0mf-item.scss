@@ -1,0 +1,8 @@
+.sheet-item {
+  .modifier-values {
+    .modifier-value {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+  }
+}

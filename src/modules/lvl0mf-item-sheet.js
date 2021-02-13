@@ -8,4 +8,15 @@ export class Lvl0mfItemSheet extends ItemSheet {
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
         });
     }
+
+    /** @override */
+    activateListeners(html) {
+        super.activateListeners(html);
+        if (!this.options.editable) return;
+        html.find("button[data-lvl0-action='addItemModifier']").click(ev => this._onAddModifier(ev));
+    }
+
+    _onAddModifier(ev) {
+        this.item.update({data: {modifiers: [...this.item.data.data.modifiers, {stat: 'phy', value: 1}]}});
+    }
 }

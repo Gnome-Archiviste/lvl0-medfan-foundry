@@ -175,6 +175,7 @@
     },
     "armor": {
       "templates": ["base" ,"statModifiers"],
+      "protection": 0,
       "dexMalus": 0
     },
     "ring": {

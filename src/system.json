@@ -14,7 +14,7 @@
   "scripts": [],
   "styles": [
     "_scss/lvl0mf.css",
-    "_scss/lvl0mf-dark.css"
+    "_scss/lvl0mf-item.css"
   ],
   "packs": [],
   "languages": [
