@@ -67,6 +67,16 @@
           }
         }
       },
+      "staticInventory": {
+        "staticInventory": {
+          "rationCount": 0,
+          "torchCount": 0,
+          "money": 0,
+          "money100": 0,
+          "money500": 0,
+          "money1000": 0
+        }
+      },
       "computedData": {
         "computedData": {
           "skills": {
@@ -127,7 +137,8 @@
         "basics",
         "stats",
         "skills",
-        "computedData"
+        "computedData",
+        "staticInventory"
       ]
     }
   },

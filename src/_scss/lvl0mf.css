@@ -323,4 +323,57 @@ input[type=number] {
   .sheet-notes .editor {
     height: 100%; }
 
+.sheet-equipment {
+  display: grid;
+  grid-template-areas: "weapons    weapons   weapons" "equipment  arrow     arrow" "equipment  dart      dart" "equipment  ration    ration" "equipment  torch     torch" "equipment  potions   money";
+  grid-gap: 8px;
+  grid-template-columns: 200px 1fr 150px; }
+  .sheet-equipment > section {
+    border: 1px solid black; }
+  .sheet-equipment .weapons {
+    grid-area: weapons; }
+  .sheet-equipment .equipment {
+    grid-area: equipment; }
+  .sheet-equipment .arrow {
+    grid-area: arrow; }
+  .sheet-equipment .dart {
+    grid-area: dart; }
+  .sheet-equipment .ration {
+    grid-area: ration; }
+  .sheet-equipment .torch {
+    grid-area: torch; }
+  .sheet-equipment .potions {
+    grid-area: potions; }
+  .sheet-equipment .money {
+    grid-area: money; }
+  .sheet-equipment .arrow,
+  .sheet-equipment .dart,
+  .sheet-equipment .ration,
+  .sheet-equipment .torch,
+  .sheet-equipment .potions {
+    display: grid;
+    align-items: center;
+    grid-template-areas: "title info" "content content";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr; }
+    .sheet-equipment .arrow > h3,
+    .sheet-equipment .dart > h3,
+    .sheet-equipment .ration > h3,
+    .sheet-equipment .torch > h3,
+    .sheet-equipment .potions > h3 {
+      grid-area: title; }
+    .sheet-equipment .arrow .info,
+    .sheet-equipment .dart .info,
+    .sheet-equipment .ration .info,
+    .sheet-equipment .torch .info,
+    .sheet-equipment .potions .info {
+      grid-area: info; }
+    .sheet-equipment .arrow .content,
+    .sheet-equipment .dart .content,
+    .sheet-equipment .ration .content,
+    .sheet-equipment .torch .content,
+    .sheet-equipment .potions .content {
+      grid-area: content;
+      color: darkgrey; }
+
 /*# sourceMappingURL=lvl0mf.css.map */
