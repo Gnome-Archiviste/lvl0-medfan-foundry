@@ -299,4 +299,23 @@ input[type=number] {
 .skill-points:empty {
   display: none; }
 
+.item-line {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 32px 32px 1fr 64px 40px;
+  align-items: center;
+  grid-template-areas: "icon quantity name clutter actions";
+  border-bottom: 1px solid darkgrey;
+  margin-top: 4px; }
+  .item-line .actions {
+    grid-area: actions; }
+  .item-line .icon {
+    grid-area: icon; }
+  .item-line .quantity {
+    grid-area: quantity; }
+  .item-line .name {
+    grid-area: name; }
+  .item-line .clutter {
+    grid-area: clutter; }
+
 /*# sourceMappingURL=lvl0mf.css.map */
