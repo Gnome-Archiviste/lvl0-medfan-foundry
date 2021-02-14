@@ -6,7 +6,6 @@
             <a class="item" data-tab="sheet_inventory">{{localize 'LVL0MF.Sheet.Tab.Inventory.title'}}</a>
             <a class="item" data-tab="sheet_notes">{{localize 'LVL0MF.Sheet.Tab.Notes.title'}}</a>
         </nav>
-
         <section class="sheet-body">
             <div class="tab sheet-inventory" data-tab="sheet_inventory">
                 <div class="item-line">
@@ -287,60 +286,7 @@
                 </div>
             </div>
             <div class="tab" data-tab="sheet_equipment">
-                <div class="sheet-equipment">
-                    <section class="weapons">
-                        <h3>Armes</h3>
-                    </section>
-                    <section class="equipment">
-                        <h3>Objets équipés</h3>
-                    </section>
-                    <section class="arrow">
-                        <h3>Flèche spéciales</h3>
-                        <div class="info">Encombrement: 1 pour 10 flèches</div>
-                        <div class="content">
-
-                        </div>
-                    </section>
-                    <section class="dart">
-                        <h3>Billes et dards spéciales</h3>
-                        <div class="info">Encombrement: 1 pour 20 billes/dard</div>
-                        <div class="content"></div>
-                    </section>
-                    <section class="ration">
-                        <h3>Rations</h3>
-                        <div class="info">Encombrement: 1 pour 5 jours</div>
-                        <div class="content"></div>
-                    </section>
-                    <section class="torch">
-                        <h3>Torches</h3>
-                        <div class="info">Encombrement: 1 pour 4 torches</div>
-                        <div class="content"></div>
-                    </section>
-                    <section class="potions">
-                        <h3>Potions</h3>
-                        <div class="info">Encombrement: 1 pour 2 potions</div>
-                        <div class="content"></div>
-                    </section>
-                    <section class="money">
-                        <h3>Argent</h3>
-                        <div class="money">
-                            <div class="title">Unitaire</div>
-                            <div class="value">{{data.staticInventory.money}}</div>
-                        </div>
-                        <div class="money">
-                            <div class="title">100</div>
-                            <div class="value">{{data.staticInventory.money100}}</div>
-                        </div>
-                        <div class="money">
-                            <div class="title">500</div>
-                            <div class="value">{{data.staticInventory.money500}}</div>
-                        </div>
-                        <div class="money">
-                            <div class="title">1000</div>
-                            <div class="value">{{data.staticInventory.money1000}}</div>
-                        </div>
-                    </section>
-                </div>
+                {{> "systems/lvl0mf-sheet/templates/actors/sheet-equipment.hbs"}}
             </div>
         </section>
 

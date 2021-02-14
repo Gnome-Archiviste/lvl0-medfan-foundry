@@ -7,6 +7,10 @@ CONFIG.Actor.entityClass = Lvl0Actor;
 CONFIG.Item.entityClass = Lvl0Item;
 
 Hooks.once("init", async function () {
+    await loadTemplates([
+        "systems/lvl0mf-sheet/templates/actors/sheet-equipment.hbs"
+    ]);
+
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("lvl0mf", Lvl0mfActorSheet, {makeDefault: true});
     Items.unregisterSheet("core", ItemSheet);
