@@ -8,7 +8,9 @@ CONFIG.Item.entityClass = Lvl0Item;
 
 Hooks.once("init", async function () {
     await loadTemplates([
-        "systems/lvl0mf-sheet/templates/actors/sheet-equipment.hbs"
+        "systems/lvl0mf-sheet/templates/actors/partials/equipment.hbs",
+        "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs",
+        "systems/lvl0mf-sheet/templates/actors/partials/inventory.hbs",
     ]);
 
     Actors.unregisterSheet("core", ActorSheet);
@@ -20,6 +22,6 @@ Hooks.once("init", async function () {
 
 Hooks.once("ready", async function () {
     // FOR DEBUG
-    await ui.sidebar.activateTab('items');
+    await ui.sidebar.activateTab('actors');
     CONFIG.debug.hooks = true
 });

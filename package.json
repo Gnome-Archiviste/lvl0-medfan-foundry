@@ -1,7 +1,12 @@
 {
+  "scripts": {
+    "scss": "./node_modules/.bin/node-sass src/templates/style.scss -o src/css --output-style compressed --sourceMap true",
+    "scss:dev": "./node_modules/.bin/node-sass src/templates/style.scss -o src/css --output-style compressed --sourceMap true --watch"
+  },
   "devDependencies": {
     "handlebars": "^4.7.6",
     "pixi.js": "^5.3.3",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "node-sass": "^5.0.0"
   }
 }

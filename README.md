@@ -52,3 +52,7 @@ Attribution 4.0 International License.
 
 This work is licensed under Foundry Virtual Tabletop EULA -
 Limited License Agreement for module development v 0.1.6.
+
+## Development
+
+To build styles you need to run `npm run scss` or `npm run scss:dev` for the version that recompile scss on change.

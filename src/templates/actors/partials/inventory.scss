@@ -1,0 +1,31 @@
+.partial-root-inventory {
+  .item-line {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 32px 32px 1fr 64px 40px;
+    align-items: center;
+    grid-template-areas: "icon quantity name clutter actions";
+    border-bottom: 1px solid darkgrey;
+    margin-top: 4px;
+
+    .actions {
+      grid-area: actions;
+    }
+
+    .icon {
+      grid-area: icon;
+    }
+
+    .quantity {
+      grid-area: quantity;
+    }
+
+    .name {
+      grid-area: name;
+    }
+
+    .clutter {
+      grid-area: clutter;
+    }
+  }
+}

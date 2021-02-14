@@ -1,0 +1,76 @@
+
+
+.sheet-equipment {
+  display: grid;
+  grid-template-areas:
+          "weapons    weapons   weapons"
+          "equipment  arrow     arrow"
+          "equipment  dart      dart"
+          "equipment  ration    ration"
+          "equipment  torch     torch"
+          "equipment  potions   money";
+  grid-gap: 8px;
+  grid-template-columns: 200px 1fr 150px;
+
+  > section {
+    border: 1px solid black;
+  }
+
+  .weapons {
+    grid-area: weapons;
+  }
+
+  .equipment {
+    grid-area: equipment;
+  }
+
+  .arrow {
+    grid-area: arrow;
+  }
+
+  .dart {
+    grid-area: dart;
+  }
+
+  .ration {
+    grid-area: ration;
+  }
+
+  .torch {
+    grid-area: torch;
+  }
+
+  .potions {
+    grid-area: potions;
+  }
+
+  .money {
+    grid-area: money;
+  }
+
+  .arrow,
+  .dart,
+  .ration,
+  .torch,
+  .potions,
+  {
+    display: grid;
+    align-items: center;
+    grid-template-areas: "title info" "content content";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    > h3 {
+      grid-area: title;
+    }
+
+    .info {
+      grid-area: info;
+    }
+
+    .content {
+      grid-area: content;
+      color: darkgrey;
+    }
+  }
+}

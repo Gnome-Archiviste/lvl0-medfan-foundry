@@ -13,8 +13,7 @@
   ],
   "scripts": [],
   "styles": [
-    "_scss/lvl0mf.css",
-    "_scss/lvl0mf-item.css"
+    "css/style.css"
   ],
   "packs": [],
   "languages": [

@@ -6,7 +6,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["lvl0mf", "sheet", "actor"],
-            template: "systems/lvl0mf-sheet/templates/actors/lvl0mf-sheet.hbs",
+            template: "systems/lvl0mf-sheet/templates/actors/actor-sheet.hbs",
             blockFavTab: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
             scrollY: [".stats", ".items", ".inventory"],
