@@ -47,6 +47,12 @@ export class Lvl0mfActorSheet extends ActorSheet {
             }
         });
 
+        html.find('[data-equip-item-checkbox]').click(ev => {
+            const itemId = $(ev.currentTarget).data('equip-item-checkbox');
+            const item = this.actor.getOwnedItem(itemId);
+            item.update({data: {equiped: !item.data.data.equiped}});
+        });
+
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
             const itemLine = $(ev.currentTarget).parents(".item-line");

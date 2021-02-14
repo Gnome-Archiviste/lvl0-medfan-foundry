@@ -1,6 +1,4 @@
-
-
-.sheet-equipment {
+.partial-root-equipment {
   display: grid;
   grid-template-areas:
           "weapons    weapons   weapons"
@@ -71,6 +69,38 @@
     .content {
       grid-area: content;
       color: darkgrey;
+    }
+  }
+
+  .weapons {
+    .weapon-line {
+      &.header {
+        font-weight: bold;
+      }
+      display: grid;
+      grid-template-columns: 50px 1fr 100px 100px 100px;
+      grid-template-areas: "equiped name damage handCount clutter";
+      align-items: center;
+
+      .name {
+        grid-area: equiped;
+      }
+
+      .name {
+        grid-area: name;
+      }
+
+      .handCount {
+        grid-area: handCount;
+      }
+
+      .damage {
+        grid-area: damage;
+      }
+
+      .clutter {
+        grid-area: clutter;
+      }
     }
   }
 }
