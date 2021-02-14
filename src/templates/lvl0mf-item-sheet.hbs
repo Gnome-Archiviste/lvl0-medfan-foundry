@@ -60,10 +60,11 @@
             <div>Modificateurs:</div>
             <div class="modifier-values">
                 {{#each item.data.modifiers as | modifier |}}
-                    <div class="modifier-value">
-                        <input name="data.modifiers.[{{@index}}].stat" data-dtype="String" type="text" value="{{modifier.stat}}" />
+                    <div class="modifier-value" data-modifier-id="{{@key}}">
+                        <input name="data.modifiers.{{@key}}.stat" data-dtype="String" type="text" value="{{modifier.stat}}" />
                         <span>+</span>
-                        <input name="data.modifiers.[{{@index}}].value" data-dtype="Number" type="number" value="{{modifier.value}}" />
+                        <input name="data.modifiers.{{@key}}.value" data-dtype="Number" type="number" value="{{modifier.value}}" />
+                        <a class="delete-modifier" title="Supprimer modificateur"><i class="fas fa-trash"></i></a>
                     </div>
                 {{/each}}
             </div>

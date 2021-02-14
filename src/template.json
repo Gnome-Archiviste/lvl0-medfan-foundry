@@ -161,7 +161,7 @@
         "quantity": 0
       },
       "statModifiers": {
-        "modifiers": []
+        "modifiers": {}
       }
     },
     "bag": {

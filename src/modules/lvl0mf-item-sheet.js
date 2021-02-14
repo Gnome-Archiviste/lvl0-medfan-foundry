@@ -14,9 +14,20 @@ export class Lvl0mfItemSheet extends ItemSheet {
         super.activateListeners(html);
         if (!this.options.editable) return;
         html.find("button[data-lvl0-action='addItemModifier']").click(ev => this._onAddModifier(ev));
+        html.find(".delete-modifier").click(ev => this._onRemoveModifier(ev));
+    }
+
+    /** @param {MouseEvent} ev */
+    _onRemoveModifier(ev) {
+        let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
+        let modifiers = this.item.data.data.modifiers || {};
+        let newModifiers = {...modifiers, ['-='+modifierId]: null};
+        this.item.update({data: {modifiers: newModifiers}});
     }
 
     _onAddModifier(ev) {
-        this.item.update({data: {modifiers: [...this.item.data.data.modifiers, {stat: 'phy', value: 1}]}});
+        let modifiers = this.item.data.data.modifiers || {};
+        let nextId = (Object.keys(modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        this.item.update({data: {modifiers: {...modifiers, [nextId]: {stat: 'phy', value: 1}}}});
     }
 }
