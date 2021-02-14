@@ -10,6 +10,13 @@ export class Lvl0mfItemSheet extends ItemSheet {
     }
 
     /** @override */
+    getData(options) {
+        let data = super.getData(options);
+        data.isOwned = this.entity.isOwned;
+        return data;
+    }
+
+    /** @override */
     activateListeners(html) {
         super.activateListeners(html);
         if (!this.options.editable) return;

@@ -3,7 +3,14 @@
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
-    <pre>{{item.type}}</pre>
+
+    {{#if isOwned}}
+        <div class="form-group">
+            <label>Équipé ?</label>
+            <input type="checkbox" name="data.equiped" data-dtype="Boolean" {{checked data.equiped}}/>
+        </div>
+    {{/if}}
+
     <div class="form-group">
         <label>Description</label>
         <input name="data.description" data-dtype="String" type="text" value="{{item.data.description}}" />
