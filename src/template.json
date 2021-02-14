@@ -171,7 +171,8 @@
     },
     "weapon": {
       "templates": ["base" ,"statModifiers"],
-      "damage": "1d+3"
+      "damage": "1d+3",
+      "handCount": 1
     },
     "armor": {
       "templates": ["base" ,"statModifiers"],

@@ -26,6 +26,10 @@
             <label>Dégâts</label>
             <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
         </div>
+        <div class="form-group">
+            <label>Nombre de main</label>
+            <input name="data.handCount" data-dtype="Number" type="number" value="{{item.data.handCount}}" />
+        </div>
     {{/if}}
     {{#if (eq item.type 'armor')}}
         <div class="form-group">
