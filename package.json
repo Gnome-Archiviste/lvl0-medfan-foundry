@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "handlebars": "^4.7.6",
-    "pixi.js": "^5.3.3"
+    "pixi.js": "^5.3.3",
+    "jquery": "^3.5.1"
   }
 }
