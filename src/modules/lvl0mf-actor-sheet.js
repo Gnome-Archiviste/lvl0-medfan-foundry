@@ -22,7 +22,17 @@ export class Lvl0mfActorSheet extends ActorSheet {
             return previousValue;
         }), {})
 
-        return {...data, skills, jobs: jobs.base, jobsNamesById: jobsNamesById}
+        let itemsByType = this.actor.itemTypes;
+        let itemTypes = Object.keys(itemsByType);
+
+        return {
+            ...data,
+            skills,
+            jobs: jobs.base,
+            jobsNamesById: jobsNamesById,
+            itemTypes,
+            itemsByType
+        }
     }
 
     activateListeners(html) {

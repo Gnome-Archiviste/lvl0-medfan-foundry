@@ -1,6 +1,20 @@
 <div class="sheet-equipment">
     <section class="weapons">
         <h3>Armes</h3>
+        <div class="weapon-line header">
+            <div class="name">Nom</div>
+            <div class="handCount">Nbre de main</div>
+            <div class="damage">Dégâts</div>
+            <div class="clutter">Encombrement</div>
+        </div>
+        {{#each itemsByType.weapon as |item| }}
+            <div class="weapon-line">
+                <div class="name">{{item.name}}</div>
+                <div class="handCount">{{item.data.data.handCount}}</div>
+                <div class="damage">{{item.data.data.damage}}</div>
+                <div class="clutter">{{item.data.data.clutter}}</div>
+            </div>
+        {{/each}}
     </section>
     <section class="equipment">
         <h3>Objets équipés</h3>
