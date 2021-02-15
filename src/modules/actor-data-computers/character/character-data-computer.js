@@ -11,9 +11,10 @@ export class CharacterDataComputer extends ActorDataComputer {
     /**
      * @override
      * @param {Lvl0CharacterData} actorData
+     * @param {Actor} actor
      * @return {void}
      */
-    compute(actorData) {
+    compute(actorData, actor) {
         throw new Error('Not implemented');
     }
 }

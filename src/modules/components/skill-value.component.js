@@ -105,7 +105,7 @@ Handlebars.registerHelper('skill-value',
                 availableSkillLevel[i] = false;
         }
 
-        let skillTestValue = skillLevel + characterData.baseStats[skillDefinition.stat].value;
+        let skillTestValue = skillLevel + characterData.computedData.stats.baseStats[skillDefinition.stat].value;
 
         return new Handlebars.SafeString(`<span class="sheet-skill-value">
             <span class="sheet-skill-levels">

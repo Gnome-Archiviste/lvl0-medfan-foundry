@@ -6,13 +6,33 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
     /**
      * @override
      */
-    compute(actorData) {
-        for (let statsName of StatsCharacterDataComputer.statsNames) {
-            let bonus = 0; // FIXME: Compute this from items / buf
-            let armor = 0; // FIXME: Compute this from items
+    compute(actorData, actor) {
+        let bonusPerStat = {};
+        let armorMalus = 0;
+        for (let item of actor.items) {
+            if (!item.data.data.equiped)
+                continue;
 
-            if (statsName === 'dex')
+            console.warn(item);
+            if (typeof item.data.data.modifiers === 'object') {
+                for (let modifier of Object.values(item.data.data.modifiers)) {
+                    console.warn(modifier);
+                    bonusPerStat[modifier.stat] = (bonusPerStat[modifier.stat] || 0) + modifier.value;
+                }
+            }
+            if (item.type === 'armor') {
+                armorMalus += item.data.data.dexMalus;
+            }
+        }
+
+        for (let statsName of StatsCharacterDataComputer.statsNames) {
+            let bonus = bonusPerStat[statsName] || 0;
+            let armor = 0;
+
+            if (statsName === 'dex') {
+                armor = armorMalus;
                 actorData.computedData.stats.baseStats[statsName].armor = armor;
+            }
             actorData.computedData.stats.baseStats[statsName].bonus = bonus;
             actorData.computedData.stats.baseStats[statsName].value = actorData.baseStats[statsName].value + bonus - armor;
         }

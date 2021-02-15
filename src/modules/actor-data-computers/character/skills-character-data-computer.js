@@ -7,7 +7,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
     /**
      * @override
      */
-    compute(actorData) {
+    compute(actorData, actor) {
         this.countMaximumPoints(actorData);
         this.computeAvailablePoints(actorData)
     }

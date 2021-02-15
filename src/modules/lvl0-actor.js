@@ -16,7 +16,7 @@ export class Lvl0Actor extends Actor {
 
         for (let actorDataComputer of actorDataComputers) {
             if (actorDataComputer.isAvailableFor(actorData.type)) {
-                actorDataComputer.compute(actorData.data);
+                actorDataComputer.compute(actorData.data, this);
             }
         }
     }

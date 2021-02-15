@@ -4,7 +4,7 @@ export class LevelingCharacterDataComputer extends CharacterDataComputer {
     /**
      * @override
      */
-    compute(actorData) {
+    compute(actorData, actor) {
         if (actorData.level.value < 4)
             actorData.computedData.leveling.maximumSkillLevel = 2;
         else
