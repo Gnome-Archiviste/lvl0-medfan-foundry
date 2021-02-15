@@ -1,11 +1,15 @@
 <div class="partial-root-inventory">
     <div class="item-line">
+        <div class="equiped"><b>Équipé</b></div>
         <div class="name"><b>Nom</b></div>
         <div class="clutter"><b>Encombrement</b></div>
         <div class="quantity"><b>Qtt</b></div>
     </div>
     {{#each items as | item |}}
         <div class="item-line" data-item-id="{{item._id}}">
+            <div class="equiped">
+                <input type="checkbox" {{checked item.data.equiped}} data-equip-item-checkbox="{{item._id}}">
+            </div>
             <div class="icon">
                 <img src="{{item.img}}"/>
             </div>

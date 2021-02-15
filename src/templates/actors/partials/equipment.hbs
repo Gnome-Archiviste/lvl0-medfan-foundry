@@ -21,7 +21,18 @@
         {{/each}}
     </section>
     <section class="equipment">
-        <h3>Objets équipés</h3>
+        {{#each armorSlots as |armorSlot| }}
+            <div class="{{armorSlot}}">
+                <h3>{{localize (concat2 'LVL0MF.Items.Type.' armorSlot) }}</h3>
+                {{#each2 ../equipedItemsByType armorSlot as |item| }}
+                    <div>{{item.name}}</div>
+                    {{#each item.data.data.modifiers as |modifier| }}
+                        <div><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
+                    {{/each}}
+                {{/each2}}
+            </div>
+        {{/each}}
+
     </section>
     <section class="arrow">
         <h3>Flèche spéciales</h3>

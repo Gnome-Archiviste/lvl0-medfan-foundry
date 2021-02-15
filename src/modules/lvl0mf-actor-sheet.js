@@ -24,6 +24,16 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         let itemsByType = this.actor.itemTypes;
         let itemTypes = Object.keys(itemsByType);
+        let equipedItemsByType = {};
+        for (let itemType of itemTypes) {
+            equipedItemsByType[itemType] = [];
+            for (let item of itemsByType[itemType]) {
+                if (item.data.data.equiped) {
+                    equipedItemsByType[itemType].push(item);
+                }
+            }
+        }
+        let armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
 
         return {
             ...data,
@@ -31,7 +41,9 @@ export class Lvl0mfActorSheet extends ActorSheet {
             jobs: jobs.base,
             jobsNamesById: jobsNamesById,
             itemTypes,
-            itemsByType
+            itemsByType,
+            equipedItemsByType,
+            armorSlots
         }
     }
 

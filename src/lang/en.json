@@ -128,6 +128,16 @@
   "LVL0MF.Sheet.Tab.Inventory.title" : "Inventory",
   "LVL0MF.Sheet.Tab.Notes.title" : "Notes",
 
+  "LVL0MF.Items.Type.head" : "Head",
+  "LVL0MF.Items.Type.cloak" : "Cloak",
+  "LVL0MF.Items.Type.necklace" : "Necklace",
+  "LVL0MF.Items.Type.armor" : "Body",
+  "LVL0MF.Items.Type.belt" : "Belt",
+  "LVL0MF.Items.Type.hand" : "Hands",
+  "LVL0MF.Items.Type.shield" : "Shield",
+  "LVL0MF.Items.Type.ring" : "Rings",
+  "LVL0MF.Items.Type.foot" : "Legs / Foot",
+
   "LVL0MF.End" : "End of Translation"
 
 }

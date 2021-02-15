@@ -2,9 +2,9 @@
   .item-line {
     display: grid;
     grid-gap: 8px;
-    grid-template-columns: 32px 32px 1fr 64px 40px;
+    grid-template-columns: 50px 32px 32px 1fr 64px 40px;
     align-items: center;
-    grid-template-areas: "icon quantity name clutter actions";
+    grid-template-areas: "equiped icon quantity name clutter actions";
     border-bottom: 1px solid darkgrey;
     margin-top: 4px;
 
@@ -12,11 +12,17 @@
       grid-area: actions;
     }
 
+    .equiped {
+      justify-self: center;
+      grid-area: equiped;
+    }
+
     .icon {
       grid-area: icon;
     }
 
     .quantity {
+      justify-self: center;
       grid-area: quantity;
     }
 
@@ -25,6 +31,7 @@
     }
 
     .clutter {
+      justify-self: center;
       grid-area: clutter;
     }
   }

@@ -144,12 +144,22 @@
   },
   "Item": {
     "types": [
-      "weapon",
-      "ring",
-      "wand",
-      "cloak",
       "armor",
-      "bag"
+      "arrow",
+      "bag",
+      "belt",
+      "cloak",
+      "foot",
+      "hand",
+      "head",
+      "magical",
+      "marbles",
+      "necklace",
+      "potions",
+      "ring",
+      "shield",
+      "wand",
+      "weapon"
     ],
     "templates": {
       "base": {
@@ -163,31 +173,61 @@
         "modifiers": {}
       }
     },
-    "bag": {
-      "extraRows": 0,
-      "extraColumns": 0,
-      "noLimit": false
-    },
-    "weapon": {
-      "templates": ["base" ,"statModifiers"],
-      "damage": "1d+3",
-      "handCount": 1
-    },
     "armor": {
       "templates": ["base" ,"statModifiers"],
       "protection": 0,
       "dexMalus": 0
     },
-    "ring": {
+    "arrow": {
+      "templates": ["base"],
+      "extraDamage": ""
+    },
+    "bag": {
+      "extraRows": 0,
+      "extraColumns": 0,
+      "noLimit": false
+    },
+    "belt": {
       "templates": ["base" ,"statModifiers"]
     },
     "cloak": {
       "templates": ["base" ,"statModifiers"]
     },
+    "hand": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "head": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "magical": {
+      "templates": ["base"]
+    },
+    "marbles": {
+      "templates": ["base"],
+      "extraDamage": ""
+    },
+    "necklace": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "foot": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "ring": {
+      "templates": ["base" ,"statModifiers"]
+    },
+    "shield": {
+      "templates": ["base"],
+      "blockValue": 0
+    },
     "wand": {
       "templates": ["base"],
       "charge": 10,
       "spell": "spell_name"
+    },
+    "weapon": {
+      "templates": ["base" ,"statModifiers"],
+      "damage": "1d+3",
+      "handCount": 1
     }
   }
 }

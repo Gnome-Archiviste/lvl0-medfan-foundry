@@ -17,6 +17,10 @@ Handlebars.registerHelper('each2', function (context, contextKey, options) {
         data = Handlebars.createFrame(options.data);
     }
 
+    if (context[contextKey] == null) {
+        return '';
+    }
+
     let index = 0;
     for (let [key, value] of Object.entries(context[contextKey])) {
         if (data) {
@@ -39,4 +43,20 @@ Handlebars.registerHelper('ifIsNthItem', function (options) {
         return options.fn(this);
     else
         return options.inverse(this);
+});
+Handlebars.registerHelper('concat2', function () {
+    let result = '';
+    for (let arg of arguments) {
+        if (typeof arg != 'object') {
+            result += arg;
+        }
+    }
+    return result;
+});
+Handlebars.registerHelper('toUpperCase', function (value) {
+    return value.toUpperCase();
+});
+
+Handlebars.registerHelper('upperFirstLetter', function (value) {
+    return value[0].toUpperCase() + value.substr(1);
 });

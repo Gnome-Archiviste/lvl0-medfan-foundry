@@ -118,7 +118,7 @@ Handlebars.registerHelper('skill-value',
                        ${checked[2] ? 'checked' : ''} ${availableSkillLevel[2] ? '' : 'disabled'}/>
             </span>
             <span class="sheet-skill-stat">
-                + <span class="sheet-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
+                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
             </span>
             <span class="sheet-skill-level">
                 ${skillTestValue}
