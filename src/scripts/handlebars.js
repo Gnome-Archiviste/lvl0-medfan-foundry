@@ -9,6 +9,10 @@ Handlebars.registerHelper('math', function (lvalue, operator, rvalue) {
     }[operator];
 });
 
+Handlebars.registerHelper('not', function (v) {
+    return !v;
+});
+
 Handlebars.registerHelper('each2', function (context, contextKey, options) {
     let result = [];
 

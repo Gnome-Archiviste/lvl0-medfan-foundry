@@ -47,6 +47,24 @@
     grid-area: money;
   }
 
+  .equipment {
+    .slot {
+      margin: 8px 0;
+      h3 {
+        text-align: center;
+      }
+      .modifier {
+        margin-left: 16px;
+      }
+      .extra-skill {
+        margin-left: 16px;
+      }
+    }
+    .separator {
+      border-bottom: 1px solid gray;
+    }
+  }
+
   .arrow,
   .dart,
   .ration,

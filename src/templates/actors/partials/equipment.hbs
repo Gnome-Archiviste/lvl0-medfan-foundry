@@ -22,15 +22,21 @@
     </section>
     <section class="equipment">
         {{#each armorSlots as |armorSlot| }}
-            <div class="{{armorSlot}}">
+            <div class="slot" class="{{armorSlot}}">
                 <h3>{{localize (concat2 'LVL0MF.Items.Type.' armorSlot) }}</h3>
                 {{#each2 ../equipedItemsByType armorSlot as |item| }}
                     <div>{{item.name}}</div>
                     {{#each item.data.data.modifiers as |modifier| }}
-                        <div><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
+                        <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
+                    {{/each}}
+                    {{#each item.data.data.extraSkills as |extraSkill| }}
+                        <div class="extra-skill">{{lookup ../../../skillsByIds extraSkill.id}}</div>
                     {{/each}}
                 {{/each2}}
             </div>
+            {{#if (not @last) }}
+                <div class="separator"></div>
+            {{/if}}
         {{/each}}
 
     </section>
