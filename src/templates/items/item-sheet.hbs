@@ -16,6 +16,10 @@
         <input name="data.description" data-dtype="String" type="text" value="{{item.data.description}}" />
     </div>
     <div class="form-group">
+        <label>Détails</label>
+        <textarea name="data.details" data-dtype="String">{{data.details}}</textarea>
+    </div>
+    <div class="form-group">
         <label>Encombrement</label>
         <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{item.data.clutter}}" />
     </div>
@@ -27,11 +31,48 @@
         <label>Quantifiable</label>
         <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked data.quantifiable}}/>
     </div>
+    <div class="form-group">
+        <label>Limitation</label>
+        <input type="text" name="data.restriction" data-dtype="String" value="{{data.restriction}}"/>
+    </div>
 
+    {{#if (eq item.type 'ammunition')}}
+        <div class="form-group">
+            <label>Type</label>
+            <select name="data.ammunitionType">
+                {{log data}}
+                {{#select data.ammunitionType}}
+                    <option value="arrow">Flèche</option>
+                    <option value="dart">Dard</option>
+                    <option value="marble">Bille</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Dégâts additionnel</label>
+            <input name="data.extraDamage" data-dtype="String" type="text" value="{{item.data.extraDamage}}" />
+        </div>
+        <div class="form-group">
+            <label>Éléments</label>
+            <input name="data.extraDamageEffect" data-dtype="String" type="text" value="{{item.data.extraDamageEffect}}" />
+        </div>
+        <div class="form-group">
+            <label>Bonus</label>
+            <input name="data.bonus" data-dtype="String" type="text" value="{{item.data.bonus}}" />
+        </div>
+    {{/if}}
     {{#if (eq item.type 'weapon')}}
         <div class="form-group">
             <label>Dégâts</label>
             <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
+        </div>
+        <div class="form-group">
+            <label>Éléments</label>
+            <input name="data.element" data-dtype="String" type="text" value="{{item.data.element}}" />
+        </div>
+        <div class="form-group">
+            <label>Bonus</label>
+            <input name="data.bonus" data-dtype="String" type="text" value="{{item.data.bonus}}" />
         </div>
         <div class="form-group">
             <label>Nombre de main</label>
@@ -48,8 +89,14 @@
             <input name="data.dexMalus" data-dtype="String" type="text" value="{{item.data.dexMalus}}" />
         </div>
     {{/if}}
-    {{#if (eq item.type 'bag')}}
+    {{#if (eq item.type 'shield')}}
         <div class="form-group">
+            <label>Blocage</label>
+            <input name="data.blockValue" data-dtype="String" type="text" value="{{item.data.blockValue}}" />
+        </div>
+    {{/if}}
+    {{#if (eq item.type 'bag')}}
+        <div class="form-group">pu
             <label>Lignes supplémentaires</label>
             <input name="data.extraRows" data-dtype="Number" type="number" value="{{item.data.extraRows}}" />
         </div>
@@ -71,11 +118,27 @@
                         <input name="data.modifiers.{{@key}}.stat" data-dtype="String" type="text" value="{{modifier.stat}}" />
                         <span>+</span>
                         <input name="data.modifiers.{{@key}}.value" data-dtype="Number" type="number" value="{{modifier.value}}" />
-                        <a class="delete-modifier" title="Supprimer modificateur"><i class="fas fa-trash"></i></a>
+                        <a data-lvl0-action="deleteModifier" title="Supprimer modificateur"><i class="fas fa-trash"></i></a>
                     </div>
                 {{/each}}
             </div>
             <button data-lvl0-action="addItemModifier">Ajouter un modificateur</button>
+        </div>
+    {{/if}}
+    {{#if (or (eq item.type 'ring') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot'))}}
+        <div>
+            <div>Compétences:</div>
+            <div class="modifier-values">
+                {{#each item.data.extraSkills as | extraSkill |}}
+                    <div class="extra-skill-line" data-extra-skill-id="{{@key}}">
+                        <select name="data.extraSkills.{{@key}}.id">
+                            {{selectOptions ../extraSkills selected=extraSkill.id}}
+                        </select>
+                        <a data-lvl0-action="deleteExtraSkill" title="Supprimer skill"><i class="fas fa-trash"></i></a>
+                    </div>
+                {{/each}}
+            </div>
+            <button data-lvl0-action="addItemExtraSkill">Ajouter une compétence</button>
         </div>
     {{/if}}
 </form>

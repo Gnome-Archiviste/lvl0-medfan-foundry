@@ -144,8 +144,8 @@
   },
   "Item": {
     "types": [
+      "ammunition",
       "armor",
-      "arrow",
       "bag",
       "belt",
       "cloak",
@@ -153,7 +153,6 @@
       "hand",
       "head",
       "magical",
-      "marbles",
       "necklace",
       "potions",
       "ring",
@@ -178,16 +177,20 @@
         "extraSkills": {}
       }
     },
+    "ammunition": {
+      "templates": ["base"],
+      "extraDamage": "",
+      "extraDamageEffect": "",
+      "bonus": "",
+      "ammunitionType": "arrow"
+    },
     "armor": {
       "templates": ["base" ,"statModifiers", "extraSkills"],
       "protection": 0,
       "dexMalus": 0
     },
-    "arrow": {
-      "templates": ["base"],
-      "extraDamage": ""
-    },
     "bag": {
+      "templates": ["base"],
       "extraRows": 0,
       "extraColumns": 0,
       "noLimit": false
@@ -207,10 +210,6 @@
     "magical": {
       "templates": ["base"]
     },
-    "marbles": {
-      "templates": ["base"],
-      "extraDamage": ""
-    },
     "necklace": {
       "templates": ["base" ,"statModifiers", "extraSkills"]
     },
@@ -222,7 +221,7 @@
     },
     "shield": {
       "templates": ["base"],
-      "blockValue": 0
+      "blockValue": "1,2,3"
     },
     "wand": {
       "templates": ["base"],
@@ -231,8 +230,10 @@
     },
     "weapon": {
       "templates": ["base" ,"statModifiers"],
-      "damage": "1d+3",
-      "handCount": 1
+      "damage": "1d6",
+      "handCount": 1,
+      "element": "",
+      "bonus": ""
     }
   }
 }
