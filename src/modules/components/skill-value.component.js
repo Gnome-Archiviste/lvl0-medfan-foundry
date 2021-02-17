@@ -71,21 +71,21 @@ Handlebars.registerHelper('skill-value',
         if (characterSkillData.value == null)
             characterSkillData.value = 0;
 
+        let skillLevel = +characterSkillData.value;
         let fullSkillId = skillCategoryId  + '.' + skillId;
         let isExtra = characterData.computedData.skills.extraSkills.indexOf(fullSkillId) !== -1;
         let useExtra = false;
-        if (+characterSkillData.value === 0 && isExtra) {
+        if (skillLevel === 0 && isExtra) {
             useExtra = true;
-            characterSkillData.value = 1;
+            skillLevel = 1;
         }
 
         let checked = [false, false, false];
         for (let i = 0; i < 3; i++) {
-            if (characterSkillData.value > i)
+            if (skillLevel > i)
                 checked[i] = true;
         }
 
-        let skillLevel = +characterSkillData.value;
         let masterEnabled = characterData.computedData.leveling.canUseMaster
             && skillLevel === 3
             && !characterSkillData.prodigy
