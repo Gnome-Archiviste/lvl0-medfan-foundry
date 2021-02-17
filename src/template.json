@@ -93,7 +93,8 @@
               "job": 0,
               "master": 0,
               "prodigy": 0
-            }
+            },
+            "extraSkills": []
           },
           "stats": {
             "movement": {

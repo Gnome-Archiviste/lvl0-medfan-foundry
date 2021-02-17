@@ -50,6 +50,7 @@
  * @typedef {Object} ComputedCharacterSkillsData
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
+ * @property {string[]} extraSkills
  */
 /**
  * @typedef {Object} ComputedCharacterStatsData

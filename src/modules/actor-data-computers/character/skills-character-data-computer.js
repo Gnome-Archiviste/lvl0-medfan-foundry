@@ -9,7 +9,8 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
      */
     compute(actorData, actor) {
         this.countMaximumPoints(actorData);
-        this.computeAvailablePoints(actorData)
+        this.computeAvailablePoints(actorData);
+        this.computeExtraSkills(actorData, actor);
     }
 
     /**
@@ -130,5 +131,20 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
             }
         }
         return usedPoints;
+    }
+
+    computeExtraSkills(actorData, actor) {
+        let extraSkillIds = [];
+        for (let item of actor.items) {
+            if (!item.data.data.equiped)
+                continue;
+
+            if (typeof item.data.data.extraSkills === 'object') {
+                for (let extraSkill of Object.values(item.data.data.extraSkills)) {
+                    extraSkillIds.push(extraSkill.id);
+                }
+            }
+        }
+        actorData.computedData.skills.extraSkills = extraSkillIds;
     }
 }

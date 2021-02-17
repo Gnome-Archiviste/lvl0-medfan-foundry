@@ -30,7 +30,7 @@
                         <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
                     {{/each}}
                     {{#each item.data.data.extraSkills as |extraSkill| }}
-                        <div class="extra-skill">{{lookup ../../../skillsByIds extraSkill.id}}</div>
+                        <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
                     {{/each}}
                 {{/each2}}
             </div>

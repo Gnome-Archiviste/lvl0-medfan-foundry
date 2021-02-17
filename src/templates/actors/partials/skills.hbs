@@ -29,7 +29,7 @@
                     {{#each2 ../skills @key as | skill | }}
                         <span class="sheet-skill">
                             <span class="sheet-skill-label">{{skill.name}}</span>
-                            {{skill-value skill ../../data @../key @key}}
+                            {{skill-value skill ../../data @../key @key ../../data.}}
                         </span>
                     {{/each2}}
                 </section>

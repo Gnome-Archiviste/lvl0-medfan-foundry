@@ -71,6 +71,14 @@ Handlebars.registerHelper('skill-value',
         if (characterSkillData.value == null)
             characterSkillData.value = 0;
 
+        let fullSkillId = skillCategoryId  + '.' + skillId;
+        let isExtra = characterData.computedData.skills.extraSkills.indexOf(fullSkillId) !== -1;
+        let useExtra = false;
+        if (+characterSkillData.value === 0 && isExtra) {
+            useExtra = true;
+            characterSkillData.value = 1;
+        }
+
         let checked = [false, false, false];
         for (let i = 0; i < 3; i++) {
             if (characterSkillData.value > i)
@@ -89,7 +97,7 @@ Handlebars.registerHelper('skill-value',
 
         // Only enable checkboxes that make sense
         let availableSkillLevel = [false, false, false];
-        if (!characterSkillData.prodigy && !characterSkillData.master) {
+        if (!characterSkillData.prodigy && !characterSkillData.master && !useExtra) {
             for (let i = 0; i < availableSkillLevel.length; i++) {
                 if (newPointMaxLevel)
                     availableSkillLevel[i] = i < characterData.computedData.leveling.maximumSkillLevel;

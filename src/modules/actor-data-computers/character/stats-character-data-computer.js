@@ -13,10 +13,8 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             if (!item.data.data.equiped)
                 continue;
 
-            console.warn(item);
             if (typeof item.data.data.modifiers === 'object') {
                 for (let modifier of Object.values(item.data.data.modifiers)) {
-                    console.warn(modifier);
                     bonusPerStat[modifier.stat] = (bonusPerStat[modifier.stat] || 0) + modifier.value;
                 }
             }

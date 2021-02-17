@@ -36,7 +36,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         let skillsByIds = {};
         for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
             for (let [skillId, skill] of Object.entries(categorySkills)) {
-                skillsByIds[skillCategoryId + '.' + skillId] = skill.name;
+                skillsByIds[skillCategoryId + '.' + skillId] = skill;
             }
         }
         let armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
