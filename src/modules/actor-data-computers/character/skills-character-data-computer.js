@@ -21,30 +21,27 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
             actorData.computedData.skills.maximumSkillPoints[pointType] = 0;
         }
 
-        let skillLevel = skillLevels.find(f => f.jobs.indexOf(actorData.job.id) !== -1);
-        if (skillLevel !== undefined) {
-            for (let i = 0; i < skillLevel.levels.length && i < actorData.level.value; i++) {
-                let points = skillLevel.levels[i].skillPoints.split(' ');
-                for (const point of points) {
-                    let pointNumber = +(point.substr(0, 1));
-                    let pointType = point.substr(1, 1);
-                    switch (pointType) {
-                        case 'G':
-                            actorData.computedData.skills.maximumSkillPoints['general'] += pointNumber;
-                            break;
-                        case 'C':
-                            actorData.computedData.skills.maximumSkillPoints['job_combat'] += pointNumber;
-                            break;
-                        case 'N':
-                            actorData.computedData.skills.maximumSkillPoints['all'] += pointNumber;
-                            break;
-                        case 'M':
-                            actorData.computedData.skills.maximumSkillPoints['master'] += pointNumber;
-                            break;
-                        case 'P':
-                            actorData.computedData.skills.maximumSkillPoints['prodigy'] += pointNumber;
-                            break;
-                    }
+        for (let i = 0; i < skillLevels.levels.length && i < actorData.level.value; i++) {
+            let points = skillLevels.levels[i].skillPoints.split(' ');
+            for (const point of points) {
+                let pointNumber = +(point.substr(0, 1));
+                let pointType = point.substr(1, 1);
+                switch (pointType) {
+                    case 'G':
+                        actorData.computedData.skills.maximumSkillPoints['general'] += pointNumber;
+                        break;
+                    case 'C':
+                        actorData.computedData.skills.maximumSkillPoints['job_combat'] += pointNumber;
+                        break;
+                    case 'N':
+                        actorData.computedData.skills.maximumSkillPoints['all'] += pointNumber;
+                        break;
+                    case 'M':
+                        actorData.computedData.skills.maximumSkillPoints['master'] += pointNumber;
+                        break;
+                    case 'P':
+                        actorData.computedData.skills.maximumSkillPoints['prodigy'] += pointNumber;
+                        break;
                 }
             }
         }
