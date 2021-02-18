@@ -13,6 +13,7 @@
                 <div class="equiped">
                     <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
                 </div>
+                <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">{{item.name}}</div>
                 <div class="handCount">{{item.data.data.handCount}}</div>
                 <div class="damage">{{item.data.data.damage}}</div>
@@ -25,13 +26,16 @@
             <div class="slot" class="{{armorSlot}}">
                 <h3>{{localize (concat2 'LVL0MF.Items.Type.' armorSlot) }}</h3>
                 {{#each2 ../equipedItemsByType armorSlot as |item| }}
-                    <div>{{item.name}}</div>
-                    {{#each item.data.data.modifiers as |modifier| }}
-                        <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
-                    {{/each}}
-                    {{#each item.data.data.extraSkills as |extraSkill| }}
-                        <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
-                    {{/each}}
+                    <div class="icon"><img src="{{item.img}}"/></div>
+                    <div class="info">
+                        <div class="item-name">{{item.name}}</div>
+                        {{#each item.data.data.modifiers as |modifier| }}
+                            <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
+                        {{/each}}
+                        {{#each item.data.data.extraSkills as |extraSkill| }}
+                            <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
+                        {{/each}}
+                    </div>
                 {{/each2}}
             </div>
             {{#if (not @last) }}

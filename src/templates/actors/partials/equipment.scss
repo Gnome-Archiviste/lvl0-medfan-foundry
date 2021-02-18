@@ -49,15 +49,32 @@
 
   .equipment {
     .slot {
-      margin: 8px 0;
+      display: grid;
+      grid-template-areas: "title title" "icon info";
+      grid-template-columns: 32px 1fr;
+      grid-column-gap: 8px;
+      align-items: center;
+
       h3 {
         text-align: center;
+        grid-area: title;
       }
-      .modifier {
-        margin-left: 16px;
+
+      .icon {
+        grid-area: icon;
+        > img {
+          border: 0;
+        }
       }
-      .extra-skill {
-        margin-left: 16px;
+      .info {
+        grid-area: info;
+        margin: 8px 0;
+        .modifier {
+          margin-left: 16px;
+        }
+        .extra-skill {
+          margin-left: 16px;
+        }
       }
     }
     .separator {
@@ -97,13 +114,20 @@
         font-weight: bold;
       }
       display: grid;
-      grid-template-columns: 50px 1fr 100px 100px 100px;
-      grid-template-areas: "equiped name damage handCount clutter";
+      grid-template-columns: 50px 32px 1fr 100px 100px 100px;
+      grid-column-gap: 8px;
+      grid-template-areas: "equiped icon name damage handCount clutter";
       align-items: center;
 
       .equiped {
         justify-self: center;
         grid-area: equiped;
+      }
+
+      .icon {
+        > img {
+          border: 0;
+        }
       }
 
       .name {
