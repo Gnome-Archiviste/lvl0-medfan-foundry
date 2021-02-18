@@ -46,6 +46,7 @@
  * @property {ComputedCharacterLevelingData} leveling
  * @property {ComputedCharacterSkillsData} skills
  * @property {ComputedCharacterStatsData} stats
+ * @property {ComputedCharacterMagicData} magic
  */
 /**
  * @typedef {Object} ComputedCharacterSkillsData
@@ -56,6 +57,11 @@
 /**
  * @typedef {Object} ComputedCharacterBaseData
  * @property {RaceDefinition} race
+ * @property {JobDefinition} job
+ */
+/**
+ * @typedef {Object} ComputedCharacterMagicData
+ * @property {number} arcaneLevel
  */
 /**
  * @typedef {Object} ComputedCharacterStatsData
@@ -90,4 +96,10 @@
  * @property {boolean} display_subrace
  * @property {string} bonusStat
  * @property {string[]} extraSkillIds
+ */
+/**
+ * @typedef {Object} JobDefinition
+ * @property {string} name
+ * @property {boolean} display_element
+ * @property {number[]} arcaneLevels
  */

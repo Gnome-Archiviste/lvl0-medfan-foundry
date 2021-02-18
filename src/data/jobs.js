@@ -2,54 +2,55 @@ export default {
     base: {
         champion: {
             name: "Champion",
-            section: "champion",
-            display_element: false
+            display_element: false,
+            arcaneLevels: [
+                1, 4, 8, 13, 18, 23, 29, 36, 44, 53
+            ]
         },
         ranger: {
             name: "Forestier",
-            section: "ranger",
             display_element: false
         },
         warrior: {
             name: "Guerrier",
-            section: "warrior",
             display_element: false
         },
         mage: {
             name: "Magicien",
-            section: "mage",
-            display_element: false
+            display_element: false,
+            arcaneLevels: [
+                1, 4, 8, 13, 18, 23, 29, 36, 44, 53
+            ]
         },
         rogue: {
             name: "Voleur",
-            section: "rogue",
             display_element: false
         }
     },
     advance: {
         jester: {
             name: "Bouffon",
-            section: "mage",
+            baseJob: "mage",
             display_element: false
         },
         elementalist: {
             name: "Élémentaliste",
-            section: "mage",
+            baseJob: "mage",
             display_element: true
         },
         enchanter: {
             name: "Enchanteur",
-            section: "mage",
+            baseJob: "mage",
             display_element: false
         },
         necromancer: {
             name: "Nécromancien",
-            section: "mage",
+            baseJob: "mage",
             display_element: false
         },
         witch: {
             name: "Sorcière",
-            section: "mage",
+            baseJob: "mage",
             display_element: false
         }
     }

@@ -80,7 +80,11 @@
       "computedData": {
         "computedData": {
           "bases": {
-            "race": null
+            "race": null,
+            "job": null
+          },
+          "magic": {
+            "arcaneLevel": 0
           },
           "skills": {
             "maximumSkillPoints": {
