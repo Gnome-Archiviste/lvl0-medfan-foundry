@@ -1,7 +1,16 @@
 import skills from '../data/skills.js'
 import jobs from '../data/jobs.js'
+import races from '../data/races.js'
 
 export class Lvl0mfActorSheet extends ActorSheet {
+    /** @type Object.<string, SkillDefinition> */
+    static skillsByIds;
+    /** @type Object.<string, string> */
+    static jobsNamesById;
+    /** @type Object.<string, Object<string, RaceDefinition>> */
+    static races = races;
+    /** @type string[] */
+    static armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
     /** @override */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
@@ -17,10 +26,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
     /** @override */
     getData(options) {
         const data = super.getData(options);
-        let jobsNamesById = Object.entries(jobs.base).reduce(((previousValue, currentValue) => {
-            previousValue[currentValue[0]] = currentValue[1].name;
-            return previousValue;
-        }), {})
+
 
         let itemsByType = this.actor.itemTypes;
         let itemTypes = Object.keys(itemsByType);
@@ -33,24 +39,19 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 }
             }
         }
-        let skillsByIds = {};
-        for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
-            for (let [skillId, skill] of Object.entries(categorySkills)) {
-                skillsByIds[skillCategoryId + '.' + skillId] = skill;
-            }
-        }
-        let armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
 
         return {
             ...data,
             skills,
-            skillsByIds,
+            skillsByIds: Lvl0mfActorSheet.skillsByIds,
             jobs: jobs.base,
-            jobsNamesById: jobsNamesById,
+            jobsNamesById: Lvl0mfActorSheet.jobsNamesById,
+            races: Lvl0mfActorSheet.races,
+            racesByIds: Lvl0mfActorSheet.racesByIds,
             itemTypes,
             itemsByType,
             equipedItemsByType,
-            armorSlots
+            armorSlots: Lvl0mfActorSheet.armorSlots
         }
     }
 
@@ -82,5 +83,23 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 }
             });
         });
+    }
+}
+
+Lvl0mfActorSheet.skillsByIds = {};
+for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
+    for (let [skillId, skill] of Object.entries(categorySkills)) {
+        Lvl0mfActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
+    }
+}
+Lvl0mfActorSheet.jobsNamesById = Object.entries(jobs.base).reduce(((previousValue, currentValue) => {
+    previousValue[currentValue[0]] = currentValue[1].name;
+    return previousValue;
+}), {})
+
+Lvl0mfActorSheet.racesByIds = {};
+for (let raceCategory of Object.values(races)) {
+    for (let [raceId, race] of Object.entries(raceCategory)) {
+        Lvl0mfActorSheet.racesByIds[raceId] = race;
     }
 }

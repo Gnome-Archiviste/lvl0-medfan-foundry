@@ -137,5 +137,11 @@
   "LVL0MF.Items.Type.ring" : "Bagues",
   "LVL0MF.Items.Type.foot" : "Jambes / Pieds",
 
+  "LVL0MF.RaceCategory.base": "Bases",
+  "LVL0MF.RaceCategory.anthropomorph": "Anthropomorphes",
+  "LVL0MF.RaceCategory.fantastic": "Fantasques",
+  "LVL0MF.RaceCategory.goblinoids": "Goblinoïdes",
+  "LVL0MF.RaceCategory.monsters": "Autres monstres",
+
   "LVL0MF.End" : "Fin de la traduction"
 }

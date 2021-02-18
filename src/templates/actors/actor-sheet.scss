@@ -131,6 +131,15 @@
       }
     }
 
+    .sheet-race {
+      .sheet-value {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        grid-gap: 8px;
+      }
+    }
+
     .sheet-size,
     .sheet-level,
     .sheet-age {

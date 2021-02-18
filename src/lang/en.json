@@ -138,6 +138,13 @@
   "LVL0MF.Items.Type.ring" : "Rings",
   "LVL0MF.Items.Type.foot" : "Legs / Foot",
 
+  "LVL0MF.RaceCategory.base": "Bases",
+  "LVL0MF.RaceCategory.anthropomorph": "Anthropomorphs",
+  "LVL0MF.RaceCategory.fantastic": "Fantastics",
+  "LVL0MF.RaceCategory.goblinoids": "Goblinoids",
+  "LVL0MF.RaceCategory.monsters": "Other monsters",
+
+
   "LVL0MF.End" : "End of Translation"
 
 }

@@ -27,56 +27,31 @@
                         <label class="sheet-race">
                             <span class="sheet-label">Race</span>
                             <span class="sheet-value">
-                            <select name="data.race">
-                                <option>Choisir un race</option>
-                                <optgroup label="Bases">
-                                    <option value="Demi-Elfe">Demi-Elfe</option>
-                                    <option value="Elfe">Elfe</option>
-                                    <option value="Haufelin" >Haufelin</option>
-                                    <option value="Humain" >Humain</option>
-                                    <option value="Nain" >Nain</option>
-                                </optgroup>
-                                <optgroup label="Anthropomorphes" disabled>
-                                    <option value="Katacha">Katachas</option>
-                                    <option value="Canissabilys">Canissabilys</option>
-                                    <option value="Ekydeös">Ekydeös</option>
-                                    <option value="Gryvolier">Gryvolier</option>
-                                    <option value="Zélosaure">Zélosaure</option>
-                                </optgroup>
-                                <optgroup label="Fantasques" disabled>
-                                    <option value="Farfadet">Farfadet</option>
-                                    <option value="Fée">Fée</option>
-                                    <option value="Gnome">Gnome</option>
-                                    <option value="Lutin">Lutin</option>
-                                    <option value="Pooka">Pooka</option>
-                                </optgroup>
-                                <optgroup label="Goblinoïdes" disabled>
-                                    <option value="Demi-Ork">Demi-Ork</option>
-                                    <option value="Gobelin">Gobelin</option>
-                                    <option value="Hobgobelin">Hobgobelin</option>
-                                    <option value="Korringan">Korringan</option>
-                                    <option value="Ork">Ork</option>
-                                </optgroup>
-                                <optgroup label="Autres monstres" disabled>
-                                    <option value="Bonhem-Septar">Bonhem-Septar</option>
-                                    <option value="Cambion">Cambion</option>
-                                    <option value="Dokälben">Dokälben</option>
-                                    <option value="Knacker">Knacker</option>
-                                    <option value="Revenant">Revenant</option>
-                                </optgroup>
-                            </select>
-
-                            <input type="text" name="data.race.name" value={{ data.race.name }} disabled style="display: none;"/>
-                        </span>
+                                <select name="data.race.id" data-dtype="String">
+                                    <option>Choisir une race</option>
+                                    {{#select data.race.id}}
+                                        {{#each races as |raceCategory| }}
+                                            <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
+                                                {{#each raceCategory as | race |}}
+                                                    <option value="{{@key}}">{{race.name}}</option>
+                                                {{/each}}
+                                            </optgroup>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                                {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
+                                    <input type="text" name="data.race.name" value="{{ data.race.name }}" />
+                                {{/if}}
+                            </span>
                         </label>
                         <label class="sheet-job">
                             <span class="sheet-label">Classe:</span>
                             <span class="sheet-value">
-                            <select name="data.job.id" data-dtype="String">
-                                {{selectOptions jobsNamesById selected=data.job.id}}
-                            </select>
-                            <input type="text" name="data.job.element" disabled style="display: none;"/>
-                        </span>
+                                <select name="data.job.id" data-dtype="String">
+                                    {{selectOptions jobsNamesById selected=data.job.id}}
+                                </select>
+                                <input type="text" name="data.job.element" disabled style="display: none;"/>
+                            </span>
                         </label>
 
                         <label class="sheet-age">

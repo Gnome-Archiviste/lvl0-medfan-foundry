@@ -78,3 +78,8 @@
  * @property {boolean} master
  * @property {boolean} prodigy
  */
+/**
+ * @typedef {Object} RaceDefinition
+ * @property {string} name
+ * @property {boolean} display_subrace
+ */
