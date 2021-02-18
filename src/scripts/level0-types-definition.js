@@ -42,6 +42,7 @@
  */
 /**
  * @typedef {Object} ComputedCharacterData
+ * @property {ComputedCharacterBaseData} bases
  * @property {ComputedCharacterLevelingData} leveling
  * @property {ComputedCharacterSkillsData} skills
  * @property {ComputedCharacterStatsData} stats
@@ -51,6 +52,10 @@
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
  * @property {string[]} extraSkills
+ */
+/**
+ * @typedef {Object} ComputedCharacterBaseData
+ * @property {RaceDefinition} race
  */
 /**
  * @typedef {Object} ComputedCharacterStatsData
@@ -83,4 +88,6 @@
  * @typedef {Object} RaceDefinition
  * @property {string} name
  * @property {boolean} display_subrace
+ * @property {string} bonusStat
+ * @property {string[]} extraSkillIds
  */

@@ -18,11 +18,11 @@
                     <section class="sheet-header">
                         <label class="sheet-character-name">
                             <span class="sheet-label">Nom</span>
-                            <span class="sheet-value"><input type="text" name="data.character.name" value="{{data.character.name}}"/></span>
+                            <span class="sheet-value"><input type="text" name="name" data-dtype="String" value="{{actor.name}}"/></span>
                         </label>
                         <label class="sheet-player-name">
                             <span class="sheet-label">Joueur</span>
-                            <span class="sheet-value"><input type="text" name="data.player.name" value="{{data.player.name}}"/></span>
+                            <span class="sheet-value"><input type="text" name="data.player.name" data-dtype="String" value="{{data.player.name}}"/></span>
                         </label>
                         <label class="sheet-race">
                             <span class="sheet-label">Race</span>
@@ -85,28 +85,53 @@
                             <div class="sheet-">Armure</div>
                         </section>
                         <label class="sheet-stat stat-phy">
-                            <span class="sheet-label">Physique</span>
+                            <span class="sheet-label">
+                                Physique
+                                {{#if (eq data.computedData.bases.race.bonusStat "phy")}}
+                                    <span>*</span>
+                                {{/if}}
+                            </span>
                             <span class="sheet-base"><input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.phy.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-dex">
-                            <span class="sheet-label">Dextérité</span>
+                            <span class="sheet-label">
+                                Dextérité
+                                {{#if (eq data.computedData.bases.race.bonusStat "dex")}}
+                                    <span>*</span>
+                                {{/if}}
+                            </span>
                             <span class="sheet-base"><input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.dex.bonus}}</span>
                             <span class="sheet-armor-mod">{{data.computedData.stats.baseStats.dex.armor}}</span>
                         </label>
                         <label class="sheet-stat stat-int">
-                            <span class="sheet-label">Intelligence</span>
+                            <span class="sheet-label">
+                                Intelligence
+                                {{#if (eq data.computedData.bases.race.bonusStat "int")}}
+                                    <span>*</span>
+                                {{/if}}
+                            </span>
                             <span class="sheet-base"><input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.int.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-cha">
-                            <span class="sheet-label">Charisme</span>
+                            <span class="sheet-label">
+                                Charisme
+                                {{#if (eq data.computedData.bases.race.bonusStat "cha")}}
+                                    <span>*</span>
+                                {{/if}}
+                            </span>
                             <span class="sheet-base"><input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.cha.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-per">
-                            <span class="sheet-label">Perception</span>
+                            <span class="sheet-label">
+                                Perception
+                                {{#if (eq data.computedData.bases.race.bonusStat "per")}}
+                                    <span>*</span>
+                                {{/if}}
+                            </span>
                             <span class="sheet-base"><input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.per.bonus}}</span>
                         </label>

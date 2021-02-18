@@ -79,6 +79,9 @@
       },
       "computedData": {
         "computedData": {
+          "bases": {
+            "race": null
+          },
           "skills": {
             "maximumSkillPoints": {
               "combat": 0,

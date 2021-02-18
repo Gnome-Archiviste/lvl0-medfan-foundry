@@ -142,6 +142,11 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
                 }
             }
         }
+
+        if (actorData.computedData.bases.race?.extraSkillIds) {
+            extraSkillIds = [...extraSkillIds].concat(actorData.computedData.bases.race?.extraSkillIds);
+        }
+
         actorData.computedData.skills.extraSkills = extraSkillIds;
     }
 }
