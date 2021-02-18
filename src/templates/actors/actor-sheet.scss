@@ -43,6 +43,10 @@
       grid-area: xp;
     }
 
+    .sheet-logo {
+      grid-area: logo;
+    }
+
     .sheet-specialities-skills {
       grid-area: specialities-skills;
     }
@@ -372,5 +376,25 @@
     }
   }
 
+  .sheet-logo {
+    display: grid;
+    grid-template-areas: "logo";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .logo {
+      grid-area: logo;
+      opacity: 0.2;
+    }
+
+    .character-face {
+      z-index: 1;
+      grid-area: logo;
+      > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 
