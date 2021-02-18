@@ -72,6 +72,21 @@ export class Lvl0mfActorSheet extends ActorSheet {
             const item = this.actor.getOwnedItem(itemId);
             item.update({data: {equiped: !item.data.data.equiped}});
         });
+        html.find('[data-update-item-quantity]').change(ev => {
+            const itemId = $(ev.currentTarget).data('update-item-quantity');
+            const item = this.actor.getOwnedItem(itemId);
+            let newQuantity = $(ev.currentTarget).val();
+            if (newQuantity.startsWith('+')) {
+                newQuantity = item.data.data.quantity + (+newQuantity.substr(1));
+            } else if (newQuantity.startsWith('-')) {
+                newQuantity = item.data.data.quantity - (+newQuantity.substr(1));
+            } else {
+                newQuantity = +newQuantity;
+            }
+            item.update({data: {quantity: newQuantity}});
+            ev.stopImmediatePropagation();
+            ev.stopPropagation();
+        });
 
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
