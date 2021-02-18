@@ -173,6 +173,7 @@
     ],
     "templates": {
       "base": {
+        "equiped": false,
         "price": 0,
         "description": "",
         "details": "",
