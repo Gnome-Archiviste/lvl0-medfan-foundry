@@ -55,6 +55,7 @@
 /**
  * @typedef {Object} ComputedCharacterStatsData
  * @property {ComputedCharacterBaseStatsData} baseStats
+ * @property {{value: number}} armor
  * @property {{value: number}} movement
  */
 /**

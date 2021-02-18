@@ -100,6 +100,9 @@
             "movement": {
               "value": 0
             },
+            "armor": {
+              "value": 0
+            },
             "baseStats": {
               "phy": {
                 "bonus": 0,

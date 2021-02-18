@@ -9,6 +9,7 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
     compute(actorData, actor) {
         let bonusPerStat = {};
         let armorMalus = 0;
+        let armorValue = 0;
         for (let item of actor.items) {
             if (!item.data.data.equiped)
                 continue;
@@ -20,6 +21,7 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             }
             if (item.type === 'armor') {
                 armorMalus += item.data.data.dexMalus;
+                armorValue += +item.data.data.protection;
             }
         }
 
@@ -35,5 +37,6 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             actorData.computedData.stats.baseStats[statsName].value = actorData.baseStats[statsName].value + bonus - armor;
         }
         actorData.computedData.stats.movement.value = actorData.computedData.stats.baseStats.phy.value + actorData.computedData.stats.baseStats.dex.value;
+        actorData.computedData.stats.armor.value = +armorValue + (bonusPerStat['protection'] || 0);
     }
 }

@@ -210,6 +210,10 @@
 
   }
 
+  .sheet-value {
+    font-size: 22px;
+  }
+
   .sheet-mv {
     border: 1px solid black;
     display: grid;
@@ -221,10 +225,6 @@
       align-items: center;
       justify-items: center;
       font-weight: bold;
-    }
-
-    .sheet-value {
-      font-size: 22px;
     }
   }
 
@@ -250,7 +250,7 @@
       display: grid;
       grid-template-rows: auto 1fr;
       grid-template-columns: 1fr;
-      align-items: center;
+      align-items: center;;
     }
 
     .sheet-health-max {
@@ -271,6 +271,9 @@
       display: grid;
       grid-area: armor;
       border-top: 1px solid black;
+      .sheet-value {
+        justify-self: center;
+      }
     }
   }
 
