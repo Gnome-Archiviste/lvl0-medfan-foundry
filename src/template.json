@@ -14,11 +14,13 @@
         },
         "health": {
           "min": 0,
-          "value": 10
+          "value": 10,
+          "max": 10
         },
         "mana": {
           "min": 0,
-          "value": 0
+          "value": 0,
+          "max": 0
         },
         "experience": {
           "min": 0,
