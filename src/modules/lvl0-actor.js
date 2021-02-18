@@ -25,3 +25,9 @@ export class Lvl0Actor extends Actor {
         }
     }
 }
+
+Hooks.on("preCreateOwnedItem", async (actor, itemData, options) => {
+    if (itemData.data.quantifiable) {
+        itemData.data.quantity = 1;
+    }
+});

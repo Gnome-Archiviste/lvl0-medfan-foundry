@@ -14,7 +14,9 @@
                 <img src="{{item.img}}"/>
             </div>
             <div class="quantity">
-                {{item.data.quantity}}
+                {{#if item.data.quantifiable}}
+                    {{item.data.quantity}}
+                {{/if}}
             </div>
             <div class="name">
                 <div>
