@@ -152,6 +152,10 @@ export default {
             name: "Gymnastique",
             stat: "dex"
         },
+        herbalist: {
+            name: "Herboriste",
+            stat: "dex"
+        },
         langage: {
             name: "Langage",
             stat: "int"
