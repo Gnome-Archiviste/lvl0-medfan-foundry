@@ -20,16 +20,18 @@
             </div>
             <div class="name">
                 <div>
-                    {{item.name}}
-                </div>
-                <div>
+                    <span class="title">
+                        {{item.name}}
+                    </span>
                     {{#if item.data.damage}}
-                        <span>
-                            {{item.data.damage}}
+                        <span class="damage">
+                            Dégâts: {{item.data.damage}}
                         </span>
                     {{/if}}
+                </div>
+                <div>
                     {{#if item.data.description}}
-                        <span>
+                        <span class="description">
                             {{item.data.description}}
                         </span>
                     {{/if}}

@@ -29,6 +29,16 @@
 
     .name {
       grid-area: name;
+      .title {
+        font-weight: bold;
+      }
+      .damage {
+
+      }
+
+      .description {
+        color: #555;
+      }
     }
 
     .clutter {

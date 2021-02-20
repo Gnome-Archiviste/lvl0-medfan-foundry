@@ -26,15 +26,17 @@
             <div class="slot" class="{{armorSlot}}">
                 <h3>{{localize (concat2 'LVL0MF.Items.Type.' armorSlot) }}</h3>
                 {{#each2 ../equipedItemsByType armorSlot as |item| }}
-                    <div class="icon"><img src="{{item.img}}"/></div>
-                    <div class="info">
-                        <div class="item-name">{{item.name}}</div>
-                        {{#each item.data.data.modifiers as |modifier| }}
-                            <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
-                        {{/each}}
-                        {{#each item.data.data.extraSkills as |extraSkill| }}
-                            <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
-                        {{/each}}
+                    <div class="slot-line">
+                        <div class="icon"><img src="{{item.img}}"/></div>
+                        <div class="info">
+                            <div class="item-name">{{item.name}}</div>
+                            {{#each item.data.data.modifiers as |modifier| }}
+                                <div class="modifier"><span class="stat-{{modifier.stat}}">{{upperFirstLetter modifier.stat}}</span> + {{modifier.value}}</div>
+                            {{/each}}
+                            {{#each item.data.data.extraSkills as |extraSkill| }}
+                                <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
+                            {{/each}}
+                        </div>
                     </div>
                 {{/each2}}
             </div>
@@ -48,45 +50,96 @@
         <h3>Flèche spéciales</h3>
         <div class="info">Encombrement: 1 pour 10 flèches</div>
         <div class="content">
-
+            {{#each itemsByType.ammunition as |item| }}
+                {{#if (eq item.data.data.ammunitionType 'arrow')}}
+                    <div class="ammunition-line">
+                        <div class="quantity">
+                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
+                        </div>
+                        <div class="icon"><img src="{{item.img}}"/></div>
+                        <div class="name">
+                            <div class="title">{{item.name}}</div>
+                            {{#if item.data.data.description}}
+                                <div class="description">{{item.data.data.description}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
         </div>
     </section>
     <section class="dart">
         <h3>Billes et dards spéciales</h3>
         <div class="info">Encombrement: 1 pour 20 billes/dard</div>
-        <div class="content"></div>
+        <div class="content">
+            {{#each itemsByType.ammunition as |item| }}
+                {{#if (or (eq item.data.data.ammunitionType 'marble') (eq item.data.data.ammunitionType 'dart'))}}
+                    <div class="ammunition-line">
+                        <div class="quantity">
+                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
+                        </div>
+                        <div class="icon"><img src="{{item.img}}"/></div>
+                        <div class="name">
+                            <div class="title">{{item.name}}</div>
+                            {{#if item.data.data.description}}
+                                <div class="description">{{item.data.data.description}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
     </section>
     <section class="ration">
         <h3>Rations</h3>
         <div class="info">Encombrement: 1 pour 5 jours</div>
-        <div class="content"></div>
+        <div class="content">
+            <input name="data.staticInventory.rationCount" type="number" data-dtype="Number" value="{{data.staticInventory.rationCount}}" />
+        </div>
     </section>
     <section class="torch">
         <h3>Torches</h3>
         <div class="info">Encombrement: 1 pour 4 torches</div>
-        <div class="content"></div>
+        <div class="content">
+            <input name="data.staticInventory.torchCount" type="number" data-dtype="Number" value="{{data.staticInventory.torchCount}}" />
+        </div>
     </section>
     <section class="potions">
         <h3>Potions</h3>
         <div class="info">Encombrement: 1 pour 2 potions</div>
-        <div class="content"></div>
+        <div class="content">
+            {{#each itemsByType.potions as |item| }}
+                <div class="ammunition-line">
+                    <div class="quantity">
+                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
+                    </div>
+                    <div class="icon"><img src="{{item.img}}"/></div>
+                    <div class="name">
+                        <div class="title">{{item.name}}</div>
+                        {{#if item.data.data.description}}
+                            <div class="description">{{item.data.data.description}}</div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
     </section>
     <section class="money">
         <h3>Argent</h3>
         <div class="money">
-            <div class="title">Unitaire</div>
+            <div class="title">Pièces</div>
             <div class="value"><input name="data.staticInventory.money" type="number" data-dtype="Number" value="{{data.staticInventory.money}}" /></div>
         </div>
         <div class="money">
-            <div class="title">100</div>
+            <div class="title">Plaquette (100 oricaux)</div>
             <div class="value"><input name="data.staticInventory.money100" type="number" data-dtype="Number" value="{{data.staticInventory.money100}}" /></div>
         </div>
         <div class="money">
-            <div class="title">500</div>
+            <div class="title">Plaquette (500 oricaux)</div>
             <div class="value"><input name="data.staticInventory.money500" type="number" data-dtype="Number" value="{{data.staticInventory.money500}}" /></div>
         </div>
         <div class="money">
-            <div class="title">1000</div>
+            <div class="title">Plaquette (1000 oricaux)</div>
             <div class="value"><input name="data.staticInventory.money1000" type="number" data-dtype="Number" value="{{data.staticInventory.money1000}}" /></div>
         </div>
     </section>

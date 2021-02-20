@@ -230,6 +230,9 @@
     "foot": {
       "templates": ["base" ,"statModifiers", "extraSkills"]
     },
+    "potions": {
+      "templates": ["base"]
+    },
     "ring": {
       "templates": ["base" ,"statModifiers", "extraSkills"]
     },
