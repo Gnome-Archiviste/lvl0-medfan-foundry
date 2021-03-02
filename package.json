@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "scss": "./node_modules/.bin/node-sass src/templates/style.scss -o src/css --output-style compressed --sourceMap true",
-    "scss:dev": "./node_modules/.bin/node-sass src/templates/style.scss -o src/css --output-style compressed --sourceMap true --watch"
+    "scss": "./node_modules/.bin/node-sass templates/style.scss -o css --output-style compressed --sourceMap true",
+    "scss:dev": "./node_modules/.bin/node-sass templates/style.scss -o css --output-style compressed --sourceMap true --watch"
   },
   "devDependencies": {
     "handlebars": "^4.7.6",
