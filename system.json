@@ -34,7 +34,7 @@
   "secondaryTokenAttribute": "mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
   "manifest": "raw.githubusercontent.com/Gnome-Archiviste/lvl0-medfan-foundry/master/system.json",
-  "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/archive/v0.0.7.zip",
+  "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/archive/0.1.1.zip",
   "allowBugReporter": true,
   "bugs": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/issues"
 }
