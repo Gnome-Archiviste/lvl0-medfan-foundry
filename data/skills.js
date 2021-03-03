@@ -15,7 +15,11 @@ export default {
         detect_motivation: {
             name: "Détection motivation",
             stat: "int"
-        }
+        },
+        spellcasting: {
+            name: "Sortilège",
+            stat: "cha"
+        },
     },
     ranger: {
         stealth: {
@@ -69,7 +73,11 @@ export default {
         detect_magic: {
             name: "Détection de la magie",
             stat: "per"
-        }
+        },
+        spell_casting: {
+            name: "Sortilège",
+            stat: "cha"
+        },
     },
     rogue: {
         move_silently: {
