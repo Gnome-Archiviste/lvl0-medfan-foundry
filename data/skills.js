@@ -76,7 +76,7 @@ export default {
         },
         spell_casting: {
             name: "Sortilège",
-            stat: "cha"
+            stat: "int"
         },
     },
     rogue: {
