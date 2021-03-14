@@ -21,7 +21,10 @@ export class LevelingCharacterDataComputer extends CharacterDataComputer {
             actorData.computedData.leveling.canUseProdigy = true;
         }
 
-        if (actorData.level.value < 25)
+
+        if (actorData.level.value < 1)
+            actorData.computedData.leveling.nextLevelExperience = 0;
+        else if (actorData.level.value < 25)
             actorData.computedData.leveling.nextLevelExperience = 10;
         else if (actorData.level.value < 50)
             actorData.computedData.leveling.nextLevelExperience = 15;

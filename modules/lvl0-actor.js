@@ -3,6 +3,8 @@ import {SkillsCharacterDataComputer} from "./actor-data-computers/character/skil
 import {StatsCharacterDataComputer} from "./actor-data-computers/character/stats-character-data-computer.js";
 import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-character-data-computer.js";
 import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer.js";
+import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
+import {LevelUpDialog} from "./ui/level-up-dialog.js";
 
 const actorDataComputers = [
     new BaseCharacterDataComputer(),
@@ -10,6 +12,7 @@ const actorDataComputers = [
     new SkillsCharacterDataComputer(),
     new StatsCharacterDataComputer(),
     new MagicCharacterDataComputer(),
+    new HealthManaDataComputer(),
 ];
 
 export class Lvl0Actor extends Actor {
@@ -23,6 +26,41 @@ export class Lvl0Actor extends Actor {
                 actorDataComputer.compute(actorData.data, this);
             }
         }
+    }
+
+    openLevelUpPopup() {
+        /** @type {Lvl0CharacterData} */
+        let actorData = this.data.data;
+        let fromLevel = +actorData.level.value;
+        let toLevel = fromLevel + 1;
+
+        let additionalHealth = actorData.computedData.bases.job.healthLevels[toLevel - 1];
+        let additionalMana = actorData.computedData.bases.job.manaLevels[toLevel - 1];
+        let hasNewSpeciality = actorData.computedData.bases.job.specialityLevels.indexOf(toLevel) === -1;
+
+        let levelUpData = {
+            toLevel,
+            additionalHealth,
+            additionalMana,
+            hasNewSpeciality
+        }
+
+        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, (levelUpResultData) => {
+            this.doLevelUp(toLevel, actorData, levelUpResultData);
+        });
+        levelUpDialog.render(true);
+    }
+
+    doLevelUp(level, actorData, levelUpResultData) {
+        this.update({data: {
+            level: {value: level},
+            health: {value: actorData.health.value + (levelUpResultData.health || 0)},
+            mana: {value: actorData.mana.value + (levelUpResultData.mana || 0)},
+            experience: {value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience},
+            levelUpData: {
+                [level]: levelUpResultData
+            }}
+        }, {diff: true});
     }
 }
 

@@ -64,3 +64,9 @@ Handlebars.registerHelper('toUpperCase', function (value) {
 Handlebars.registerHelper('upperFirstLetter', function (value) {
     return value[0].toUpperCase() + value.substr(1);
 });
+Handlebars.registerHelper('times', function(n, block) {
+    let accum = '';
+    for(let i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});

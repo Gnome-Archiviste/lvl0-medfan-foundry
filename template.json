@@ -14,7 +14,7 @@
         },
         "health": {
           "min": 0,
-          "value": 10,
+          "value": 0,
           "max": 10
         },
         "mana": {
@@ -27,7 +27,7 @@
           "value": 10
         },
         "level": {
-          "value": 1
+          "value": 0
         },
         "age": {
           "value": 1
@@ -77,6 +77,12 @@
           "money100": 0,
           "money500": 0,
           "money1000": 0
+        }
+      },
+      "levelUpData": {
+        "levelUpData": {
+          "levels": {
+          }
         }
       },
       "computedData": {

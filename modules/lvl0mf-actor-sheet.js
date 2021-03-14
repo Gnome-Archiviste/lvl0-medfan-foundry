@@ -27,7 +27,6 @@ export class Lvl0mfActorSheet extends ActorSheet {
     getData(options) {
         const data = super.getData(options);
 
-
         let itemsByType = this.actor.itemTypes;
         let itemTypes = Object.keys(itemsByType);
         let equipedItemsByType = {};
@@ -40,9 +39,14 @@ export class Lvl0mfActorSheet extends ActorSheet {
             }
         }
 
+        let canSelectJob = data.data.level.value === 0;
+        let canLevelUp = this.canLevelUp(data.data);
+
         return {
             ...data,
             skills,
+            canLevelUp,
+            canSelectJob,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
             jobs: jobs.base,
             jobsNamesById: Lvl0mfActorSheet.jobsNamesById,
@@ -88,6 +92,13 @@ export class Lvl0mfActorSheet extends ActorSheet {
             ev.stopPropagation();
         });
 
+        html.find('[data-action]').click(ev => {
+            switch (ev.target.dataset.action) {
+                case "levelUp":
+                    this.actor.openLevelUpPopup();
+            }
+        });
+
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
             const itemLine = $(ev.currentTarget).parents(".item-line");
@@ -98,6 +109,23 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 }
             });
         });
+    }
+
+    /**
+     * @param {Lvl0CharacterData} data
+     */
+    canLevelUp(data) {
+        if (data.baseStats.dex.value === 0)
+            return false;
+        if (data.baseStats.cha.value === 0)
+            return false;
+        if (data.baseStats.int.value === 0)
+            return false;
+        if (data.baseStats.per.value === 0)
+            return false;
+        if (data.baseStats.phy.value === 0)
+            return false;
+        return data.experience.value > data.computedData.leveling.nextLevelExperience
     }
 }
 

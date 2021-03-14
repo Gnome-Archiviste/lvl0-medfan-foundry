@@ -1,0 +1,43 @@
+<div class="level-up-dialog">
+    <h3>Passage au niveau <strong>{{toLevel}}</strong></h3>
+    <div>
+        {{#if additionalHealth.value}}
+            <div>
+                Gain de {{additionalHealth.value}} point(s) de vie
+            </div>
+        {{/if}}
+        {{#if additionalHealth.diceCount}}
+            <div class="dices">
+                Gain de {{additionalHealth.diceCount}}d6 point(s) de vie
+                <div class="inputs">
+                    {{#times additionalHealth.diceCount}}
+                        <input type="number" value="{{lookup ../diceData (concat2 'health-' @this) }}" data-dice-health="{{this}}"/>
+                    {{/times}}
+                    <button data-action="rollHealthDice">Rouler les dés</button>
+                </div>
+            </div>
+        {{/if}}
+        {{#if additionalMana.value}}
+            <div>
+                Gain de {{additionalMana.value}} point(s) de magie
+            </div>
+        {{/if}}
+        {{#if additionalMana.diceCount}}
+            <div class="dices">
+                <div>
+                    Gain de {{additionalMana.diceCount}}d6 point(s) de magie
+                </div>
+                <div class="inputs">
+                    {{#times additionalMana.diceCount}}
+                        <input type="number" value="{{lookup ../diceData (concat2 'mana-' @this) }}" data-dice-mana="{{this}}"/>
+                    {{/times}}
+                    <button data-action="rollManaDice">Rouler les dés</button>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+    <div class="actions">
+        <button data-action="cancel">Annuler</button>
+        <button data-action="confirm" {{#if (not ready)}}disabled{{/if}}>Valider</button>
+    </div>
+</div>

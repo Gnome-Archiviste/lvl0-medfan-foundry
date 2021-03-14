@@ -262,6 +262,9 @@
       grid-area: maximum;
       border-top: 1px solid black;
       border-right: 1px solid black;
+      .sheet-value {
+        justify-self: center;
+      }
     }
 
     .sheet-health-damage {
@@ -311,6 +314,9 @@
       grid-area: maximum;
       border-top: 1px solid black;
       border-right: 1px solid black;
+      .sheet-value {
+        justify-self: center;
+      }
     }
 
     .sheet-magic-left {

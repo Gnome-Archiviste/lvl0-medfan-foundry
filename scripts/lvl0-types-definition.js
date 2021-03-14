@@ -26,6 +26,7 @@
 /**
  * @typedef {Object} Lvl0CharacterData
  * @property {ComputedCharacterData} computedData
+ * @property {LevelUpData} levelUpData
  * @property {Object.<string, Object.<string, SkillValue>>} skills
  * @property {Statistics} baseStats
  * @property {MinMaxValue} health
@@ -34,6 +35,16 @@
  * @property {Value} experience
  * @property {JobData} job
  * @property {string} race
+ */
+/**
+ * @typedef {Object} LevelUpData
+ * @property {Object.<number, LevelData>} levels
+ */
+/**
+ * @typedef {Object} LevelData
+ * @property {number} health
+ * @property {number} mana
+ * @property {string} specialityId
  */
 /**
  * @typedef {Object} SkillDefinition
@@ -101,5 +112,8 @@
  * @typedef {Object} JobDefinition
  * @property {string} name
  * @property {boolean} display_element
+ * @property {{value: number, useStatValue: string, diceCount: number}[]} healthLevels
+ * @property {{value: number, useStatValue: string, diceCount: number}[]} manaLevels
  * @property {number[]} arcaneLevels
+ * @property {number[]} specialityLevels
  */

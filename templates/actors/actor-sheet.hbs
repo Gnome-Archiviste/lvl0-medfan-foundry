@@ -47,9 +47,14 @@
                         <label class="sheet-job">
                             <span class="sheet-label">Classe:</span>
                             <span class="sheet-value">
-                                <select name="data.job.id" data-dtype="String">
-                                    {{selectOptions jobsNamesById selected=data.job.id}}
-                                </select>
+                                {{#if canSelectJob}}
+                                    <select name="data.job.id" data-dtype="String">
+                                        {{selectOptions jobsNamesById selected=data.job.id}}
+                                    </select>
+                                {{/if}}
+                                {{#if (not canSelectJob)}}
+                                    {{data.computedData.bases.job.name}}
+                                {{/if}}
                                 <input type="text" name="data.job.element" disabled style="display: none;"/>
                             </span>
                         </label>
@@ -60,7 +65,7 @@
                         </label>
                         <label class="sheet-level">
                             <span class="sheet-label">Niveau</span>
-                            <span class="sheet-value"><input type="text" name="data.level.value" value="{{data.level.value}}" data-dtype="Number" placeholder="1" maxlength="4"/></span>
+                            <span class="sheet-value">{{data.level.value}}</span>
                         </label>
                         <label class="sheet-size">
                             <span class="sheet-label">Taille</span>
@@ -149,7 +154,7 @@
                         <h3>Point de vie</h3>
                         <label class="sheet-health-max">
                             <div class="sheet-label">Maximum</div>
-                            <div class="sheet-value"><input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
+                            <div class="sheet-value">{{data.health.max}}</div>
                         </label>
                         <label class="sheet-health-damage">
                             <div class="sheet-label">Restant</div>
@@ -172,7 +177,7 @@
                         <h3>Point de mana</h3>
                         <label class="sheet-magic-max">
                             <div class="sheet-label">Maximum</div>
-                            <div class="sheet-value"><input type="text" name="data.mana.max" value="{{data.mana.max}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
+                            <div class="sheet-value">{{data.mana.max}}</div>
                         </label>
                         <label class="sheet-magic-left">
                             <div class="sheet-label">Restant</div>
@@ -187,11 +192,16 @@
                     <section class="sheet-xp">
                         <h3>Expérience</h3>
                         <label class="sheet-xp-value">
-                            <span class="sheet-value"><input type="text" name="data.attributes.experience" value="{{data.attributes.experience}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                            <span class="sheet-value"><input type="text" name="data.experience.value" value="{{data.experience.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
                         </label>
-                        <label class="sheet-xp-to-next-level">
+                        <div class="sheet-xp-to-next-level">
                             <span>Prochain niveau: {{data.computedData.leveling.nextLevelExperience}} xp</span>
-                        </label>
+                        </div>
+                        {{#if canLevelUp}}
+                            <div>
+                                <button data-action="levelUp">Level up</button>
+                            </div>
+                        {{/if}}
                     </section>
                     <section class="sheet-specialities-skills">
                         {{> "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs"}}
