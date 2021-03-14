@@ -136,6 +136,7 @@
   "LVL0MF.Items.Type.hand" : "Avant-bras / Mains",
   "LVL0MF.Items.Type.head" : "Tête",
   "LVL0MF.Items.Type.magical" : "Objet magiques",
+  "LVL0MF.Items.Type.misc" : "Objet commun",
   "LVL0MF.Items.Type.money" : "Oricaux",
   "LVL0MF.Items.Type.necklace" : "Cou",
   "LVL0MF.Items.Type.potions" : "Potions",

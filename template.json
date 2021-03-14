@@ -179,6 +179,7 @@
       "hand",
       "head",
       "magical",
+      "misc",
       "necklace",
       "potions",
       "ring",
@@ -248,6 +249,9 @@
     },
     "ring": {
       "templates": ["base" ,"statModifiers", "extraSkills"]
+    },
+    "misc": {
+      "templates": ["base"]
     },
     "shield": {
       "templates": ["base"],
