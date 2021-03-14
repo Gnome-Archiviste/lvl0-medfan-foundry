@@ -57,7 +57,7 @@ export default {
         two_handed_combat: {
             name: "Combat à deux mains",
             stat: "phy",
-            description: "ermet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées  ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains."
+            description: "ermet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains."
         },
         intimidation: {
             name: "Intimidation",
@@ -89,7 +89,7 @@ export default {
         detect_magic: {
             name: "Détection de la magie",
             stat: "per",
-            description: "Grâce à son habitude de  travailler avec la magie, le magicien est capable de distinguer l’aura magique des objets."
+            description: "Grâce à son habitude de travailler avec la magie, le magicien est capable de distinguer l’aura magique des objets."
         },
         spell_casting: {
             name: "Sortilège",
@@ -123,7 +123,7 @@ export default {
         hand_combat: {
             name: "Combat mains nues",
             stat: "phy",
-            description: "Le personnage a une certaine connaissance des techniques de combat sans arme. Cette habileté sert aussi aux magiciens pour lancer un sort où il faut toucher physiquement la cible. Dans ce cas on la combine avec la caractéristique d’intelligence. S’applique : le combat de rue (+PHY), la boxe (+PHY), les sorts touchés (+intelligence), etc."
+            description: "Le personnage a une certaine connaissance des techniques de combat sans arme. S’applique : le combat de rue (+PHY), la boxe (+PHY), etc."
         },
         melee_combat: {
             name: "Combat mêlée",
@@ -133,7 +133,7 @@ export default {
         throw_shoot: {
             name: "Lancer/ tir",
             stat: "dex",
-            description: "Le personnage a une certaine connaissance des techniques de combat armé au tir. Cette habileté sert aussi aux magiciens pour lancer un sort qui se fait à distance. Dans ce cas on la combine avec la caractéristique d’intelligence. S’applique : arc, fronde, dagues de lancé, hache de lancé (+DEX), sorts lancés (+INT)."
+            description: "Le personnage a une certaine connaissance des techniques de combat armé au tir. S’applique : arc, fronde, dagues de lancé, hache de lancé."
         },
         dodge: {
             name: "Éviter",
