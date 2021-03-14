@@ -1,6 +1,7 @@
 import skills from '../data/skills.js'
 import jobs from '../data/jobs.js'
 import races from '../data/races.js'
+import {RollSkillManager} from "./managers/roll-skill-manager.js";
 
 export class Lvl0mfActorSheet extends ActorSheet {
     /** @type Object.<string, SkillDefinition> */
@@ -111,6 +112,8 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 }
             });
         });
+
+        new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-skill]", this._getSkillContextMenu());
     }
 
     /**
@@ -128,6 +131,30 @@ export class Lvl0mfActorSheet extends ActorSheet {
         if (data.baseStats.phy.value === 0)
             return false;
         return data.experience.value >= data.computedData.leveling.nextLevelExperience
+    }
+
+    _getSkillContextMenu() {
+
+        return [
+            {
+                name: 'Lancer les dés',
+                icon: '<i class="fas fa-dice"></i>',
+                callback: el => {
+                    rollSkillManager.rollSkill(this.actor.getActiveTokens()[0] || game.token, el.data('skill'));
+                }
+            },
+            {
+                name: 'Créer une macro',
+                icon: '<i class="fas fa-scroll"></i>',
+                callback: async el => {
+                    let skillId = el.data('skill');
+                    let skillDefinition = rollSkillManager.getSkillFromId(skillId);
+                    const macro = await Macro.create({name: skillDefinition.name, type: "script", scope: "global", command: `rollSkillManager.rollSkill(token, '${skillId}')`});
+                    let freeSlot = Array.fromRange(50).map(i => i + 1).find(i => !(i in game.user.data.hotbar) || !game.macros.get(game.user.data.hotbar[i]));
+                    await game.user.assignHotbarMacro(macro, freeSlot);
+                }
+            }
+        ]
     }
 }
 
