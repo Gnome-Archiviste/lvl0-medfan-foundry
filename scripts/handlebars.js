@@ -70,3 +70,10 @@ Handlebars.registerHelper('times', function(n, block) {
         accum += block.fn(i);
     return accum;
 });
+
+Handlebars.registerHelper('letterFromA', function (value) {
+    return String.fromCharCode('A'.charCodeAt(0) + value);
+});
+Handlebars.registerHelper('ternary', function(cond, v1, v2) {
+    return cond ? v1 : v2;
+});

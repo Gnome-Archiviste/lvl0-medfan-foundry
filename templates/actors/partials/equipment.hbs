@@ -14,7 +14,14 @@
                     <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
                 </div>
                 <div class="icon"><img src="{{item.img}}"/></div>
-                <div class="name">{{item.name}}</div>
+                <div class="name">
+                    <div class="title">{{item.name}}</div>
+                    {{#if item.data.data.description}}
+                        <div class="description">
+                            {{item.data.data.description}}
+                        </div>
+                    {{/if}}
+                </div>
                 <div class="handCount">{{item.data.data.handCount}}</div>
                 <div class="damage">{{item.data.data.damage}}</div>
                 <div class="clutter">{{item.data.data.clutter}}</div>

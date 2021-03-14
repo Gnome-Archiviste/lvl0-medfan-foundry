@@ -4,6 +4,7 @@ import {StatsCharacterDataComputer} from "./actor-data-computers/character/stats
 import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-character-data-computer.js";
 import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer.js";
 import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
+import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer.js";
 import {LevelUpDialog} from "./ui/level-up-dialog.js";
 
 const actorDataComputers = [
@@ -13,6 +14,7 @@ const actorDataComputers = [
     new StatsCharacterDataComputer(),
     new MagicCharacterDataComputer(),
     new HealthManaDataComputer(),
+    new ClutterCharacterDataComputer(),
 ];
 
 export class Lvl0Actor extends Actor {

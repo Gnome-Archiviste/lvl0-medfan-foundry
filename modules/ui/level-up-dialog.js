@@ -141,8 +141,6 @@ export class LevelUpDialog extends Application {
         let roll = new Roll(count + 'd6');
         roll.roll()
 
-        console.warn(roll.terms[0].results);
-
         for (let i = 0; i < roll.terms[0].results.length; i++) {
             this.diceData[type + '-' + i] = roll.terms[0].results[i].result;
         }

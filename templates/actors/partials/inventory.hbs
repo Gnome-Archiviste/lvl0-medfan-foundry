@@ -25,22 +25,22 @@
                         <span class="title">
                             {{item.name}}
                         </span>
-                        {{#if item.data.damage}}
+                        {{#if item.data.dat.damage}}
                             <span class="damage">
-                                Dégâts: {{item.data.damage}}
+                                Dégâts: {{item.data.data.damage}}
                             </span>
                         {{/if}}
                     </div>
                     <div>
-                        {{#if item.data.description}}
+                        {{#if item.data.data.description}}
                             <span class="description">
-                                {{item.data.description}}
+                                {{item.data.data.description}}
                             </span>
                         {{/if}}
                     </div>
                 </div>
                 <div class="clutter">
-                    {{item.data.clutter}}
+                    {{item.data.data.clutter}}
                 </div>
                 <div class="actions item-controls">
                     <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -49,4 +49,40 @@
             </div>
         {{/each2}}
     {{/each}}
+    <section>
+        <h2 class="{{ternary (gt data.computedData.clutter.usedSpace data.computedData.clutter.totalSpace) 'bag-full' ''}}">
+            Encombrement ({{data.computedData.clutter.usedSpace}} / {{data.computedData.clutter.totalSpace}})
+        </h2>
+        <div class="clutter-table">
+            <div class="column">
+                <div class="cell"></div>
+                {{#times data.computedData.clutter.rowCount}}
+                    <div class="cell">{{letterFromA this}}</div>
+                {{/times}}
+            </div>
+            {{#with data.computedData.clutter.usedCells as |usedCells|}}
+                {{#times ../data.computedData.clutter.columnCount}}
+                    <div class="column">
+                        {{#with this as |column|}}
+                            <div class="cell">
+                                {{lookup ../../data.computedData.clutter.columnsPhy column}}
+                            </div>
+                            {{#times ../../data.computedData.clutter.rowCount}}
+                                {{#with this as |row|}}
+                                    <div class="cell" data-item-type="{{lookup usedCells (concat2 column ',' row)}}">
+                                        {{#if (lookup usedCells (concat2 column ',' row))}}
+                                            <div class="description">
+                                                {{localize (concat2 'LVL0MF.Items.Type.' (lookup usedCells (concat2 column ',' row)))}}
+                                            </div>
+                                        {{/if}}
+                                    </div>
+                                {{/with}}
+                            {{/times}}
+
+                        {{/with}}
+                    </div>
+                {{/times}}
+            {{/with}}
+        </div>
+    </section>
 </div>

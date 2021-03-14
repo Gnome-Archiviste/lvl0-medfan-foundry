@@ -27,6 +27,7 @@
  * @typedef {Object} Lvl0CharacterData
  * @property {ComputedCharacterData} computedData
  * @property {LevelUpData} levelUpData
+ * @property {StaticInventoryData} staticInventory
  * @property {Object.<string, Object.<string, SkillValue>>} skills
  * @property {Statistics} baseStats
  * @property {MinMaxValue} health
@@ -35,6 +36,15 @@
  * @property {Value} experience
  * @property {JobData} job
  * @property {string} race
+ */
+/**
+ * @typedef {Object} StaticInventoryData
+ * @property {number} rationCount,
+ * @property {number} torchCount,
+ * @property {number} money,
+ * @property {number} money100,
+ * @property {number} money500,
+ * @property {number} money1000
  */
 /**
  * @typedef {Object} LevelUpData
@@ -58,12 +68,21 @@
  * @property {ComputedCharacterSkillsData} skills
  * @property {ComputedCharacterStatsData} stats
  * @property {ComputedCharacterMagicData} magic
+ * @property {ComputedCharacterClutterData} clutter
  */
 /**
  * @typedef {Object} ComputedCharacterSkillsData
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
  * @property {string[]} extraSkills
+ */
+/**
+ * @typedef {Object} ComputedCharacterClutterData
+ * @property {number} totalSpace
+ * @property {number} usedSpace
+ * @property {number} rowCount
+ * @property {number} columnCount
+ * @property {Object.<string, string>} usedCells
  */
 /**
  * @typedef {Object} ComputedCharacterBaseData

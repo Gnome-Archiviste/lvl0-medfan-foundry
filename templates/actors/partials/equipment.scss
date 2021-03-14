@@ -137,8 +137,7 @@
         }
 
         .name {
-          grid-area: name;
-          .title {
+          grid-area: name;          .title {
             font-weight: bold;
           }
           .description {
@@ -165,6 +164,7 @@
       grid-column-gap: 8px;
       grid-template-areas: "equiped icon name damage handCount clutter actions";
       align-items: center;
+      border-bottom: 1px solid darkgrey;
 
       .equiped {
         justify-self: center;
@@ -179,6 +179,24 @@
 
       .name {
         grid-area: name;
+        position: relative;
+        .title {
+          font-weight: bold;
+        }
+        .description {
+          background: #23221d;
+          border: 1px solid #000;
+          border-radius: 5px;
+          color: #EEE;
+          z-index: 1;
+          visibility: hidden;
+          position: absolute;
+        }
+        &:hover {
+          .description {
+            visibility: visible;
+          }
+        }
       }
 
       .handCount {

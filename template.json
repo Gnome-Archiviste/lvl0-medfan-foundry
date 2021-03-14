@@ -95,6 +95,12 @@
           "magic": {
             "arcaneLevel": 0
           },
+          "clutter": {
+            "usedClutter": 0,
+            "maximumClutterSize": 0,
+            "columnCount": 0,
+            "rowCount": 0
+          },
           "skills": {
             "maximumSkillPoints": {
               "combat": 0,
