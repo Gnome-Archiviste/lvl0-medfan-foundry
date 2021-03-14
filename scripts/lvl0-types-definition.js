@@ -24,6 +24,10 @@
  * @property {string} id
  */
 /**
+ * @typedef {Object} RaceData
+ * @property {string} id
+ */
+/**
  * @typedef {Object} Lvl0CharacterData
  * @property {ComputedCharacterData} computedData
  * @property {LevelUpData} levelUpData
@@ -35,7 +39,7 @@
  * @property {Value} level
  * @property {Value} experience
  * @property {JobData} job
- * @property {string} race
+ * @property {RaceData} race
  */
 /**
  * @typedef {Object} StaticInventoryData
@@ -134,5 +138,13 @@
  * @property {{value: number, useStatValue: string, diceCount: number}[]} healthLevels
  * @property {{value: number, useStatValue: string, diceCount: number}[]} manaLevels
  * @property {number[]} arcaneLevels
+ * @property {JobRequirement[]} requirements
  * @property {number[]} specialityLevels
+ */
+/**
+ * @typedef {Object} JobRequirement
+ * @property {string} stat
+ * @property {number} min
+ * @property {string[] | undefined} notRaces
+ * @property {string[] | undefined} races
  */

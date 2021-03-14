@@ -17,6 +17,10 @@ export default {
     base: {
         champion: {
             name: "Champion",
+            requirements: [
+                {stat: "cha", min: 4},
+                {stat: "phy", min: 4}
+            ],
             display_element: false,
             arcaneLevels: [
                 1, 4, 8, 13, 18, 23, 29, 36, 44, 53
@@ -47,6 +51,9 @@ export default {
         },
         ranger: {
             name: "Forestier",
+            requirements: [
+                {stat: "dex", min: 4}
+            ],
             display_element: false,
             // @formatter:off
             healthLevels: [
@@ -66,6 +73,11 @@ export default {
         },
         warrior: {
             name: "Guerrier",
+            requirements: [
+                {stat: "phy", min: 5, notRaces: ['leprechaun', 'fairy', 'gnome', 'pixie', 'pooka']},
+                {stat: "phy", min: 4, races: ['leprechaun', 'fairy', 'gnome', 'pixie', 'pooka']},
+                {stat: "dex", min: 3, races: ['leprechaun', 'fairy', 'gnome', 'pixie', 'pooka']}
+            ],
             display_element: false,
             // @formatter:off
             healthLevels: [
@@ -86,6 +98,9 @@ export default {
         mage: {
             name: "Magicien",
             display_element: false,
+            requirements: [
+                {stat: "int", min: 5}
+            ],
             arcaneLevels: [
                 1, 4, 8, 13, 18, 23, 29, 36, 44, 53
             ],

@@ -36,6 +36,19 @@ export class Lvl0Actor extends Actor {
         let fromLevel = +actorData.level.value;
         let toLevel = fromLevel + 1;
 
+        if (toLevel === 1)  {
+            for (let requirement of actorData.computedData.bases.job.requirements) {
+                if (requirement.races && requirement.races.indexOf(actorData.race.id) === -1)
+                    continue;
+                if (requirement.notRaces && requirement.notRaces.indexOf(actorData.race.id) !== -1)
+                    continue;
+                if (actorData.computedData.stats.baseStats[requirement.stat].value < requirement.min) {
+                    ui.notifications.error('Impossible de choisir cette classe. ' + requirement.stat.toUpperCase() + ' doit être au minimum de ' + requirement.min);
+                    return;
+                }
+            }
+        }
+
         let additionalHealth = actorData.computedData.bases.job.healthLevels[toLevel - 1];
         let additionalMana = actorData.computedData.bases.job.manaLevels[toLevel - 1];
         let hasNewSpeciality = actorData.computedData.bases.job.specialityLevels.indexOf(toLevel) === -1;
