@@ -27,21 +27,34 @@
                         <label class="sheet-race">
                             <span class="sheet-label">Race</span>
                             <span class="sheet-value">
-                                <select name="data.race.id" data-dtype="String">
-                                    <option>Choisir une race</option>
-                                    {{#select data.race.id}}
-                                        {{#each races as |raceCategory| }}
-                                            <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
-                                                {{#each raceCategory as | race |}}
-                                                    <option value="{{@key}}">{{race.name}}</option>
-                                                {{/each}}
-                                            </optgroup>
-                                        {{/each}}
-                                    {{/select}}
-                                </select>
-                                {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
-                                    <input type="text" name="data.race.name" value="{{ data.race.name }}" />
+                                {{#if canSelectRace}}
+                                    <select name="data.race.id" data-dtype="String">
+                                        <option>Choisir une race</option>
+                                        {{#select data.race.id}}
+                                            {{#each races as |raceCategory| }}
+                                                <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
+                                                    {{#each raceCategory as | race |}}
+                                                        <option value="{{@key}}">{{race.name}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            {{/each}}
+                                        {{/select}}
+                                    </select>
+                                    {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
+                                        <input type="text" name="data.race.type" value="{{ data.race.type }}" />
+                                    {{/if}}
+                                {{else}}
+                                    <span>
+                                        {{data.computedData.bases.race.name}}
+                                    </span>
+                                    {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
+                                        <span>
+                                            {{data.race.type}}
+                                        </span>
+                                    {{/if}}
+
                                 {{/if}}
+
                             </span>
                         </label>
                         <label class="sheet-job">
@@ -51,8 +64,7 @@
                                     <select name="data.job.id" data-dtype="String">
                                         {{selectOptions jobsNamesById selected=data.job.id}}
                                     </select>
-                                {{/if}}
-                                {{#if (not canSelectJob)}}
+                                {{else}}
                                     {{data.computedData.bases.job.name}}
                                 {{/if}}
                                 <input type="text" name="data.job.element" disabled style="display: none;"/>

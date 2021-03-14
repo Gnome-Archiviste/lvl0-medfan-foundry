@@ -10,7 +10,8 @@
           "element": ""
         },
         "race": {
-          "id": ""
+          "id": "",
+          "type": ""
         },
         "health": {
           "min": 0,
