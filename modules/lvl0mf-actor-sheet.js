@@ -125,6 +125,10 @@ export class Lvl0mfActorSheet extends ActorSheet {
      * @param {Lvl0CharacterData} data
      */
     canLevelUp(data) {
+        if (!data.computedData.bases.job)
+            return false;
+        if (!data.computedData.bases.race)
+            return false;
         if (data.baseStats.dex.value === 0)
             return false;
         if (data.baseStats.cha.value === 0)
