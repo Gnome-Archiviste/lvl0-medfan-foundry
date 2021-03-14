@@ -72,6 +72,7 @@ export class Lvl0Actor extends Actor {
             health: {value: actorData.health.value + (levelUpResultData.health || 0)},
             mana: {value: actorData.mana.value + (levelUpResultData.mana || 0)},
             experience: {value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience},
+            staticInventory: {money: actorData.staticInventory.money + levelUpResultData.money},
             levelUpData: {
                 [level]: levelUpResultData
             }}

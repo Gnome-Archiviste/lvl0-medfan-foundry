@@ -131,6 +131,9 @@ export default {
         rogue: {
             name: "Voleur",
             display_element: false,
+            requirements: [
+                {stat: "dex", min: 4}
+            ],
             // @formatter:off
             healthLevels: [
                 "8", "3", "1D6", "3", "1D6", "3", "3", "3", "3",   "3",

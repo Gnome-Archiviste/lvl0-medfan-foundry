@@ -1,6 +1,17 @@
 <div class="level-up-dialog">
     <h3>Passage au niveau <strong>{{toLevel}}</strong></h3>
     <div>
+        {{#if (eq toLevel 1)}}
+            <div class="dices">
+                Gain de 2d6 oricaux
+                <div class="inputs">
+                    {{#times 2}}
+                        <input type="number" value="{{lookup ../diceData (concat2 'money-' @this) }}" data-dice-health="{{this}}"/>
+                    {{/times}}
+                    <button data-action="rollMoneyDice">Rouler les dés</button>
+                </div>
+            </div>
+        {{/if}}
         {{#if additionalHealth.value}}
             <div>
                 Gain de {{additionalHealth.value}} point(s) de vie

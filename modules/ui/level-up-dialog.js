@@ -76,6 +76,7 @@ export class LevelUpDialog extends Application {
         let data = this.getData();
         let health = data.additionalHealth.value || 0;
         let mana = data.additionalMana.value || 0;
+        let money = 0;
 
         if (data.additionalHealth.diceCount) {
             for (let i = 0; i < data.additionalHealth.diceCount; i++) {
@@ -89,9 +90,14 @@ export class LevelUpDialog extends Application {
             }
         }
 
+        if (this.levelUpData.toLevel === 1) {
+            money = (this.diceData['money-1'] || 0) + (this.diceData['money-2'] || 0);
+        }
+
         return {
             health: health,
             mana: mana,
+            money: money
         }
     }
 
@@ -113,6 +119,10 @@ export class LevelUpDialog extends Application {
                 }
                 case 'rollHealthDice': {
                     this.rollDice(this.getData().additionalHealth.diceCount ,'health');
+                    break;
+                }
+                case 'rollMoneyDice': {
+                    this.rollDice(2 ,'money');
                     break;
                 }
                 case 'rollManaDice': {
@@ -146,7 +156,10 @@ export class LevelUpDialog extends Application {
         }
 
         const messageData = roll.toMessage({}, {create: false});
-        messageData.content = `<p><strong>LevelUp</strong> Gain de ${roll.total} point de ${type === 'health' ? 'vie' : 'mana'} !</p> ${await roll.render()}`;
+        if (type === 'money')
+            messageData.content = `<p>Oricaux initiaux: ${roll.total} !</p> ${await roll.render()}`;
+        else
+            messageData.content = `<p><strong>LevelUp</strong> Gain de ${roll.total} point de ${type === 'health' ? 'vie' : 'mana'} !</p> ${await roll.render()}`;
         messageData.speaker = ChatMessage.getSpeaker({token: game.token});
         await ChatMessage.create(messageData);
 
