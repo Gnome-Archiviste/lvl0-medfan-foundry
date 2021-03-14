@@ -127,7 +127,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             return false;
         if (data.baseStats.phy.value === 0)
             return false;
-        return data.experience.value > data.computedData.leveling.nextLevelExperience
+        return data.experience.value >= data.computedData.leveling.nextLevelExperience
     }
 }
 
