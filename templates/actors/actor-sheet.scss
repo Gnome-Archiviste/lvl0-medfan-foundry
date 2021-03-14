@@ -7,6 +7,11 @@
     padding: 10px;
   }
 
+  .center-tab {
+    display: grid;
+    justify-content: center;
+  }
+
   .sheet-character {
     display: grid;
     grid-template-columns: 250px 90px 170px 170px;
@@ -82,10 +87,11 @@
     padding: 8px;
     border: 1px solid black;
     display: grid;
-    grid-template-areas: "character-name level" "player-name empty" "race age" "job size";
+    grid-template-areas: "character-name level" "race age" "job size";
     grid-template-columns: minmax(150px, 1fr) 120px;
     grid-row-gap: 8px;
     grid-column-gap: 16px;
+    align-items: center;
 
     .sheet-label {
       font-size: 18px;
