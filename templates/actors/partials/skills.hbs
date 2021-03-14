@@ -28,7 +28,10 @@
                     <h4>{{job.name}}</h4>
                     {{#each2 ../skills @key as | skill | }}
                         <span class="sheet-skill">
-                            <span class="sheet-skill-label" data-skill="{{concat2 @../key '.' @key}}">{{skill.name}}</span>
+                            <span class="sheet-skill-label" data-skill="{{concat2 @../key '.' @key}}">
+                                {{skill.name}}
+                                <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                            </span>
                             {{skill-value skill ../../data @../key @key ../../data.}}
                         </span>
                     {{/each2}}
@@ -41,7 +44,10 @@
             <h4>Combat</h4>
             {{#each2 skills 'combat' as | skill | }}
                 <span class="sheet-skill">
-                    <span class="sheet-skill-label" data-skill="{{concat2 'combat.' @key}}">{{skill.name}}</span>
+                    <span class="sheet-skill-label" data-skill="{{concat2 'combat.' @key}}">
+                        {{skill.name}}
+                        <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                    </span>
                     {{skill-value skill ../data 'combat' @key}}
                 </span>
             {{/each2}}
@@ -51,7 +57,10 @@
             <h4>Général</h4>
             {{#each2 skills 'general' as | skill | }}
                 <span class="sheet-skill">
-                    <span class="sheet-skill-label" data-skill="{{concat2 'general.' @key}}">{{skill.name}}</span>
+                    <span class="sheet-skill-label" data-skill="{{concat2 'general.' @key}}">
+                        {{skill.name}}
+                        <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                    </span>
                     {{skill-value skill ../data 'general' @key}}
                 </span>
                 {{#ifIsNthItem nth=4}}

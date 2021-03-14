@@ -54,6 +54,28 @@
           margin: 1px;
         }
       }
+
+      .sheet-skill-label {
+        position: relative;
+        .description {
+          background: #23221d;
+          border: 1px solid #000;
+          border-radius: 5px;
+          top: 28px;
+          left: 40px;
+          color: #EEE;
+          z-index: 1;
+          visibility: hidden;
+          position: absolute;
+          width: 300px;
+        }
+
+        &:hover {
+          .description {
+            visibility: visible;
+          }
+        }
+      }
     }
 
     .sheet-misc-skills,
