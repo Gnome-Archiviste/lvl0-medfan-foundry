@@ -39,13 +39,15 @@ export class Lvl0mfActorSheet extends ActorSheet {
             }
         }
 
-        let canSelectJob = data.data.level.value === 0;
+        let canSelectJob = data.data.level.value === 0; // FIXME true for GM
+        let canChangeStats = data.data.level.value === 0;  // FIXME true for GM
         let canLevelUp = this.canLevelUp(data.data);
 
         return {
             ...data,
             skills,
             canLevelUp,
+            canChangeStats,
             canSelectJob,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
             jobs: jobs.base,

@@ -96,7 +96,13 @@
                                     <span>*</span>
                                 {{/if}}
                             </span>
-                            <span class="sheet-base"><input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                            <span class="sheet-base">
+                                {{#if canChangeStats}}
+                                    <input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                {{else}}
+                                    {{data.baseStats.phy.value}}
+                                {{/if}}
+                            </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.phy.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-dex">
@@ -106,7 +112,13 @@
                                     <span>*</span>
                                 {{/if}}
                             </span>
-                            <span class="sheet-base"><input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                            <span class="sheet-base">
+                                {{#if canChangeStats}}
+                                    <input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                {{else}}
+                                    {{data.baseStats.dex.value}}
+                                {{/if}}
+                            </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.dex.bonus}}</span>
                             <span class="sheet-armor-mod">{{data.computedData.stats.baseStats.dex.armor}}</span>
                         </label>
@@ -117,7 +129,13 @@
                                     <span>*</span>
                                 {{/if}}
                             </span>
-                            <span class="sheet-base"><input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                            <span class="sheet-base">
+                                {{#if canChangeStats}}
+                                    <input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                {{else}}
+                                    {{data.baseStats.int.value}}
+                                {{/if}}
+                            </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.int.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-cha">
@@ -127,7 +145,13 @@
                                     <span>*</span>
                                 {{/if}}
                             </span>
-                            <span class="sheet-base"><input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                            <span class="sheet-base">
+                                {{#if canChangeStats}}
+                                    <input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                {{else}}
+                                    {{data.baseStats.cha.value}}
+                                {{/if}}
+                            </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.cha.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-per">
@@ -137,7 +161,13 @@
                                     <span>*</span>
                                 {{/if}}
                             </span>
-                            <span class="sheet-base"><input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/></span>
+                            <span class="sheet-base">
+                                {{#if canChangeStats}}
+                                    <input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                {{else}}
+                                    {{data.baseStats.per.value}}
+                                {{/if}}
+                            </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.per.bonus}}</span>
                         </label>
                     </section>
