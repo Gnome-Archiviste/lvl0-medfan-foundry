@@ -52,11 +52,11 @@ export class ClutterCharacterDataComputer extends CharacterDataComputer {
         let usedCells = {};
         for (let [itemType, value] of Object.entries(usedSpacesByItemType)) {
             for (let i = 0; i < value; i++) {
-                usedCells[row + ',' + column] = itemType;
-                column++;
-                if (column + 1 === columnCount) {
-                    column = 0;
-                    row++
+                usedCells[column + ',' + row] = itemType;
+                row++;
+                if (row  === rowCount) {
+                    row = 0;
+                    column++
                 }
             }
         }
