@@ -9,7 +9,7 @@
             <div class="clutter">Encombrement</div>
         </div>
         {{#each itemsByType.weapon as |item| }}
-            <div class="weapon-line">
+            <div class="weapon-line" data-item-id="{{item._id}}">
                 <div class="equiped">
                     <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
                 </div>
@@ -18,6 +18,10 @@
                 <div class="handCount">{{item.data.data.handCount}}</div>
                 <div class="damage">{{item.data.data.damage}}</div>
                 <div class="clutter">{{item.data.data.clutter}}</div>
+                <div class="actions">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
             </div>
         {{/each}}
     </section>
@@ -52,7 +56,7 @@
         <div class="content">
             {{#each itemsByType.ammunition as |item| }}
                 {{#if (eq item.data.data.ammunitionType 'arrow')}}
-                    <div class="ammunition-line">
+                    <div class="ammunition-line" data-item-id="{{item._id}}">
                         <div class="quantity">
                             <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
                         </div>
@@ -62,6 +66,10 @@
                             {{#if item.data.data.description}}
                                 <div class="description">{{item.data.data.description}}</div>
                             {{/if}}
+                        </div>
+                        <div class="actions">
+                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                         </div>
                     </div>
                 {{/if}}
@@ -74,7 +82,7 @@
         <div class="content">
             {{#each itemsByType.ammunition as |item| }}
                 {{#if (or (eq item.data.data.ammunitionType 'marble') (eq item.data.data.ammunitionType 'dart'))}}
-                    <div class="ammunition-line">
+                    <div class="ammunition-line" data-item-id="{{item._id}}">
                         <div class="quantity">
                             <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
                         </div>
@@ -84,6 +92,10 @@
                             {{#if item.data.data.description}}
                                 <div class="description">{{item.data.data.description}}</div>
                             {{/if}}
+                        </div>
+                        <div class="actions">
+                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                         </div>
                     </div>
                 {{/if}}
@@ -109,7 +121,7 @@
         <div class="info">Encombrement: 1 pour 2 potions</div>
         <div class="content">
             {{#each itemsByType.potions as |item| }}
-                <div class="ammunition-line">
+                <div class="ammunition-line" data-item-id="{{item._id}}">
                     <div class="quantity">
                         <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
                     </div>
@@ -119,6 +131,10 @@
                         {{#if item.data.data.description}}
                             <div class="description">{{item.data.data.description}}</div>
                         {{/if}}
+                    </div>
+                    <div class="actions">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
             {{/each}}

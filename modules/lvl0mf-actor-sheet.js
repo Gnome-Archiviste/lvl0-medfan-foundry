@@ -1,7 +1,6 @@
 import skills from '../data/skills.js'
 import jobs from '../data/jobs.js'
 import races from '../data/races.js'
-import {RollSkillManager} from "./managers/roll-skill-manager.js";
 
 export class Lvl0mfActorSheet extends ActorSheet {
     /** @type Object.<string, SkillDefinition> */
@@ -31,6 +30,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         let itemsByType = this.actor.itemTypes;
         let itemTypes = Object.keys(itemsByType);
         let equipedItemsByType = {};
+        let itemTypesInInventoryTabs = [];
         for (let itemType of itemTypes) {
             equipedItemsByType[itemType] = [];
             for (let item of itemsByType[itemType]) {
@@ -38,10 +38,13 @@ export class Lvl0mfActorSheet extends ActorSheet {
                     equipedItemsByType[itemType].push(item);
                 }
             }
+            if (itemsByType[itemType].length > 0 && this._isItemTypeDisplayedInInventory(itemType))
+                itemTypesInInventoryTabs.push(itemType);
         }
 
-        let canSelectJob = data.data.level.value === 0; // FIXME true for GM
-        let canChangeStats = data.data.level.value === 0;  // FIXME true for GM
+        let canSelectJob = data.data.level.value === 0;// || game.user.isGM;
+        let canSelectRace = data.data.level.value === 0;// || game.user.isGM;
+        let canChangeStats = data.data.level.value === 0;// || game.user.isGM;
         let canLevelUp = this.canLevelUp(data.data);
 
         return {
@@ -49,6 +52,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             skills,
             canLevelUp,
             canChangeStats,
+            canSelectRace,
             canSelectJob,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
             jobs: jobs.base,
@@ -56,6 +60,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             races: Lvl0mfActorSheet.races,
             racesByIds: Lvl0mfActorSheet.racesByIds,
             itemTypes,
+            itemTypesInInventoryTabs,
             itemsByType,
             equipedItemsByType,
             armorSlots: Lvl0mfActorSheet.armorSlots
@@ -67,7 +72,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         // Update Inventory Item
         html.find('.item-edit').click(ev => {
-            const itemLine = $(ev.currentTarget).parents(".item-line");
+            const itemLine = $(ev.currentTarget).parents("[data-item-id]");
             const item = this.actor.getOwnedItem(itemLine.data("item-id"));
             if (item) {
                 item.sheet.render(true);
@@ -104,7 +109,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
-            const itemLine = $(ev.currentTarget).parents(".item-line");
+            const itemLine = $(ev.currentTarget).parents("[data-item-id]");
             const item = this.actor.getOwnedItem(itemLine.data("item-id"));
             Dialog.confirm({
                 title: 'Supression', content: 'Voulez vous supprimer ' + item.name, yes: () => {
@@ -155,6 +160,21 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 }
             }
         ]
+    }
+
+    /**
+     * @param {String} itemType
+     * @return {boolean}
+     * @private
+     */
+    _isItemTypeDisplayedInInventory(itemType) {
+        if (itemType === 'ammunition')
+            return false;
+        if (itemType === 'potions')
+            return false;
+        if (itemType === 'weapon')
+            return false;
+        return true;
     }
 }
 

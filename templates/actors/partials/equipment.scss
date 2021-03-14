@@ -123,9 +123,9 @@
         }
 
         display: grid;
-        grid-template-columns: 48px 50px 1fr;
+        grid-template-columns: 48px 50px 1fr 32px;
         grid-column-gap: 8px;
-        grid-template-areas: "icon quantity name";
+        grid-template-areas: "icon quantity name actions";
         align-items: center;
 
         .icon {
@@ -161,9 +161,9 @@
       }
 
       display: grid;
-      grid-template-columns: 50px 32px 1fr 100px 100px 100px;
+      grid-template-columns: 50px 32px 1fr 100px 100px 100px 32px;
       grid-column-gap: 8px;
-      grid-template-areas: "equiped icon name damage handCount clutter";
+      grid-template-areas: "equiped icon name damage handCount clutter actions";
       align-items: center;
 
       .equiped {
@@ -183,6 +183,7 @@
 
       .handCount {
         grid-area: handCount;
+        justify-self: center;
       }
 
       .damage {
@@ -191,6 +192,11 @@
 
       .clutter {
         grid-area: clutter;
+        justify-self: center;
+      }
+
+      .actions {
+        grid-area: actions;
       }
     }
   }
