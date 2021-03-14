@@ -41,14 +41,15 @@ export class RollSkillManager {
         let test = +skillValue + +actorStatValue;
         let roll = new Roll('2d6');
         roll.roll();
-        let success = roll.result <= test;
+        let result = +roll.result;
+        let success = result !== 12 && (result === 2 || result <= test);
 
         const messageData = roll.toMessage({}, {create: false});
         let message = '';
         if (success) {
-            message = `${skillDefinition.name}: <span style="color: green; font-weight: bold">Succès</span>`;
+            message = `${skillDefinition.name} (${result} / ${test}): <span style="color: green; font-weight: bold">Succès${result === 2 ? ' critique': ''}</span>`;
         } else {
-            message = `${skillDefinition.name}: <span style="color: darkred; font-weight: bold">Echec</span>`;
+            message = `${skillDefinition.name} (${result} / ${test}): <span style="color: darkred; font-weight: bold">Echec${result === 12 ? ' critique': ''}</span>`;
         }
         messageData.content = `<p>${message} </p> ${await roll.render()}`;
         messageData.speaker = ChatMessage.getSpeaker({token: token});
