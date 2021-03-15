@@ -23,7 +23,7 @@
 
     <div class="skill-list">
         <section class="sheet-jobs-skills">
-            {{#each jobs as | job | }}
+            {{#each jobs.base as | job | }}
                 <section class="sheet-job-skills">
                     <h4>{{job.name}}</h4>
                     {{#each2 ../skills @key as | skill | }}

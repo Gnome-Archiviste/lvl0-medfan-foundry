@@ -60,7 +60,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             canSelectRace,
             canSelectJob,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
-            jobs: jobs.base,
+            jobs: jobs,
             jobsNamesById: Lvl0mfActorSheet.jobsNamesById,
             races: Lvl0mfActorSheet.races,
             racesByIds: Lvl0mfActorSheet.racesByIds,
@@ -193,7 +193,7 @@ for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
         Lvl0mfActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
     }
 }
-Lvl0mfActorSheet.jobsNamesById = Object.entries(jobs.base).reduce(((previousValue, currentValue) => {
+Lvl0mfActorSheet.jobsNamesById = Object.entries(jobs.base).concat(Object.entries(jobs.advance)).reduce(((previousValue, currentValue) => {
     previousValue[currentValue[0]] = currentValue[1].name;
     return previousValue;
 }), {})

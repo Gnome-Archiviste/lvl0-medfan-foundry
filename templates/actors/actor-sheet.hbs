@@ -58,7 +58,16 @@
                             <span class="sheet-value">
                                 {{#if canSelectJob}}
                                     <select name="data.job.id" data-dtype="String">
-                                        {{selectOptions jobsNamesById selected=data.job.id}}
+                                        <option>Choisir une classe</option>
+                                        {{#select data.job.id}}
+                                            {{#each jobs as |jobCategory| }}
+                                                <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
+                                                    {{#each jobCategory as | job |}}
+                                                        <option value="{{@key}}">{{job.name}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            {{/each}}
+                                        {{/select}}
                                     </select>
                                 {{else}}
                                     {{data.computedData.bases.job.name}}
