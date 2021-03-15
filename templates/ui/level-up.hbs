@@ -6,7 +6,7 @@
                 Gain de 2d6 oricaux
                 <div class="inputs">
                     {{#times 2}}
-                        <input type="number" value="{{lookup ../diceData (concat2 'money-' @this) }}" data-dice-health="{{this}}"/>
+                        <input type="number" value="{{lookup ../diceData (concat2 'money-' @this) }}" data-dice-money="{{this}}"/>
                     {{/times}}
                     <button data-action="rollMoneyDice">Rouler les dés</button>
                 </div>

@@ -70,6 +70,11 @@ export class LevelUpDialog extends Application {
                 this.diceData['mana-' + i] = +html.find(`[data-dice-mana='${i}']`)[0].value;
             }
         }
+        if (this.levelUpData.toLevel === 1) {
+            for (let i = 0; i < 2; i++) {
+                this.diceData['money-' + i] = +html.find(`[data-dice-money='${i}']`)[0].value;
+            }
+        }
     }
 
     getCompleteData() {
@@ -91,7 +96,7 @@ export class LevelUpDialog extends Application {
         }
 
         if (this.levelUpData.toLevel === 1) {
-            money = (this.diceData['money-1'] || 0) + (this.diceData['money-2'] || 0);
+            money = (this.diceData['money-0'] || 0) + (this.diceData['money-1'] || 0);
         }
 
         return {
