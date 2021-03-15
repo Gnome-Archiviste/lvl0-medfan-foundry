@@ -88,6 +88,12 @@
             <input name="data.dexMalus" data-dtype="Number" type="text" value="{{item.data.dexMalus}}" />
         </div>
     {{/if}}
+    {{#if (or (eq item.type 'armor') (eq item.type 'necklace') (eq item.type 'cloak') (eq item.type 'ring') (eq item.type 'head') (eq item.type 'belt') (eq item.type 'hand'))}}
+        <div class="form-group">
+            <label>Immunités et Invulnérabilités</label>
+            <input name="data.immunity" data-dtype="String" type="text" value="{{item.data.immunity}}" />
+        </div>
+    {{/if}}
     {{#if (eq item.type 'shield')}}
         <div class="form-group">
             <label>Dégâts</label>

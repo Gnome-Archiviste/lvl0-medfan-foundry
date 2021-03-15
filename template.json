@@ -216,7 +216,8 @@
     "armor": {
       "templates": ["base" ,"statModifiers", "extraSkills"],
       "protection": 0,
-      "dexMalus": 0
+      "dexMalus": 0,
+      "immunity": ""
     },
     "bag": {
       "templates": ["base"],
@@ -225,16 +226,20 @@
       "noLimit": false
     },
     "belt": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "cloak": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "hand": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "head": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "magical": {
       "templates": ["base"]
@@ -244,7 +249,8 @@
       "maxMoney": 100
     },
     "necklace": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "foot": {
       "templates": ["base" ,"statModifiers", "extraSkills"]
@@ -253,7 +259,8 @@
       "templates": ["base"]
     },
     "ring": {
-      "templates": ["base" ,"statModifiers", "extraSkills"]
+      "templates": ["base" ,"statModifiers", "extraSkills"],
+      "immunity": ""
     },
     "misc": {
       "templates": ["base"]
