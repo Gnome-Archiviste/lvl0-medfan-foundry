@@ -13,7 +13,7 @@ export class BaseCharacterDataComputer extends CharacterDataComputer {
         actorData.computedData.bases.race = BaseCharacterDataComputer.racesByIds[actor.data.data.race.id];
         let job = BaseCharacterDataComputer.jobsByIds[actor.data.data.job.id];
         if (job.baseJob) {
-            job = {...BaseCharacterDataComputer.jobsByIds[job.baseJob], job};
+            job = {...BaseCharacterDataComputer.jobsByIds[job.baseJob], ...job};
         }
         actorData.computedData.bases.job = job;
     }

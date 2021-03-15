@@ -58,7 +58,6 @@
                             <span class="sheet-value">
                                 {{#if canSelectJob}}
                                     <select name="data.job.id" data-dtype="String">
-                                        <option>Choisir une classe</option>
                                         {{#select data.job.id}}
                                             {{#each jobs as |jobCategory| }}
                                                 <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
@@ -70,9 +69,20 @@
                                         {{/select}}
                                     </select>
                                 {{else}}
-                                    {{data.computedData.bases.job.name}}
+                                    <span>
+                                        {{data.computedData.bases.job.name}}
+                                    </span>
                                 {{/if}}
-                                <input type="text" name="data.job.element" disabled style="display: none;"/>
+                                {{log data.computedData.bases.job}}
+                                {{#if data.computedData.bases.job.hasJobSpecialization}}
+                                    {{#if canSelectJob}}
+                                        <input type="text" name="data.job.specialization" value="{{data.job.specialization}}"/>
+                                    {{else}}
+                                        <span>
+                                            {{data.job.specialization}}
+                                        </span>
+                                    {{/if}}
+                                {{/if}}
                             </span>
                         </label>
 

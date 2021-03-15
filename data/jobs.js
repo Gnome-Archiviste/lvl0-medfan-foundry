@@ -21,7 +21,7 @@ export default {
                 {stat: "cha", min: 4},
                 {stat: "phy", min: 4}
             ],
-            display_element: false,
+            hasJobSpecialization: false,
             arcaneLevels: [
                 1, 4, 8, 13, 18, 23, 29, 36, 44, 53
             ],
@@ -54,7 +54,7 @@ export default {
             requirements: [
                 {stat: "dex", min: 4}
             ],
-            display_element: false,
+            hasJobSpecialization: false,
             // @formatter:off
             healthLevels: [
                 "9", "4", "1D6", "4", "1D6", "4", "4", "4", "3",   "4",
@@ -78,7 +78,7 @@ export default {
                 {stat: "phy", min: 4, races: ['leprechaun', 'fairy', 'gnome', 'pixie', 'pooka']},
                 {stat: "dex", min: 3, races: ['leprechaun', 'fairy', 'gnome', 'pixie', 'pooka']}
             ],
-            display_element: false,
+            hasJobSpecialization: false,
             // @formatter:off
             healthLevels: [
                 "11", "5", "1D6", "5", "1D6", "5", "5", "5", "4",   "5",
@@ -97,7 +97,7 @@ export default {
         },
         mage: {
             name: "Magicien",
-            display_element: false,
+            hasJobSpecialization: false,
             requirements: [
                 {stat: "int", min: 5}
             ],
@@ -130,7 +130,7 @@ export default {
         },
         rogue: {
             name: "Voleur",
-            display_element: false,
+            hasJobSpecialization: false,
             requirements: [
                 {stat: "dex", min: 4}
             ],
@@ -155,27 +155,27 @@ export default {
         jester: {
             name: "Bouffon",
             baseJob: "mage",
-            display_element: false
+            hasJobSpecialization: false
         },
         elementalist: {
             name: "Élémentaliste",
             baseJob: "mage",
-            display_element: true
+            hasJobSpecialization: true
         },
         enchanter: {
             name: "Enchanteur",
             baseJob: "mage",
-            display_element: false
+            hasJobSpecialization: false
         },
         necromancer: {
             name: "Nécromancien",
             baseJob: "mage",
-            display_element: false
+            hasJobSpecialization: false
         },
         witch: {
             name: "Sorcière",
             baseJob: "mage",
-            display_element: false
+            hasJobSpecialization: false
         }
     }
 }

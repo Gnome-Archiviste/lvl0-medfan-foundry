@@ -134,7 +134,7 @@
 /**
  * @typedef {Object} JobDefinition
  * @property {string} name
- * @property {boolean} display_element
+ * @property {boolean} hasJobSpecialization
  * @property {{value: number, useStatValue: string, diceCount: number}[]} healthLevels
  * @property {{value: number, useStatValue: string, diceCount: number}[]} manaLevels
  * @property {number[]} arcaneLevels
