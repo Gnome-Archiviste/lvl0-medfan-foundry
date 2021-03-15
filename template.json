@@ -260,7 +260,8 @@
     },
     "shield": {
       "templates": ["base"],
-      "blockValue": "1,2,3"
+      "blockValue": "1,2,3",
+      "damage": ""
     },
     "wand": {
       "templates": ["base"],

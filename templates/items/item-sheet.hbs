@@ -90,6 +90,10 @@
     {{/if}}
     {{#if (eq item.type 'shield')}}
         <div class="form-group">
+            <label>Dégâts</label>
+            <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
+        </div>
+        <div class="form-group">
             <label>Blocage</label>
             <input name="data.blockValue" data-dtype="String" type="text" value="{{item.data.blockValue}}" />
         </div>
