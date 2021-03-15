@@ -259,7 +259,7 @@
       "templates": ["base"]
     },
     "shield": {
-      "templates": ["base"],
+      "templates": ["base", "extraSkills"],
       "blockValue": "1,2,3",
       "damage": ""
     },
