@@ -182,6 +182,7 @@
       "misc",
       "necklace",
       "potions",
+      "purse",
       "ring",
       "shield",
       "wand",
@@ -237,6 +238,10 @@
     },
     "magical": {
       "templates": ["base"]
+    },
+    "purse": {
+      "templates": ["base"],
+      "maxMoney": 100
     },
     "necklace": {
       "templates": ["base" ,"statModifiers", "extraSkills"]

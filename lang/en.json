@@ -140,6 +140,7 @@
   "ITEM.TypeMagical" : "Magical objects",
   "ITEM.TypeMoney" : "Money",
   "ITEM.TypeNecklace" : "Necklace",
+  "ITEM.TypePurse" : "Purse",
   "ITEM.TypeRing" : "Rings",
   "ITEM.TypeShield" : "Shield",
   "ITEM.TypeWand" : "Wan",
