@@ -46,12 +46,17 @@ export class Lvl0mfActorSheet extends ActorSheet {
         let canSelectRace = data.data.level.value === 0;// || game.user.isGM;
         let canChangeStats = data.data.level.value === 0;// || game.user.isGM;
         let canLevelUp = this.canLevelUp(data.data);
+        let nonEquipableItemType = {
+            'misc': true,
+            'magical': true
+        };
 
         return {
             ...data,
             skills,
             canLevelUp,
             canChangeStats,
+            nonEquipableItemType,
             canSelectRace,
             canSelectJob,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,

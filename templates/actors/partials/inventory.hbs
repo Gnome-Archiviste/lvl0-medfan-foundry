@@ -9,9 +9,11 @@
         </div>
         {{#each2 ../itemsByType itemType as | item |}}
             <div class="item-line" data-item-id="{{item._id}}">
-                <div class="equiped">
-                    <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
-                </div>
+                {{#if (not (lookup ../../nonEquipableItemType itemType))}}
+                    <div class="equiped">
+                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
+                    </div>
+                {{/if}}
                 <div class="icon">
                     <img src="{{item.img}}"/>
                 </div>
