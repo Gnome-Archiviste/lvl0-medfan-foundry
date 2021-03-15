@@ -1,6 +1,6 @@
 <div class="partial-root-inventory">
     {{#each itemTypesInInventoryTabs as |itemType| }}
-        <h2>{{localize (concat2 'LVL0MF.Items.Type.' itemType) }}</h2>
+        <h2>{{localize (concat2 'ITEM.Type' (titleCase itemType)) }}</h2>
         <div class="item-line">
             <div class="equiped"><b>Équipé</b></div>
             <div class="name"><b>Nom</b></div>
@@ -72,7 +72,7 @@
                                     <div class="cell" data-item-type="{{lookup usedCells (concat2 column ',' row)}}">
                                         {{#if (lookup usedCells (concat2 column ',' row))}}
                                             <div class="description">
-                                                {{localize (concat2 'LVL0MF.Items.Type.' (lookup usedCells (concat2 column ',' row)))}}
+                                                {{localize (concat2 'ITEM.Type' (titleCase (lookup usedCells (concat2 column ',' row))))}}
                                             </div>
                                         {{/if}}
                                     </div>

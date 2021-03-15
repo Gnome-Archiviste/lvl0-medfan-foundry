@@ -35,7 +35,7 @@
     <section class="equipment">
         {{#each armorSlots as |armorSlot| }}
             <div class="slot" class="{{armorSlot}}">
-                <h3>{{localize (concat2 'LVL0MF.Items.Type.' armorSlot) }}</h3>
+                <h3>{{localize (concat2 'ITEM.Type' (titleCase armorSlot)) }}</h3>
                 {{#each2 ../equipedItemsByType armorSlot as |item| }}
                     <div class="slot-line">
                         <div class="icon"><img src="{{item.img}}"/></div>
