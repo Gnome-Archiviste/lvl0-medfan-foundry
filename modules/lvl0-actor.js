@@ -60,23 +60,50 @@ export class Lvl0Actor extends Actor {
             hasNewSpeciality
         }
 
-        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, (levelUpResultData) => {
-            this.doLevelUp(toLevel, actorData, levelUpResultData);
+        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, async (levelUpResultData) => {
+            await this.doLevelUp(toLevel, actorData, levelUpResultData);
+            if (toLevel === 1) {
+                await this.addInitialInventory();
+            }
         });
         levelUpDialog.render(true);
     }
 
-    doLevelUp(level, actorData, levelUpResultData) {
-        this.update({data: {
-            level: {value: level},
-            health: {value: actorData.health.value + (levelUpResultData.health || 0)},
-            mana: {value: actorData.mana.value + (levelUpResultData.mana || 0)},
-            experience: {value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience},
-            staticInventory: {money: actorData.staticInventory.money + levelUpResultData.money},
-            levelUpData: {
-                [level]: levelUpResultData
-            }}
+    async doLevelUp(level, actorData, levelUpResultData) {
+        await this.update({
+            data: {
+                level: {value: level},
+                health: {value: actorData.health.value + (levelUpResultData.health || 0)},
+                mana: {value: actorData.mana.value + (levelUpResultData.mana || 0)},
+                experience: {value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience},
+                staticInventory: {money: actorData.staticInventory.money + levelUpResultData.money},
+                levelUpData: {
+                    [level]: levelUpResultData
+                }
+            }
         }, {diff: true});
+    }
+
+    async addInitialInventory() {
+        await this.update({
+            data: {
+                staticInventory: {rationCount: 2, torch: 2}
+            }
+        }, {diff: true});
+
+        let table = game.tables.entities.find(s => s.name === "Objets de base");
+        if (!table) {
+            return;
+        }
+
+        for (let resultElement of table.data.results) {
+            if (!resultElement.resultId)
+                continue;
+            let itemData = game.items.get(resultElement.resultId);
+            if (!itemData)
+                continue;
+            await this.createOwnedItem(itemData);
+        }
     }
 }
 
