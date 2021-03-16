@@ -15,6 +15,14 @@ export class Lvl0mfItemSheet extends ItemSheet {
     getData(options) {
         let data = super.getData(options);
         data.isOwned = this.entity.isOwned;
+        data.modifierSkills = {
+            'protection': 'Protection',
+            'int': 'Intelligence',
+            'phy': 'Physique',
+            'cha': 'Charisme',
+            'per': 'Perception',
+            'dex': 'Dextérité',
+        };
         data.extraSkills = {};
         for (let [skillCategoryId, categorySkills] of Object.entries(skills))
             for (let [skillId, skill] of Object.entries(categorySkills)) {

@@ -124,7 +124,9 @@
             <div class="modifier-values">
                 {{#each item.data.modifiers as | modifier |}}
                     <div class="modifier-value" data-modifier-id="{{@key}}">
-                        <input name="data.modifiers.{{@key}}.stat" data-dtype="String" type="text" value="{{modifier.stat}}" />
+                        <select name="data.modifiers.{{@key}}.stat">
+                            {{selectOptions ../modifierSkills selected=modifier.stat}}
+                        </select>
                         <span>+</span>
                         <input name="data.modifiers.{{@key}}.value" data-dtype="Number" type="number" value="{{modifier.value}}" />
                         <a data-lvl0-action="deleteModifier" title="Supprimer modificateur"><i class="fas fa-trash"></i></a>
