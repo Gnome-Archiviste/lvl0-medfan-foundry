@@ -75,9 +75,10 @@ Handlebars.registerHelper('skill-value',
         let fullSkillId = skillCategoryId  + '.' + skillId;
         let isExtra = characterData.computedData.skills.extraSkills.indexOf(fullSkillId) !== -1;
         let useExtra = false;
-        if (skillLevel === 0 && isExtra) {
-            useExtra = true;
-            skillLevel = 1;
+        if (isExtra) {
+            if (skillLevel === 0)
+                useExtra = true;
+            skillLevel++;
         }
 
         let checked = [false, false, false];
@@ -97,12 +98,14 @@ Handlebars.registerHelper('skill-value',
 
         // Only enable checkboxes that make sense
         let availableSkillLevel = [false, false, false];
-        if (!characterSkillData.prodigy && !characterSkillData.master && !useExtra) {
+        if (!characterSkillData.prodigy && !characterSkillData.master) {
             for (let i = 0; i < availableSkillLevel.length; i++) {
                 if (newPointMaxLevel)
                     availableSkillLevel[i] = i < characterData.computedData.leveling.maximumSkillLevel;
                 else
                     availableSkillLevel[i] = (i+1) === skillLevel;
+                if (i === 0 && useExtra)
+                    availableSkillLevel[i] = false;
             }
             for (let i = 1; i < 3; i++) {
                 if (!checked[i - 1]) {
@@ -118,11 +121,11 @@ Handlebars.registerHelper('skill-value',
         return new Handlebars.SafeString(`<span class="sheet-skill-value">
             <span class="sheet-skill-levels">
                 <input type="hidden" name="data.skills.${skillCategoryId}.${skillId}.value" type="number" data-dtype="number" value="${characterSkillData.value}">
-                <input type="checkbox" value="1" data-checkboxSkillValue
+                <input type="checkbox" value="${isExtra ? 0 : 1}" data-checkboxSkillValue
                        ${checked[0] ? 'checked' : ''} ${availableSkillLevel[0] ? '' : 'disabled'}/>
-                <input type="checkbox" value="2" data-checkboxSkillValue
+                <input type="checkbox" value="${isExtra ? 1 : 2}" data-checkboxSkillValue
                        ${checked[1] ? 'checked' : ''} ${availableSkillLevel[1] ? '' : 'disabled'}/>
-                <input type="checkbox" value="3" data-checkboxSkillValue
+                <input type="checkbox" value="${isExtra ? 2 : 3}" data-checkboxSkillValue
                        ${checked[2] ? 'checked' : ''} ${availableSkillLevel[2] ? '' : 'disabled'}/>
             </span>
             <span class="sheet-skill-stat">
