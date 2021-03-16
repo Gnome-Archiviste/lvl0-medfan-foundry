@@ -42,9 +42,9 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 itemTypesInInventoryTabs.push(itemType);
         }
 
-        let canSelectJob = data.data.level.value === 0;// || game.user.isGM;
-        let canSelectRace = data.data.level.value === 0;// || game.user.isGM;
-        let canChangeStats = data.data.level.value === 0;// || game.user.isGM;
+        let canSelectJob = data.data.level.value === 0 || game.user.isGM;
+        let canSelectRace = data.data.level.value === 0 || game.user.isGM;
+        let canChangeStats = data.data.level.value === 0 || game.user.isGM;
         let canLevelUp = this.canLevelUp(data.data);
         let nonEquipableItemType = {
             'misc': true,
