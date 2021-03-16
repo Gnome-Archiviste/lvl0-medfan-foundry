@@ -26,7 +26,7 @@ export class ClutterCharacterDataComputer extends CharacterDataComputer {
                 if (item.type === 'bag') {
                     rowCount += +item.data.data.extraRows;
                     columnCount += +item.data.data.extraColumns;
-                    if (item.data.data.noLimit) {
+                    if (item.data.data.noLimit === true) {
                         noLimit = true;
                     }
                }

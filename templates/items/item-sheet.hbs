@@ -115,7 +115,7 @@
         </div>
         <div class="form-group">
             <label>Taille infini</label>
-            <input name="data.noLimit" data-dtype="String" type="text" value="{{item.data.noLimit}}" />
+            <input type="checkbox" name="data.noLimit" data-dtype="Boolean" {{checked data.noLimit}}/>
         </div>
     {{/if}}
     {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot'))}}
