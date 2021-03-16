@@ -87,7 +87,7 @@ export class Lvl0Actor extends Actor {
     async addInitialInventory() {
         await this.update({
             data: {
-                staticInventory: {rationCount: 2, torch: 2}
+                staticInventory: {rationCount: 2, torchCount: 2}
             }
         }, {diff: true});
 
