@@ -18,8 +18,8 @@
                     <img src="{{item.img}}"/>
                 </div>
                 <div class="quantity">
-                    {{#if item.data.quantifiable}}
-                        <input type="text" value="{{item.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
+                    {{#if item.data.data.quantifiable}}
+                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
                     {{/if}}
                 </div>
                 <div class="name">
