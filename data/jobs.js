@@ -68,7 +68,7 @@ export default {
             specialityLevels: [
                 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 70, 70, 70
             ],
-            manaLevels: [...Array.fromRange(70).map(_ => ({value: 1}))]
+            manaLevels: [ {useStatValue: 'int'}, ...Array.fromRange(69).map(_ => ({value: 1}))]
             // @formatter:on
         },
         warrior: {
@@ -92,7 +92,7 @@ export default {
             specialityLevels: [
                 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 70, 70, 70
             ],
-            manaLevels: [...Array.fromRange(70).map(_ => ({value: 1}))]
+            manaLevels: [ {useStatValue: 'int'}, ...Array.fromRange(69).map(_ => ({value: 1}))]
             // @formatter:on
         },
         mage: {
@@ -147,7 +147,7 @@ export default {
             specialityLevels: [
                 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 70, 70, 70
             ],
-            manaLevels: [...Array.fromRange(70).map(_ => ({value: 1}))]
+            manaLevels: [ {useStatValue: 'int'}, ...Array.fromRange(69).map(_ => ({value: 1}))]
             // @formatter:on
         }
     },
