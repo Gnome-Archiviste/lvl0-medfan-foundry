@@ -15,5 +15,14 @@ export default {
         per: {
             name: 'Perception',
         },
+        protection: {
+            name: 'Protection',
+        },
+        health: {
+            name: 'Vie',
+        },
+        mana: {
+            name: 'Magie',
+        },
     }
 }

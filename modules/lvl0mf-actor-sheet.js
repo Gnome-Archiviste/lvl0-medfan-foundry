@@ -1,6 +1,7 @@
 import skills from '../data/skills.js'
 import jobs from '../data/jobs.js'
 import races from '../data/races.js'
+import statsDefinition from '../data/stats.js'
 
 export class Lvl0mfActorSheet extends ActorSheet {
     /** @type Object.<string, SkillDefinition> */
@@ -70,6 +71,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             nonEquipableItemType,
             canSelectRace,
             canSelectJob,
+            statsDefinition,
             canEditModifiers,
             modifierSkills,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
