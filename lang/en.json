@@ -126,6 +126,7 @@
   "LVL0MF.Sheet.Tab.Character.title" : "Character",
   "LVL0MF.Sheet.Tab.Equipment.title" : "Equipment",
   "LVL0MF.Sheet.Tab.Inventory.title" : "Inventory",
+  "LVL0MF.Sheet.Tab.Modifiers.title" : "Modifiers (GM)",
   "LVL0MF.Sheet.Tab.Notes.title" : "Notes",
 
   "ITEM.TypeAmmunition" : "Ammunition",

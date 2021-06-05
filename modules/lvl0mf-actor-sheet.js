@@ -44,11 +44,22 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         let canSelectJob = data.data.level.value === 0 || game.user.isGM;
         let canSelectRace = data.data.level.value === 0 || game.user.isGM;
-        let canChangeStats = data.data.level.value === 0 || game.user.isGM;
+        let canChangeStats = data.data.level.value === 0;
+        let canEditModifiers = game.user.isGM;
         let canLevelUp = this.canLevelUp(data.data);
         let nonEquipableItemType = {
             'misc': true,
             'magical': true
+        };
+        let modifierSkills = {
+            'protection': 'Protection',
+            'int': 'Intelligence',
+            'phy': 'Physique',
+            'cha': 'Charisme',
+            'per': 'Perception',
+            'dex': 'Dextérité',
+            'mana': 'Mana',
+            'health': 'Vie',
         };
 
         return {
@@ -59,6 +70,8 @@ export class Lvl0mfActorSheet extends ActorSheet {
             nonEquipableItemType,
             canSelectRace,
             canSelectJob,
+            canEditModifiers,
+            modifierSkills,
             skillsByIds: Lvl0mfActorSheet.skillsByIds,
             jobs: jobs,
             jobsNamesById: Lvl0mfActorSheet.jobsNamesById,
@@ -123,7 +136,29 @@ export class Lvl0mfActorSheet extends ActorSheet {
             });
         });
 
+        html.find("button[data-lvl0-action='addActorModifier']").click(ev => this._onAddModifier(ev));
+        html.find("a[data-lvl0-action='deleteActorModifier']").click(ev => this._onRemoveModifier(ev));
+
+        html.find('[data-permanent-modifier-checkbox]').click(ev => {
+            const modifierId = $(ev.currentTarget).data('permanent-modifier-checkbox');
+            this.actor.update({data: {modifiers: {[modifierId]: {permanent: !this.actor.data.data.modifiers[modifierId].permanent}}}});
+        });
+
         new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-skill]", this._getSkillContextMenu());
+    }
+
+    /** @param {MouseEvent} ev */
+    _onRemoveModifier(ev) {
+        let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
+        let modifiers = this.actor.data.data.modifiers || {};
+        let newModifiers = {...modifiers, ['-='+modifierId]: null};
+        this.actor.update({data: {modifiers: newModifiers}});
+    }
+
+    _onAddModifier() {
+        let modifiers = this.actor.data.data.modifiers || {};
+        let nextId = (Object.keys(modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        this.actor.update({data: {modifiers: {...modifiers, [nextId]: {stat: 'phy', value: 1}}}});
     }
 
     /**

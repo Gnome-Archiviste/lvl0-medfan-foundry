@@ -12,6 +12,7 @@ Hooks.once("init", async function () {
         "systems/lvl0mf-sheet/templates/actors/partials/equipment.hbs",
         "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs",
         "systems/lvl0mf-sheet/templates/actors/partials/inventory.hbs",
+        "systems/lvl0mf-sheet/templates/actors/partials/modifiers.hbs",
     ]);
 
     Actors.unregisterSheet("core", ActorSheet);

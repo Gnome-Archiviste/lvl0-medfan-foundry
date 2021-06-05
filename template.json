@@ -80,6 +80,9 @@
           "money1000": 0
         }
       },
+      "statModifiers": {
+        "modifiers": {}
+      },
       "levelUpData": {
         "levelUpData": {
           "levels": {
@@ -164,7 +167,8 @@
         "stats",
         "skills",
         "computedData",
-        "staticInventory"
+        "staticInventory",
+        "statModifiers"
       ]
     }
   },

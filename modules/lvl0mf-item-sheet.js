@@ -22,6 +22,8 @@ export class Lvl0mfItemSheet extends ItemSheet {
             'cha': 'Charisme',
             'per': 'Perception',
             'dex': 'Dextérité',
+            'mana': 'Mana',
+            'health': 'Vie',
         };
         data.extraSkills = {};
         for (let [skillCategoryId, categorySkills] of Object.entries(skills))

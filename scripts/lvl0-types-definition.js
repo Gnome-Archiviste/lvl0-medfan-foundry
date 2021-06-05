@@ -28,12 +28,25 @@
  * @property {string} id
  */
 /**
+ * @typedef {Object} ItemModifierInfo
+ * @property {'protection'|'cha'|'int'|'per'|'phy'|'dex'|'health'|'mana'} stat
+ * @property {string} value
+ */
+/**
+ * @typedef {Object} CharacterModifierInfo
+ * @property {boolean} isPermanent
+ * @property {'protection'|'cha'|'int'|'per'|'phy'|'dex'|'health'|'mana'} stat
+ * @property {string} value
+ * @property {string} name
+ */
+/**
  * @typedef {Object} Lvl0CharacterData
  * @property {ComputedCharacterData} computedData
  * @property {LevelUpData} levelUpData
  * @property {StaticInventoryData} staticInventory
  * @property {Object.<string, Object.<string, SkillValue>>} skills
  * @property {Statistics} baseStats
+ * @property {Object.<string, CharacterModifierInfo>} modifiers
  * @property {MinMaxValue} health
  * @property {MinMaxValue} mana
  * @property {Value} level

@@ -80,3 +80,7 @@ Handlebars.registerHelper('ternary', function(cond, v1, v2) {
 Handlebars.registerHelper('titleCase', function(v) {
     return v.titleCase();
 });
+Handlebars.registerHelper("inc", function(value)
+{
+    return parseInt(value) + 1;
+});

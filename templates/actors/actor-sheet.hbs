@@ -5,6 +5,7 @@
             <a class="item" data-tab="sheet_equipment">{{localize 'LVL0MF.Sheet.Tab.Equipment.title'}}</a>
             <a class="item" data-tab="sheet_inventory">{{localize 'LVL0MF.Sheet.Tab.Inventory.title'}}</a>
             <a class="item" data-tab="sheet_notes">{{localize 'LVL0MF.Sheet.Tab.Notes.title'}}</a>
+            <a class="item" data-tab="sheet_modifiers">{{localize 'LVL0MF.Sheet.Tab.Modifiers.title'}}</a>
         </nav>
         <section class="sheet-body">
             <div class="tab sheet-inventory" data-tab="sheet_inventory">
@@ -127,7 +128,7 @@
                                 {{#if canChangeStats}}
                                     <input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.baseStats.phy.value}}
+                                    {{data.computedData.stats.baseStats.phy.base}}
                                 {{/if}}
                             </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.phy.bonus}}</span>
@@ -143,7 +144,7 @@
                                 {{#if canChangeStats}}
                                     <input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.baseStats.dex.value}}
+                                    {{data.computedData.stats.baseStats.dex.base}}
                                 {{/if}}
                             </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.dex.bonus}}</span>
@@ -160,7 +161,7 @@
                                 {{#if canChangeStats}}
                                     <input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.baseStats.int.value}}
+                                    {{data.computedData.stats.baseStats.int.base}}
                                 {{/if}}
                             </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.int.bonus}}</span>
@@ -176,7 +177,7 @@
                                 {{#if canChangeStats}}
                                     <input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.baseStats.cha.value}}
+                                    {{data.computedData.stats.baseStats.cha.base}}
                                 {{/if}}
                             </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.cha.bonus}}</span>
@@ -192,7 +193,7 @@
                                 {{#if canChangeStats}}
                                     <input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.baseStats.per.value}}
+                                    {{data.computedData.stats.baseStats.per.base}}
                                 {{/if}}
                             </span>
                             <span class="sheet-bonus">{{data.computedData.stats.baseStats.per.bonus}}</span>
@@ -268,6 +269,9 @@
 
             <div class="tab" data-tab="sheet_equipment">
                 {{> "systems/lvl0mf-sheet/templates/actors/partials/equipment.hbs"}}
+            </div>
+            <div class="tab" data-tab="sheet_modifiers">
+                {{> "systems/lvl0mf-sheet/templates/actors/partials/modifiers.hbs"}}
             </div>
         </section>
     </div>

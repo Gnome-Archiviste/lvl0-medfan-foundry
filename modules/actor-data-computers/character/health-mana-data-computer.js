@@ -9,6 +9,31 @@ export class HealthManaDataComputer extends CharacterDataComputer {
         let maxHealth = 0;
         let maxMana = 0;
 
+        for (let /** @type {CharacterModifierInfo} */ modifier of Object.values(actorData.modifiers)) {
+            if (modifier.stat === 'mana') {
+                maxMana += modifier.value;
+            }
+            if (modifier.stat === 'health') {
+                maxHealth += modifier.value;
+            }
+        }
+
+        for (let /** @type {Item} */ item of actor.items) {
+            if (!item.data.data.equiped)
+                continue;
+
+            if (typeof item.data.data.modifiers === 'object') {
+                for (let /** @type {ItemModifierInfo} */ modifier of Object.values(item.data.data.modifiers)) {
+                    if (modifier.stat === 'mana') {
+                        maxMana += modifier.value;
+                    }
+                    if (modifier.stat === 'health') {
+                        maxHealth += modifier.value;
+                    }
+                }
+            }
+        }
+
         for (let i = 1; i <= actorData.level.value; i++) {
             if (!actorData.levelUpData)
                 continue;
