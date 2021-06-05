@@ -1,0 +1,30 @@
+.select-speciality-dialog {
+  .speciality {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    grid-template-areas: "header action" "description action";
+
+    .header {
+      grid-area: header;
+    }
+
+    .description {
+      grid-area: description;
+    }
+
+    .action {
+      grid-area: action;
+    }
+  }
+
+  .separator {
+    height: 1px;
+    background-color: black;
+    opacity: 0.25;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4px;
+  }
+}

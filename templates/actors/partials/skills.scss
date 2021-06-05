@@ -54,32 +54,11 @@
           margin: 1px;
         }
       }
-
-      .sheet-skill-label {
-        position: relative;
-        .description {
-          background: #23221d;
-          border: 1px solid #000;
-          border-radius: 5px;
-          top: 28px;
-          left: 40px;
-          color: #EEE;
-          z-index: 1;
-          visibility: hidden;
-          position: absolute;
-          width: 300px;
-        }
-
-        &:hover {
-          .description {
-            visibility: visible;
-          }
-        }
-      }
     }
 
     .sheet-misc-skills,
     .sheet-combat-skills,
+    .sheet-specialities,
     .sheet-jobs-skills {
       border: 1px solid black;
       padding: 8px;
@@ -94,6 +73,14 @@
     .sheet-specialities {
       border: 1px solid black;
       padding: 8px;
+      .speciality {
+        display: grid;
+        grid-template-columns: 1fr 80px;
+        align-items: center;
+        * + * {
+          margin-bottom: 8px;
+        }
+      }
     }
 
     .separator {
@@ -106,5 +93,27 @@
       margin-bottom: 4px;
     }
 
+  }
+
+  .label-with-tooltip-description {
+    position: relative;
+    .description {
+      background: #23221d;
+      border: 1px solid #000;
+      border-radius: 5px;
+      top: 28px;
+      left: 40px;
+      color: #EEE;
+      z-index: 1;
+      visibility: hidden;
+      position: absolute;
+      width: 300px;
+    }
+
+    &:hover {
+      .description {
+        visibility: visible;
+      }
+    }
   }
 }

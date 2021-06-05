@@ -124,6 +124,13 @@ export class Lvl0mfActorSheet extends ActorSheet {
             switch (ev.target.dataset.action) {
                 case "levelUp":
                     this.actor.openLevelUpPopup();
+                    break;
+                case "useSpeciality":
+                    this.actor.useSpeciality(ev.target.dataset.specialityId);
+                    break;
+                case "selectSpeciality":
+                    this.actor.openSelectSpecialityDialog();
+                    break;
             }
         });
 

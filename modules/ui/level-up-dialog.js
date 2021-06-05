@@ -5,13 +5,16 @@
  * @property {{value: number, useStatValue: string, diceCount: number}} additionalMana
  * @property {boolean} hasNewSpeciality
  */
-
+/**
+ * @callback CompleteLevelUpDialog
+ * @param {LevelData} selectedSpecialityName
+ */
 
 export class LevelUpDialog extends Application {
     /**
      * @param {LevelUpDialogData} levelUpData
      * @param {Statistics} actorStats
-     * @param {Function} onComplete
+     * @param {CompleteLevelUpDialog} onComplete
      */
     constructor(levelUpData, actorStats, onComplete) {
         super();

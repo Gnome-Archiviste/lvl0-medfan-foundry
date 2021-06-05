@@ -1,0 +1,16 @@
+<div class="select-speciality-dialog">
+    <h2>Choisir une spécialité</h2>
+    {{#each specialities as |speciality|}}
+        <div class="speciality">
+            <h3 class="header">{{speciality.name}}</h3>
+            <p class="description">
+                {{speciality.description}}
+            </p>
+            <button class="action" data-action="confirm" data-speciality-name="{{@key}}">Choisir</button>
+        </div>
+        <div class="separator"></div>
+    {{/each}}
+    <div>
+        <button data-action="cancel">Fermer</button>
+    </div>
+</div>

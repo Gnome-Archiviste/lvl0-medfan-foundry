@@ -3,6 +3,7 @@ import {Lvl0mfItemSheet} from "../modules/lvl0mf-item-sheet.js";
 import {Lvl0Actor} from "../modules/lvl0-actor.js";
 import {Lvl0Item} from "../modules/lvl0-item.js";
 import {RollSkillManager} from "../modules/managers/roll-skill-manager.js";
+import {RollSpecialityManager} from "../modules/managers/roll-speciality-manager.js";
 
 CONFIG.Actor.entityClass = Lvl0Actor;
 CONFIG.Item.entityClass = Lvl0Item;
@@ -22,6 +23,7 @@ Hooks.once("init", async function () {
 });
 
 window.rollSkillManager = RollSkillManager;
+window.rollSpecialityManager = RollSpecialityManager;
 
 Hooks.once("ready", async function () {
     // FOR DEBUG

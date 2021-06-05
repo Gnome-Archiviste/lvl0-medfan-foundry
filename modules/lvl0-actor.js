@@ -5,11 +5,17 @@ import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-c
 import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer.js";
 import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
 import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer.js";
+import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer.js";
 import {LevelUpDialog} from "./ui/level-up-dialog.js";
+import {SelectSpecialityDialog} from "./ui/select-speciality-dialog.js";
+import specialitiesDefinitions from './../data/specialities.js'
+import {RollSpecialityManager} from "./managers/roll-speciality-manager.js";
+
 
 const actorDataComputers = [
     new BaseCharacterDataComputer(),
     new LevelingCharacterDataComputer(),
+    new SpecialityCharacterDataComputer(),
     new SkillsCharacterDataComputer(),
     new StatsCharacterDataComputer(),
     new MagicCharacterDataComputer(),
@@ -30,13 +36,37 @@ export class Lvl0Actor extends Actor {
         }
     }
 
+    /** @param {string} specialityName*/
+    async useSpeciality(specialityName) {
+        if (this.data.data.mana.value <= 0) {
+            ui.notifications.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", {permanent: true});
+            return;
+        }
+        await ChatMessage.create({
+            type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
+            speaker: ChatMessage.getSpeaker({user: game.user}),
+            content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
+        })
+        await this.useMana(1);
+
+        await RollSpecialityManager.rollSpeciality(this.getActiveTokens()[0] || game.token, specialityName);
+    }
+
+    async useMana(amount) {
+        await this.update({
+            data: {
+                mana: {value: this.data.data.mana.value - amount}
+            }
+        }, {diff: true});
+    }
+
     openLevelUpPopup() {
         /** @type {Lvl0CharacterData} */
         let actorData = this.data.data;
         let fromLevel = +actorData.level.value;
         let toLevel = fromLevel + 1;
 
-        if (toLevel === 1)  {
+        if (toLevel === 1) {
             for (let requirement of actorData.computedData.bases.job.requirements) {
                 if (requirement.races && requirement.races.indexOf(actorData.race.id) === -1)
                     continue;
@@ -69,6 +99,21 @@ export class Lvl0Actor extends Actor {
         levelUpDialog.render(true);
     }
 
+    openSelectSpecialityDialog() {
+        let levelUpDialog = new SelectSpecialityDialog(async (selectedSpecialityName) => {
+            let specialities = this.data.data.specialities || {};
+            let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+            await this.update({data: {specialities: {[nextId]: selectedSpecialityName}}}, {diff: true});
+        });
+        levelUpDialog.render(true);
+    }
+
+    /**
+     * @param {number} level
+     * @param {Lvl0CharacterData} actorData
+     * @param {LevelData} levelUpResultData
+     * @return {Promise<void>}
+     */
     async doLevelUp(level, actorData, levelUpResultData) {
         await this.update({
             data: {

@@ -59,6 +59,9 @@
           }
         }
       },
+      "specialities": {
+        "specialities": {}
+      },
       "skills": {
         "skills": {
           "champion": {
@@ -97,6 +100,11 @@
           },
           "magic": {
             "arcaneLevel": 0
+          },
+          "speciality": {
+            "maxSpecialities": 0,
+            "knownSpecialities": [],
+            "canSelectNewSpeciality": false
           },
           "clutter": {
             "usedClutter": 0,
@@ -168,7 +176,8 @@
         "skills",
         "computedData",
         "staticInventory",
-        "statModifiers"
+        "statModifiers",
+        "specialities"
       ]
     }
   },

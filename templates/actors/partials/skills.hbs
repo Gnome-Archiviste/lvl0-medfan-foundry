@@ -28,7 +28,7 @@
                     <h4>{{job.name}}</h4>
                     {{#each2 ../skills @key as | skill | }}
                         <span class="sheet-skill">
-                            <span class="sheet-skill-label" data-skill="{{concat2 @../key '.' @key}}">
+                            <span class="label-with-tooltip-description" data-skill="{{concat2 @../key '.' @key}}">
                                 {{skill.name}}
                                 <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                             </span>
@@ -44,7 +44,7 @@
             <h4>Combat</h4>
             {{#each2 skills 'combat' as | skill | }}
                 <span class="sheet-skill">
-                    <span class="sheet-skill-label" data-skill="{{concat2 'combat.' @key}}">
+                    <span class="label-with-tooltip-description" data-skill="{{concat2 'combat.' @key}}">
                         {{skill.name}}
                         <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                     </span>
@@ -57,7 +57,7 @@
             <h4>Général</h4>
             {{#each2 skills 'general' as | skill | }}
                 <span class="sheet-skill">
-                    <span class="sheet-skill-label" data-skill="{{concat2 'general.' @key}}">
+                    <span class="label-with-tooltip-description" data-skill="{{concat2 'general.' @key}}">
                         {{skill.name}}
                         <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                     </span>
@@ -67,6 +67,26 @@
                     <div class="separator"></div>
                 {{/ifIsNthItem}}
             {{/each2}}
+        </section>
+
+        <section class="sheet-specialities">
+            <h4>Spécialités</h4>
+            <div>
+                {{#each data.computedData.speciality.knownSpecialities as |speciality|}}
+                    <div class="speciality">
+                        <div class="label label-with-tooltip-description">
+                            {{speciality.name}}
+                            <div class="description"><strong>{{speciality.name}}</strong>: {{speciality.description}}</div>
+                        </div>
+                        <div class="action">
+                            <button data-action="useSpeciality" data-speciality-id="{{speciality.id}}">Utiliser</button>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            {{#if data.computedData.speciality.canSelectNewSpeciality}}
+                <button data-action="selectSpeciality">Choisir une spécialité</button>
+            {{/if}}
         </section>
     </div>
 </div>

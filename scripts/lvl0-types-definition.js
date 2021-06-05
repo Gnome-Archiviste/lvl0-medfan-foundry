@@ -53,6 +53,7 @@
  * @property {Value} experience
  * @property {JobData} job
  * @property {RaceData} race
+ * @property {Object.<string, String>} specialities
  */
 /**
  * @typedef {Object} StaticInventoryData
@@ -71,7 +72,7 @@
  * @typedef {Object} LevelData
  * @property {number} health
  * @property {number} mana
- * @property {string} specialityId
+ * @property {number} money
  */
 /**
  * @typedef {Object} SkillDefinition
@@ -86,12 +87,18 @@
  * @property {ComputedCharacterStatsData} stats
  * @property {ComputedCharacterMagicData} magic
  * @property {ComputedCharacterClutterData} clutter
+ * @property {ComputedCharacterSpecialityData} speciality
  */
 /**
  * @typedef {Object} ComputedCharacterSkillsData
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
  * @property {string[]} extraSkills
+ */
+/**
+ * @typedef {Object} ComputedCharacterSpecialityData
+ * @property {number} maxSpecialities
+ * @property {boolean} canSelectNewSpeciality
  */
 /**
  * @typedef {Object} ComputedCharacterClutterData
