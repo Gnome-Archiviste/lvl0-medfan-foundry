@@ -43,6 +43,10 @@ export class RollSkillManager {
      * @param {String} skillId
      */
     static async rollSkill(token, skillId) {
+        if (!token) {
+            ui.notifications.error('Sélectionnez un token avant de faire cette action');
+            return;
+        }
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
 
