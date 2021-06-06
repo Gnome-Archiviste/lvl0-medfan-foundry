@@ -20,7 +20,7 @@ export class WeaponSelectorDialog extends Application {
 
         this.onComplete = onComplete;
         this.dialogData = data;
-        this.selectedWeeapon = undefined;
+        this.selectedWeapon = undefined;
     }
 
     /** @override */
@@ -46,19 +46,8 @@ export class WeaponSelectorDialog extends Application {
 
         html.find('[data-select-weapon]').click(/** @type {MouseEvent} */ ev => {
             ev.currentTarget.querySelector('input[name="weapon"]').checked = true;
-            this.selectedWeeapon = this.dialogData.weapons.find(i => i._id === ev.currentTarget.dataset.itemId);
-            if (this.selectedWeeapon) {
-                html.find('button[data-action="confirm"]').removeAttr('disabled');
-                if (this.selectedWeeapon.data.data.usedAmmunitionType) {
-                    this.showAmmunitionType(html, this.selectedWeeapon.data.data.usedAmmunitionType)
-                }
-                else {
-                    this.hideAmmunition(html);
-                }
-            }
-            else {
-                html.find('button[data-action="confirm"]').prop('disabled', true);
-            }
+            let selectWeapon = this.dialogData.weapons.find(i => i._id === ev.currentTarget.dataset.itemId);
+            this.selectWeapon(html, selectWeapon);
         });
         html.find('[data-select-ammo]').click(/** @type {MouseEvent} */ ev => {
             ev.currentTarget.querySelector('input[name="ammo"]').checked = true;
@@ -73,8 +62,8 @@ export class WeaponSelectorDialog extends Application {
                 }
                 case 'confirm': {
                     let selectedItems = [];
-                    if (this.selectedWeeapon)
-                        selectedItems.push(this.selectedWeeapon);
+                    if (this.selectedWeapon)
+                        selectedItems.push(this.selectedWeapon);
                     if (this.selectedAmmo)
                         selectedItems.push(this.selectedAmmo);
                     this.onComplete(selectedItems);
@@ -84,9 +73,30 @@ export class WeaponSelectorDialog extends Application {
             }
         });
 
-       html.find('button[data-action="confirm"]').prop('disabled', true);
+        let defaultWeapon = this.dialogData.weapons[0];
+        console.warn(defaultWeapon);
+        console.warn(defaultWeapon._id);
+        html.find(`.weapon-line input[name="weapon"][value="${defaultWeapon._id}"]`).prop('checked', true);
+        this.selectWeapon(html, defaultWeapon);
+    }
 
-        this.hideAmmunition(html);
+    /**
+     * @param html
+     * @param {Item} selectedWeapon
+     */
+    selectWeapon(html, selectedWeapon) {
+        this.selectedWeapon = selectedWeapon;
+        if (selectedWeapon) {
+            html.find('button[data-action="confirm"]').removeAttr('disabled');
+            if (this.selectedWeapon.data.data.usedAmmunitionType) {
+                this.showAmmunitionType(html, selectedWeapon.data.data.usedAmmunitionType)
+            } else {
+                this.hideAmmunition(html);
+            }
+        } else {
+            html.find('button[data-action="confirm"]').prop('disabled', true);
+            this.hideAmmunition(html);
+        }
     }
 
     showAmmunitionType(html, type) {

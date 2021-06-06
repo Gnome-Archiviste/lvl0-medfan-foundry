@@ -1,4 +1,5 @@
 import skills from "../../data/skills.js";
+import {WeaponSelector} from "../utils/weapon-selector.js";
 
 export class RollSkillManager {
     /**
@@ -45,6 +46,15 @@ export class RollSkillManager {
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
 
+        let weapon = undefined;
+        let ammunition = undefined;
+
+        if (skillDefinition.damageRoll && skillDefinition.damageRoll.weaponType) {
+            [weapon, ammunition] = await WeaponSelector.selectWeapon(token, skillDefinition.damageRoll.weaponType);
+            if (!weapon)
+                return;
+        }
+
         let test = RollSkillManager.getSkillSuccessValue(token, skillId);
         let roll = new Roll('2d6');
         roll.roll();
@@ -60,6 +70,32 @@ export class RollSkillManager {
         }
         messageData.content = `<p>${message} </p> ${await roll.render()}`;
         messageData.speaker = ChatMessage.getSpeaker({token: token});
+
+        if (ammunition) {
+            await ammunition.update({
+                data: {
+                    quantity: Math.max(0, ammunition.data.data.quantity - 1)
+                }
+            }, {diff: true});
+        }
         await ChatMessage.create(messageData);
+
+        if (success && weapon) {
+            let damageRollStr = weapon.data.data.damage.split(' ').join();
+            let weaponMessage = `Dégât: ${weapon.name}`;
+            if (ammunition) {
+                damageRollStr = '(' + damageRollStr + '+' + ammunition.data.data.extraDamage.split(' ').join() + ')';
+                weaponMessage += '(' + ammunition.name + ')';
+            }
+
+            let damageRoll = new Roll(damageRollStr)
+            damageRoll.roll();
+
+            const messageData = roll.toMessage({}, {create: false});
+            messageData.content = `<p>${weaponMessage} </p> ${await damageRoll.render()}`;
+            messageData.speaker = ChatMessage.getSpeaker({token: token});
+            await ChatMessage.create(messageData);
+        }
+
     }
 }
