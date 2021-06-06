@@ -23,7 +23,16 @@
                     {{/if}}
                 </div>
                 <div class="handCount">{{item.data.data.handCount}}</div>
-                <div class="damage">{{item.data.data.damage}}</div>
+
+                {{#if (eq item.data.data.weaponType 'melee-range')}}
+                    <div class="damage">
+                        <div>Mêlée: {{item.data.data.damage}}</div>
+                        <div>Lancer/Tir: {{item.data.data.rangeDamage}}</div>
+                    </div>
+                {{else}}
+                    <div class="damage">{{item.data.data.damage}}</div>
+                {{/if}}
+
                 <div class="clutter">{{item.data.data.clutter}}</div>
                 <div class="actions">
                     <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

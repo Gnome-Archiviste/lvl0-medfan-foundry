@@ -1,5 +1,6 @@
 import skills from "../../data/skills.js";
 import {WeaponSelector} from "../utils/weapon-selector.js";
+import {WeaponDamageRollUtil} from "../utils/weapon-damage-roll-util.js";
 
 export class RollSkillManager {
     /**
@@ -41,11 +42,12 @@ export class RollSkillManager {
      *
      * @param {Token} token
      * @param {String} skillId
+     * @return boolean
      */
     static async rollSkill(token, skillId) {
         if (!token) {
             ui.notifications.error('Sélectionnez un token avant de faire cette action');
-            return;
+            return false;
         }
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
@@ -56,7 +58,7 @@ export class RollSkillManager {
         if (skillDefinition.damageRoll && skillDefinition.damageRoll.weaponType) {
             [weapon, ammunition] = await WeaponSelector.selectWeapon(token, skillDefinition.damageRoll.weaponType);
             if (!weapon)
-                return;
+                return false;
         }
 
         let test = RollSkillManager.getSkillSuccessValue(token, skillId);
@@ -75,24 +77,31 @@ export class RollSkillManager {
         messageData.content = `<p>${message} </p> ${await roll.render()}`;
         messageData.speaker = ChatMessage.getSpeaker({token: token});
 
+        let useAmmunition = false;
         if (ammunition) {
-            await ammunition.update({
-                data: {
-                    quantity: Math.max(0, ammunition.data.data.quantity - 1)
-                }
-            }, {diff: true});
+            if (ammunition.data.data.quantity <= 0) {
+                ui.notifications.warn(`Vous n'avez plus assez de ${ammunition.name}.`)
+            }
+            else {
+                useAmmunition = true;
+                await ammunition.update({
+                    data: {
+                        quantity: Math.max(0, ammunition.data.data.quantity - 1)
+                    }
+                }, {diff: true});
+            }
         }
         await ChatMessage.create(messageData);
 
         if (success && weapon) {
-            let damageRollStr = weapon.data.data.damage.split(' ').join();
+            let [damageRollFormula, damageRollWithAmmunitionFormula] = WeaponDamageRollUtil.getWeaponDamageRoll(skillDefinition.damageRoll.weaponType, weapon, ammunition);
             let weaponMessage = `Dégât: ${weapon.name}`;
-            if (ammunition) {
-                damageRollStr = '(' + damageRollStr + '+' + ammunition.data.data.extraDamage.split(' ').join() + ')';
+            if (useAmmunition) {
                 weaponMessage += '(' + ammunition.name + ')';
+                damageRollFormula = damageRollWithAmmunitionFormula;
             }
 
-            let damageRoll = new Roll(damageRollStr)
+            let damageRoll = new Roll(damageRollFormula)
             damageRoll.roll();
 
             const messageData = roll.toMessage({}, {create: false});
@@ -101,5 +110,6 @@ export class RollSkillManager {
             await ChatMessage.create(messageData);
         }
 
+        return success;
     }
 }

@@ -67,6 +67,12 @@
             <label>Dégâts</label>
             <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
         </div>
+        {{#if (eq data.weaponType 'melee-range')}}
+            <div class="form-group">
+                <label>Dégâts (Lancer/Tir)</label>
+                <input name="data.rangeDamage" data-dtype="String" type="text" value="{{item.data.rangeDamage}}"/>
+            </div>
+        {{/if}}
         <div class="form-group">
             <label>Éléments</label>
             <input name="data.element" data-dtype="String" type="text" value="{{item.data.element}}" />

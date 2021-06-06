@@ -29,6 +29,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
         data.weaponTypes = {
             'melee': 'Mêlée',
             'range': 'Distance',
+            'melee-range': 'Mêlée et Distance',
         };
         data.ammunitionTypes = {
             'arrow': 'Flèche',

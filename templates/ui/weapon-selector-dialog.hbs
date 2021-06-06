@@ -19,7 +19,15 @@
                     {{/if}}
                 </div>
                 <div class="handCount">{{item.data.data.handCount}}</div>
-                <div class="damage">{{item.data.data.damage}}</div>
+                {{#if (eq item.data.data.weaponType 'melee-range')}}
+                    {{#if (eq ../weaponType 'range')}}
+                        <div class="damage">{{item.data.data.rangeDamage}}</div>
+                    {{else}}
+                        <div class="damage">{{item.data.data.damage}}</div>
+                    {{/if}}
+                {{else}}
+                    <div class="damage">{{item.data.data.damage}}</div>
+                {{/if}}
             </div>
         {{/each}}
     </section>

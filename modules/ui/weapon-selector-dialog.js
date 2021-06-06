@@ -3,6 +3,7 @@ import specialities from '../../data/specialities.js'
 /**
  * @typedef {Object} WeaponSelectorDialogData
  * @property {Item[]} weapons
+ * @property {'range'|'melee'} weaponType
  * @property {Item[]} ammunition
  */
 /**
@@ -30,6 +31,7 @@ export class WeaponSelectorDialog extends Application {
         return {
             ...data,
             weapons: this.dialogData.weapons,
+            weaponType: this.dialogData.weaponType,
             ammunition: this.dialogData.ammunition,
             specialities
         };

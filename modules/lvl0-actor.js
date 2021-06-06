@@ -48,9 +48,9 @@ export class Lvl0Actor extends Actor {
             content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
         })
 
-        await RollSpecialityManager.rollSpeciality(this.getActiveTokens()[0] || game.token, specialityName, async () => {
+        if (await RollSpecialityManager.rollSpeciality(this.getActiveTokens()[0] || game.token, specialityName)) {
             await this.useMana(1);
-        });
+        }
     }
 
     async useMana(amount) {

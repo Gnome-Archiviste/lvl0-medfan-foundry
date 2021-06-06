@@ -291,6 +291,7 @@
     "weapon": {
       "templates": ["base" ,"statModifiers"],
       "damage": "1d6",
+      "rangeDamage": "",
       "handCount": 1,
       "element": "",
       "bonus": "",
