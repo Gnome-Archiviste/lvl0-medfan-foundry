@@ -26,6 +26,20 @@ export class Lvl0mfItemSheet extends ItemSheet {
             'health': 'Vie',
         };
         data.extraSkills = {};
+        data.weaponTypes = {
+            'melee': 'Mêlée',
+            'range': 'Distance',
+        };
+        data.ammunitionTypes = {
+            'arrow': 'Flèche',
+            'bolt': 'Carreau',
+            'dart': 'Dard',
+            'marble': 'Bille',
+        };
+        data.usedAmmunitionTypes = {
+            '': 'Aucune',
+            ...data.ammunitionTypes
+        };
         for (let [skillCategoryId, categorySkills] of Object.entries(skills))
             for (let [skillId, skill] of Object.entries(categorySkills)) {
                 data.extraSkills[skillCategoryId + '.' + skillId] = skill.name;
@@ -47,7 +61,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
     _onRemoveModifier(ev) {
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
         let modifiers = this.item.data.data.modifiers || {};
-        let newModifiers = {...modifiers, ['-='+modifierId]: null};
+        let newModifiers = {...modifiers, ['-=' + modifierId]: null};
         this.item.update({data: {modifiers: newModifiers}});
     }
 
@@ -61,7 +75,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
     _onRemoveExtraSkill(ev) {
         let extraSkillId = +$(ev.target).parents('.extra-skill-line').data('extra-skill-id');
         let extraSkills = this.item.data.data.extraSkills || {};
-        let newModifiers = {...extraSkills, ['-='+extraSkillId]: null};
+        let newModifiers = {...extraSkills, ['-=' + extraSkillId]: null};
         this.item.update({data: {extraSkills: newModifiers}});
     }
 

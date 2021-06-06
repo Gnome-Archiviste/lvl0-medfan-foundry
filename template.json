@@ -293,7 +293,9 @@
       "damage": "1d6",
       "handCount": 1,
       "element": "",
-      "bonus": ""
+      "bonus": "",
+      "usedAmmunitionType": "",
+      "weaponType": "melee"
     }
   }
 }

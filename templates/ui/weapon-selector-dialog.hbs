@@ -1,0 +1,63 @@
+<div class="weapon-selector-dialog">
+    <section class="weapons">
+        <h2>Armes</h2>
+        <div class="weapon-line header">
+            <div class="name">Nom</div>
+            <div class="handCount">Nbre de main</div>
+            <div class="damage">Dégâts</div>
+        </div>
+        {{#each weapons as |item| }}
+            <div class="{{ternary (eq item._id selectedWeaponId) "weapon-line selected" "weapon-line"}}" data-select-weapon data-item-id="{{item._id}}" >
+                <div class="select"><input type="radio" name="weapon" value="{{item._id}}"></div>
+                <div class="icon"><img src="{{item.img}}"/></div>
+                <div class="name">
+                    <div class="title">{{item.name}}</div>
+                    {{#if item.data.data.description}}
+                        <div class="description">
+                            {{item.data.data.description}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="handCount">{{item.data.data.handCount}}</div>
+                <div class="damage">{{item.data.data.damage}}</div>
+            </div>
+        {{/each}}
+    </section>
+    <section class="ammunition">
+        <h2>Munitions</h2>
+        <div class="ammunition-line header">
+            <div class="name">Nom</div>
+            <div class="damage">Dégâts additionnel</div>
+            <div class="quantity">Quantité</div>
+        </div>
+        <div class="ammunition-line" data-select-ammo>
+            <div class="select"><input type="radio" name="ammo" value="default"></div>
+            <div class="name">
+                <div class="title">Default</div>
+            </div>
+            <div class="damage">0</div>
+            <div class="quantity">&infin;</div>
+        </div>
+        {{#each ammunition as |item| }}
+            <div class="ammunition-line" data-select-ammo data-item-id="{{item._id}}" data-ammunition-type="{{item.data.data.ammunitionType}}">
+                <div class="select"><input type="radio" name="ammo" value="{{item._id}}"></div>
+                <div class="icon"><img src="{{item.img}}"/></div>
+                <div class="name">
+                    <div class="title">{{item.name}}</div>
+                    {{#if item.data.data.description}}
+                        <div class="description">
+                            {{item.data.data.description}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="damage">{{item.data.data.extraDamage}}
+                    {{#if item.data.data.extraDamageEffect}}
+                        <span>({{item.data.data.extraDamageEffect}})</span>
+                    {{/if}}
+                </div>
+                <div class="quantity">{{item.data.data.quantity}}</div>
+            </div>
+        {{/each}}
+    </section>
+    <button data-action="confirm">Utiliser</button>
+</div>

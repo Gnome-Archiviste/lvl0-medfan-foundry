@@ -1,0 +1,113 @@
+.weapon-selector-dialog {
+  .weapons {
+    .weapon-line {
+      &.header {
+        font-weight: bold;
+      }
+
+      display: grid;
+      grid-template-columns: 32px 32px 1fr 100px 100px;
+      grid-column-gap: 8px;
+      grid-template-areas: "select icon name damage handCount";
+      align-items: center;
+      border-bottom: 1px solid darkgrey;
+
+      .icon {
+        > img {
+          border: 0;
+        }
+      }
+
+      .name {
+        grid-area: name;
+        position: relative;
+        .title {
+          font-weight: bold;
+        }
+        .description {
+          background: #23221d;
+          top: 28px;
+          border: 1px solid #000;
+          border-radius: 5px;
+          color: #EEE;
+          z-index: 1;
+          visibility: hidden;
+          position: absolute;
+        }
+        &:hover {
+          .description {
+            visibility: visible;
+          }
+        }
+      }
+
+      .handCount {
+        grid-area: handCount;
+        justify-self: center;
+      }
+
+      .damage {
+        grid-area: damage;
+      }
+    }
+  }
+
+  .ammunition {
+    .ammunition-line {
+      &.header {
+        font-weight: bold;
+      }
+
+      display: grid;
+      grid-template-columns: 32px 32px 1fr 150px 50px;
+      grid-column-gap: 8px;
+      grid-template-areas: "select icon name damage quantity";
+      align-items: center;
+      border-bottom: 1px solid darkgrey;
+
+      .icon {
+        > img {
+          border: 0;
+        }
+      }
+
+      .name {
+        grid-area: name;
+        position: relative;
+        .title {
+          font-weight: bold;
+        }
+        .description {
+          background: #23221d;
+          top: 28px;
+          border: 1px solid #000;
+          border-radius: 5px;
+          color: #EEE;
+          z-index: 1;
+          visibility: hidden;
+          position: absolute;
+        }
+        &:hover {
+          .description {
+            visibility: visible;
+          }
+        }
+      }
+
+      .quantity {
+        grid-area: quantity;
+        justify-self: center;
+      }
+
+      .select {
+        grid-area: select;
+        justify-self: center;
+      }
+
+      .damage {
+        grid-area: damage;
+      }
+    }
+  }
+}
+

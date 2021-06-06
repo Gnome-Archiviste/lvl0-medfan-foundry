@@ -1,12 +1,6 @@
 import specialities from '../../data/specialities.js'
 
 /**
- * @typedef {Object} LevelUpDialogData
- * @property {number} toLevel
- * @property {boolean} hasNewSpeciality
- */
-
-/**
  * @callback CompleteSelectSpecialityCallback
  * @param {string} selectedSpecialityName
  */
@@ -43,6 +37,7 @@ export class SelectSpecialityDialog extends Application {
         html.find('[data-action]').click(ev => {
             switch (ev.target.dataset["action"]) {
                 case 'cancel': {
+                    this.onComplete(undefined);
                     this.close();
                     break;
                 }

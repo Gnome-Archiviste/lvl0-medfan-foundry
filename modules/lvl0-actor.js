@@ -47,9 +47,10 @@ export class Lvl0Actor extends Actor {
             speaker: ChatMessage.getSpeaker({user: game.user}),
             content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
         })
-        await this.useMana(1);
 
-        await RollSpecialityManager.rollSpeciality(this.getActiveTokens()[0] || game.token, specialityName);
+        await RollSpecialityManager.rollSpeciality(this.getActiveTokens()[0] || game.token, specialityName, async () => {
+            await this.useMana(1);
+        });
     }
 
     async useMana(amount) {
@@ -101,6 +102,8 @@ export class Lvl0Actor extends Actor {
 
     openSelectSpecialityDialog() {
         let levelUpDialog = new SelectSpecialityDialog(async (selectedSpecialityName) => {
+            if (!selectedSpecialityName)
+                return;
             let specialities = this.data.data.specialities || {};
             let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
             await this.update({data: {specialities: {[nextId]: selectedSpecialityName}}}, {diff: true});
