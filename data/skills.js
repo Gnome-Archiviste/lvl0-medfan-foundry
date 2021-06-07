@@ -129,16 +129,22 @@ export default {
             name: "Combat mêlée",
             stat: "phy",
             description: "Le personnage a une certaine connaissance des techniques de combat d’arme au poing. Seuls les guerriers peuvent faire du combat avec deux armes. S’applique : épée, gourdin, lance, fléau, hache, dague, etc.",
-            damageRoll: {
-                weaponType: 'melee'
+            script: {
+                name: 'damageRoll',
+                data: {
+                    weaponType: 'melee'
+                }
             }
         },
         throw_shoot: {
-            name: "Lancer/ tir",
+            name: "Lancer / tir",
             stat: "dex",
             description: "Le personnage a une certaine connaissance des techniques de combat armé au tir. S’applique : arc, fronde, dagues de lancé, hache de lancé.",
-            damageRoll: {
-                weaponType: 'range'
+            script: {
+                name: 'damageRoll',
+                data: {
+                    weaponType: 'range'
+                }
             }
         },
         dodge: {

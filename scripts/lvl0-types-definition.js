@@ -78,7 +78,12 @@
  * @typedef {Object} SkillDefinition
  * @property {string} name
  * @property {string} stat
- * @property {Object} damageRoll
+ * @property {SkillScriptDefinition} script
+ */
+/**
+ * @typedef {Object} SkillScriptDefinition
+ * @property {string} name
+ * @property {Object} data
  */
 /**
  * @typedef {Object} ComputedCharacterData
