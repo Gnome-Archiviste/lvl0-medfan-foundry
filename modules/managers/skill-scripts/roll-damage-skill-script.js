@@ -174,16 +174,4 @@ export class RollDamageSkillScript extends SkillScript {
 
         return message;
     }
-
-    /**
-     * @param {boolean} success
-     * @param {number} result
-     * @return {string}
-     */
-    getTestResultMessage(success, result) {
-        if (success)
-            return `<span style="color: green; font-weight: bold">Succès${result === 2 ? ' critique' : ''}</span>`;
-        else
-            return `<span style="color: darkred; font-weight: bold">Echec${result === 12 ? ' critique' : ''}</span>`;
-    }
 }
