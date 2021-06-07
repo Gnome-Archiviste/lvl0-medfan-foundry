@@ -154,6 +154,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         });
 
         new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-skill]", this._getSkillContextMenu());
+        new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-speciality]", this._getSpecialityContextMenu());
     }
 
     /** @param {MouseEvent} ev */
@@ -208,6 +209,28 @@ export class Lvl0mfActorSheet extends ActorSheet {
                     let skillId = el.data('skill');
                     let skillDefinition = rollSkillManager.getSkillFromId(skillId);
                     const macro = await Macro.create({name: skillDefinition.name, type: "script", scope: "global", command: `rollSkillManager.rollSkill(token, '${skillId}')`});
+                    let freeSlot = Array.fromRange(50).map(i => i + 1).find(i => !(i in game.user.data.hotbar) || !game.macros.get(game.user.data.hotbar[i]));
+                    await game.user.assignHotbarMacro(macro, freeSlot);
+                }
+            }
+        ]
+    }
+
+    _getSpecialityContextMenu() {
+        return [
+            {
+                name: 'Créer une macro',
+                icon: '<i class="fas fa-scroll"></i>',
+                callback: async el => {
+                    let specialityId = el.data('speciality');
+                    let specialityDefinition = rollSpecialityManager.getSpecialityFromId(specialityId);
+                    const macro = await Macro.create({
+                        name: specialityDefinition.name,
+                        type: "script",
+                        scope: "global",
+                        command: `rollSpecialityManager.rollSpeciality(token, '${specialityId}')`
+                    });
+
                     let freeSlot = Array.fromRange(50).map(i => i + 1).find(i => !(i in game.user.data.hotbar) || !game.macros.get(game.user.data.hotbar[i]));
                     await game.user.assignHotbarMacro(macro, freeSlot);
                 }

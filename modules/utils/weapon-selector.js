@@ -9,7 +9,6 @@ export class WeaponSelector {
     static selectWeapon(token, weaponType) {
         return new Promise((resolve, reject) => {
             let itemsByType = token.actor.itemTypes;
-            console.log(itemsByType['weapon']);
 
             let weapons = itemsByType['weapon']
                 .filter(w => w.data.data.equiped)

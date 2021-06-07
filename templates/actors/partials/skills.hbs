@@ -74,7 +74,7 @@
             <div>
                 {{#each data.computedData.speciality.knownSpecialities as |speciality|}}
                     <div class="speciality">
-                        <div class="label label-with-tooltip-description">
+                        <div class="label label-with-tooltip-description" data-speciality="{{speciality.id}}">
                             {{speciality.name}}
                             <div class="description"><strong>{{speciality.name}}</strong>: {{speciality.description}}</div>
                         </div>

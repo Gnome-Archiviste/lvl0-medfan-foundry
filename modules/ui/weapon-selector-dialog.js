@@ -76,8 +76,6 @@ export class WeaponSelectorDialog extends Application {
         });
 
         let defaultWeapon = this.dialogData.weapons[0];
-        console.warn(defaultWeapon);
-        console.warn(defaultWeapon._id);
         html.find(`.weapon-line input[name="weapon"][value="${defaultWeapon._id}"]`).prop('checked', true);
         this.selectWeapon(html, defaultWeapon);
     }

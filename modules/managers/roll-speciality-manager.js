@@ -1,8 +1,23 @@
 import {RollSkillManager} from "./roll-skill-manager.js";
 import {WeaponSelector} from "../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../utils/weapon-damage-roll-util.js";
+import specialitiesDefinitions from "../../data/specialities.js";
+
+/**
+ * @typedef SpecialityDefinition
+ * @property {string} name
+ * @property {string} description
+ */
 
 export class RollSpecialityManager {
+    /**
+     * @param {string} specialityId
+     * @return {SpecialityDefinition}
+     */
+    static getSpecialityFromId(specialityId) {
+        return specialitiesDefinitions[specialityId];
+    }
+
     /**
      * @param {Token} token
      * @param {string} specialityId
