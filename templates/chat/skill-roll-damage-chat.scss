@@ -1,0 +1,69 @@
+.skill-roll-damage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "title"
+                       "test"
+                       "weapon"
+                       "ammunition"
+                       "result";
+
+  * + * {
+    margin-bottom: 8px;
+  }
+
+  .result {
+    grid-area: result;
+    font-size: 20px;
+    text-align: center;
+    .total {
+      font-weight: bold;
+    }
+  }
+
+  .title {
+    grid-area: title;
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .weapon {
+    grid-area: weapon;
+  }
+
+  .ammunition {
+    grid-area: ammunition;
+  }
+
+  .test {
+    grid-area: test;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    grid-template-areas: "img name"
+                         "img damage";
+    column-gap: 8px;
+
+    .name {
+      grid-area: name;
+      font-size: 15px;
+    }
+
+    .damage {
+      grid-area: damage;
+      font-size: 15px;
+    }
+
+    .img {
+      grid-area: img;
+      width: 48px;
+      height: 48px;
+    }
+
+
+  }
+}
