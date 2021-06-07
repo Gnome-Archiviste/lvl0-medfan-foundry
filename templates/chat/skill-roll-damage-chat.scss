@@ -1,11 +1,6 @@
 .skill-roll-damage {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas: "title"
-                       "test"
-                       "weapon"
-                       "ammunition"
-                       "result";
+  display: flex;
+  flex-direction: column;
 
   * + * {
     margin-bottom: 8px;
@@ -18,6 +13,10 @@
     .total {
       font-weight: bold;
     }
+  }
+
+  .roll {
+    grid-area: roll;
   }
 
   .title {
@@ -45,7 +44,9 @@
     display: grid;
     grid-template-columns: 48px 1fr;
     grid-template-areas: "img name"
-                         "img damage";
+                         "img damage"
+                         "img roll";
+    align-items: center;
     column-gap: 8px;
 
     .name {
@@ -62,6 +63,10 @@
       grid-area: img;
       width: 48px;
       height: 48px;
+    }
+
+    .roll {
+      grid-area: roll;
     }
 
 

@@ -38,7 +38,7 @@ export class WeaponDamageRollUtil {
 
         let ammunitionDamageRollFormula = undefined;
         if (ammunition) {
-            ammunition.data.data.extraDamage.split(' ').join();
+            ammunitionDamageRollFormula = ammunition.data.data.extraDamage.split(' ').join();
         }
         return [damageRollFormula, ammunitionDamageRollFormula];
     }

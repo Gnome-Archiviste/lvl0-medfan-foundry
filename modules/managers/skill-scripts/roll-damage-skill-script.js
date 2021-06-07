@@ -73,32 +73,38 @@ export class RollDamageSkillScript extends SkillScript {
         const messageData = roll.toMessage({}, {create: false});
 
         if (success) {
-            let damageRoll = new Roll(weaponRollFormula).roll();
-            let weaponDamage = damageRoll._total;
+            let weaponRoll = new Roll(weaponRollFormula).roll();
+            let weaponDamage = weaponRoll._total;
             let ammunitionDamage = 0;
+            let ammunitionRoll = undefined;
 
             if (useAmmunition) {
-                let ammunitionRoll = new Roll(ammunitionRollFormula).roll();
+                ammunitionRoll = new Roll(ammunitionRollFormula).roll();
                 ammunitionDamage = ammunitionRoll._total;
             }
 
-            let message = this.buildChatMessage(
+            messageData.content = await this.buildChatMessage(
+                roll,
                 result,
                 minSuccessValue,
                 success,
                 weaponRollFormula,
                 ammunitionRollFormula,
                 weaponDamage,
-                ammunitionDamage
+                ammunitionDamage,
+                weaponRoll,
+                ammunitionRoll
             );
-            messageData.content = `${message}
-                <p>${await roll.render()}</p>
-                <p>${await damageRoll.render()}</p>`;
 
         } else {
-
-            let message = this.buildChatMessage(result, minSuccessValue, success, weaponRollFormula, ammunitionRollFormula);
-            messageData.content = `${message}<p>${await roll.render()}</p>`;
+            messageData.content = await this.buildChatMessage(
+                roll,
+                result,
+                minSuccessValue,
+                success,
+                weaponRollFormula,
+                ammunitionRollFormula
+            );
         }
 
         messageData.speaker = ChatMessage.getSpeaker({token: this.token});
@@ -107,10 +113,23 @@ export class RollDamageSkillScript extends SkillScript {
         return true;
     }
 
-    buildChatMessage(result, minSuccessValue, success, weaponRollFormula, ammunitionRollFormula, weaponDamage, ammunitionDamage) {
+    async buildChatMessage(
+        roll,
+        result,
+        minSuccessValue,
+        success,
+        weaponRollFormula,
+        ammunitionRollFormula,
+        weaponDamage,
+        ammunitionDamage,
+        weaponRoll,
+        ammunitionRoll
+    ) {
         let message = `<div class="skill-roll-damage">
             <div class="title">${this.skillDefinition.name}</div>
-            <div class="test"><i class="fas fa-dice-d20"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>`;
+            <div class="test"><i class="fas fa-dice-d20"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
+            <div class="roll">${await roll.render()}</div>
+        `;
 
         let weaponDamageText = weaponRollFormula;
         if (this.weapon.data.data.element) {
@@ -122,8 +141,11 @@ export class RollDamageSkillScript extends SkillScript {
         message += `<div class="weapon item">
             <div class="name">${this.weapon.name}</div>
             <img class="img" src="${this.weapon.img}" />
-            <div class="damage"><i class="fas fa-dice-d20"></i> ${weaponDamageText}</div>
-        </div>`;
+            <div class="damage"><i class="fas fa-dice-d20"></i> ${weaponDamageText}</div>`;
+        if (success) {
+            message += `<div class="roll">${await weaponRoll.render()}</div>`;
+        }
+        message += `</div>`;
 
         if (this.ammunition) {
             let ammunitionDamageText = ammunitionRollFormula;
@@ -136,8 +158,12 @@ export class RollDamageSkillScript extends SkillScript {
             message += `<div class="ammunition item">
                 <div class="name">${this.ammunition.name}</div>
                 <img class="img" src="${this.ammunition.img}" />
-                <div class="damage"><i class="fas fa-dice-d20"></i> ${ammunitionDamageText}</div>
-            </div>`;
+                <div class="damage"><i class="fas fa-dice-d20"></i> ${ammunitionDamageText}</div>`;
+
+            if (success) {
+                message += `<div class="roll">${await ammunitionRoll.render()}</div>`;
+            }
+            message += '</div>';
         }
 
         if (success) {
