@@ -27,11 +27,11 @@ export default {
             description: "Avec ce sort, le magicien peut frapper à distance. Une fine feuille de flammes jaillit de la main du magicien, frappant une créature jusqu’à 5 mètres du magicien et lui fait 1d6 dommage de feu.",
             bonus: null,
             damage: '1d6',
-            domage_type: 'fire',
+            damage_type: 'fire',
             distance : '5m',
             time: '3 turn',
             area: 'target',
-            resilience: 'domage: domage/2',
+            resilience: 'damage: damage/2',
             resilience_text: 'Divise le dommage par deux (plus haut/ennemie, plus bas/joueur)',
             critical: 'no resilience',
             critical_text: 'La cible ne peut pas faire de test de résilience.'
