@@ -29,6 +29,6 @@ Hooks.once("ready", async function () {
     // FOR DEBUG
     if (game.user.isGM) {
         await ui.sidebar.activateTab('actors');
-        CONFIG.debug.hooks = true
+        // CONFIG.debug.hooks = true
     }
 });
