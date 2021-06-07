@@ -1,3 +1,4 @@
+import {ElementsUtil} from "./elements-util.js";
 
 export class WeaponDamageRollUtil {
     /**
@@ -43,3 +44,13 @@ export class WeaponDamageRollUtil {
         return [damageRollFormula, ammunitionDamageRollFormula];
     }
 }
+
+Handlebars.registerHelper('weaponDamageFormula', (weaponType, /** @type {Item} */ weapon) => {
+    let [weaponRollFormula] = WeaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(weaponType, weapon);
+    let element = ElementsUtil.getNameForWeapon(weapon.data.data.element);
+
+    if (element) {
+        return `${weaponRollFormula} (${element})`;
+    }
+    return weaponRollFormula;
+});

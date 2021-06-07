@@ -1,6 +1,7 @@
 import {SkillScript} from "./skill-script.js";
 import {WeaponSelector} from "../../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
+import {ElementsUtil} from "../../utils/elements-util.js";
 
 /**
  * @typedef RollDamageSkillScript
@@ -133,7 +134,7 @@ export class RollDamageSkillScript extends SkillScript {
 
         let weaponDamageText = weaponRollFormula;
         if (this.weapon.data.data.element) {
-            weaponDamageText += ` (${this.weapon.data.data.element})`
+            weaponDamageText += ` (${ElementsUtil.getNameForWeapon(this.weapon.data.data.element)})`;
         }
         if (success) {
             weaponDamageText += ' = ' + weaponDamage;
@@ -150,7 +151,7 @@ export class RollDamageSkillScript extends SkillScript {
         if (this.ammunition) {
             let ammunitionDamageText = ammunitionRollFormula;
             if (this.ammunition.data.data.extraDamageEffect) {
-                ammunitionDamageText += ` (${this.ammunition.data.data.extraDamageEffect})`;
+                ammunitionDamageText += ` (${ElementsUtil.getNameForWeapon(this.ammunition.data.data.extraDamageEffect)})`;
             }
             if (success) {
                 ammunitionDamageText += ' = ' + ammunitionDamage;

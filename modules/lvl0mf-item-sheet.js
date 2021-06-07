@@ -1,4 +1,5 @@
 import skills from "../data/skills.js";
+import elements from "../data/elements.js";
 
 export class Lvl0mfItemSheet extends ItemSheet {
     /** @override */
@@ -37,6 +38,10 @@ export class Lvl0mfItemSheet extends ItemSheet {
             'dart': 'Dard',
             'marble': 'Bille',
         };
+        data.elements = Object.entries(elements).reduce((previousValue, [key, value]) => {
+            previousValue[key] = value.nameForWeapon;
+            return previousValue;
+        } , {});
         data.usedAmmunitionTypes = {
             '': 'Aucune',
             ...data.ammunitionTypes

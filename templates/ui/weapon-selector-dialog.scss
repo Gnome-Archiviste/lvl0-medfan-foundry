@@ -6,7 +6,7 @@
       }
 
       display: grid;
-      grid-template-columns: 32px 32px 1fr 100px 100px;
+      grid-template-columns: 32px 32px 1fr 150px 50px;
       grid-column-gap: 8px;
       grid-template-areas: "select icon name damage handCount";
       align-items: center;

@@ -19,15 +19,7 @@
                     {{/if}}
                 </div>
                 <div class="handCount">{{item.data.data.handCount}}</div>
-                {{#if (eq item.data.data.weaponType 'melee-range')}}
-                    {{#if (eq ../weaponType 'range')}}
-                        <div class="damage">{{item.data.data.rangeDamage}}</div>
-                    {{else}}
-                        <div class="damage">{{item.data.data.damage}}</div>
-                    {{/if}}
-                {{else}}
-                    <div class="damage">{{item.data.data.damage}}</div>
-                {{/if}}
+                <div class="damage">{{weaponDamageFormula ../weaponType item}}</div>
             </div>
         {{/each}}
     </section>
@@ -60,7 +52,7 @@
                 </div>
                 <div class="damage">{{item.data.data.extraDamage}}
                     {{#if item.data.data.extraDamageEffect}}
-                        <span>({{item.data.data.extraDamageEffect}})</span>
+                        <span>({{weaponEffectName item.data.data.extraDamageEffect}})</span>
                     {{/if}}
                 </div>
                 <div class="quantity">{{item.data.data.quantity}}</div>
