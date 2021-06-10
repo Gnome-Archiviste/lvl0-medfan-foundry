@@ -27,6 +27,7 @@ export class WeaponDamageRollUtil {
      * @param {'range'|'melee'} weaponType
      * @param {Item} weapon
      * @param {Item?} ammunition
+     * @param {boolean} charge
      * @return {string[]}
      */
     static getWeaponAndAmmunitionDamageRolls(weaponType, weapon, ammunition) {

@@ -70,6 +70,9 @@ export class RollDamageSkillScript extends SkillScript {
             this.ammunition
         );
 
+        if (this.data.charge) {
+            weaponRollFormula = '(' + weaponRollFormula + ')*2'
+        }
 
         const messageData = roll.toMessage({}, {create: false});
 

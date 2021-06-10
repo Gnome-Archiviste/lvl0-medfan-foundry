@@ -58,12 +58,25 @@ export default {
         charge: {
             name: "Charge",
             stat: "phy",
-            description: "Double les dégâts de l’attaque, mais le personnage ne peut plus éviter ni utiliser son bouclier pour se protéger."
+            description: "Double les dégâts de l’attaque, mais le personnage ne peut plus éviter ni utiliser son bouclier pour se protéger.",
+            script: {
+                name: 'damageRoll',
+                data: {
+                    weaponType: 'melee',
+                    charge: true
+                }
+            }
         },
         two_handed_combat: {
             name: "Combat à deux mains",
             stat: "phy",
-            description: "ermet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains."
+            description: "ermet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains.",
+            script: {
+                name: 'damageRoll',
+                data: {
+                    weaponType: 'melee'
+                }
+            }
         },
         intimidation: {
             name: "Intimidation",
