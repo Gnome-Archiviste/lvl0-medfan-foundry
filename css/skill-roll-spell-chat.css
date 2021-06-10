@@ -1,0 +1,3 @@
+.skill-roll-spell-chat{display:flex;flex-direction:column}.skill-roll-spell-chat *+*{margin-bottom:8px}.skill-roll-spell-chat .result{grid-area:result;font-size:20px;text-align:center}.skill-roll-spell-chat .result .total{font-weight:bold}.skill-roll-spell-chat .title{font-size:20px;margin-bottom:8px;text-align:center}.skill-roll-spell-chat .test{font-size:15px;text-align:center}.skill-roll-spell-chat .spell .name{font-size:17px}.skill-roll-spell-chat .spell .stats{display:grid;grid-template-columns:1fr 1fr}.skill-roll-spell-chat .spell .label{font-weight:bold}.skill-roll-spell-chat .spell .damage{font-size:17px;text-align:center}
+
+/*# sourceMappingURL=skill-roll-spell-chat.css.map */

@@ -4,7 +4,7 @@ import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
 import {ElementsUtil} from "../../utils/elements-util.js";
 
 /**
- * @typedef RollDamageSkillScript
+ * @typedef RollDamageSkillScriptData
  * @property {'range'|'melee'} weaponType
  */
 
@@ -21,7 +21,7 @@ export class RollDamageSkillScript extends SkillScript {
     weapon;
     /**
      * @private
-     * @property {RollDamageSkillScript} data
+     * @property {RollDamageSkillScriptData} data
      */
     data;
 

@@ -2,8 +2,10 @@
 @import 'items/item-sheet';
 @import 'ui/level-up';
 @import 'ui/select-speciality-dialog';
+@import 'ui/spell-selector-dialog';
 @import 'ui/weapon-selector-dialog';
 @import 'chat/skill-roll-damage-chat';
+@import 'chat/skill-roll-spell-chat';
 @import 'chat/skill-roll-chat';
 
 input[type=text] {

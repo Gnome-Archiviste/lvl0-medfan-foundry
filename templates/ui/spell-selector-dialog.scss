@@ -1,0 +1,14 @@
+.weapon-selector-dialog {
+  .spell {
+    * + * {
+      margin-bottom: 8px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .label {
+      font-weight: bold;
+    }
+  }
+}

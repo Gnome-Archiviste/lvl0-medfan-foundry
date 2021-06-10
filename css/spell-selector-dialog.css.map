@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "spell-selector-dialog.css",
+	"sources": [
+		"../templates/ui/spell-selector-dialog.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAEI,uBAFmB,CACrB,MAAM,CACJ,CAAC,CAAG,CAAC,AAAC,CACJ,aAAa,CAAE,GAAG,CACnB,AAJL,AAKI,uBALmB,CACrB,MAAM,CAIJ,MAAM,AAAC,CACL,OAAO,CAAE,IAAI,CACb,qBAAqB,CAAE,OAAO,CAC/B,AARL,AASI,uBATmB,CACrB,MAAM,CAQJ,MAAM,AAAC,CACL,WAAW,CAAE,IAAI,CAClB"
+}

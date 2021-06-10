@@ -23,7 +23,13 @@ export default {
         spellcasting: {
             name: "Sortilège",
             stat: "cha",
-            description: "Permet au champion de lancer ses sorts."
+            description: "Permet au champion de lancer ses sorts.",
+            script: {
+                name: 'castSpell',
+                data: {
+                    weaponType: 'champion'
+                }
+            }
         },
     },
     ranger: {
@@ -94,7 +100,13 @@ export default {
         spell_casting: {
             name: "Sortilège",
             stat: "int",
-            description: "Permet au magicien de lancer ses sorts."
+            description: "Permet au magicien de lancer ses sorts.",
+            script: {
+                name: 'castSpell',
+                data: {
+                    spellCategory: 'mage'
+                }
+            }
         },
     },
     rogue: {

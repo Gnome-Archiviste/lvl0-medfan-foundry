@@ -42,6 +42,13 @@ export class WeaponSelectorDialog extends Application {
         return "Selection de l'arme";
     }
 
+    async close(options = {}) {
+        if (!options.selected) {
+            this.onComplete([]);
+        }
+        return super.close(options);
+    }
+
     /** @override */
     activateListeners(html) {
         super.activateListeners(html);
@@ -69,7 +76,7 @@ export class WeaponSelectorDialog extends Application {
                     if (this.selectedAmmo)
                         selectedItems.push(this.selectedAmmo);
                     this.onComplete(selectedItems);
-                    this.close();
+                    this.close({selected: true});
                     break;
                 }
             }

@@ -29,6 +29,7 @@ export class SkillScript {
             <div class="title">${this.skillDefinition.name}</div>
             <div class="test"><i class="fas fa-dice-d20"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
             <div class="roll">${await roll.render()}</div>
+        </div>
         `;
 
         messageData.content = message;

@@ -1,5 +1,6 @@
 import {RollDamageSkillScript} from "./roll-damage-skill-script.js";
 import {SkillScript} from "./skill-script.js";
+import {RollSpellSkillScript} from "./roll-spell-skill-script.js";
 
 export class SkillScriptFactory {
     /**
@@ -13,6 +14,8 @@ export class SkillScriptFactory {
         switch (skillDefinition.script.name) {
             case 'damageRoll':
                 return new RollDamageSkillScript(token, skillDefinition);
+            case 'castSpell':
+                return new RollSpellSkillScript(token, skillDefinition);
         }
 
         throw new Error(`skill script ${skillDefinition.script.name} is not known`);

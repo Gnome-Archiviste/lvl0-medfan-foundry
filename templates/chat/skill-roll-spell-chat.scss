@@ -1,0 +1,46 @@
+.skill-roll-spell-chat {
+
+  display: flex;
+  flex-direction: column;
+
+  * + * {
+    margin-bottom: 8px;
+  }
+
+  .result {
+    grid-area: result;
+    font-size: 20px;
+    text-align: center;
+    .total {
+      font-weight: bold;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .test {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .spell {
+    .name {
+      font-size: 17px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .label {
+      font-weight: bold;
+    }
+    .damage {
+      font-size: 17px;
+      text-align: center;
+    }
+  }
+}
