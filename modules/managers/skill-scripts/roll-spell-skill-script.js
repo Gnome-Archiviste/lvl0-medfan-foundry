@@ -2,6 +2,7 @@ import {SkillScript} from "./skill-script.js";
 import {SpellSelector} from "../../utils/spell-selector.js";
 import {SpellManager} from "../spell-manager.js";
 import {ElementsUtil} from "../../utils/elements-util.js";
+import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager.js";
 
 /**
  * @typedef RollSpellSkillScriptData
@@ -49,9 +50,11 @@ export class RollSpellSkillScript extends SkillScript {
 
         const messageData = roll.toMessage({}, {create: false});
 
+        let criticalSuccess = result === 2;
+        let epicFail = result === 12;
         let context = {
-            criticalSuccess: result === 2,
-            epicFail: result === 2,
+            criticalSuccess: criticalSuccess,
+            epicFail: epicFail,
         };
         let spell = SpellManager.reComputeSpellAfterRoll(this.spell, this.token.actor.data.data, context);
 
@@ -59,7 +62,7 @@ export class RollSpellSkillScript extends SkillScript {
         let damageResult = '';
         if (spell.damageFormula) {
             damageRoll = new Roll(spell.damageFormula).roll();
-            if (success)
+            if (success || epicFail)
                 damageResult = ` = ${damageRoll._total}`;
         }
 
@@ -80,20 +83,23 @@ export class RollSpellSkillScript extends SkillScript {
         message += `
                 </div>`;
 
-                if (spell.criticalSuccess && result === 2)
-                    message += `<div class="criticalSuccess"><span class="label">Succès remarquable</span> ${spell.criticalSuccess}</div>`;
-                if (spell.resilience)
-                    message += `<div class="resilience"><span class="label">Résilience</span> ${spell.resilience}</div>`;
+        if (spell.criticalSuccess && criticalSuccess)
+            message += `<div class="criticalSuccess"><span class="label">Succès remarquable</span> ${spell.criticalSuccess}</div>`;
+        if (spell.resilience)
+            message += `<div class="resilience"><span class="label">Résilience</span> ${spell.resilience}</div>`;
         if (spell.damageFormula)
             message += `<div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> ${spell.damageFormula} (${ElementsUtil.getName(spell.damageElement)})${damageResult}</div>`;
         if (spell.damageFormula)
             message += ` <div class="roll">${await damageRoll.render()}</div>`;
+        if (epicFail)
+            message += ` <div class="epic-fail"><button data-lvl0-global-action-roll-magic-epic-fail><i class="fas fa-dice"></i> Échec critique</button></div>`;
+
         message += `
             </div>
         </div>
         `;
 
-        if (success || result === 12) {
+        if (success || epicFail) {
             this.token.actor.useMana(spell.cost);
         }
 
@@ -102,3 +108,9 @@ export class RollSpellSkillScript extends SkillScript {
         await ChatMessage.create(messageData);
     }
 }
+
+Hooks.on('init', () => {
+    $(document).on('click', '[data-lvl0-global-action-roll-magic-epic-fail]', async function () {
+        await RollMagicEpicFailManager.roll();
+    })
+});
