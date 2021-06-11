@@ -3,7 +3,11 @@ export default {
         shield_attack: {
             name: "Attaque de bouclier",
             stat: "phy",
-            description: "Permet au champion de se battre avec un bouclier. Cette attaque peut se faire comme une seconde attaque durant son tour, il faut cependant faire un jet de dés pour chaque attaque. La première se fait toujours avec un Combat de mêlées, la deuxième avec Attaque de bouclier. Seuls les Champions peuvent faire une attaque de bouclier."
+            description: "Permet au champion de se battre avec un bouclier. Cette attaque peut se faire comme une seconde attaque durant son tour, il faut cependant faire un jet de dés pour chaque attaque. La première se fait toujours avec un Combat de mêlées, la deuxième avec Attaque de bouclier. Seuls les Champions peuvent faire une attaque de bouclier.",
+            script: {
+                name: 'shieldDamageRoll',
+                data: {}
+            }
         },
         commandment: {
             name: "Commandement",

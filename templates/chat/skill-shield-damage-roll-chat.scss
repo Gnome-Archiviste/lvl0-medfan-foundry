@@ -1,16 +1,17 @@
 @import "skill-roll-chat";
-.skill-roll-damage {
+
+.skill-shield-damage-roll-chat {
   @extend .skill-roll-chat;
 
-  .item {
+  .shield {
     display: grid;
     grid-template-columns: 48px 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas: "img name"
                          "img damage"
                          "img roll";
     align-items: center;
     column-gap: 8px;
-
     .name {
       grid-area: name;
       font-size: 15px;
@@ -26,11 +27,13 @@
       width: 48px;
       height: 48px;
     }
+  }
+  .label {
+    font-weight: bold;
+  }
 
-    .roll {
-      grid-area: roll;
-    }
-
-
+  .damage {
+    font-size: 17px;
+    text-align: center;
   }
 }

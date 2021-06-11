@@ -1,31 +1,7 @@
+@import "skill-roll-chat";
+
 .skill-roll-spell-chat {
-
-  display: flex;
-  flex-direction: column;
-
-  * + * {
-    margin-bottom: 8px;
-  }
-
-  .result {
-    grid-area: result;
-    font-size: 20px;
-    text-align: center;
-    .total {
-      font-weight: bold;
-    }
-  }
-
-  .title {
-    font-size: 20px;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  .test {
-    font-size: 15px;
-    text-align: center;
-  }
+  @extend .skill-roll-chat;
 
   .spell {
     .name {
