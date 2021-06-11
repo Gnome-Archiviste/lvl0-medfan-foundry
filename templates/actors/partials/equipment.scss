@@ -82,6 +82,9 @@
           .extra-skill {
             margin-left: 16px;
           }
+          .description {
+            margin-left: 16px;
+          }
         }
       }
     }
@@ -184,6 +187,14 @@
           font-weight: bold;
         }
         .description {
+          .content {
+            position: relative;
+            > * + * {
+              border-top: 1px solid white;
+              margin-top: 4px;
+              padding-top: 4px;
+            }
+          }
           background: #23221d;
           top: 28px;
           border: 1px solid #000;

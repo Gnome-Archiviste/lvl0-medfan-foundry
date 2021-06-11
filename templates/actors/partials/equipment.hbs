@@ -16,9 +16,20 @@
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
                     <div class="title">{{item.name}}</div>
-                    {{#if item.data.data.description}}
+                    {{#if (or item.data.data.description item.data.data.restriction)}}
                         <div class="description">
-                            {{item.data.data.description}}
+                            <div class="content">
+                                {{#if item.data.data.description}}
+                                    <div>
+                                        {{item.data.data.description}}
+                                    </div>
+                                {{/if}}
+                                {{#if item.data.data.restriction}}
+                                    <div>
+                                        <strong>Limitation: </strong> {{item.data.data.restriction}}
+                                    </div>
+                                {{/if}}
+                            </div>
                         </div>
                     {{/if}}
                 </div>
@@ -56,6 +67,14 @@
                             {{#each item.data.data.extraSkills as |extraSkill| }}
                                 <div class="extra-skill">{{lookup (lookup ../../../skillsByIds extraSkill.id) 'name'}}</div>
                             {{/each}}
+                            {{#if (eq item.type 'shield')}}
+                                <div class="description">
+                                    <strong>Dégât: </strong> {{item.data.data.damage}}
+                                </div>
+                                <div class="description">
+                                    <strong>Blocage: </strong> {{item.data.data.blockValue}}
+                                </div>
+                            {{/if}}
                         </div>
                     </div>
                 {{/each2}}

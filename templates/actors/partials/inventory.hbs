@@ -27,19 +27,25 @@
                         <span class="title">
                             {{item.name}}
                         </span>
-                        {{#if item.data.dat.damage}}
-                            <span class="damage">
-                                Dégâts: {{item.data.data.damage}}
-                            </span>
-                        {{/if}}
                     </div>
-                    <div>
-                        {{#if item.data.data.description}}
+                    {{#if item.data.data.description}}
+                        <div>
                             <span class="description">
                                 {{item.data.data.description}}
                             </span>
-                        {{/if}}
-                    </div>
+                        </div>
+                    {{/if}}
+                    {{#if (eq item.type 'shield')}}
+                        <div class="description">
+                            <strong>Dégât: </strong> {{item.data.data.damage}}
+                            <strong>Blocage: </strong> {{item.data.data.blockValue}}
+                        </div>
+                    {{/if}}
+                    {{#if item.data.data.restriction}}
+                        <div class="restriction">
+                            <strong>Limitation: </strong> {{item.data.data.restriction}}
+                        </div>
+                    {{/if}}
                 </div>
                 <div class="clutter">
                     {{item.data.data.clutter}}
