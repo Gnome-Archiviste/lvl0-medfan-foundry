@@ -24,12 +24,15 @@ export class RollSkillManager {
         return skills[skillCategory][skillName];
     }
 
-    static getSkillSuccessValue(token, skillId) {
+    /**
+     * @param {Lvl0CharacterData} actorData
+     * @param skillId
+     * @return {*}
+     */
+    static getSkillSuccessValue(actorData, skillId) {
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
         let stat = skillDefinition.stat;
-        /** @type {Lvl0CharacterData} */
-        let actorData = token.actor.data.data;
 
         let skillValue = actorData.skills[skillCategory][skillName].value || 0;
         let actorStatValue = actorData.computedData.stats.baseStats[stat].value || 0;
@@ -39,7 +42,6 @@ export class RollSkillManager {
     }
 
     /**
-     *
      * @param {Token} token
      * @param {String} skillId
      * @return boolean
@@ -58,7 +60,7 @@ export class RollSkillManager {
         if (!await skillScript.prepare())
             return false;
 
-        let minSuccessValue = RollSkillManager.getSkillSuccessValue(token, skillId);
+        let minSuccessValue = RollSkillManager.getSkillSuccessValue(token.actor.data.data, skillId);
         let roll = new Roll('2d6');
         roll.roll();
         let result = +roll.result;

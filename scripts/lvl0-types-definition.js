@@ -149,6 +149,7 @@
  * @property {number} value
  * @property {boolean} master
  * @property {boolean} prodigy
+ * @property {boolean|undefined} manualMode
  */
 /**
  * @typedef {Object} RaceDefinition

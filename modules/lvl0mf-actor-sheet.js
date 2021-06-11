@@ -194,7 +194,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
     _getSkillContextMenu() {
 
-        return [
+        let skillContextMenu = [
             {
                 name: 'Lancer les dés',
                 icon: '<i class="fas fa-dice"></i>',
@@ -213,7 +213,34 @@ export class Lvl0mfActorSheet extends ActorSheet {
                     await game.user.assignHotbarMacro(macro, freeSlot);
                 }
             }
-        ]
+        ];
+
+        if (game.user.isGM) {
+            skillContextMenu.push({
+                name: 'Changer la valeur sans limitation',
+                icon: '<i class="fas fa-cog"></i>',
+                callback: el => {
+                    let [skillCategory, skillName] = rollSkillManager.splitSkill(el.data('skill'));
+                    let characterSkillData = this.actor.data.data.skills[skillCategory][skillName];
+                    let manualMode = !!characterSkillData.manualMode;
+                    let value = characterSkillData.value;
+                    this.actor.update({
+                        data: {
+                            skills: {
+                                [skillCategory]: {
+                                    [skillName]: {
+                                        manualMode: !manualMode,
+                                        value: (manualMode && value > 3) ? 3 : value
+                                    }
+                                }
+                            }
+                        }
+                    }, {diff: true});
+                }
+            });
+        }
+
+        return skillContextMenu;
     }
 
     _getSpecialityContextMenu() {

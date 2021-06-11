@@ -1,3 +1,5 @@
+import {RollSkillManager} from "../managers/roll-skill-manager.js";
+
 Hooks.on('renderActorSheet', (sheet, elements) => {
     /**
      * @type {HTMLElement}
@@ -46,6 +48,34 @@ function getAvailableAddPointLevel(characterData, skillCategoryId) {
     return undefined;
 }
 
+/**
+ * @param {SkillDefinition} skillDefinition
+ * @param {Lvl0CharacterData} characterData
+ * @param {SkillValue} characterSkillData
+ * @param {string} skillCategoryId
+ * @param {string} skillId
+ * @return {Handlebars.SafeString|string}
+ */
+function renderSkillValueManualMode(skillDefinition, characterData, characterSkillData, skillCategoryId, skillId) {
+    let skillTestValue = RollSkillManager.getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
+
+    return new Handlebars.SafeString(`<span class="sheet-skill-value">
+            <span class="sheet-skill-levels">
+                <input type="text" name="data.skills.${skillCategoryId}.${skillId}.value" type="number" data-dtype="number" value="${characterSkillData.value}">
+            </span>
+            <span class="sheet-skill-stat">
+                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
+            </span>
+            <span class="sheet-skill-level">
+                ${skillTestValue}
+            </span>
+            <span class="sheet-skill-rerolls">
+                <input type="checkbox" data-dtype='boolean' name="data.skills.${skillCategoryId}.${skillId}.master" ${characterSkillData.master ? 'checked' : ''} />
+                <input type="checkbox" data-dtype='boolean' name="data.skills.${skillCategoryId}.${skillId}.prodigy" ${characterSkillData.prodigy ? 'checked' : ''} />
+            </span>
+        </span>`);
+}
+
 Handlebars.registerHelper('skill-value',
     /**
      * @param {SkillDefinition} skillDefinition
@@ -54,7 +84,7 @@ Handlebars.registerHelper('skill-value',
      * @param {string} skillId
      * @return {Handlebars.SafeString|string}
      */
-    function (skillDefinition, characterData, skillCategoryId, skillId, options) {
+    function (skillDefinition, characterData, skillCategoryId, skillId) {
         /**
          * @type {SkillValue}
          */
@@ -70,6 +100,10 @@ Handlebars.registerHelper('skill-value',
         }
         if (characterSkillData.value == null)
             characterSkillData.value = 0;
+
+        if (characterSkillData.manualMode) {
+            return renderSkillValueManualMode(skillDefinition, characterData, characterSkillData, skillCategoryId, skillId);
+        }
 
         let skillLevel = +characterSkillData.value;
         let fullSkillId = skillCategoryId  + '.' + skillId;
