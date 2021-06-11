@@ -240,7 +240,7 @@ export default {
         },
         herbalist: {
             name: "Herboriste",
-            stat: "dex",
+            stat: "int",
             description: "Permet de trouver des herbes, les cultiver, faire des onguents, faire des tisanes, etc. Ajouté avec le test de soin, il permet aussi d'ajouter un autre point de vie à ce dernier."
         },
         langage: {
