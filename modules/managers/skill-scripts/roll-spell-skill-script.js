@@ -23,19 +23,38 @@ export class RollSpellSkillScript extends SkillScript {
     spell;
 
     /**
+     * @private
+     * @property {Object} options
+     */
+    options;
+
+    /**
      * @param {Token} token
      * @param {SkillDefinition} skillDefinition
+     * @param {Object} options
      */
-    constructor(token, skillDefinition) {
+    constructor(token, skillDefinition, options) {
         super(token, skillDefinition);
         this.data = skillDefinition.script.data;
+        this.options = options;
     }
 
     /**
      * @override
      */
     async prepare() {
-        this.spell = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
+        let spell = undefined;
+        if (this.options?.spellId) {
+            spell = SpellManager.getComputedSpellForActorById(this.options?.spellId, this.token.actor.data.data, {});
+        }
+        if (!spell) {
+            spell = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
+        }
+        if (spell?.cost > this.token.actor.data.data.mana.value) {
+            ui.notifications.error('Pas assez de point de magie.');
+            return false;
+        }
+        this.spell = spell;
         return !!this.spell;
 
     }
@@ -44,10 +63,6 @@ export class RollSpellSkillScript extends SkillScript {
      * @override
      */
     async postRoll(roll, result, minSuccessValue, success) {
-        // Roll damage or other spell related stuff
-        // Send message
-        // Critical failure
-
         const messageData = roll.toMessage({}, {create: false});
 
         let criticalSuccess = result === 2;
@@ -57,22 +72,6 @@ export class RollSpellSkillScript extends SkillScript {
             epicFail: epicFail,
         };
         let spell = SpellManager.reComputeSpellAfterRoll(this.spell, this.token.actor.data.data, context);
-
-        let damageRoll = undefined;
-        let damageResult = '';
-        if (spell.damageFormula) {
-            damageRoll = new Roll(spell.damageFormula).roll();
-            if (success || epicFail)
-                damageResult = ` = ${damageRoll._total}`;
-        }
-
-        let healRoll = undefined;
-        let healResult = '';
-        if (spell.healFormula) {
-            healRoll = new Roll(spell.healFormula).roll();
-            if (success || epicFail)
-                healResult = ` = ${healRoll._total}`;
-        }
 
         let message = `<div class="skill-roll-spell-chat">
             <div class="title">${this.skillDefinition.name}</div>

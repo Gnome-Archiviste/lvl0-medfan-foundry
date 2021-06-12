@@ -26,8 +26,8 @@ export class RollSkillManager {
 
     /**
      * @param {Lvl0CharacterData} actorData
-     * @param skillId
-     * @return {*}
+     * @param {string} skillId
+     * @return {number}
      */
     static getSkillSuccessValue(actorData, skillId) {
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
@@ -44,9 +44,10 @@ export class RollSkillManager {
     /**
      * @param {Token} token
      * @param {String} skillId
+     * @param {Object} options
      * @return boolean
      */
-    static async rollSkill(token, skillId) {
+    static async rollSkill(token, skillId, options = {}) {
         if (!token) {
             ui.notifications.error('Sélectionnez un token avant de faire cette action');
             return false;
@@ -55,7 +56,7 @@ export class RollSkillManager {
         let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
 
-        let skillScript = new SkillScriptFactory().getScriptByName(token, skillDefinition);
+        let skillScript = new SkillScriptFactory().createScript(token, skillDefinition, options);
 
         if (!await skillScript.prepare())
             return false;

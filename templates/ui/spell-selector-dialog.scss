@@ -1,6 +1,6 @@
 .weapon-selector-dialog {
   .spell {
-    * + * {
+    > * + * {
       margin-bottom: 8px;
     }
     .stats {
@@ -9,6 +9,12 @@
     }
     .label {
       font-weight: bold;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      column-gap: 8px;
     }
   }
 }

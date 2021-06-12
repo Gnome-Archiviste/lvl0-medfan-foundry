@@ -7,16 +7,17 @@ export class SkillScriptFactory {
     /**
      * @param {Token} token
      * @param {SkillDefinition} skillDefinition
+     * @param {Object} options
      * @return SkillScript
      */
-    getScriptByName(token, skillDefinition) {
+createScript(token, skillDefinition, options) {
         if (!skillDefinition.script?.name)
             return new SkillScript(token, skillDefinition);
         switch (skillDefinition.script.name) {
             case 'damageRoll':
                 return new RollDamageSkillScript(token, skillDefinition);
             case 'castSpell':
-                return new RollSpellSkillScript(token, skillDefinition);
+                return new RollSpellSkillScript(token, skillDefinition, options);
             case 'shieldDamageRoll':
                 return new RollShieldDamageSkillScript(token, skillDefinition);
         }

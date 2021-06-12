@@ -14,7 +14,10 @@
             {{spellSelectorStat 'bonus' spell.bonus}}
             {{spellSelectorStat 'damage' spell.damage}}
             {{spellSelectorStat 'heal' spell.heal}}
-            <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"> Lancer</button>
+            <div class="actions">
+                <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une macro</button>
+                <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
+            </div>
         </div>
     {{/each}}
 </div>

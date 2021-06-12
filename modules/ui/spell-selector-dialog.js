@@ -61,6 +61,19 @@ export class SpellSelectorDialog extends Application {
                     this.close({selected: true});
                     break;
                 }
+                case 'addMacro': {
+                    let spellId = ev.target.dataset['spellId'];
+                    let spell = this.data.spells.find(s => s.id === spellId);
+                    let skillId = spell.id.startsWith('champion') ? 'champion.spellcasting' : 'mage.spell_casting';
+                    Macro.create({name: spell.name, type: "script", scope: "global", command: `rollSkillManager.rollSkill(token, '${skillId}', {spellId: '${spellId}'})`})
+                        .then(async (macro) => {
+                            let freeSlot = Array.fromRange(50).map(i => i + 1).find(i => !(i in game.user.data.hotbar) || !game.macros.get(game.user.data.hotbar[i]));
+                            await game.user.assignHotbarMacro(macro, freeSlot);
+                        });
+
+                    this.close();
+                    break;
+                }
             }
         });
     }

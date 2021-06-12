@@ -138,6 +138,29 @@ export class SpellManager {
         return updatedActorSpell;
     }
 
+    /**
+     * @param {string} spellId
+     * @return SpellDefinition|undefined
+     */
+    static getSpellById(spellId) {
+        let [spellCategory, level, id] = spellId.split('.', 3);
+        return spellsDefinitions[spellCategory][level]?.find(s => s.id === id);
+    }
+
+    /**
+     * @param {string} spellId
+     * @param {Lvl0CharacterData} actorData
+     * @param {Object} context
+     * @return ActorSpell|undefined
+     */
+    static getComputedSpellForActorById(spellId, actorData, context) {
+        let spellDefinition = this.getSpellById(spellId);
+        if (!spellDefinition)
+            return undefined;
+        let [spellCategory, level, id] = spellId.split('.', 3);
+        return this.computeSpellForActor(spellDefinition, +level, spellCategory, actorData, context);
+    }
+
     static computeSpellDescription(actorSpell, spellDefinition, actorData, context = {}) {
         if (typeof spellDefinition.description === 'string')
             return spellDefinition.description

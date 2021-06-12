@@ -16,10 +16,10 @@ export class SpellSelector {
                 return 0;
             }
 
-            let weaponSelectorDialog = new SpellSelectorDialog({spells: spellActors}, async (spell) => {
+            let spellSelectorDialog = new SpellSelectorDialog({spells: spellActors}, async (spell) => {
                 resolve(spell);
             });
-            weaponSelectorDialog.render(true);
+            spellSelectorDialog.render(true);
         });
     }
 }
