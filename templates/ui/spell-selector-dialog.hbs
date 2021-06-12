@@ -5,29 +5,15 @@
             <div class="description">{{{spell.description}}}</div>
             <div class="stats">
                 <div class="cost"><span class="label">Coût</span> {{spell.cost}} point de magie</div>
-                <div class="distance"><span class="label">Distance</span> {{spell.distance}}</div>
-                {{#if spell.duration}}
-                    <div class="duration"><span class="label">Durée</span> {{spell.duration}}</div>
-                {{/if}}
-                {{#if spell.area}}
-                    <div class="area"><span class="label">Rayon</span> {{spell.area}}</div>
-                {{/if}}
+                {{spellSelectorStat 'distance' spell.distance}}
+                {{spellSelectorStat 'duration' spell.duration}}
+                {{spellSelectorStat 'area' spell.area}}
             </div>
-            {{#if spell.criticalSuccess}}
-                <div class="criticalSuccess"><span class="label">Succès remarquable</span> {{spell.criticalSuccess}}</div>
-            {{/if}}
-            {{#if spell.resilience}}
-                <div class="resilience"><span class="label">Résilience</span> {{spell.resilience}}</div>
-            {{/if}}
-            {{#if spell.bonus}}
-                <div class="bonus"><span class="label">Bonus</span> {{spell.bonus}}</div>
-            {{/if}}
-            {{#if spell.damageFormula}}
-                <div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> {{spell.damageFormula}} ({{elementName spell.damageElement}})</div>
-            {{/if}}
-            {{#if spell.healFormula}}
-                <div class="heal"><i class="fas fa-dice"></i> <span class="label">Soin</span> {{spell.healFormula}}</div>
-            {{/if}}
+            {{spellSelectorStat 'criticalSuccess' spell.criticalSuccess}}
+            {{spellSelectorStat 'resilience' spell.resilience}}
+            {{spellSelectorStat 'bonus' spell.bonus}}
+            {{spellSelectorStat 'damage' spell.damage}}
+            {{spellSelectorStat 'heal' spell.heal}}
             <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"> Lancer</button>
         </div>
     {{/each}}

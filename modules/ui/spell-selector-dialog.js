@@ -1,7 +1,10 @@
+import {RolledSpellStat} from "../managers/spell-manager.js";
+
 /**
  * @typedef SpellSelectorDialogData
  * @property {ActorSpell[]} spells
  */
+
 /**
  * @callback CompleteSpellSelectorCallback
  * @param {ActorSpell|undefined} selectedSpell
@@ -72,3 +75,14 @@ export class SpellSelectorDialog extends Application {
         });
     }
 }
+
+Handlebars.registerHelper('spellSelectorStat', (name, value) => {
+    if (!value)
+        return '';
+    if (typeof value === 'string')
+        return new Handlebars.SafeString(`<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value}</div>`);
+    if (typeof value === 'object' && value instanceof RolledSpellStat)
+        return new Handlebars.SafeString(`<div class="${name}">
+            <span class="label"><i class="fas fa-dice"></i> ${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value.toDisplayDefinitionString()}
+        </div>`);
+})

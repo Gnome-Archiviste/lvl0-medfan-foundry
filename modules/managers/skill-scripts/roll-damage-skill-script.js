@@ -131,7 +131,7 @@ export class RollDamageSkillScript extends SkillScript {
     ) {
         let message = `<div class="skill-roll-damage">
             <div class="title">${this.skillDefinition.name}</div>
-            <div class="test"><i class="fas fa-dice-d20"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
+            <div class="test"><i class="fas fa-dice"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
             <div class="roll">${await roll.render()}</div>
         `;
 
@@ -145,7 +145,7 @@ export class RollDamageSkillScript extends SkillScript {
         message += `<div class="weapon item">
             <div class="name">${this.weapon.name}</div>
             <img class="img" src="${this.weapon.img}" />
-            <div class="damage"><i class="fas fa-dice-d20"></i> ${weaponDamageText}</div>`;
+            <div class="damage"><i class="fas fa-dice"></i> ${weaponDamageText}</div>`;
         if (success) {
             message += `<div class="roll">${await weaponRoll.render()}</div>`;
         }
@@ -162,7 +162,7 @@ export class RollDamageSkillScript extends SkillScript {
             message += `<div class="ammunition item">
                 <div class="name">${this.ammunition.name}</div>
                 <img class="img" src="${this.ammunition.img}" />
-                <div class="damage"><i class="fas fa-dice-d20"></i> ${ammunitionDamageText}</div>`;
+                <div class="damage"><i class="fas fa-dice"></i> ${ammunitionDamageText}</div>`;
 
             if (success) {
                 message += `<div class="roll">${await ammunitionRoll.render()}</div>`;

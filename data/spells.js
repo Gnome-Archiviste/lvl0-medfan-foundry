@@ -73,7 +73,7 @@ export default {
                     unit: 'mètres'
                 },
                 damage: {
-                    rollFormula: '1d6',
+                    rollFormula: 'return "1d6";',
                     element: 'fire'
                 },
                 duration: {
@@ -156,7 +156,7 @@ export default {
                     unit: 'm'
                 },
                 damage: {
-                    rollFormula: '1d6/2',
+                    rollFormula: 'return "1d6/2"',
                     element: 'physic'
                 },
                 bonus: {
@@ -183,7 +183,7 @@ export default {
                     type: 'touch'
                 },
                 heal: {
-                    rollFormula: '1d6'
+                    rollFormula: 'return "1d6";'
                 },
                 duration: {
                     text: 'Instantané'
@@ -208,6 +208,31 @@ export default {
                 area: {
                     text: 'Un repas ou cruche'
                 }
+            }
+        ],
+        2: [
+            {
+                id: 'protectAuraEvil',
+                name: 'Aura de protection contre le mal',
+                description: 'Empêche les mauvaises créatures de pénétrer dans une zone de 5 mètres de rayon autour du champion. Attention, bien que l’aura ce fait à l’entour du champion, cette dernière ne se déplace pas.',
+                distance: {
+                    type: 'self'
+                },
+                duration: {
+                    rollFormula: `
+                        if (context.criticalSuccess)
+                            return "(1d6+" + context.actorData.computedData.magic.arcaneLevel + ")*2";
+                        return "1d6+" + context.actorData.computedData.magic.arcaneLevel;
+                    `,
+                    unit: 'tours'
+                },
+                area: {
+                    value: 5,
+                    unit: 'm'
+                },
+                criticalSuccess: {
+                    text: 'Double la durée'
+                },
             }
         ]
     }
