@@ -41,7 +41,7 @@ export class RollSpecialityManager {
         }
 
         return new Promise(async resolve => {
-            let successRollValue = RollSkillManager.getSkillSuccessValue(token, 'combat.throw_shoot');
+            let successRollValue = RollSkillManager.getSkillSuccessValue(token.actor.data.data, 'combat.throw_shoot');
             let [weapon, ammunition] = await WeaponSelector.selectWeapon(token, 'range');
             if (!weapon) {
                 resolve(false);
