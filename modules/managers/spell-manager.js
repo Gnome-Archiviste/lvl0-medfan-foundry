@@ -143,13 +143,7 @@ export class SpellManager {
             return spellDefinition.description
                 .replace('{{spell.area}}', `<em>${actorSpell.area}</em>`);
         if (spellDefinition.description.formula) {
-            let wrap = body => "{ return (function(context) {" + body + "})(arguments[0]) };"
-            let func = new Function(wrap(spellDefinition.description.formula));
-
-            return func.call(null, {
-                ...context,
-                actorData
-            });
+            return this.computeFormula(spellDefinition.description.formula, context, actorData);
         }
         return undefined;
     }

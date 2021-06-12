@@ -9,11 +9,18 @@ export default {
                     type: 'touch'
                 },
                 duration: {
-                    formula: 'return 2 * context.actorData.level.value',
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 2 * 2 * context.actorData.level.value;
+                        return 2 * context.actorData.level.value;
+                    `,
                     unit: 'h'
                 },
                 criticalSuccess: {
-                    text: 'Double la durée'
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 'Double la durée (pré-calculé)';
+                        return 'Double la durée';`
                 },
                 area: {
                     value: 10,
@@ -113,10 +120,17 @@ export default {
                     text: 'Une scène'
                 },
                 criticalSuccess: {
-                    text: 'Double le rayon'
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 'Double le rayon (pré-calculé)';
+                        return 'Double le rayon';`
                 },
                 area: {
-                    value: 10,
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 20;
+                        return 10;
+                    `,
                     unit: 'm'
                 }
             },
@@ -231,9 +245,112 @@ export default {
                     unit: 'm'
                 },
                 criticalSuccess: {
-                    text: 'Double la durée'
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 'Double la durée (pré-calculé)';
+                        return 'Double la durée';`
                 },
-            }
+            },
+            {
+                id: 'blind',
+                name: 'Aveuglement',
+                description: {
+                    formula: `return "Rends une tête de la victime aveugle pour <em>" + context.actorData.computedData.magic.arcaneLevel + "</em> tour(s)." 
+                        + " La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.";`
+                },
+                distance: {
+                    value: 20,
+                    unit: 'm'
+                },
+                duration: {
+                    formula: `return context.actorData.computedData.magic.arcaneLevel`,
+                    unit: 'tours'
+                },
+                area: {
+                    text: 'Une cible'
+                },
+                resilience: {
+                    text: 'Le sort ne fonctionne pas'
+                },
+                criticalSuccess: {
+                    text: 'La cible ne peut pas faire de test de résilience.'
+                },
+            },
+            {
+                id: 'babelfish',
+                name: 'Babelfish',
+                description: {
+                    formula: 'return "Permets de comprendre toute langue des créatures pensantes pendant " + (context.criticalSuccess ? 14 : 7) + " tours."'
+                },
+                distance: {
+                    type: 'self'
+                },
+                duration: {
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 14;
+                        return 7;
+                    `,
+                    value: 7,
+                    unit: 'tours'
+                },
+                area: {
+                    text: 'Une cible'
+                },
+                criticalSuccess: {
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 'Double la durée (pré-calculé)';
+                        return 'Double la durée';`
+                },
+            },
+            {
+                id: 'duel',
+                name: 'Duel',
+                description: 'Avec un gant, le champion frappe un adversaire au visage pour un point de dégât direct. Cependant, le champion devient la seule cible de l’adversaire jusqu’à la fin du combat. Les habiletés comme provocation, commandement, intimidation des autres personnages n\'affectent pas les l’adversaire sous le sort Duel.',
+                distance: {
+                    type: 'touch'
+                },
+                bonus: {
+                    text: 'Armure ne protège pas'
+                },
+                damage: {
+                    formula: '1'
+                },
+                resilience: {
+                    text: 'Le sort ne fonctionne pas'
+                },
+                duration: {
+                    text: 'Instantané',
+                },
+                area: {
+                    text: 'Une cible'
+                },
+                criticalSuccess: {
+                    text: 'La cible ne peut pas faire de test de résilience.'
+                },
+            },
+            {
+                id: 'heroMeal',
+                name: 'Repas du héros',
+                description: 'Fournit un repas pour un personnage et guérit de 1d6 points de vie. Le repas disparaît à la fin, et ne laisse aucun reste.',
+                distance: {
+                    value: 1,
+                    unit: 'm'
+                },
+                bonus: {
+                    text: 'Guérit 1d6 points de vie'
+                },
+                duration: {
+                    text: 'Instantané',
+                },
+                area: {
+                    text: 'Devant le Champion'
+                },
+                criticalSuccess: {
+                    text: 'Guérit de 2d6 points de vie'
+                },
+            },
         ]
     }
 }
