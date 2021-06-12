@@ -4,6 +4,9 @@
   @extend .skill-roll-chat;
 
   .spell {
+    > * + * {
+      margin-bottom: 8px;
+    }
     .name {
       font-size: 17px;
     }
@@ -15,6 +18,10 @@
       font-weight: bold;
     }
     .damage {
+      font-size: 17px;
+      text-align: center;
+    }
+    .heal {
       font-size: 17px;
       text-align: center;
     }

@@ -92,6 +92,123 @@ export default {
         ]
     },
     champion: {
-
+        1: [
+            {
+                id: 'detectEvil',
+                name: 'Détection des mauvais',
+                description: {
+                    formula: `
+                    let prefix = "<strong>L'effet dépend du niveau du champion.</strong>";
+                    if (context.actorData.computedData.magic.arcaneLevel < 3)
+                        return prefix + "Le champion ressent s’il y a présence d’au moins un être mauvais dans les environs (pâté de maisons) sans grandes précisions";
+                    if (context.actorData.computedData.magic.arcaneLevel < 5)
+                        return prefix + "Le champion peut déterminer le nombre d’êtres mauvais dans les environs";
+                    return prefix + "Le champion voit une aura rougeâtre entourant les créatures mauvaises. Plus une créature est mauvaise et puissante, plus l’aura est brillante.";
+                `
+                },
+                distance: {
+                    type: 'self'
+                },
+                duration: {
+                    text: 'Une scène'
+                },
+                criticalSuccess: {
+                    text: 'Double le rayon'
+                },
+                area: {
+                    value: 10,
+                    unit: 'm'
+                }
+            },
+            {
+                id: 'detectUndead',
+                name: 'Détection des morts-vivants',
+                description: {
+                    formula: `
+                    let prefix = "<strong>L'effet dépend du niveau du champion.</strong>";
+                    if (context.actorData.computedData.magic.arcaneLevel < 3)
+                        return prefix + "Le champion ressent s’il y a présence d’au moins un mort-vivant dans les environs (pâté de maisons) sans grandes précisions";
+                    if (context.actorData.computedData.magic.arcaneLevel < 5)
+                        return prefix + "Le champion peut déterminer le nombre de morts-vivants dans les environs";
+                    return prefix + "Le champion voit une aura mauve entourant les morts-vivants. Plus un mort-vivant est puissant, plus l’aura est brillante.";
+                `
+                },
+                distance: {
+                    type: 'self'
+                },
+                duration: {
+                    text: 'Une scène'
+                },
+                criticalSuccess: {
+                    text: 'Double le rayon'
+                },
+                area: {
+                    value: 10,
+                    unit: 'm'
+                }
+            },
+            {
+                id: 'plonk',
+                name: 'Plonk',
+                description: 'En visant avec le doigt, le champion envoie un petit projectile magique qui passe au travers de l’armure.',
+                distance: {
+                    value: 10,
+                    unit: 'm'
+                },
+                damage: {
+                    rollFormula: '1d6/2',
+                    element: 'physic'
+                },
+                bonus: {
+                    text: 'L\'armure ne protège pas'
+                },
+                duration: {
+                    text: 'Instantané'
+                },
+                criticalSuccess: {
+                    text: 'La cible ne peut pas faire de test de résilience'
+                },
+                resilience: {
+                    text: 'Divise le dommage par deux (arrondi au supérieur)'
+                },
+                area: {
+                    text: 'Une cible'
+                }
+            },
+            {
+                id: 'firstHeal',
+                name: 'Premiers soins',
+                description: 'Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas au champion lui-même. Ne peut pas dépasser le maximum de points de vie.',
+                distance: {
+                    type: 'touch'
+                },
+                heal: {
+                    rollFormula: '1d6'
+                },
+                duration: {
+                    text: 'Instantané'
+                },
+                criticalSuccess: {
+                    text: 'Guérit de 6 points de vie'
+                },
+                area: {
+                    text: 'Une cible'
+                }
+            },
+            {
+                id: 'purifyFood',
+                name: 'Purification de nourriture et d’eau',
+                description: 'Purifie un repas ou une cruche d’eau par niveau d’arcane',
+                distance: {
+                    type: 'touch'
+                },
+                duration: {
+                    text: 'Instantané'
+                },
+                area: {
+                    text: 'Un repas ou cruche'
+                }
+            }
+        ]
     }
 }

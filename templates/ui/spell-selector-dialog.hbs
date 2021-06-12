@@ -19,8 +19,14 @@
             {{#if spell.resilience}}
                 <div class="resilience"><span class="label">Résilience</span> {{spell.resilience}}</div>
             {{/if}}
+            {{#if spell.bonus}}
+                <div class="bonus"><span class="label">Bonus</span> {{spell.bonus}}</div>
+            {{/if}}
             {{#if spell.damageFormula}}
                 <div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> {{spell.damageFormula}} ({{elementName spell.damageElement}})</div>
+            {{/if}}
+            {{#if spell.healFormula}}
+                <div class="heal"><i class="fas fa-dice"></i> <span class="label">Soin</span> {{spell.healFormula}}</div>
             {{/if}}
             <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"> Lancer</button>
         </div>

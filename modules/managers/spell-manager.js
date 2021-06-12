@@ -8,9 +8,11 @@ import spellsDefinitions from "../../data/spells.js";
  * @property {SpellDefinitionDistance} distance
  * @property {ComputableSpellValue|null} duration
  * @property {ComputableSpellValue|null} area
+ * @property {ComputableSpellValue|null} bonus
  * @property {ComputableSpellValue|null} resilience
  * @property {ComputableSpellValue|null} criticalSuccess
  * @property {SpellDamageDefinition|null} damage
+ * @property {SpellHealDefinition|null} heal
  */
 
 /**
@@ -19,9 +21,14 @@ import spellsDefinitions from "../../data/spells.js";
  * @property {string|null} element
  */
 /**
+ * @typedef SpellHealDefinition
+ * @property {string|null} rollFormula
+ */
+/**
  * @typedef SpellDefinitionDistance
  * @property {'self'|'touch'} type
  */
+
 /**
  * @typedef ComputableSpellValue
  * @property {string} formula
@@ -41,6 +48,8 @@ import spellsDefinitions from "../../data/spells.js";
  * @property {string} distance
  * @property {string|null} damageFormula
  * @property {string|null} damageElement
+ * @property {string|null} bonus
+ * @property {string|null} healFormula
  * @property {string|null} duration
  * @property {string|null} area
  * @property {string|null} resilience
@@ -67,12 +76,14 @@ export class SpellManager {
             area: SpellManager.computeComplex(spellDefinition.area, actorData, context),
             criticalSuccess: SpellManager.computeComplex(spellDefinition.criticalSuccess, actorData, context),
             resilience: SpellManager.computeComplex(spellDefinition.resilience, actorData, context),
+            bonus: SpellManager.computeComplex(spellDefinition.bonus, actorData, context),
             damageFormula: SpellManager.computeDamageFormula(spellDefinition.damage, actorData, context),
+            healFormula: SpellManager.computeHealFormula(spellDefinition.heal, actorData, context),
             damageElement: spellDefinition.damage?.element,
             definition: spellDefinition
         };
 
-        actorSpell.description = SpellManager.computeSpellDescription(actorSpell, spellDefinition, context);
+        actorSpell.description = SpellManager.computeSpellDescription(actorSpell, spellDefinition, actorData, context);
 
         return actorSpell;
     }
@@ -90,14 +101,25 @@ export class SpellManager {
             damageElement: actorSpell.definition.damage?.element,
         };
 
-        updatedActorSpell.description = SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, context);
+        updatedActorSpell.description = SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, actorData, context);
 
         return updatedActorSpell;
     }
 
-    static computeSpellDescription(actorSpell, spellDefinition) {
-        return spellDefinition.description
-            .replace('{{spell.area}}', `<em>${actorSpell.area}</em>`);
+    static computeSpellDescription(actorSpell, spellDefinition, actorData, context = {}) {
+        if (typeof spellDefinition.description === 'string')
+            return spellDefinition.description
+                .replace('{{spell.area}}', `<em>${actorSpell.area}</em>`);
+        if (spellDefinition.description.formula) {
+            let wrap = body => "{ return (function(context) {" + body + "})(arguments[0]) };"
+            let func = new Function(wrap(spellDefinition.description.formula));
+
+            return func.call(null, {
+                ...context,
+                actorData
+            });
+        }
+        return undefined;
     }
 
 
@@ -143,11 +165,9 @@ export class SpellManager {
                 case "touch":
                     return 'Touché';
             }
-        }
-        else if (spellDefinition.distance.text) {
+        } else if (spellDefinition.distance.text) {
             value = spellDefinition.distance.text;
-        }
-        else if (spellDefinition.distance.value) {
+        } else if (spellDefinition.distance.value) {
             value = spellDefinition.distance.value;
         }
         if (spellDefinition.distance.unit) {
@@ -156,6 +176,7 @@ export class SpellManager {
 
         return value;
     }
+
     static computeDamageFormula(damageData, actorData, context = {}) {
         if (!damageData) {
             return undefined;
@@ -167,6 +188,26 @@ export class SpellManager {
         if (damageData.formula) {
             let wrap = body => "{ return (function(context) {" + body + "})(arguments[0]) };"
             let func = new Function(wrap(damageData.formula));
+            return func.call(null, {
+                ...context,
+                actorData
+            });
+        }
+
+        return value;
+    }
+
+    static computeHealFormula(healData, actorData, context = {}) {
+        if (!healData) {
+            return undefined;
+        }
+        let value = '';
+        if (healData.rollFormula) {
+            return healData.rollFormula;
+        }
+        if (healData.formula) {
+            let wrap = body => "{ return (function(context) {" + body + "})(arguments[0]) };"
+            let func = new Function(wrap(healData.formula));
             return func.call(null, {
                 ...context,
                 actorData
@@ -194,11 +235,9 @@ export class SpellManager {
                 ...context,
                 actorData
             });
-        }
-        else if (computable.value) {
+        } else if (computable.value) {
             value = computable.value;
-        }
-        else if (computable.text) {
+        } else if (computable.text) {
             value = computable.text;
         }
         if (computable.unit) {

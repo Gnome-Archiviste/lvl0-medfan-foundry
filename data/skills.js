@@ -31,7 +31,7 @@ export default {
             script: {
                 name: 'castSpell',
                 data: {
-                    weaponType: 'champion'
+                    spellCategory: 'champion'
                 }
             }
         },
