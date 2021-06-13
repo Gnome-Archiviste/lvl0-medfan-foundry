@@ -4,6 +4,7 @@ export default {
             {
                 id: 'alarm',
                 name: 'Alarme',
+                icon: 'icons/magic/sonic/bell-alarm-red-purple.webp',
                 description: `Protège une zone ou une pièce d’un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancer du sort) entre dans la zone, on entend le son d’une cloche. A partir d’arcane 5, l’alarme peut être mental. Elle est entendue dans la tête du magicien et les personnes présentes durant le lancer du sort. `,
                 distance: {
                     type: 'touch'
@@ -30,6 +31,7 @@ export default {
             {
                 id: 'fog',
                 name: 'Brume',
+                icon: 'icons/magic/air/weather-clouds.webp',
                 description: `Une épaisse brume entoure le magicien, permettant de le cacher ainsi que ses coéquipiers, sur une zone de {{spell.area}}. Donne 2 points de pénalité sur leur perception (il faut faire une perception pour trouver un nouvel adversaire).`,
                 distance: {
                     type: 'self'
@@ -74,6 +76,7 @@ export default {
             {
                 id: 'fireSlap',
                 name: 'Gifle enflammée',
+                icon: 'icons/magic/fire/beam-strike-whip-red.webp',
                 description: `Avec ce sort, le magicien peut frapper à distance. Une fine feuille de flammes jaillit de la main du magicien, frappant une créature jusqu’à 5 mètres du magicien et lui fait 1d6 dommage de feu.`,
                 distance: {
                     value: 5,
@@ -103,6 +106,7 @@ export default {
             {
                 id: 'detectEvil',
                 name: 'Détection des mauvais',
+                icon: 'icons/magic/unholy/silhouette-evil-horned-giant.webp',
                 description: {
                     formula: `
                     let prefix = "<strong>L'effet dépend du niveau du champion.</strong>";
@@ -137,6 +141,7 @@ export default {
             {
                 id: 'detectUndead',
                 name: 'Détection des morts-vivants',
+                icon: 'icons/magic/death/hand-undead-%20skeleton-fire-pink.webp',
                 description: {
                     formula: `
                     let prefix = "<strong>L'effet dépend du niveau du champion.</strong>";
@@ -164,6 +169,7 @@ export default {
             {
                 id: 'plonk',
                 name: 'Plonk',
+                icon: 'icons/magic/light/projectile-halo-teal.webp',
                 description: 'En visant avec le doigt, le champion envoie un petit projectile magique qui passe au travers de l’armure.',
                 distance: {
                     value: 10,
@@ -192,6 +198,7 @@ export default {
             {
                 id: 'firstHeal',
                 name: 'Premiers soins',
+                icon: 'icons/magic/life/crosses-trio-red.webp',
                 description: 'Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas au champion lui-même. Ne peut pas dépasser le maximum de points de vie.',
                 distance: {
                     type: 'touch'
@@ -212,6 +219,7 @@ export default {
             {
                 id: 'purifyFood',
                 name: 'Purification de nourriture et d’eau',
+                icon: 'icons/magic/symbols/cross-circle-blue.webp',
                 description: 'Purifie un repas ou une cruche d’eau par niveau d’arcane',
                 distance: {
                     type: 'touch'
@@ -228,6 +236,7 @@ export default {
             {
                 id: 'protectAuraEvil',
                 name: 'Aura de protection contre le mal',
+                icon: 'icons/magic/unholy/barrier-fire-pink.webp',
                 description: 'Empêche les mauvaises créatures de pénétrer dans une zone de 5 mètres de rayon autour du champion. Attention, bien que l’aura ce fait à l’entour du champion, cette dernière ne se déplace pas.',
                 distance: {
                     type: 'self'
@@ -254,6 +263,7 @@ export default {
             {
                 id: 'blind',
                 name: 'Aveuglement',
+                icon: 'icons/magic/perception/eye-slit-orange.webp',
                 description: {
                     formula: `return "Rends une tête de la victime aveugle pour <em>" + context.actorData.computedData.magic.arcaneLevel + "</em> tour(s)." 
                         + " La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.";`
@@ -279,6 +289,7 @@ export default {
             {
                 id: 'babelfish',
                 name: 'Babelfish',
+                icon: 'icons/magic/symbols/question-stone-yellow.webp',
                 description: {
                     formula: 'return "Permets de comprendre toute langue des créatures pensantes pendant " + (context.criticalSuccess ? 14 : 7) + " tours."'
                 },
@@ -307,6 +318,7 @@ export default {
             {
                 id: 'duel',
                 name: 'Duel',
+                icon: 'icons/equipment/hand/glove-ring-leather-green.webp',
                 description: 'Avec un gant, le champion frappe un adversaire au visage pour un point de dégât direct. Cependant, le champion devient la seule cible de l’adversaire jusqu’à la fin du combat. Les habiletés comme provocation, commandement, intimidation des autres personnages n\'affectent pas les l’adversaire sous le sort Duel.',
                 distance: {
                     type: 'touch'
@@ -333,6 +345,7 @@ export default {
             {
                 id: 'heroMeal',
                 name: 'Repas du héros',
+                icon: 'icons/consumables/food/bowl-stew-brown.webp',
                 description: 'Fournit un repas pour un personnage et guérit de 1d6 points de vie. Le repas disparaît à la fin, et ne laisse aucun reste.',
                 distance: {
                     value: 1,
@@ -356,6 +369,7 @@ export default {
             {
                 id: 'preserveDead',
                 name: 'Conservation du cadavre',
+                icon: 'icons/magic/life/cross-embers-glow-yellow-purple.webp',
                 description: {
                     formula: `return "Ce sort a deux effets."
                         + "<ul>"
@@ -384,6 +398,7 @@ export default {
             {
                 id: 'detectLies',
                 name: 'Détection des mensonges',
+                icon: 'icons/creatures/abilities/mouth-teeth-crooked-blue.webp',
                 description: 'À chaque tour, le champion peut se concentrer sur un sujet à portée et saura instantanément si le sujet ment délibérément.<br>Le sort ne révèle pas la vérité, ne découvre pas les inexactitudes involontaires, ni ne révèle Les évasions. À chaque tour, le personnage peut se concentrer sur un sujet différent.',
                 distance: {
                     value: 5,
@@ -402,6 +417,7 @@ export default {
             {
                 id: 'healBlindness',
                 name: 'Guérison de l’aveuglement',
+                icon: 'icons/creatures/eyes/slime-single-red.webp',
                 description: `Ce sort guérit la cécité, qu'elle soit d'origine naturelle ou magique chez une cible. Le sort ne restaure pas les yeux perdus, mais il les répare s'ils sont endommagés.`,
                 distance: {
                     type: 'touch'
@@ -419,6 +435,7 @@ export default {
             {
                 id: 'healDeafness',
                 name: 'Guérison de la surdité',
+                icon: 'icons/magic/life/cross-yellow-green.webp',
                 description: `Ce sort guérit la surdité, qu'elle soit d'origine naturelle ou magique chez une cible. Le sort ne restaure pas les oreilles perdues, mais il les répare s'ils sont endommagés.`,
                 distance: {
                     type: 'touch'
@@ -436,6 +453,7 @@ export default {
             {
                 id: 'combatPrecognition',
                 name: 'Précognition de combat',
+                icon: 'icons/magic/time/clock-spinning-gold-pink.webp',
                 description: `La cible gagne une prémonition contre les attaques imminentes et peut y répondre un peu plus rapidement que d'habitude, donnant un bonus de 1 à vos points d’armure. Elle prévoit aussi les défenses et les esquives de son adversaire, ce qui donne un bonus de + I aux dommages.`,
                 distance: {
                     type: 'touch'

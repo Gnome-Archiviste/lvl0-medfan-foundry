@@ -4,6 +4,7 @@ import {ElementsUtil} from "../utils/elements-util.js";
 /**
  * @typedef SpellDefinition
  * @property {string} id
+ * @property {string} icon
  * @property {string} name
  * @property {string} description
  * @property {Object.<string, SpellActionDefinition>} actions
@@ -64,6 +65,7 @@ import {ElementsUtil} from "../utils/elements-util.js";
  * @typedef ActorSpell
  * @property {SpellDefinition} definition
  * @property {string} id
+ * @property {string} icon
  * @property {string} name
  * @property {string} cost
  * @property {string} description
@@ -139,6 +141,7 @@ export class SpellManager {
             distance: SpellManager.computeSpellDistance(spellDefinition, actorData, context),
             duration: SpellManager.computeComplex(spellDefinition.duration, actorData, context),
             heal: SpellManager.computeHealFormula(spellDefinition.heal, actorData, context),
+            icon: spellDefinition.icon,
             name: spellDefinition.name,
             resilience: SpellManager.computeComplex(spellDefinition.resilience, actorData, context),
             definition: spellDefinition,

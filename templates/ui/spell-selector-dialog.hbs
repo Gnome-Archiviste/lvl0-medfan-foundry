@@ -1,7 +1,10 @@
 <div class="weapon-selector-dialog">
     {{#each spells as |spell|}}
         <div class="spell">
-            <h2 class="name">{{spell.name}}</h2>
+            <div class="header">
+                <img class="icon" src="{{spell.icon}}">
+                <h2 class="name">{{spell.name}}</h2>
+            </div>
             <div class="description">{{{spell.description}}}</div>
             <div class="stats">
                 <div class="cost"><span class="label">Coût</span> {{spell.cost}} point de magie</div>
