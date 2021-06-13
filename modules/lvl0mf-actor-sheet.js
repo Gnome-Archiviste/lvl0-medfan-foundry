@@ -217,7 +217,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 callback: async el => {
                     let skillId = el.data('skill');
                     let skillDefinition = rollSkillManager.getSkillFromId(skillId);
-                    const macro = await Macro.create({name: skillDefinition.name, type: "script", scope: "actor", command: `rollSkillManager.rollSkill(token, '${skillId}')`});
+                    const macro = await Macro.create({name: skillDefinition.name, type: "script", img: skillDefinition.icon, scope: "actor", command: `rollSkillManager.rollSkill(token, '${skillId}')`});
                     let freeSlot = Array.fromRange(50).map(i => i + 1).find(i => !(i in game.user.data.hotbar) || !game.macros.get(game.user.data.hotbar[i]));
                     await game.user.assignHotbarMacro(macro, freeSlot);
                 }

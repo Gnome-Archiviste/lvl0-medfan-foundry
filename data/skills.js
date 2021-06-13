@@ -2,6 +2,7 @@ export default {
     champion: {
         shield_attack: {
             name: "Attaque de bouclier",
+            icon: 'icons/magic/defensive/shield-barrier-blue.webp',
             stat: "phy",
             description: "Permet au champion de se battre avec un bouclier. Cette attaque peut se faire comme une seconde attaque durant son tour, il faut cependant faire un jet de dés pour chaque attaque. La première se fait toujours avec un Combat de mêlées, la deuxième avec Attaque de bouclier. Seuls les Champions peuvent faire une attaque de bouclier.",
             script: {
@@ -11,6 +12,7 @@ export default {
         },
         commandment: {
             name: "Commandement",
+            icon: 'icons/magic/sonic/scream-wail-shout-teal.webp',
             stat: "cha",
             description: "Données ordres à un personne. Celle-ci peut faire un test de « résilience » pour résister le commandement. Si la résilience ne réussis pas, la personne devra faire l’action commandé. Cette action de devra pas mettre la vie de la personne en danger."
         },
@@ -21,11 +23,13 @@ export default {
         },
         detect_motivation: {
             name: "Détection motivation",
+            icon: 'icons/commodities/currency/coin-yingyang.webp',
             stat: "int",
             description: "Permet au champion de détecter si un être ment, est bon ou mauvais."
         },
         spellcasting: {
             name: "Sortilège",
+            icon: 'icons/weapons/hammers/hammer-double-glowing-yellow.webp',
             stat: "cha",
             description: "Permet au champion de lancer ses sorts.",
             script: {
@@ -116,6 +120,7 @@ export default {
         },
         spell_casting: {
             name: "Sortilège",
+            icon: 'icons/weapons/wands/wand-gem-blue.webp',
             stat: "int",
             description: "Permet au magicien de lancer ses sorts.",
             script: {
@@ -151,11 +156,13 @@ export default {
     combat: {
         hand_combat: {
             name: "Combat mains nues",
+            icon: 'icons/skills/melee/unarmed-punch-fist-white.webp',
             stat: "phy",
             description: "Le personnage a une certaine connaissance des techniques de combat sans arme. S’applique : le combat de rue (+PHY), la boxe (+PHY), etc.",
         },
         melee_combat: {
             name: "Combat mêlée",
+            icon: 'icons/skills/melee/strike-sword-steel-yellow.webp',
             stat: "phy",
             description: "Le personnage a une certaine connaissance des techniques de combat d’arme au poing. Seuls les guerriers peuvent faire du combat avec deux armes. S’applique : épée, gourdin, lance, fléau, hache, dague, etc.",
             script: {
@@ -168,6 +175,7 @@ export default {
         throw_shoot: {
             name: "Lancer / tir",
             stat: "dex",
+            icon: 'icons/skills/ranged/person-archery-bow-attack-gray.webp',
             description: "Le personnage a une certaine connaissance des techniques de combat armé au tir. S’applique : arc, fronde, dagues de lancé, hache de lancé.",
             script: {
                 name: 'damageRoll',
@@ -250,6 +258,7 @@ export default {
         },
         rope_handling: {
             name: "Manipulation des cordes",
+            icon: 'icons/sundries/survival/rope-wrapped-brown.webp',
             stat: "dex",
             description: "Permet de faire des nœuds solides, des filets, etc."
         },
@@ -265,16 +274,19 @@ export default {
         },
         navigate: {
             name: "Naviguer",
+            icon: 'icons/tools/navigation/map-chart-tan.webp',
             stat: "int",
             description: "Permet de diriger un bateau. Permet de diriger par la lecture des cartes."
         },
         observation: {
             name: "Observer",
+            icon: 'icons/magic/perception/eye-tendrils-web-purple.webp',
             stat: "per",
             description: "Voir au loin, dans le brouillard, voir des gens qui essayent de se cacher, permet de trouver des indices, etc."
         },
         orientation: {
             name: "Orientation",
+            icon: 'icons/tools/navigation/compass-brass-blue-red.webp',
             stat: "int",
             description: "Connaître les indices qui indiquent le nord, sud, est et ouest. Permet de se retrouver dans une forêt, une ville ou une caverne."
         },
@@ -295,6 +307,7 @@ export default {
         },
         healing: {
             name: "Soins",
+            icon: 'icons/magic/nature/root-vine-caduceus-healing.webp',
             stat: "int",
             description: "Redonne 2 points de vie à la personne soignée. On peut le faire une fois par «combat», s’il y a eu de nouvelles blessures. Un succès exceptionnel (double 1) permet de faire un autre jet pour permettre de redonner deux autres points de vies. Un échec critique (double 6) fait plus de mal que de biens; la personne soignée reçoit un point de dégât."
         },
