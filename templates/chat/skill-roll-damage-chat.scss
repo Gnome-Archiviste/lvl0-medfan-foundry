@@ -2,6 +2,10 @@
 .skill-roll-damage {
   @extend .skill-roll-chat;
 
+  .effect {
+    text-align: center;
+    font-size: 17px;
+  }
   .item {
     display: grid;
     grid-template-columns: 48px 1fr;

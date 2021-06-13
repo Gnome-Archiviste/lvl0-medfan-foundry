@@ -1,4 +1,5 @@
 import {SkillScript} from "./skill-script.js";
+import {EffectManager} from "../effect-manager.js";
 
 export class RollShieldDamageSkillScript extends SkillScript {
     /**
@@ -60,9 +61,23 @@ export class RollShieldDamageSkillScript extends SkillScript {
             message += `<div class="roll"></div>`;
 
         message += '</div>';
+        let shieldDamage = damageRoll._total;
         if (success) {
-            message += `<div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> ${damageRollFormula} = ${damageRoll._total}</div>`;
+            message += `<div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> ${damageRollFormula} = ${shieldDamage}</div>`;
         }
+
+
+        let bonusDamage = 0;
+        let effectsWithBonusDamages = EffectManager.getEffectsWithBonusDamage(this.token.actor);
+        for (let effectsWithBonusDamage of effectsWithBonusDamages) {
+            message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
+            bonusDamage += effectsWithBonusDamage.value;
+        }
+
+        if (success && bonusDamage) {
+            message += `<div class="result">Total: <span class="total">${success + shieldDamage}</span></div>`
+        }
+
         message += `</div>`;
 
         messageData.content = message;

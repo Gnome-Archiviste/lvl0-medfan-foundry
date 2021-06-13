@@ -22,6 +22,7 @@
           "stats health health xp"
           "stats magic magic xp"
           "stats mv mv xp"
+          "effects effects effects effects"
           "specialities-skills specialities-skills specialities-skills specialities-skills"
     ;
 
@@ -55,6 +56,10 @@
 
     .sheet-specialities-skills {
       grid-area: specialities-skills;
+    }
+
+    .sheet-effects {
+      grid-area: effects;
     }
   }
 
@@ -373,6 +378,25 @@
 
     .sheet-xp-to-next-level {
       grid-area: next-level;
+    }
+  }
+
+  .sheet-effects {
+    border: 1px solid black;
+    grid-area: effects;
+
+    .effect-values {
+      .effect-value {
+        &.header {
+          font-weight: bold;
+        }
+        margin: 0 8px;
+
+        display: grid;
+        grid-gap: 8px;
+        align-items: center;
+        grid-template-columns: 1fr 150px 150px auto;
+      }
     }
   }
 

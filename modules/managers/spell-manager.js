@@ -6,6 +6,7 @@ import {ElementsUtil} from "../utils/elements-util.js";
  * @property {string} id
  * @property {string} name
  * @property {string} description
+ * @property {Object.<string, SpellActionDefinition>} actions
  * @property {SpellDefinitionDistance} distance
  * @property {ComputableSpellValue|null} duration
  * @property {ComputableSpellValue|null} area
@@ -16,6 +17,25 @@ import {ElementsUtil} from "../utils/elements-util.js";
  * @property {SpellHealDefinition|null} heal
  */
 
+/**
+ * @typedef SpellActionDefinition
+ * @property {string} name
+ * @property {'addEffect'} type
+ * @property {AddEffectActionDefinitionData} data
+ */
+
+/**
+ * @typedef AddEffectActionDefinitionData
+ * @property {string} effectName
+ * @property {ComputableSpellValue|null} duration
+ * @property {AddEffectActionModifierDefinition[]} modifiers
+ */
+
+/**
+ * @typedef AddEffectActionModifierDefinition
+ * @property {string|null} stat
+ * @property {string|null} valueFormula
+ */
 /**
  * @typedef SpellDamageDefinition
  * @property {string|null} rollFormula
@@ -55,7 +75,16 @@ import {ElementsUtil} from "../utils/elements-util.js";
  * @property {string|RolledSpellStat|null} area
  * @property {string|RolledSpellStat|null} resilience
  * @property {string|RolledSpellStat|null} criticalSuccess
+ * @property {Object.<string, ActorSpellActionDefinition>} actions
  */
+
+/**
+ * @typedef ActorSpellActionDefinition
+ * @property {string} name
+ * @property {'addEffect'} type
+ * @property {Lvl0ActorEffect} data
+ */
+
 export class RolledSpellStat {
     /**
      * @property {string} rollFormula
@@ -100,6 +129,7 @@ export class SpellManager {
     static computeSpellForActor(spellDefinition, level, spellCategory, actorData, context) {
         let actorSpell = {
             id: spellCategory + '.' + level + '.' + spellDefinition.id,
+            actions: SpellManager.computeActions(spellDefinition.actions, actorData, context),
             area: SpellManager.computeComplex(spellDefinition.area, actorData, context),
             bonus: SpellManager.computeComplex(spellDefinition.bonus, actorData, context),
             cost: level.toString(),
@@ -123,6 +153,7 @@ export class SpellManager {
     static reComputeSpellAfterRoll(actorSpell, actorData, context) {
         let updatedActorSpell = {
             ...actorSpell,
+            actions: SpellManager.computeActions(actorSpell.definition.actions, actorData, context),
             area: SpellManager.computeComplex(actorSpell.definition.area, actorData, context),
             bonus: SpellManager.computeComplex(actorSpell.definition.bonus, actorData, context),
             criticalSuccess: SpellManager.computeComplex(actorSpell.definition.criticalSuccess, actorData, context),
@@ -309,5 +340,35 @@ export class SpellManager {
             console.error(body);
             ui.notifications.error('Erreur dans la définition de la fonction, voir la console pour plus d\'infos');
         }
+    }
+
+    static computeModifier(modifier, actorData, context) {
+        let computedModifier = {stat: modifier.stat};
+        if (modifier.valueFormula) {
+            computedModifier.value = this.computeFormula(modifier.valueFormula, context, actorData);
+        } else if (modifier.value) {
+            computedModifier.value = modifier.value;
+        }
+        return computedModifier;
+    }
+
+    static computeActions(actions, actorData, context) {
+        if (!actions)
+            return undefined;
+        let computedActions = {};
+
+        for (let [key, action] of Object.entries(actions)) {
+            computedActions[key] = {
+                name: action.name,
+                type: action.type,
+                data: {
+                    effectName: action.data.effectName,
+                    duration: this.computeComplex(action.data.duration, actorData, context),
+                    modifiers: action.data.modifiers.map(m => this.computeModifier(m, actorData, context))
+                }
+            };
+        }
+
+        return computedActions;
     }
 }

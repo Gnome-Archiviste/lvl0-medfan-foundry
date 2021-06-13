@@ -1,8 +1,8 @@
 import {SkillScript} from "./skill-script.js";
 import {SpellSelector} from "../../utils/spell-selector.js";
 import {RolledSpellStat, SpellManager} from "../spell-manager.js";
-import {ElementsUtil} from "../../utils/elements-util.js";
 import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager.js";
+import {EffectManager} from "../effect-manager.js";
 
 /**
  * @typedef RollSpellSkillScriptData
@@ -94,6 +94,8 @@ export class RollSpellSkillScript extends SkillScript {
         message += await this._renderSpellStat('bonus', spell.bonus)
         message += await this._renderSpellStat('damage', spell.damage)
         message += await this._renderSpellStat('heal', spell.heal)
+        if (success)
+            message += await this._renderActions(spell);
 
         if (epicFail)
             message += ` <div class="epic-fail"><button data-lvl0-global-action-roll-magic-epic-fail><i class="fas fa-dice"></i> Échec critique</button></div>`;
@@ -125,12 +127,42 @@ export class RollSpellSkillScript extends SkillScript {
                 <div class="roll">${await value.roll.render()}</div>
             </div>`;
     }
+
+    /**
+     * @param {ActorSpell} spell
+     * @return {Promise<string>}
+     * @private
+     */
+    async _renderActions(spell) {
+        if (!spell.actions)
+            return "";
+
+        let actionsContent = '';
+        for (let action of Object.values(spell.actions)) {
+            actionsContent += `<button data-lvl0-global-action-execute-spell-action="${btoa(JSON.stringify(action))}">${action.name}</button>`;
+        }
+
+        return actionsContent;
+    }
 }
-
-
 
 Hooks.on('init', () => {
     $(document).on('click', '[data-lvl0-global-action-roll-magic-epic-fail]', async function () {
         await RollMagicEpicFailManager.roll();
+    })
+    $(document).on('click', '[data-lvl0-global-action-execute-spell-action]', async function (ev) {
+        let token = canvas.tokens.controlled[0] || game.user.character?.getActiveTokens().shift();
+        if (!token) {
+            ui.notifications.error('Sélectionnez un token avant de faire cette action');
+            return;
+        }
+        let action = JSON.parse(atob(ev.target.dataset['lvl0GlobalActionExecuteSpellAction']));
+        switch (action.type) {
+            case 'addEffect':
+                EffectManager.applyEffect(token.actor, action.data)
+                break;
+        }
+
+        action.name
     })
 });

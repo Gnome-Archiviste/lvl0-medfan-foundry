@@ -20,6 +20,12 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             }
         }
 
+        for (let effect of Object.values(actorData.effects || {})) {
+            for (let modifier of effect.modifiers) {
+                bonusPerStat[modifier.stat] = (bonusPerStat[modifier.stat] || 0) + modifier.value;
+            }
+        }
+
         for (let item of actor.items) {
             if (!item.data.data.equiped)
                 continue;

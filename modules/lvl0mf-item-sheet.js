@@ -18,6 +18,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
         data.isOwned = this.entity.isOwned;
         data.modifierSkills = {
             'protection': 'Protection',
+            'damage': 'Dégâts',
             'int': 'Intelligence',
             'phy': 'Physique',
             'cha': 'Charisme',

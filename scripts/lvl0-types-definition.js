@@ -53,6 +53,7 @@
  * @property {Value} experience
  * @property {JobData} job
  * @property {RaceData} race
+ * @property {Object.<string, Lvl0ActorEffect>} effects
  * @property {Object.<string, String>} specialities
  */
 /**

@@ -2,6 +2,7 @@ import {SkillScript} from "./skill-script.js";
 import {WeaponSelector} from "../../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
 import {ElementsUtil} from "../../utils/elements-util.js";
+import {EffectManager} from "../effect-manager.js";
 
 /**
  * @typedef RollDamageSkillScriptData
@@ -64,6 +65,9 @@ export class RollDamageSkillScript extends SkillScript {
             }
         }
 
+        let criticalSuccess = result === 2;
+        let epicFail = result === 12;
+
         let [weaponRollFormula, ammunitionRollFormula] = WeaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(
             this.data.weaponType,
             this.weapon,
@@ -76,7 +80,7 @@ export class RollDamageSkillScript extends SkillScript {
 
         const messageData = roll.toMessage({}, {create: false});
 
-        if (success) {
+        if (success || epicFail) {
             let weaponRoll = new Roll(weaponRollFormula).roll();
             let weaponDamage = weaponRoll._total;
             let ammunitionDamage = 0;
@@ -86,6 +90,8 @@ export class RollDamageSkillScript extends SkillScript {
                 ammunitionRoll = new Roll(ammunitionRollFormula).roll();
                 ammunitionDamage = ammunitionRoll._total;
             }
+
+            let effectsWithBonusDamages = EffectManager.getEffectsWithBonusDamage(this.token.actor);
 
             messageData.content = await this.buildChatMessage(
                 roll,
@@ -97,7 +103,8 @@ export class RollDamageSkillScript extends SkillScript {
                 weaponDamage,
                 ammunitionDamage,
                 weaponRoll,
-                ammunitionRoll
+                ammunitionRoll,
+                effectsWithBonusDamages
             );
 
         } else {
@@ -127,7 +134,8 @@ export class RollDamageSkillScript extends SkillScript {
         weaponDamage,
         ammunitionDamage,
         weaponRoll,
-        ammunitionRoll
+        ammunitionRoll,
+        effectsWithBonusDamages
     ) {
         let message = `<div class="skill-roll-damage">
             <div class="title">${this.skillDefinition.name}</div>
@@ -170,8 +178,14 @@ export class RollDamageSkillScript extends SkillScript {
             message += '</div>';
         }
 
+        let bonusDamage = 0;
+        for (let effectsWithBonusDamage of effectsWithBonusDamages) {
+            message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
+            bonusDamage += effectsWithBonusDamage.value;
+        }
+
         if (success) {
-            message += `<div class="result">Total: <span class="total">${weaponDamage + ammunitionDamage}</span></div>`;
+            message += `<div class="result">Total: <span class="total">${weaponDamage + ammunitionDamage + bonusDamage}</span></div>`;
         }
 
         message += '</div>';

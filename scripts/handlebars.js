@@ -13,6 +13,12 @@ Handlebars.registerHelper('not', function (v) {
     return !v;
 });
 
+Handlebars.registerHelper('length', function (v) {
+    if (typeof v === 'object')
+        return Object.keys(v).length;
+    return v.length;
+});
+
 Handlebars.registerHelper('each2', function (context, contextKey, options) {
     let result = [];
 

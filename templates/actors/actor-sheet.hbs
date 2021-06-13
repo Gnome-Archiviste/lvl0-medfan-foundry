@@ -260,6 +260,33 @@
                             </div>
                         {{/if}}
                     </section>
+                    {{#if (gt (length data.effects) 0)}}
+                    <section class="sheet-effects">
+                        <h3>Modificateurs temporaires</h3>
+                        <div>
+                            <div class="effect-values" data-effect-id="{{@key}}">
+                                <div class="effect-value header">
+                                    <span>Nom</span>
+                                    <span>Durée</span>
+                                    <span>Stats</span>
+                                    <span></span>
+                                </div>
+                                {{#each data.effects as |effect|}}
+                                    <div class="effect-value" data-effect-id="{{@key}}">
+                                        <div>{{effect.effectName}}</div>
+                                        <div>{{effect.duration}}</div>
+                                        <div>
+                                            {{#each effect.modifiers as |modifier|}}
+                                                <div>{{modifier.stat}} + {{modifier.value}}</div>
+                                            {{/each}}
+                                        </div>
+                                        <a data-lvl0-action="deleteActorEffect" title="Supprimer effet"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </section>
+                    {{/if}}
                     <section class="sheet-specialities-skills">
                         {{> "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs"}}
                     </section>

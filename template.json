@@ -86,6 +86,9 @@
       "statModifiers": {
         "modifiers": {}
       },
+      "effects": {
+        "effects": {}
+      },
       "levelUpData": {
         "levelUpData": {
           "levels": {
@@ -177,6 +180,7 @@
         "computedData",
         "staticInventory",
         "statModifiers",
+        "effects",
         "specialities"
       ]
     }

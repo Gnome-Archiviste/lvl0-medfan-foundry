@@ -54,6 +54,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         };
         let modifierSkills = {
             'protection': 'Protection',
+            'damage': 'Dégâts',
             'int': 'Intelligence',
             'phy': 'Physique',
             'cha': 'Charisme',
@@ -147,6 +148,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         html.find("button[data-lvl0-action='addActorModifier']").click(ev => this._onAddModifier(ev));
         html.find("a[data-lvl0-action='deleteActorModifier']").click(ev => this._onRemoveModifier(ev));
+        html.find("a[data-lvl0-action='deleteActorEffect']").click(ev => this._onRemoveEffect(ev));
 
         html.find('[data-permanent-modifier-checkbox]').click(ev => {
             const modifierId = $(ev.currentTarget).data('permanent-modifier-checkbox');
@@ -157,6 +159,13 @@ export class Lvl0mfActorSheet extends ActorSheet {
         new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-speciality]", this._getSpecialityContextMenu());
     }
 
+    /** @param {MouseEvent} ev */
+    _onRemoveEffect(ev) {
+        let effectId = +$(ev.target).parents('.effect-value').data('effect-id');
+        let effects = this.actor.data.data.effects || {};
+        let newModifiers = {...effects, ['-='+effectId]: null};
+        this.actor.update({data: {effects: newModifiers}});
+    }
     /** @param {MouseEvent} ev */
     _onRemoveModifier(ev) {
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
