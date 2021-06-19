@@ -18,6 +18,9 @@ export default {
         protection: {
             name: 'Protection',
         },
+        damage: {
+            name: 'Dégâts',
+        },
         health: {
             name: 'Vie',
         },

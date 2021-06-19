@@ -101,6 +101,7 @@
  * @property {Object.<string, number>} maximumSkillPoints
  * @property {Object.<string, number>} availableSkillPoints
  * @property {string[]} extraSkills
+ * @property {Object.<string, number>} skillModifiers
  */
 /**
  * @typedef {Object} ComputedCharacterSpecialityData

@@ -150,7 +150,8 @@ Handlebars.registerHelper('skill-value',
                 availableSkillLevel[i] = false;
         }
 
-        let skillTestValue = skillLevel + characterData.computedData.stats.baseStats[skillDefinition.stat].value;
+        let skillTestValue = RollSkillManager.getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
+        let skillIsEffectedByAModifier = skillCategoryId + '.' + skillId in characterData.computedData.skills.skillModifiers;
 
         return new Handlebars.SafeString(`<span class="sheet-skill-value">
             <span class="sheet-skill-levels">
@@ -165,7 +166,7 @@ Handlebars.registerHelper('skill-value',
             <span class="sheet-skill-stat">
                 + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
             </span>
-            <span class="sheet-skill-level">
+            <span class="sheet-skill-level ${skillIsEffectedByAModifier ? 'affected-by-modifier' : ''}">
                 ${skillTestValue}
             </span>
             <span class="sheet-skill-rerolls">

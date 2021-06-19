@@ -11,6 +11,14 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         this.countMaximumPoints(actorData);
         this.computeAvailablePoints(actorData);
         this.computeExtraSkills(actorData, actor);
+
+        let skillModifiers = {};
+        for (let effect of Object.values(actorData.effects || {})) {
+            for (let modifier of effect.modifiers.filter(m => !!m.skill)) {
+                skillModifiers[modifier.skill] = (skillModifiers[modifier.skill] || 0) + modifier.value;
+            }
+        }
+        actorData.computedData.skills.skillModifiers = skillModifiers;
     }
 
     /**

@@ -277,7 +277,7 @@
                                         <div>{{effect.duration}}</div>
                                         <div>
                                             {{#each effect.modifiers as |modifier|}}
-                                                <div>{{modifier.stat}} + {{modifier.value}}</div>
+                                                <div>{{effectModifierInfo modifier}}</div>
                                             {{/each}}
                                         </div>
                                         <a data-lvl0-action="deleteActorEffect" title="Supprimer effet"><i class="fas fa-trash"></i></a>

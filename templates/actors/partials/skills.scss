@@ -50,6 +50,11 @@
         grid-gap: 4px;
         align-items: center;
 
+        .affected-by-modifier {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+
         input[type=checkbox] {
           margin: 1px;
         }

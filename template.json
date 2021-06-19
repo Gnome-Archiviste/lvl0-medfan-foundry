@@ -130,7 +130,8 @@
               "master": 0,
               "prodigy": 0
             },
-            "extraSkills": []
+            "extraSkills": [],
+            "skillModifiers": {}
           },
           "stats": {
             "movement": {

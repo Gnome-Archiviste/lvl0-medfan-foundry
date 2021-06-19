@@ -98,7 +98,39 @@ export default {
                 area: {
                     text: 'Une cible'
                 }
-            }
+            },
+            {
+                id: 'light',
+                name: 'Lumière',
+                icon: 'icons/magic/light/orb-lightbulb-gray.webp',
+                description: {
+                    formula: `
+                        let message = "Fait apparaître une boule de lumière pour éclairer une pièce ou un corridor. La lumière est fixe."
+                        if (context.actorData.computedData.magic.arcaneLevel) {
+                            message += "<br>La boule de lumière peut suivre le magicien pour 2 points de magie additionnels.";
+                        }
+                        return message;
+                    `
+                },
+                distance: {
+                    value: 2,
+                    unit: 'mètres'
+                },
+                duration: {
+                    formula: `return (context.criticalSuccess ? 2 : 1) * context.actorData.computedData.magic.arcaneLevel`,
+                    unit: 'h'
+                },
+                criticalSuccess: {
+                    formula: `
+                        if (context.criticalSuccess)
+                            return 'Double la durée (pré-calculé)';
+                        return 'Double la durée';`
+                },
+                area: {
+                    value: 10,
+                    unit: 'mètres'
+                }
+            },
         ]
     },
     champion: {
@@ -285,6 +317,53 @@ export default {
                 criticalSuccess: {
                     text: 'La cible ne peut pas faire de test de résilience.'
                 },
+                actions: {
+                    addEffect: {
+                        name: `Ajouter l'effet`,
+                        type: 'addEffect',
+                        data: {
+                            duration: {
+                                formula: `return context.actorData.computedData.magic.arcaneLevel`,
+                                unit: 'tours'
+                            },
+                            effectName: 'Aveuglement',
+                            modifiers: [
+                                {
+                                    stat: 'per',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'combat.dodge',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'combat.melee_combat',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'combat.throw_shoot',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'champion.shield_attack',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'warrior.charge',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'warrior.two_handed_combat',
+                                    value: -3
+                                },
+                                {
+                                    skill: 'combat.hand_combat',
+                                    value: -3
+                                }
+                            ]
+                        }
+                    }
+                }
             },
             {
                 id: 'babelfish',

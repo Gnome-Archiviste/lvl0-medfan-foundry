@@ -1,9 +1,20 @@
+import {RollSkillManager} from "./roll-skill-manager.js";
+import statsDefinition from '../../data/stats.js'
+
 /**
  * @typedef Lvl0ActorEffect
  * @property {string} duration
  * @property {string} effectName
  * @property {Object[]} modifiers
  */
+
+/**
+ * @typedef Lvl0ActorEffectModifier
+ * @property {[string]} skill
+ * @property {[string]} stat
+ * @property {number} value
+ */
+
 export class EffectManager {
     /**
      *
@@ -21,7 +32,7 @@ export class EffectManager {
     }
 
     static removeEffect(actor, effectId) {
-        this.actor.update({data: {effects: {['-='+effectId]: null}}}, {diff: true});
+        this.actor.update({data: {effects: {['-=' + effectId]: null}}}, {diff: true});
     }
 
     static getEffectsWithBonusDamage(actor) {
@@ -42,3 +53,17 @@ export class EffectManager {
         return effectsWithBonusDamage;
     }
 }
+
+Handlebars.registerHelper("effectModifierInfo", /** @type Lvl0ActorEffectModifier */ modifier => {
+    let prefix = '';
+    if (modifier.skill)
+        prefix = RollSkillManager.getSkillFromId(modifier.skill).name;
+    else if (modifier.stat)
+        prefix = statsDefinition.stats[modifier.stat].name;
+
+    if (modifier.value < 0) {
+        return prefix + ' '+ modifier.value;
+    } else {
+        return prefix + ' +' + modifier.value;
+    }
+});

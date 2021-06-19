@@ -346,7 +346,11 @@ export class SpellManager {
     }
 
     static computeModifier(modifier, actorData, context) {
-        let computedModifier = {stat: modifier.stat};
+        let computedModifier = {};
+        if ('stat' in modifier)
+            computedModifier.stat = modifier.stat;
+        if ('skill' in modifier)
+            computedModifier.skill = modifier.skill;
         if (modifier.valueFormula) {
             computedModifier.value = this.computeFormula(modifier.valueFormula, context, actorData);
         } else if (modifier.value) {
