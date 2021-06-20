@@ -226,10 +226,10 @@ export class SpellManager {
             return [];
 
         let speciality = 'general';
-        let availableSpells = [];
         let allCategorySpells = {};
         if (spellCategory === 'mage') {
             if (actorData.computedData.bases.job.spellCategory === 'useSpecializations') {
+                let availableSpells = [];
                 for (const specialization of actorData.job.specializations) {
                     let specializationSpells = spellsDefinitions.mage[specialization];
                     if (!specializationSpells) {
@@ -239,15 +239,22 @@ export class SpellManager {
                     for (let level of Object.keys(specializationSpells)) {
                         allCategorySpells[level] = (allCategorySpells[level] || []).concat(specializationSpells[level]);
                     }
+                    availableSpells = availableSpells.concat(SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, specialization));
                 }
+                return availableSpells;
             } else {
                 speciality = actorData.computedData.bases.job.spellCategory;
                 allCategorySpells = spellsDefinitions[spellCategory][speciality];
+                return SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality);
             }
         } else {
             allCategorySpells = spellsDefinitions[spellCategory][speciality];
+            return SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality);
         }
+    }
 
+    static computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality) {
+        let availableSpells = [];
         for (let level = 1; level <= actorData.computedData.magic.arcaneLevel && level <= actorData.mana.value; level++) {
             if (!(level in allCategorySpells))
                 continue;
@@ -255,7 +262,6 @@ export class SpellManager {
                 availableSpells.push(SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, speciality, actorData));
             }
         }
-
         return availableSpells;
     }
 
