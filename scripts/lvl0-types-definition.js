@@ -22,6 +22,8 @@
 /**
  * @typedef {Object} JobData
  * @property {string} id
+ * @property {string} specialization
+ * @property {string[]} specializations
  */
 /**
  * @typedef {Object} RaceData
@@ -163,7 +165,10 @@
 /**
  * @typedef {Object} JobDefinition
  * @property {string} name
+ * @property {string|null} spellCategory
  * @property {boolean} hasJobSpecialization
+ * @property {number|null} maxSpecializations
+ * @property {Object.<string, string>|null} specializations
  * @property {{value: number, useStatValue: string, diceCount: number}[]} healthLevels
  * @property {{value: number, useStatValue: string, diceCount: number}[]} manaLevels
  * @property {number[]} arcaneLevels

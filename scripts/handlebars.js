@@ -73,7 +73,7 @@ Handlebars.registerHelper('upperFirstLetter', function (value) {
 Handlebars.registerHelper('times', function(n, block) {
     let accum = '';
     for(let i = 0; i < n; ++i)
-        accum += block.fn(i);
+        accum += block.fn(i, {data: {key: i}});
     return accum;
 });
 
@@ -88,4 +88,7 @@ Handlebars.registerHelper('titleCase', function(v) {
 });
 Handlebars.registerHelper("inc", function(value) {
     return parseInt(value) + 1;
+});
+Handlebars.registerHelper("nth", function(array, index) {
+    return array[parseInt(index)];
 });

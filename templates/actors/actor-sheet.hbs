@@ -75,13 +75,32 @@
                                     </span>
                                 {{/if}}
                                 {{#if data.computedData.bases.job.hasJobSpecialization}}
-                                    {{#if canSelectJob}}
-                                        <input type="text" name="data.job.specialization" value="{{data.job.specialization}}"/>
-                                    {{else}}
-                                        <span>
-                                            {{data.job.specialization}}
-                                        </span>
-                                    {{/if}}
+                                    <div class="specializations">
+                                        {{#if canSelectJob}}
+                                            <input type="text" name="data.job.specialization" value="{{data.job.specialization}}"/>
+                                        {{else}}
+                                            <span>
+                                                {{data.job.specialization}}
+                                            </span>
+                                        {{/if}}
+                                    </div>
+                                {{/if}}
+                                {{#if (gt data.computedData.bases.job.maxSpecializations 0)}}
+                                    <div class="specializations">
+                                        {{#times data.computedData.bases.job.maxSpecializations}}
+                                            <div>
+                                                {{#if ../canSelectJob}}
+                                                    <select name="data.job.specializations">\
+                                                        {{selectOptions ../data.computedData.bases.job.specializations selected=(nth ../data.job.specializations @key)}}
+                                                    </select>
+                                                {{else}}
+                                                    <span>
+                                                        {{elementName (nth ../data.job.specializations @key)}}
+                                                    </span>
+                                                {{/if}}
+                                            </div>
+                                        {{/times}}
+                                    </div>
                                 {{/if}}
                             </span>
                         </label>

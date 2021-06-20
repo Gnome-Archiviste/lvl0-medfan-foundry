@@ -225,11 +225,30 @@ export class SpellManager {
             return [];
 
         let availableSpells = [];
+        let allCategorySpells = {};
+        if (spellCategory === 'mage') {
+            if (actorData.computedData.bases.job.spellCategory === 'useSpecializations') {
+                for (const specialization of actorData.job.specializations) {
+                    let specializationSpells = spellsDefinitions.mage[specialization];
+                    if (!specializationSpells) {
+                        console.warn('No spell for specialization ' + specialization);
+                        continue;
+                    }
+                    for (let level of Object.keys(specializationSpells)) {
+                        allCategorySpells[level] = (allCategorySpells[level] || []).concat(specializationSpells[level]);
+                    }
+                }
+            } else {
+                allCategorySpells = spellsDefinitions[spellCategory][actorData.computedData.bases.job.spellCategory];
+            }
+        } else {
+            allCategorySpells = spellsDefinitions[spellCategory]['general'];
+        }
 
         for (let level = 1; level <= actorData.computedData.magic.arcaneLevel && level <= actorData.mana.value; level++) {
-            if (!(level in spellsDefinitions[spellCategory]))
+            if (!(level in allCategorySpells))
                 continue;
-            for (let spellDefinition of spellsDefinitions[spellCategory][level]) {
+            for (let spellDefinition of allCategorySpells[level]) {
                 availableSpells.push(SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, actorData));
             }
         }

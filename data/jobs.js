@@ -21,7 +21,7 @@ export default {
                 {stat: "cha", min: 4},
                 {stat: "phy", min: 4}
             ],
-            hasJobSpecialization: false,
+            hasJobSpecialization: true,
             arcaneLevels: [
                 1, 4, 8, 13, 18, 23, 29, 36, 44, 53
             ],
@@ -97,6 +97,7 @@ export default {
         },
         mage: {
             name: "Magicien",
+            spellCategory: 'general',
             hasJobSpecialization: false,
             requirements: [
                 {stat: "int", min: 5}
@@ -155,26 +156,39 @@ export default {
         jester: {
             name: "Bouffon",
             baseJob: "mage",
+            spellCategory: 'jester',
             hasJobSpecialization: false
         },
         elementalist: {
             name: "Élémentaliste",
             baseJob: "mage",
-            hasJobSpecialization: true
+            spellCategory: 'useSpecializations',
+            hasJobSpecialization: false,
+            maxSpecializations: 2,
+            specializations: {
+                'water': 'Glace/Eau',
+                'electric': 'Air/Électricité',
+                'fire': 'Feu',
+                'acid': 'Acide',
+                'earth': 'Minéraux',
+            }
         },
         enchanter: {
             name: "Enchanteur",
             baseJob: "mage",
+            spellCategory: 'enchanter',
             hasJobSpecialization: false
         },
         necromancer: {
             name: "Nécromancien",
             baseJob: "mage",
+            spellCategory: 'necromancer',
             hasJobSpecialization: false
         },
         witch: {
             name: "Sorcière",
             baseJob: "mage",
+            spellCategory: 'witch',
             hasJobSpecialization: false
         }
     }
