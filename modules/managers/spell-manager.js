@@ -129,13 +129,14 @@ export class SpellManager {
      * @param {SpellDefinition} spellDefinition
      * @param {number} level
      * @param {string} spellCategory
+     * @param {string} speciality
      * @param {Lvl0CharacterData} actorData
      * @param {Object?} context
      * @return ActorSpell
      */
-    static computeSpellForActor(spellDefinition, level, spellCategory, actorData, context) {
+    static computeSpellForActor(spellDefinition, level, spellCategory, speciality, actorData, context) {
         let actorSpell = {
-            id: spellCategory + '.' + level + '.' + spellDefinition.id,
+            id: spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id,
             actions: SpellManager.computeActions(spellDefinition.actions, actorData, context),
             area: SpellManager.computeComplex(spellDefinition.area, actorData, context),
             bonus: SpellManager.computeComplex(spellDefinition.bonus, actorData, context),
@@ -184,8 +185,8 @@ export class SpellManager {
      * @return SpellDefinition|undefined
      */
     static getSpellById(spellId) {
-        let [spellCategory, level, id] = spellId.split('.', 3);
-        return spellsDefinitions[spellCategory][level]?.find(s => s.id === id);
+        let [spellCategory, speciality, level, id] = spellId.split('.', 4);
+        return spellsDefinitions[spellCategory][speciality][level]?.find(s => s.id === id);
     }
 
     /**
@@ -198,8 +199,8 @@ export class SpellManager {
         let spellDefinition = this.getSpellById(spellId);
         if (!spellDefinition)
             return undefined;
-        let [spellCategory, level, id] = spellId.split('.', 3);
-        return this.computeSpellForActor(spellDefinition, +level, spellCategory, actorData, context);
+        let [spellCategory, speciality, level, id] = spellId.split('.', 4);
+        return this.computeSpellForActor(spellDefinition, +level, spellCategory, speciality, actorData, context);
     }
 
     static computeSpellDescription(actorSpell, spellDefinition, actorData, context = {}) {
@@ -224,6 +225,7 @@ export class SpellManager {
         if (!(spellCategory in spellsDefinitions))
             return [];
 
+        let speciality = 'general';
         let availableSpells = [];
         let allCategorySpells = {};
         if (spellCategory === 'mage') {
@@ -239,17 +241,18 @@ export class SpellManager {
                     }
                 }
             } else {
-                allCategorySpells = spellsDefinitions[spellCategory][actorData.computedData.bases.job.spellCategory];
+                speciality = actorData.computedData.bases.job.spellCategory;
+                allCategorySpells = spellsDefinitions[spellCategory][speciality];
             }
         } else {
-            allCategorySpells = spellsDefinitions[spellCategory]['general'];
+            allCategorySpells = spellsDefinitions[spellCategory][speciality];
         }
 
         for (let level = 1; level <= actorData.computedData.magic.arcaneLevel && level <= actorData.mana.value; level++) {
             if (!(level in allCategorySpells))
                 continue;
             for (let spellDefinition of allCategorySpells[level]) {
-                availableSpells.push(SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, actorData));
+                availableSpells.push(SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, speciality, actorData));
             }
         }
 
