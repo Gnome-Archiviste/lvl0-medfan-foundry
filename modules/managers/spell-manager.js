@@ -21,7 +21,7 @@ import {ElementsUtil} from "../utils/elements-util.js";
 /**
  * @typedef SpellActionDefinition
  * @property {string} name
- * @property {'addEffect'} type
+ * @property {'addEffect'|'heal'} type
  * @property {AddEffectActionDefinitionData} data
  */
 
@@ -83,8 +83,13 @@ import {ElementsUtil} from "../utils/elements-util.js";
 /**
  * @typedef ActorSpellActionDefinition
  * @property {string} name
- * @property {'addEffect'} type
- * @property {Lvl0ActorEffect} data
+ * @property {'addEffect'|'heal'} type
+ * @property {Lvl0ActorEffect|Lvl0HealActionData} data
+ */
+
+/**
+ * @typedef Lvl0HealActionData
+ * Lvl0HealActionData {number} value
  */
 
 export class RolledSpellStat {
@@ -166,6 +171,8 @@ export class SpellManager {
             heal: SpellManager.computeHealFormula(actorSpell.definition.heal, actorData, context),
             resilience: SpellManager.computeComplex(actorSpell.definition.resilience, actorData, context),
         };
+
+        SpellManager.addAdditionalActions(actorSpell.definition.actions, actorData, context, updatedActorSpell)
 
         updatedActorSpell.description = SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, actorData, context);
 
@@ -314,10 +321,9 @@ export class SpellManager {
         let value = undefined;
         if (computable.formula) {
             value = this.computeFormula(computable.formula, context, actorData);
-        }
-        else if (computable.rollFormula) {
+        } else if (computable.rollFormula) {
             let rollFormula = this.computeFormula(computable.rollFormula, context, actorData);
-             return new RolledSpellStat(rollFormula, null, computable.unit);
+            return new RolledSpellStat(rollFormula, null, computable.unit);
         } else if (computable.value) {
             value = computable.value;
         } else if (computable.text) {
@@ -337,8 +343,7 @@ export class SpellManager {
                 ...context,
                 actorData
             });
-        }
-        catch (e) {
+        } catch (e) {
             console.error(e);
             console.error(body);
             ui.notifications.error('Erreur dans la définition de la fonction, voir la console pour plus d\'infos');
@@ -359,6 +364,12 @@ export class SpellManager {
         return computedModifier;
     }
 
+    /**
+     * @param {[Object]} actions
+     * @param {Lvl0CharacterData} actorData
+     * @param {Object} context
+     * @return {Object.<string, ActorSpellActionDefinition>|undefined}
+     */
     static computeActions(actions, actorData, context) {
         if (!actions)
             return undefined;
@@ -377,5 +388,24 @@ export class SpellManager {
         }
 
         return computedActions;
+    }
+
+    static addAdditionalActions(actions, actorData, context, actorSpell) {
+        let computedActions = {};
+        if (actorSpell?.heal instanceof RolledSpellStat) {
+            computedActions['heal'] = {
+                name: 'Soigner le token sélectionné',
+                type: 'heal',
+                data: {
+                    value: actorSpell?.heal.roll._total,
+                }
+            }
+        }
+
+        if (Object.keys(computedActions).length > 0) {
+            if (!actorSpell.actions)
+                actorSpell.actions = {}
+            actorSpell.actions = {...actorSpell.actions, ...computedActions};
+        }
     }
 }

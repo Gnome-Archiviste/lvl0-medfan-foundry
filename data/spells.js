@@ -282,7 +282,11 @@ Le sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un
                     type: 'self'
                 },
                 heal: {
-                    rollFormula: 'return "1d6";'
+                    rollFormula: `
+                        if (context.criticalSuccess)
+                            return "6";
+                        return "1d6";
+                    `
                 },
                 duration: {
                     text: 'Instantané'

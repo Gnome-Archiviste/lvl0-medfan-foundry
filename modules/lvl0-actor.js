@@ -61,6 +61,14 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
+    async updateHealth(amount) {
+        await this.update({
+            data: {
+                health: {value: Math.min(this.data.data.health.value + amount, this.data.data.health.max)}
+            }
+        }, {diff: true});
+    }
+
     openLevelUpPopup() {
         /** @type {Lvl0CharacterData} */
         let actorData = this.data.data;

@@ -158,6 +158,10 @@ Hooks.on('init', () => {
         }
         let action = JSON.parse(atob(ev.target.dataset['lvl0GlobalActionExecuteSpellAction']));
         switch (action.type) {
+            case 'heal':
+                await token.actor.updateHealth(action.data.value);
+                ui.notifications.info(token.name + ' a été soigné de ' + action.data.value + ' point de vies');
+                break;
             case 'addEffect':
                 EffectManager.applyEffect(token.actor, action.data)
                 break;
