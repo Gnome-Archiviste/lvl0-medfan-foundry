@@ -106,6 +106,7 @@ export default [
     {
         id: 'moonStone',
         name: 'Pierres de lune',
+        icon: 'icons/commodities/currency/coin-engraved-moon-silver.webp',
         description: `L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.`,
         bonus: {
             text: `: Permet de voir dans la nuit`
@@ -123,6 +124,7 @@ export default [
     {
         id: 'healingPotion',
         name: 'Potion de soin',
+        icon: 'icons/consumables/potions/potion-tube-corked-red.webp',
         description: `L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (9 gouttes), une pincée de poudre de perlépipein et du jus de pomme (1 litre) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.`,
         bonus: {
             text: `Donne 6 pv à la cible`
@@ -140,6 +142,7 @@ export default [
     {
         id: 'failedPotion',
         name: 'Potion ratée',
+        icon: 'icons/consumables/potions/potion-flash-open-blue.webp',
         description: `L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.`,
         bonus: {
             text: `Accessoirement fait de la place dans votre inventaire`
@@ -158,6 +161,8 @@ export default [
     {
         id: 'healthSyringes',
         name: 'Seringues de santé',
+        icon: 'icons/weapons/thrown/dart-feathered.webp',
+
         description: `L'enchanteur infuse un peu d’essence de vie dans de petites fléchettes de sarbacane (maximum 5) en les faisant mariner dans une fiole de potion de soin au moins 8 heures. Les darts s’utilisent avec une sarbacane de portée. Une fois la cible touchée, la cible reçoit 1 seul point de vie qui peut le ramener à la vie puis redevient une simple bout de bois. Ce sort requiert 5 darts en bois de cèdre, une potion de soin mais ne requiert pas de fixateur.`,
         bonus: {
             text: `Donne 1 pv à la cible`

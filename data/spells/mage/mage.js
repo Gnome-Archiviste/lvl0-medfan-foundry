@@ -5,6 +5,7 @@ import fire from './fire.js'
 import earth from './earth.js'
 import enchanter from './enchanter.js'
 import acid from './acid.js'
+import jester from './jester.js'
 
 export default {
     general: general,
@@ -13,5 +14,6 @@ export default {
     earth: earth,
     acid: acid,
     electric: electric,
-    enchanter: enchanter
+    enchanter: enchanter,
+    jester: jester,
 }
