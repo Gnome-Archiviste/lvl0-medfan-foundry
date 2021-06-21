@@ -34,7 +34,7 @@ export class RollSkillManager {
         let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
         let stat = skillDefinition.stat;
 
-        let skillValue = actorData.skills[skillCategory][skillName].value || 0;
+        let skillValue = actorData.skills[skillCategory]?.[skillName]?.value || 0;
         let actorStatValue = actorData.computedData.stats.baseStats[stat].value || 0;
         let extraSkillPoint = actorData.computedData.skills.extraSkills.indexOf(skillId) !== -1;
         let skillModifier = (skillId in actorData.computedData.skills.skillModifiers)
