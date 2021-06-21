@@ -226,11 +226,11 @@ export class SpellManager {
             return [];
 
         let speciality = 'general';
-        let allCategorySpells = {};
         if (spellCategory === 'mage') {
             if (actorData.computedData.bases.job.spellCategory === 'useSpecializations') {
                 let availableSpells = [];
                 for (const specialization of actorData.job.specializations) {
+                    let allCategorySpells = {};
                     let specializationSpells = spellsDefinitions.mage[specialization];
                     if (!specializationSpells) {
                         console.warn('No spell for specialization ' + specialization);
@@ -244,13 +244,13 @@ export class SpellManager {
                 return availableSpells;
             } else {
                 speciality = actorData.computedData.bases.job.spellCategory;
-                allCategorySpells = spellsDefinitions[spellCategory][speciality];
-                return SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality);
+                if (speciality in spellsDefinitions[spellCategory]) {
+                    return SpellManager.computeAvailableSpells(actorData, spellsDefinitions[spellCategory][speciality], spellCategory, speciality);
+                }
+                speciality = 'general';
             }
-        } else {
-            allCategorySpells = spellsDefinitions[spellCategory][speciality];
-            return SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality);
         }
+        return SpellManager.computeAvailableSpells(actorData, spellsDefinitions[spellCategory][speciality], spellCategory, speciality);
     }
 
     static computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality) {
