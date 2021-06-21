@@ -3,6 +3,7 @@ import water from './water.js'
 import electric from './electric.js'
 import fire from './fire.js'
 import earth from './earth.js'
+import enchanter from './enchanter.js'
 import acid from './acid.js'
 
 export default {
@@ -11,5 +12,6 @@ export default {
     fire: fire,
     earth: earth,
     acid: acid,
-    electric: electric
+    electric: electric,
+    enchanter: enchanter
 }
