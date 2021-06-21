@@ -118,4 +118,52 @@ Le sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un
             unit: 'mètres'
         }
     },
+    {
+        id: 'cloud',
+        name: 'Smug',
+        icon: 'icons/magic/air/air-wave-gust-smoke-yellow.webp',
+        description: `Un épais nuage de poussière entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers, sur une zone de 5 mètres de diamètre.<br> 
+        Donne 2 points de pénalité sur la perception de tous ceux dans la zone.<br>
+        Il faut faire un jet de perception pour trouver une nouvelle cible. On ajoute un mètre au diamètre de la zone par niveau d'arcane de l'élémentaliste supérieur à 5.`,
+        bonus: {
+            text: `Pénalité de 2 point sur les jets utilisant la caractéristique de Perception`,
+        },
+        distance: {
+            type: 'self'
+        },
+        duration: {
+            value: '3',
+            unit: 'tours'
+        },
+        criticalSuccess: {
+            text: `Diamètre de 10 mètres + (1 mètre par arcane)`,
+        },
+        area: {
+            formula: `
+                if (context.actorData.computedData.magic.arcaneLevel <= 5)
+                    return (context.criticalSuccess ? 10 : 5);
+                return (context.criticalSuccess ? 10 : 5) + (context.actorData.computedData.magic.arcaneLevel - 5);
+            `,
+            unit: 'mètres'
+        },
+        actions: {
+            addEffect: {
+                name: `Ajouter l'effet`,
+                type: 'addEffect',
+                data: {
+                    duration: {
+                        value: `3`,
+                        unit: 'tours'
+                    },
+                    effectName: 'Smug',
+                    modifiers: [
+                        {
+                            stat: 'per',
+                            value: -2
+                        },
+                    ]
+                }
+            }
+        }
+    },
 ]
