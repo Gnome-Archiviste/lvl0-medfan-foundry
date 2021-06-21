@@ -48,30 +48,6 @@ Le sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un
         }
     },
     {
-        id: 'airCreation',
-        name: 'Création mineure d\'air',
-        icon: 'icons/magic/water/bubbles-air-water-blue.webp',
-        description: {
-            formula: `return 'Créé ' + ((context.criticalSuccess ? 2 : 1) * context.actorData.computedData.magic.arcaneLevel) + ' mètre cube d’air pure'`
-        },
-        distance: {
-            value: 1,
-            unit: 'm'
-        },
-        duration: {
-            text: 'Instantanée'
-        },
-        criticalSuccess: {
-            formula: `
-                        if (context.criticalSuccess)
-                            return 'Double la quantité (pré-calculé)';
-                        return 'Double la quantité';`
-        },
-        area: {
-            text: 'Devant l’élémentaliste'
-        }
-    },
-    {
         id: 'spark',
         name: 'Étincelle',
         icon: 'icons/magic/light/hand-sparks-glow-yellow.webp',
