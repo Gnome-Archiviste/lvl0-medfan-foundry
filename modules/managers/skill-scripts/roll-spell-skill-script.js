@@ -88,12 +88,12 @@ export class RollSpellSkillScript extends SkillScript {
         message += `
                 </div>`;
 
-        if (criticalSuccess)
-            message += await this._renderSpellStat('criticalSuccess', spell.criticalSuccess)
-        message += await this._renderSpellStat('resilience', spell.resilience)
         message += await this._renderSpellStat('bonus', spell.bonus)
+        message += await this._renderSpellStat('resilience', spell.resilience)
         message += await this._renderSpellStat('damage', spell.damage)
         message += await this._renderSpellStat('heal', spell.heal)
+        if (criticalSuccess)
+            message += await this._renderSpellStat('criticalSuccess', spell.criticalSuccess)
         if (success)
             message += await this._renderActions(spell);
 
