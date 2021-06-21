@@ -24,6 +24,11 @@ export default {
         nameForWeapon: 'Acide',
         elementalistSpeciality: true,
     },
+    'earth': {
+        name: 'Mineraux',
+        nameForWeapon: 'Mineraux',
+        elementalistSpeciality: true,
+    },
     'magic': {
         name: 'Magie',
         elementalistSpeciality: false,

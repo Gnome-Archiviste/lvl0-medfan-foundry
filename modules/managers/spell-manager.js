@@ -283,6 +283,8 @@ export class SpellManager {
                 case "touch":
                     return 'Touché';
             }
+        } else if (spellDefinition.distance.formula) {
+            value = this.computeFormula(spellDefinition.distance.formula, context, actorData);
         } else if (spellDefinition.distance.text) {
             value = spellDefinition.distance.text;
         } else if (spellDefinition.distance.value) {
