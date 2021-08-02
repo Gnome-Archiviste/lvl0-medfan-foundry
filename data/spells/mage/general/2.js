@@ -44,7 +44,7 @@ export default [
                         return 'Double la durée';`
         },
         area: {
-            formula: `return context.actorData.level.value`,
+            formula: `return context.actorData.computedData.magic.arcaneLevel`,
             unit: 'm'
         },
     },

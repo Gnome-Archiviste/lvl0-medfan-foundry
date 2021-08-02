@@ -51,8 +51,8 @@ export default [
         duration: {
             formula: `
                 if (context.criticalSuccess)
-                    return 2 * 2 * context.actorData.level.value;
-                return 2 * context.actorData.level.value;
+                    return 2 * 2 * context.actorData.computedData.magic.arcaneLevel;
+                return 2 * context.actorData.computedData.magic.arcaneLevel;
             `,
             unit: `tours`
         },
