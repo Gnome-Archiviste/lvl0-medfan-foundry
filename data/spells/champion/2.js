@@ -115,7 +115,7 @@ export default [
                             return 14;
                         return 7;
                     `,
-            value: 7,
+
             unit: 'tours'
         },
         area: {
