@@ -5,23 +5,23 @@
         {{#if (not canChangeStats)}}
             <label class="stat-phy">
                 Physique
-                <input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
+                <input type="text" name="data.baseStats.phy.value" value="{{actorData.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
             </label>
             <label class="stat-dex">
                 Dextérité
-                <input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
+                <input type="text" name="data.baseStats.dex.value" value="{{actorData.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
             </label>
             <label class="stat-int">
                 Intelligence
-                <input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
+                <input type="text" name="data.baseStats.int.value" value="{{actorData.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
             </label>
             <label class="stat-cha">
                 Charisme
-                <input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
+                <input type="text" name="data.baseStats.cha.value" value="{{actorData.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
             </label>
             <label class="stat-per">
                 Perception
-                <input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
+                <input type="text" name="data.baseStats.per.value" value="{{actorData.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1" {{#if (not canEditModifiers)}}disabled{{/if}}/>
             </label>
         {{/if}}
     </div>

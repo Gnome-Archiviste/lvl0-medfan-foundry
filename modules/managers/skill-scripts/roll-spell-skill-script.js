@@ -45,7 +45,7 @@ export class RollSpellSkillScript extends SkillScript {
     async prepare() {
         let spell = undefined;
         if (this.options?.spellId) {
-            spell = SpellManager.getComputedSpellForActorById(this.options?.spellId, this.token.actor.data.data, {});
+            spell = await SpellManager.getComputedSpellForActorById(this.options?.spellId, this.token.actor.data.data, {});
         }
         if (!spell) {
             spell = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
@@ -71,7 +71,7 @@ export class RollSpellSkillScript extends SkillScript {
             criticalSuccess: criticalSuccess,
             epicFail: epicFail,
         };
-        let spell = SpellManager.reComputeSpellAfterRoll(this.spell, this.token.actor.data.data, context);
+        let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, this.token.actor.data.data, context);
 
         let message = `<div class="skill-roll-spell-chat">
             <div class="title">${this.skillDefinition.name}</div>
@@ -110,7 +110,7 @@ export class RollSpellSkillScript extends SkillScript {
         }
 
         messageData.content = message;
-        messageData.speaker = ChatMessage.getSpeaker({token: this.token});
+        messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
         await ChatMessage.create(messageData);
     }
 
@@ -148,7 +148,7 @@ export class RollSpellSkillScript extends SkillScript {
 
 Hooks.on('init', () => {
     $(document).on('click', '[data-lvl0-global-action-roll-magic-epic-fail]', async function () {
-        await RollMagicEpicFailManager.roll();
+        await RollMagicEpicFailManager.roll({async: true});
     })
     $(document).on('click', '[data-lvl0-global-action-execute-spell-action]', async function (ev) {
         let token = canvas.tokens.controlled[0] || game.user.character?.getActiveTokens().shift();

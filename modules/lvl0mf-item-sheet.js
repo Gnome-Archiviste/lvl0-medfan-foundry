@@ -4,7 +4,7 @@ import elements from "../data/elements.js";
 export class Lvl0mfItemSheet extends ItemSheet {
     /** @override */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["lvl0mf", "sheet", "item"],
             template: "systems/lvl0mf-sheet/templates/items/item-sheet.hbs",
             blockFavTab: true,
@@ -14,9 +14,10 @@ export class Lvl0mfItemSheet extends ItemSheet {
 
     /** @override */
     getData(options) {
-        let data = super.getData(options);
-        data.isOwned = this.entity.isOwned;
-        data.modifierSkills = {
+        let templateData = super.getData(options);
+        const itemData = templateData.data;
+        templateData.isOwned = this.item.isOwned;
+        templateData.modifierSkills = {
             'protection': 'Protection',
             'damage': 'Dégâts',
             'int': 'Intelligence',
@@ -27,31 +28,35 @@ export class Lvl0mfItemSheet extends ItemSheet {
             'mana': 'Mana',
             'health': 'Vie',
         };
-        data.extraSkills = {};
-        data.weaponTypes = {
+        templateData.extraSkills = {};
+        templateData.weaponTypes = {
             'melee': 'Mêlée',
             'range': 'Distance',
             'melee-range': 'Mêlée et Distance',
         };
-        data.ammunitionTypes = {
+        templateData.ammunitionTypes = {
             'arrow': 'Flèche',
             'bolt': 'Carreau',
             'dart': 'Dard',
             'marble': 'Bille',
         };
-        data.elements = Object.entries(elements).reduce((previousValue, [key, value]) => {
+        templateData.elements = Object.entries(elements).reduce((previousValue, [key, value]) => {
             previousValue[key] = value.nameForWeapon;
             return previousValue;
         } , {});
-        data.usedAmmunitionTypes = {
+        templateData.usedAmmunitionTypes = {
             '': 'Aucune',
-            ...data.ammunitionTypes
+            ...templateData.ammunitionTypes
         };
         for (let [skillCategoryId, categorySkills] of Object.entries(skills))
             for (let [skillId, skill] of Object.entries(categorySkills)) {
-                data.extraSkills[skillCategoryId + '.' + skillId] = skill.name;
+                templateData.extraSkills[skillCategoryId + '.' + skillId] = skill.name;
             }
-        return data;
+
+        // Re-define the template data references (backwards compatible)
+        templateData.item = itemData;
+        templateData.itemData = itemData.data;
+        return templateData;
     }
 
     /** @override */

@@ -49,7 +49,7 @@ export class RollSpecialityManager {
             }
 
             const roll = new Roll(`{2d6,2d6,2d6,2d6`);
-            roll.roll();
+            await roll.roll({async: true});
 
             let successCount = 0;
             let rollsResult = [];
@@ -96,7 +96,7 @@ export class RollSpecialityManager {
                 }
 
                 const rollDamage = new Roll(`{${rolls.join(',')}}`);
-                rollDamage.roll();
+                await rollDamage.roll({async: true});
                 let rollIndex = 0;
                 let damageMessage = '';
                 let total = 0;

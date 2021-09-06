@@ -12,7 +12,7 @@
                 {{> "systems/lvl0mf-sheet/templates/actors/partials/inventory.hbs"}}
             </div>
             <div class="tab sheet-notes" data-tab="sheet_notes">
-                {{editor content=data.notes.content target="data.notes.content" button=true editable=editable owner=owner}}
+                {{editor content=actorData.notes.content target="data.notes.content" button=true editable=editable owner=owner}}
             </div>
             <div class="tab" data-tab="sheet_character"><div class="center-tab">
                 <div class="sheet-character">
@@ -27,7 +27,7 @@
                                 {{#if canSelectRace}}
                                     <select name="data.race.id" data-dtype="String">
                                         <option>Choisir une race</option>
-                                        {{#select data.race.id}}
+                                        {{#select actorData.race.id}}
                                             {{#each races as |raceCategory| }}
                                                 <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
                                                     {{#each raceCategory as | race |}}
@@ -37,16 +37,16 @@
                                             {{/each}}
                                         {{/select}}
                                     </select>
-                                    {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
-                                        <input type="text" name="data.race.type" value="{{ data.race.type }}" />
+                                    {{#if (lookup (lookup racesByIds actorData.race.id) 'display_subrace')}}
+                                        <input type="text" name="data.race.type" value="{{ actorData.race.type }}" />
                                     {{/if}}
                                 {{else}}
                                     <span>
-                                        {{data.computedData.bases.race.name}}
+                                        {{actorData.computedData.bases.race.name}}
                                     </span>
-                                    {{#if (lookup (lookup racesByIds data.race.id) 'display_subrace')}}
+                                    {{#if (lookup (lookup racesByIds actorData.race.id) 'display_subrace')}}
                                         <span>
-                                            {{data.race.type}}
+                                            {{actorData.race.type}}
                                         </span>
                                     {{/if}}
 
@@ -59,7 +59,7 @@
                             <span class="sheet-value">
                                 {{#if canSelectJob}}
                                     <select name="data.job.id" data-dtype="String">
-                                        {{#select data.job.id}}
+                                        {{#select actorData.job.id}}
                                             {{#each jobs as |jobCategory| }}
                                                 <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">
                                                     {{#each jobCategory as | job |}}
@@ -71,31 +71,31 @@
                                     </select>
                                 {{else}}
                                     <span>
-                                        {{data.computedData.bases.job.name}}
+                                        {{actorData.computedData.bases.job.name}}
                                     </span>
                                 {{/if}}
-                                {{#if data.computedData.bases.job.hasJobSpecialization}}
+                                {{#if actorData.computedData.bases.job.hasJobSpecialization}}
                                     <div class="specializations">
                                         {{#if canSelectJob}}
-                                            <input type="text" name="data.job.specialization" value="{{data.job.specialization}}"/>
+                                            <input type="text" name="data.job.specialization" value="{{actorData.job.specialization}}"/>
                                         {{else}}
                                             <span>
-                                                {{data.job.specialization}}
+                                                {{actorData.job.specialization}}
                                             </span>
                                         {{/if}}
                                     </div>
                                 {{/if}}
-                                {{#if (gt data.computedData.bases.job.maxSpecializations 0)}}
+                                {{#if (gt actorData.computedData.bases.job.maxSpecializations 0)}}
                                     <div class="specializations">
-                                        {{#times data.computedData.bases.job.maxSpecializations}}
+                                        {{#times actorData.computedData.bases.job.maxSpecializations}}
                                             <div>
                                                 {{#if ../canSelectJob}}
                                                     <select name="data.job.specializations">\
-                                                        {{selectOptions ../data.computedData.bases.job.specializations selected=(nth ../data.job.specializations @key)}}
+                                                        {{selectOptions ../actorData.computedData.bases.job.specializations selected=(nth ../actorData.job.specializations @key)}}
                                                     </select>
                                                 {{else}}
                                                     <span>
-                                                        {{elementName (nth ../data.job.specializations @key)}}
+                                                        {{elementName (nth ../actorData.job.specializations @key)}}
                                                     </span>
                                                 {{/if}}
                                             </div>
@@ -107,15 +107,15 @@
 
                         <label class="sheet-age">
                             <span class="sheet-label">Age</span>
-                            <span class="sheet-value"><input type="text" name="data.age.value" value="{{data.age.value}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
+                            <span class="sheet-value"><input type="text" name="data.age.value" value="{{actorData.age.value}}" data-dtype="Number" placeholder="13" maxlength="4"/></span>
                         </label>
                         <label class="sheet-level">
                             <span class="sheet-label">Niveau</span>
-                            <span class="sheet-value">{{data.level.value}}</span>
+                            <span class="sheet-value">{{actorData.level.value}}</span>
                         </label>
                         <label class="sheet-size">
                             <span class="sheet-label">Taille</span>
-                            <span class="sheet-value"><input type="text" name="data.size.value" value="{{data.size.value}}" data-dtype="String" placeholder="1.00" maxlength="10"/></span>
+                            <span class="sheet-value"><input type="text" name="data.size.value" value="{{actorData.size.value}}" data-dtype="String" placeholder="1.00" maxlength="10"/></span>
                         </label>
                     </section>
 
@@ -138,83 +138,83 @@
                         <label class="sheet-stat stat-phy">
                             <span class="sheet-label">
                                 Physique
-                                {{#if (eq data.computedData.bases.race.bonusStat "phy")}}
+                                {{#if (eq actorData.computedData.bases.race.bonusStat "phy")}}
                                     <span>*</span>
                                 {{/if}}
                             </span>
                             <span class="sheet-base">
                                 {{#if canChangeStats}}
-                                    <input type="text" name="data.baseStats.phy.value" value="{{data.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                    <input type="text" name="data.baseStats.phy.value" value="{{actorData.baseStats.phy.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.computedData.stats.baseStats.phy.base}}
+                                    {{actorData.computedData.stats.baseStats.phy.base}}
                                 {{/if}}
                             </span>
-                            <span class="sheet-bonus">{{data.computedData.stats.baseStats.phy.bonus}}</span>
+                            <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.phy.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-dex">
                             <span class="sheet-label">
                                 Dextérité
-                                {{#if (eq data.computedData.bases.race.bonusStat "dex")}}
+                                {{#if (eq actorData.computedData.bases.race.bonusStat "dex")}}
                                     <span>*</span>
                                 {{/if}}
                             </span>
                             <span class="sheet-base">
                                 {{#if canChangeStats}}
-                                    <input type="text" name="data.baseStats.dex.value" value="{{data.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                    <input type="text" name="data.baseStats.dex.value" value="{{actorData.baseStats.dex.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.computedData.stats.baseStats.dex.base}}
+                                    {{actorData.computedData.stats.baseStats.dex.base}}
                                 {{/if}}
                             </span>
-                            <span class="sheet-bonus">{{data.computedData.stats.baseStats.dex.bonus}}</span>
-                            <span class="sheet-armor-mod">{{data.computedData.stats.baseStats.dex.armor}}</span>
+                            <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.dex.bonus}}</span>
+                            <span class="sheet-armor-mod">{{actorData.computedData.stats.baseStats.dex.armor}}</span>
                         </label>
                         <label class="sheet-stat stat-int">
                             <span class="sheet-label">
                                 Intelligence
-                                {{#if (eq data.computedData.bases.race.bonusStat "int")}}
+                                {{#if (eq actorData.computedData.bases.race.bonusStat "int")}}
                                     <span>*</span>
                                 {{/if}}
                             </span>
                             <span class="sheet-base">
                                 {{#if canChangeStats}}
-                                    <input type="text" name="data.baseStats.int.value" value="{{data.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                    <input type="text" name="data.baseStats.int.value" value="{{actorData.baseStats.int.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.computedData.stats.baseStats.int.base}}
+                                    {{actorData.computedData.stats.baseStats.int.base}}
                                 {{/if}}
                             </span>
-                            <span class="sheet-bonus">{{data.computedData.stats.baseStats.int.bonus}}</span>
+                            <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.int.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-cha">
                             <span class="sheet-label">
                                 Charisme
-                                {{#if (eq data.computedData.bases.race.bonusStat "cha")}}
+                                {{#if (eq actorData.computedData.bases.race.bonusStat "cha")}}
                                     <span>*</span>
                                 {{/if}}
                             </span>
                             <span class="sheet-base">
                                 {{#if canChangeStats}}
-                                    <input type="text" name="data.baseStats.cha.value" value="{{data.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                    <input type="text" name="data.baseStats.cha.value" value="{{actorData.baseStats.cha.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.computedData.stats.baseStats.cha.base}}
+                                    {{actorData.computedData.stats.baseStats.cha.base}}
                                 {{/if}}
                             </span>
-                            <span class="sheet-bonus">{{data.computedData.stats.baseStats.cha.bonus}}</span>
+                            <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.cha.bonus}}</span>
                         </label>
                         <label class="sheet-stat stat-per">
                             <span class="sheet-label">
                                 Perception
-                                {{#if (eq data.computedData.bases.race.bonusStat "per")}}
+                                {{#if (eq actorData.computedData.bases.race.bonusStat "per")}}
                                     <span>*</span>
                                 {{/if}}
                             </span>
                             <span class="sheet-base">
                                 {{#if canChangeStats}}
-                                    <input type="text" name="data.baseStats.per.value" value="{{data.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
+                                    <input type="text" name="data.baseStats.per.value" value="{{actorData.baseStats.per.value}}" data-dtype="Number" placeholder="1" maxlength="1"/>
                                 {{else}}
-                                    {{data.computedData.stats.baseStats.per.base}}
+                                    {{actorData.computedData.stats.baseStats.per.base}}
                                 {{/if}}
                             </span>
-                            <span class="sheet-bonus">{{data.computedData.stats.baseStats.per.bonus}}</span>
+                            <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.per.bonus}}</span>
                         </label>
                     </section>
 
@@ -223,28 +223,28 @@
                         <label class="sheet-label">
                             <span class="stat-phy">Phy</span> + <span class="stat-dex">Dex</span>
                         </label>
-                        <span class="sheet-value">{{data.computedData.stats.movement.value}}</span>
+                        <span class="sheet-value">{{actorData.computedData.stats.movement.value}}</span>
                     </section>
 
                     <section class="sheet-health">
                         <h3>Point de vie</h3>
                         <label class="sheet-health-max">
                             <div class="sheet-label">Maximum</div>
-                            <div class="sheet-value">{{data.health.max}}</div>
+                            <div class="sheet-value">{{actorData.health.max}}</div>
                         </label>
                         <label class="sheet-health-damage">
                             <div class="sheet-label">Restant</div>
-                            <div class="sheet-value"><input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
+                            <div class="sheet-value"><input type="text" name="data.health.value" value="{{actorData.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
                         </label>
                         <label class="sheet-health-armor">
                             <div class="sheet-label">Armure</div>
-                            <div class="sheet-value">{{data.computedData.stats.armor.value}}</div>
+                            <div class="sheet-value">{{actorData.computedData.stats.armor.value}}</div>
                         </label>
                         <div class="hp-bar" style="background: linear-gradient(
                                 -90deg,
                                 transparent 0%,
-                                transparent calc(100% - ((100% / ({{#if (eq data.health.max 0)}} 1 {{else}} {{data.health.max}} {{/if}} + {{#if data.health.tempmax}}{{data.health.tempmax}}{{else}}0{{/if}} )) * ({{data.health.value}} + {{#if data.health.temp}}{{data.health.temp}}{{else}}0{{/if}})) ),
-                                rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.health.max 0)}} 1 {{else}} {{data.health.max}} {{/if}} + {{#if data.health.tempmax}}{{data.health.tempmax}}{{else}}0{{/if}} )) * ({{data.health.value}} + {{#if data.health.temp}}{{data.health.temp}}{{else}}0{{/if}})) ),
+                                transparent calc(100% - ((100% / ({{#if (eq actorData.health.max 0)}} 1 {{else}} {{actorData.health.max}} {{/if}} + {{#if actorData.health.tempmax}}{{actorData.health.tempmax}}{{else}}0{{/if}} )) * ({{actorData.health.value}} + {{#if actorData.health.temp}}{{actorData.health.temp}}{{else}}0{{/if}})) ),
+                                rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq actorData.health.max 0)}} 1 {{else}} {{actorData.health.max}} {{/if}} + {{#if actorData.health.tempmax}}{{actorData.health.tempmax}}{{else}}0{{/if}} )) * ({{actorData.health.value}} + {{#if actorData.health.temp}}{{actorData.health.temp}}{{else}}0{{/if}})) ),
                                 rgba(0,200,0,0.5) 100%);">
                         </div>
                     </section>
@@ -253,25 +253,25 @@
                         <h3>Point de mana</h3>
                         <label class="sheet-magic-max">
                             <div class="sheet-label">Maximum</div>
-                            <div class="sheet-value">{{data.mana.max}}</div>
+                            <div class="sheet-value">{{actorData.mana.max}}</div>
                         </label>
                         <label class="sheet-magic-left">
                             <div class="sheet-label">Restant</div>
-                            <div class="sheet-value"><input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
+                            <div class="sheet-value"><input type="text" name="data.mana.value" value="{{actorData.mana.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
                         </label>
                         <label class="sheet-magic-level">
                             <div class="sheet-label">Arcane</div>
-                            <div class="sheet-value">{{data.computedData.magic.arcaneLevel}}</div>
+                            <div class="sheet-value">{{actorData.computedData.magic.arcaneLevel}}</div>
                         </label>
                     </section>
 
                     <section class="sheet-xp">
                         <h3>Expérience</h3>
                         <label class="sheet-xp-value">
-                            <span class="sheet-value"><input type="text" name="data.experience.value" value="{{data.experience.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
+                            <span class="sheet-value"><input type="text" name="data.experience.value" value="{{actorData.experience.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></span>
                         </label>
                         <div class="sheet-xp-to-next-level">
-                            <span>Prochain niveau: {{data.computedData.leveling.nextLevelExperience}} xp</span>
+                            <span>Prochain niveau: {{actorData.computedData.leveling.nextLevelExperience}} xp</span>
                         </div>
                         {{#if canLevelUp}}
                             <div>
@@ -279,7 +279,7 @@
                             </div>
                         {{/if}}
                     </section>
-                    {{#if (gt (length data.effects) 0)}}
+                    {{#if (gt (length actorData.effects) 0)}}
                     <section class="sheet-effects">
                         <h3>Modificateurs temporaires</h3>
                         <div>
@@ -290,7 +290,7 @@
                                     <span>Stats</span>
                                     <span></span>
                                 </div>
-                                {{#each data.effects as |effect|}}
+                                {{#each actorData.effects as |effect|}}
                                     <div class="effect-value" data-effect-id="{{@key}}">
                                         <div>{{effect.effectName}}</div>
                                         <div>{{effect.duration}}</div>

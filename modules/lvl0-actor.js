@@ -24,8 +24,8 @@ const actorDataComputers = [
 ];
 
 export class Lvl0Actor extends Actor {
-    prepareData() {
-        super.prepareData();
+    prepareDerivedData() {
+        super.prepareDerivedData();
 
         const actorData = this.data;
 
@@ -158,7 +158,7 @@ export class Lvl0Actor extends Actor {
             let itemData = game.items.get(resultElement.resultId);
             if (!itemData)
                 continue;
-            await this.createOwnedItem(itemData);
+            await this.items.get(itemData);
         }
     }
 }

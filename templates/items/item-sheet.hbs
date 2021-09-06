@@ -7,140 +7,140 @@
     {{#if isOwned}}
         <div class="form-group">
             <label>Équipé ?</label>
-            <input type="checkbox" name="data.equiped" data-dtype="Boolean" {{checked data.equiped}}/>
+            <input type="checkbox" name="data.equiped" data-dtype="Boolean" {{checked itemData.equiped}}/>
         </div>
     {{/if}}
 
     <div class="form-group">
         <label>Description</label>
-        <textarea name="data.description" data-dtype="String">{{data.description}}</textarea>
+        <textarea name="data.description" data-dtype="String">{{itemData.description}}</textarea>
     </div>
     <div class="form-group">
         <label>Détails</label>
-        <textarea name="data.details" data-dtype="String">{{data.details}}</textarea>
+        <textarea name="data.details" data-dtype="String">{{itemData.details}}</textarea>
     </div>
     <div class="form-group">
         <label>Encombrement</label>
-        <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{item.data.clutter}}" />
+        <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{itemData.clutter}}" />
     </div>
     <div class="form-group">
         <label>Prix</label>
-        <input name="data.price" data-dtype="Number" type="number" min="0" step="1" value="{{item.data.price}}" />
+        <input name="data.price" data-dtype="Number" type="number" min="0" step="1" value="{{itemData.price}}" />
     </div>
     <div class="form-group">
         <label>Quantifiable</label>
-        <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked data.quantifiable}}/>
+        <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked itemData.quantifiable}}/>
     </div>
     <div class="form-group">
         <label>Limitation</label>
-        <input type="text" name="data.restriction" data-dtype="String" value="{{data.restriction}}"/>
+        <input type="text" name="data.restriction" data-dtype="String" value="{{itemData.restriction}}"/>
     </div>
 
     {{#if (eq item.type 'ammunition')}}
         <div class="form-group">
             <label>Type</label>
             <select name="data.ammunitionType">
-                {{selectOptions ammunitionTypes selected=data.ammunitionType}}
+                {{selectOptions ammunitionTypes selected=itemData.ammunitionType}}
             </select>
         </div>
         <div class="form-group">
             <label>Dégâts additionnel</label>
-            <input name="data.extraDamage" data-dtype="String" type="text" value="{{item.data.extraDamage}}" />
+            <input name="data.extraDamage" data-dtype="String" type="text" value="{{itemData.extraDamage}}" />
         </div>
         <div class="form-group">
             <label>Éléments</label>
             <select name="data.extraDamageEffect">
-                {{selectOptions elements selected=item.data.extraDamageEffect}}
+                {{selectOptions elements selected=itemData.extraDamageEffect}}
             </select>
         </div>
         <div class="form-group">
             <label>Bonus</label>
-            <input name="data.bonus" data-dtype="String" type="text" value="{{item.data.bonus}}" />
+            <input name="data.bonus" data-dtype="String" type="text" value="{{itemData.bonus}}" />
         </div>
     {{/if}}
     {{#if (eq item.type 'weapon')}}
         <div class="form-group">
             <label>Type</label>
             <select name="data.weaponType">
-                {{selectOptions weaponTypes selected=data.weaponType}}
+                {{selectOptions weaponTypes selected=itemData.weaponType}}
             </select>
         </div>
         <div class="form-group">
             <label>Dégâts</label>
-            <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
+            <input name="data.damage" data-dtype="String" type="text" value="{{itemData.damage}}" />
         </div>
-        {{#if (eq data.weaponType 'melee-range')}}
+        {{#if (eq itemData.weaponType 'melee-range')}}
             <div class="form-group">
                 <label>Dégâts (Lancer/Tir)</label>
-                <input name="data.rangeDamage" data-dtype="String" type="text" value="{{item.data.rangeDamage}}"/>
+                <input name="data.rangeDamage" data-dtype="String" type="text" value="{{itemData.rangeDamage}}"/>
             </div>
         {{/if}}
         <div class="form-group">
             <label>Éléments</label>
             <select name="data.element">
-                {{selectOptions elements selected=data.element}}
+                {{selectOptions elements selected=itemData.element}}
             </select>
         </div>
         <div class="form-group">
             <label>Bonus</label>
-            <input name="data.bonus" data-dtype="String" type="text" value="{{item.data.bonus}}" />
+            <input name="data.bonus" data-dtype="String" type="text" value="{{itemData.bonus}}" />
         </div>
         <div class="form-group">
             <label>Nombre de main</label>
-            <input name="data.handCount" data-dtype="Number" type="number" value="{{item.data.handCount}}" />
+            <input name="data.handCount" data-dtype="Number" type="number" value="{{itemData.handCount}}" />
         </div>
         <div class="form-group">
             <label>Type de munition</label>
             <select name="data.usedAmmunitionType">
-                {{selectOptions usedAmmunitionTypes selected=data.usedAmmunitionType}}
+                {{selectOptions usedAmmunitionTypes selected=itemData.usedAmmunitionType}}
             </select>
         </div>
     {{/if}}
     {{#if (eq item.type 'armor')}}
         <div class="form-group">
             <label>Protection</label>
-            <input name="data.protection" data-dtype="Number" type="text" value="{{item.data.protection}}" />
+            <input name="data.protection" data-dtype="Number" type="text" value="{{itemData.protection}}" />
         </div>
         <div class="form-group">
             <label>Malus dextérité</label>
-            <input name="data.dexMalus" data-dtype="Number" type="text" value="{{item.data.dexMalus}}" />
+            <input name="data.dexMalus" data-dtype="Number" type="text" value="{{itemData.dexMalus}}" />
         </div>
     {{/if}}
     {{#if (or (eq item.type 'armor') (eq item.type 'necklace') (eq item.type 'cloak') (eq item.type 'ring') (eq item.type 'head') (eq item.type 'belt') (eq item.type 'hand'))}}
         <div class="form-group">
             <label>Immunités et Invulnérabilités</label>
-            <input name="data.immunity" data-dtype="String" type="text" value="{{item.data.immunity}}" />
+            <input name="data.immunity" data-dtype="String" type="text" value="{{itemData.immunity}}" />
         </div>
     {{/if}}
     {{#if (eq item.type 'shield')}}
         <div class="form-group">
             <label>Dégâts</label>
-            <input name="data.damage" data-dtype="String" type="text" value="{{item.data.damage}}" />
+            <input name="data.damage" data-dtype="String" type="text" value="{{itemData.damage}}" />
         </div>
         <div class="form-group">
             <label>Blocage</label>
-            <input name="data.blockValue" data-dtype="String" type="text" value="{{item.data.blockValue}}" />
+            <input name="data.blockValue" data-dtype="String" type="text" value="{{itemData.blockValue}}" />
         </div>
     {{/if}}
     {{#if (eq item.type 'bag')}}
         <div class="form-group">
             <label>Lignes supplémentaires</label>
-            <input name="data.extraRows" data-dtype="Number" type="number" value="{{item.data.extraRows}}" />
+            <input name="data.extraRows" data-dtype="Number" type="number" value="{{itemData.extraRows}}" />
         </div>
         <div class="form-group">
             <label>Colones supplémentaires</label>
-            <input name="data.extraColumns" data-dtype="Number" type="number" value="{{item.data.extraColumns}}" />
+            <input name="data.extraColumns" data-dtype="Number" type="number" value="{{itemData.extraColumns}}" />
         </div>
         <div class="form-group">
             <label>Taille infini</label>
-            <input type="checkbox" name="data.noLimit" data-dtype="Boolean" {{checked data.noLimit}}/>
+            <input type="checkbox" name="data.noLimit" data-dtype="Boolean" {{checked itemData.noLimit}}/>
         </div>
     {{/if}}
     {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot'))}}
         <div>
             <div>Modificateurs:</div>
             <div class="modifier-values">
-                {{#each item.data.modifiers as | modifier |}}
+                {{#each itemData.modifiers as | modifier |}}
                     <div class="modifier-value" data-modifier-id="{{@key}}">
                         <select name="data.modifiers.{{@key}}.stat">
                             {{selectOptions ../modifierSkills selected=modifier.stat}}
@@ -158,7 +158,7 @@
         <div>
             <div>Compétences:</div>
             <div class="modifier-values">
-                {{#each item.data.extraSkills as | extraSkill |}}
+                {{#each itemData.extraSkills as | extraSkill |}}
                     <div class="extra-skill-line" data-extra-skill-id="{{@key}}">
                         <select name="data.extraSkills.{{@key}}.id">
                             {{selectOptions ../extraSkills selected=extraSkill.id}}

@@ -33,7 +33,7 @@ export class SkillScript {
         `;
 
         messageData.content = message;
-        messageData.speaker = ChatMessage.getSpeaker({token: this.token});
+        messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
         await ChatMessage.create(messageData);
     }
 

@@ -148,7 +148,7 @@ export class LevelUpDialog extends Application {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
             template: "systems/lvl0mf-sheet/templates/ui/level-up.hbs",
             popOut: true,
@@ -157,7 +157,7 @@ export class LevelUpDialog extends Application {
 
     async rollDice(count, type) {
         let roll = new Roll(count + 'd6');
-        roll.roll()
+        await roll.roll({async: true})
 
         for (let i = 0; i < roll.terms[0].results.length; i++) {
             this.diceData[type + '-' + i] = roll.terms[0].results[i].result;

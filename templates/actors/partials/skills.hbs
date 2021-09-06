@@ -1,21 +1,21 @@
 <div class="partial-root-skills">
-    {{#if (gt data.computedData.skills.availableSkillPoints.total 0)}}
+    {{#if (gt actorData.computedData.skills.availableSkillPoints.total 0)}}
         <section class=skill-points">
             <ul>
-                {{#if (gt data.computedData.skills.availableSkillPoints.job_combat 0)}}
-                    <li>{{data.computedData.skills.availableSkillPoints.job_combat}} points à placer dans les habilitées de combat ou de classe</li>
+                {{#if (gt actorData.computedData.skills.availableSkillPoints.job_combat 0)}}
+                    <li>{{actorData.computedData.skills.availableSkillPoints.job_combat}} points à placer dans les habilitées de combat ou de classe</li>
                 {{/if}}
-                {{#if (gt data.computedData.skills.availableSkillPoints.general 0)}}
-                    <li>{{data.computedData.skills.availableSkillPoints.general}} points à placer dans les habilitées général</li>
+                {{#if (gt actorData.computedData.skills.availableSkillPoints.general 0)}}
+                    <li>{{actorData.computedData.skills.availableSkillPoints.general}} points à placer dans les habilitées général</li>
                 {{/if}}
-                {{#if (gt data.computedData.skills.availableSkillPoints.all 0)}}
-                    <li>{{data.computedData.skills.availableSkillPoints.all}} points à placer n'importe où (3 première case seulement)</li>
+                {{#if (gt actorData.computedData.skills.availableSkillPoints.all 0)}}
+                    <li>{{actorData.computedData.skills.availableSkillPoints.all}} points à placer n'importe où (3 première case seulement)</li>
                 {{/if}}
-                {{#if (gt data.computedData.skills.availableSkillPoints.master 0)}}
-                    <li>{{data.computedData.skills.availableSkillPoints.master}} points à placer n'importe où (possibilité de cocher les cases expertises "Maître")</li>
+                {{#if (gt actorData.computedData.skills.availableSkillPoints.master 0)}}
+                    <li>{{actorData.computedData.skills.availableSkillPoints.master}} points à placer n'importe où (possibilité de cocher les cases expertises "Maître")</li>
                 {{/if}}
-                {{#if (gt data.computedData.skills.availableSkillPoints.prodigy 0)}}
-                    <li>{{data.computedData.skills.availableSkillPoints.prodigy}} points à placer n'importe où, incluant les cases expertises "Maître" ou "Prodige"</li>
+                {{#if (gt actorData.computedData.skills.availableSkillPoints.prodigy 0)}}
+                    <li>{{actorData.computedData.skills.availableSkillPoints.prodigy}} points à placer n'importe où, incluant les cases expertises "Maître" ou "Prodige"</li>
                 {{/if}}
             </ul>
         </section>
@@ -32,7 +32,7 @@
                                 {{skill.name}}
                                 <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                             </span>
-                            {{skill-value skill ../../data @../key @key ../../data.}}
+                            {{skill-value skill ../../actorData @../key @key}}
                         </span>
                     {{/each2}}
                 </section>
@@ -48,7 +48,7 @@
                         {{skill.name}}
                         <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                     </span>
-                    {{skill-value skill ../data 'combat' @key}}
+                    {{skill-value skill ../actorData 'combat' @key}}
                 </span>
             {{/each2}}
         </section>
@@ -61,7 +61,7 @@
                         {{skill.name}}
                         <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
                     </span>
-                    {{skill-value skill ../data 'general' @key}}
+                    {{skill-value skill ../actorData 'general' @key}}
                 </span>
                 {{#ifIsNthItem nth=4}}
                     <div class="separator"></div>
@@ -72,7 +72,7 @@
         <section class="sheet-specialities">
             <h4>Spécialités</h4>
             <div>
-                {{#each data.computedData.speciality.knownSpecialities as |speciality|}}
+                {{#each actorData.computedData.speciality.knownSpecialities as |speciality|}}
                     <div class="speciality">
                         <div class="label label-with-tooltip-description" data-speciality="{{speciality.id}}">
                             {{speciality.name}}
@@ -84,7 +84,7 @@
                     </div>
                 {{/each}}
             </div>
-            {{#if data.computedData.speciality.canSelectNewSpeciality}}
+            {{#if actorData.computedData.speciality.canSelectNewSpeciality}}
                 <button data-action="selectSpeciality">Choisir une spécialité</button>
             {{/if}}
         </section>

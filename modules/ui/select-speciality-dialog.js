@@ -51,7 +51,7 @@ export class SelectSpecialityDialog extends Application {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             id: "selectSpeciality",
             template: "systems/lvl0mf-sheet/templates/ui/select-speciality-dialog.hbs",
             popOut: true,

@@ -14,7 +14,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
     static armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
     /** @override */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["lvl0mf", "sheet", "actor"],
             template: "systems/lvl0mf-sheet/templates/actors/actor-sheet.hbs",
             blockFavTab: true,
@@ -26,7 +26,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
     /** @override */
     getData(options) {
-        const data = super.getData(options);
+        const context = super.getData(options);
 
         let itemsByType = this.actor.itemTypes;
         let itemTypes = Object.keys(itemsByType);
@@ -43,11 +43,11 @@ export class Lvl0mfActorSheet extends ActorSheet {
                 itemTypesInInventoryTabs.push(itemType);
         }
 
-        let canSelectJob = data.data.level.value === 0 || game.user.isGM;
-        let canSelectRace = data.data.level.value === 0 || game.user.isGM;
-        let canChangeStats = data.data.level.value === 0;
+        let canSelectJob = context.data.data.level.value === 0 || game.user.isGM;
+        let canSelectRace = context.data.data.level.value === 0 || game.user.isGM;
+        let canChangeStats = context.data.data.level.value === 0;
         let canEditModifiers = game.user.isGM;
-        let canLevelUp = this.canLevelUp(data.data);
+        let canLevelUp = this.canLevelUp(context.data.data);
         let nonEquipableItemType = {
             'misc': true,
             'magical': true
@@ -65,7 +65,8 @@ export class Lvl0mfActorSheet extends ActorSheet {
         };
 
         return {
-            ...data,
+            ...context,
+            actorData: context.data.data,
             skills,
             canLevelUp,
             canChangeStats,
@@ -94,7 +95,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         // Update Inventory Item
         html.find('.item-edit').click(ev => {
             const itemLine = $(ev.currentTarget).parents("[data-item-id]");
-            const item = this.actor.getOwnedItem(itemLine.data("item-id"));
+            const item = this.actor.items.get(itemLine.data("item-id"));
             if (item) {
                 item.sheet.render(true);
             }
@@ -102,12 +103,12 @@ export class Lvl0mfActorSheet extends ActorSheet {
 
         html.find('[data-equip-item-checkbox]').click(ev => {
             const itemId = $(ev.currentTarget).data('equip-item-checkbox');
-            const item = this.actor.getOwnedItem(itemId);
+            const item = this.actor.items.get(itemId);
             item.update({data: {equiped: !item.data.data.equiped}});
         });
         html.find('[data-update-item-quantity]').change(ev => {
             const itemId = $(ev.currentTarget).data('update-item-quantity');
-            const item = this.actor.getOwnedItem(itemId);
+            const item = this.actor.items.get(itemId);
             let newQuantity = $(ev.currentTarget).val();
             if (newQuantity.startsWith('+')) {
                 newQuantity = item.data.data.quantity + (+newQuantity.substr(1));
@@ -138,10 +139,10 @@ export class Lvl0mfActorSheet extends ActorSheet {
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
             const itemLine = $(ev.currentTarget).parents("[data-item-id]");
-            const item = this.actor.getOwnedItem(itemLine.data("item-id"));
+            const item = this.actor.items.get(itemLine.data("item-id"));
             Dialog.confirm({
                 title: 'Supression', content: 'Voulez vous supprimer ' + item.name, yes: () => {
-                    this.actor.deleteOwnedItem(itemLine.data("item-id"));
+                    this.actor.items.get(itemLine.data("item-id"));
                 }
             });
         });

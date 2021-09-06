@@ -8,10 +8,10 @@
             <div class="quantity"><b>Qtt</b></div>
         </div>
         {{#each2 ../itemsByType itemType as | item |}}
-            <div class="item-line" data-item-id="{{item._id}}">
+            <div class="item-line" data-item-id="{{item.data._id}}">
                 {{#if (not (lookup ../../nonEquipableItemType itemType))}}
                     <div class="equiped">
-                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item._id}}">
+                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.data._id}}">
                     </div>
                 {{/if}}
                 <div class="icon">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="quantity">
                     {{#if item.data.data.quantifiable}}
-                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item._id}}"/>
+                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.data._id}}"/>
                     {{/if}}
                 </div>
                 <div class="name">
@@ -58,24 +58,24 @@
         {{/each2}}
     {{/each}}
     <section>
-        <h2 class="{{ternary (gt data.computedData.clutter.usedSpace data.computedData.clutter.totalSpace) 'bag-full' ''}}">
-            Encombrement ({{data.computedData.clutter.usedSpace}} / {{data.computedData.clutter.totalSpace}})
+        <h2 class="{{ternary (gt actorData.computedData.clutter.usedSpace actorData.computedData.clutter.totalSpace) 'bag-full' ''}}">
+            Encombrement ({{actorData.computedData.clutter.usedSpace}} / {{actorData.computedData.clutter.totalSpace}})
         </h2>
         <div class="clutter-table">
             <div class="column">
                 <div class="cell"></div>
-                {{#times data.computedData.clutter.rowCount}}
+                {{#times actorData.computedData.clutter.rowCount}}
                     <div class="cell">{{letterFromA this}}</div>
                 {{/times}}
             </div>
-            {{#with data.computedData.clutter.usedCells as |usedCells|}}
-                {{#times ../data.computedData.clutter.columnCount}}
+            {{#with actorData.computedData.clutter.usedCells as |usedCells|}}
+                {{#times ../actorData.computedData.clutter.columnCount}}
                     <div class="column">
                         {{#with this as |column|}}
                             <div class="cell">
-                                {{lookup ../../data.computedData.clutter.columnsPhy column}}
+                                {{lookup ../../actorData.computedData.clutter.columnsPhy column}}
                             </div>
-                            {{#times ../../data.computedData.clutter.rowCount}}
+                            {{#times ../../actorData.computedData.clutter.rowCount}}
                                 {{#with this as |row|}}
                                     <div class="cell" data-item-type="{{lookup usedCells (concat2 column ',' row)}}">
                                         {{#if (lookup usedCells (concat2 column ',' row))}}

@@ -66,7 +66,7 @@ export class RollSkillManager {
 
         let minSuccessValue = RollSkillManager.getSkillSuccessValue(token.actor.data.data, skillId);
         let roll = new Roll('2d6');
-        roll.roll();
+        await roll.roll({async: true});
         let result = +roll.result;
         let success = result !== 12 && (result === 2 || result <= minSuccessValue);
 

@@ -81,13 +81,13 @@ export class RollDamageSkillScript extends SkillScript {
         const messageData = roll.toMessage({}, {create: false});
 
         if (success || epicFail) {
-            let weaponRoll = new Roll(weaponRollFormula).roll();
+            let weaponRoll = await (new Roll(weaponRollFormula)).roll({async: true});
             let weaponDamage = weaponRoll._total;
             let ammunitionDamage = 0;
             let ammunitionRoll = undefined;
 
             if (useAmmunition) {
-                ammunitionRoll = new Roll(ammunitionRollFormula).roll();
+                ammunitionRoll = await (new Roll(ammunitionRollFormula)).roll({async: true});
                 ammunitionDamage = ammunitionRoll._total;
             }
 
@@ -118,7 +118,7 @@ export class RollDamageSkillScript extends SkillScript {
             );
         }
 
-        messageData.speaker = ChatMessage.getSpeaker({token: this.token});
+        messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
         await ChatMessage.create(messageData);
 
         return true;

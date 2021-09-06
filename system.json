@@ -2,10 +2,10 @@
   "name": "lvl0mf-sheet",
   "title": "LVL0: Medfan Sheet",
   "description": "A Character Sheet for LVL0: Medieval-Fantasy (French & English)",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "author": "Gnome Archiviste",
-  "minimumCoreVersion": "0.7.6",
-  "compatibleCoreVersion": "0.7.9",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "0.8.9",
   "esmodules": [
     "scripts/init.js",
     "scripts/handlebars.js",

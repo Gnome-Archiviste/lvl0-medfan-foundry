@@ -41,7 +41,7 @@ export class RollShieldDamageSkillScript extends SkillScript {
         let actorData = this.token.actor.data.data;
 
         let damageRollFormula = this.shield.data.data.damage.replace('phy', actorData.computedData.stats.baseStats.phy.value.toString());
-        let damageRoll = new Roll(damageRollFormula).roll();
+        let damageRoll = await (new Roll(damageRollFormula)).roll({async: true});
 
         const messageData = roll.toMessage({}, {create: false});
 
@@ -81,7 +81,7 @@ export class RollShieldDamageSkillScript extends SkillScript {
         message += `</div>`;
 
         messageData.content = message;
-        messageData.speaker = ChatMessage.getSpeaker({token: this.token});
+        messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
         await ChatMessage.create(messageData);
     }
 }
