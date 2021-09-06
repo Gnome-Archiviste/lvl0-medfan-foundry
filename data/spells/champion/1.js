@@ -37,7 +37,7 @@ export default [
     {
         id: 'detectUndead',
         name: 'Détection des morts-vivants',
-        icon: 'icons/magic/death/hand-undead-%20skeleton-fire-pink.webp',
+        icon: 'icons/magic/death/hand-undead-skeleton-fire-pink.webp',
         description: {
             formula: `
                     let prefix = "<strong>L'effet dépend du niveau du champion.</strong>";
