@@ -1,8 +1,8 @@
 export default [
     {
-        id: 'tmp2',
-        name: 'Arcane 2',
-        description: 'Sort arcane 2',
+        id: 'tmp5',
+        name: 'Arcane 5',
+        description: 'Sort arcane 5',
         icon: 'icons/magic/symbols/question-stone-yellow.webp',
     }
 ]
