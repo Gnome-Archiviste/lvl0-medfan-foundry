@@ -95,7 +95,7 @@ export default [
     {
         id: 'talithaSneezing',
         name: 'Éternuement de Talitha',
-        icon: 'icons/sundries/survival/rope-coiled-tan.webp',
+        icon: 'icons/magic/sonic/scream-wail-shout-teal.webp',
         description: `En soufflant dans le creux de sa main, le magicien envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.`,
         bonus: {
             text: `Victime immobilisée`

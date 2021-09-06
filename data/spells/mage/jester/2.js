@@ -2,7 +2,7 @@ export default [
     {
         id: 'PlaceboAura',
         name: 'Aura de Placébo',
-        icon: 'icons/creatures/abilities/mouth-teeth-tongue-purple.webp',
+        icon: 'icons/magic/control/voodoo-doll-pain-damage-green.webp',
         description: `Met sur un objet non magique un aura qui semble être magique ainsi qu’une utilité toute aussi fausse. ex: potion de chance sur une bouteille d’eau colorée verte.`,
         distance: {
             type: 'touch'
@@ -20,7 +20,7 @@ export default [
     {
         id: 'stinkingBomb',
         name: 'Bombe puante',
-        icon: 'icons/magic/acid/dissolve-pool-bubbles.webp',
+        icon: 'icons/magic/acid/projectile-glowing-bubbles.webp',
         description: `Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal`,
         bonus: {
             text: `Victimes inoffensives`
@@ -127,7 +127,7 @@ export default [
     {
         id: 'talithaSneezing',
         name: 'Éternuement de Talitha',
-        icon: 'icons/sundries/survival/rope-coiled-tan.webp',
+        icon: 'icons/magic/sonic/scream-wail-shout-teal.webp',
         description: `En soufflant dans le creux de sa main, le magicien envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.`,
         bonus: {
             text: `Victime immobilisée`
