@@ -243,7 +243,7 @@ export class SpellManager {
                     for (let level of Object.keys(specializationSpells)) {
                         allCategorySpells[level] = (allCategorySpells[level] || []).concat(specializationSpells[level]);
                     }
-                    availableSpells = availableSpells.concat(SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, specialization));
+                    availableSpells = availableSpells.concat(await SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, specialization));
                 }
                 return availableSpells;
             } else {
