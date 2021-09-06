@@ -204,10 +204,6 @@ export default [
         name: 'Nuage puant',
         icon: 'icons/magic/acid/dissolve-pool-bubbles.webp',
         description: `Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal`,
-        damage: {
-            rollFormula: 'return "1d6/2";',
-            element: 'acid'
-        },
         bonus: {
             text: `Victimes inoffensives`
         },
