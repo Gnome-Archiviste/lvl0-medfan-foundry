@@ -97,9 +97,6 @@ export default [
         name: 'Cornet glacé',
         icon: 'icons/magic/water/projectile-ice-snowball.webp',
         description: `Fait tomber du ciel une boule de crème glacée géante sur l’ennemi (saveur au choix du MdJ), suivi d’un cornet gaufré. Le nombre de boules augmente avec le nombre d’arcane du bouffon.`,
-        bonus: {
-            text: `Aucun`
-        },
         damage: {
             rollFormula: `return (context.actorData.computedData.magic.arcaneLevel) + 'd6/2' + (context.criticalSuccess ? ' + 1d6' : '') ;`,
             element: 'glace'
@@ -151,9 +148,105 @@ export default [
         }
     },
     {
-        id: 'tmp2',
-        name: 'Arcane 2',
-        description: 'Sort arcane 2',
-        icon: 'icons/magic/symbols/question-stone-yellow.webp',
-    }
+        id: 'TalitaPartialInvisibility',
+        name: 'Invisibilité éphémère de Talitha',
+        icon: 'icons/magic/symbols/triangle-glow-purple.webp',
+        description: `Le sort ne fonctionne que sur les objets non vivants et immobiles pesant moins que le bouffon qui le lance. Cela rend un objet temporairement invisible. Si l’objet est déplacé, le sort est annulé. L’objet ne peut pas mesurer plus d’un mètre de haut ou de large.`,
+        bonus: {
+            text: `L'objet devient invisible`
+        },
+        distance: {
+            type: `touch`
+        },
+        duration: {
+            duration: {
+                formula: `return (context.criticalSuccess ? 2 : 1) * context.actorData.computedData.magic.arcaneLevel`,
+                unit: `hours`
+            },
+        },
+        area: {
+            text: `Un objet`,
+        },
+        criticalSuccess: {
+            formula: `
+                    if (context.criticalSuccess)
+                        return 'Double la durée du sort (pré-calculé).';
+                    return 'Double la durée du sort..';`
+        }
+    },
+    {
+        id: 'ChimericWall',
+        name: 'Paroie chimérique',
+        icon: 'icons/magic/defensive/barrier-shield-dome-blue-purple.webp',
+        description: `Ce sort crée l’illusion d’un mur, d’un sol, d’un plafond ou d’une surface similaire. Il semble absolument vrai, mais les objets physiques peuvent le traverser sans difficulté. Lorsque le sort est utilisé pour cacher des fosses, des pièges ou des portes normales, toutes les capacités de détection qui ne nécessitent pas le sens de la vue fonctionnent normalement. Toucher ou sonder la surface révèle sa nature illusoire, bien que cela ne fasse pas disparaître l’illusion. Il affecte une zone de trois (3) mètres sur trois (3) mètres sur trente (30) cm.`,
+        bonus: {
+            text: `Crée l’illusion d’un mur, d’un sol, d’un plafond ou d’une surface similairee`
+        },
+        distance: {
+            value: 5,
+            unit: 'm'
+        },
+        duration: {
+            duration: {
+                formula: `return (context.criticalSuccess ? 2 : 1) * context.actorData.computedData.magic.arcaneLevel`,
+                unit: `hours`
+            },
+        },
+        area: {
+            value: 2,
+            unit: 'm'
+        },
+        criticalSuccess: {
+            formula: `
+                    if (context.criticalSuccess)
+                        return 'Double la durée du sort (pré-calculé).';
+                    return 'Double la durée du sort..';`
+        }
+    },
+    {
+        id: 'PainfulLaughter',
+        name: 'Rires pénibles',
+        icon: 'icons/magic/death/projectile-skull-flaming-yellow.webp',
+        description: `Ce sort inflige le sujet d’un rire incontrôlable. Il s’effondre en rafales de rire maniaque, tombant à plat ventre. Le sujet ne peut rien faire en riant, mais il peut toujours se défendre. La victime rit tellement qu’elle en a mal aux côtes. L’armure est ignorée.`,
+        damage: {
+            rollFormula: `return '1d6 + 2' ;`,
+            element: 'magic'
+        },
+        distance: {
+            value: 10,
+            unit: 'm'
+        },
+        duration: {
+            text: 'Instantané'
+        },
+        area: {
+            text: `Une cible`,
+        },
+        resilience: {
+            text: 'Durée divisée par deux.'
+        },
+        criticalSuccess: {
+            formula: `return 'Aucun test de résilience';`
+        }
+    },
+    {
+        id: 'Switcharoo',
+        name: 'Switcharoo',
+        icon: 'icons/skills/toxins/poison-bottle-open-blood-red.webp',
+        description: `Échanger le contenu de deux bouteilles de liquide (comme des potions). Malheureusement, c’est au hasard entre les bouteilles. Le maître jeu décide quelles bouteilles sont échangées.`,
+        distance: {
+            value: 5,
+            unit: 'm'
+        },
+        duration: {
+            text: 'Instantané'
+        },
+        area: {
+            value: 2,
+            unit: 'm'
+        },
+        criticalSuccess: {
+            formula: `return 'change le contenu de trois bouteilles';`
+        }
+    },
 ]
