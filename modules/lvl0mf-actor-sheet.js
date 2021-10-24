@@ -142,7 +142,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             const item = this.actor.items.get(itemLine.data("item-id"));
             Dialog.confirm({
                 title: 'Supression', content: 'Voulez vous supprimer ' + item.name, yes: () => {
-                    this.actor.items.get(itemLine.data("item-id"));
+                    this.actor.items.get(itemLine.data("item-id")).delete();
                 }
             });
         });
