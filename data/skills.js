@@ -287,7 +287,7 @@ export default {
         orientation: {
             name: "Orientation",
             icon: 'icons/tools/navigation/compass-brass-blue-red.webp',
-            stat: "int",
+            stat: "per",
             description: "Connaître les indices qui indiquent le nord, sud, est et ouest. Permet de se retrouver dans une forêt, une ville ou une caverne."
         },
         performance: {
@@ -313,7 +313,7 @@ export default {
         },
         survival: {
             name: "Survie",
-            stat: "int",
+            stat: "per",
             description: "Chasse, pêche, cueillette en milieu sauvage, faire du feu, etc."
         },
     },
