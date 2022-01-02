@@ -345,6 +345,9 @@ export class SpellManager {
                 value += '(' + ElementsUtil.getName(damageData.element) + ')';
             return value;
         }
+        if (damageData.text) {
+            return damageData.text;
+        }
 
         return undefined;
     }
