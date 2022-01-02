@@ -47,6 +47,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
         let canSelectRace = context.data.data.level.value === 0 || game.user.isGM;
         let canChangeStats = context.data.data.level.value === 0;
         let canEditModifiers = game.user.isGM;
+        let canEditLevel = game.user.isGM;
         let canLevelUp = this.canLevelUp(context.data.data);
         let nonEquipableItemType = {
             'misc': true,
@@ -73,6 +74,7 @@ export class Lvl0mfActorSheet extends ActorSheet {
             nonEquipableItemType,
             canSelectRace,
             canSelectJob,
+            canEditLevel,
             statsDefinition,
             canEditModifiers,
             modifierSkills,

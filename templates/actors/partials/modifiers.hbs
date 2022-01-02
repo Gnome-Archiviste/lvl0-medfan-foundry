@@ -1,4 +1,8 @@
 <div class="partial-root-modifiers">
+    {{#if canEditLevel}}
+    <h2>Level</h2>
+        <input type="text" name="data.level.value" value="{{actorData.level.value}}" data-dtype="Number" />
+    {{/if}}
     <h2>Statistique de base</h2>
     <p>Les statistiques original du personnage (Lors de la création)</p>
     <div class="base-stats">
