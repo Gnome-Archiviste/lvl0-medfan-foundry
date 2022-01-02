@@ -22,7 +22,7 @@ export default [
         id: 'talithaBuble',
         name: 'Bulle de Talitha',
         icon: 'icons/magic/water/bubbles-air-water-pink.webp',
-        description: `Le sort crée une bulle entourant la cible, la soulevant dans les airs. La bulle ne peut pas être dirigée (sauf par du vent assez fort). La bulle de Talitha est très fragile, on peut la faire disparaître en la piquant avec un objet pointu (armes, griffes, roche, etc.). Sa durée est hasardeuse et elle peut disparaître à tout moment.`,
+        description: `Créer une bulle entourant la cible, la soulevant dans les airs. La bulle ne peut pas être dirigée (sauf par du vent assez fort). La bulle de Talitha est très fragile (la bulle possède six (6) points de vie), on peut la faire disparaître en la piquant avec un objet pointu (armes, griffes, roche, etc.). Sa durée est hasardeuse et elle peut disparaître à tout moment.`,
         distance: {
             type: `touch`
         },
@@ -31,7 +31,7 @@ export default [
             unit: `tours`
         },
         criticalSuccess: {
-            text: `La cible ne peut pas faire de test de résilience`
+            text: `La bulle est deux fois plus résistante (12 points de vie)`
         },
         resilience: {
             text: `Le sort ne fonctionne pas`
