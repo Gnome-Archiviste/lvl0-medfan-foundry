@@ -296,11 +296,13 @@
       "templates": ["base"],
       "charge": 10,
       "clutter": 1,
+      "arcane": 1,
       "spell": ""
     },
     "scroll": {
       "templates": ["base"],
       "spell": "",
+      "arcane": 1,
       "clutter":  0.1
     },
     "handWeapon": {
