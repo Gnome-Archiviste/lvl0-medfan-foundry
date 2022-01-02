@@ -36,6 +36,18 @@
         <input type="text" name="data.restriction" data-dtype="String" value="{{itemData.restriction}}"/>
     </div>
 
+    {{#if (or (eq item.type 'scroll') (eq item.type 'wand'))}}
+        <div class="form-group">
+            <label>Sort (id)</label>
+            <input type="text" name="data.spell" data-dtype="String" value="{{itemData.spell}}" disabled/>
+        </div>
+    {{/if}}
+    {{#if (eq item.type 'wand')}}
+        <div class="form-group">
+            <label>Charge</label>
+            <input type="number" name="data.charge" data-dtype="String" value="{{itemData.charge}}" step="1" min="0"/>
+        </div>
+    {{/if}}
     {{#if (eq item.type 'ammunition')}}
         <div class="form-group">
             <label>Type</label>
@@ -136,7 +148,7 @@
             <input type="checkbox" name="data.noLimit" data-dtype="Boolean" {{checked itemData.noLimit}}/>
         </div>
     {{/if}}
-    {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot'))}}
+    {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot') (eq item.type 'handWeapon'))}}
         <div>
             <div>Modificateurs:</div>
             <div class="modifier-values">
@@ -154,7 +166,7 @@
             <button data-lvl0-action="addItemModifier">Ajouter un modificateur</button>
         </div>
     {{/if}}
-    {{#if (or (eq item.type 'ring') (eq item.type 'armor') (eq item.type 'shield') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot'))}}
+    {{#if (or (eq item.type 'ring') (eq item.type 'armor') (eq item.type 'shield') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot') (eq item.type 'handWeapon'))}}
         <div>
             <div>Compétences:</div>
             <div class="modifier-values">

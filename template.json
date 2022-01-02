@@ -205,6 +205,8 @@
       "ring",
       "shield",
       "wand",
+      "scroll",
+      "handWeapon",
       "weapon"
     ],
     "templates": {
@@ -275,7 +277,8 @@
       "templates": ["base" ,"statModifiers", "extraSkills"]
     },
     "potions": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "clutter": 0.5
     },
     "ring": {
       "templates": ["base" ,"statModifiers", "extraSkills"],
@@ -292,7 +295,20 @@
     "wand": {
       "templates": ["base"],
       "charge": 10,
-      "spell": "spell_name"
+      "clutter": 1,
+      "spell": ""
+    },
+    "scroll": {
+      "templates": ["base"],
+      "spell": "",
+      "clutter":  0.1
+    },
+    "handWeapon": {
+      "templates": ["base"],
+      "damage": "1d6",
+      "element": "",
+      "bonus": "",
+      "canUseWeapon": true
     },
     "weapon": {
       "templates": ["base" ,"statModifiers"],

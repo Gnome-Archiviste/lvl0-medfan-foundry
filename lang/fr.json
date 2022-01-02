@@ -145,6 +145,8 @@
   "ITEM.TypeRing" : "Bagues",
   "ITEM.TypeShield" : "Bouclier",
   "ITEM.TypeWand" : "Baguette",
+  "ITEM.TypeScroll" : "Parchemin",
+  "ITEM.TypeHandWeapon" : "Gantelet de combat",
   "ITEM.TypeWeapon" : "Arme",
 
   "LVL0MF.RaceCategory.base": "Bases",

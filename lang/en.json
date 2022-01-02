@@ -144,7 +144,8 @@
   "ITEM.TypePurse" : "Purse",
   "ITEM.TypeRing" : "Rings",
   "ITEM.TypeShield" : "Shield",
-  "ITEM.TypeWand" : "Wan",
+  "ITEM.TypeWand" : "Wand",
+  "ITEM.TypeScroll" : "Scroll",
   "ITEM.TypeWeapon" : "Weapon",
 
   "LVL0MF.RaceCategory.base": "Bases",
