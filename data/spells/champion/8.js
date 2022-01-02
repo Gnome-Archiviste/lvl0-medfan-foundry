@@ -66,15 +66,14 @@ export default [
       "type": "self"
     },
     "duration": {
-      "formula": "return (context.criticalSuccess ? 2 : 1) * 4",
-      "unit": "heures"
+      "text": "4 heures + 1d6 (lancer par le maître de jeu)"
     },
     "area": {
       "value": 5,
       "unit": "m"
     },
     "resilience": {
-      "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';"
+      "text": "Double la durée"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []

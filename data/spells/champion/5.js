@@ -13,8 +13,7 @@ export default [
       "text": "Devant le Champion"
     },
     "bonus": {
-      "value": 6,
-      "unit": "points"
+      "text": "Guérit 3d6 points de vie"
     },
     "resilience": {
       "text": "Guérit 18 points de vie"

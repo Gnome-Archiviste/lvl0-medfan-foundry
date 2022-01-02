@@ -7,8 +7,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "value": 6,
-      "unit": "minutes"
+      "rollFormula": "3d6",
+      "unit": " minutes"
     },
     "area": {
       "text": "Une cible"
@@ -51,8 +51,8 @@ export default [
       "type": "self"
     },
     "duration": {
-      "value": 6,
-      "unit": "heures"
+      "rollFormula": "1d6",
+      "unit": " heures après la mort"
     },
     "area": {
       "text": "Une cible"

@@ -27,8 +27,7 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "value": 10,
-      "unit": "tours"
+      "text": "~10 tours"
     },
     "area": {
       "text": "Une cible"

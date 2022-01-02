@@ -7,8 +7,8 @@ export default [
       "type": "self"
     },
     "duration": {
-      "value": 6,
-      "unit": "tours"
+      "rollFormula": "1d6",
+      "unit": " tours"
     },
     "area": {
       "value": 4,
@@ -34,8 +34,7 @@ export default [
       "text": "Une cible"
     },
     "bonus": {
-      "value": 2,
-      "unit": "dégâts"
+      "text": "+2 dégâts, double 3 = succès exceptionnel."
     },
     "resilience": {
       "text": "Dégâts +4"

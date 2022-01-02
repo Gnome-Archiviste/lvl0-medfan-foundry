@@ -7,14 +7,14 @@ export default [
       "text": "1 mètre"
     },
     "duration": {
-      "formula": "return (context.criticalSuccess ? 2 : 1) * 1",
+      "formula": "return context.actorData.computedData.magic.arcaneLevel;",
       "unit": "heure"
     },
     "area": {
       "text": "Une cible"
     },
     "resilience": {
-      "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';"
+      "text": "Double la durée"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
@@ -34,8 +34,7 @@ export default [
       "unit": "m"
     },
     "bonus": {
-      "value": 1,
-      "unit": "d"
+      "text": "+1 d'armure, +2 de dégâts"
     },
     "resilience": {
       "text": "+2 d’armure, +4 de dégâts"
@@ -72,8 +71,7 @@ export default [
       "unit": "m"
     },
     "duration": {
-      "value": 1,
-      "unit": "tour"
+      "text": "1 tour par niveau d’arcane"
     },
     "area": {
       "value": 1,

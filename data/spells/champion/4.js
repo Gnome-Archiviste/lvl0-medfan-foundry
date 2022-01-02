@@ -54,8 +54,8 @@ export default [
       "text": "Une cible"
     },
     "bonus": {
-      "value": 6,
-      "unit": "points"
+      "rollFormula": "4d6",
+      "unit": " points de vie"
     },
     "resilience": {
       "text": "Guérit 24 points de vie"
@@ -78,8 +78,7 @@ export default [
       "text": "Une cible"
     },
     "bonus": {
-      "value": 10,
-      "unit": "points"
+      "text": "Absorbe jusqu’à 10 points de dégâts"
     },
     "resilience": {
       "text": "Absorbe jusqu’à 20 points de dégâts"
