@@ -139,9 +139,11 @@ export class SpellManager {
      * @return Promise<ActorSpell>
      */
     static async computeSpellForActor(spellDefinition, level, spellCategory, speciality, actorData, context) {
+        let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
+
         let actorSpell = {
-            id: spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id,
-            actions: SpellManager.computeActions(spellDefinition.actions, actorData, context),
+            id: spellId,
+            actions: await SpellManager.computeActions(spellDefinition.actions, actorData, context),
             area: await SpellManager.computeComplex(spellDefinition.area, actorData, context),
             bonus: await SpellManager.computeComplex(spellDefinition.bonus, actorData, context),
             cost: level.toString(),
@@ -160,6 +162,7 @@ export class SpellManager {
         actorSpell.description = SpellManager.computeSpellDescription(actorSpell, spellDefinition, actorData, context);
 
         return actorSpell;
+
     }
 
 
@@ -405,12 +408,12 @@ export class SpellManager {
     }
 
     /**
-     * @param {[Object]} actions
+     * @param {Object.<string, SpellActionDefinition>} actions
      * @param {Lvl0CharacterData} actorData
      * @param {Object} context
      * @return {Object.<string, ActorSpellActionDefinition>|undefined}
      */
-    static computeActions(actions, actorData, context) {
+    static async computeActions(actions, actorData, context) {
         if (!actions)
             return undefined;
         let computedActions = {};
@@ -421,7 +424,7 @@ export class SpellManager {
                 type: action.type,
                 data: {
                     effectName: action.data.effectName,
-                    duration: this.computeComplex(action.data.duration, actorData, context),
+                    duration: await this.computeComplex(action.data.duration, actorData, context),
                     modifiers: action.data.modifiers.map(m => this.computeModifier(m, actorData, context))
                 }
             };
