@@ -26,7 +26,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "text": "Une cible"
@@ -43,7 +44,7 @@ export default [
   {
     "id": "guerison",
     "name": "Guérison",
-    "description": "Guéris un coéquipier de (4d6) points de vie. Le champion doit toucher la cible. Ne peut pas dépasser le maximum de points de vie de la cible. Ne s’applique pas au champion lui-même",
+    "description": "Guérit un coéquipier de (4d6) points de vie. Le champion doit toucher la cible. Ne peut pas dépasser le maximum de points de vie de la cible. Ne s’applique pas au champion lui-même",
     "distance": {
       "type": "touch"
     },
@@ -54,11 +55,13 @@ export default [
       "text": "Une cible"
     },
     "bonus": {
-      "rollFormula": "4d6",
-      "unit": " points de vie"
+      "text": "Guérit 4d6 points de vie"
     },
     "resilience": {
       "text": "Guérit 24 points de vie"
+    },
+    "heal": {
+      "rollFormula": "if (context.criticalSuccess) { return '24' } return '4d6';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
@@ -66,7 +69,7 @@ export default [
   {
     "id": "protectionDautrui",
     "name": "Protection d’autrui",
-    "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ne peux pas s’additionner d’autres sorts de protections qui absorbent les dégâts.",
+    "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ce sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
     "distance": {
       "value": 10,
       "unit": "m"
@@ -102,7 +105,7 @@ export default [
       "unit": "m"
     },
     "resilience": {
-      "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';"
+      "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []

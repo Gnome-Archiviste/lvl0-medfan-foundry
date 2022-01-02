@@ -35,9 +35,6 @@ export default [
     "bonus": {
       "text": "Ramène à la vie"
     },
-    "resilience": {
-      "text": "Aucune"
-    },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
   },
@@ -54,9 +51,6 @@ export default [
     },
     "area": {
       "text": "Une cible"
-    },
-    "resilience": {
-      "text": "Aucune"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []

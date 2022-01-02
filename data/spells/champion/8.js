@@ -33,7 +33,7 @@ export default [
       "text": "La cible ne peut pas faire de test de résilience."
     },
     "damage": {
-      "rollFormula": "return \"10d6\";"
+      "rollFormula": "return '10d6';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
@@ -51,6 +51,9 @@ export default [
     },
     "area": {
       "text": "Une cible"
+    },
+    "bonus": {
+      "text": "Dissipe"
     },
     "resilience": {
       "text": "La cible ne peut pas faire de test de résilience."
@@ -73,7 +76,7 @@ export default [
       "unit": "m"
     },
     "resilience": {
-      "text": "Double la durée"
+      "text": "Double la durée du sort"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []

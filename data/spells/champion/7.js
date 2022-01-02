@@ -2,19 +2,19 @@ export default [
   {
     "id": "coursierFantome",
     "name": "Coursier fantôme",
-    "description": "Créer un cheval magique pour une (1) heure par arcane. Le cheval est semi-transparent et semble fait de lumière blanche. Le coursier peut emmener son cavalier et un passager (ou 4 fantasques).",
+    "description": "Créer un cheval magique pour une (1) heure par niveau d’arcane. Le cheval est semi-transparent et semble fait de lumière blanche. Le coursier peut emmener son cavalier et un passager (ou 4 fantasques).",
     "distance": {
       "text": "1 mètre"
     },
     "duration": {
-      "formula": "return context.actorData.computedData.magic.arcaneLevel;",
-      "unit": "heure"
+      "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+      "unit": "heures"
     },
     "area": {
       "text": "Une cible"
     },
     "resilience": {
-      "text": "Double la durée"
+      "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
@@ -27,7 +27,8 @@ export default [
       "type": "self"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "value": 5,
@@ -45,9 +46,9 @@ export default [
   {
     "id": "marchesDuCiel",
     "name": "Marches du ciel",
-    "description": "Des marches apparaissent et peuvent être utilisées par des personnages. Peut servir de pont. Utilisable avec un destrier ou avec beaucoup de poids sur le personnages. 10 mètres par niveau. Disparaît quand les joueurs ont atteint leur destination, le champion doit être le dernier du groupe.",
+    "description": "Des marches apparaissent et peuvent être utilisés par les personnages et leurs alliés. Peut servir de pont. Utilisable avec un destrier ou avec beaucoup de poids sur le personnages. 10 mètres par niveau d’arcane. Disparaît quand les joueurs ont atteint leur destination, le champion doit être le dernier du groupe.",
     "distance": {
-      "formula": "context.actorData.computedData.magic.arcaneLevel * 10",
+      "formula": "return context.actorData.computedData.magic.arcaneLevel * 10;",
       "unit": "m"
     },
     "duration": {
@@ -65,13 +66,14 @@ export default [
   {
     "id": "murDeFeu",
     "name": "Mur de feu",
-    "description": "En lançant ce sort, un mur de feu scintillant jaillit à la demande du champion. Le mur mesure cinq (5) mètres de haut, fait un (1) mètre par niveau d’arcane du champion de largeur et deux (2) mètres de profondeur.\nLe mur inflige 5d6 blessures de feu à toute créature entrant ou traversant le mur. Le mur inflige le double de dégâts aux créatures mortes. Si le champion évoque le mur pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers le mur.\nLe champion peut maintenir le indéfiniment en se concentrant continuellement (faire un test de concentration par tour, et le champion ne peut que faire ce test durant le tour) pour le faire, ou peut renoncer à une concentration continue, auquel cas le mur durera un (1) tour par niveau d’arcane du champion.",
+    "description": "En lançant ce sort, un mur de feu scintillant jaillit à la demande du champion. Le mur mesure cinq mètres de haut, fait un mètre par niveau d’arcane du champion de largeur et deux mètres de profondeur.\nLe mur inflige 5d6 blessures de feu à toute créature entrant ou traversant le mur. Le mur inflige le double de dégâts aux créatures mortes. Si le champion évoque le mur pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers le mur.\nLe champion peut maintenir le sort indéfiniment en se concentrant continuellement (faire un test de concentration par tour, et le champion ne peut que faire ce test durant le tour) pour le faire, ou peut renoncer à une concentration continue, auquel cas le mur durera un (1) tour par niveau d’arcane du champion.",
     "distance": {
       "value": 5,
       "unit": "m"
     },
     "duration": {
-      "text": "1 tour par niveau d’arcane"
+      "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+      "unit": "tours"
     },
     "area": {
       "value": 1,
@@ -81,7 +83,7 @@ export default [
       "text": "La cible ne peut pas faire de test de résilience."
     },
     "damage": {
-      "rollFormula": "return \"5d6\";"
+      "rollFormula": "return '5d6';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
@@ -89,7 +91,7 @@ export default [
   {
     "id": "survolteurDeBollardon",
     "name": "Survolteur de Bollardon",
-    "description": "Avec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone.",
+    "description": "Avec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone. Le champion doit faire ce sort avant de faire le sort qui sera remplacé en sort de zone.",
     "distance": {
       "type": "self"
     },
@@ -105,7 +107,7 @@ export default [
       "text": "Transforme un sort en sort de zone"
     },
     "resilience": {
-      "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';"
+      "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';"
     },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []

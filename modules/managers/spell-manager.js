@@ -106,7 +106,11 @@ export class RolledSpellStat {
     }
 
     async evaluateRoll() {
-        this.roll = await new Roll(this.rollFormula).roll({async: true});
+        try {
+            this.roll = await new Roll(this.rollFormula).roll({async: true});
+        } catch (e) {
+            throw new Error(`Failed to evaluate roll with formula: '${this.rollFormula}': ${e}`)
+        }
     }
 
     toDisplayString() {
@@ -383,26 +387,31 @@ export class SpellManager {
      * @return {string|RolledSpellStat|null}
      */
     static async computeComplex(computable, actorData, context) {
-        if (!computable) {
-            return undefined;
+        try {
+            if (!computable) {
+                return undefined;
+            }
+            let value = undefined;
+            if (computable.formula) {
+                value = this.computeFormula(computable.formula, context, actorData);
+            } else if (computable.rollFormula) {
+                let rollFormula = this.computeFormula(computable.rollFormula, context, actorData);
+                let rolledSpellStat = new RolledSpellStat(rollFormula, null, computable.unit);
+                await rolledSpellStat.evaluateRoll();
+                return rolledSpellStat;
+            } else if (computable.value) {
+                value = computable.value;
+            } else if (computable.text) {
+                value = computable.text;
+            }
+            if (computable.unit) {
+                value = value + ' ' + computable.unit;
+            }
+            return value;
         }
-        let value = undefined;
-        if (computable.formula) {
-            value = this.computeFormula(computable.formula, context, actorData);
-        } else if (computable.rollFormula) {
-            let rollFormula = this.computeFormula(computable.rollFormula, context, actorData);
-            let rolledSpellStat = new RolledSpellStat(rollFormula, null, computable.unit);
-            await rolledSpellStat.evaluateRoll();
-            return rolledSpellStat;
-        } else if (computable.value) {
-            value = computable.value;
-        } else if (computable.text) {
-            value = computable.text;
+        catch (e) {
+            throw new Error("Error during computeComplex for data " + JSON.stringify(computable) + "\n" + e + "\n" + e.stack + "\n")
         }
-        if (computable.unit) {
-            value = value + ' ' + computable.unit;
-        }
-        return value;
     }
 
     static computeFormula(body, context, actorData) {

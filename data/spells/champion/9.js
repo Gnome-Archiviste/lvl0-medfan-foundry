@@ -18,7 +18,7 @@ export default [
   {
     "id": "eclatDeRectitude",
     "name": "Éclat de rectitude",
-    "description": "Le champion émet une lueur qui guérit les personnages bons de 35 points de vie et qui délivre 35 points de dégâts aux personnages mauvais sur 4 mètres de rayons autour du champion.",
+    "description": "Le champion émet une lueur qui guérit les personnages bons de 35 points de vie et qui délivre 35 points de dégâts aux personnages mauvais sur 4 mètres de rayon autour du champion.",
     "distance": {
       "text": "champion"
     },
@@ -38,7 +38,7 @@ export default [
   {
     "id": "exorcisme",
     "name": "Exorcisme",
-    "description": "Certaines créature telles les esprits et les démons peuvent prendre possession du corps d’un mortel et les retourner contre ses coéquipiers. Avec ce sort, le champion délivre une victime autre que lui-même d’une possession.",
+    "description": "Certaines créatures telles les esprits et les démons peuvent prendre possession du corps d’un mortel et les retourner contre ses coéquipiers. Avec ce sort, le champion délivre une victime autre que lui-même d’une possession.",
     "distance": {
       "value": 3,
       "unit": "m"
@@ -58,7 +58,7 @@ export default [
   {
     "id": "premonition",
     "name": "Prémonition",
-    "description": "Lancer au coucher, le sort permet au champion de voir de l’information sur le futur probable durant ses rêves. Le champion se souvient de ses rêves prémonitoires.\nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la soirée. Permet au maître de jeu de donner des informations importantes que les joueurs auraient ratés.\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
+    "description": "Lancer au coucher, le sort permet au champion de voir de l’information sur le futur probable durant ses rêves. Le champion se souvient de ses rêves prémonitoires.\nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la soirée. Permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
     "distance": {
       "type": "self"
     },
@@ -77,12 +77,13 @@ export default [
   {
     "id": "regeneration",
     "name": "Régénération",
-    "description": "Ce sort, lancé juste avant ou pendant le combat, permet au champion de guérir ses coéquipiers tout au long du combat, redonnant cinq (5) points de vie par tour. De plus, vingt (20) autres points de vies sont regagnés à la fin du combat.",
+    "description": "Ce sort, lancé juste avant ou pendant le combat, permet au champion de guérir ses coéquipiers tout au long du combat, redonnant cinq (5) points de vie par tour. De plus, vingt (20) autres points de vie sont regagnés à la fin du combat. Le sort prend fin à la fin du combat, et ne il peut pas être lancé en dehors d’un combat",
     "distance": {
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène (de combat)"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "value": 8,

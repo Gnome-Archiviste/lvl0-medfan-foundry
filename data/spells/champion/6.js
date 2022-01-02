@@ -7,8 +7,8 @@ export default [
       "type": "self"
     },
     "duration": {
-      "rollFormula": "1d6",
-      "unit": " tours"
+      "rollFormula": "return '1d6'",
+      "unit": "tours"
     },
     "area": {
       "value": 4,
@@ -28,7 +28,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "text": "Une cible"

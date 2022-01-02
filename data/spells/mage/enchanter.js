@@ -8,6 +8,7 @@ import enchanterLvl7 from './enchanter/7.js'
 import enchanterLvl8 from './enchanter/8.js'
 import enchanterLvl9 from './enchanter/9.js'
 import enchanterLvl10 from './enchanter/10.js'
+import enchanterLvl20 from './enchanter/20.js'
 
 export default {
     1: enchanterLvl1,
@@ -20,4 +21,5 @@ export default {
     8: enchanterLvl8,
     9: enchanterLvl9,
     10: enchanterLvl10,
+    20: enchanterLvl20,
 }

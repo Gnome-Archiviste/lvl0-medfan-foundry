@@ -8,6 +8,7 @@ import generalLvl7 from './general/7.js'
 import generalLvl8 from './general/8.js'
 import generalLvl9 from './general/9.js'
 import generalLvl10 from './general/10.js'
+import generalLvl20 from './general/20.js'
 
 export default {
     1: generalLvl1,
@@ -20,4 +21,5 @@ export default {
     8: generalLvl8,
     9: generalLvl9,
     10: generalLvl10,
+    20: generalLvl20,
 }

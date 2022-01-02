@@ -18,6 +18,9 @@ export default [
     "resilience": {
       "text": "Guérit 18 points de vie"
     },
+    "heal": {
+      "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
+    },
     "icon": "icons/magic/symbols/question-stone-yellow.webp",
     "actions": []
   },
@@ -29,7 +32,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "text": "Une cible"
@@ -51,7 +55,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "text": "Une cible"
@@ -73,7 +78,8 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène"
+      "value": 1,
+      "unit": "scène"
     },
     "area": {
       "text": "Une cible"
@@ -95,7 +101,7 @@ export default [
       "type": "touch"
     },
     "duration": {
-      "text": "Une scène (une journée pour le froid ordinaire)"
+      "text": "1 scène (une journée pour le froid ordinaire)"
     },
     "area": {
       "text": "Une cible"

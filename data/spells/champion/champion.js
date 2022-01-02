@@ -8,6 +8,7 @@ import championLvl7 from './7.js';
 import championLvl8 from './8.js';
 import championLvl9 from './9.js';
 import championLvl10 from './10.js';
+import championLvl20 from './20.js';
 
 export default {
     general: {
@@ -21,5 +22,6 @@ export default {
         8: championLvl8,
         9: championLvl9,
         10: championLvl10,
+        20: championLvl20,
     }
 }
