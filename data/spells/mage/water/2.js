@@ -1,145 +1,121 @@
 export default [
     {
-        "id": 'frostArmor',
-        "name": 'Armure de givre',
-        "icon": 'icons/magic/defensive/shield-barrier-blue.webp',
-        "description": `Le sort recouvre l'élémentaliste d’une mince couche neige qui le protège de 10 points de dégât jusqu’à ce que tous les points de protection soient épuisés ou qu’elle fonde après 4 tours. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts.`,
-        "bonus": {
-            "text": `10 points de dégâts absorbés`
-        },
-        "damage": {
-            "text": `Aucun`
-        },
+        "id": "frostArmor",
+        "name": "Armure de givre",
+        "icon": "icons/magic/defensive/shield-barrier-blue.webp",
+        "description": "Le sort recouvre l'élémentaliste d’une mince couche neige (sur lui-même) qui le protège de 10 points de dégât jusqu’à ce que tous les points de protection soient épuisés  ou qu’elle fonde après 4 tours. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
-            "type": 'self',
+            "type": "self",
+            "text": "Élémentaliste"
         },
         "duration": {
-            "value": 5,
-            "unit": 'tours'
+            "text": "5 tours ou tous utilisés"
         },
         "area": {
-            "text": `Une cible`,
+            "text": "Élémentaliste"
         },
-        "resilience": {
-            "text": 'Aucune'
+        "bonus": {
+            "text": "10 points de dégâts absorbés"
         },
         "criticalSuccess": {
-            "text": `Double la durée`
-        },
+            "text": "Double la durée du sort"
+        }
     },
     {
-        "id": 'snowBall',
-        "name": 'Boule de neige',
-        "icon": 'icons/magic/water/projectile-ice-snowball.webp',
-        "description": `L'élémentaliste fait apparaître une boule de neige dans sa main qu'il peut lancer.`,
-        "bonus": {
-            "text": `Aucun`
-        },
-        "damage": {
-            "rollFormula": 'return "1d6 - 1";',
-            "element": 'glace'
-        },
+        "id": "snowBall",
+        "name": "Boule de neige",
+        "icon": "icons/magic/water/projectile-ice-snowball.webp",
+        "description": "L'élémentaliste fait apparaître une boule de neige dans sa main qu'il peut lancer.",
         "distance": {
-            "value": 10,
-            "unit": 'm'
+            "text": "8 mètres + 1 m par arcane"
         },
         "duration": {
-            "text": 'Instantané'
+            "text": "Instantané"
         },
         "area": {
-            "text": `Une cible`,
+            "text": "Une cible"
         },
         "resilience": {
-            "text": 'Annule les dégâts'
+            "text": "Divise le dommage par deux"
         },
         "criticalSuccess": {
-            "text": `Double les dégâts`
-        },
-    },
-    {
-        "id": 'mudTrap',
-        "name": 'Piège de boue',
-        "icon": 'icons/magic/acid/dissolve-drip-droplet-smoke.webp',
-        "description": `Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.`,
-        "bonus": {
-            "text": `Victimes immobilisées`
+            "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
-            "text": `Aucun`
-        },
+            "rollFormula": "return '1d6+2';",
+            "element": "water",
+            "text": "1d6 +2"
+        }
+    },
+    {
+        "id": "mudTrap",
+        "name": "Piège de boue",
+        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "description": "Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.",
         "distance": {
             "value": 10,
-            "unit": 'm'
+            "unit": "m",
+            "text": "10 mètres"
         },
         "duration": {
             "value": 3,
-            "unit": 'tours'
+            "unit": "tours",
+            "text": "3 tours"
         },
         "area": {
             "value": 3,
-            "unit": 'm'
+            "unit": "m",
+            "text": "3 mètres"
+        },
+        "bonus": {
+            "text": "Victimes immobilisées"
         },
         "resilience": {
-            "text": 'On fait un test par tour pour ne pas avoir l’effet du piège pour ce tour.'
+            "text": "On fait un test par tour pour ne pas avoir l’effet du piège pour ce tour."
         },
         "criticalSuccess": {
-            "text": `La cible ne peut pas faire de test de résilience.`
-        },
+            "text": "La cible ne peut pas faire de test de résilience"
+        }
     },
     {
-        "id": 'underWaterBreath',
-        "name": 'Respirer sous l\'eau',
-        "icon": 'icons/magic/acid/dissolve-drip-droplet-smoke.webp',
-        "description": `La cible de ce sort peut respirer sous l’eau librement pendant 10 tours plus un tour par niveau d’arcane de l’élémentaliste.`,
-        "bonus": {
-            "text": `Aucun`
-        },
-        "damage": {
-            "text": `Aucun`
-        },
+        "id": "underWaterBreath",
+        "name": "Respirer sous l’eau",
+        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "description": "La cible de ce sort peut respirer sous l’eau librement pendant 10 tours plus un tour par niveau d’arcane de l’élémentaliste.",
         "distance": {
-            "type": 'touch',
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "formula": `return 10 + context.actorData.computedData.magic.arcaneLevel;`,
-            "unit": 'tours'
+            "text": "10 tours + 1 tour par niveau d’arcane"
         },
         "area": {
-            "text": `Une cible`,
-        },
-        "resilience": {
-            "text": 'Aucune'
+            "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": `Double la durée`
-        },
+            "text": "Double la durée du sort"
+        }
     },
     {
-        "id": 'source',
-        "name": `Source`,
-        "icon": 'icons/magic/acid/dissolve-drip-droplet-smoke.webp',
-        "description": `En touchant le sol, l'élémentaliste fait jaillir une petite source. Ceux qui en boivent se font guérir, recevant quelques points de vie. Après un tour, la source se tarit. Si l'eau est récoltée, elle devient de l'eau ordinaire.`,
-        "bonus": {
-            "text": `+ 1d6 points de vie`
-        },
-        "damage": {
-            "text": `Aucun`
-        },
+        "id": "source",
+        "name": "Source",
+        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "description": "En touchant le sol, l'élémentaliste fait jaillir une petite source. Ceux qui en boivent se font guérir, recevant quelques points de vie. Après un tour, la source se tarit. Si l'eau est récoltée, elle devient de l'eau ordinaire.",
         "distance": {
-            "type": 'touch',
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "value": 5,
-            "unit": 'm'
+            "text": "5 tours ou tous utilisés"
         },
         "area": {
-            "text": `Une cible`,
+            "text": "Une cible"
         },
-        "resilience": {
-            "text": 'Aucune'
+        "bonus": {
+            "text": "+ 1d6 points de vie"
         },
         "criticalSuccess": {
-            "text": `6 points de vie`
-        },
-    },
+            "text": "6 points de vie"
+        }
+    }
 ]

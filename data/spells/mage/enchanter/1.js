@@ -1,220 +1,241 @@
 export default [
     {
-        "id": 'alarm',
-        "name": 'Alarme',
-        "icon": 'icons/magic/sonic/bell-alarm-red-purple.webp',
-        "description": `Protège une zone ou une pièce d’un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancer du sort) entre dans la zone, on entend le son d’une cloche. A partir d’arcane 5, l’alarme peut être mental. Elle est entendue dans la tête du magicien et les personnes présentes durant le lancer du sort. `,
+        "id": "alarm",
+        "name": "Alarme",
+        "icon": "icons/magic/sonic/bell-alarm-red-purple.webp",
+        "description": "Protège une zone ou une pièce d’un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancer du sort) entre dans la zone, on entend le son d’une cloche. A partir d’arcane 5, l’alarme peut être mental. Elle est entendue dans la tête du magicien et des personnes présentes durant le lancer du sort. ",
         "distance": {
-            "type": 'touch'
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "formula": `
-                        if (context.criticalSuccess)
-                            return 2 * 2 * context.actorData.computedData.magic.arcaneLevel;
-                        return 2 * context.actorData.computedData.magic.arcaneLevel;
-                    `,
-            "unit": 'h'
-        },
-        "criticalSuccess": {
-            "formula": `
-                        if (context.criticalSuccess)
-                            return 'Double la durée (pré-calculé)';
-                        return 'Double la durée';`
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 2 * context.actorData.computedData.magic.arcaneLevel",
+            "unit": "heures",
+            "text": "2 heures par niveau d’arcane"
         },
         "area": {
-            "value": 10,
-            "unit": 'm'
+            "text": "10 mètres (maximum une pièce)"
+        },
+        "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
         }
     },
     {
-        // FIXME: Add action to add shield and display the shield (same for diamond / stone armor) in the character sheet
-        "id": 'waldenArmor',
-        "name": 'Armure magique de Walden',
-        "icon": 'icons/magic/fire/beam-strike-whip-red.webp',
-        "description": `Donne une armure qui absorbe dix (10) points de dégâts au magicien, dure 5 tours ou dix points de dégâts (disparaît après 5 tours même si tous les points de dégâts n’ont pas été utilisés). Ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts`,
+        "id": "waldenArmor",
+        "name": "Armure magique de Walden",
+        "icon": "icons/magic/fire/beam-strike-whip-red.webp",
+        "description": "Donne une armure qui absorbe dix (10) points de dégâts au magicien, dure 5 tours ou dix points de dégâts (disparaît après 5 tours même si tous les points de dégâts n’ont pas été utilisés). Ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
+        "distance": {
+            "text": "Enchanteur"
+        },
+        "duration": {
+            "text": "5 tours ou tous utilisés"
+        },
+        "area": {
+            "text": "Enchanteur"
+        },
         "bonus": {
-            "text": `10 points de dégâts absorbés`
-        },
-        "distance": {
-            "type": 'self'
-        },
-        "duration": {
-            "formula": `return (context.criticalSuccess ? 2 : 1) * 5`,
-            "unit": 'tours'
+            "text": "10 points de dégâts absorbés"
         },
         "criticalSuccess": {
-            "formula": `
-                        if (context.criticalSuccess)
-                            return 'Double la durée (pré-calculé)';
-                        return 'Double la durée';`
-        },
-        "area": {
-            "text": 'Une cible'
+            "text": "Double la durée du sort"
         }
     },
     {
-        "id": 'spark',
-        "name": 'Étincelle',
-        "icon": 'icons/magic/light/hand-sparks-glow-yellow.webp',
-        "description": 'Après avoir frotté ses pieds sur le sol à plusieurs reprises (idéalement sur un tapis), l\'élémentaliste émet une légère décharge électrostatique sur une cible.',
+        "id": "spark",
+        "name": "Étincelle",
+        "icon": "icons/magic/light/hand-sparks-glow-yellow.webp",
+        "description": "Après avoir frotté ses pieds sur le sol à plusieurs reprises (idéalement sur un tapis), l'élémentaliste émet une légère décharge électrostatique sur une cible.",
         "distance": {
-            "type": 'touch'
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "text": "Instantanée"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "resilience": {
+            "text": "1 de dégât"
+        },
+        "criticalSuccess": {
+            "text": "4 de dégât"
         },
         "damage": {
-            "rollFormula": 'return (context.criticalSuccess ? "4" : "2");',
-            "element": 'electric'
+            "rollFormula": "return \"2\";",
+            "element": "electric",
+            "text": "2"
+        }
+    },
+    {
+        "id": "spiderHand",
+        "name": "Main de l’araignée",
+        "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
+        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "text": 'Instantanée'
-        },
-        "criticalSuccess": {
-            "text": `4 de dégât`
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 5",
+            "value": 5,
+            "unit": "tours",
+            "text": "5 tours"
         },
         "area": {
-            "text": 'Une cible'
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Déplacement sur toute surface."
+        },
+        "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
         }
     },
     {
-        "id": 'spiderHand',
-        "name": 'Main de l’araignée',
-        "icon": 'icons/creatures/webs/web-spider-glowing-purple.webp',
-        "description": `Protège une zone ou une pièce d’un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancer du sort) entre dans la zone, on entend le son d’une cloche. A partir d’arcane 5, l’alarme peut être mental. Elle est entendue dans la tête du magicien et les personnes présentes durant le lancer du sort. `,
+        "id": "pierresDeLune",
+        "name": "Pierres de lune",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.",
         "distance": {
-            "type": 'touch'
-        },
-        "bonus": {
-            "text": 'Déplacement sur toute surface.'
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "formula": `
-                        if (context.criticalSuccess)
-                            return 10;
-                        return 5;
-                    `,
-            "unit": 'tours'
-        },
-        "criticalSuccess": {
-            "formula": `
-                        if (context.criticalSuccess)
-                            return 'Double la durée (pré-calculé)';
-                        return 'Double la durée';`
+            "text": "instantané"
         },
         "area": {
-            "text": 'Une cible'
+            "text": "Jusqu’à 5 petites pierres"
+        },
+        "bonus": {
+            "text": "Permet de voir dans la nuit"
+        },
+        "criticalSuccess": {
+            "text": "crée jusqu’à 8 pierres. Les pierres manquantes apparaissent"
         }
     },
     {
-        "id": 'moonStone',
-        "name": 'Pierres de lune',
-        "icon": 'icons/commodities/currency/coin-engraved-moon-silver.webp',
-        "description": `L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.`,
-        "bonus": {
-            "text": `: Permet de voir dans la nuit`
-        },
+        "id": "moonStone",
+        "name": "        d'elles-mêmes.",
+        "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp"
+    },
+    {
+        "id": "healingPotion",
+        "name": "Potion de soin",
+        "icon": "icons/consumables/potions/potion-tube-corked-red.webp",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autres du sang de troll (9 gouttes), une pincée de poudre de perlépipein et du jus de pomme (1 litre) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
         "distance": {
-            "type": 'touch'
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "type": 'Instantané'
+            "text": "instantané"
+        },
+        "area": {
+            "text": "le chaudron"
+        },
+        "bonus": {
+            "text": "Donne 6 pv à la cible"
         },
         "criticalSuccess": {
-            "text": `crée jusqu’à 8 pierres. Les pierres manquantes apparaissent d’elle-mêmes.`
+            "text": "fait 4 potions par mana au lieu de 3."
         }
     },
     {
-        "id": 'healingPotion',
-        "name": 'Potion de soin',
-        "icon": 'icons/consumables/potions/potion-tube-corked-red.webp',
-        "description": `L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (9 gouttes), une pincée de poudre de perlépipein et du jus de pomme (1 litre) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.`,
-        "bonus": {
-            "text": `Donne 6 pv à la cible`
-        },
+        "id": "failedPotion",
+        "name": "Potion ratée",
+        "icon": "icons/consumables/potions/potion-flash-open-blue.webp",
+        "description": "L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.",
         "distance": {
-            "type": 'touch'
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "type": 'Instantané'
+            "text": "Instantané"
+        },
+        "area": {
+            "text": "La potion"
+        },
+        "bonus": {
+            "text": "Accessoirement fait de la place dans votre inventaire"
         },
         "criticalSuccess": {
-            "type": 'Prépare 4 potions par mana au lieu de 3.'
-        },
-    },
-    {
-        "id": 'failedPotion',
-        "name": 'Potion ratée',
-        "icon": 'icons/consumables/potions/potion-flash-open-blue.webp',
-        "description": `L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.`,
-        "bonus": {
-            "text": `Accessoirement fait de la place dans votre inventaire`
+            "text": "fait le maximum de dommage."
         },
         "damage": {
-            "rollFormula": 'return (context.criticalSuccess ? "4" : "1d6-2");',
-            "element": 'magic'
-        },
-        "distance": {
-            "type": 'touch'
-        },
-        "duration": {
-            "type": 'Instantané'
-        },
-    },
-    {
-        "id": 'healthSyringes',
-        "name": 'Seringues de santé',
-        "icon": 'icons/weapons/thrown/dart-feathered.webp',
-
-        "description": `L'enchanteur infuse un peu d’essence de vie dans de petites fléchettes de sarbacane (maximum 5) en les faisant mariner dans une fiole de potion de soin au moins 8 heures. Les darts s’utilisent avec une sarbacane de portée. Une fois la cible touchée, la cible reçoit 1 seul point de vie qui peut le ramener à la vie puis redevient une simple bout de bois. Ce sort requiert 5 darts en bois de cèdre, une potion de soin mais ne requiert pas de fixateur.`,
-        "bonus": {
-            "text": `Donne 1 pv à la cible`
-        },
-        "distance": {
-            "type": 'touch'
-        },
-        "duration": {
-            "type": 'Instantané'
-        },
-        "criticalSuccess": {
-            "text": `Redonne 2 pv à la cible`
+            "text": "Inflige 1d6-2 points de dégâts"
         }
     },
     {
-        "id": 'sesame',
-        "name": 'Sésame',
-        "icon": 'icons/sundries/misc/lock-open-yellow.webp',
-        "description": `Déverrouille les portes qui ne sont pas verrouillées magiquement. Attention, le sort n’enlève pas les pièges.`,
+        "id": "healthSyringes",
+        "name": "Seringues de santé",
+        "icon": "icons/weapons/thrown/dart-feathered.webp",
+        "description": "L'enchanteur infuse un peu d’essence de vie dans de petites fléchettes de sarbacane (maximum 5) en les faisant mariner dans une fiole de potion de soin au moins 8 heures. Les darts s’utilisent avec une sarbacane de portée. Une fois la cible touchée, la cible reçoit 1 seul point de vie qui peut le ramener à la vie puis redevient une simple bout de bois. Ce sort requiert 5 darts en bois de cèdre, une potion de soin mais ne requiert pas de fixateur.",
         "distance": {
-            "type": 'touch'
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "text": `Instantané`
-        },
-        "criticalSuccess": {
-            "text": `La serrure ne fait pas de bruit`
+            "text": "instantané"
         },
         "area": {
-            "text": 'Une cible'
+            "text": "Jusqu’à 5 darts"
+        },
+        "bonus": {
+            "text": "Donne 1 pv à la cible"
+        },
+        "criticalSuccess": {
+            "text": "Redonne 2 pv à la cible."
         }
     },
     {
-        "id": 'personalHeal',
-        "name": 'Soins personnels',
-        "icon": 'icons/magic/life/cross-area-circle-green-white.webp',
-        "description": 'Guérit le magicien de 1d6 points de vie. Ne s’applique pas aux coéquipiers. Ne peut pas dépasser le maximum de points de vie.',
+        "id": "sesame",
+        "name": "Sésame",
+        "icon": "icons/sundries/misc/lock-open-yellow.webp",
+        "description": "Déverrouille les portes qui ne sont pas verrouillées magiquement. Attention, le sort n’enlève pas les pièges.",
         "distance": {
-            "type": 'self'
-        },
-        "heal": {
-            "rollFormula": `
-                        if (context.criticalSuccess)
-                            return "6";
-                        return "1d6";
-                    `
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
-            "text": 'Instantané'
+            "text": "Instantané"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Déverrouille les portes"
+        },
+        "resilience": {
+            "text": "Aucune (sauf cas spéciaux)"
         },
         "criticalSuccess": {
-            "text": 'Guérit 6 points de vie'
+            "text": "La serrure ne fait pas de bruit"
+        }
+    },
+    {
+        "id": "personalHeal",
+        "name": "Soins personnels ",
+        "icon": "icons/magic/life/cross-area-circle-green-white.webp",
+        "description": "Guérit le magicien de 1d6 points de vie. Ne s’applique pas aux coéquipiers. Ne peut pas dépasser le maximum de points de vie.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "text": "Instantané"
+        },
+        "area": {
+            "text": "Magicien"
+        },
+        "bonus": {
+            "text": "Guéris 1d6"
+        },
+        "criticalSuccess": {
+            "text": "Guérit 6 points de vie"
         }
     }
 ]

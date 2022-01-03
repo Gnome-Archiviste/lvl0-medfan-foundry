@@ -2,9 +2,11 @@ export default [
     {
         "id": "annulationDeLaMagie",
         "name": "Annulation de la magie",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Annule un sort de bouffon d’arcane 10 ou moins. Annule un sort de non-bouffon d’arcane 5 ou moins. Doit toucher la cible.",
         "distance": {
-            "type": "touch"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "text": "Instantané"
@@ -12,10 +14,8 @@ export default [
         "area": {
             "text": "Une cible"
         },
-        "resilience": {
+        "criticalSuccess": {
             "text": "Annule un sort de non-bouffon d’arcane 7 ou moins."
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        }
     }
 ]

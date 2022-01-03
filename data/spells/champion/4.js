@@ -2,9 +2,11 @@ export default [
     {
         "id": "antidote",
         "name": "Antidote",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Permets de contrer les potions négatives (comme celle de sommeil ou les venins d’animaux).",
         "distance": {
-            "type": "touch"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "text": "Instantané"
@@ -14,20 +16,21 @@ export default [
         },
         "bonus": {
             "text": "Contrer les potions"
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        }
     },
     {
         "id": "armeEnchantee",
         "name": "Arme enchantée",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Transforme les dégâts normaux d’une arme en dégâts magiques et permet ainsi de toucher les créatures qui requièrent ce type de dégâts pour les combattre. ex: fantôme, vampires, morts-vivants.",
         "distance": {
-            "type": "touch"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "value": 1,
-            "unit": "scène"
+            "unit": "scène",
+            "text": "1 scène"
         },
         "area": {
             "text": "Une cible"
@@ -35,18 +38,18 @@ export default [
         "bonus": {
             "text": "transforme les dégâts normaux en dégâts magiques"
         },
-        "resilience": {
+        "criticalSuccess": {
             "text": "Ajouté 6 de dégâts"
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        }
     },
     {
         "id": "guerison",
         "name": "Guérison",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Guérit un coéquipier de (4d6) points de vie. Le champion doit toucher la cible. Ne peut pas dépasser le maximum de points de vie de la cible. Ne s’applique pas au champion lui-même",
         "distance": {
-            "type": "touch"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "text": "Instantané"
@@ -57,22 +60,22 @@ export default [
         "bonus": {
             "text": "Guérit 4d6 points de vie"
         },
-        "resilience": {
+        "criticalSuccess": {
             "text": "Guérit 24 points de vie"
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '24' } return '4d6';"
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        }
     },
     {
         "id": "protectionDautrui",
         "name": "Protection d’autrui",
-        "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ce sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ce sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "value": 10,
-            "unit": "m"
+            "unit": "m",
+            "text": "10 mètres"
         },
         "duration": {
             "text": "Quand les points ont été absorbés"
@@ -83,31 +86,33 @@ export default [
         "bonus": {
             "text": "Absorbe jusqu’à 10 points de dégâts"
         },
-        "resilience": {
+        "criticalSuccess": {
             "text": "Absorbe jusqu’à 20 points de dégâts"
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        }
     },
     {
         "id": "repulsionDesMortsVivants",
         "name": "Répulsion des morts-vivants",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Les morts-vivants ne peuvent pas rentrer dans la zone pendant 10 tours. Tous les morts-vivants déjà dans la zone sont éjectés violemment.",
         "distance": {
-            "type": "touch"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "formula": "return (context.criticalSuccess ? 2 : 1) * 10",
-            "unit": "tours"
+            "value": 10,
+            "unit": "tours",
+            "text": "10 tours"
         },
         "area": {
             "value": 5,
-            "unit": "m"
+            "unit": "m",
+            "text": "5 mètres"
         },
-        "resilience": {
-            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';"
-        },
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "actions": []
+        "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
+        }
     }
 ]
