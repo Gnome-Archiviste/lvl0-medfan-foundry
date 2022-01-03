@@ -190,7 +190,7 @@ export class SpellManager {
     static async reComputeSpellAfterRoll(actorSpell, actorData, context) {
         let updatedActorSpell = {
             ...actorSpell,
-            actions: SpellManager.computeActions(actorSpell.definition.actions, actorData, context),
+            actions: await SpellManager.computeActions(actorSpell.definition.actions, actorData, context),
             area: await SpellManager.computeComplex(actorSpell.definition.area, actorData, context),
             bonus: await SpellManager.computeComplex(actorSpell.definition.bonus, actorData, context),
             criticalSuccess: await SpellManager.computeComplex(actorSpell.definition.criticalSuccess, actorData, context),
