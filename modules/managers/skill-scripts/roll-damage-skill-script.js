@@ -178,13 +178,13 @@ export class RollDamageSkillScript extends SkillScript {
             message += '</div>';
         }
 
-        let bonusDamage = 0;
-        for (let effectsWithBonusDamage of effectsWithBonusDamages) {
-            message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
-            bonusDamage += effectsWithBonusDamage.value;
-        }
-
         if (success) {
+            let bonusDamage = 0;
+            for (let effectsWithBonusDamage of effectsWithBonusDamages) {
+                message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
+                bonusDamage += effectsWithBonusDamage.value;
+            }
+
             message += `<div class="result">Total: <span class="total">${weaponDamage + ammunitionDamage + bonusDamage}</span></div>`;
         }
 
