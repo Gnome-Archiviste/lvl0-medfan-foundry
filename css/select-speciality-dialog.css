@@ -1,3 +1,0 @@
-.select-speciality-dialog .speciality{display:grid;grid-template-columns:1fr auto;align-items:center;grid-template-areas:"header action" "description action"}.select-speciality-dialog .speciality .header{grid-area:header}.select-speciality-dialog .speciality .description{grid-area:description}.select-speciality-dialog .speciality .action{grid-area:action}.select-speciality-dialog .separator{height:1px;background-color:black;opacity:0.25;width:280px;margin-left:auto;margin-right:auto;margin-bottom:4px}
-
-/*# sourceMappingURL=select-speciality-dialog.css.map */

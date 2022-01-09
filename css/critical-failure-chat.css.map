@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "critical-failure-chat.css",
-	"sources": [
-		"../templates/chat/critical-failure-chat.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,AACE,sBADoB,CACpB,MAAM,AAAC,CACL,UAAU,CAAE,MAAM,CAClB,SAAS,CAAE,IAAI,CAChB,AAJH,AAME,sBANoB,CAMpB,CAAC,CAAG,CAAC,AAAC,CACJ,aAAa,CAAE,GAAG,CACnB,AARH,AAUE,sBAVoB,CAUpB,OAAO,AAAC,CACN,UAAU,CAAE,MAAM,CAClB,SAAS,CAAE,IAAI,CAChB,AAbH,AAgBI,sBAhBkB,CAepB,YAAY,CACV,MAAM,AAAC,CACL,WAAW,CAAE,IAAI,CAClB"
-}
