@@ -73,7 +73,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.",
+        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -99,7 +99,7 @@ export default [
         "id": "pierresDeLune",
         "name": "Pierres de lune",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.",
+        "description": "L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -120,7 +120,8 @@ export default [
     {
         "id": "moonStone",
         "name": "        d'elles-mêmes.",
-        "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp"
+        "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp",
+        "description": ""
     },
     {
         "id": "healingPotion",
@@ -148,7 +149,7 @@ export default [
         "id": "failedPotion",
         "name": "Potion ratée",
         "icon": "icons/consumables/potions/potion-flash-open-blue.webp",
-        "description": "L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.",
+        "description": "L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -232,10 +233,13 @@ export default [
             "text": "Magicien"
         },
         "bonus": {
-            "text": "Guéris 1d6"
+            "text": "Guérit 1d6 points de vie"
         },
         "criticalSuccess": {
             "text": "Guérit 6 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
         }
     }
 ]

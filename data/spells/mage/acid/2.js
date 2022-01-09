@@ -46,7 +46,7 @@ export default [
         "id": "mofette",
         "name": "Mofette",
         "icon": "icons/creatures/mammals/rodent-rat-green.webp",
-        "description": "L'élémentaliste crée une fissure dans le sol dégageant des gaz qui finissent par exploser, projetant ceux autour à 2 mètres vers l’arrière.",
+        "description": "L'élémentaliste crée une fissure dans le sol dégageant des gaz qui finissent par exploser, projetant ceux autour à 2 mètres vers l’arrière.\n\n\n\n",
         "distance": {
             "text": "8 mètres + 1 m par arcane"
         },
@@ -89,10 +89,13 @@ export default [
             "text": "Une cible"
         },
         "bonus": {
-            "text": "Guérison de 1d6 points de vie"
+            "text": "Guérit 1d6 points de vie"
         },
         "criticalSuccess": {
             "text": "Donne 6 points de vie"
+        },
+        "heal": {
+            "rollFormula": "return '1d6';"
         }
     },
     {

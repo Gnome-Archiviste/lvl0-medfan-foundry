@@ -3,7 +3,7 @@ export default [
         "id": "anneauDeFeu",
         "name": "Anneau de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "En lançant ce sort, un cercle de feu scintillant jaillit à la demande du magicien. Le cercle mesure deux (2) mètres de rayon à l’entour du magicien. Le cercle ne peut pas se déplacer.\nL’anneau inflige 5d6 blessures de feu à toute créature entrant ou traversant. Si le magicien évoque l’anneau pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\nDe base l’anneau dure un (1) tour par niveau d’arcane du magicien. S’il le veut, le magicien peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "En lançant ce sort, un cercle de feu scintillant jaillit à la demande du magicien. Le cercle mesure deux (2) mètres de rayon à l’entour du magicien. Le cercle ne peut pas se déplacer.\n\nL’anneau inflige 5d6 blessures de feu à toute créature entrant ou traversant. Si le magicien évoque l’anneau pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\n\nDe base l’anneau dure un (1) tour par niveau d’arcane du magicien. S’il le veut, le magicien peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -111,7 +111,7 @@ export default [
         "description": "Fait apparaître une créature sans nom pour combattre à la place du magicien. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient. Les caractéristiques de la créature : Phy=9, Int=7, Cha=4, Dex=8, Per=6 (aucune habileté), 100 points de vie.",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -153,10 +153,10 @@ export default [
         "id": "rapetissement",
         "name": "Rapetissement",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet au lanceur de réduire une créature ou un objet, en diminuant à la fois sa taille et son poids à 1/3 de sa taille.\nTout l’équipement porté par une créature est également modifié par le sort.\nLes propriétés magiques ne sont pas diminuées par ce sort. Le poids, la masse et le physique sont cependant affectés. Les points de vie, l’armure et le mana d’une créature ne changent pas. La caractéristique physique est réduite de moitié (arrondi vers le bas pour les ennemis, vers le haut pour les personnages).\nLe sort ne peut pas être lancé deux fois sur la même cible, tant que l'effet du premier sort est en action.",
+        "description": "Ce sort permet au lanceur de réduire une créature ou un objet, en diminuant à la fois sa taille et son poids à 1/3 de sa taille.\n\n\n\n\n\nTout l’équipement porté par une créature est également modifié par le sort.\n\n\n\n\n\nLes propriétés magiques ne sont pas diminuées par ce sort. Le poids, la masse et le physique sont cependant affectés. Les points de vie, l’armure et le mana d’une créature ne changent pas. La caractéristique physique est réduite de moitié (arrondi vers le bas pour les ennemis, vers le haut pour les personnages).\n\n\n\n\n\nLe sort ne peut pas être lancé deux fois sur la même cible, tant que l'effet du premier sort est en action.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

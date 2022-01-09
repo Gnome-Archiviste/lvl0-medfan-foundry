@@ -34,7 +34,7 @@ export default [
         "description": "L’élémentaliste crée un éclair de lumière qui rend une tête de la victime aveugle pour un (1) tour par arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -78,7 +78,7 @@ export default [
         "id": "ventDansLesCheveux",
         "name": "Vent dans les cheveux",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Certains groupes de héros ont été moins héroïques que leur légende. Ce sort en est partiellement la cause. Il permet d’avoir l’air plus héroïque que nature. \nUn vent tourne à l’entour de la cible et fait virevolter les cheveux de ce dernier comme dans les images de mannequin. Il permet aussi à la cape d’avoir des mouvements de super-héros. Donne un + 1 en charisme. ",
+        "description": "Certains groupes de héros ont été moins héroïques que leur légende. Ce sort en est partiellement la cause. Il permet d’avoir l’air plus héroïque que nature. \n\nUn vent tourne à l’entour de la cible et fait virevolter les cheveux de ce dernier comme dans les images de mannequin. Il permet aussi à la cape d’avoir des mouvements de super-héros. Donne un + 1 en charisme. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -105,7 +105,7 @@ export default [
         "description": "La cible reçoit une série de claques au visage.",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {

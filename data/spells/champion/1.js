@@ -3,7 +3,7 @@ export default [
         "id": "detectEvil",
         "name": "Détection des mauvais",
         "icon": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
-        "description": "À l’arcane un (1) le champion ressent s’il y a présence d’au moins un être mauvais dans les environs (pâté de maisons) sans grandes précisions. À l’arcane trois (3) le champion peut déterminer le nombre d’êtres mauvais dans les environs. À l’arcane cinq (5) le champion voit une aura rougeâtre entourant les créatures mauvaises. Plus une créature est mauvaise et puissante, plus l’aura est brillante.",
+        "description": "* À l’arcane un (1) le champion ressent s’il y a présence d’au moins un être mauvais dans les environs (pâté de maisons) sans grandes précisions.\n\n* À l’arcane trois (3) le champion peut déterminer le nombre d’êtres mauvais dans les environs. \n\n* À l’arcane cinq (5) le champion voit une aura rougeâtre entourant les créatures mauvaises. Plus une créature est mauvaise et puissante, plus l’aura est brillante.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -28,7 +28,7 @@ export default [
         "id": "detectUndead",
         "name": "Détection des morts-vivants",
         "icon": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
-        "description": "À l’arcane un (1) le champion ressent s’il y a présence d’au moins un mort-vivant dans les environs (pâté de maisons) sans grandes précisions. À l’arcane trois (3), le champion peut déterminer le nombre de morts-vivants dans les environs. À l’arcane cinq (5) le champion voit une aura mauve entourant les morts-vivants. Plus un mort-vivant est puissant, plus son aura est brillante.",
+        "description": "* À l’arcane un (1) le champion ressent s’il y a présence d’au moins un mort-vivant dans les environs (pâté de maisons) sans grandes précisions.\n\n* À l’arcane trois (3), le champion peut déterminer le nombre de morts-vivants dans les environs. \n\n* À l’arcane cinq (5) le champion voit une aura mauve entourant les morts-vivants. Plus un mort-vivant est puissant, plus son aura est brillante.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -56,7 +56,7 @@ export default [
         "description": "En visant avec le doigt, le champion envoie un petit projectile magique qui passe au travers de l’armure.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

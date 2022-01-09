@@ -19,7 +19,7 @@ export default [
         "id": "conservationDuCadavre",
         "name": "Conservation du cadavre",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane du magicien. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \nLe sort se termine lorsque le cadavre est ressuscité des morts ou que le sort arrive au bout de sa durée.",
+        "description": "Ce sort préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane du magicien. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou que le sort arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -63,7 +63,7 @@ export default [
         "id": "detectionDesPassagesSecrets",
         "name": "Détection des passages secrets",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le magicien peut utiliser ce sort pour trouver des portes secrètes, des compartiments cachés, et autres zones cachées, spécialement construites pour échapper à la détection. Lorsque le sort est lancé, un halo doré révèle l'emplacement de la porte, du passage ou du compartiment secret. \nLe sort ne détecte pas les dangers naturels. Il ne détecte pas non plus les pièges magiques, ces derniers peuvent être détectés par un sort de détection de l’enchantement.",
+        "description": "Le magicien peut utiliser ce sort pour trouver des portes secrètes, des compartiments cachés, et autres zones cachées, spécialement construites pour échapper à la détection. Lorsque le sort est lancé, un halo doré révèle l'emplacement de la porte, du passage ou du compartiment secret. \n\n\n\n\n\nLe sort ne détecte pas les dangers naturels. Il ne détecte pas non plus les pièges magiques, ces derniers peuvent être détectés par un sort de détection de l’enchantement.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -134,7 +134,7 @@ export default [
         "description": "Fais jaillir des racines du sol qui immobilisent la victime pendant 5 tours. La victime peut se déprendre en réussissant un jet de l'habileté « Évasion ».",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -185,7 +185,7 @@ export default [
         "description": "Créer une boule glacée que le magicien envoie sur une victime. Cette dernière est figée pendant 2 tours.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

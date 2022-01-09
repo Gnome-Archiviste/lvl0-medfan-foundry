@@ -3,10 +3,10 @@ export default [
         "id": "flashBang",
         "name": "Flash-Bang",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste crée un éclair de lumière accompagné d'un coup de tonnerre sonore, émanant de n’importe quel point jusqu’à 15 mètres de distance et dans un cercle de 4 mètres de rayon. Toute créature dans la zone d’effet subit 10d6 +10 dégâts et ont un malus de Perception pendant 5 tours.\n* Les victimes peuvent enlever 2 points de malus avec guérison de la surdité ou guérison de l’aveuglement.",
+        "description": "L’élémentaliste crée un éclair de lumière accompagné d'un coup de tonnerre sonore, émanant de n’importe quel point jusqu’à 15 mètres de distance et dans un cercle de 4 mètres de rayon. Toute créature dans la zone d’effet subit 10d6 +10 dégâts et ont un malus de Perception pendant 5 tours.\n\n* Les victimes peuvent enlever 2 points de malus avec guérison de la surdité ou guérison de l’aveuglement.",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {

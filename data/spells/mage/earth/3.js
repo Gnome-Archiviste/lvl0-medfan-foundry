@@ -24,10 +24,10 @@ export default [
         "id": "elementaireMineurDePierre",
         "name": "Élémentaire mineur de pierre",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de pierre  pierre à partir d'une source de terre ( au moins 1 m² ). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 5, DEX 4, INT 3, CHA 3, PER 5\nHP 25, H2H : 6, Attaque : 3 de dégâts",
+        "description": "L'élémentaliste invoque un petit élémentaire de pierre  pierre à partir d'une source de terre ( au moins 1 m² ). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 5, DEX 4, INT 3, CHA 3, PER 5\n\nHP 25, H2H : 6, Attaque : 3 de dégâts\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -47,7 +47,7 @@ export default [
         "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[i]",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -94,10 +94,10 @@ export default [
         "id": "rocher",
         "name": "Rocher",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "D’un geste, l'élémentaliste envoie un rocher dans les airs qui éclate avec un rugissement à la hauteur et à la distance que l’élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). Les éclats remplissent la zone d’effet, causant 1d6 dégâts par niveau d’arcane de l’élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. Le rocher suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. ",
+        "description": "D’un geste, l'élémentaliste envoie un rocher dans les airs qui éclate avec un rugissement à la hauteur et à la distance que l’élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). Les éclats remplissent la zone d’effet, causant 1d6 dégâts par niveau d’arcane de l’élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. Le rocher suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {

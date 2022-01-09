@@ -29,7 +29,7 @@ export default [
         "description": "Un cône de froid extrême jaillit de la main du magicien, affectant jusqu’à trois (3) victimes dans une zone de 10 mètres de large et jusqu’à 10 mètres de long en avant du magicien, causant 3d6 points de dégâts et les figent sur place.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -81,7 +81,7 @@ export default [
         "description": "Permet de faire apparaître une illusion jusqu’à 20 mètres de haut.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -220,7 +220,7 @@ export default [
         "id": "voirLinvisible",
         "name": "Voir l’invisible",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.",
+        "description": "Ce sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

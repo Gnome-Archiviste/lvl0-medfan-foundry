@@ -3,10 +3,10 @@ export default [
         "id": "eruptionJefoldienne",
         "name": "Éruption jéfoldienne",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste déclenche la chute d'une incroyable quantité de lave et magma, il faut simplement qu'il y ait quelque chose en hauteur d'où la lave peut tomber (montagne, tour, toit de maison). La lave ensevelit les cibles et elles doivent réussir un test d’athlétique pour s’en sortir.",
+        "description": "L’élémentaliste déclenche la chute d'une incroyable quantité de lave et magma, il faut simplement qu'il y ait quelque chose en hauteur d'où la lave peut tomber (montagne, tour, toit de maison). La lave ensevelit les cibles et elles doivent réussir un test d’athlétique pour s’en sortir.\n\n\n\n",
         "distance": {
             "value": 60,
-            "unit": "m",
+            "unit": "mètre",
             "text": "60 mètres"
         },
         "duration": {
@@ -32,10 +32,10 @@ export default [
         "id": "frappeDeFlamme",
         "name": "Frappe de flamme",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste appelle une colonne verticale rugissante de feu, dans une zone de 5 mètres de rayon et de 12 mètres de haut, surgissant du sol et infligeant 15d6 + 20 dégâts, à quiconque est pris à l’intérieur tout en les propulsant hors de la zone d’action du sort. ",
+        "description": "L’élémentaliste appelle une colonne verticale rugissante de feu, dans une zone de 5 mètres de rayon et de 12 mètres de haut, surgissant du sol et infligeant 15d6 + 20 dégâts, à quiconque est pris à l’intérieur tout en les propulsant hors de la zone d’action du sort. \n\n\n\n",
         "distance": {
             "value": 60,
-            "unit": "m",
+            "unit": "mètre",
             "text": "60 mètres"
         },
         "duration": {

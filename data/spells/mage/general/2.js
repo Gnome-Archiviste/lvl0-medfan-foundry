@@ -25,7 +25,7 @@ export default [
         "id": "magicMouth",
         "name": "Bouche magique",
         "icon": "icons/creatures/abilities/mouth-teeth-tongue-purple.webp",
-        "description": "Ce sort imprègne un objet d’une bouche enchantée qui apparaît et prononce son message lorsqu’un événement spécifié se produit. Le message, qui doit contenir un maximum de dix (10) mots par niveaux d'arcane du magicien, peut être rédigé dans n’importe quelle langue connue par le magicien. La bouche ne peut pas lancer de sorts.\nLe sort s’active lorsque les conditions spécifiques définies par le magicien sont remplies. Les commandes peuvent être aussi générales ou détaillées que souhaité, bien que seuls les déclencheurs visuels et sonores puissent être utilisés. Le sort réagit à ce qui semble être réel : les déguisements et les illusions peuvent le tromper. L’obscurité normale n’empêche pas un déclencheur visuel, mais l’obscurité magique ou l’invisibilité le font. Le mouvement silencieux ou le silence magique empêchent les déclencheurs sonores. Les déclencheurs sonores peuvent être attribués à des types généraux de bruits ou à un bruit spécifique ou à un mot prononcé. Une bouche magique ne peut pas distinguer le niveau d’un personnage, ses points de vie ou de mana ou même sa classe. La limite de portée d’un déclencheur est de un (1) mètre par niveau d’arcane du magicien. Le message peut-être délivré un maximum de deux (2) fois par niveau d’arcane du magicien.",
+        "description": "Ce sort imprègne un objet d’une bouche enchantée qui apparaît et prononce son message lorsqu’un événement spécifié se produit. Le message, qui doit contenir un maximum de dix (10) mots par niveaux d'arcane du magicien, peut être rédigé dans n’importe quelle langue connue par le magicien. La bouche ne peut pas lancer de sorts.\n\nLe sort s’active lorsque les conditions spécifiques définies par le magicien sont remplies. Les commandes peuvent être aussi générales ou détaillées que souhaité, bien que seuls les déclencheurs visuels et sonores puissent être utilisés. Le sort réagit à ce qui semble être réel : les déguisements et les illusions peuvent le tromper. L’obscurité normale n’empêche pas un déclencheur visuel, mais l’obscurité magique ou l’invisibilité le font. Le mouvement silencieux ou le silence magique empêchent les déclencheurs sonores. Les déclencheurs sonores peuvent être attribués à des types généraux de bruits ou à un bruit spécifique ou à un mot prononcé. Une bouche magique ne peut pas distinguer le niveau d’un personnage, ses points de vie ou de mana ou même sa classe. La limite de portée d’un déclencheur est de un (1) mètre par niveau d’arcane du magicien. Le message peut-être délivré un maximum de deux (2) fois par niveau d’arcane du magicien.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -91,7 +91,7 @@ export default [
         "description": "En soufflant dans le creux de sa main, le magicien envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -119,7 +119,7 @@ export default [
         "description": "Éblouis une créature (une tête seulement) (-1 aux jets d’attaque, -2 aux habiletés observer, pister et détection de la magie). ",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -202,7 +202,7 @@ export default [
         "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger à la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -234,7 +234,7 @@ export default [
         "description": "Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -273,13 +273,16 @@ export default [
             "text": "Une cible"
         },
         "bonus": {
-            "text": "Guérit 1d6"
+            "text": "Guérit 1d6 points de vie"
         },
         "resilience": {
             "text": "Aucune (moitié du dommage pour les morts-vivants)"
         },
         "criticalSuccess": {
             "text": "Guérit 6 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
         }
     },
     {
@@ -289,7 +292,7 @@ export default [
         "description": "Rends une victime sourde pour trois (3) tour par niveau d’arcane. La perception de la victime est réduite de deux et ne peut plus utiliser l’habileté Écouter.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {

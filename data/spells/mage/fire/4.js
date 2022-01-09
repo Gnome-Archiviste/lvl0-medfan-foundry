@@ -30,7 +30,7 @@ export default [
         "description": "L’élémentaliste fait apparaître rapidement une petite flamme qui rend une tête de la victime aveugle pour un (1) tour par arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -53,10 +53,10 @@ export default [
         "id": "pluieDeLave",
         "name": "Pluie de lave",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Lorsque l’élémentaliste lance ce sort, le ciel se couvre de nuages orangés et des gouttelettes de lave tombent du ciel, brûlant gravement ceux dans la zone du sort.",
+        "description": "Lorsque l’élémentaliste lance ce sort, le ciel se couvre de nuages orangés et des gouttelettes de lave tombent du ciel, brûlant gravement ceux dans la zone du sort.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -111,7 +111,7 @@ export default [
         "id": "soufflerLaChandelle",
         "name": "Souffler la chandelle",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Avec ce sort l’élémentaliste peut éteindre tout feu brûlant dans un rayon d’un mètre par niveau d’arcane. Il n’y a pas de limite à la taille ou au nombre de feux s’ils sont complètement dans le rayon du sort. Le feu magique est immunisé contre ce sort.",
+        "description": "Avec ce sort l’élémentaliste peut éteindre tout feu brûlant dans un rayon d’un mètre par niveau d’arcane. Il n’y a pas de limite à la taille ou au nombre de feux s’ils sont complètement dans le rayon du sort. Le feu magique est immunisé contre ce sort.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"

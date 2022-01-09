@@ -35,7 +35,7 @@ export default [
         "description": "Créer 1 m² de terre fertile dans n’importe quel terrain, par arcane de l'élémentaliste.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {
@@ -52,10 +52,10 @@ export default [
         "id": "mitraille",
         "name": "Mitraille",
         "icon": "icons/magic/earth/projectiles-stone-salvo.webp",
-        "description": "L'élémentaliste projette de petites pierres qui mitraillent sa cible (2 pierres par niveau d’arcane) et qui font 1 point de dégât par pierre. Comme la magie opère sur les pierres et non la cible, le sort ne peut être absorbé ou renvoyé. Pour la même raison, il est impossible de faire un jet de résilience.",
+        "description": "L'élémentaliste projette de petites pierres qui mitraillent sa cible (2 pierres par niveau d’arcane) et qui font 1 point de dégât par pierre. Comme la magie opère sur les pierres et non la cible, le sort ne peut être absorbé ou renvoyé. Pour la même raison, il est impossible de faire un jet de résilience.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -102,7 +102,7 @@ export default [
         "description": "Le sol se transforme en sable mouvant et immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer car si elles bougent, elles s’enfoncent encore plus.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

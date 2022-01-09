@@ -3,7 +3,7 @@ export default [
         "id": "crisDeGuerre",
         "name": "Cris de guerre",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "La panique et la terreur traversent le cœur des créatures affectées par ce sort, les obligeant à fuir le champion le plus rapidement possible. Les créatures se recroquevillent dans une horreur abjecte si elles sont acculées, et si elles sont forcées d’affronter le champion, toute créature affectée subit une pénalité de -2 à tous les jets.",
+        "description": "La panique et la terreur traversent le cœur des créatures affectées par ce sort, les obligeant à fuir le champion le plus rapidement possible. Les créatures se recroquevillent dans une horreur abjecte si elles sont acculées, et si elles sont forcées d’affronter le champion, toute créature affectée subit une pénalité de -2 à tous les jets.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -56,7 +56,7 @@ export default [
         "description": "Annule l’effet des sorts entravant les mouvements de leur victime ou toutes autres entraves magiques (sauf la pétrification).",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {
@@ -86,7 +86,7 @@ export default [
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.",
+        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

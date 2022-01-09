@@ -6,7 +6,7 @@ export default [
         "description": "Crée ½ litre d'acide par niveau d’arcane de l’élémentaliste. Ne peut pas être utilisé comme attaque sur un adversaire.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {
@@ -26,7 +26,7 @@ export default [
         "description": "En ouvrant la bouche bien grande, l'élémentaliste crée un projectile acide de ses glandes salivaires. Si la cible est touchée, le magicien lance un dé et si le résultat est 1 (un), l’adversaire est aveuglé pour un tour. ",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -57,7 +57,7 @@ export default [
         "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts, mais ils peuvent se défendre ou bouger de la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

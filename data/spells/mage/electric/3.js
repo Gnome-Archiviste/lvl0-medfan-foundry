@@ -25,10 +25,10 @@ export default [
         "id": "minorAirElemental",
         "name": "Élémentaire mineur d'air",
         "icon": "icons/magic/lightning/projectile-orb-blue.webp",
-        "description": "L’élémentaliste invoque un petit élémentaire d’air, tant qu’il y a de l’air de disponible (donc il ne peut être créé sous l’eau, par exemple). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 4, DEX 6, INT 3, CHA 3, PER 4\nHP 20, H2H : 5, Attaque : 3 de dégâts",
+        "description": "L’élémentaliste invoque un petit élémentaire d’air, tant qu’il y a de l’air de disponible (donc il ne peut être créé sous l’eau, par exemple). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 6, INT 3, CHA 3, PER 4\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -48,7 +48,7 @@ export default [
         "description": "En recevant ce sort, la cible peut se déplacer sur n’importe quel type de terrain et ne laisser ni empreintes ni odeurs. Pister la cible devient impossible par des moyens non magiques.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

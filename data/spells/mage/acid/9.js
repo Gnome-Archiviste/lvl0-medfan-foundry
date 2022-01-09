@@ -3,10 +3,10 @@ export default [
         "id": "perceMuraille",
         "name": "Perce muraille",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste envoie un jet d’acide qui se colle à une paroie et la fait fondre, ce qui crée une brèche dans le mur. Attention, si vous percez un plancher, il se peut que cela aille plus creux que prévu.",
+        "description": "L'élémentaliste envoie un jet d’acide qui se colle à une paroie et la fait fondre, ce qui crée une brèche dans le mur. Attention, si vous percez un plancher, il se peut que cela aille plus creux que prévu.\n\n\n\n",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -29,10 +29,10 @@ export default [
         "id": "solfatare",
         "name": "Solfatare",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste crée une mare de boue bouillonnante qui forme une gigantesque bulle de boue remplie de gaz sulfureux qui finit par exploser projetant tous ceux à 10 mètres, recouvrant les cibles d’une boue toxique.",
+        "description": "L'élémentaliste crée une mare de boue bouillonnante qui forme une gigantesque bulle de boue remplie de gaz sulfureux qui finit par exploser projetant tous ceux à 10 mètres, recouvrant les cibles d’une boue toxique.\n\n\n\n",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {

@@ -28,7 +28,7 @@ export default [
         "id": "auraDePoussiere",
         "name": "Aura de poussière",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
+        "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\n\n\n\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.\n\n\n\n",
         "distance": {
             "text": "toucher"
         },
@@ -54,7 +54,7 @@ export default [
         "description": "L'élémentaliste peut faire croître un pont de pierre au dessus d’un espace profond",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {

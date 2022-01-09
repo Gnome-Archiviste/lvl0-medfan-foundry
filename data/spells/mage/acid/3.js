@@ -3,7 +3,7 @@ export default [
         "id": "blotter",
         "name": "Buvard",
         "icon": "icons/equipment/shield/kite-wooden-oak-glow.webp",
-        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique, pour une seule fois. \nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts d’acides supplémentaires.\n[a]",
+        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts d’acides supplémentaires.\n\n[a]",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -25,7 +25,7 @@ export default [
         "id": "marinatedBody",
         "name": "Cadavre mariné",
         "icon": "icons/commodities/treasure/doll-mummy.webp",
-        "description": "Ce sort préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane de l’élémentaliste. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. Cependant, le corps conservé émane une forte odeur de vinaigre.\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.",
+        "description": "Ce sort préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane de l’élémentaliste. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. Cependant, le corps conservé émane une forte odeur de vinaigre.\n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -77,10 +77,10 @@ export default [
         "id": "minorAcidElemental",
         "name": "Élémentaire mineur d'acide",
         "icon": "icons/creatures/slimes/slime-face-melting-green.webp",
-        "description": "L’élémentaliste invoque un petit élémentaire d'acide à partir d'une source d'acide (au moins 1L). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 4, DEX 5, INT 3, CHA 3, PER 5\nHP 20, H2H : 5, Attaque : 3 de dégâts",
+        "description": "L’élémentaliste invoque un petit élémentaire d'acide à partir d'une source d'acide (au moins 1L). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 5\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -100,7 +100,7 @@ export default [
         "description": "Une flèche magique d’acide jaillit de la main de l’élémentaliste et se dirige vers une cible. La flèche acide inflige 1d6 points de dégâts, par niveau d’arcane, d’acide si elle touche.",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {

@@ -50,7 +50,7 @@ export default [
         "description": "Dans un contenant composé de 2 ½ sphères se vissant l’une sur l’autre sur lequel il a gravé un glyphe de déclenchement, l’enchanteur verse une concoction d’oeufs pourris et de satyrs puants (champignons) en bouillie, ce qui déclenche une zone nauséabonde de 2 mètres de rayon lorsque  quelqu’un s’en approche à moins de 50 cm. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -112,7 +112,7 @@ export default [
         "id": "fixateurMagique",
         "name": "Fixateur magique",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion transparente sentant fortement le fixatif à cheveux dans un grand chaudron contenant entre autres un os à moelle, une pincée de poudre de perlépipein et de la résine de conifère (gros comme un œuf). Cette potion doit bouillir pendant 2 heures. L’enchanteur fait 5 fixateurs magiques par 2 points de mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
+        "description": "L’enchanteur prépare une potion transparente sentant fortement le fixatif à cheveux dans un grand chaudron contenant entre autres un os à moelle, une pincée de poudre de perlépipein et de la résine de conifère (gros comme un œuf). Cette potion doit bouillir pendant 2 heures. L’enchanteur fait 5 fixateurs magiques par 2 points de mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -134,7 +134,7 @@ export default [
         "id": "glypheDeDeclenchement",
         "name": "Glyphe de déclenchement",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur grave sur un objet (habituellement contenant un piège) un glyphe représentant un carré avec une flèche pointant vers le bas. Toute personne approchant de l’objet à moins de 50 cm déclenchera le glyphe qui ouvrira ou activera l’objet sur lequel il est gravé.",
+        "description": "L’enchanteur grave sur un objet (habituellement contenant un piège) un glyphe représentant un carré avec une flèche pointant vers le bas. Toute personne approchant de l’objet à moins de 50 cm déclenchera le glyphe qui ouvrira ou activera l’objet sur lequel il est gravé.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -203,7 +203,7 @@ export default [
         "id": "potionDeMana",
         "name": "Potion de mana",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la pulpe de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par point de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
+        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la pulpe de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par point de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -237,13 +237,16 @@ export default [
             "text": "Une cible"
         },
         "bonus": {
-            "text": "Guéris 1d6"
+            "text": "Guérit 1d6 points de vie"
         },
         "resilience": {
             "text": "Aucune (moitié du dommage pour les morts-vivants)"
         },
         "criticalSuccess": {
             "text": "Guérit 6 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
         }
     }
 ]

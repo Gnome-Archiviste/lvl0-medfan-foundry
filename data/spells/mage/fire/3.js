@@ -3,10 +3,10 @@ export default [
         "id": "firBall",
         "name": "Boule de feu",
         "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-        "description": "D’un geste, l'élémentaliste envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que l'élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane de l'élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. ",
+        "description": "D’un geste, l'élémentaliste envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que l'élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane de l'élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {
@@ -33,10 +33,10 @@ export default [
         "id": "minorFireElemental",
         "name": "Élémentaire mineur de feu",
         "icon": "icons/creatures/slimes/slime-face-melting-green.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une torche). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 4, DEX 5, INT 3, CHA 3, PER 6\nHP 20, H2H : 5, Attaque : 3 de dégâts",
+        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une torche). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 6\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -53,7 +53,7 @@ export default [
         "id": "piegeDeFeu",
         "name": "Piège de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Installé sur n’importe quel objet pouvant être fermé, un piège de feu s’enflamme lorsque quelqu’un d’autre que l’élémentaliste, ou toute autre personnage sélectionné par celui-ci, ouvre l’objet protégé par le sort. Lorsqu’elle est déclenchée, une explosion de feu remplit la zone à moins de 2 mètres de rayon de l’objet. L’explosion inflige 1d6 dégâts + 1 point par niveau d’arcane de l’élémentaliste au lancé du sort. L’objet n’est pas endommagé par le sort.\nUn sort dissipation de la magie qui n’a pas fonctionné ne déclenchera pas l’explosion mais le sort restera actif.",
+        "description": "Installé sur n’importe quel objet pouvant être fermé, un piège de feu s’enflamme lorsque quelqu’un d’autre que l’élémentaliste, ou toute autre personnage sélectionné par celui-ci, ouvre l’objet protégé par le sort. Lorsqu’elle est déclenchée, une explosion de feu remplit la zone à moins de 2 mètres de rayon de l’objet. L’explosion inflige 1d6 dégâts + 1 point par niveau d’arcane de l’élémentaliste au lancé du sort. L’objet n’est pas endommagé par le sort.\n\n\n\n\n\nUn sort dissipation de la magie qui n’a pas fonctionné ne déclenchera pas l’explosion mais le sort restera actif.\n\n\n\n",
         "distance": {
             "text": "toucher"
         },

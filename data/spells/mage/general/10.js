@@ -74,7 +74,7 @@ export default [
         "description": "Un météore tombe sur la cible. Touche tout sur un 5 mètre de rayon. Ne peut pas se faire à l’intérieur.",
         "distance": {
             "value": 60,
-            "unit": "m",
+            "unit": "mètre",
             "text": "60 mètres"
         },
         "duration": {
@@ -123,7 +123,7 @@ export default [
         "id": "resurrection",
         "name": "Résurrection",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le magicien redonne vie et santé à une créature décédée. Le sort doit se faire dans les sept (7) jours suivant la mort ou plus longtemps si le mort a reçu un sort de conservation des cadavres. L’état des restes n’est pas un facteur, mais une petite partie du corps de la créature doit exister et être présente avant que la créature puisse être ressuscitée.\nSi la résurrection réussit à restaurer la vie, le sujet est guéri, mais retrouve ses points de vie du niveau 1, les appendices manquants sont restaurés, les maladies sont soignées, la folie est guérie et toutes les malédictions sont supprimées. Les attributs du personnage restent les mêmes qu’au moment de la mort. Les sorts actifs sur la créature avant la mort sont perdus. Aucun équipement ou possession de la créature morte n’est affecté de quelque manière que ce soit par ce sort.\nLa résurrection fonctionnera sur les créatures mortes-vivantes, les ramenant à leur état de vie, si bien sûr leur état date de moins de sept (7) jours. Cependant, la résurrection ne fonctionnera pas sur les créatures mortes depuis plus longtemps que sept (7) jours ou de vieillesse.\nC’est aussi un sort assez long à faire, il prend quelques minutes (environs 10 tours) et ne peut pas se faire durant un combat.",
+        "description": "Le magicien redonne vie et santé à une créature décédée. Le sort doit se faire dans les sept (7) jours suivant la mort ou plus longtemps si le mort a reçu un sort de conservation des cadavres. L’état des restes n’est pas un facteur, mais une petite partie du corps de la créature doit exister et être présente avant que la créature puisse être ressuscitée.\n\nSi la résurrection réussit à restaurer la vie, le sujet est guéri, mais retrouve ses points de vie du niveau 1, les appendices manquants sont restaurés, les maladies sont soignées, la folie est guérie et toutes les malédictions sont supprimées. Les attributs du personnage restent les mêmes qu’au moment de la mort. Les sorts actifs sur la créature avant la mort sont perdus. Aucun équipement ou possession de la créature morte n’est affecté de quelque manière que ce soit par ce sort.\n\nLa résurrection fonctionnera sur les créatures mortes-vivantes, les ramenant à leur état de vie, si bien sûr leur état date de moins de sept (7) jours. Cependant, la résurrection ne fonctionnera pas sur les créatures mortes depuis plus longtemps que sept (7) jours ou de vieillesse.\n\nC’est aussi un sort assez long à faire, il prend quelques minutes (environs 10 tours) et ne peut pas se faire durant un combat.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -145,7 +145,7 @@ export default [
         "id": "teleportation",
         "name": "Téléportation",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort transporte instantanément le magicien, et une certaine quantité de personnes supplémentaires, vers n’importe quelle destination désignée. Toutes ces personnes ne peuvent pas totaliser plus d’une personne par niveau d’arcane du magicien. Le personnage doit avoir une idée claire de l’emplacement et de la disposition de la destination. Pour faire plus simple, l’emplacement doit être bien connu du magicien ou être visible.",
+        "description": "Ce sort transporte instantanément le magicien, et une certaine quantité de personnes supplémentaires, vers n’importe quelle destination désignée. Toutes ces personnes ne peuvent pas totaliser plus d’une personne par niveau d’arcane du magicien. Le personnage doit avoir une idée claire de l’emplacement et de la disposition de la destination. Pour faire plus simple, l’emplacement doit être bien connu du magicien ou être visible.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -166,7 +166,7 @@ export default [
         "description": "Crée une tornade magique qui se déplace dans la direction que le magicien lui donne, de 10 mètres par tour, mais elle touche tout sur son chemin, faisant 55 points de dégâts (sans armure) à tout ce qu’elle touche.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

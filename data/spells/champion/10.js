@@ -24,10 +24,10 @@ export default [
         "id": "eruptionSolaire",
         "name": "Éruption solaire",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Une colonne de feu, de cinq (5) mètres de rayon, tombe du ciel et inflige une quantité effroyable de dégâts à tous ceux qu’elle touche.",
+        "description": "Une colonne de feu, de cinq (5) mètres de rayon, tombe du ciel et inflige une quantité effroyable de dégâts à tous ceux qu’elle touche.\n\n\n\n",
         "distance": {
             "value": 60,
-            "unit": "m",
+            "unit": "mètre",
             "text": "60 mètres"
         },
         "duration": {
@@ -69,7 +69,7 @@ export default [
         "id": "resurrection",
         "name": "Résurrection",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le champion redonne vie et santé à une créature décédée. Le sort doit se faire dans les sept (7) jours suivant la mort ou plus longtemps si le mort a reçu un sort de conservation des corps. L’état des restes n’est pas un facteur, mais une petite partie du corps de la créature doit exister et être présente avant que la créature puisse être ressuscitée.\nSi la résurrection réussit à restaurer la vie, le sujet est guéri, mais se retrouve avec la moitié de ses points de vie. Les appendices manquants sont restaurés, les maladies sont soignées et toutes les malédictions sont supprimées. Les attributs du personnage restent les mêmes qu’au moment de la mort. Les sorts actifs sur la créature avant la mort sont perdus. Aucun équipement ou possession de la créature morte n’est affecté de quelque manière que ce soit par ce sort.\nLa résurrection fonctionnera sur les créatures mortes-vivantes, les ramenant à leur état de vie, si bien sûr leur état date de moins de sept (7) jours. Cependant, la résurrection ne fonctionnera pas sur les créatures mortes depuis plus longtemps que sept (7) jours ou de vieillesse.\nC’est aussi un sort assez long à faire, il prend quelques minutes (environ 10 tours) et ne peut pas se faire durant un combat. ",
+        "description": "Le champion redonne vie et santé à une créature décédée. Le sort doit se faire dans les sept (7) jours suivant la mort ou plus longtemps si le mort a reçu un sort de conservation des corps. L’état des restes n’est pas un facteur, mais une petite partie du corps de la créature doit exister et être présente avant que la créature puisse être ressuscitée.\n\nSi la résurrection réussit à restaurer la vie, le sujet est guéri, mais se retrouve avec la moitié de ses points de vie. Les appendices manquants sont restaurés, les maladies sont soignées et toutes les malédictions sont supprimées. Les attributs du personnage restent les mêmes qu’au moment de la mort. Les sorts actifs sur la créature avant la mort sont perdus. Aucun équipement ou possession de la créature morte n’est affecté de quelque manière que ce soit par ce sort.\n\nLa résurrection fonctionnera sur les créatures mortes-vivantes, les ramenant à leur état de vie, si bien sûr leur état date de moins de sept (7) jours. Cependant, la résurrection ne fonctionnera pas sur les créatures mortes depuis plus longtemps que sept (7) jours ou de vieillesse.\n\nC’est aussi un sort assez long à faire, il prend quelques minutes (environ 10 tours) et ne peut pas se faire durant un combat. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

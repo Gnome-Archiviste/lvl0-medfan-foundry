@@ -25,7 +25,7 @@ export default [
         "id": "auraDacide",
         "name": "Aura d’acide",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le contour du sujet semble déformé, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
+        "description": "Le contour du sujet semble déformé, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
         "distance": {
             "text": "toucher"
         },
@@ -102,7 +102,7 @@ export default [
         "description": "Le sort s’attaque à l’armure de la cible et lui enlève un point de protection. Il faut faire réparer l’armure pour lui redonner sa pleine protection.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

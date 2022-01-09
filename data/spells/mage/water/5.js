@@ -3,7 +3,7 @@ export default [
         "id": "douves",
         "name": "Douves",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Créer un anneau d'eau de 3m. de large par 4 m. de profondeur autour de l'élémentaliste, empêchant toute attaque en mêlée. La douve ne se déplace pas.\nDe base la douve dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir la douve plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "Créer un anneau d'eau de 3m. de large par 4 m. de profondeur autour de l'élémentaliste, empêchant toute attaque en mêlée. La douve ne se déplace pas.\n\nDe base la douve dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir la douve plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. \n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"
@@ -75,7 +75,7 @@ export default [
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.",
+        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -98,10 +98,10 @@ export default [
         "id": "separerLesEaux",
         "name": "Séparer les eaux",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Créer un passage dans un bassin d'eau (lac, rivière mais pas une mer) en repoussant l'eau de chaque côté.",
+        "description": "Créer un passage dans un bassin d'eau (lac, rivière mais pas une mer) en repoussant l'eau de chaque côté.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

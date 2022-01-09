@@ -51,7 +51,7 @@ export default [
         "description": "L'élémentaliste fait jaillir du sol un puissant jet d'eau chaude de 3 mètres + 3 mètres/arcane de haut.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -80,7 +80,7 @@ export default [
         "description": "Enveloppe un ennemi d’une brume qui le glace jusqu’aux os, ce qui l’empêche de se concentrer sur ses attaques tellement il grelotte.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -108,7 +108,7 @@ export default [
         "id": "nessy",
         "name": "Nessy",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Appelle une créature marine mythique comme destrier aquatique pour traverser une étendue d'eau.",
+        "description": "Appelle une créature marine mythique comme destrier aquatique pour traverser une étendue d'eau.\n\n\n\n",
         "distance": {
             "text": "1 mètre dans une étendue d’eau"
         },

@@ -6,7 +6,7 @@ export default [
         "description": "Le sort fait apparaître un buffet bien garni pour dix convives et guérit de 3d6 points de vie par personnes.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {

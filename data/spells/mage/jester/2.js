@@ -26,7 +26,7 @@ export default [
         "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -55,7 +55,7 @@ export default [
         "id": "magicMouth",
         "name": "Bouche magique",
         "icon": "icons/creatures/abilities/mouth-teeth-tongue-purple.webp",
-        "description": "Ce sort imprègne un objet d’une bouche enchantée qui apparaît et prononce son message lorsqu’un événement spécifié se produit. Le message, qui doit contenir un maximum de dix (10) mots par niveaux d'arcane du bouffon, peut être rédigé dans n’importe quelle langue connue par le bouffon. La bouche ne peut pas lancer de sorts.\nLe sort s’active lorsque les conditions spécifiques définies par le bouffon sont remplies. Les commandes peuvent être aussi générales ou détaillées que souhaité, bien que seuls les déclencheurs visuels et sonores puissent être utilisés. Le sort réagit à ce qui semble être réel : les déguisements et les illusions peuvent le tromper. L’obscurité normale n’empêche pas un déclencheur visuel, mais l’obscurité magique ou l’invisibilité le font. Le mouvement silencieux ou le silence magique empêchent les déclencheurs sonores. Les déclencheurs sonores peuvent être attribués à des types généraux de bruits ou à un bruit spécifique ou à un mot prononcé. Une bouche magique ne peut pas distinguer le niveau d’un personnage, ses points de vie ou de mana ou même sa classe. La limite de portée d’un déclencheur est de un (1) mètre par niveau d’arcane du magicien. Le message peut-être délivré un maximum de deux (2) fois par niveau d’arcane du bouffon.",
+        "description": "Ce sort imprègne un objet d’une bouche enchantée qui apparaît et prononce son message lorsqu’un événement spécifié se produit. Le message, qui doit contenir un maximum de dix (10) mots par niveaux d'arcane du bouffon, peut être rédigé dans n’importe quelle langue connue par le bouffon. La bouche ne peut pas lancer de sorts.\n\nLe sort s’active lorsque les conditions spécifiques définies par le bouffon sont remplies. Les commandes peuvent être aussi générales ou détaillées que souhaité, bien que seuls les déclencheurs visuels et sonores puissent être utilisés. Le sort réagit à ce qui semble être réel : les déguisements et les illusions peuvent le tromper. L’obscurité normale n’empêche pas un déclencheur visuel, mais l’obscurité magique ou l’invisibilité le font. Le mouvement silencieux ou le silence magique empêchent les déclencheurs sonores. Les déclencheurs sonores peuvent être attribués à des types généraux de bruits ou à un bruit spécifique ou à un mot prononcé. Une bouche magique ne peut pas distinguer le niveau d’un personnage, ses points de vie ou de mana ou même sa classe. La limite de portée d’un déclencheur est de un (1) mètre par niveau d’arcane du magicien. Le message peut-être délivré un maximum de deux (2) fois par niveau d’arcane du bouffon.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -96,7 +96,7 @@ export default [
         "description": "Fait tomber du ciel une boule de crème glacée géante sur l’ennemi (saveur au choix du MdJ), suivi d’un cornet gaufré. Le nombre de boules augmente avec le nombre d’arcane du bouffon.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -123,7 +123,7 @@ export default [
         "description": "En soufflant dans le creux de sa main, le magicien envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -172,7 +172,7 @@ export default [
         "description": "Ce sort crée l’illusion d’un mur, d’un sol, d’un plafond ou d’une surface similaire. Il semble absolument vrai, mais les objets physiques peuvent le traverser sans difficulté. Lorsque le sort est utilisé pour cacher des fosses, des pièges ou des portes normales, toutes les capacités de détection qui ne nécessitent pas le sens de la vue fonctionnent normalement. Toucher ou sonder la surface révèle sa nature illusoire, bien que cela ne fasse pas disparaître l’illusion. Il affecte une zone de trois (3) mètres sur trois (3) mètres sur trente (30) cm.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -197,7 +197,7 @@ export default [
         "description": "Ce sort inflige le sujet d’un rire incontrôlable. Il s’effondre en rafales de rire maniaque, tombant à plat ventre. Le sujet ne peut rien faire en riant, mais il peut toujours se défendre. La victime rit tellement qu’elle en a mal aux côtes. L’armure est ignorée.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -225,7 +225,7 @@ export default [
         "description": "Échanger le contenu de deux bouteilles de liquide (comme des potions). Malheureusement, c’est au hasard entre les bouteilles. Le maître jeu décide quelles bouteilles sont échangées.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

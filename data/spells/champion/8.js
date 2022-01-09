@@ -47,10 +47,10 @@ export default [
         "id": "dissipationDuMal",
         "name": "Dissipation du mal",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le sort permet au champion de forcer une créature d’une autre dimension (comme les démons et les diablotins) de retourner dans leur monde d’origine. Il oblige aussi les esprits malins (fantômes, spectre, banshee, etc.) à se dissiper. ",
+        "description": "Le sort permet au champion de forcer une créature d’une autre dimension (comme les démons et les diablotins) de retourner dans leur monde d’origine. Il oblige aussi les esprits malins (fantômes, spectre, banshee, etc.) à se dissiper. \n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -97,7 +97,7 @@ export default [
         "description": "Force la victime à dire la vérité.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {

@@ -3,16 +3,7 @@ export default [
         "id": "clignotement",
         "name": "Clignotement",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Déplace un objet ou une personne magiquement par téléportation dans une direction au hasard (avec un temps au hasard). \nDirection: \n1. Nord\n2. Sud\n3. Est \n4. Ouest\n5. Vertical \n6. Derrière le magicien (à 1d6 mètres)",
-        "distance": {
-            "text": ""
-        }
-    },
-    {
-        "id": "11d6Metres",
-        "name": "1. 1d6 mètres",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "2. 3d6 mètres\n3. 5d6 mètres\n4. 2d6 x 10 mètres\n5. 2d6 x 100 mètres\n6. 2d6 - 1 kilomètres",
+        "description": "Déplace un objet ou une personne magiquement par téléportation dans une direction au hasard (avec un temps au hasard). \n\nDirection: \n\n1. Nord\n\n2. Sud\n\n3. Est \n\n4. Ouest\n\n5. Vertical \n\n6. Derrière le magicien (à 1d6 mètres)\n\n\n\n\n\nDistance :\n\n1. 1d6 mètres\n\n2. 3d6 mètres\n\n3. 5d6 mètres\n\n4. 2d6 x 10 mètres\n\n5. 2d6 x 100 mètres\n\n6. 2d6 - 1 kilomètres\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -121,7 +112,7 @@ export default [
         "description": "Le magicien lance un jet d’acide qui touche la première personne sur son trajet.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -146,7 +137,7 @@ export default [
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.",
+        "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -172,7 +163,7 @@ export default [
         "description": "Englobe un espace de 10 de rayon dans la noirceur la plus totale. La perception et les habiletés de combat dans l’espace est réduite de trois. Il faut utiliser l'habileté « Écouter » pour trouver un nouvel adversaire.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -197,10 +188,10 @@ export default [
         "id": "parlerAuxAnimaux",
         "name": "Parler aux animaux",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet au magicien de converser avec des animaux. Ne fonctionnant pas sur les anthropomorphes, il faut utiliser le sort babelfish.  Cela permet au magicien de converser, d’interroger ou d’avoir une discussion amicale avec l’animal affecté. Cet effet se produit quel que soit l’émotion de l’animal et permet à l’animal de répondre. Les réponses sont d’une complexité limitée en fonction de l’intelligence de l’animal et de sa capacité à donner du sens à la communication. L’animal peut même faire une petite faveur au magicien.",
+        "description": "Ce sort permet au magicien de converser avec des animaux. Ne fonctionnant pas sur les anthropomorphes, il faut utiliser le sort babelfish.  Cela permet au magicien de converser, d’interroger ou d’avoir une discussion amicale avec l’animal affecté. Cet effet se produit quel que soit l’émotion de l’animal et permet à l’animal de répondre. Les réponses sont d’une complexité limitée en fonction de l’intelligence de l’animal et de sa capacité à donner du sens à la communication. L’animal peut même faire une petite faveur au magicien.\n\n\n\n",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -220,7 +211,7 @@ export default [
         "id": "pointeDePierre",
         "name": "Pointe de pierre",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour du magicien. Le magicien peut affecter un rayon de 1 mètre par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que le magicien les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\nDe base la zone de pointe de pierre dure un (1) tour par niveau d’arcane du magicien. S’il le veut, le magicien peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour du magicien. Le magicien peut affecter un rayon de 1 mètre par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que le magicien les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base la zone de pointe de pierre dure un (1) tour par niveau d’arcane du magicien. S’il le veut, le magicien peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

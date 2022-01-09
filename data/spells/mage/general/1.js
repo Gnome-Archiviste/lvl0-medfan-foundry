@@ -75,7 +75,7 @@ export default [
         "description": "Avec ce sort, le magicien peut frapper à distance. Une fine feuille de flammes jaillit de la main du magicien, frappant une créature jusqu’à 5 mètres du magicien et lui fait 1d6 dommage de feu.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -100,10 +100,10 @@ export default [
         "id": "light",
         "name": "Lumière",
         "icon": "icons/magic/light/orb-lightbulb-gray.webp",
-        "description": "Fait apparaître une boule de lumière de 30 cm de rayon pour éclairer une pièce ou un corridor. La lumière est fixe.\nÀ partir du niveau d’arcane 5, le magicien peut l'avoir qui le suit pour le coût de 2 points de magie additionnels.",
+        "description": "Fait apparaître une boule de lumière de 30 cm de rayon pour éclairer une pièce ou un corridor. La lumière est fixe.\n\nÀ partir du niveau d’arcane 5, le magicien peut l'avoir qui le suit pour le coût de 2 points de magie additionnels.",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -154,7 +154,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.",
+        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -180,7 +180,7 @@ export default [
         "id": "magicParachute",
         "name": "Parachute magique ",
         "icon": "icons/magic/air/wind-weather-snow-gusts.webp",
-        "description": "Les créatures et les objets affectés par ce sort tombent doucement, dérivant vers le bas dans les airs un peu comme s’il avait un parachute. Les sujets affectés par le sort ne subissent aucun dommage d’une chute de n’importe quelle hauteur. Le sort peut être lancé suffisamment rapidement pour sauver le magicien en cas de chute inattendue d’une hauteur minimum de 6 m. (2 étages). Un poids total allant jusqu’à 500 kilos peut être affecté. Les créatures et objets affectés par le sort tombent à une vitesse de 5 mètres par tour. Si le sort se termine alors qu’ils tombent encore, ils tombent normalement à partir de ce point et ne subissent des dégâts que pour cette distance tombée.\nLe sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un coup d’épée ou une créature qui charge ou une créature volante.",
+        "description": "Les créatures et les objets affectés par ce sort tombent doucement, dérivant vers le bas dans les airs un peu comme s’il avait un parachute. Les sujets affectés par le sort ne subissent aucun dommage d’une chute de n’importe quelle hauteur. Le sort peut être lancé suffisamment rapidement pour sauver le magicien en cas de chute inattendue d’une hauteur minimum de 6 m. (2 étages). Un poids total allant jusqu’à 500 kilos peut être affecté. Les créatures et objets affectés par le sort tombent à une vitesse de 5 mètres par tour. Si le sort se termine alors qu’ils tombent encore, ils tombent normalement à partir de ce point et ne subissent des dégâts que pour cette distance tombée.\n\nLe sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un coup d’épée ou une créature qui charge ou une créature volante.",
         "distance": {
             "text": "2m + 1m par niveau d’arcane du magicien"
         },
@@ -205,7 +205,7 @@ export default [
         "description": "Fais tomber la victime. La victime perd un tour et doit faire un lancer de l’habileté « Gymnastique » pour se relever. Après le tour perdu, la victime peut décider de rester par terre, mais pourrait faire certaines actions comme lancer un sort ou un objet.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -265,10 +265,13 @@ export default [
             "text": "Magicien"
         },
         "bonus": {
-            "text": "Guérit 1d6"
+            "text": "Guérit 1d6 points de vie"
         },
         "criticalSuccess": {
             "text": "Guérit 6 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
         }
     }
 ]

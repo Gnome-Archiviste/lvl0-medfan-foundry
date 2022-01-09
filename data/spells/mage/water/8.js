@@ -6,7 +6,7 @@ export default [
         "description": "Diminue la perception de moitié à cause des flocons fouettant le visage et fait du dommage à tous les tours et à tous ceux qui sont dans la zone de la tempête, alliés comme ennemis. Le déplacement est divisé par deux à cause des vents puissants.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -67,10 +67,10 @@ export default [
         "id": "fantassinDeGlace",
         "name": "Fantassin de glace",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un élémentaire de glace à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \nPHY 8, DEX 6, INT 4, CHA 6, PER 5\nHP 100, Armure : 2, H2H : 10, Lancer/tir : 9\nAttaques : H2H = 10 de dégâts, Haleine glacée: 3d6+4 (cône de glace, 2 m., immobilisation), Lance de glace : 2d6 + 2",
+        "description": "L'élémentaliste invoque un élémentaire de glace à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\n\n\n\n\nPHY 8, DEX 6, INT 4, CHA 6, PER 5\n\nHP 100, Armure : 2, H2H : 10, Lancer/tir : 9\n\nAttaques : H2H = 10 de dégâts, Haleine glacée: 3d6+4 (cône de glace, 2 m., immobilisation), Lance de glace : 2d6 + 2\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -87,10 +87,10 @@ export default [
         "id": "igloo",
         "name": "Igloo",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Créer un abri de glace d'une seule pièce, en forme de dôme. Permet d'abriter jusqu'à 10 personnes. Contient 1 repas à base de poisson par personne qui redonne 10 points de vie. Le sort d'Alarme est automatiquement enclenché ainsi qu'une invulnérabilité au froid.",
+        "description": "Créer un abri de glace d'une seule pièce, en forme de dôme. Permet d'abriter jusqu'à 10 personnes. Contient 1 repas à base de poisson par personne qui redonne 10 points de vie. Le sort d'Alarme est automatiquement enclenché ainsi qu'une invulnérabilité au froid.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -110,10 +110,10 @@ export default [
         "id": "visionDeLetreMouille",
         "name": "Vision de l’être mouillé",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le sort permet à l’élémentaliste de voir et entendre une personne qu’il cherche ainsi qu’une partie de son environnement, lui donnant un indice sur l’endroit où cette personne se trouve.",
+        "description": "Le sort permet à l’élémentaliste de voir et entendre une personne qu’il cherche ainsi qu’une partie de son environnement, lui donnant un indice sur l’endroit où cette personne se trouve.\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {

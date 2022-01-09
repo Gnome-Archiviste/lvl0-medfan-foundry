@@ -3,7 +3,7 @@ export default [
         "id": "envol",
         "name": "Envol",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet à l'élémentaliste de voler dans les airs. Il peut aussi se diriger. Il peut se déplacer de son plein mouvement. Ce vol semble aussi naturel que la marche. \nIl permet à l’élémentaliste de se battre, s’il réussit un test de navigation (qui ne compte pas comme l’action du joueur pour ce tour). Il permet aussi de lancer des sorts, s’il réussit un test de concentration  (qui ne compte pas comme l’action du joueur pour ce tour). L’élémentaliste ne peut pas supporter plus de poids qu’une charge maximale normale.",
+        "description": "Ce sort permet à l'élémentaliste de voler dans les airs. Il peut aussi se diriger. Il peut se déplacer de son plein mouvement. Ce vol semble aussi naturel que la marche. \n\nIl permet à l’élémentaliste de se battre, s’il réussit un test de navigation (qui ne compte pas comme l’action du joueur pour ce tour). Il permet aussi de lancer des sorts, s’il réussit un test de concentration  (qui ne compte pas comme l’action du joueur pour ce tour). L’élémentaliste ne peut pas supporter plus de poids qu’une charge maximale normale.",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"
@@ -28,7 +28,7 @@ export default [
         "description": "Crée une tornade magique qui se déplace dans la direction que le magicien lui donne, de 10 mètres par tour, mais elle touche tout sur son chemin, faisant 55 points de dégâts (sans armure) à tout ce qu’elle touche.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

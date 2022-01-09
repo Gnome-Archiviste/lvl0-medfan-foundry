@@ -25,7 +25,7 @@ export default [
         "description": "Rends une tête de la victime aveugle pour un tour par niveau d’arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -48,10 +48,10 @@ export default [
         "id": "bouleDeFeu",
         "name": "Boule de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "D’un geste, le magicien envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que le magicien désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane du magicien à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. ",
+        "description": "D’un geste, le magicien envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que le magicien désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane du magicien à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {
@@ -77,10 +77,10 @@ export default [
         "id": "charme",
         "name": "Charme",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort fait qu’une créature considère le magicien comme un ami et un allié de confiance. Le sort ne permet pas au personnage de contrôler la créature charmée comme s’il s’agissait d’un automate, mais le sujet perçoit les paroles et les actions du magicien de la manière la plus favorable. Le magicien peut essayer de donner des ordres au sujet, mais il doit réussir un test d’éloquence pour le convaincre de faire tout ce qu’il ne ferait pas d’ordinaire.\nTout acte du magicien, ou de ses alliés apparents, qui menace la créature charmée brise le sort. Notez également que le magicien doit parler la langue de la créature pour communiquer ou donner des ordres.\nLa créature charmée peut faire des tests de résilience pour se défaire du sort, mais elle doit réussir trois tests de suite un fois charmée.",
+        "description": "Ce sort fait qu’une créature considère le magicien comme un ami et un allié de confiance. Le sort ne permet pas au personnage de contrôler la créature charmée comme s’il s’agissait d’un automate, mais le sujet perçoit les paroles et les actions du magicien de la manière la plus favorable. Le magicien peut essayer de donner des ordres au sujet, mais il doit réussir un test d’éloquence pour le convaincre de faire tout ce qu’il ne ferait pas d’ordinaire.\n\n\n\n\n\nTout acte du magicien, ou de ses alliés apparents, qui menace la créature charmée brise le sort. Notez également que le magicien doit parler la langue de la créature pour communiquer ou donner des ordres.\n\n\n\n\n\nLa créature charmée peut faire des tests de résilience pour se défaire du sort, mais elle doit réussir trois tests de suite un fois charmée.\n\n\n\n",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -117,13 +117,16 @@ export default [
             "text": "Une cible"
         },
         "bonus": {
-            "text": "3d6 points de vie"
+            "text": "Guérit 3d6 points de vie"
         },
         "resilience": {
             "text": "Aucune (moitié du dommage pour les morts-vivants, arrondissement favorable)"
         },
         "criticalSuccess": {
             "text": "Guérit 18 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
         }
     },
     {
@@ -170,7 +173,7 @@ export default [
         "id": "nueeGrouillante",
         "name": "Nuée grouillante",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Convoque une nuée d’araignées, chauves-souris, rats ou scorpions, etc qui attaquent la cible. Le type d’animal et son attaque est déterminé par la table ci-dessous.\n*Le Maître de jeu peut donner un type plus précis selon la région)\n\tTypes de nuée\n\tDégâts\n\t1\n\tOiseaux\n\t4d6+6\n\t2\n\tRats\n\t3d6+6\n\t3\n\tPuces\n\t3d6+3\n\t4\n\tAraignées\n\t3d6, lancer un dé: sur un 5 ou 6, l’ennemi s’enfuit de dégoût pendant  2 tours\n\t5\n\tMoustiques\n\t3d6, lancer un dé: sur un 6, l’ennemi s'endort.\n\t6\n\tInsectes rampants\n\t2d6, lancer un dé: sur un 5 ou 6, l’ennemi s’enfuit de dégoût pendant  2 tours",
+        "description": "Convoque une nuée d’araignées, chauves-souris, rats ou scorpions, etc qui attaquent la cible. Le type d’animal et son attaque est déterminé par la table ci-dessous. *Le Maître de jeu peut donner un type plus précis selon la région*\n\n\n\n* 1: Oiseaux; dégâts: 4d6+6\n\n* 2: Rats; dégâts: 3d6+6\n\n* 3: Puces; dégâts: 3d6+3\n\n* 4: Araignées; dégâts: 3d6\n\n   * Lancer un dé supplémentaire: sur un 5 ou 6, l’ennemi s’enfuit de dégoût pendant 2 tours\n\n* 5: Moustiques; dégâts: 3d6\n\n   * Lancer un dé supplémentaire: sur un 6, l’ennemi s'endort.\n\n* 6: Insectes rampants; dégâts: 2d6\n\n   * Lancer un dé supplémentaire: sur un 5 ou 6, l’ennemi s’enfuit de dégoût pendant 2 tours",
         "distance": {
             "text": "15 mètres."
         },
@@ -197,7 +200,7 @@ export default [
         "description": "En recevant ce sort, la cible peut se déplacer sur n’importe quel type de terrain et ne laisser ni empreintes ni odeurs. Pister la cible devient impossible par des moyens non magiques.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

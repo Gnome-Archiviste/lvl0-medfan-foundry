@@ -6,7 +6,7 @@ export default [
         "description": "Créer un cheval magique pour une (1) heure par niveau d’arcane. Le cheval est semi-transparent et semble fait de lumière blanche. Le coursier peut emmener son cavalier et un passager (ou 4 fantasques).",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {
@@ -70,10 +70,10 @@ export default [
         "id": "murDeFeu",
         "name": "Mur de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "En lançant ce sort, un mur de feu scintillant jaillit à la demande du champion. Le mur mesure cinq mètres de haut, fait un mètre par niveau d’arcane du champion de largeur et deux mètres de profondeur.\nLe mur inflige 5d6 blessures de feu à toute créature entrant ou traversant le mur. Le mur inflige le double de dégâts aux créatures mortes. Si le champion évoque le mur pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers le mur.\nLe champion peut maintenir le sort indéfiniment en se concentrant continuellement (faire un test de concentration par tour, et le champion ne peut que faire ce test durant le tour) pour le faire, ou peut renoncer à une concentration continue, auquel cas le mur durera un (1) tour par niveau d’arcane du champion.",
+        "description": "En lançant ce sort, un mur de feu scintillant jaillit à la demande du champion. Le mur mesure cinq mètres de haut, fait un mètre par niveau d’arcane du champion de largeur et deux mètres de profondeur.\n\nLe mur inflige 5d6 blessures de feu à toute créature entrant ou traversant le mur. Le mur inflige le double de dégâts aux créatures mortes. Si le champion évoque le mur pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers le mur.\n\nLe champion peut maintenir le sort indéfiniment en se concentrant continuellement (faire un test de concentration par tour, et le champion ne peut que faire ce test durant le tour) pour le faire, ou peut renoncer à une concentration continue, auquel cas le mur durera un (1) tour par niveau d’arcane du champion.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

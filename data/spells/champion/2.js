@@ -30,7 +30,7 @@ export default [
         "description": "Rends une tête de la victime aveugle pour un 1 tour par niveau d’arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -156,7 +156,7 @@ export default [
         "description": "Fournit un repas pour un personnage et guérit de 1d6 points de vie. Le repas disparaît à la fin, et ne laisse aucun reste.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {
@@ -169,7 +169,7 @@ export default [
             "text": "Guérit 1d6 points de vie"
         },
         "criticalSuccess": {
-            "text": "Guérit de 2d6 points de vie"
+            "text": "Guérit 2d6 points de vie"
         },
         "heal": {
             "rollFormula": "return '1d6';"

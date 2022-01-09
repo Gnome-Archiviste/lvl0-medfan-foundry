@@ -3,7 +3,7 @@ export default [
         "id": "anneauDemiSel",
         "name": "Anneau demi-sel",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur infuse de l’énergie magique dans une bague en or sertie d’une petite sélénite (pierre semi-précieuse transparente), permettant de bonifier une habileté que le joueur choisit au début de la séance de jeu",
+        "description": "L’enchanteur infuse de l’énergie magique dans une bague en or sertie d’une petite sélénite (pierre semi-précieuse transparente), permettant de bonifier une habileté que le joueur choisit au début de la séance de jeu\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -78,13 +78,16 @@ export default [
             "text": "Une cible"
         },
         "bonus": {
-            "text": "3d6 points de vie"
+            "text": "Guérit 3d6 points de vie"
         },
         "resilience": {
             "text": "Aucune (moitié du dommage pour les morts-vivants)"
         },
         "criticalSuccess": {
             "text": "Guérit 18 points de vie"
+        },
+        "heal": {
+            "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
         }
     },
     {
@@ -132,7 +135,7 @@ export default [
         "id": "potionDeGuerison",
         "name": "Potion de guérison",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (100 ml), une pincée de poudre de perlépipein et de l’essence de cèdre (1 litre) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par 4 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n*Un shaman peut faire une potion de solanine avec la même recette mais en changeant l’essence de cèdre pour de la purée de belladone.",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (100 ml), une pincée de poudre de perlépipein et de l’essence de cèdre (1 litre) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par 4 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n*Un shaman peut faire une potion de solanine avec la même recette mais en changeant l’essence de cèdre pour de la purée de belladone.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -154,7 +157,7 @@ export default [
         "id": "resistance",
         "name": "Résistance",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur infuse à une cible l’énergie nécessaire pour la protéger contre la moitié des dégâts faits par un élément donné. L’enchanteur doit tenir en main le bon type de matériel qui servira de catalyseur au sort*.\nL’enchanteur infuse dans un objet l’énergie nécessaire pour protéger le porteur de l’objet contre la moitié des dégâts faits par un élément donné. L’objet en question doit être neuf et préalablement traité pour recevoir l’enchantement. De plus, il doit être certi du bon type de matériel qui servira de catalyseur au sort*. Pour que l'enchantement ne s’estompe pas à la fin de la première utilisation, il faut le sceller avec le sort de Permanence.\nVoici les résistances à utiliser avec ce sort:.\nRésistance à l’acide: protection partielle contre les sorts d’acide.\nRésistance à l’air / électricité: protection partielle contre les sorts d’air et d’électricité.\nRésistance à l’eau / froid: protection partielle contre les sorts d’eau et de froid.\nRésistance au feu: protection partielle contre le feu.",
+        "description": "L’enchanteur infuse à une cible l’énergie nécessaire pour la protéger contre la moitié des dégâts faits par un élément donné. L’enchanteur doit tenir en main le bon type de matériel qui servira de catalyseur au sort*.\n\nL’enchanteur infuse dans un objet l’énergie nécessaire pour protéger le porteur de l’objet contre la moitié des dégâts faits par un élément donné. L’objet en question doit être neuf et préalablement traité pour recevoir l’enchantement. De plus, il doit être certi du bon type de matériel qui servira de catalyseur au sort*. Pour que l'enchantement ne s’estompe pas à la fin de la première utilisation, il faut le sceller avec le sort de Permanence.\n\nVoici les résistances à utiliser avec ce sort:.\n\nRésistance à l’acide: protection partielle contre les sorts d’acide.\n\nRésistance à l’air / électricité: protection partielle contre les sorts d’air et d’électricité.\n\nRésistance à l’eau / froid: protection partielle contre les sorts d’eau et de froid.\n\nRésistance au feu: protection partielle contre le feu.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -178,7 +181,7 @@ export default [
         "id": "degatsDeLelementSerontIgnores",
         "name": "        dégâts de l’élément seront ignorés.",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "* Liste des matériaux à utiliser:\nAcide: larme de verre\nAir/Électricité: morceau d’hématite\nEau/froid: Pierre de flocon de neige obsidienne\nFeu: Pierre de soleil\nVoir l’invisible\nCe sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.",
+        "description": "* Liste des matériaux à utiliser:\n\nAcide: larme de verre\n\nAir/Électricité: morceau d’hématite\n\nEau/froid: Pierre de flocon de neige obsidienne\n\nFeu: Pierre de soleil\n\nVoir l’invisible\n\nCe sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

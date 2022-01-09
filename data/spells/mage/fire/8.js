@@ -3,10 +3,10 @@ export default [
         "id": "nuageIncendiaire",
         "name": "Nuage incendiaire",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort crée un nuage de fumée mouvementée traversé par des braises chauffées à blanc. La fumée obscurcit toute vue, ce qui donne 2 points de pénalité sur leur perception (il faut faire une perception pour trouver un nouvel adversaire). Le sort affecte une zone de 10 mètres de rayon.\nDe plus, les braises chauffées à blanc dans le nuage infligent 4d6+3 points de dégâts de feu à chaque tour. Le sort ne fonctionne pas sous l’eau.",
+        "description": "Ce sort crée un nuage de fumée mouvementée traversé par des braises chauffées à blanc. La fumée obscurcit toute vue, ce qui donne 2 points de pénalité sur leur perception (il faut faire une perception pour trouver un nouvel adversaire). Le sort affecte une zone de 10 mètres de rayon.\n\n\n\n\n\nDe plus, les braises chauffées à blanc dans le nuage infligent 4d6+3 points de dégâts de feu à chaque tour. Le sort ne fonctionne pas sous l’eau.\n\n\n\n",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -64,7 +64,7 @@ export default [
         "id": "robeDeFeu",
         "name": "Robe de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Avec une seule pensée, un cercle de feu scintillant jaillit à l’entour de l’élémentaliste. Le cercle mesure deux (2) mètres de rayon. Ce dernier suit l’élémentaliste.\nLa robe de feu inflige 5d6 blessures de feu à toute créature entrant ou le traversant. Si l’élémentaliste évoque la robe pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\nL’élémentaliste ne peut pas maintenir la robe indéfiniment, la robe dure un (1) tour par niveau d’arcane de l’élémentaliste.",
+        "description": "Avec une seule pensée, un cercle de feu scintillant jaillit à l’entour de l’élémentaliste. Le cercle mesure deux (2) mètres de rayon. Ce dernier suit l’élémentaliste.\n\n\n\n\n\nLa robe de feu inflige 5d6 blessures de feu à toute créature entrant ou le traversant. Si l’élémentaliste évoque la robe pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\n\n\n\n\n\nL’élémentaliste ne peut pas maintenir la robe indéfiniment, la robe dure un (1) tour par niveau d’arcane de l’élémentaliste.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -92,10 +92,10 @@ export default [
         "id": "tempeteDeFeu",
         "name": "Tempête de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Une flamme élémentaire déchaînée remplit la zone d'effet 3m de rayon et tourbillonnant, causant 56 points de dégâts. Les flammes ne nuisent pas à la végétation naturelle, au couvre-sol et aux créatures végétales de la zone, à moins que le lanceur le désire.",
+        "description": "Une flamme élémentaire déchaînée remplit la zone d'effet 3m de rayon et tourbillonnant, causant 56 points de dégâts. Les flammes ne nuisent pas à la végétation naturelle, au couvre-sol et aux créatures végétales de la zone, à moins que le lanceur le désire.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -120,10 +120,10 @@ export default [
         "id": "deFeu",
         "name": "        de feu.",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Succès remarquable : La cible ne peut pas faire de test de résilience\nArcane 9\nÉruption solaire\nUne colonne de feu, de cinq (5) mètres de rayon, tombe du ciel.",
+        "description": "Succès remarquable : La cible ne peut pas faire de test de résilience\n\nArcane 9\n\nÉruption solaire\n\nUne colonne de feu, de cinq (5) mètres de rayon, tombe du ciel.\n\n\n\n",
         "distance": {
             "value": 60,
-            "unit": "m",
+            "unit": "mètre",
             "text": "60 mètres"
         },
         "duration": {

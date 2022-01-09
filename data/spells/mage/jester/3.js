@@ -6,7 +6,7 @@ export default [
         "description": "Ce sort crée une sensation d’urgence, chez la cible, de se soulager de ses besoins naturels. Pendant 3 tours, la cible ne peut plus se concentrer sur autre chose. Elle doit se retirer pour aller faire ses besoins. Si elle est en combat, elle ne peut plus attaquer ou faire des sorts. Il doit partir du combat ou de la situation, en se déplaçant à la moitié du déplacement normal. ",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -50,7 +50,7 @@ export default [
         "id": "decouverteFortuite",
         "name": "Découverte fortuite",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le bouffon peut utiliser ce sort pour trouver des portes secrètes, des compartiments cachés, et autres zones cachées, spécialement construites pour échapper à la détection. Lorsque le sort est lancé, le bouffon trouvera accidentellement le passage secret s’il passe près de celui-ci, activant par accident le levier ou tombant dans la trappe sans le vouloir. \nLe sort ne détecte pas les dangers naturels. Il ne détecte pas non plus les pièges magiques, ce qui les déclenche lorsque le bouffon ouvre le passage secret par accident.",
+        "description": "Le bouffon peut utiliser ce sort pour trouver des portes secrètes, des compartiments cachés, et autres zones cachées, spécialement construites pour échapper à la détection. Lorsque le sort est lancé, le bouffon trouvera accidentellement le passage secret s’il passe près de celui-ci, activant par accident le levier ou tombant dans la trappe sans le vouloir. \n\n\n\n\n\nLe sort ne détecte pas les dangers naturels. Il ne détecte pas non plus les pièges magiques, ce qui les déclenche lorsque le bouffon ouvre le passage secret par accident.\n\n\n\n",
         "distance": {
             "text": "Bouffon"
         },
@@ -70,10 +70,10 @@ export default [
         "id": "detectionDesMensonges",
         "name": "Détection des mensonges",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "À chaque tour, le bouffon peut se concentrer sur un sujet à portée et saura instantanément si le sujet ment délibérément.\nLe sort ne révèle pas la vérité, ne découvre pas les inexactitudes involontaires ni ne révèle des évasions. À chaque tour, le personnage peut se concentrer sur un sujet différent.",
+        "description": "À chaque tour, le bouffon peut se concentrer sur un sujet à portée et saura instantanément si le sujet ment délibérément.\n\nLe sort ne révèle pas la vérité, ne découvre pas les inexactitudes involontaires ni ne révèle des évasions. À chaque tour, le personnage peut se concentrer sur un sujet différent.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {
@@ -95,7 +95,7 @@ export default [
         "description": "Un sort vraiment farfelue qui invoque une saucisse dansante, habillée d’un petit pain long et d’un chapeau bavarois, au secours du Bouffon. Ce hot-dog va danser, bondir et faire des galipettes, le tout pour attirer l’attention des personnages et des adversaires. Tous, à l’exception du Bouffon, doivent effectuer un jet de résilience pour éviter d’être fascinés par ce petit bonhomme loufoque. Les victimes distraites seront bouche bée d’horreur, se demandant à haute voix pourquoi de telles choses sont autorisées. Hélas, ce dilemme existentiel ne sera peut-être jamais résolu.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -143,7 +143,7 @@ export default [
         "description": "En soufflant dans sa main, le Bouffon déclenche un nuage de poussière scintillante. En plus d’être très jolie, cette poussière a tendance à se coller partout (sauf le Bouffon) et de révéler la silhouette des gens et choses invisibles.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -170,7 +170,7 @@ export default [
         "description": "Ce sort fait jaillir des serpentins du bout des doigts du bouffon qui immobilise la victime pendant 5 tours. La victime peut se déprendre en réussissant un jet de l'habileté « Évasion ».",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -198,7 +198,7 @@ export default [
         "description": "Créer une boule glacée attaquant une victime qui est figée pendant 2 tours.",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {
@@ -231,7 +231,7 @@ export default [
         "description": "Ce sort crée l’illusion d’un passage, corridor, porte, trappe ou toute ouverture similaire sur une surface. Il semble absolument vrai, mais le passage est totalement illusoire. Lorsqu'une victime tente de passer, elle heurte violemment le mur. Toucher ou sonder la surface révèle sa nature illusoire, bien que cela ne fasse pas disparaître l’illusion. Il affecte une zone de trois (3) mètres sur trois (3) mètres sur trente (30) cm.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

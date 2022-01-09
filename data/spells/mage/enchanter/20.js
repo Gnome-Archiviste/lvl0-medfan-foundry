@@ -51,7 +51,7 @@ export default [
         "id": "permanenceSuperieur",
         "name": "Permanence supérieur",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Permet à l’élémentaliste de sceller un sort dans un objet sans que l'utilisateur ait besoin de recharger l’objet au bout d’un certain nombre d’utilisations. Il faut faire le sort 10x, avant de lancer le sort Permanence supérieur sur l’objet récepteur. Attention aux doubles 6.\nNe peut se faire que sur un objet préalablement préparé pour recevoir le sort.",
+        "description": "Permet à l’élémentaliste de sceller un sort dans un objet sans que l'utilisateur ait besoin de recharger l’objet au bout d’un certain nombre d’utilisations. Il faut faire le sort 10x, avant de lancer le sort Permanence supérieur sur l’objet récepteur. Attention aux doubles 6.\n\nNe peut se faire que sur un objet préalablement préparé pour recevoir le sort.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

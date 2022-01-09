@@ -6,7 +6,7 @@ export default [
         "description": "Diminue la perception de moitié à cause des flocons fouettant le visage et fait du dommage à tous les tours et à tous ceux qui sont dans la zone de la tempête, alliés comme ennemis. Le déplacement est divisé par deux à cause des vents puissants.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -36,10 +36,10 @@ export default [
         "id": "murDePierre",
         "name": "Mur de pierre",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort crée un mur de roche qui fusionne avec les surfaces rocheuses adjacentes. Le mur mesure 10 cm d’épaisseur par niveau d’arcane du magicien ainsi que jusqu’à 1 mètre de large par niveau d’arcane du magicien et jusqu’à 1 mètre de haut par niveau d’arcane du magicien. Le mur ne peut pas être évoqué de manière à occuper le même espace qu’une créature ou un autre objet.\nChaque zone d’un pied carré du mur a 15 points de vie par 10 cm d’épaisseur. Les créatures peuvent frapper le mur automatiquement, mais le mur est si dur que les 8 premiers points de dégâts de chaque coup sont ignorés. Une section de mur dont les points de vie tombent à 0 est fissurée. ",
+        "description": "Ce sort crée un mur de roche qui fusionne avec les surfaces rocheuses adjacentes. Le mur mesure 10 cm d’épaisseur par niveau d’arcane du magicien ainsi que jusqu’à 1 mètre de large par niveau d’arcane du magicien et jusqu’à 1 mètre de haut par niveau d’arcane du magicien. Le mur ne peut pas être évoqué de manière à occuper le même espace qu’une créature ou un autre objet.\n\n\n\n\n\nChaque zone d’un pied carré du mur a 15 points de vie par 10 cm d’épaisseur. Les créatures peuvent frapper le mur automatiquement, mais le mur est si dur que les 8 premiers points de dégâts de chaque coup sont ignorés. Une section de mur dont les points de vie tombent à 0 est fissurée. \n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -56,7 +56,7 @@ export default [
         "id": "œilDeDasha",
         "name": "Œil de Dasha",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le magicien crée un œil magique invisible qui envoie des informations visuelles au magicien. L’œil de Dasha se déplace à 9 mètres par tour et voit exactement comme le magicien verrait si le magicien était sur place. Si l’œil examine les murs ou les plafonds, il se déplace à 3 mètres par tour.\nDes barrières solides empêchent le passage d’un œil de Dasha, bien qu’il puisse traverser un espace pas plus petit qu’un petit trou de souris (trois (3) cm de diamètre). Le magicien doit se concentrer pour utiliser l’œil. Si le magicien ne se concentre pas, l’œil devient inerte jusqu’à ce que le magicien se concentre à nouveau.\nLes pouvoirs de l’œil ne peuvent pas être améliorés par d’autres sorts ou objets (bien que le magicien puisse utiliser la magie pour améliorer sa propre vue). \nL’Œil de Dash permet de faire des sorts en utilisant l’œil comme point d’origine. Le tour précédent sa disparition, l’œil commence à perdre la vue. \nLe magicien est soumis à toute attaque du regard qu’il rencontre. Une annulation de la magie sur le magicien ou l’œil met fin au sort. En ce qui concerne la cécité, le sort aveuglement, l’obscurité magique et d’autres phénomènes qui affectent la vision, l’œil de Dasha est considéré comme un organe sensoriel indépendant du magicien. Des sorts tels que « voir l’invisible » peuvent également détecter l’œil.",
+        "description": "Le magicien crée un œil magique invisible qui envoie des informations visuelles au magicien. L’œil de Dasha se déplace à 9 mètres par tour et voit exactement comme le magicien verrait si le magicien était sur place. Si l’œil examine les murs ou les plafonds, il se déplace à 3 mètres par tour.\n\n\n\n\n\nDes barrières solides empêchent le passage d’un œil de Dasha, bien qu’il puisse traverser un espace pas plus petit qu’un petit trou de souris (trois (3) cm de diamètre). Le magicien doit se concentrer pour utiliser l’œil. Si le magicien ne se concentre pas, l’œil devient inerte jusqu’à ce que le magicien se concentre à nouveau.\n\n\n\n\n\nLes pouvoirs de l’œil ne peuvent pas être améliorés par d’autres sorts ou objets (bien que le magicien puisse utiliser la magie pour améliorer sa propre vue). \n\n\n\n\n\nL’Œil de Dash permet de faire des sorts en utilisant l’œil comme point d’origine. Le tour précédent sa disparition, l’œil commence à perdre la vue. \n\n\n\n\n\nLe magicien est soumis à toute attaque du regard qu’il rencontre. Une annulation de la magie sur le magicien ou l’œil met fin au sort. En ce qui concerne la cécité, le sort aveuglement, l’obscurité magique et d’autres phénomènes qui affectent la vision, l’œil de Dasha est considéré comme un organe sensoriel indépendant du magicien. Des sorts tels que « voir l’invisible » peuvent également détecter l’œil.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -103,7 +103,7 @@ export default [
         "id": "permanence",
         "name": "Permanence",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet de rendre un autre sort permanent. Grâce au sort de permanence, le sort sur lequel on l’applique n’a plus de limite de temps. \nNe peut se faire que sur un objet préparé pour faire le sort. Voir la section Création d’objet magique.",
+        "description": "Ce sort permet de rendre un autre sort permanent. Grâce au sort de permanence, le sort sur lequel on l’applique n’a plus de limite de temps. \n\nNe peut se faire que sur un objet préparé pour faire le sort. Voir la section Création d’objet magique.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -119,7 +119,7 @@ export default [
         "id": "premonition",
         "name": "Prémonition",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Lancer au coucher, le sort permet au magicien de voir de l’information sur le futur probable durant ses rêves. Le magicien se souvient de ses rêves prémonitoires. \nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la partie. Le sort permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
+        "description": "Lancer au coucher, le sort permet au magicien de voir de l’information sur le futur probable durant ses rêves. Le magicien se souvient de ses rêves prémonitoires. \n\nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la partie. Le sort permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\n\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -184,7 +184,7 @@ export default [
         "id": "transformation",
         "name": "Transformation",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "La cible prend la forme de n’importe quelle créature connue du magicien. S’il s’agit d’une personne en particulier, le magicien doit l’avoir rencontré. Le changement prend un tour. La forme est bien réelle et confère à la cible la plupart des capacités de la créature formée. La cible conserve sa caractéristique d’intelligence, mais prend les autres caractéristiques de la nouvelle forme. Elle garde aussi ses propres points de vie et points de mana. Le personnage conserve ses spécialités et peut les utiliser si c’est possible avec la nouvelle forme. Le personnage ne gagne pas les capacités magiques ou surnaturelles de la nouvelle forme, mais acquiert les spécialités de la nouvelle forme. La taille de la forme prise peut aller jusqu’à deux fois plus petites ou grandes que la cible. Même les états amorphes ou gazeux peuvent être assumés en lançant ce sort. S’il est tué, le personnage reprend sa forme originale, mais reste mort.",
+        "description": "La cible prend la forme de n’importe quelle créature connue du magicien. S’il s’agit d’une personne en particulier, le magicien doit l’avoir rencontré. Le changement prend un tour. La forme est bien réelle et confère à la cible la plupart des capacités de la créature formée. La cible conserve sa caractéristique d’intelligence, mais prend les autres caractéristiques de la nouvelle forme. Elle garde aussi ses propres points de vie et points de mana. Le personnage conserve ses spécialités et peut les utiliser si c’est possible avec la nouvelle forme. Le personnage ne gagne pas les capacités magiques ou surnaturelles de la nouvelle forme, mais acquiert les spécialités de la nouvelle forme. La taille de la forme prise peut aller jusqu’à deux fois plus petites ou grandes que la cible. Même les états amorphes ou gazeux peuvent être assumés en lançant ce sort. S’il est tué, le personnage reprend sa forme originale, mais reste mort.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -210,7 +210,7 @@ export default [
         "description": "Les personnages, animaux et monstres, dans un rayon de 10 mètres, doivent faire un jet de gymnastique sinon il tombe et doivent refaire le même test pendant 10 tours pour se relever ou ne pas retomber. Ils ne peuvent pas se défendre tant qu’ils sont à terre. Tous reçoivent le dommage lors du premier tour.",
         "distance": {
             "value": 40,
-            "unit": "m",
+            "unit": "mètre",
             "text": "40 mètres"
         },
         "duration": {

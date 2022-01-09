@@ -3,7 +3,7 @@ export default [
         "id": "auraDePoussiere",
         "name": "Aura de poussière",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
+        "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
         "distance": {
             "text": "toucher"
         },
@@ -98,7 +98,7 @@ export default [
         "id": "sphereDeTesla",
         "name": "Sphère de Tesla",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "En lançant ce sort, une sphère d’énergie jaune scintillant jaillit au dessus de l’élémentaliste qui crée un cercle de protection mesurant deux (2) mètres de rayon à l’entour de l’élémentaliste. Le cercle ne peut pas se déplacer.\nL’anneau inflige 5d6 blessures d’électricité à toute créature entrant ou traversant le cercle. Si l’élémentaliste évoque la sphère pour qu'elle apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\nDe base, la sphère et son anneau de protection dure un (1) tour par niveau d’arcane de l’élémentaliste. S’il le veut, l’élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "En lançant ce sort, une sphère d’énergie jaune scintillant jaillit au dessus de l’élémentaliste qui crée un cercle de protection mesurant deux (2) mètres de rayon à l’entour de l’élémentaliste. Le cercle ne peut pas se déplacer.\n\nL’anneau inflige 5d6 blessures d’électricité à toute créature entrant ou traversant le cercle. Si l’élémentaliste évoque la sphère pour qu'elle apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers l’anneau.\n\nDe base, la sphère et son anneau de protection dure un (1) tour par niveau d’arcane de l’élémentaliste. S’il le veut, l’élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -126,10 +126,10 @@ export default [
         "id": "estDansLanneau",
         "name": "                est dans l’anneau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Succès remarquable : Aucun test de résilience possible.\nArcane 6\nAnguille\nExplosion sonore\nL’élémentaliste invoque un coup de tonnerre sonore, émanant de n’importe quel point jusqu’à 15 mètres, de distance et dans un cercle de 4 mètres de rayon. Toute créature dans la zone d’effet subit 4d6 dégâts et ne peut faire de jet d’Écouter pendant 5 tours.",
+        "description": "Succès remarquable : Aucun test de résilience possible.\n\nArcane 6\n\nAnguille\n\nExplosion sonore\n\nL’élémentaliste invoque un coup de tonnerre sonore, émanant de n’importe quel point jusqu’à 15 mètres, de distance et dans un cercle de 4 mètres de rayon. Toute créature dans la zone d’effet subit 4d6 dégâts et ne peut faire de jet d’Écouter pendant 5 tours.",
         "distance": {
             "value": 15,
-            "unit": "m",
+            "unit": "mètre",
             "text": "15 mètres"
         },
         "duration": {
@@ -159,7 +159,7 @@ export default [
         "id": "mainParalysante",
         "name": "Main paralysante",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "La main de l’élémentaliste est parcourue de petits arcs électriques ce qui permet à celui-ci d’infliger 5d6 de dégâts à une cible qu’il touche et de la paralyser pour 4 tours.",
+        "description": "La main de l’élémentaliste est parcourue de petits arcs électriques ce qui permet à celui-ci d’infliger 5d6 de dégâts à une cible qu’il touche et de la paralyser pour 4 tours.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"
@@ -194,7 +194,7 @@ export default [
         "description": "Un rideau de vent vertical invisible de 6 mètres de haut  par 1 mètre de large par arcane de l’élémentaliste apparaît. Il mesure 1 mètre d’épaisseur et d’une force considérable. La rafale rugissante est suffisante déchirer les papiers et des matériaux similaires de mains sans méfiance tandis que les tissus amples et les vêtements en tissu volent vers le haut lorsqu’ils sont pris dans un mur de vent. Les flèches et les darts ou toute autre arme à distance normale passant à travers le mur sont déviés et n’atteignent pas leur cible. Les armes à distance massives comme les rochers de catapulte ne sont pas affectées. Les gaz, les petites créatures volantes et les créatures sous forme gazeuse ne peuvent pas traverser le mur et toute créature tentant de traverser sera propulsée vers l’arrière sur 5 mètres.",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -222,7 +222,7 @@ export default [
         "description": "Appelle une créature volante mythique comme destrier volant pour traverser une étendue.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {

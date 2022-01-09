@@ -49,7 +49,7 @@ export default [
         "description": "Ce sort génère une eau saine et potable. L’eau doit être créée dans une zone aussi petite qu’elle contiendra réellement le liquide. L’élémentaliste peut créer 1 litre d’eau par niveau d’arcane.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {
@@ -100,7 +100,7 @@ export default [
         "description": "En mettant une petite quantité d'eau dans ses mains et en les joignant, l'élémentaliste crée un projectile sous la forme d'un jet d'eau. ",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -129,7 +129,7 @@ export default [
         "description": "Rends le sol, sous la cible, glissant, la faisant tomber. La cible doit faire un jet d'habilité gymnastique pour se relever. Si la cible décide de rester au sol, elle pourra faire certaines actions comme lancer un sort ou utiliser une arme de jet après avoir perdu un tour.",
         "distance": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
         "duration": {

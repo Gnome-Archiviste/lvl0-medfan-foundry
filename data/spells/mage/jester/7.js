@@ -79,7 +79,7 @@ export default [
         "description": "Force la victime à dire la vérité.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {

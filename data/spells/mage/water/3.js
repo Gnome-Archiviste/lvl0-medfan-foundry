@@ -24,10 +24,10 @@ export default [
         "id": "icedSnowBall",
         "name": "dégâts",
         "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-        "description": "\t1d6 de glace\n\tAvec tir exceptionnel\n\t1d6 + cible gelée pendant 2 tours\nBoule de neige glacée\nL'élémentaliste fait apparaître une boule de neige très dure dans sa main qu'il peut lancer. Peut figer la cible pour un tour.",
+        "description": "\t1d6 de glace\n\n\tAvec tir exceptionnel\n\n\t1d6 + cible gelée pendant 2 tours\n\n\t\n\n\n\nBoule de neige glacée\n\nL'élémentaliste fait apparaître une boule de neige très dure dans sa main qu'il peut lancer. Peut figer la cible pour un tour.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -55,7 +55,7 @@ export default [
         "id": "blotter",
         "name": "Buvard[c]",
         "icon": "icons/equipment/shield/kite-wooden-oak-glow.webp",
-        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique, pour une seule fois. \nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts de glace supplémentaires.",
+        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts de glace supplémentaires.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -77,7 +77,7 @@ export default [
         "id": "cryogenics",
         "name": "Cryogénie",
         "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant un mois[d]. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.",
+        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant un mois[d]. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -99,10 +99,10 @@ export default [
         "id": "minorWaterElemental",
         "name": "Élémentaire mineur d'eau",
         "icon": "icons/magic/lightning/projectile-orb-blue.webp",
-        "description": "L’élémentaliste invoque un petit élémentaire d’eau à partir d'une source d'eau (au moins 1 litre.). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 4, DEX 5, INT 3, CHA 3, PER 5\nHP 20, H2H : 5, Attaque : 3 de dégâts",
+        "description": "L’élémentaliste invoque un petit élémentaire d’eau à partir d'une source d'eau (au moins 1 litre.). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 5\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {

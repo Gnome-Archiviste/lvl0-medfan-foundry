@@ -99,7 +99,7 @@ export default [
         "id": "lameEnflammee",
         "name": "Lame enflammée",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Change les dégâts d’une arme en dégât de feu provoquant 1d6 de dégât bonus, pour une scène",
+        "description": "Change les dégâts d’une arme en dégât de feu provoquant 1d6 de dégât bonus, pour une scène\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -123,7 +123,7 @@ export default [
         "id": "permanence",
         "name": "Permanence",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Permet de rendre un sort permanent. Grâce au sort de permanence, le sort sur lequel on l’applique n’a plus de limite de temps. \nNe peut se faire que sur un objet préparé pour faire le sort.",
+        "description": "Permet de rendre un sort permanent. Grâce au sort de permanence, le sort sur lequel on l’applique n’a plus de limite de temps. \n\nNe peut se faire que sur un objet préparé pour faire le sort.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -139,7 +139,7 @@ export default [
         "id": "potionDeGuerisonDesMaledictions",
         "name": "Potion de guérison des malédictions",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -161,7 +161,7 @@ export default [
         "id": "potionTheurgique",
         "name": "Potion théurgique",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la gelée de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 3 potions de soin par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
+        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la gelée de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 3 potions de soin par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

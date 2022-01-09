@@ -72,7 +72,7 @@ export default [
         "id": "jump",
         "name": "Porté par le vent",
         "icon": "icons/svg/up.svg",
-        "description": "Ce sort permet au personnage qui en bénéficie de faire des sauts équivalent à son déplacement complet vers l’avant (ou en hauteur); ou l’équivalent à la moitié de son déplacement complet s’il saute vers l’arrière. \nSi ce sort est utilisé avec la spécialité Déplacement véloce, le saut est de 2 fois le déplacement complet. ",
+        "description": "Ce sort permet au personnage qui en bénéficie de faire des sauts équivalent à son déplacement complet vers l’avant (ou en hauteur); ou l’équivalent à la moitié de son déplacement complet s’il saute vers l’arrière. \n\nSi ce sort est utilisé avec la spécialité Déplacement véloce, le saut est de 2 fois le déplacement complet. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

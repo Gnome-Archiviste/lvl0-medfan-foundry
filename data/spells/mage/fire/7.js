@@ -6,7 +6,7 @@ export default [
         "description": "Créer une flamme 10 m³ par niveau d’arcane de l'élémentaliste.",
         "distance": {
             "value": 6,
-            "unit": "m",
+            "unit": "mètre",
             "text": "6 mètres"
         },
         "duration": {
@@ -23,10 +23,10 @@ export default [
         "id": "elementaireMajeurDeFeu",
         "name": "Élémentaire majeur de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \nPHY 7, DEX 6, INT 4, CHA 6, PER 6\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)",
+        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\nPHY 7, DEX 6, INT 4, CHA 6, PER 6\n\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\n\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -46,7 +46,7 @@ export default [
         "description": "Le feu est un élément qui a fasciné l'homme depuis le début des temps. L’élémentaliste crée une petite flamme dans la paume de sa main qui bouge avec un mouvement circulaire répétitif qui concentre l’attention de la victime. La victime est figée, concentrée sur la flamme, faisant ainsi abstraction de tout ce qui l'entoure tant que le sort fait effet ou qu’on l’attaque. L’élémentaliste peut laisser la flamme en suspens et se déplacer, la laissant sur place.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètres"
         },
         "duration": {
@@ -71,7 +71,7 @@ export default [
         "id": "pareFeu",
         "name": "Pare-feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Une flamme vaporeuse et colorée entourant le personnage comme une cape de feu. Toute créature infligeant des dégâts physiques subit 1d6 points de dégâts +1 par arcane de l’élémentaliste en raison des flammes intenses mais la résilience aux sorts s’applique à ces dégâts. Cependant le sort ne bloque aucun dégât physique infligé à l’élémentaliste. Les personnages entourés d’un pare-feu ne subissent que la moitié des dégâts des attaques à froid, et aucun dommage si l’attaque permet une résilience de la moitié des dégâts et que le lanceur réussit.  Le personnage recouvert de flammes émet de la lumière comme une torche tamisée, dont la couleur est choisie par l’élémentaliste (bleu, violet ou orange rougeâtre).",
+        "description": "Une flamme vaporeuse et colorée entourant le personnage comme une cape de feu. Toute créature infligeant des dégâts physiques subit 1d6 points de dégâts +1 par arcane de l’élémentaliste en raison des flammes intenses mais la résilience aux sorts s’applique à ces dégâts. Cependant le sort ne bloque aucun dégât physique infligé à l’élémentaliste. Les personnages entourés d’un pare-feu ne subissent que la moitié des dégâts des attaques à froid, et aucun dommage si l’attaque permet une résilience de la moitié des dégâts et que le lanceur réussit.  Le personnage recouvert de flammes émet de la lumière comme une torche tamisée, dont la couleur est choisie par l’élémentaliste (bleu, violet ou orange rougeâtre).\n\n\n\n",
         "distance": {
             "text": "Aucune"
         },

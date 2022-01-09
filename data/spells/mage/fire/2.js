@@ -3,10 +3,10 @@ export default [
         "id": "incandescenteTrap",
         "name": "Chausse-trappes incandescentes",
         "icon": "icons/magic/fire/beam-jet-stream-yellow.webp",
-        "description": "L’élémentaliste piège une zone de 2 mètres par 2 mètres, habituellement derrière l’élémentaliste,  avec des braises qui restent chaudes jusqu’à ce que quelqu’un marche dessus, infligeant 1d6/2 points de dégâts et forçant le ou les poursuivants ayant marché sur les braises de reculer hors de la zone et de terminer leur déplacement. Ce sort est habituellement utilisé pour faciliter une fuite.",
+        "description": "L’élémentaliste piège une zone de 2 mètres par 2 mètres, habituellement derrière l’élémentaliste,  avec des braises qui restent chaudes jusqu’à ce que quelqu’un marche dessus, infligeant 1d6/2 points de dégâts et forçant le ou les poursuivants ayant marché sur les braises de reculer hors de la zone et de terminer leur déplacement. Ce sort est habituellement utilisé pour faciliter une fuite.\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -35,7 +35,7 @@ export default [
         "id": "boilingOil",
         "name": "Huile bouillante",
         "icon": "icons/magic/fire/beam-jet-stream-yellow.webp",
-        "description": "Immobilise les victimes pendant deux (2) tours sur une distance de trois (3) mètres carrés. Les victimes ne peuvent plus se déplacer.",
+        "description": "Immobilise les victimes pendant deux (2) tours sur une distance de trois (3) mètres carrés. Les victimes ne peuvent plus se déplacer.\n\n\n\n",
         "distance": {
             "text": "8 mètres + 1 m par arcane"
         },
@@ -69,7 +69,7 @@ export default [
         "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -118,7 +118,7 @@ export default [
         "description": "Fais jaillir du sol des mains de feu ressemblant à des mains de démons qui immobilisent la victime pendant 5 tours. La victime peut se déprendre en réussissant un jet de l'habileté « Évasion »",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

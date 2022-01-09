@@ -25,7 +25,7 @@ export default [
         "id": "snowBall",
         "name": "Boule de neige",
         "icon": "icons/magic/water/projectile-ice-snowball.webp",
-        "description": "L'élémentaliste fait apparaître une boule de neige dans sa main qu'il peut lancer.",
+        "description": "L'élémentaliste fait apparaître une boule de neige dans sa main qu'il peut lancer.\n\n\n\n",
         "distance": {
             "text": "8 mètres + 1 m par arcane"
         },
@@ -51,10 +51,10 @@ export default [
         "id": "mudTrap",
         "name": "Piège de boue",
         "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-        "description": "Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.",
+        "description": "Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

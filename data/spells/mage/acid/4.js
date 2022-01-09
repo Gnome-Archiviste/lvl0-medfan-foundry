@@ -6,7 +6,7 @@ export default [
         "description": "L’élémentaliste crache un jet d’acide qui touche la première personne sur son trajet.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -34,7 +34,7 @@ export default [
         "description": "L’élémentaliste déclenche une forte pluie acide qui brûle la peau et ronge l’armure.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -69,7 +69,7 @@ export default [
         "description": "L’élémentaliste envoie un jet d’acide dans les yeux d’une cible. Cela rend une tête de la victime aveugle pour un (1) tour par arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
-            "unit": "m",
+            "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
@@ -116,7 +116,7 @@ export default [
         "id": "sourireScintillant",
         "name": "Sourire scintillant",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Certains groupes de héros ont en fait été moins héroïques que leur légende. Ce sort en est partiellement la cause. Il permet d’avoir l’air plus héroïque que nature. \nLes dents de la cible deviennent d’un blanc éclatant et brillent comme celles d’une vedette de cinéma. Donne un + 1 en charisme. ",
+        "description": "Certains groupes de héros ont en fait été moins héroïques que leur légende. Ce sort en est partiellement la cause. Il permet d’avoir l’air plus héroïque que nature. \n\nLes dents de la cible deviennent d’un blanc éclatant et brillent comme celles d’une vedette de cinéma. Donne un + 1 en charisme. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

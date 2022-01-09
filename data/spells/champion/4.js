@@ -22,7 +22,7 @@ export default [
         "id": "armeEnchantee",
         "name": "Arme enchantée",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Transforme les dégâts normaux d’une arme en dégâts magiques et permet ainsi de toucher les créatures qui requièrent ce type de dégâts pour les combattre. ex: fantôme, vampires, morts-vivants.",
+        "description": "Transforme les dégâts normaux d’une arme en dégâts magiques et permet ainsi de toucher les créatures qui requièrent ce type de dégâts pour les combattre. ex: fantôme, vampires, morts-vivants.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -46,7 +46,7 @@ export default [
         "id": "guerison",
         "name": "Guérison",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Guérit un coéquipier de (4d6) points de vie. Le champion doit toucher la cible. Ne peut pas dépasser le maximum de points de vie de la cible. Ne s’applique pas au champion lui-même",
+        "description": "Guérit un coéquipier de (4d6) points de vie. Le champion doit toucher la cible. Ne peut pas dépasser le maximum de points de vie de la cible. Ne s’applique pas au champion lui-même\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -71,10 +71,10 @@ export default [
         "id": "protectionDautrui",
         "name": "Protection d’autrui",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ce sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts. ",
+        "description": "Lancé sur un coéquipier, absorbe jusqu’à 10 points de dégâts. Le champion sait que le coéquipier a été attaqué si ce dernier est touché. Ce sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts. \n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {

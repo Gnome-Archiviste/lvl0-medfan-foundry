@@ -31,10 +31,10 @@ export default [
         "id": "elementaireMineurDeGlace",
         "name": "Élémentaire mineur de glace",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste invoque un petit élémentaire de glace à partir d'une source d'eau (au moins 1 litre). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \nPHY 4, DEX 5, INT 3, CHA 3, PER 5\nHP 25, H2H : 6, Attaque : 3 de dégâts, Lance de glace = 1d6+1",
+        "description": "L’élémentaliste invoque un petit élémentaire de glace à partir d'une source d'eau (au moins 1 litre). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 5\n\nHP 25, H2H : 6, Attaque : 3 de dégâts, Lance de glace = 1d6+1",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -51,10 +51,10 @@ export default [
         "id": "mineMarineMineure",
         "name": "Mine marine mineure",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste crée une grosse bulle d'eau qui finit par exploser.",
+        "description": "L'élémentaliste crée une grosse bulle d'eau qui finit par exploser.\n\n\n\n",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
@@ -77,7 +77,7 @@ export default [
         "id": "purification",
         "name": "Purification",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste purifie un peu d'eau que la cible boit. Permets de contrer les potions négatives (comme celle de sommeil).",
+        "description": "L'élémentaliste purifie un peu d'eau que la cible boit. Permets de contrer les potions négatives (comme celle de sommeil).\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

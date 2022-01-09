@@ -28,7 +28,7 @@ export default [
         "description": "Créer un cheval puissant magique pour une (1) heure par arcane. Il est puissant, il peut tirer à lui seul un chariot contenant jusqu'à 6 personnes.",
         "distance": {
             "value": 1,
-            "unit": "m",
+            "unit": "mètre",
             "text": "1 mètre"
         },
         "duration": {

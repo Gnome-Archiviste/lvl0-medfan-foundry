@@ -45,7 +45,7 @@ export default [
         "description": "Certaines créatures telles les esprits et les démons peuvent prendre possession du corps d’un mortel et les retourner contre ses coéquipiers. Avec ce sort, le champion délivre une victime autre que lui-même d’une possession.",
         "distance": {
             "value": 3,
-            "unit": "m",
+            "unit": "mètre",
             "text": "3 mètres"
         },
         "duration": {
@@ -65,7 +65,7 @@ export default [
         "id": "premonition",
         "name": "Prémonition",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Lancer au coucher, le sort permet au champion de voir de l’information sur le futur probable durant ses rêves. Le champion se souvient de ses rêves prémonitoires. \nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la soirée. Permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
+        "description": "Lancer au coucher, le sort permet au champion de voir de l’information sur le futur probable durant ses rêves. Le champion se souvient de ses rêves prémonitoires. \n\nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la soirée. Permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\n\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
         "distance": {
             "type": "self",
             "text": "Champion"

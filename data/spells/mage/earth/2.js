@@ -3,10 +3,10 @@ export default [
         "id": "chausseTrappesNaturelles",
         "name": "Chausse-trappes naturelles",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste piège une zone de 2 mètres par 2 mètres, habituellement derrière l’élémentaliste,  avec des pointes de minéraux affutées jusqu’à ce que quelqu’un marche dessus, infligeant 1d6/2 points de dégâts et forçant le ou les poursuivants ayant marché sur les pointes à reculer hors de la zone et de terminer leur déplacement. Ce sort est habituellement utilisé pour faciliter une fuite.",
+        "description": "L’élémentaliste piège une zone de 2 mètres par 2 mètres, habituellement derrière l’élémentaliste,  avec des pointes de minéraux affutées jusqu’à ce que quelqu’un marche dessus, infligeant 1d6/2 points de dégâts et forçant le ou les poursuivants ayant marché sur les pointes à reculer hors de la zone et de terminer leur déplacement. Ce sort est habituellement utilisé pour faciliter une fuite.\n\n\n\n",
         "distance": {
             "value": 2,
-            "unit": "m",
+            "unit": "mètre",
             "text": "2 mètres"
         },
         "duration": {
@@ -107,7 +107,7 @@ export default [
         "description": "Fais jaillir des racines du sol qui immobilise la victime pendant 5 tours. La victime peut se déprendre en réussissant un test d’Évasion.",
         "distance": {
             "value": 10,
-            "unit": "m",
+            "unit": "mètre",
             "text": "10 mètres"
         },
         "duration": {
