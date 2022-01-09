@@ -147,10 +147,16 @@ export class RollSpellSkillScript extends SkillScript {
 }
 
 Hooks.on('init', () => {
-    $(document).on('click', '[data-lvl0-global-action-roll-magic-epic-fail]', async function () {
+    $(document).on('click', '[data-lvl0-global-action-roll-magic-epic-fail]', async function (ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        ev.stopImmediatePropagation()
         await RollMagicEpicFailManager.roll({async: true});
     })
     $(document).on('click', '[data-lvl0-global-action-execute-spell-action]', async function (ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        ev.stopImmediatePropagation()
         let token = canvas.tokens.controlled[0] || game.user.character?.getActiveTokens().shift();
         if (!token) {
             ui.notifications.error('Sélectionnez un token avant de faire cette action');
