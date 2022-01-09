@@ -319,12 +319,20 @@ export class SpellManager {
             value = spellDefinition.distance.value;
         }
         if (spellDefinition.distance.unit) {
-            value = value + ' ' + spellDefinition.distance.unit;
+            if (+value > 1)
+                value = value + ' ' + this.pluralize(spellDefinition.distance.unit)
+            else
+                value = value + ' ' + spellDefinition.distance.unit;
         }
 
         return value;
     }
 
+    static pluralize(unit) {
+        if (unit.endsWith('s'))
+            return unit;
+        return unit + 's';
+    }
     /**
      *
      * @param damageData
