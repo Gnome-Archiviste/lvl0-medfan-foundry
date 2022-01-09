@@ -313,11 +313,13 @@ export class SpellManager {
             }
         } else if (spellDefinition.distance.formula) {
             value = this.computeFormula(spellDefinition.distance.formula, context, actorData);
-        } else if (spellDefinition.distance.text) {
-            value = spellDefinition.distance.text;
         } else if (spellDefinition.distance.value) {
             value = spellDefinition.distance.value;
+        } else if (spellDefinition.distance.text) {
+            value = spellDefinition.distance.text;
         }
+
+
         if (spellDefinition.distance.unit) {
             if (+value > 1)
                 value = value + ' ' + this.pluralize(spellDefinition.distance.unit)
