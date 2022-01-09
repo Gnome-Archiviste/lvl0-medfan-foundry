@@ -1,26 +1,39 @@
-<div class="weapon-selector-dialog">
-    {{#each spells as |spell|}}
-        <div class="spell">
-            <div class="header">
-                <img class="icon" src="{{spell.icon}}">
-                <h2 class="name">{{spell.name}}</h2>
+<div class="weapon-selector-dialog sheet">
+    <nav class="sheet-tabs tabs">
+        Arcane:
+        {{#each levels as |level|}}
+            <a class="item" data-tab="{{level}}">{{level}}</a>
+        {{/each}}
+    </nav>
+
+    <div class="spells">
+        {{#each levels as |level|}}
+            <div class="tab" data-tab="{{level}}">
+                {{#each2 ../spellPerLevels level as |spell|}}
+                    <div class="spell">
+                        <div class="header">
+                            <img class="icon" src="{{spell.icon}}">
+                            <h2 class="name">{{spell.name}}</h2>
+                        </div>
+                        <div class="description">{{{spell.description}}}</div>
+                        <div class="stats">
+                            <div class="cost"><span class="label">Coût</span> {{spell.cost}} point de magie</div>
+                            {{spellSelectorStat 'distance' spell.distance}}
+                            {{spellSelectorStat 'duration' spell.duration}}
+                            {{spellSelectorStat 'area' spell.area}}
+                        </div>
+                        {{spellSelectorStat 'criticalSuccess' spell.criticalSuccess}}
+                        {{spellSelectorStat 'resilience' spell.resilience}}
+                        {{spellSelectorStat 'bonus' spell.bonus}}
+                        {{spellSelectorStat 'damage' spell.damage}}
+                        {{spellSelectorStat 'heal' spell.heal}}
+                        <div class="actions">
+                            <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une macro</button>
+                            <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
+                        </div>
+                    </div>
+                {{/each2}}
             </div>
-            <div class="description">{{{spell.description}}}</div>
-            <div class="stats">
-                <div class="cost"><span class="label">Coût</span> {{spell.cost}} point de magie</div>
-                {{spellSelectorStat 'distance' spell.distance}}
-                {{spellSelectorStat 'duration' spell.duration}}
-                {{spellSelectorStat 'area' spell.area}}
-            </div>
-            {{spellSelectorStat 'criticalSuccess' spell.criticalSuccess}}
-            {{spellSelectorStat 'resilience' spell.resilience}}
-            {{spellSelectorStat 'bonus' spell.bonus}}
-            {{spellSelectorStat 'damage' spell.damage}}
-            {{spellSelectorStat 'heal' spell.heal}}
-            <div class="actions">
-                <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une macro</button>
-                <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
-            </div>
-        </div>
-    {{/each}}
+        {{/each}}
+    </div>
 </div>

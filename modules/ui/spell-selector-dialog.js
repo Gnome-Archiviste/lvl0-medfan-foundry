@@ -25,10 +25,18 @@ export class SpellSelectorDialog extends Application {
     /** @override */
     getData(options = {}) {
         let data = super.getData(options);
+        let spellPerLevels = this.data.spells.reduce((previousValue, spell) => {
+            if (!(spell.cost in previousValue))
+                previousValue[spell.cost] = [];
+            previousValue[spell.cost].push(spell);
+            return previousValue;
+        }, {});
 
         return {
             ...data,
-            spells: this.data.spells
+            spells: this.data.spells,
+            levels: Object.keys(spellPerLevels),
+            spellPerLevels: spellPerLevels
         };
     }
 
@@ -83,6 +91,7 @@ export class SpellSelectorDialog extends Application {
             id: "spellSelector",
             template: "systems/lvl0mf-sheet/templates/ui/spell-selector-dialog.hbs",
             popOut: true,
+            tabs: [{navSelector: ".tabs", contentSelector: ".spells", initial: "1"}],
             width: 500,
             height: 600
         });
