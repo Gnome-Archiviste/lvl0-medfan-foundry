@@ -1,12 +1,20 @@
 {
+  "type": "module",
   "scripts": {
-    "scss": "./node_modules/.bin/node-sass templates/style.scss -o css --output-style compressed --sourceMap true",
-    "scss:dev": "./node_modules/.bin/node-sass templates/style.scss -o css --output-style compressed --sourceMap true --watch"
+    "esbuild": "esbuild",
+    "dev": "node ./build.js --watch",
+    "build": "node ./build.js"
+  },
+  "dependencies": {
+    "marked": "^4.0.9"
   },
   "devDependencies": {
+    "glob": "^7.2.0",
     "handlebars": "^4.7.6",
     "pixi.js": "^5.3.3",
     "jquery": "^3.5.1",
-    "node-sass": "^7.0.1"
+    "node-sass": "^7.0.1",
+    "esbuild": "^0.14.11",
+    "esbuild-sass-plugin": "^2.0.3"
   }
 }

@@ -1,5 +1,6 @@
 import spellsDefinitions from "../../data/spells.js";
 import {ElementsUtil} from "../utils/elements-util.js";
+import * as marked from 'marked';
 
 /**
  * @typedef SpellDefinition
@@ -165,7 +166,7 @@ export class SpellManager {
                 definition: spellDefinition,
             };
 
-            actorSpell.description = SpellManager.computeSpellDescription(actorSpell, spellDefinition, actorData, context);
+            actorSpell.description = marked.parse(SpellManager.computeSpellDescription(actorSpell, spellDefinition, actorData, context));
 
             return actorSpell;
         } catch (e) {
@@ -203,7 +204,7 @@ export class SpellManager {
 
         SpellManager.addAdditionalActions(actorSpell.definition.actions, actorData, context, updatedActorSpell)
 
-        updatedActorSpell.description = SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, actorData, context);
+        updatedActorSpell.description = marked.parse(SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, actorData, context));
 
         return updatedActorSpell;
     }
@@ -346,7 +347,6 @@ export class SpellManager {
         if (!damageData) {
             return undefined;
         }
-
         if (damageData.rollFormula) {
             let rollFormula = this.computeFormula(damageData.rollFormula, context, actorData);
             let rolledSpellStat = new RolledSpellStat(rollFormula, ElementsUtil.getName(damageData.element));

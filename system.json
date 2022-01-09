@@ -13,7 +13,7 @@
   ],
   "scripts": [],
   "styles": [
-    "css/style.css"
+    "templates/style.css"
   ],
   "packs": [],
   "languages": [
