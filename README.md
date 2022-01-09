@@ -55,4 +55,4 @@ Limited License Agreement for module development v 0.1.6.
 
 ## Development
 
-To build styles you need to run `npm run scss` or `npm run scss:dev` for the version that recompile scss on change.
+To build the package you need to run `npm run build` or `npm run dev` for the version that recompile on change.
