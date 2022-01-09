@@ -103,8 +103,10 @@ Handlebars.registerHelper('spellSelectorStat', (name, value) => {
         return '';
     if (typeof value === 'string')
         return new Handlebars.SafeString(`<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value}</div>`);
-    if (typeof value === 'object' && value instanceof RolledSpellStat)
+    if (typeof value === 'object' && (value instanceof RolledSpellStat || value.constructor.name === 'RolledSpellStat'))
         return new Handlebars.SafeString(`<div class="${name}">
             <span class="label"><i class="fas fa-dice"></i> ${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value.toDisplayDefinitionString()}
         </div>`);
+    console.error(value, typeof value === 'object', value instanceof RolledSpellStat, value.constructor.name);
+    return new Handlebars.SafeString(`<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;ERROR</div>`);
 })
