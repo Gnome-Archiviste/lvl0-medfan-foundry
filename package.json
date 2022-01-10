@@ -9,12 +9,13 @@
     "marked": "^4.0.9"
   },
   "devDependencies": {
+    "typescript": "^4.5.4",
+    "@league-of-foundry-developers/foundry-vtt-types": "^0.8.9-10",
+    "esbuild": "^0.14.11",
+    "esbuild-sass-plugin": "^2.0.3",
     "glob": "^7.2.0",
     "handlebars": "^4.7.6",
-    "pixi.js": "^5.3.3",
     "jquery": "^3.5.1",
-    "node-sass": "^7.0.1",
-    "esbuild": "^0.14.11",
-    "esbuild-sass-plugin": "^2.0.3"
+    "node-sass": "^7.0.1"
   }
 }

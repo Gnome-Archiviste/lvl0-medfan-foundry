@@ -18,9 +18,8 @@ copyAndWatchFiles([
 (async () => {
     await esbuild.build({
         entryPoints: [
-            'scripts/init.js',
-            "modules/components.js",
-            "scripts/handlebars.js",
+            'scripts/init.ts',
+            "modules/components.ts",
             "templates/style.scss",
         ],
         loader: {'.hbs': 'default'},
@@ -72,15 +71,15 @@ function watchFiles(filesPatterns, targetDirectory) {
 
     for (let watchDir of watchDirs) {
         watchers.push(fs.watch(watchDir).on("change", (event, file) => {
-            const destination = path.join(targetDirectory, watchDir, file);
-            console.log(destination);
-            if (fs.existsSync(destination))
-                fs.rmSync(destination);
-            for (let watcher of watchers) {
-                watcher.close();
+            let changedPath = path.join(watchDir, file);
+            if (fs.statSync(changedPath).isDirectory()) {
+                console.log('Directory changed: ' + changedPath);
+                for (let watcher of watchers) {
+                    watcher.close();
+                }
+                watchers = [];
+                copyAndWatchFiles(filesPatterns, targetDirectory);
             }
-            watchers = [];
-            copyAndWatchFiles(filesPatterns, targetDirectory);
         }))
     }
 }

@@ -162,23 +162,3 @@
  * @property {string} bonusStat
  * @property {string[]} extraSkillIds
  */
-/**
- * @typedef {Object} JobDefinition
- * @property {string} name
- * @property {string|null} spellCategory
- * @property {boolean} hasJobSpecialization
- * @property {number|null} maxSpecializations
- * @property {Object.<string, string>|null} specializations
- * @property {{value: number, useStatValue: string, diceCount: number}[]} healthLevels
- * @property {{value: number, useStatValue: string, diceCount: number}[]} manaLevels
- * @property {number[]} arcaneLevels
- * @property {JobRequirement[]} requirements
- * @property {number[]} specialityLevels
- */
-/**
- * @typedef {Object} JobRequirement
- * @property {string} stat
- * @property {number} min
- * @property {string[] | undefined} notRaces
- * @property {string[] | undefined} races
- */
