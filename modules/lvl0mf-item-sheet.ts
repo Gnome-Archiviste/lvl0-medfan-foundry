@@ -15,9 +15,8 @@ export class Lvl0mfItemSheet extends ItemSheet {
     }
 
     /** @override */
-    getData(options) {
+    getData(options?: Partial<ItemSheet.Options>) {
         let templateData = super.getData(options);
-        const itemData = templateData.data;
 
         let extraSkills = {};
         for (let [skillCategoryId, categorySkills] of Object.entries(skills) as [string, {[id: string]: SkillDefinition}][])
@@ -58,10 +57,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
             usedAmmunitionTypes : {
                 '': 'Aucune',
                 ...ammunitionTypes
-            },
-            // Re-define the template data references (backwards compatible)
-            item: itemData,
-            itemData: itemData.data
+            }
         }
     }
 
