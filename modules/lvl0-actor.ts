@@ -55,10 +55,11 @@ export class Lvl0Actor extends Actor {
             }
         } else {
             await this.useMana(1);
+            let specialityDefinition = RollSpecialityManager.getSpecialityFromId(specialityName);
             await ChatMessage.create({
                 type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
                 speaker: ChatMessage.getSpeaker({actor: this}),
-                content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
+                content: `<img width="48px" src="${specialityDefinition.icon}" /><strong>${specialityDefinition.name}</strong><p>${specialityDefinition.description}</p>`
             })
         }
 
