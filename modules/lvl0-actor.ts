@@ -54,6 +54,7 @@ export class Lvl0Actor extends Actor {
                 await this.useMana(1);
             }
         } else {
+            await this.useMana(1);
             await ChatMessage.create({
                 type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
                 speaker: ChatMessage.getSpeaker({actor: this}),

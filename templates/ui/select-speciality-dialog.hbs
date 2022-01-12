@@ -2,6 +2,7 @@
     <h2>Choisir une spécialité</h2>
     {{#each specialities as |speciality|}}
         <div class="speciality">
+            <img class="icon" src="{{speciality.icon}}">
             <h3 class="header">{{speciality.name}}</h3>
             <p class="description">
                 {{speciality.description}}

@@ -74,11 +74,13 @@
             <div>
                 {{#each actorData.computedData.speciality.knownSpecialities as |speciality|}}
                     <div class="speciality">
+                        <img class="icon" src="{{speciality.icon}}" />
                         <div class="label label-with-tooltip-description" data-speciality="{{speciality.id}}">
                             {{speciality.name}}
                             <div class="description"><strong>{{speciality.name}}</strong>: {{speciality.description}}</div>
                         </div>
                         <div class="action">
+                            <button data-action="createSpecialityMacro" data-speciality-id="{{speciality.id}}">Créer une macro</button>
                             <button data-action="useSpeciality" data-speciality-id="{{speciality.id}}">Utiliser</button>
                         </div>
                     </div>

@@ -168,14 +168,31 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             item.update({data: {quantity: newQuantity}}).then();
         });
 
-        html.find('[data-action]').click(ev => {
+        html.find('[data-action]').on('click', async ev => {
             switch (ev.target.dataset.action) {
                 case "levelUp":
                     this.actor.openLevelUpPopup();
                     break;
                 case "useSpeciality":
-                    this.actor.useSpeciality(ev.target.dataset.specialityId);
+                    await this.actor.useSpeciality(ev.target.dataset.specialityId);
                     break;
+                case "createSpecialityMacro": {
+                    let specialityId = ev.target.dataset.specialityId;
+                    let speciality = RollSpecialityManager.getSpecialityFromId(specialityId);
+                    const macro = await Macro.create({
+                        name: speciality.name,
+                        type: "script",
+                        img: speciality.icon,
+                        scope: "actor",
+                        command: `token.actor.useSpeciality('${specialityId}')`
+                    });
+                    if (!macro) {
+                        ui.notifications?.error('Failed to create macro');
+                        return;
+                    }
+                    await game.user?.assignHotbarMacro(macro, '');
+                    break;
+                }
                 case "selectSpeciality":
                     this.actor.openSelectSpecialityDialog();
                     break;

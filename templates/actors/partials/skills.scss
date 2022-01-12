@@ -80,8 +80,27 @@
       padding: 8px;
       .speciality {
         display: grid;
-        grid-template-columns: 1fr 80px;
+        grid-template-columns: 32px 1fr 140px;
+        grid-template-areas: "icon label action";
+        column-gap: 8px;
+        row-gap: 4px;
         align-items: center;
+        .icon {
+          grid-area: icon;
+          width: 32px;
+          height: 32px;
+        }
+        .label {
+          grid-area: label;
+        }
+        .action {
+          grid-area: action;
+          display: flex;
+          flex-direction: column;
+          > button {
+            height: 32px;
+          }
+        }
         * + * {
           margin-bottom: 8px;
         }

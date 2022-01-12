@@ -1,12 +1,19 @@
 .select-speciality-dialog {
   .speciality {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 48px 1fr auto;
     align-items: center;
-    grid-template-areas: "header action" "description action";
+    column-gap: 8px;
+    grid-template-areas: "icon header action" "icon description action";
 
     .header {
       grid-area: header;
+    }
+
+    .icon {
+      grid-area: icon;
+      width: 48px;
+      height: 48px;
     }
 
     .description {
