@@ -3,6 +3,7 @@ import {WeaponSelector} from "../../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
 import {ElementsUtil} from "../../utils/elements-util.js";
 import {EffectManager} from "../effect-manager.js";
+import {RollHelper} from '../roll-helper';
 
 /**
  * @typedef RollDamageSkillScriptData
@@ -80,7 +81,7 @@ export class RollDamageSkillScript extends SkillScript {
 
         if (success || epicFail) {
             let weaponRoll = await (new Roll(weaponRollFormula)).roll({async: true});
-            let weaponDamage = weaponRoll.total!;
+            let weaponDamage = Math.max(weaponRoll.total!, 1);
             let ammunitionDamage = 0;
             let ammunitionRoll: Roll | undefined = undefined;
 
@@ -151,7 +152,7 @@ export class RollDamageSkillScript extends SkillScript {
             <img class="img" src="${this.weapon.img}" />
             <div class="damage"><i class="fas fa-dice"></i> ${weaponDamageText}</div>`;
         if (success) {
-            message += `<div class="roll">${await weaponRoll.render()}</div>`;
+            message += `<div class="roll">${await RollHelper.renderRollSmall(weaponRoll)}</div>`;
         }
         message += `</div>`;
 
@@ -169,7 +170,7 @@ export class RollDamageSkillScript extends SkillScript {
                 <div class="damage"><i class="fas fa-dice"></i> ${ammunitionDamageText}</div>`;
 
             if (success) {
-                message += `<div class="roll">${await ammunitionRoll.render()}</div>`;
+                message += `<div class="roll">${await RollHelper.renderRollSmall(ammunitionRoll)}</div>`;
             }
             message += '</div>';
         }
