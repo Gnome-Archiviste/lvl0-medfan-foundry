@@ -48,16 +48,19 @@ export class Lvl0Actor extends Actor {
             ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", {permanent: true});
             return;
         }
-        await ChatMessage.create({
-            type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
-            speaker: ChatMessage.getSpeaker({actor: this}),
-            content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
-        })
-
-        let activeToken = this.getActiveTokens()[0];
-        if (await RollSpecialityManager.rollSpeciality(activeToken || this.token, specialityName)) {
-            await this.useMana(1);
+        if (RollSpecialityManager.needRoll(specialityName)) {
+            let activeToken = this.getActiveTokens()[0];
+            if (await RollSpecialityManager.rollSpeciality(activeToken || this.token, specialityName)) {
+                await this.useMana(1);
+            }
+        } else {
+            await ChatMessage.create({
+                type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
+                speaker: ChatMessage.getSpeaker({actor: this}),
+                content: "Utilise <strong>" + specialitiesDefinitions[specialityName].name + "</strong>"
+            })
         }
+
     }
 
     async useMana(amount) {
@@ -77,7 +80,6 @@ export class Lvl0Actor extends Actor {
     }
 
     openLevelUpPopup() {
-        /** @type {Lvl0CharacterData} */
         let actorData = this.data.data;
         let fromLevel = +actorData.level.value;
         let toLevel = fromLevel + 1;

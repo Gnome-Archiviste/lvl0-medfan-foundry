@@ -1,0 +1,80 @@
+@import "skill-roll-chat";
+
+.skill-roll-arrow-volley {
+  @extend .skill-roll-chat;
+
+  .weapon {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 48px 1fr;
+    grid-template-areas: "img name" "img damage";
+    .name {
+      grid-area: name;
+      font-size: 15px;
+      justify-self: center;
+    }
+    .damage {
+      grid-area: damage;
+      font-size: 15px;
+      justify-self: center;
+    }
+    .img {
+      grid-area: img;
+      width: 48px;
+      height: 48px;
+    }
+  }
+  .arrow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "label label" "test-result damage-result" "test-roll damage-roll";
+    align-items: center;
+
+    .label {
+      grid-area: label;
+      display: flex;
+      .arrow-number {
+        font-size: 17px;
+      }
+      flex-direction: column;
+      .ammunition {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-template-areas: "img name";
+        grid-area: ammunition;
+        align-items: center;
+        column-gap: 8px;
+        justify-self: center;
+        .ammunition-img {
+          width: 24px;
+          height: 24px;
+          grid-area: img;
+        }
+        .ammunition-name {
+          font-size: 15px;
+          grid-area: name;
+        }
+      }
+    }
+    .test-result {
+      text-align: center;
+      font-size: 15px;
+      justify-self: center;
+      grid-area: test-result;
+      > span {
+        white-space: nowrap;
+      }
+    }
+    .test-roll {
+      grid-area: test-roll;
+    }
+    .damage-result {
+      font-size: 15px;
+      justify-self: center;
+      grid-area: damage-result;
+    }
+    .damage-roll {
+      grid-area: damage-roll;
+    }
+  }
+}

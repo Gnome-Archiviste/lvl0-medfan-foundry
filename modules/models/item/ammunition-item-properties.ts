@@ -9,7 +9,7 @@ export enum AmmunitionType {
 
 export interface AmmunitionItemPropertiesData extends ItemPropertiesTemplateBase {
     extraDamage: string;
-    extraDamageEffect: number;
+    extraDamageEffect: string;
     bonus: string;
     ammunitionType: AmmunitionType;
 }
