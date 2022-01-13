@@ -24,7 +24,7 @@ export default [
     {
         "id": "waldenArmor",
         "name": "Armure magique de Walden",
-        "icon": "icons/magic/fire/beam-strike-whip-red.webp",
+        "icon": "icons/magic/defensive/shield-barrier-blue.webp",
         "description": "Donne une armure qui absorbe dix (10) points de dégâts au magicien, dure 5 tours ou dix points de dégâts (disparaît après 5 tours même si tous les points de dégâts n’ont pas été utilisés). Ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
             "text": "Enchanteur"
@@ -73,7 +73,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
+        "description": "Ce sort donne le pouvoir de mouvement [a]le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -167,7 +167,8 @@ export default [
             "text": "fait le maximum de dommage."
         },
         "damage": {
-            "text": "Inflige 1d6-2 points de dégâts"
+            "rollFormula": "return '1d6-2';",
+            "text": "1d6-2"
         }
     },
     {
@@ -186,10 +187,10 @@ export default [
             "text": "Jusqu’à 5 darts"
         },
         "bonus": {
-            "text": "Donne 1 pv à la cible"
+            "text": "Guérit 1 point de vie"
         },
         "criticalSuccess": {
-            "text": "Redonne 2 pv à la cible."
+            "text": "Guérit 2 points de vie"
         }
     },
     {

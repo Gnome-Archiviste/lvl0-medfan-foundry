@@ -2,7 +2,7 @@ export default [
     {
         "id": "armeEnchantee",
         "name": "Arme enchantée",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/weapons/daggers/dagger-magical-glowing-blue.webp",
         "description": "Transforme les dégâts normaux d’une arme en dégâts magiques et permet ainsi de toucher les créatures qui requièrent ce type de dégâts pour les combattre. ex: fantôme, vampires, morts-vivants.",
         "distance": {
             "type": "touch",
@@ -26,7 +26,7 @@ export default [
     {
         "id": "auraDePlacebo",
         "name": "Aura de Placébo",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/drinks/clay-jar-glowing-orange-blue.webp",
         "description": "Met sur un objet non magique un aura qui semble être magique ainsi qu’une utilité toute aussi fausse. ex: potion de chance sur une bouteille d’eau colorée verte.",
         "distance": {
             "text": "Touché"
@@ -46,7 +46,7 @@ export default [
     {
         "id": "boulePuante",
         "name": "Boule puante",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/unholy/orb-smoking-green.webp",
         "description": "Dans un contenant composé de 2 ½ sphères se vissant l’une sur l’autre sur lequel il a gravé un glyphe de déclenchement, l’enchanteur verse une concoction d’oeufs pourris et de satyrs puants (champignons) en bouillie, ce qui déclenche une zone nauséabonde de 2 mètres de rayon lorsque  quelqu’un s’en approche à moins de 50 cm. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
@@ -76,9 +76,9 @@ export default [
         }
     },
     {
-        "id": "braouleaDePouvoir",
-        "name": "Braoule[a] de pouvoir",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "id": "braoulebDePouvoir",
+        "name": "Braoule[b] de pouvoir",
+        "icon": "icons/tools/hand/hammer-mallet-brown.webp",
         "description": "L’enchanteur imbue d’énergie magique un objet de la vie de tous les jours, qui habituellement ne fait pas vraiment de dégât, afin que ce dernier devienne une arme qui inflige 1d6-2 de dégât. ex: balai, braoule, louche, brosse à cheveux...",
         "distance": {
             "type": "touch",
@@ -111,7 +111,7 @@ export default [
     {
         "id": "fixateurMagique",
         "name": "Fixateur magique",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/skills/wounds/blood-cells-vessels-blue.webp",
         "description": "L’enchanteur prépare une potion transparente sentant fortement le fixatif à cheveux dans un grand chaudron contenant entre autres un os à moelle, une pincée de poudre de perlépipein et de la résine de conifère (gros comme un œuf). Cette potion doit bouillir pendant 2 heures. L’enchanteur fait 5 fixateurs magiques par 2 points de mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -133,7 +133,7 @@ export default [
     {
         "id": "glypheDeDeclenchement",
         "name": "Glyphe de déclenchement",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/sundries/scrolls/scroll-runed-white.webp",
         "description": "L’enchanteur grave sur un objet (habituellement contenant un piège) un glyphe représentant un carré avec une flèche pointant vers le bas. Toute personne approchant de l’objet à moins de 50 cm déclenchera le glyphe qui ouvrira ou activera l’objet sur lequel il est gravé.\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -155,7 +155,7 @@ export default [
     {
         "id": "meteorites",
         "name": "Météorites",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/projectiles-stone-salvo.webp",
         "description": "L’enchanteur ensorcelle jusqu’à 3 petites pierres qui se mettent en orbite autour de sa tête. Lorsqu’il en a besoin, il peut s’en servir comme projectile en faisant un jet de lancer/tir comme action. Chaque pierre fait 1d6-2. L’enchanteur ne peut avoir plus de 5 météorites en orbite autour de lui.",
         "distance": {
             "text": "20 m."
@@ -180,7 +180,7 @@ export default [
     {
         "id": "objetAnime",
         "name": "Objet animé",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/tools/hand/brush-paint-pink.webp",
         "description": "L’enchanteur donne un semblant de vie à un objet qui bouge sur l’ordre de celui-ci selon des actions simples et non-offensives : nettoyer les carreaux, s’empiler, balayer la pièce, s’enrouler, etc.",
         "distance": {
             "type": "touch",
@@ -202,7 +202,7 @@ export default [
     {
         "id": "potionDeMana",
         "name": "Potion de mana",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/potions/bottle-conical-corked-blue.webp",
         "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la pulpe de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par point de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -224,7 +224,7 @@ export default [
     {
         "id": "premiersSoins",
         "name": "Premiers soins",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/life/heart-hand-gold-green.webp",
         "description": "Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas magicien lui-même. Ne peut pas dépasser le maximum de points de vie. Au lieu de guérir, ce sort fait du dommage sur les morts-vivants.",
         "distance": {
             "type": "touch",

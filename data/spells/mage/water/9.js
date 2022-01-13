@@ -54,7 +54,7 @@ export default [
     {
         "id": "murDeGlace",
         "name": "Mur de glace",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/barrier-ice-wall-snow.webp",
         "description": "Une couche de glace solide et dure apparaît. Le mur s’ancre au sol. Le mur mesure un (1) mètre de hauteur par deux (2) mètres de largeur et 10 cm de profondeur. Chacune de ses valeurs est multipliée par le niveau d’arcane de l’élémentaliste.\n\n\n\n\n\nChaque partie d’un mètre par un mètre on 10 points de vie par 10 cm d’épaisseur. Les créatures peuvent frapper le mur automatiquement et une section de mur dont les points de vie tombent à 0 est brisée. Même lorsque la glace a été percée, il reste une couche d’air glacial qui inflige 1d6 +1 point par niveau d’arcane de dégâts de froid à toute créature qui la traverse. \n\n\n\n",
         "distance": {
             "value": 2,

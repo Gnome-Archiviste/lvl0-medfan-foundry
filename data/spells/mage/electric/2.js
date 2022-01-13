@@ -46,7 +46,7 @@ export default [
     {
         "id": "etherealSkates",
         "name": "Patin d’éther",
-        "icon": "Patin d’éther",
+        "icon": "icons/skills/movement/feet-spurred-boots-brown.webp",
         "description": "Permet à la cible de se déplacer sans faire de bruit.",
         "distance": {
             "type": "touch",

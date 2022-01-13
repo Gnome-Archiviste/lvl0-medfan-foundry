@@ -33,7 +33,7 @@ export default [
         "id": "confusion",
         "name": "Confusion",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Désoriente la cible. Tous les jets avec des dés doivent être un succès exceptionnel étendu[b] (double un, deux, trois, quatre ou cinq) pour fonctionner de façon normale (ne pas le compter comme un succès exceptionnel).",
+        "description": "Désoriente la cible. Tous les jets avec des dés doivent être un succès exceptionnel étendu[e] (double un, deux, trois, quatre ou cinq) pour fonctionner de façon normale (ne pas le compter comme un succès exceptionnel).",
         "distance": {
             "type": "touch",
             "text": "Toucher"

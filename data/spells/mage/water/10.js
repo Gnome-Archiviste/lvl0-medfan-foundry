@@ -113,7 +113,7 @@ export default [
     {
         "id": "tourbillon",
         "name": "Tourbillon",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/vortex-water-whirlpool.webp",
         "description": "L'élémentaliste fait apparaître un tourbillon dans une masse d’eau qui lui permet de se déplacer, lui et son groupe, d’un point d’eau à un autre. La surface d’eau doit être au moins aussi large que le plus gros élément à faire traverser. L'élémentaliste doit être le dernier à passer pour refermer derrière lui.\n\n\n\n",
         "distance": {
             "value": 2,

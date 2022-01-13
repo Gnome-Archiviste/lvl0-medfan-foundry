@@ -24,6 +24,7 @@ export default [
         },
         "damage": {
             "rollFormula": "return '2d6+5';",
+            "element": "physic",
             "text": "2d6 +5"
         }
     },

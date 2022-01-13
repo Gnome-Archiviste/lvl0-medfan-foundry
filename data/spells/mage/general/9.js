@@ -62,7 +62,7 @@ export default [
             "text": "Magicien"
         },
         "duration": {
-            "text": "2d6 + Intelligence"
+            "text": "2d6 + niveau d’arcane"
         },
         "area": {
             "text": "Durée"

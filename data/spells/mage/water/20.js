@@ -2,7 +2,7 @@ export default [
     {
         "id": "tsunami",
         "name": "Tsunami",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/maigc/water/wave-water-blue.webp",
         "description": "L'élémentaliste fait apparaître une énorme vague d’eau magique devant lui qui déferle sur tout ce qui bouge sur 50 mètres. Tout ce qui bouge est déplacé avec la vague sur 50 mètres. Trois jets sur 4 d’Athlétique doivent être réussis pour essayer d’attraper quelque chose. \n\n\n\n",
         "distance": {
             "text": "En avant du magicien"

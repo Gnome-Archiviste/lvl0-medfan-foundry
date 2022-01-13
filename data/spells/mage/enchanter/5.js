@@ -2,7 +2,7 @@ export default [
     {
         "id": "degatsMarines",
         "name": "Dégâts marinés",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/skills/melee/blade-tip-energy-green.webp",
         "description": "Change les dégâts d’une arme en dégât d’acide provoquant 1d6 de dégât bonus, pour une scène.",
         "distance": {
             "type": "touch",

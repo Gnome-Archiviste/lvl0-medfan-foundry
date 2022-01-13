@@ -2,7 +2,7 @@ export default [
     {
         "id": "firBall",
         "name": "Boule de feu",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/fire/projectile-fireball-orange-yellow.webp",
         "description": "D’un geste, l'élémentaliste envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que l'élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane de l'élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
@@ -32,7 +32,7 @@ export default [
     {
         "id": "minorFireElemental",
         "name": "Élémentaire mineur de feu",
-        "icon": "icons/creatures/slimes/slime-face-melting-green.webp",
+        "icon": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
         "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une torche). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 6\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,
@@ -61,7 +61,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "?[f]"
+            "text": "?[i]"
         },
         "resilience": {
             "text": "Divise le dommage par deux"
@@ -77,7 +77,7 @@ export default [
     {
         "id": "retourDeFlammes",
         "name": "Retour de flammes",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defense/shield-barrier-flaming-pentagon-red.webp",
         "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance au feu jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts de feu supplémentaires, et le sort prend fin.",
         "distance": {
             "type": "self",
@@ -93,13 +93,13 @@ export default [
             "text": "Ajoute 1d6 dégâts de feu"
         },
         "criticalSuccess": {
-            "text": "Double la durée du sort[g]"
+            "text": "Double la durée du sort[j]"
         }
     },
     {
         "id": "runeDeKegan",
         "name": "Rune de Kegan",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/symbols/rune-sigil-red-orange.webp",
         "description": "Le magicien dessine sur une surface un symbole. Lorsqu’un ennemi s’en approche à moins de soixante (60) centimètres, une explosion fait deux (2) dés de dégâts sur toutes les créatures se trouvant dans un rayon de deux (2) mètres.",
         "distance": {
             "type": "touch",

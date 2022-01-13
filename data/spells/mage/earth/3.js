@@ -2,8 +2,8 @@ export default [
     {
         "id": "contreCoup",
         "name": "Contre-coup",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[h]",
+        "icon": "icons/magic/defensive/shield-barrier-faming-pentagon-orange.webp",
+        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[l]",
         "distance": {
             "text": "Une cible"
         },
@@ -23,7 +23,7 @@ export default [
     {
         "id": "elementaireMineurDePierre",
         "name": "Élémentaire mineur de pierre",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/construct-stone.webp",
         "description": "L'élémentaliste invoque un petit élémentaire de pierre  pierre à partir d'une source de terre ( au moins 1 m² ). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 5, DEX 4, INT 3, CHA 3, PER 5\n\nHP 25, H2H : 6, Attaque : 3 de dégâts\n\n\n\n",
         "distance": {
             "value": 2,
@@ -43,8 +43,8 @@ export default [
     {
         "id": "maledictionDeLacierBrulant",
         "name": "Malédiction de l’acier brûlant ",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[i]",
+        "icon": "icons/commodities/metal/barstock-heated-steel.webp",
+        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[m]",
         "distance": {
             "value": 20,
             "unit": "mètre",
@@ -71,7 +71,7 @@ export default [
     {
         "id": "peauDePierre",
         "name": "Peau de pierre",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/armor-stone-skin.webp",
         "description": "Permets d’absorber 15 points de dégâts. Le sort peut être fait sur l'élémentaliste ou un allié. L'élémentaliste doit toucher la cible. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",
@@ -93,7 +93,7 @@ export default [
     {
         "id": "rocher",
         "name": "Rocher",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/projectile-boulder-yellow.webp",
         "description": "D’un geste, l'élémentaliste envoie un rocher dans les airs qui éclate avec un rugissement à la hauteur et à la distance que l’élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). Les éclats remplissent la zone d’effet, causant 1d6 dégâts par niveau d’arcane de l’élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. Le rocher suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,

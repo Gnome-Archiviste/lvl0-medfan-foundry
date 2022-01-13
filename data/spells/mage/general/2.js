@@ -2,7 +2,7 @@ export default [
     {
         "id": "waldenArmor",
         "name": "Armure magique de Walden",
-        "icon": "icons/magic/fire/beam-strike-whip-red.webp",
+        "icon": "icons/magic/fire/beam-strike-whip-red.webp[a]",
         "description": "Donne une armure qui absorbe dix (10) points de dégâts au magicien, dure 5 tours ou dix points de dégâts (l’armure disparaît après 5 tours même si tous les points de dégâts n’ont pas été utilisés). Ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
             "type": "self",
@@ -115,7 +115,7 @@ export default [
     {
         "id": "illumination",
         "name": "Illumination",
-        "icon": "icons/sundries/survival/rope-coiled-tan.webp",
+        "icon": "icons/sundries/survival/rope-coiled-tan.webp[b]",
         "description": "Éblouis une créature (une tête seulement) (-1 aux jets d’attaque, -2 aux habiletés observer, pister et détection de la magie). ",
         "distance": {
             "value": 5,
@@ -288,7 +288,7 @@ export default [
     {
         "id": "deafness",
         "name": "Surdité",
-        "icon": "icons/svg/deaf.svg'",
+        "icon": "icons/svg/deaf.svg'[c]",
         "description": "Rends une victime sourde pour trois (3) tour par niveau d’arcane. La perception de la victime est réduite de deux et ne peut plus utiliser l’habileté Écouter.",
         "distance": {
             "value": 20,

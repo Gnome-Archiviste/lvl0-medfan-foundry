@@ -3,7 +3,7 @@ export default [
         "id": "alarm",
         "name": "Alarme",
         "icon": "icons/magic/sonic/bell-alarm-red-purple.webp",
-        "description": "Protège une zone ou une pièce d’un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancer du sort) entre dans la zone, on entend le son d’une cloche. À partir d’arcane 5, l’alarme peut être silencieuse, c’est à dire qu’ elle est entendue dans la tête du magicien et les personnes présentes durant le lancer du sort. ",
+        "description": "Protège une zone ou une pièce avec un système d’alarme magique. Lorsque quelque chose (qui n'était pas là lors du lancement du sort) entre dans la zone, on entend le son d’une cloche. À partir d’arcane 5, l’alarme peut être silencieuse, c’est à dire qu’ elle est entendue dans la tête du magicien et des personnes présentes durant le lancement du sort. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

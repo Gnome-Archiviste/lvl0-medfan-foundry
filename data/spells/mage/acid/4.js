@@ -2,7 +2,7 @@ export default [
     {
         "id": "jetDacide",
         "name": "Jet d’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/acid/projectile-stream-bubbles.webp",
         "description": "L’élémentaliste crache un jet d’acide qui touche la première personne sur son trajet.",
         "distance": {
             "value": 20,
@@ -30,7 +30,7 @@ export default [
     {
         "id": "pluieDacide",
         "name": "Pluie d’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/acid/projectile-beams-salvo-green.webp",
         "description": "L’élémentaliste déclenche une forte pluie acide qui brûle la peau et ronge l’armure.",
         "distance": {
             "value": 10,

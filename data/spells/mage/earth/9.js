@@ -2,7 +2,7 @@ export default [
     {
         "id": "depetrification",
         "name": "Dépétrification",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/strike-body-stone-crumble.webp",
         "description": "Par un touché magique qui prend quelques minutes (environs 10 tours), la dépétrification part de la zone touchée et se répand tranquillement sur le corps.",
         "distance": {
             "type": "touch",
@@ -26,7 +26,7 @@ export default [
     {
         "id": "partoutatis",
         "name": "Partoutatis",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/projectile-orb-asteroid-yellow.webp",
         "description": "Un météore tombe sur la cible. Touche tout sur un 5 mètre de rayon.",
         "distance": {
             "value": 60,

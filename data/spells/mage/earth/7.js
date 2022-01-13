@@ -22,8 +22,8 @@ export default [
     {
         "id": "elementaireMajeurDePierre",
         "name": "Élémentaire majeur de pierre",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de pierre  pierre à partir d'une source de terre ( au moins 2 m² ). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\nPHY 9, DEX 5, INT 4, CHA 6, PER 5\n\nHP 80, Armure : 2, H2H : 11, Lancer/tir : 8\n\nAttaques : H2H = 11 de dégâts, secousse: 3d6+2 (rayon 3 m.), ennemis projeté au sol",
+        "icon": "icons/magic/earth/construct-stone-long-arms.webp",
+        "description": "L'élémentaliste invoque un petit élémentaire [p]de pierre  pierre à partir d'une source de terre ( au moins 2 m² ). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\nPHY 9, DEX 5, INT 4, CHA 6, PER 5\n\nHP 80, Armure : 2, H2H : 11, Lancer/tir : 8\n\nAttaques : H2H = 11 de dégâts, secousse: 3d6+2 (rayon 3 m.), ennemis projeté au sol",
         "distance": {
             "value": 2,
             "unit": "mètre",

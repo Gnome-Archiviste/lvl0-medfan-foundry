@@ -34,7 +34,7 @@ export default [
     {
         "id": "boilingOil",
         "name": "Huile bouillante",
-        "icon": "icons/magic/fire/beam-jet-stream-yellow.webp",
+        "icon": "icons/commodities/material/liquid-orange.webp",
         "description": "Immobilise les victimes pendant deux (2) tours sur une distance de trois (3) mètres carrés. Les victimes ne peuvent plus se déplacer.\n\n\n\n",
         "distance": {
             "text": "8 mètres + 1 m par arcane"
@@ -63,8 +63,8 @@ export default [
         }
     },
     {
-        "id": "maledictionDeLacierBrulantE",
-        "name": "Malédiction de l’acier brûlant [e]",
+        "id": "maledictionDeLacierBrulantH",
+        "name": "Malédiction de l’acier brûlant [h]",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
@@ -93,7 +93,7 @@ export default [
     {
         "id": "incandescenteNuts",
         "name": "Noix incandescentes",
-        "icon": "icons/magic/fire/beam-jet-stream-yellow.webp",
+        "icon": "icons/consumables/nuts/acorn-glowing-brown.webp",
         "description": "Avec ce sort, l’élémentaliste utilise des noix (gland, faine, marron, etc) qu’il rend brûlantes. Il peut utiliser lui-même ces glands ou les offrir à ses alliés. Ces noix sont utilisées comme projectiles avec une fronde.",
         "distance": {
             "text": "1 mètre en avant de l’élémentaliste"
@@ -114,7 +114,7 @@ export default [
     {
         "id": "halfWorldGrips",
         "name": "Poignes du demi-monde",
-        "icon": "icons/magic/fire/beam-jet-stream-yellow.webp",
+        "icon": "icons/magic/unholy/hand-claw-glow-orange.webp",
         "description": "Fais jaillir du sol des mains de feu ressemblant à des mains de démons qui immobilisent la victime pendant 5 tours. La victime peut se déprendre en réussissant un jet de l'habileté « Évasion »",
         "distance": {
             "value": 10,

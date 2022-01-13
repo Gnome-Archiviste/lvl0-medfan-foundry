@@ -49,7 +49,7 @@ export default [
     {
         "id": "corrosiveContact",
         "name": "Contact corrosif",
-        "icon": "Contact corrosif",
+        "icon": "icons/magic/acid/dissolve-arm-flesh.webp",
         "description": "Les mains de l’élémentaliste sont entourées d'un liquide vert pâle scintillant qui rend leur toucher très corrosif par nature Le toucher de l’élémentaliste inflige 3d6 points de dégâts d’acide.",
         "distance": {
             "type": "touch",

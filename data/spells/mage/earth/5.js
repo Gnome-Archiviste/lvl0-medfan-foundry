@@ -2,7 +2,7 @@ export default [
     {
         "id": "affutage",
         "name": "Affûtage",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/skills/trades/smithing-tongs-metal-red.webp",
         "description": "Augmente les dégâts physiques d’une arme de mêlée pour une scène.",
         "distance": {
             "type": "touch",
@@ -44,7 +44,7 @@ export default [
             "text": "+1 d’armure, +1 éviter"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience"
+            "text": "La cible ne peut pas faire de test de résilience[o]"
         }
     },
     {

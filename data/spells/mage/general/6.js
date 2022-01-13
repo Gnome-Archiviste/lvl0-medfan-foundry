@@ -9,7 +9,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "Instantané (le retour prend 2d6 -1)"
+            "text": "Instantané (le retour prend 2d6 -1 tours)"
         },
         "area": {
             "text": "Une cible"

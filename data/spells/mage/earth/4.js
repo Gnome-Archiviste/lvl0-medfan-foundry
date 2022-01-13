@@ -2,7 +2,7 @@ export default [
     {
         "id": "plusValue",
         "name": "Plus value",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/commodities/gems/gem-rough-pendebloque-blue.webp",
         "description": "L'élémentaliste est capable d’augmenter la valeur d’une pierre précieuse de 10% par niveau d’arcane. Ne peut être fait qu’une seule fois sur une pierre.",
         "distance": {
             "type": "touch",
@@ -15,13 +15,13 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Effet maximum automatique (100%)"
+            "text": "Effet maximum automatique (100%)[n]"
         }
     },
     {
         "id": "pointesDePierre",
         "name": "Pointes de pierre",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/barrier-explosion-debris.webp",
         "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour de l'élémentaliste. L'élémentaliste peut affecter un rayon de 1 mètre par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que l'élémentaliste les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base, la zone de pointe de pierre dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "touch",

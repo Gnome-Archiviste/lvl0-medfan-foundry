@@ -70,7 +70,7 @@ export default [
     {
         "id": "partoutatis",
         "name": "Partoutatis",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/projectile-orb-asteroid-yellow.webp",
         "description": "Un météore tombe sur la cible. Touche tout sur un 5 mètre de rayon. Ne peut pas se faire à l’intérieur.",
         "distance": {
             "value": 60,

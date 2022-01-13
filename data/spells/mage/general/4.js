@@ -63,7 +63,7 @@ export default [
             "text": "2 mètres"
         },
         "resilience": {
-            "text": "Divise le dommage par deux (arrondissement favorable[a])"
+            "text": "Divise le dommage par deux (arrondissement favorable[d])"
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."

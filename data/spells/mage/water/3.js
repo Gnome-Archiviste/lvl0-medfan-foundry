@@ -2,7 +2,7 @@ export default [
     {
         "id": "icedBerries",
         "name": "Baies glacées",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp[d]",
         "description": "Avec ce sort, l’élémentaliste utilise des baies (jusqu’à 6 par sort) qui deviennent glacées. Il peut utiliser lui-même ces baies ou les offrir à ses alliés. Ces baies sont utilisées comme projectiles avec une fronde. Lorsqu’ utilisées, si le succès du tir est exceptionnel, la cible est gelée pour 2 tours.",
         "distance": {
             "text": "1 mètre en avant de l’élémentaliste"
@@ -23,7 +23,7 @@ export default [
     {
         "id": "icedSnowBall",
         "name": "dégâts",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp[e]",
         "description": "\t1d6 de glace\n\n\tAvec tir exceptionnel\n\n\t1d6 + cible gelée pendant 2 tours\n\n\t\n\n\n\nBoule de neige glacée\n\nL'élémentaliste fait apparaître une boule de neige très dure dans sa main qu'il peut lancer. Peut figer la cible pour un tour.",
         "distance": {
             "value": 10,
@@ -53,8 +53,8 @@ export default [
     },
     {
         "id": "blotter",
-        "name": "Buvard[c]",
-        "icon": "icons/equipment/shield/kite-wooden-oak-glow.webp",
+        "name": "Buvard[f]",
+        "icon": "icons/magic/defensive/shield-barrier-falming-pentagon-blue.webp",
         "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts de glace supplémentaires.",
         "distance": {
             "type": "touch",
@@ -77,7 +77,7 @@ export default [
         "id": "cryogenics",
         "name": "Cryogénie",
         "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant un mois[d]. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
+        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant un mois[g]. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -98,7 +98,7 @@ export default [
     {
         "id": "minorWaterElemental",
         "name": "Élémentaire mineur d'eau",
-        "icon": "icons/magic/lightning/projectile-orb-blue.webp",
+        "icon": "icons/magic/water/elemental-water.webp",
         "description": "L’élémentaliste invoque un petit élémentaire d’eau à partir d'une source d'eau (au moins 1 litre.). L'élémentaire mineur obéit à des ordres simples et peut même se battre mais ne possède pas beaucoup de points de vie. \n\nPHY 4, DEX 5, INT 3, CHA 3, PER 5\n\nHP 20, H2H : 5, Attaque : 3 de dégâts",
         "distance": {
             "value": 2,

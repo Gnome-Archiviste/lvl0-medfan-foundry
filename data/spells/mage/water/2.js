@@ -50,7 +50,7 @@ export default [
     {
         "id": "mudTrap",
         "name": "Piège de boue",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/nature/trap-spikes-thorns-green.webp",
         "description": "Immobilise les victimes pendant trois (3) tours sur une distance de 3 mètres carrés. Les victimes ne peuvent plus se déplacer.\n\n\n\n",
         "distance": {
             "value": 10,
@@ -80,7 +80,7 @@ export default [
     {
         "id": "underWaterBreath",
         "name": "Respirer sous l’eau",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/water/bubbles-air-water-blue.webp",
         "description": "La cible de ce sort peut respirer sous l’eau librement pendant 10 tours plus un tour par niveau d’arcane de l’élémentaliste.",
         "distance": {
             "type": "touch",
@@ -99,7 +99,7 @@ export default [
     {
         "id": "source",
         "name": "Source",
-        "icon": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+        "icon": "icons/magic/water/water-hand.webp",
         "description": "En touchant le sol, l'élémentaliste fait jaillir une petite source. Ceux qui en boivent se font guérir, recevant quelques points de vie. Après un tour, la source se tarit. Si l'eau est récoltée, elle devient de l'eau ordinaire.",
         "distance": {
             "type": "touch",
