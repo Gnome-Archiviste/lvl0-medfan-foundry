@@ -80,18 +80,23 @@
       padding: 8px;
       .speciality {
         display: grid;
-        grid-template-columns: 32px 1fr 140px;
-        grid-template-areas: "icon label action";
+        grid-template-columns: 48px 1fr 120px;
+        grid-template-areas: "icon label action" "icon cost action";
         column-gap: 8px;
         row-gap: 4px;
         align-items: center;
         .icon {
           grid-area: icon;
-          width: 32px;
-          height: 32px;
+          width: 48px;
+          height: 48px;
+        }
+        .cost {
+          grid-area: cost;
+          align-self: flex-start;
         }
         .label {
           grid-area: label;
+          align-self: flex-end;
         }
         .action {
           grid-area: action;

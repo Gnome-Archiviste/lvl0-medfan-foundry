@@ -1,0 +1,29 @@
+.speciality-chat {
+  display: flex;
+  flex-direction: column;
+
+  > * + * {
+    margin-bottom: 8px;
+  }
+
+  .title {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 48px 1fr;
+    grid-template-areas: "img name";
+    column-gap: 8px;
+    font-size: 20px;
+
+    .name {
+      grid-area: name;
+    }
+
+    .img {
+      grid-area: img;
+    }
+  }
+
+  .description {
+    font-size: 15px;
+  }
+}

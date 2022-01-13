@@ -4,12 +4,7 @@
 @import 'ui/select-speciality-dialog';
 @import 'ui/spell-selector-dialog';
 @import 'ui/weapon-selector-dialog';
-@import 'chat/critical-failure-chat';
-@import 'chat/skill-roll-damage-chat';
-@import 'chat/skill-roll-arrow-volley';
-@import 'chat/skill-roll-spell-chat';
-@import 'chat/skill-roll-chat';
-@import 'chat/skill-shield-damage-roll-chat';
+@import 'chat/chat';
 
 input[type=text] {
   border: 0;
