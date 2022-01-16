@@ -117,7 +117,7 @@ export class GenerateMissingLevelUpDataDialog extends Application {
         for (let level of this.dialogData.levelWithMissingData) {
             this.levelsData[level] = {
                 health: await this.getValueOrDoRoll(this.dialogData.additionalHealth[level]),
-                mana: await this.getValueOrDoRoll(this.dialogData.additionalHealth[level]),
+                mana: await this.getValueOrDoRoll(this.dialogData.additionalMana[level]),
                 additionalStat: undefined,
                 money: 0
             }
