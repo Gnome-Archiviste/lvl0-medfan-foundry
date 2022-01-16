@@ -80,7 +80,7 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
         let canSelectRace = this.actor.data.data.level.value === 0 || game.user?.isGM;
         let canChangeStats = this.actor.data.data.level.value === 0;
         let canEditModifiers = game.user?.isGM;
-        let canEditLevel = game.user?.isGM;
+        let canEditLevel = game.user?.isGM && this.actor.data.data.level.value > 0;
         let canLevelUp = this.canLevelUp(this.actor.data.data);
         let nonEquipableItemType = {
             'misc': true,
@@ -172,6 +172,9 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             switch (ev.target.dataset.action) {
                 case "levelUp":
                     this.actor.openLevelUpPopup();
+                    break;
+                case "generateMissingLevelUpData":
+                    this.actor.openGenerateMissingLevelUpDataPopup();
                     break;
                 case "useSpeciality":
                     await this.actor.useSpeciality(ev.target.dataset.specialityId);

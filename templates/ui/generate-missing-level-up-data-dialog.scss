@@ -1,0 +1,12 @@
+.generate-missing-level-up-data-dialog {
+
+  .actions {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .checkbox {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}

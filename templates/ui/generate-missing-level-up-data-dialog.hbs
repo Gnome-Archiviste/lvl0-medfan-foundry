@@ -1,0 +1,27 @@
+<div class="generate-missing-level-up-data-dialog">
+    <h3>Calcul des stats manquantes</h3>
+    <div>
+        <div>
+            Ajoute de <strong>{{totalNewHealth}}</strong> points de vie
+        </div>
+        <div>
+            Ajoute de <strong>{{totalNewMana}}</strong> points de magie
+        </div>
+    </div>
+    <div>
+        {{#each levelWithAdditionalPointInStat as |level|}}
+            <div>
+                <div class="form-group">
+                    <label>Gain d'un point dans une caractéristique : Niveau {{level}}</label>
+                    <div class="form-fields">
+                          {{radioBoxes (concat2 "additionalStat" level) ../stats checked=(lookup (lookup ../levelsData level) 'additionalStat') localize=false}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="actions">
+        <button data-action="cancel">Annuler</button>
+        <button data-action="confirm" {{#if (not ready)}}disabled{{/if}}>Valider</button>
+    </div>
+</div>

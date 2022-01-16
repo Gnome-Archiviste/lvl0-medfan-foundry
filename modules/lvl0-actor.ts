@@ -8,9 +8,12 @@ import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clu
 import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer.js";
 import {LevelUpDialog} from "./ui/level-up-dialog.js";
 import {SelectSpecialityDialog} from "./ui/select-speciality-dialog.js";
-import specialitiesDefinitions from './../data/specialities.js'
 import {RollSpecialityManager} from "./managers/roll-speciality-manager.js";
 import {LevelData, Lvl0CharacterData} from './models/character/character';
+import {
+    GenerateMissingLevelUpDataDialog,
+    GenerateMissingLevelUpDataDialogData
+} from './ui/generate-missing-level-up-data-dialog';
 
 
 const actorDataComputers = [
@@ -86,6 +89,52 @@ export class Lvl0Actor extends Actor {
                 health: {value: Math.min(this.data.data.health.value + amount, this.data.data.health.max)}
             }
         }, {diff: true});
+    }
+
+    openGenerateMissingLevelUpDataPopup(): void {
+        let levelWithMissingData: number[] = [];
+        for (let lvl = 1; lvl < this.data.data.level.value; lvl++) {
+            if (!(lvl in this.data.data.levelUpData)) {
+                levelWithMissingData.push(lvl);
+            }
+        }
+
+        if (levelWithMissingData.length === 0) {
+            ui.notifications?.warn('Tout les level ont déjà été calculé');
+            return;
+        }
+
+        let dialogData: GenerateMissingLevelUpDataDialogData = {
+            levelWithAdditionalPointInStat: [],
+            levelWithMissingData: levelWithMissingData,
+            actor: this,
+            additionalMana: {},
+            additionalHealth: {}
+        }
+
+        for (let lvl of levelWithMissingData) {
+            dialogData.additionalHealth[lvl] = this.data.data.computedData.bases.job.healthLevels[lvl - 1];
+            dialogData.additionalMana[lvl] = this.data.data.computedData.bases.job.manaLevels[lvl - 1];
+            if (lvl % 20 == 0)
+                dialogData.levelWithAdditionalPointInStat.push(lvl);
+        }
+
+        let levelUpDialog = new GenerateMissingLevelUpDataDialog(dialogData, async (missingLevelUpData: { [level: number]: LevelData }) => {
+            let totalNewHealth = 0;
+            let totalNewMana = 0;
+            for (let data of Object.values(missingLevelUpData)) {
+                totalNewHealth += data.health;
+                totalNewMana += data.mana;
+            }
+            await this.update({
+                data: {
+                    health: {value: this.data.data.health.value + totalNewHealth},
+                    mana: {value: this.data.data.mana.value + totalNewMana},
+                    levelUpData: missingLevelUpData
+                }
+            }, {diff: true});
+        });
+        levelUpDialog.render(true);
     }
 
     openLevelUpPopup() {
