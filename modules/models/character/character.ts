@@ -72,6 +72,7 @@ export interface LevelData {
     health: number;
     mana: number;
     money: number;
+    additionalStat?: string;
 }
 
 

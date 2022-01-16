@@ -27,8 +27,8 @@
 
   .level-up-info {
     display: grid;
-    grid-template-areas: "level health mana";
-    grid-template-columns: 80px 150px 150px;
+    grid-template-areas: "level health mana stat";
+    grid-template-columns: 80px 150px 150px 80px;
 
     &.header {
       font-weight: bold;
@@ -38,6 +38,10 @@
       grid-area: level;
     }
 
+    .stat {
+      grid-area: stat;
+    }
+
     .health {
       grid-area: health;
     }
@@ -45,6 +49,14 @@
     .mana {
       grid-area: mana;
     }
+  }
+
+  .separator {
+    height: 1px;
+    background-color: black;
+    opacity: 0.25;
+    width: 480px;
+    margin-bottom: 4px;
   }
 }
 

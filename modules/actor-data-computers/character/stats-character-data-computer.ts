@@ -1,6 +1,6 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
 import {Lvl0ActorEffect} from '../../managers/effects/lvl0-actor-effect';
-import {CharacterModifierInfo} from '../../models/character/character';
+import {CharacterModifierInfo, LevelData, Lvl0CharacterData} from '../../models/character/character';
 
 export class StatsCharacterDataComputer extends CharacterDataComputer {
     static statsNames = ['phy', 'dex', 'int', 'cha', 'per'];
@@ -8,7 +8,7 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
     /**
      * @override
      */
-    compute(actorData, actor) {
+    compute(actorData: Lvl0CharacterData, actor) {
         let bonusPerStat = {};
         let baseStatModifier = {};
         let armorMalus = 0;
@@ -47,6 +47,16 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             }
         }
 
+        let levelUpAdditionalStats:  {[stat: string]: number} = {};
+        for (let i = 1; i <= actorData.level.value; i++) {
+            if (!actorData.levelUpData)
+                continue;
+            let levelData = actorData.levelUpData[i] as LevelData;
+            if (levelData?.additionalStat) {
+                levelUpAdditionalStats[levelData.additionalStat] = 1;
+            }
+        }
+
         for (let statsName of StatsCharacterDataComputer.statsNames) {
             let bonus = bonusPerStat[statsName] || 0;
             let baseStatValue = actorData.baseStats[statsName].value + (baseStatModifier[statsName] || 0);
@@ -55,6 +65,9 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             if (statsName === 'dex') {
                 armor = armorMalus;
                 actorData.computedData.stats.baseStats[statsName].armor = armor;
+            }
+            if (statsName in levelUpAdditionalStats) {
+                baseStatValue += levelUpAdditionalStats[statsName];
             }
             actorData.computedData.stats.baseStats[statsName].base = baseStatValue;
             actorData.computedData.stats.baseStats[statsName].bonus = bonus;

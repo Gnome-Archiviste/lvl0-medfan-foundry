@@ -10,6 +10,7 @@ import {LevelUpDialog} from "./ui/level-up-dialog.js";
 import {SelectSpecialityDialog} from "./ui/select-speciality-dialog.js";
 import specialitiesDefinitions from './../data/specialities.js'
 import {RollSpecialityManager} from "./managers/roll-speciality-manager.js";
+import {LevelData, Lvl0CharacterData} from './models/character/character';
 
 
 const actorDataComputers = [
@@ -91,6 +92,10 @@ export class Lvl0Actor extends Actor {
         let actorData = this.data.data;
         let fromLevel = +actorData.level.value;
         let toLevel = fromLevel + 1;
+        if (toLevel > 70) {
+            ui.notifications?.warn('Niveau maximum atteint');
+            return;
+        }
 
         if (toLevel === 1) {
             for (let requirement of actorData.computedData.bases.job.requirements) {
@@ -108,16 +113,18 @@ export class Lvl0Actor extends Actor {
         let additionalHealth = actorData.computedData.bases.job.healthLevels[toLevel - 1];
         let additionalMana = actorData.computedData.bases.job.manaLevels[toLevel - 1];
         let hasNewSpeciality = actorData.computedData.bases.job.specialityLevels.indexOf(toLevel) === -1;
+        let hasAdditionalPointInStat = (toLevel % 20) == 0;
 
         let levelUpData = {
             toLevel,
             additionalHealth,
             additionalMana,
             hasNewSpeciality,
+            hasAdditionalPointInStat,
             actor: this
         }
 
-        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, async (levelUpResultData) => {
+        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, async (levelUpResultData: LevelData) => {
             await this.doLevelUp(toLevel, actorData, levelUpResultData);
             if (toLevel === 1) {
                 await this.addInitialInventory();
@@ -137,13 +144,7 @@ export class Lvl0Actor extends Actor {
         levelUpDialog.render(true);
     }
 
-    /**
-     * @param {number} level
-     * @param {Lvl0CharacterData} actorData
-     * @param {LevelData} levelUpResultData
-     * @return {Promise<void>}
-     */
-    async doLevelUp(level, actorData, levelUpResultData) {
+    async doLevelUp(level: number, actorData: Lvl0CharacterData, levelUpResultData: LevelData): Promise<void> {
         await this.update({
             data: {
                 level: {value: level},

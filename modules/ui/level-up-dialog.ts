@@ -1,10 +1,12 @@
 import {LevelData, Statistics} from '../models/character/character';
 import {Lvl0Actor} from '../lvl0-actor';
+import {StatsCharacterDataComputer} from '../actor-data-computers/character/stats-character-data-computer';
 
 export interface LevelUpDialogData {
     toLevel: number;
     additionalHealth: { value?: number, useStatValue?: string, diceCount?: number };
     additionalMana: { value?: number, useStatValue?: string, diceCount?: number };
+    hasAdditionalPointInStat: boolean;
     hasNewSpeciality: boolean;
     actor: Lvl0Actor;
 }
@@ -13,15 +15,19 @@ export type CompleteLevelUpDialog = (selectedSpecialityName?: LevelData) => void
 
 export interface LevelUpDialogApplicationData {
     toLevel: number;
+    hasAdditionalPointInStat: boolean;
+    additionalStat?: string;
     additionalHealth: { value?: number, diceCount?: number };
     additionalMana: { value?: number, diceCount?: number };
     hasNewSpeciality: boolean;
     ready: boolean;
     diceData: object;
+    stats: {[statName: string]: string}
 }
 
 export class LevelUpDialog extends Application {
     public diceData = {};
+    public additionalStat?: string;
 
     constructor(
         private readonly levelUpData: LevelUpDialogData,
@@ -31,9 +37,27 @@ export class LevelUpDialog extends Application {
         super();
     }
 
+    _onKeyDown(event) {
+        // Close dialog
+        if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            return this.close();
+        }
+    }
+
     getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
+        // FIXME: We should remove from this list stats already at max value, and handle special case when character is already maxed on every stat
+        let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
+            previousValue[currentValue] = currentValue;
+            return previousValue;
+        }, {});
+
         let data = <LevelUpDialogApplicationData>{
-            ...super.getData(options), ...this.levelUpData,
+            ...super.getData(options),
+            ...this.levelUpData,
+            additionalStat: this.additionalStat,
+            stats: availableLevelUStats,
             diceData: {...this.diceData},
             ready: false
         };
@@ -58,6 +82,9 @@ export class LevelUpDialog extends Application {
                 if (!this.diceData['mana-' + i])
                     ready = false;
             }
+        }
+        if (data.hasAdditionalPointInStat && !data.additionalStat) {
+            ready = false;
         }
 
         data.ready = ready;
@@ -87,7 +114,7 @@ export class LevelUpDialog extends Application {
         }
     }
 
-    getCompleteData() {
+    getCompleteData(): LevelData {
         let data = this.getData();
         let health = data.additionalHealth.value || 0;
         let mana = data.additionalMana.value || 0;
@@ -112,7 +139,8 @@ export class LevelUpDialog extends Application {
         return {
             health: health,
             mana: mana,
-            money: money
+            money: money,
+            additionalStat: this.additionalStat
         }
     }
 
@@ -125,8 +153,24 @@ export class LevelUpDialog extends Application {
     activateListeners(html) {
         super.activateListeners(html);
 
-        // Update Inventory Item
-        html.find('[data-action]').click(ev => {
+        html.find('[data-dice-money]').on('change', ev => {
+            this.updateDiceData(html);
+            this.render(true)
+        });
+        html.find('[data-dice-health]').on('change', ev => {
+            this.updateDiceData(html);
+            this.render(true)
+        });
+        html.find('[data-dice-mana]').on('change', ev => {
+            this.updateDiceData(html);
+            this.render(true)
+        });
+        html.find('[name="additionalStat"]').on('change', ev => {
+            this.additionalStat = ev.target.value;
+            this.render(true)
+        });
+
+        html.find('[data-action]').on('click', ev => {
             switch (ev.target.dataset["action"]) {
                 case 'cancel': {
                     this.close();

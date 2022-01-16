@@ -22,7 +22,7 @@
                 Gain de {{additionalHealth.diceCount}}d6 point(s) de vie
                 <div class="inputs">
                     {{#times additionalHealth.diceCount}}
-                        <input type="number" value="{{lookup ../diceData (concat2 'health-' @this) }}" data-dice-health="{{this}}"/>
+                        <input type="number" data-dtype="Number" name="additionalHealth.value" value="{{lookup ../diceData (concat2 'health-' @this) }}" data-dice-health="{{this}}"/>
                     {{/times}}
                     <button data-action="rollHealthDice">Rouler les dés</button>
                 </div>
@@ -40,9 +40,17 @@
                 </div>
                 <div class="inputs">
                     {{#times additionalMana.diceCount}}
-                        <input type="number" value="{{lookup ../diceData (concat2 'mana-' @this) }}" data-dice-mana="{{this}}"/>
+                        <input type="number" data-dtype="Number" name="additionalMana.value" value="{{lookup ../diceData (concat2 'mana-' @this) }}" data-dice-mana="{{this}}"/>
                     {{/times}}
                     <button data-action="rollManaDice">Rouler les dés</button>
+                </div>
+            </div>
+        {{/if}}
+        {{#if hasAdditionalPointInStat}}
+            <div class="form-group">
+                <label>Gain d'un point dans une caractéristique</label>
+                <div class="form-fields">
+                    {{radioBoxes "additionalStat" stats checked=additionalStat localize=false}}
                 </div>
             </div>
         {{/if}}

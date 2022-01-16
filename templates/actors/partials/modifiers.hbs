@@ -72,13 +72,18 @@
             <div class="level">Niveau</div>
             <div class="health">Pt de vie additionnel</div>
             <div class="mana">Pt de magie additionnel</div>
+            <div class="stat">Caractéristique</div>
         </div>
         {{#each actorData.levelUpData as |levelInfo|}}
             <div class="level-up-info">
                 <div class="level">{{inc @index}}</div>
                 <div class="health">{{levelInfo.health}}</div>
                 <div class="mana">{{levelInfo.mana}}</div>
+                <div class="stat">{{levelInfo.additionalStat}}</div>
             </div>
+            {{#ifIsNthItem nth=4}}
+                <div class="separator"></div>
+            {{/ifIsNthItem}}
         {{/each}}
     </div>
 </div>
