@@ -2,6 +2,8 @@ import fs from 'fs';
 import {spawn} from 'child_process';
 
 function incrementVersion(version, type) {
+    if (version.startsWith('v'))
+        version = version.substring(1);
     const splitVersion = version.split('.');
     switch (type) {
         case 'patch':
@@ -26,5 +28,5 @@ system.version = newVersion;
 fs.writeFileSync('system.json', JSON.stringify(system, null, '  '));
 const gitCommit = spawn('git', ['commit', '-am', 'Update to version ' + newVersion]);
 gitCommit.on('close', (data) => {
-    spawn('git', ['tag', newVersion]);
+    spawn('git', ['tag', 'v' + newVersion]);
 });
