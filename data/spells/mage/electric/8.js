@@ -9,7 +9,7 @@ export default [
             "text": "Élémentaliste"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 8 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 8 * context.arcaneLevel",
             "unit": "tours",
             "text": "8 tours par niveau d’arcane"
         },

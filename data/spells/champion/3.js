@@ -9,7 +9,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 3 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 3 * context.arcaneLevel",
             "unit": "jours",
             "text": "3 jours par niveau d’arcane"
         },

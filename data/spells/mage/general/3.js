@@ -25,7 +25,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 3 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 3 * context.arcaneLevel",
             "unit": "jours",
             "text": "3 jours par niveau d’arcane"
         },
@@ -115,7 +115,7 @@ export default [
             "text": "5 mètres + (3 mètres par niveau d’arcane)."
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },

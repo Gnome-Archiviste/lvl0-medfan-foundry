@@ -97,7 +97,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "minutes",
             "text": "1 minute par niveau d’arcane"
         },

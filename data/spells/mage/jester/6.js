@@ -10,7 +10,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },
@@ -61,7 +61,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },
@@ -89,7 +89,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 2 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 2 * context.arcaneLevel",
             "unit": "tours",
             "text": "2 tours par niveau d’arcane"
         },

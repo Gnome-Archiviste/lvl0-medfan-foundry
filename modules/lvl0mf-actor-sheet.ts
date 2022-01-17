@@ -202,10 +202,7 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             }
             switch (ev.currentTarget.dataset.itemAction) {
                 case 'use':
-                    let token = this.actor.token;
-                    if (token) {
-                        item.use(token);
-                    }
+                    await item.use();
                     break;
                 case 'share':
                     let copy = await Item.create(item.toObject());

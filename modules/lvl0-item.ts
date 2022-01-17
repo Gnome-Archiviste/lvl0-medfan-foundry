@@ -1,3 +1,5 @@
+import {ScrollHelper} from './managers/spell/scroll-helper';
+
 declare global {
     interface DocumentClassConfig {
         Item: typeof Lvl0Item;
@@ -31,7 +33,9 @@ export class Lvl0Item extends Item {
         return false;
     }
 
-    use(token: TokenDocument) {
-        // FIXME
+    async use(): Promise<void> {
+        if (this.data.type === 'scroll') {
+            await ScrollHelper.useScroll(this);
+        }
     }
 }

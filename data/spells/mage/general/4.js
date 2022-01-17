@@ -204,7 +204,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * context.arcaneLevel",
             "unit": "minutes",
             "text": "Une minute par niveau du magicien"
         },

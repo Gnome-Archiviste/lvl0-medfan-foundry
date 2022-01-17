@@ -94,7 +94,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience."
         },
         "damage": {
-            "rollFormula": "return context.actorData.computedData.magic.arcaneLevel + 'd6';",
+            "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "fire",
             "text": "1d6 par niveau d’arcane"
         }
@@ -155,7 +155,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience."
         },
         "damage": {
-            "rollFormula": "return '2d6+' + (4 * context.actorData.computedData.magic.arcaneLevel);",
+            "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "fire",
             "text": "2d6 + (4 par niveau d’arcane)"
         }
@@ -169,7 +169,7 @@ export default [
             "text": "10 mètres par niveau d’arcane"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 5 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 5 * context.arcaneLevel",
             "unit": "tours",
             "text": "5 tours par niveau d’arcane"
         },

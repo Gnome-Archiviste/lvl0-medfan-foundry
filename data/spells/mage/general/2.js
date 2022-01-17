@@ -72,7 +72,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 5 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 5 * context.arcaneLevel",
             "unit": "tours",
             "text": "5 tours par niveau d’arcane"
         },

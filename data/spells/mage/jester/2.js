@@ -112,7 +112,7 @@ export default [
             "text": "Ajoute 1d6 de dégât car une cerise confite s’additionne à la confection."
         },
         "damage": {
-            "rollFormula": "return '(1d6/2) * ' + context.actorData.computedData.magic.arcaneLevel;",
+            "rollFormula": "return '(1d6/2) * ' + context.arcaneLevel;",
             "text": "1d6/2 par niveau d’arcane"
         }
     },
@@ -153,7 +153,7 @@ export default [
             "text": "Touché"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "heures",
             "text": "1 heure par niveau d’arcane"
         },
@@ -176,7 +176,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "heures",
             "text": "1 heure par niveau d’arcane"
         },
@@ -201,7 +201,7 @@ export default [
             "text": "10 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },

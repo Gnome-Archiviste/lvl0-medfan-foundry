@@ -124,7 +124,7 @@ export default [
             "text": "Ignore l’armure"
         },
         "damage": {
-            "rollFormula": "return context.actorData.computedData.magic.arcaneLevel + 'd6';",
+            "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "electric",
             "text": "1d6 par niveau d’arcane"
         }

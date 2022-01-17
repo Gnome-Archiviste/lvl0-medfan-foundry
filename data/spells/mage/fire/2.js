@@ -73,7 +73,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return 2 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 2 * context.arcaneLevel;",
             "unit": "tours",
             "text": "2 tours par niveau d’arcane"
         },

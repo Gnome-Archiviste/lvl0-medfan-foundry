@@ -60,7 +60,7 @@ export default [
             "text": "Aucun test de résilience possible"
         },
         "damage": {
-            "rollFormula": "return '2d6+' + (4 * context.actorData.computedData.magic.arcaneLevel);",
+            "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "acid",
             "text": "2d6 + (4 par niveau d’arcane)"
         }

@@ -4,7 +4,12 @@ import * as marked from 'marked';
 import {ActorSpell, ActorSpellActionDefinition, SpellActionDefinition, SpellDefinition} from './spell-definition.model';
 import {Lvl0CharacterData} from '../../models/character/character';
 import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
-import {RollResult} from '../roll-helper';
+
+export interface SpellContext {
+    arcaneLevel: number;
+    epicFail?: boolean;
+    criticalSuccess?: boolean;
+}
 
 export class RolledSpellStat {
     private _roll?: Roll;
@@ -60,40 +65,39 @@ export class SpellManager {
         level: number,
         spellCategory: string,
         speciality: string,
-        actorData: Lvl0CharacterData,
-        context?
+        context: SpellContext
     ): Promise<ActorSpell> {
         let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
 
         try {
             let actorSpell: ActorSpell = {
                 id: spellId,
-                actions: await SpellManager.computeActions(spellDefinition.actions, actorData, context),
-                area: await SpellManager.computeComplex(spellDefinition.area, actorData, context),
-                bonus: await SpellManager.computeComplex(spellDefinition.bonus, actorData, context),
+                actions: await SpellManager.computeActions(spellDefinition.actions, context),
+                area: await SpellManager.computeComplex(spellDefinition.area, context),
+                bonus: await SpellManager.computeComplex(spellDefinition.bonus, context),
                 cost: level,
-                criticalSuccess: await SpellManager.computeComplex(spellDefinition.criticalSuccess, actorData, context),
-                damage: await SpellManager.computeDamageFormula(spellDefinition.damage, actorData, context),
+                criticalSuccess: await SpellManager.computeComplex(spellDefinition.criticalSuccess, context),
+                damage: await SpellManager.computeDamageFormula(spellDefinition.damage, context),
                 description: "",
-                distance: SpellManager.computeSpellDistance(spellDefinition, actorData, context),
-                duration: await SpellManager.computeComplex(spellDefinition.duration, actorData, context),
-                heal: await SpellManager.computeHealFormula(spellDefinition.heal, actorData, context),
+                distance: SpellManager.computeSpellDistance(spellDefinition, context),
+                duration: await SpellManager.computeComplex(spellDefinition.duration, context),
+                heal: await SpellManager.computeHealFormula(spellDefinition.heal, context),
                 icon: spellDefinition.icon,
                 name: spellDefinition.name,
-                resilience: await SpellManager.computeComplex(spellDefinition.resilience, actorData, context),
+                resilience: await SpellManager.computeComplex(spellDefinition.resilience, context),
                 definition: spellDefinition,
             };
-            actorSpell.description = marked.parse(SpellManager.computeSpellDescription(actorSpell, spellDefinition, actorData, context));
+            actorSpell.description = marked.parse(SpellManager.computeSpellDescription(actorSpell, spellDefinition, context));
 
             return actorSpell;
         } catch (e) {
             console.error(`Error while processing spell ${spellId}`, e);
             ui.notifications?.error(`Erreur avec le sort ${spellId}`);
-            return SpellManager.safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, actorData, context);
+            return SpellManager.safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, context);
         }
     }
 
-    static async safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, actorData, context): Promise<ActorSpell> {
+    static async safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, context: SpellContext): Promise<ActorSpell> {
         let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
         return {
             id: spellId,
@@ -105,23 +109,23 @@ export class SpellManager {
         };
     }
 
-    static async reComputeSpellAfterRoll(actorSpell, actorData, context) {
+    static async reComputeSpellAfterRoll(actorSpell, context: SpellContext) {
         let updatedActorSpell = {
             ...actorSpell,
-            actions: await SpellManager.computeActions(actorSpell.definition.actions, actorData, context),
-            area: await SpellManager.computeComplex(actorSpell.definition.area, actorData, context),
-            bonus: await SpellManager.computeComplex(actorSpell.definition.bonus, actorData, context),
-            criticalSuccess: await SpellManager.computeComplex(actorSpell.definition.criticalSuccess, actorData, context),
-            damage: await SpellManager.computeDamageFormula(actorSpell.definition.damage, actorData, context),
-            distance: SpellManager.computeSpellDistance(actorSpell.definition, actorData, context),
-            duration: await SpellManager.computeComplex(actorSpell.definition.duration, actorData, context),
-            heal: await SpellManager.computeHealFormula(actorSpell.definition.heal, actorData, context),
-            resilience: await SpellManager.computeComplex(actorSpell.definition.resilience, actorData, context),
+            actions: await SpellManager.computeActions(actorSpell.definition.actions, context),
+            area: await SpellManager.computeComplex(actorSpell.definition.area, context),
+            bonus: await SpellManager.computeComplex(actorSpell.definition.bonus, context),
+            criticalSuccess: await SpellManager.computeComplex(actorSpell.definition.criticalSuccess, context),
+            damage: await SpellManager.computeDamageFormula(actorSpell.definition.damage, context),
+            distance: SpellManager.computeSpellDistance(actorSpell.definition, context),
+            duration: await SpellManager.computeComplex(actorSpell.definition.duration, context),
+            heal: await SpellManager.computeHealFormula(actorSpell.definition.heal, context),
+            resilience: await SpellManager.computeComplex(actorSpell.definition.resilience, context),
         };
 
-        SpellManager.addAdditionalActions(actorSpell.definition.actions, actorData, context, updatedActorSpell)
+        SpellManager.addAdditionalActions(actorSpell.definition.actions, context, updatedActorSpell)
 
-        updatedActorSpell.description = marked.parse(SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, actorData, context));
+        updatedActorSpell.description = marked.parse(SpellManager.computeSpellDescription(updatedActorSpell, actorSpell.definition, context));
 
         return updatedActorSpell;
     }
@@ -137,24 +141,23 @@ export class SpellManager {
 
     /**
      * @param {string} spellId
-     * @param {Lvl0CharacterData} actorData
      * @param {Object} context
      * @return Promise<ActorSpell|undefined>
      */
-    static async getComputedSpellForActorById(spellId, actorData, context) {
+    static async getComputedSpellForActorById(spellId, context: SpellContext) {
         let spellDefinition = this.getSpellById(spellId);
         if (!spellDefinition)
             return undefined;
         let [spellCategory, speciality, level, id] = spellId.split('.', 4);
-        return await this.computeSpellForActor(spellDefinition, +level, spellCategory, speciality, actorData, context);
+        return await this.computeSpellForActor(spellDefinition, +level, spellCategory, speciality, context);
     }
 
-    static computeSpellDescription(actorSpell, spellDefinition, actorData, context = {}) {
+    static computeSpellDescription(actorSpell, spellDefinition, context = {}) {
         if (typeof spellDefinition.description === 'string')
             return spellDefinition.description
                 .replace('{{spell.area}}', `<em>${actorSpell.area}</em>`);
         if (spellDefinition.description.formula) {
-            return this.computeFormula(spellDefinition.description.formula, context, actorData);
+            return this.computeFormula(spellDefinition.description.formula, context);
         }
         return undefined;
     }
@@ -211,7 +214,7 @@ export class SpellManager {
         return availableSpells;
     }
 
-    static computeSpellDistance(spellDefinition: SpellDefinition, actorData, context = {}): string | RolledSpellStat | undefined {
+    static computeSpellDistance(spellDefinition: SpellDefinition, context = {}): string | RolledSpellStat | undefined {
         if (!spellDefinition.distance) {
             return undefined;
         }
@@ -224,7 +227,7 @@ export class SpellManager {
                     return 'Toucher';
             }
         } else if (spellDefinition.distance.formula) {
-            value = this.computeFormula(spellDefinition.distance.formula, context, actorData);
+            value = this.computeFormula(spellDefinition.distance.formula, context);
         } else if (spellDefinition.distance.value) {
             value = spellDefinition.distance.value.toString();
         } else if (spellDefinition.distance.text) {
@@ -248,18 +251,18 @@ export class SpellManager {
         return unit + 's';
     }
 
-    static async computeDamageFormula(damageData, actorData, context = {}): Promise<string | RolledSpellStat | undefined> {
+    static async computeDamageFormula(damageData, context = {}): Promise<string | RolledSpellStat | undefined> {
         if (!damageData) {
             return undefined;
         }
         if (damageData.rollFormula) {
-            let rollFormula = this.computeFormula(damageData.rollFormula, context, actorData);
+            let rollFormula = this.computeFormula(damageData.rollFormula, context);
             let rolledSpellStat = new RolledSpellStat(rollFormula, ElementsUtil.getName(damageData.element));
             await rolledSpellStat.evaluateRoll();
             return rolledSpellStat;
         }
         if (damageData.formula) {
-            let value = this.computeFormula(damageData.formula, context, actorData);
+            let value = this.computeFormula(damageData.formula, context);
             if (damageData.element)
                 value += '(' + ElementsUtil.getName(damageData.element) + ')';
             return value;
@@ -278,18 +281,18 @@ export class SpellManager {
      * @param {Object} context
      * @return {Promise<RolledSpellStat|string|undefined>}
      */
-    static async computeHealFormula(healData, actorData, context = {}) {
+    static async computeHealFormula(healData, context = {}) {
         if (!healData) {
             return undefined;
         }
         if (healData.rollFormula) {
-            let rollFormula = this.computeFormula(healData.rollFormula, context, actorData);
+            let rollFormula = this.computeFormula(healData.rollFormula, context);
             let rolledSpellStat = new RolledSpellStat(rollFormula);
             await rolledSpellStat.evaluateRoll();
             return rolledSpellStat;
         }
         if (healData.formula) {
-            return this.computeFormula(healData.formula, context, actorData);
+            return this.computeFormula(healData.formula, context);
         }
 
         return undefined;
@@ -297,20 +300,19 @@ export class SpellManager {
 
     /**
      * @param {ComputableSpellValue} computable
-     * @param {Lvl0CharacterData} actorData
      * @param {Object?} context
      * @return {string|RolledSpellStat|null}
      */
-    static async computeComplex(computable, actorData, context) {
+    static async computeComplex(computable, context: SpellContext) {
         try {
             if (!computable) {
                 return undefined;
             }
             let value: string | undefined = undefined;
             if (computable.formula) {
-                value = this.computeFormula(computable.formula, context, actorData);
+                value = this.computeFormula(computable.formula, context);
             } else if (computable.rollFormula) {
-                let rollFormula = this.computeFormula(computable.rollFormula, context, actorData);
+                let rollFormula = this.computeFormula(computable.rollFormula, context);
                 let rolledSpellStat = new RolledSpellStat(rollFormula, undefined, computable.unit);
                 await rolledSpellStat.evaluateRoll();
                 return rolledSpellStat;
@@ -328,13 +330,12 @@ export class SpellManager {
         }
     }
 
-    static computeFormula(body, context, actorData) {
+    static computeFormula(body, context) {
         let wrap = body => "{ return (function(context) {" + body + "})(arguments[0]) };"
         try {
             let func = new Function(wrap(body));
             return func.call(null, {
-                ...context,
-                actorData
+                ...context
             });
         } catch (e) {
             console.error(e);
@@ -343,14 +344,14 @@ export class SpellManager {
         }
     }
 
-    static computeModifier(modifier, actorData, context): Lvl0ActorEffectModifier {
+    static computeModifier(modifier, context): Lvl0ActorEffectModifier {
         let computedModifier: Lvl0ActorEffectModifier = {value: 0};
         if ('stat' in modifier)
             computedModifier.stat = modifier.stat;
         if ('skill' in modifier)
             computedModifier.skill = modifier.skill;
         if (modifier.valueFormula) {
-            computedModifier.value = this.computeFormula(modifier.valueFormula, context, actorData);
+            computedModifier.value = this.computeFormula(modifier.valueFormula, context);
         } else if (modifier.value) {
             computedModifier.value = modifier.value;
         }
@@ -359,8 +360,7 @@ export class SpellManager {
 
     static async computeActions(
         actions: {[actionKey: string]: SpellActionDefinition},
-        actorData: Lvl0CharacterData,
-        context: object
+        context: SpellContext
     )
         : Promise<{ [actionKey: string]: ActorSpellActionDefinition } | undefined> {
         if (!actions)
@@ -373,8 +373,8 @@ export class SpellManager {
                 type: action.type,
                 data: {
                     effectName: action.data.effectName,
-                    duration: await this.computeComplex(action.data.duration, actorData, context),
-                    modifiers: action.data.modifiers.map(m => this.computeModifier(m, actorData, context))
+                    duration: await this.computeComplex(action.data.duration, context),
+                    modifiers: action.data.modifiers.map(m => this.computeModifier(m, context))
                 }
             };
         }
@@ -382,7 +382,7 @@ export class SpellManager {
         return computedActions;
     }
 
-    static addAdditionalActions(actions, actorData, context, actorSpell) {
+    static addAdditionalActions(actions, context, actorSpell) {
         let computedActions = {};
         if (actorSpell?.heal instanceof RolledSpellStat) {
             computedActions['heal'] = {

@@ -55,7 +55,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
-            "rollFormula": "return context.actorData.computedData.magic.arcaneLevel + 'd6';",
+            "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "fire",
             "text": "1d6 par niveau d’arcane"
         }

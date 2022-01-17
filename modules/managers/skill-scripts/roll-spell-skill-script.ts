@@ -1,6 +1,6 @@
 import {SkillScript} from "./skill-script";
 import {SpellSelector} from "../../utils/spell-selector";
-import {SpellManager} from "../spell/spell-manager";
+import {SpellContext, SpellManager} from "../spell/spell-manager";
 import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager";
 import {EffectManager} from "../effect-manager";
 import {ActorSpell} from '../spell/spell-definition.model';
@@ -8,6 +8,7 @@ import {SpellCastAction} from '../../ui/spell-selector-dialog';
 import {RollHelper} from '../roll-helper';
 import {ScrollItemPropertiesData} from '../../models/item/scroll-item-properties-data';
 import {SpellChat} from '../spell/spell-chat';
+import {ScrollHelper} from '../spell/scroll-helper';
 
 
 export interface RollSpellSkillScriptData {
@@ -42,7 +43,7 @@ export class RollSpellSkillScript extends SkillScript {
             throw new Error('Missing actor for prepare');
         }
         if (this.options?.spellId) {
-            spell = await SpellManager.getComputedSpellForActorById(this.options?.spellId, actor.data.data, {});
+            spell = await SpellManager.getComputedSpellForActorById(this.options?.spellId, {arcaneLevel: actor.data.data.computedData.magic.arcaneLevel });
         }
         if (!spell) {
             const result = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
@@ -75,10 +76,11 @@ export class RollSpellSkillScript extends SkillScript {
 
         let result = RollHelper.getRollResult(rollValue, minSuccessValue);
         let context = {
+            arcaneLevel: actor.data.data.computedData.magic.arcaneLevel,
             criticalSuccess: result === 'criticalSuccess',
             epicFail: result === 'epicFail',
         };
-        let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, actor.data.data, context);
+        let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, context);
 
         let message: string;
         if (this.action === 'cast') {
@@ -104,33 +106,7 @@ export class RollSpellSkillScript extends SkillScript {
                 <div class="roll">${await roll.render()}</div>`;
 
             if (success) {
-                let emptyScroll = actor.getFirstEmptyScroll();
-                if (!emptyScroll) {
-                    ui.notifications?.error('Aucun parchemin vierge disponible')
-                    return;
-                }
-                let scrollData = {
-                    ...emptyScroll.toObject(),
-                    name: 'Parchemin: ' + spell.name,
-                    img: spell.icon,
-                    data: {
-                        quantifiable: false,
-                        quantity: 0,
-                        spell: spell.id,
-                        arcane: actor.data.data.computedData.magic.arcaneLevel
-                    } as ScrollItemPropertiesData
-                };
-                await actor.createEmbeddedDocuments('Item', [scrollData]);
-                if (emptyScroll.data.data.quantity === 1) {
-                    await emptyScroll.delete();
-                }
-                else {
-                    await emptyScroll.update({
-                        data: {
-                            quantity: emptyScroll.data.data.quantity - 1
-                        }
-                    })
-                }
+                await ScrollHelper.createScroll(actor, spell);
             }
             message += `</div>`;
         }

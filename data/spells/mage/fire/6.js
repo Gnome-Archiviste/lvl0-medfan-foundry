@@ -10,7 +10,7 @@ export default [
             "text": "1 mètre"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "heures",
             "text": "1 heure par niveau d’arcane"
         },
@@ -48,7 +48,7 @@ export default [
             "text": "Double les dégâts"
         },
         "damage": {
-            "rollFormula": "if (context.criticalSuccess) { return '(' + ('3d6+' + (1 * context.actorData.computedData.magic.arcaneLevel)) + ')*2'; } return '3d6+' + (1 * context.actorData.computedData.magic.arcaneLevel);",
+            "rollFormula": "if (context.criticalSuccess) { return '(' + ('3d6+' + (1 * context.arcaneLevel)) + ')*2'; } return '3d6+' + (1 * context.arcaneLevel);",
             "text": "3d6 + (1 par niveau d’arcane)"
         }
     },
@@ -63,7 +63,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },

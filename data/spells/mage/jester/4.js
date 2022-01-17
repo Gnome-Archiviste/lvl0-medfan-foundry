@@ -79,7 +79,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },
@@ -147,7 +147,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience."
         },
         "damage": {
-            "rollFormula": "return context.actorData.computedData.magic.arcaneLevel + 'd6';",
+            "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "physic",
             "text": "1d6 par niveau d’arcane"
         }

@@ -9,7 +9,7 @@ export default [
             "text": "Champion"
         },
         "duration": {
-            "rollFormula": "return ((context.criticalSuccess ? 2 : 1) * 1) + 'd6+' + (1 * context.actorData.computedData.magic.arcaneLevel)",
+            "rollFormula": "return ((context.criticalSuccess ? 2 : 1) * 1) + 'd6+' + (1 * context.arcaneLevel)",
             "unit": "tours",
             "text": "1d6 tours + 1 tour par niveau d’arcane"
         },
@@ -34,7 +34,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.actorData.computedData.magic.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
             "text": "1 tour par niveau d’arcane"
         },
@@ -56,7 +56,7 @@ export default [
                 "type": "addEffect",
                 "data": {
                     "duration": {
-                        "formula": "return context.actorData.computedData.magic.arcaneLevel",
+                        "formula": "return context.arcaneLevel",
                         "unit": "tours"
                     },
                     "effectName": "Aveuglement",

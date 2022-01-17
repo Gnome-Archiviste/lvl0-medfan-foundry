@@ -79,7 +79,7 @@ export default [
             "text": "2 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.actorData.computedData.magic.arcaneLevel",
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
             "unit": "heures",
             "text": "1 heure par niveau d’arcane"
         },
