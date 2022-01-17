@@ -126,7 +126,7 @@
         }
 
         display: grid;
-        grid-template-columns: 48px 50px 1fr 32px;
+        grid-template-columns: 48px 50px 1fr 50px;
         grid-column-gap: 8px;
         grid-template-areas: "icon quantity name actions";
         align-items: center;
@@ -163,7 +163,7 @@
       }
 
       display: grid;
-      grid-template-columns: 50px 32px 1fr 120px 90px 100px 32px;
+      grid-template-columns: 50px 32px 1fr 120px 90px 100px 50px;
       grid-column-gap: 8px;
       grid-template-areas: "equiped icon name damage handCount clutter actions";
       align-items: center;

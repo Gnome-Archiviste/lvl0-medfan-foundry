@@ -31,6 +31,7 @@ export class SkillScript {
 
 
     /**
+     * @deprecated Use RollHelper
      * @param {boolean} success
      * @param {number} result
      * @return {string}

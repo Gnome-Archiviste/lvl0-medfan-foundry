@@ -28,8 +28,14 @@
                         {{spellSelectorStat 'damage' spell.damage}}
                         {{spellSelectorStat 'heal' spell.heal}}
                         <div class="actions">
-                            <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une macro</button>
-                            <button class="action" data-action="confirm" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
+                            <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-cogs"></i> Créer une macro</button>
+                            <button class="action" data-action="cast" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
+                            {{#if ../../emptyScrollAvailable}}
+                                <button class="action" data-action="createScroll" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une parchemin</button>
+                            {{/if}}
+                            {{#if ../../emptyWandAvailable}}
+                                <button class="action" data-action="fillWand" data-spell-id="{{spell.id}}"><i class="fas fa-magic"></i> Remplir une baguette</button>
+                            {{/if}}
                         </div>
                     </div>
                 {{/each2}}

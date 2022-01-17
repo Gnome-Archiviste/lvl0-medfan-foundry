@@ -14,6 +14,8 @@ import {
     GenerateMissingLevelUpDataDialog,
     GenerateMissingLevelUpDataDialogData
 } from './ui/generate-missing-level-up-data-dialog';
+import {Lvl0Item} from './lvl0-item';
+import {ItemData} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs';
 
 
 const actorDataComputers = [
@@ -208,6 +210,22 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
+    getFirstEmptyScroll(): Item | undefined {
+        let scrolls = this.itemTypes['scroll'];
+        if (scrolls) {
+            for (let scroll of scrolls) {
+                if (scroll.data.data.quantity < 1)
+                    continue;
+                if (scroll.data.type !== 'scroll')
+                    continue;
+                if (!scroll.data.data.spell) {
+                    return scroll;
+                }
+            }
+        }
+        return undefined;
+    }
+
     async addInitialInventory() {
         await this.update({
             data: {
@@ -231,8 +249,8 @@ export class Lvl0Actor extends Actor {
     }
 }
 
-Hooks.on("preCreateOwnedItem", async (actor, itemData, options) => {
-    if (itemData.data.quantifiable) {
-        itemData.data.quantity = 1;
+Hooks.on("createItem", async (document: Lvl0Item,  options: object, userId: string) => {
+    if (document.data.data.quantifiable) {
+        await document.update({ data: {quantity: 1}});
     }
 });

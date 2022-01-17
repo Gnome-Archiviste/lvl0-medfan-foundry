@@ -3,12 +3,37 @@
 .skill-roll-spell-chat {
   @extend .skill-roll-chat;
 
+  .subtitle {
+    font-size: 15px;
+    margin-bottom: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    column-gap: 8px;
+    align-items: center;
+    > img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   .spell {
     > * + * {
       margin-bottom: 8px;
     }
-    .name {
-      font-size: 17px;
+    .header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 8px;
+      align-items: center;
+      .name {
+        font-size: 17px;
+      }
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
     }
     .stats {
       display: grid;

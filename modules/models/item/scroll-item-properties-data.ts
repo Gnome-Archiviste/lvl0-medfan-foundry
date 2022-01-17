@@ -2,7 +2,7 @@ import {ItemPropertiesTemplateBase} from './item-properties-template-base';
 
 export interface ScrollItemPropertiesData extends ItemPropertiesTemplateBase {
     spell: string;
-    arcane: string;
+    arcane: number;
 }
 
 export interface ScrollItemProperties {

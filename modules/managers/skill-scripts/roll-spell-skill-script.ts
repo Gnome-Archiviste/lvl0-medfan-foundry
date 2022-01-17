@@ -1,34 +1,24 @@
 import {SkillScript} from "./skill-script";
 import {SpellSelector} from "../../utils/spell-selector";
-import {RolledSpellStat, SpellManager} from "../spell/spell-manager";
+import {SpellManager} from "../spell/spell-manager";
 import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager";
 import {EffectManager} from "../effect-manager";
 import {ActorSpell} from '../spell/spell-definition.model';
+import {SpellCastAction} from '../../ui/spell-selector-dialog';
+import {RollHelper} from '../roll-helper';
+import {ScrollItemPropertiesData} from '../../models/item/scroll-item-properties-data';
+import {SpellChat} from '../spell/spell-chat';
 
 
-/**
- * @typedef RollSpellSkillScriptData
- * @property {'mage'|'champion'} spellCategory
- */
+export interface RollSpellSkillScriptData {
+    spellCategory: 'mage' | 'champion';
+}
+
 export class RollSpellSkillScript extends SkillScript {
-
-    /**
-     * @private
-     * @property {RollSpellSkillScriptData} data
-     */
-    data;
-
-    /**
-     * @private
-     * @property {ActorSpell} data
-     */
-    spell;
-
-    /**
-     * @private
-     * @property {Object} options
-     */
-    options;
+    data : RollSpellSkillScriptData;
+    spell: ActorSpell;
+    options: any;
+    action: SpellCastAction = 'cast';
 
     /**
      * @param {Token} token
@@ -46,6 +36,7 @@ export class RollSpellSkillScript extends SkillScript {
      */
     async prepare() {
         let spell: ActorSpell | undefined;
+        let action: SpellCastAction = 'cast';
         let actor = this.token.actor;
         if (!actor) {
             throw new Error('Missing actor for prepare');
@@ -54,7 +45,11 @@ export class RollSpellSkillScript extends SkillScript {
             spell = await SpellManager.getComputedSpellForActorById(this.options?.spellId, actor.data.data, {});
         }
         if (!spell) {
-            spell = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
+            const result = await SpellSelector.selectSpell(this.token, this.data.spellCategory);
+            if (result) {
+                spell = result.spell;
+                action = result.action;
+            }
         }
         if (!spell) {
             return false;
@@ -64,93 +59,92 @@ export class RollSpellSkillScript extends SkillScript {
             return false;
         }
         this.spell = spell;
+        this.action = action;
         return true;
-
     }
 
     /**
      * @override
      */
-    async postRoll(roll, result, minSuccessValue, success) {
+    async postRoll(roll, rollValue, minSuccessValue, success) {
         const messageData = roll.toMessage({}, {create: false});
         let actor = this.token.actor;
         if (!actor) {
             throw new Error('Missing actor for postRoll');
         }
 
-        let criticalSuccess = result === 2;
-        let epicFail = result === 12;
+        let result = RollHelper.getRollResult(rollValue, minSuccessValue);
         let context = {
-            criticalSuccess: criticalSuccess,
-            epicFail: epicFail,
+            criticalSuccess: result === 'criticalSuccess',
+            epicFail: result === 'epicFail',
         };
         let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, actor.data.data, context);
 
-        let message = `<div class="skill-roll-spell-chat">
-            <div class="title">${this.skillDefinition.name}</div>
-            <div class="test"><i class="fas fa-dice"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
-            <div class="roll">${await roll.render()}</div>
-            <div class="spell">
-                <div class="name">${spell.name}</div>
-                <div class="description">${spell.description}</div>
-                <div class="stats">
-                    <div class="cost"><span class="label">Coût</span> ${spell.cost} point de magie</div>
-                    <div class="distance"><span class="label">Distance</span> ${spell.distance}</div>`;
-        message += await this._renderSpellStat('duration', spell.duration)
-        message += await this._renderSpellStat('area', spell.area)
-        message += `
-                </div>`;
-
-        message += await this._renderSpellStat('bonus', spell.bonus)
-        message += await this._renderSpellStat('resilience', spell.resilience)
-        message += await this._renderSpellStat('damage', spell.damage)
-        message += await this._renderSpellStat('heal', spell.heal)
-        if (criticalSuccess)
-            message += await this._renderSpellStat('criticalSuccess', spell.criticalSuccess)
-        if (success)
-            message += await this._renderActions(spell);
-
-        if (epicFail)
-            message += ` <div class="epic-fail"><button data-lvl0-global-action-roll-magic-epic-fail><i class="fas fa-dice"></i> Échec critique</button></div>`;
-
-        message += `
+        let message: string;
+        if (this.action === 'cast') {
+            message = `<div class="skill-roll-spell-chat">
+                <div class="title">${this.skillDefinition.name}</div>
+                <div class="test"><i class="fas fa-dice"></i> ${rollValue} / ${minSuccessValue} (${RollHelper.getTestResultMessage(result)})</div>
+                <div class="roll">${await roll.render()}</div>
+                ${await SpellChat.renderSpellChat(spell, result)}
             </div>
-        </div>
-        `;
+            `;
+        }
+        else if (this.action === 'fillWand') {
+            ui.notifications?.error('Non supporté pour le moment');
+            message =``;
+            // Critical = la baguette est bloqué
+            // Aussi max 10 sorts pour des arcanes 1-5, 5 sorts pour arcanes 6-10 et 2 pour arcanes finale
+        }
+        else if (this.action === 'createScroll') {
+            message = `<div class="skill-roll-spell-chat">
+                <div class="title"><i class="fa fa-scroll"></i>Création d'un parchemin</div>
+                <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
+                <div class="test"><i class="fas fa-dice"></i> ${rollValue} / ${minSuccessValue} (${RollHelper.getTestResultMessage(result)})</div>
+                <div class="roll">${await roll.render()}</div>`;
 
-        if (success || epicFail) {
+            if (success) {
+                let emptyScroll = actor.getFirstEmptyScroll();
+                if (!emptyScroll) {
+                    ui.notifications?.error('Aucun parchemin vierge disponible')
+                    return;
+                }
+                let scrollData = {
+                    ...emptyScroll.toObject(),
+                    name: 'Parchemin: ' + spell.name,
+                    img: spell.icon,
+                    data: {
+                        quantifiable: false,
+                        quantity: 0,
+                        spell: spell.id,
+                        arcane: actor.data.data.computedData.magic.arcaneLevel
+                    } as ScrollItemPropertiesData
+                };
+                await actor.createEmbeddedDocuments('Item', [scrollData]);
+                if (emptyScroll.data.data.quantity === 1) {
+                    await emptyScroll.delete();
+                }
+                else {
+                    await emptyScroll.update({
+                        data: {
+                            quantity: emptyScroll.data.data.quantity - 1
+                        }
+                    })
+                }
+            }
+            message += `</div>`;
+        }
+        else {
+            throw new Error('Unsupported spell cast action: ' + this.action);
+        }
+
+        if (success || result === 'epicFail') {
             actor.useMana(spell.cost).then();
         }
 
         messageData.content = message;
         messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
         await ChatMessage.create(messageData);
-    }
-
-    async _renderSpellStat(name, value) {
-        if (!value)
-            return '';
-        if (typeof value === 'string')
-            return `<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value}</div>`;
-        if (typeof value === 'object' && value instanceof RolledSpellStat)
-            return `<div>
-                <div class="${name}">
-                    <span class="label"><i class="fas fa-dice"></i> ${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value.toDisplayString()}
-                </div>
-                <div class="roll">${await value.roll.render()}</div>
-            </div>`;
-    }
-
-    private async _renderActions(spell: ActorSpell): Promise<string> {
-        if (!spell.actions)
-            return "";
-
-        let actionsContent = '';
-        for (let action of Object.values(spell.actions)) {
-            actionsContent += `<button data-lvl0-global-action-execute-spell-action="${btoa(JSON.stringify(action))}">${action.name}</button>`;
-        }
-
-        return actionsContent;
     }
 }
 

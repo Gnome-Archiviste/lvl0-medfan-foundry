@@ -20,4 +20,18 @@ export class Lvl0Item extends Item {
         const actorData = this.actor ? this.actor.data : {};
         const data = itemData.data;
     }
+
+    get actionnable(): boolean {
+        if (this.data.type === 'wand' && this.data.data.charge > 0 && this.data.data.spell) {
+            return true;
+        }
+        if (this.data.type === 'scroll' && this.data.data.spell) {
+            return true;
+        }
+        return false;
+    }
+
+    use(token: TokenDocument) {
+        // FIXME
+    }
 }

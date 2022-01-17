@@ -1,11 +1,14 @@
 import {RolledSpellStat} from "../managers/spell/spell-manager";
 import {ActorSpell} from '../managers/spell/spell-definition.model';
+import {Lvl0Actor} from '../lvl0-actor';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
+    actor: Lvl0Actor;
 }
 
-export type CompleteSpellSelectorCallback = (selectedSpell?: ActorSpell) => void;
+export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
+export type CompleteSpellSelectorCallback = (selectedSpell?: ActorSpell, action?: SpellCastAction) => void;
 
 export class SpellSelectorDialog extends Application {
     constructor(
@@ -25,11 +28,33 @@ export class SpellSelectorDialog extends Application {
             return previousValue;
         }, {});
 
+        let spellInNonFullWand = {};
+        let emptyWandAvailable = false;
+        let wands = this.data.actor.itemTypes['wand'];
+        if (wands) {
+            for (let wand of wands) {
+                if (wand.data.type !== 'wand')
+                    continue;
+                if (!wand.data.data.spell) {
+                    emptyWandAvailable = true;
+                    break;
+                }
+                if (wand.data.data.charge < 10) {
+                    spellInNonFullWand[wand.data.data.spell] = true;
+                }
+            }
+        }
+
+        let emptyScrollAvailable = this.data.actor.getFirstEmptyScroll() !== undefined;
+
         return {
             ...data,
             spells: this.data.spells,
             levels: Object.keys(spellPerLevels),
-            spellPerLevels: spellPerLevels
+            spellPerLevels: spellPerLevels,
+            emptyWandAvailable,
+            spellInNonFullWand,
+            emptyScrollAvailable
         };
     }
 
@@ -55,10 +80,12 @@ export class SpellSelectorDialog extends Application {
                     this.close();
                     break;
                 }
-                case 'confirm': {
+                case 'fillWand':
+                case 'createScroll':
+                case 'cast': {
                     let spellId = ev.target.dataset['spellId'];
                     let spell = this.data.spells.find(s => s.id === spellId);
-                    this.onComplete(spell);
+                    this.onComplete(spell, ev.target.dataset["action"]);
                     this.close({selected: true});
                     break;
                 }

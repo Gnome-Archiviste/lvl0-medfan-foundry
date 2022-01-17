@@ -4,6 +4,7 @@ import * as marked from 'marked';
 import {ActorSpell, ActorSpellActionDefinition, SpellActionDefinition, SpellDefinition} from './spell-definition.model';
 import {Lvl0CharacterData} from '../../models/character/character';
 import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
+import {RollResult} from '../roll-helper';
 
 export class RolledSpellStat {
     private _roll?: Roll;
@@ -65,7 +66,7 @@ export class SpellManager {
         let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
 
         try {
-            let actorSpell = <ActorSpell>{
+            let actorSpell: ActorSpell = {
                 id: spellId,
                 actions: await SpellManager.computeActions(spellDefinition.actions, actorData, context),
                 area: await SpellManager.computeComplex(spellDefinition.area, actorData, context),
@@ -399,4 +400,5 @@ export class SpellManager {
             actorSpell.actions = {...actorSpell.actions, ...computedActions};
         }
     }
+
 }

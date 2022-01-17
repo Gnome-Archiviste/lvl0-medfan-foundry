@@ -14,6 +14,7 @@ export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0CharacterData,
     skills: {[skillCategoryId: string]: {[skillId: string]: SkillValue}},
     nonEquipableItemType: { [typeName: string]: boolean },
+    actionableItemType: { [typeName: string]: boolean },
     canLevelUp: boolean,
     canChangeStats: boolean,
     canSelectRace: boolean,
@@ -84,7 +85,13 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
         let canLevelUp = this.canLevelUp(this.actor.data.data);
         let nonEquipableItemType = {
             'misc': true,
-            'magical': true
+            'magical': true,
+            'wand': true,
+            'scroll': true
+        };
+        let actionableItemType = {
+            'wand': true,
+            'scroll': true
         };
         let modifierSkills = {
             'protection': 'Protection',
@@ -105,6 +112,7 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             canLevelUp,
             canChangeStats,
             nonEquipableItemType,
+            actionableItemType,
             canSelectRace,
             canSelectJob,
             canEditLevel,
@@ -127,22 +135,6 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
     activateListeners(html) {
         super.activateListeners(html);
 
-        // Update Inventory Item
-        html.find('.item-edit').click(ev => {
-            const itemLine = $(ev.currentTarget).parents("[data-item-id]");
-            const item = this.actor.items.get(itemLine.data("item-id"));
-            if (item) {
-                item.sheet?.render(true);
-            }
-        });
-
-        html.find('[data-equip-item-checkbox]').click(ev => {
-            const itemId = $(ev.currentTarget).data('equip-item-checkbox');
-            const item = this.actor.items.get(itemId);
-            if (!item)
-                throw new Error(`Failed to get item '${itemId}' when trying to equip it`)
-            item.update({data: {equiped: !item.data.data.equiped}}).then();
-        });
         html.find('[data-update-item-quantity]').change(ev => {
             ev.stopImmediatePropagation();
             ev.stopPropagation();
@@ -202,15 +194,48 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             }
         });
 
-        // Delete Inventory Item
-        html.find('.item-delete').click(ev => {
+        html.find('[data-item-action]').on('click', async ev => {
             const itemLine = $(ev.currentTarget).parents("[data-item-id]");
             const item = this.actor.items.get(itemLine.data("item-id"));
-            Dialog.confirm({
-                title: 'Supression', content: 'Voulez vous supprimer ' + item?.name, yes: () => {
-                    this.actor.items.get(itemLine.data("item-id"))?.delete();
-                }
-            });
+            if (!item) {
+                return;
+            }
+            switch (ev.currentTarget.dataset.itemAction) {
+                case 'use':
+                    let token = this.actor.token;
+                    if (token) {
+                        item.use(token);
+                    }
+                    break;
+                case 'share':
+                    let copy = await Item.create(item.toObject());
+                    if (copy) {
+                        await ChatMessage.create({
+                            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+                            content: `@Item[${copy.id}]{${copy.name}}`
+                        });
+                    }
+                    break;
+                case 'edit':
+                    item.sheet?.render(true);
+                    break;
+                case 'delete':
+                    Dialog.confirm({
+                        title: 'Supression', content: 'Voulez vous supprimer ' + item?.name, yes: () => {
+                            this.actor.items.get(itemLine.data("item-id"))?.delete();
+                        }
+                    });
+                    break;
+            }
+        });
+
+
+        html.find('[data-equip-item-checkbox]').click(ev => {
+            const itemId = $(ev.currentTarget).data('equip-item-checkbox');
+            const item = this.actor.items.get(itemId);
+            if (!item)
+                throw new Error(`Failed to get item '${itemId}' when trying to equip it`)
+            item.update({data: {equiped: !item.data.data.equiped}}).then();
         });
 
         html.find("button[data-lvl0-action='addActorModifier']").on('click', ev => this._onAddModifier(ev));

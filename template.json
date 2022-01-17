@@ -294,7 +294,7 @@
     },
     "wand": {
       "templates": ["base"],
-      "charge": 10,
+      "charge": 0,
       "clutter": 1,
       "arcane": 1,
       "spell": ""

@@ -2,7 +2,7 @@
   .item-line {
     display: grid;
     grid-gap: 8px;
-    grid-template-columns: 50px 32px 32px 1fr 64px 40px;
+    grid-template-columns: 50px 32px 32px 1fr 64px 60px;
     align-items: center;
     grid-template-areas: "equiped icon quantity name clutter actions";
     border-bottom: 1px solid darkgrey;
