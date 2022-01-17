@@ -93,7 +93,7 @@ export class Lvl0Actor extends Actor {
 
     openGenerateMissingLevelUpDataPopup(): void {
         let levelWithMissingData: number[] = [];
-        for (let lvl = 1; lvl < this.data.data.level.value; lvl++) {
+        for (let lvl = 1; lvl <= this.data.data.level.value; lvl++) {
             if (!(lvl in this.data.data.levelUpData)) {
                 levelWithMissingData.push(lvl);
             }
