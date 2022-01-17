@@ -208,7 +208,7 @@ export class SpellManager {
             if (!(level in allCategorySpells))
                 continue;
             for (let spellDefinition of allCategorySpells[level]) {
-                availableSpells.push(await SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, speciality, actorData));
+                availableSpells.push(await SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, speciality, {arcaneLevel: actorData.computedData.magic.arcaneLevel}));
             }
         }
         return availableSpells;
