@@ -1,6 +1,6 @@
-import specialities from '../../data/specialities.js'
-import {AmmunitionType} from '../models/item/ammunition-item-properties';
-import {DialogBase} from './dialog/dialog-base';
+import specialities from '../../../data/specialities.js'
+import {AmmunitionType} from '../../models/item/ammunition-item-properties';
+import {DialogBase} from './dialog-base';
 
 export interface WeaponSelectorDialogData {
     weapons: Item[],
@@ -92,7 +92,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
             ...super.defaultOptions,
             id: "weaponSelector",
             title: "Selection de l'arme",
-            template: "systems/lvl0mf-sheet/templates/ui/weapon-selector-dialog.hbs",
+            template: "systems/lvl0mf-sheet/ui/dialog/weapon-selector-dialog.hbs",
             popOut: true,
             width: 500,
             height: 600

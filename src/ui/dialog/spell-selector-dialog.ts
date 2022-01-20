@@ -1,6 +1,5 @@
-import {RolledSpellStat} from "../managers/spell/spell-manager";
-import {ActorSpell} from '../managers/spell/spell-definition.model';
-import {Lvl0Actor} from '../lvl0-actor';
+import {ActorSpell} from '../../managers/spell/spell-definition.model';
+import {Lvl0Actor} from '../../lvl0-actor';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -119,7 +118,7 @@ export class SpellSelectorDialog extends Application {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "spellSelector",
-            template: "systems/lvl0mf-sheet/templates/ui/spell-selector-dialog.hbs",
+            template: "systems/lvl0mf-sheet/ui/dialog/spell-selector-dialog.hbs",
             popOut: true,
             tabs: [{navSelector: ".tabs", contentSelector: ".spells", initial: "1"}],
             width: 500,

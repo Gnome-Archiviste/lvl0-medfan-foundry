@@ -1,6 +1,6 @@
-import {LevelData, Statistics} from '../models/character/character';
-import {Lvl0Actor} from '../lvl0-actor';
-import {StatsCharacterDataComputer} from '../actor-data-computers/character/stats-character-data-computer';
+import {LevelData, Statistics} from '../../models/character/character';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {StatsCharacterDataComputer} from '../../actor-data-computers/character/stats-character-data-computer';
 
 export interface LevelUpDialogData {
     toLevel: number;
@@ -201,7 +201,7 @@ export class LevelUpDialog extends Application {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
-            template: "systems/lvl0mf-sheet/templates/ui/level-up.hbs",
+            template: "systems/lvl0mf-sheet/ui/dialog/level-up-dialog.hbs",
             popOut: true,
         });
     }

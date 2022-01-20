@@ -1,18 +1,18 @@
-import skills from '../data/skills.js'
-import jobs from '../data/jobs.js'
-import races from '../data/races.js'
-import statsDefinition from '../data/stats.js'
-import {Lvl0CharacterData} from './models/character/character';
-import {SkillDefinition} from './models/all';
-import {RaceDefinition} from './models/data/race/race';
-import {JobDefinition} from './models/data/job/job-definition';
-import {RollSkillManager} from './managers/roll-skill-manager';
-import {RollSpecialityManager} from './managers/roll-speciality-manager';
-import {SkillValue} from './models/data/skill/skill';
+import skills from '../../../../data/skills.js'
+import jobs from '../../../../data/jobs.js'
+import races from '../../../../data/races.js'
+import statsDefinition from '../../../../data/stats.js'
+import {Lvl0CharacterData} from '../../../models/character/character';
+import {SkillDefinition} from '../../../models/all';
+import {RaceDefinition} from '../../../models/data/race/race';
+import {JobDefinition} from '../../../models/data/job/job-definition';
+import {RollSkillManager} from '../../../managers/roll-skill-manager';
+import {RollSpecialityManager} from '../../../managers/roll-speciality-manager';
+import {SkillValue} from '../../../models/data/skill/skill';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0CharacterData,
-    skills: {[skillCategoryId: string]: {[skillId: string]: SkillValue}},
+    skills: { [skillCategoryId: string]: { [skillId: string]: SkillValue } },
     nonEquipableItemType: { [typeName: string]: boolean },
     actionableItemType: { [typeName: string]: boolean },
     canLevelUp: boolean,
@@ -36,7 +36,7 @@ export interface Lvl0mfActorSheetData extends ActorSheet.Data {
 }
 
 // FIXME: Rename to character
-export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<Options, Lvl0mfActorSheetData> {
+export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<Options, Lvl0mfActorSheetData> {
 
     static skillsByIds: { [skillId: string]: SkillDefinition };
     static jobsNamesById: { [jobId: string]: string };
@@ -48,7 +48,7 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["lvl0mf", "sheet", "actor"],
-            template: "systems/lvl0mf-sheet/templates/actors/actor-sheet.hbs",
+            template: "systems/lvl0mf-sheet/ui/sheets/actor/lvl0-character-actor-sheet.hbs",
             blockFavTab: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
             scrollY: [".stats", ".items", ".inventory"],
@@ -119,16 +119,16 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
             statsDefinition,
             canEditModifiers,
             modifierSkills,
-            skillsByIds: Lvl0mfActorSheet.skillsByIds,
+            skillsByIds: Lvl0CharacterActorSheet.skillsByIds,
             jobs: jobs,
-            jobsNamesById: Lvl0mfActorSheet.jobsNamesById,
-            races: Lvl0mfActorSheet.races,
-            racesByIds: Lvl0mfActorSheet.racesByIds,
+            jobsNamesById: Lvl0CharacterActorSheet.jobsNamesById,
+            races: Lvl0CharacterActorSheet.races,
+            racesByIds: Lvl0CharacterActorSheet.racesByIds,
             itemTypes,
             itemTypesInInventoryTabs,
             itemsByType,
             equipedItemsByType,
-            armorSlots: Lvl0mfActorSheet.armorSlots
+            armorSlots: Lvl0CharacterActorSheet.armorSlots
         }
     }
 
@@ -393,22 +393,22 @@ export class Lvl0mfActorSheet<Options extends ActorSheet.Options = ActorSheet.Op
     }
 }
 
-Lvl0mfActorSheet.skillsByIds = {};
+Lvl0CharacterActorSheet.skillsByIds = {};
 for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
-    for (let [skillId, skill] of Object.entries(categorySkills as {[skillId: string]: SkillDefinition})) {
-        Lvl0mfActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
+    for (let [skillId, skill] of Object.entries(categorySkills as { [skillId: string]: SkillDefinition })) {
+        Lvl0CharacterActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
     }
 }
-Lvl0mfActorSheet.jobsNamesById = Object.entries(jobs.base)
+Lvl0CharacterActorSheet.jobsNamesById = Object.entries(jobs.base)
     .concat(Object.entries(jobs.advance))
     .reduce(((previousValue, currentValue: [jobId: string, job: JobDefinition]) => {
         previousValue[currentValue[0]] = currentValue[1].name;
         return previousValue;
     }), {})
 
-Lvl0mfActorSheet.racesByIds = {};
+Lvl0CharacterActorSheet.racesByIds = {};
 for (let raceCategory of Object.values(races)) {
     for (let [raceId, race] of Object.entries(raceCategory as { [raceId: string]: RaceDefinition })) {
-        Lvl0mfActorSheet.racesByIds[raceId] = race;
+        Lvl0CharacterActorSheet.racesByIds[raceId] = race;
     }
 }

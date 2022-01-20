@@ -6,16 +6,15 @@ import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic
 import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
 import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer.js";
 import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer.js";
-import {LevelUpDialog} from "./ui/level-up-dialog.js";
-import {SelectSpecialityDialog} from "./ui/select-speciality-dialog.js";
+import {LevelUpDialog} from "./ui/dialog/level-up-dialog.js";
+import {SelectSpecialityDialog} from "./ui/dialog/select-speciality-dialog.js";
 import {RollSpecialityManager} from "./managers/roll-speciality-manager.js";
 import {LevelData, Lvl0CharacterData} from './models/character/character';
 import {
     GenerateMissingLevelUpDataDialog,
     GenerateMissingLevelUpDataDialogData
-} from './ui/generate-missing-level-up-data-dialog';
+} from './ui/dialog/generate-missing-level-up-data-dialog';
 import {Lvl0Item} from './lvl0-item';
-import {ItemData} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs';
 
 
 const actorDataComputers = [

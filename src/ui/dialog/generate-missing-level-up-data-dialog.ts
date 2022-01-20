@@ -1,6 +1,6 @@
-import {LevelData} from '../models/character/character';
-import {Lvl0Actor} from '../lvl0-actor';
-import {StatsCharacterDataComputer} from '../actor-data-computers/character/stats-character-data-computer';
+import {LevelData} from '../../models/character/character';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {StatsCharacterDataComputer} from '../../actor-data-computers/character/stats-character-data-computer';
 
 export interface GenerateMissingLevelUpDataDialogData {
     levelWithMissingData: number[];
@@ -105,7 +105,7 @@ export class GenerateMissingLevelUpDataDialog extends Application {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
             width: 350,
-            template: "systems/lvl0mf-sheet/templates/ui/generate-missing-level-up-data-dialog.hbs",
+            template: "systems/lvl0mf-sheet/ui/dialog/generate-missing-level-up-data-dialog.hbs",
             popOut: true,
         });
     }

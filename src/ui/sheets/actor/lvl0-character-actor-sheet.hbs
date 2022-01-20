@@ -9,7 +9,7 @@
         </nav>
         <section class="sheet-body">
             <div class="tab sheet-inventory" data-tab="sheet_inventory">
-                {{> "systems/lvl0mf-sheet/templates/actors/partials/inventory.hbs"}}
+                {{> "systems/lvl0mf-sheet/ui/sheets/actor/partials/inventory.hbs"}}
             </div>
             <div class="tab sheet-notes" data-tab="sheet_notes">
                 {{editor content=actorData.notes.content target="data.notes.content" button=true editable=editable owner=owner}}
@@ -307,16 +307,16 @@
                     </section>
                     {{/if}}
                     <section class="sheet-specialities-skills">
-                        {{> "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs"}}
+                        {{> "systems/lvl0mf-sheet/ui/sheets/actor/partials/skills.hbs"}}
                     </section>
                 </div></div>
             </div>
 
             <div class="tab" data-tab="sheet_equipment">
-                {{> "systems/lvl0mf-sheet/templates/actors/partials/equipment.hbs"}}
+                {{> "systems/lvl0mf-sheet/ui/sheets/actor/partials/equipment.hbs"}}
             </div>
             <div class="tab" data-tab="sheet_modifiers">
-                {{> "systems/lvl0mf-sheet/templates/actors/partials/modifiers.hbs"}}
+                {{> "systems/lvl0mf-sheet/ui/sheets/actor/partials/modifiers.hbs"}}
             </div>
         </section>
     </div>

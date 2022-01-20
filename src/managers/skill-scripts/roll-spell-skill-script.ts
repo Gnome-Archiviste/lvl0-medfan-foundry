@@ -1,12 +1,11 @@
 import {SkillScript} from "./skill-script";
 import {SpellSelector} from "../../utils/spell-selector";
-import {SpellContext, SpellManager} from "../spell/spell-manager";
+import {SpellManager} from "../spell/spell-manager";
 import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager";
 import {EffectManager} from "../effect-manager";
 import {ActorSpell} from '../spell/spell-definition.model';
-import {SpellCastAction} from '../../ui/spell-selector-dialog';
+import {SpellCastAction} from '../../ui/dialog/spell-selector-dialog';
 import {RollHelper} from '../roll-helper';
-import {ScrollItemPropertiesData} from '../../models/item/scroll-item-properties-data';
 import {SpellChat} from '../spell/spell-chat';
 import {ScrollHelper} from '../spell/scroll-helper';
 

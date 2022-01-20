@@ -1,4 +1,4 @@
-import {SpellCastAction, SpellSelectorDialog} from "../ui/spell-selector-dialog.js";
+import {SpellCastAction, SpellSelectorDialog} from "../ui/dialog/spell-selector-dialog.js";
 import {SpellManager} from "../managers/spell/spell-manager";
 import {ActorSpell} from '../managers/spell/spell-definition.model';
 

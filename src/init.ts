@@ -1,26 +1,26 @@
-import {Lvl0mfActorSheet} from "../modules/lvl0mf-actor-sheet.js";
-import {Lvl0mfItemSheet} from "../modules/lvl0mf-item-sheet.js";
-import {Lvl0Actor} from "../modules/lvl0-actor.js";
-import {Lvl0Item} from "../modules/lvl0-item.js";
-import {RollSkillManager} from "../modules/managers/roll-skill-manager.js";
-import {RollSpecialityManager} from "../modules/managers/roll-speciality-manager.js";
 import './handlebars_helpers';
+import {Lvl0Actor} from './lvl0-actor';
+import {Lvl0Item} from './lvl0-item';
+import {RollSkillManager} from './managers/roll-skill-manager';
+import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
+import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
+import {RollSpecialityManager} from './managers/roll-speciality-manager';
 
 Hooks.once("init", async function () {
     CONFIG.Actor.documentClass = Lvl0Actor;
     CONFIG.Item.documentClass = Lvl0Item;
 
     await loadTemplates([
-        "systems/lvl0mf-sheet/templates/actors/partials/equipment.hbs",
-        "systems/lvl0mf-sheet/templates/actors/partials/skills.hbs",
-        "systems/lvl0mf-sheet/templates/actors/partials/inventory.hbs",
-        "systems/lvl0mf-sheet/templates/actors/partials/modifiers.hbs",
+        "systems/lvl0mf-sheet/ui/sheets/actor/partials/equipment.hbs",
+        "systems/lvl0mf-sheet/ui/sheets/actor/partials/skills.hbs",
+        "systems/lvl0mf-sheet/ui/sheets/actor/partials/inventory.hbs",
+        "systems/lvl0mf-sheet/ui/sheets/actor/partials/modifiers.hbs",
     ]);
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("lvl0mf", Lvl0mfActorSheet, {types: ['character']});
+    Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character']});
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("lvl0mf", Lvl0mfItemSheet, {makeDefault: true});
+    Items.registerSheet("lvl0mf", Lvl0ItemSheet, {makeDefault: true});
 });
 
 (window as any).rollSkillManager = RollSkillManager;

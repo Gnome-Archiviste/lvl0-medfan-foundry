@@ -7,13 +7,13 @@
   "minimumCoreVersion": "0.8.9",
   "compatibleCoreVersion": "0.8.9",
   "esmodules": [
-    "scripts/init.js",
-    "scripts/handlebars.js",
-    "modules/components.js"
+    "init.js",
+    "handlebars.js",
+    "components.js"
   ],
   "scripts": [],
   "styles": [
-    "templates/style.css"
+    "ui/style.css"
   ],
   "packs": [],
   "languages": [

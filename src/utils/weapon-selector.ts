@@ -1,4 +1,4 @@
-import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/weapon-selector-dialog.js";
+import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog/weapon-selector-dialog";
 import {WeaponItemProperties, WeaponType} from '../models/item/weapon-item-properties';
 import {AmmunitionItemProperties} from '../models/item/ammunition-item-properties';
 import {DialogAwaiter} from './dialog-awaiter';

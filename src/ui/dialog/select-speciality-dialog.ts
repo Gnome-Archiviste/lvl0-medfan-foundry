@@ -1,4 +1,4 @@
-import specialities from '../../data/specialities.js'
+import specialities from '../../../data/specialities.js'
 
 export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
 
@@ -51,7 +51,7 @@ export class SelectSpecialityDialog extends Application {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "selectSpeciality",
-            template: "systems/lvl0mf-sheet/templates/ui/select-speciality-dialog.hbs",
+            template: "systems/lvl0mf-sheet/ui/dialog/select-speciality-dialog.hbs",
             popOut: true,
             width: 500,
             height: 600

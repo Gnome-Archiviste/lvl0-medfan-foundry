@@ -7,20 +7,19 @@ import glob from 'glob';
 let watch = process.argv.indexOf('--watch') !== -1;
 
 copyAndWatchFiles([
-    "template.json",
-    "system.json",
-    "lang/**/*.json",
-    "assets/**/*.*",
-    "templates/**/*.hbs"
+    {pattern: "template.json", remove: ''},
+    {pattern: "system.json", remove: ''},
+    {pattern: "lang/**/*.json", remove: ''},
+    {pattern: "assets/**/*.*", remove: ''},
+    {pattern: "src/ui/**/*.hbs", remove: 'src/'}
 ], 'dist', watch);
-
 
 (async () => {
     await esbuild.build({
         entryPoints: [
-            'scripts/init.ts',
-            "modules/components.ts",
-            "templates/style.scss",
+            'src/init.ts',
+            "src/components.ts",
+            "src/ui/style.scss",
         ],
         loader: {'.hbs': 'default'},
         bundle: true,
@@ -36,11 +35,10 @@ copyAndWatchFiles([
     })
 })();
 
-
 function copyAndWatchFiles(filesPatterns, targetDirectory, watch) {
     for (let filesPattern of filesPatterns) {
-        for (let file of glob(filesPattern, {sync: true})) {
-            const destination = path.join(targetDirectory, file);
+        for (let file of glob(filesPattern.pattern, {sync: true})) {
+            const destination = path.join(targetDirectory, file.replace(filesPattern.remove, ''));
             fs.cpSync(file, destination);
         }
     }
@@ -55,8 +53,8 @@ function watchFiles(filesPatterns, targetDirectory) {
     let watchers = [];
 
     for (let filesPattern of filesPatterns) {
-        for (let file of glob(filesPattern, {sync: true})) {
-            const destination = path.join(targetDirectory, file);
+        for (let file of glob(filesPattern.pattern, {sync: true})) {
+            const destination = path.join(targetDirectory, file.replace(filesPattern.remove, ''));
             watchers.push(fs.watch(file, {encoding: "utf8"})
                 .on("change", () => {
                     console.info('Update ' + file + ' -> ' + destination);

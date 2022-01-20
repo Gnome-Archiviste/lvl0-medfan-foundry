@@ -1,14 +1,14 @@
-import skills from "../data/skills.js";
-import elements from "../data/elements.js";
-import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from './models/item/item-data';
-import {SkillDefinition} from './models/all';
+import skills from "../../../../data/skills.js";
+import elements from "../../../../data/elements.js";
+import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/item-data';
+import {SkillDefinition} from '../../../models/all';
 
-export class Lvl0mfItemSheet extends ItemSheet {
+export class Lvl0ItemSheet extends ItemSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["lvl0mf", "sheet", "item"],
-            template: "systems/lvl0mf-sheet/templates/items/item-sheet.hbs",
+            template: "systems/lvl0mf-sheet/ui/sheets/item/lvl0-item-sheet.hbs",
             blockFavTab: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
         });
@@ -19,7 +19,7 @@ export class Lvl0mfItemSheet extends ItemSheet {
         let templateData = super.getData(options);
 
         let extraSkills = {};
-        for (let [skillCategoryId, categorySkills] of Object.entries(skills) as [string, {[id: string]: SkillDefinition}][])
+        for (let [skillCategoryId, categorySkills] of Object.entries(skills) as [string, { [id: string]: SkillDefinition }][])
             for (let [skillId, skill] of Object.entries(categorySkills)) {
                 extraSkills[skillCategoryId + '.' + skillId] = skill.name;
             }
@@ -53,8 +53,8 @@ export class Lvl0mfItemSheet extends ItemSheet {
             elements: Object.entries(elements).reduce((previousValue, [key, value]) => {
                 previousValue[key] = value.nameForWeapon;
                 return previousValue;
-            } , {}),
-            usedAmmunitionTypes : {
+            }, {}),
+            usedAmmunitionTypes: {
                 '': 'Aucune',
                 ...ammunitionTypes
             }
