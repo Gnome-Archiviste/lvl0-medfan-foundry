@@ -1,5 +1,6 @@
 import specialities from '../../data/specialities.js'
 import {AmmunitionType} from '../models/item/ammunition-item-properties';
+import {DialogBase} from './dialog/dialog-base';
 
 export interface WeaponSelectorDialogData {
     weapons: Item[],
@@ -7,25 +8,14 @@ export interface WeaponSelectorDialogData {
     ammunition: Item[],
 }
 
-export type CompleteWeaponSelectorCallback = (selectedWeapons: [weapon?: Item, ammunition?: Item]) => void;
-
-export class WeaponSelectorDialog extends Application {
+export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Item, ammunition?: Item]> {
     private selectedWeapon?: Item = undefined;
     private selectedAmmo?: Item = undefined;
 
-    constructor(
-        private readonly dialogData: WeaponSelectorDialogData,
-        private readonly onComplete: CompleteWeaponSelectorCallback
-    ) {
-        super();
-    }
-
     /** @override */
-    getData(options = {}) {
-        let data = super.getData(options);
-
+    override getData(options?: Partial<Application.Options>): object | Promise<object> {
         return {
-            ...data,
+            ...super.getData(options),
             weapons: this.dialogData.weapons,
             weaponType: this.dialogData.weaponType,
             ammunition: this.dialogData.ammunition,
@@ -33,20 +23,16 @@ export class WeaponSelectorDialog extends Application {
         };
     }
 
-    /** @override */
-    get title() {
-        return "Selection de l'arme";
+    protected override getResult(): [weapon?: Item, ammunition?: Item] {
+        let selectedItems: [Item | undefined, Item | undefined] = [undefined, undefined];
+        if (this.selectedWeapon)
+            selectedItems[0] = this.selectedWeapon;
+        if (this.selectedAmmo)
+            selectedItems[1] = this.selectedAmmo;
+        return selectedItems;
     }
 
-    async close(options?: Application.CloseOptions & { selected: boolean }) {
-        if (!options?.selected) {
-            this.onComplete([]);
-        }
-        return super.close(options);
-    }
-
-    /** @override */
-    activateListeners(html: JQuery): void {
+    override activateListeners(html: JQuery): void {
         super.activateListeners(html);
 
         html.find('[data-select-weapon]').on('click', ev => {
@@ -64,31 +50,12 @@ export class WeaponSelectorDialog extends Application {
             this.selectedAmmo = this.dialogData.ammunition.find(i => i.id === ev.currentTarget.dataset.itemId);
         });
 
-        html.find('[data-action]').on('click', ev => {
-            switch (ev.target.dataset["action"]) {
-                case 'cancel': {
-                    this.close();
-                    break;
-                }
-                case 'confirm': {
-                    let selectedItems: [Item | undefined, Item | undefined] = [undefined, undefined];
-                    if (this.selectedWeapon)
-                        selectedItems[0] = this.selectedWeapon;
-                    if (this.selectedAmmo)
-                        selectedItems[1] = this.selectedAmmo;
-                    this.onComplete(selectedItems);
-                    this.close({selected: true});
-                    break;
-                }
-            }
-        });
-
         let defaultWeapon = this.dialogData.weapons[0];
         html.find(`.weapon-line input[name="weapon"][value="${defaultWeapon._id}"]`).prop('checked', true);
         this.selectWeapon(html, defaultWeapon);
     }
 
-    selectWeapon(html: JQuery, selectedWeapon: Item) {
+    private selectWeapon(html: JQuery, selectedWeapon: Item) {
         this.selectedWeapon = selectedWeapon;
         if (selectedWeapon) {
             if (selectedWeapon.data.type !== 'weapon')
@@ -105,7 +72,7 @@ export class WeaponSelectorDialog extends Application {
         }
     }
 
-    showAmmunitionType(html, type: AmmunitionType) {
+    private showAmmunitionType(html, type: AmmunitionType) {
         if (this.selectedAmmo && this.selectedAmmo.data.type === 'ammunition' && this.selectedAmmo?.data.data.ammunitionType !== type) {
             this.selectedAmmo = undefined;
             html.find('.ammunition-line input[name="ammo"][value="default"]').prop('checked', true);
@@ -115,18 +82,20 @@ export class WeaponSelectorDialog extends Application {
         html.find('.ammunition-line[data-ammunition-type="' + type + '"]').show();
     }
 
-    hideAmmunition(html) {
+    private hideAmmunition(html) {
         this.selectedAmmo = undefined;
         html.find('.ammunition').hide();
     }
 
     static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
+        return {
+            ...super.defaultOptions,
             id: "weaponSelector",
+            title: "Selection de l'arme",
             template: "systems/lvl0mf-sheet/templates/ui/weapon-selector-dialog.hbs",
             popOut: true,
             width: 500,
             height: 600
-        });
+        };
     }
 }
