@@ -1,4 +1,4 @@
-import {SkillScriptFactory} from "./skill-scripts/skill-script-factory.js";
+import {SkillScriptFactory} from "./skill-scripts/skill-script-factory";
 import {SkillRepository} from '../repositories/skill-repository';
 import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
 import {assertIsCharacter} from '../models/actor/properties/character-properties';

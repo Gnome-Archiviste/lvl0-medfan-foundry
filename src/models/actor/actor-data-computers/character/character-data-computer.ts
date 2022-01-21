@@ -1,4 +1,4 @@
-import {ActorDataComputer} from "../actor-data-computer.js";
+import {ActorDataComputer} from "../actor-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorType} from '../../lvl0-actor-data';
 import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';

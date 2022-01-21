@@ -1,4 +1,4 @@
-import {CharacterDataComputer} from "./character-data-computer.js";
+import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
 import {getItemModifiersIfAvailable} from '../../../item/lvl0-item-data';

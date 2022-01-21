@@ -1,7 +1,7 @@
-import {SkillScript} from "./skill-script.js";
-import {WeaponSelector} from "../../utils/weapon-selector.js";
-import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
-import {EffectManager} from "../effect-manager.js";
+import {SkillScript} from "./skill-script";
+import {WeaponSelector} from "../../utils/weapon-selector";
+import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util";
+import {EffectManager} from "../effect-manager";
 import {RollHelper} from '../roll-helper';
 import {ElementRepository} from '../../repositories/element-repository';
 import {

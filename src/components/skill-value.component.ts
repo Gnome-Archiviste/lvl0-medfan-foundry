@@ -1,4 +1,4 @@
-import {RollSkillManager} from "../managers/roll-skill-manager.js";
+import {RollSkillManager} from "../managers/roll-skill-manager";
 
 Hooks.on('renderActorSheet', (sheet, elements) => {
     /**

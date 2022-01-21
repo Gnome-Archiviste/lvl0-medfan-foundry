@@ -1,5 +1,5 @@
-import {SkillScript} from "./skill-script.js";
-import {EffectManager} from "../effect-manager.js";
+import {SkillScript} from "./skill-script";
+import {EffectManager} from "../effect-manager";
 import {assertIsCharacter} from '../../models/actor/properties/character-properties';
 import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../repositories/data/skills';
 import {Lvl0ItemShield} from '../../models/item/lvl0-item-types';

@@ -1,14 +1,14 @@
-import {LevelingCharacterDataComputer} from "./actor-data-computers/character/leveling-character-data-computer.js";
-import {SkillsCharacterDataComputer} from "./actor-data-computers/character/skills-character-data-computer.js";
-import {StatsCharacterDataComputer} from "./actor-data-computers/character/stats-character-data-computer.js";
-import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-character-data-computer.js";
-import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer.js";
-import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
-import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer.js";
-import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer.js";
-import {LevelUpDialog, LevelUpDialogData} from "../../ui/dialog/level-up-dialog.js";
-import {SelectSpecialityDialog} from "../../ui/dialog/select-speciality-dialog.js";
-import {RollSpecialityManager} from "../../managers/roll-speciality-manager.js";
+import {LevelingCharacterDataComputer} from "./actor-data-computers/character/leveling-character-data-computer";
+import {SkillsCharacterDataComputer} from "./actor-data-computers/character/skills-character-data-computer";
+import {StatsCharacterDataComputer} from "./actor-data-computers/character/stats-character-data-computer";
+import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-character-data-computer";
+import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer";
+import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer";
+import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer";
+import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer";
+import {LevelUpDialog, LevelUpDialogData} from "../../ui/dialog/level-up-dialog";
+import {SelectSpecialityDialog} from "../../ui/dialog/select-speciality-dialog";
+import {RollSpecialityManager} from "../../managers/roll-speciality-manager";
 import {
     GenerateMissingLevelUpDataDialog,
     GenerateMissingLevelUpDataDialogData

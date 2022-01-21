@@ -1,7 +1,7 @@
-import {RollDamageSkillScript} from "./roll-damage-skill-script.js";
-import {SkillScript} from "./skill-script.js";
-import {RollSpellSkillScript} from "./roll-spell-skill-script.js";
-import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script.js";
+import {RollDamageSkillScript} from "./roll-damage-skill-script";
+import {SkillScript} from "./skill-script";
+import {RollSpellSkillScript} from "./roll-spell-skill-script";
+import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script";
 import {SkillDefinition} from '../../repositories/data/skills';
 
 export class SkillScriptFactory {
