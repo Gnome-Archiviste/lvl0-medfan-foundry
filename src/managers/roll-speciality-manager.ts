@@ -1,11 +1,13 @@
 import {RollSkillManager} from "./roll-skill-manager.js";
 import {WeaponSelector} from "../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../utils/weapon-damage-roll-util.js";
-import specialitiesDefinitions, {SpecialityDefinition} from "../../data/specialities.js";
 import {RollHelper} from './roll-helper';
-import {ElementsUtil} from '../utils/elements-util';
 import {WeaponType} from '../models/item/properties/weapon-item-properties';
 import {AmmunitionItemProperties} from '../models/item/properties/ammunition-item-properties';
+import {SpecialityDefinition} from '../repositories/data/specialities';
+import {SpecialityRepository} from '../repositories/speciality-repository';
+import {ElementRepository} from '../repositories/element-repository';
+import {assertIsCharacter} from '../models/actor/properties/character-properties';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';
@@ -25,9 +27,6 @@ type ArrowResult = {
 };
 
 export class RollSpecialityManager {
-    static getSpecialityFromId(specialityId: string): SpecialityDefinition {
-        return {...specialitiesDefinitions[specialityId], id: specialityId};
-    }
 
     static needRoll(specialityId: string): boolean {
         if (specialityId === 'arrow_volley')
@@ -37,7 +36,7 @@ export class RollSpecialityManager {
 
     static async rollSpeciality(token: Token, specialityId: string): Promise<boolean> {
         if (specialityId === 'arrow_volley') {
-            return await RollSpecialityManager.rollArrowVolley(token, this.getSpecialityFromId(specialityId));
+            return await RollSpecialityManager.rollArrowVolley(token, SpecialityRepository.getSpecialityFromId(specialityId));
         }
         return true;
     }
@@ -49,22 +48,19 @@ export class RollSpecialityManager {
         }
 
         return new Promise(async resolve => {
-            let successRollValue = RollSkillManager.getSkillSuccessValue(token.actor?.data.data, 'combat.throw_shoot');
+            if (!token.actor)
+                return;
+            assertIsCharacter(token.actor);
+            let successRollValue = RollSkillManager.getSkillSuccessValue(token.actor.data.data, 'combat.throw_shoot');
             let [weapon, ammunition] = await WeaponSelector.selectWeapon(token, WeaponType.Range);
             if (!weapon) {
                 resolve(false);
                 return;
             }
-            if (weapon.data.type !== 'weapon') {
-                throw new Error(`Expected a weapon but got: '${weapon.name}' of type ${weapon.data.type}`);
-            }
             let weaponElement = weapon.data.data.element;
 
             let ammunitionElement: string | undefined;
             if (ammunition) {
-                if (ammunition.data.type !== 'ammunition') {
-                    throw new Error(`Expected a ammunition but got: '${ammunition.name}' of type ${ammunition.data.type}`);
-                }
                 ammunitionElement = ammunition.data.data.extraDamageEffect;
             }
 
@@ -151,7 +147,7 @@ export class RollSpecialityManager {
                 message += `<span class="test-result"><i class="fas fa-dice"></i> ${arrow.testRollResult} / ${successRollValue} (${RollHelper.getTestResultMessage(arrow.result)})</span>`;
                 message += `<span class="test-roll">${await RollHelper.renderRollSmall(arrow.testRoll)}</span>`;
                 if (arrow.result === 'success' || arrow.result === 'criticalSuccess') {
-                    message += `<span class="damage-result">Dégâts: ${arrow.damage} ${arrow.element ? '(' + ElementsUtil.getNameForWeapon(arrow.element) + ')' : ''}</span>`;
+                    message += `<span class="damage-result">Dégâts: ${arrow.damage} ${arrow.element ? '(' + ElementRepository.getElementWeaponName(arrow.element) + ')' : ''}</span>`;
                     message += `<span class="damage-roll">${await RollHelper.renderRollSmall(arrow.damageRoll)}</span>`;
                 }
                 message += `</div>`;

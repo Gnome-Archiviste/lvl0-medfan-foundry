@@ -1,29 +1,28 @@
-import specialities from '../../../data/specialities.js'
 import {DialogBase} from './dialog-base';
 import {AmmunitionType} from '../../models/item/properties/ammunition-item-properties';
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../models/item/lvl0-item-types';
 
 export interface WeaponSelectorDialogData {
-    weapons: Item[],
+    weapons: Lvl0ItemWeapon[],
     weaponType: 'range' | 'melee',
-    ammunition: Item[],
+    ammunition: Lvl0ItemAmmunition[],
 }
 
-export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Item, ammunition?: Item]> {
-    private selectedWeapon?: Item = undefined;
-    private selectedAmmo?: Item = undefined;
+export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
+    private selectedWeapon?: Lvl0ItemWeapon = undefined;
+    private selectedAmmo?: Lvl0ItemAmmunition = undefined;
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
         return {
             ...super.getData(options),
             weapons: this.dialogData.weapons,
             weaponType: this.dialogData.weaponType,
-            ammunition: this.dialogData.ammunition,
-            specialities
+            ammunition: this.dialogData.ammunition
         };
     }
 
-    protected override getResult(): [weapon?: Item, ammunition?: Item] {
-        let selectedItems: [Item | undefined, Item | undefined] = [undefined, undefined];
+    protected override getResult(): [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition] {
+        let selectedItems: [Lvl0ItemWeapon | undefined, Lvl0ItemAmmunition | undefined] = [undefined, undefined];
         if (this.selectedWeapon)
             selectedItems[0] = this.selectedWeapon;
         if (this.selectedAmmo)
@@ -54,7 +53,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         this.selectWeapon(html, defaultWeapon);
     }
 
-    private selectWeapon(html: JQuery, selectedWeapon: Item) {
+    private selectWeapon(html: JQuery, selectedWeapon: Lvl0ItemWeapon) {
         this.selectedWeapon = selectedWeapon;
         if (selectedWeapon) {
             if (selectedWeapon.data.type !== 'weapon')

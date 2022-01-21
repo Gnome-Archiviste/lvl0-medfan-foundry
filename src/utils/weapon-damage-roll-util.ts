@@ -1,13 +1,10 @@
-import {ElementsUtil} from "./elements-util.js";
-import {Lvl0Item} from '../models/item/lvl0-item';
-import {assertIsWeapon} from '../models/item/properties/weapon-item-properties';
 import {foundryAssert} from './error';
-import {assertIAmmunition} from '../models/item/properties/ammunition-item-properties';
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
+import {ElementRepository} from '../repositories/element-repository';
 
 export class WeaponDamageRollUtil {
-    static getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Item, ammunition?: Item)
+    static getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition)
         : [damageRollFormula: string, damageRollWithAmmunition: string] {
-        assertIsWeapon(weapon.data.type);
         foundryAssert(weapon.data.data.damage, `Weapon '${weapon.name}' does not have any damage configured`);
 
         let damageRollFormula = weapon.data.data.damage.split(' ').join();
@@ -20,7 +17,6 @@ export class WeaponDamageRollUtil {
 
         let damageRollWithAmmunition = '';
         if (ammunition) {
-            assertIAmmunition(ammunition.data.type);
             damageRollWithAmmunition = '(' + damageRollFormula + '+' + ammunition.data.data.extraDamage.split(' ').join() + ')';
         }
         return [damageRollFormula, damageRollWithAmmunition];
@@ -28,11 +24,9 @@ export class WeaponDamageRollUtil {
 
     static getWeaponAndAmmunitionDamageRolls(
         weaponType: 'range' | 'melee',
-        weapon: Item,
-        ammunition?: Item
+        weapon: Lvl0ItemWeapon,
+        ammunition?: Lvl0ItemAmmunition
     ): [damageRollFormula: string, ammunitionDamageRollFormula?: string] {
-        if (weapon.data.type !== 'weapon')
-            throw new Error('Expected to receive a weapon here, but received: ' + weapon.data.name + ' ' + weapon.data.type);
         if (!weapon.data.data.damage)
             throw new Error('No damage configured for the weapon ' + weapon.name);
         let damageRollFormula = weapon.data.data.damage.split(' ').join();
@@ -46,17 +40,15 @@ export class WeaponDamageRollUtil {
 
         let ammunitionDamageRollFormula: string | undefined = undefined;
         if (ammunition) {
-            if (ammunition.data.type !== 'ammunition')
-                throw new Error('Expected to receive a ammunition here, but received: ' + weapon.data.name + ' ' + weapon.data.type);
             ammunitionDamageRollFormula = ammunition.data.data.extraDamage.split(' ').join();
         }
         return [damageRollFormula, ammunitionDamageRollFormula];
     }
 }
 
-Handlebars.registerHelper('weaponDamageFormula', (weaponType, /** @type {Item} */ weapon) => {
+Handlebars.registerHelper('weaponDamageFormula', (weaponType: 'range' | 'melee', weapon: Lvl0ItemWeapon) => {
     let [weaponRollFormula] = WeaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(weaponType, weapon);
-    let element = ElementsUtil.getNameForWeapon(weapon.data.data.element);
+    let element = ElementRepository.getElementWeaponName(weapon.data.data.element);
 
     if (element) {
         return `${weaponRollFormula} (${element})`;

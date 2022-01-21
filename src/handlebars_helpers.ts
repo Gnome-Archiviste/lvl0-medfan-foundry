@@ -1,3 +1,5 @@
+import {ElementRepository} from './repositories/element-repository';
+
 Handlebars.registerHelper('math', function (lvalue, operator, rvalue) {
     rvalue = parseFloat(rvalue);
     return {
@@ -91,4 +93,10 @@ Handlebars.registerHelper("inc", function(value) {
 });
 Handlebars.registerHelper("nth", function(array, index) {
     return array[parseInt(index)];
+});
+Handlebars.registerHelper('weaponEffectName', (v) => {
+    return ElementRepository.getElementWeaponName(v);
+});
+Handlebars.registerHelper('elementName', (v) => {
+    return ElementRepository.getElementName(v);
 });

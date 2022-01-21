@@ -1,11 +1,11 @@
-import magicEpicFailEffects from '../../data/magic-epic-fail-effects.js';
+import {MagicEpicFailRepository} from '../repositories/magic-epic-fail-repository';
 
 export class RollMagicEpicFailManager {
     static async roll() {
         let epiFailRoll = await (new Roll('2d6').roll({async: true}));
         const messageData = epiFailRoll.toMessage({}, {create: false});
 
-        let effect = magicEpicFailEffects[epiFailRoll.total];
+        let effect = MagicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
 
         let content = `<div class="critical-failure-chat">
     <div class="title">Echec critique</div>

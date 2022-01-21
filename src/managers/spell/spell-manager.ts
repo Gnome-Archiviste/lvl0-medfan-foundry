@@ -1,5 +1,3 @@
-import spellsDefinitions from "../../../data/spells.js";
-import {ElementsUtil} from "../../utils/elements-util.js";
 import * as marked from 'marked';
 import {
     ActorSpell,
@@ -10,12 +8,23 @@ import {
 } from './spell-definition.model';
 import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {SpellRepository} from '../../repositories/spell-repository';
+import {ElementRepository} from '../../repositories/element-repository';
+import {SpellClass} from '../../repositories/data/jobs';
 import {assertIsCharacter} from '../../models/actor/properties/character-properties';
 
-export interface SpellContext {
+export class SpellContext {
     arcaneLevel: number;
     epicFail?: boolean;
     criticalSuccess?: boolean;
+
+    static fromActor(actor: Lvl0Actor): SpellContext {
+        let spellContext = new SpellContext();
+        if (actor.data.type === 'character') {
+            spellContext.arcaneLevel = actor.data.data.computedData.magic.arcaneLevel;
+        }
+        return spellContext;
+    }
 }
 
 export class RolledSpellStat {
@@ -70,11 +79,11 @@ export class SpellManager {
     static async computeSpellForActor(
         spellDefinition: SpellDefinition,
         level: number,
-        spellCategory: string,
+        spellClass: string,
         speciality: string,
         context: SpellContext
     ): Promise<ActorSpell> {
-        let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
+        let spellId = spellClass + '.' + speciality + '.' + level + '.' + spellDefinition.id;
 
         try {
             let actorSpell: ActorSpell = {
@@ -100,15 +109,20 @@ export class SpellManager {
         } catch (e) {
             console.error(`Error while processing spell ${spellId}`, e);
             ui.notifications?.error(`Erreur avec le sort ${spellId}`);
-            return SpellManager.safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, context);
+            return SpellManager.safeIncompleteSpell(spellDefinition, level, spellClass, speciality);
         }
     }
 
-    static async safeIncompleteSpell(spellDefinition, level, spellCategory, speciality, context: SpellContext): Promise<ActorSpell> {
-        let spellId = spellCategory + '.' + speciality + '.' + level + '.' + spellDefinition.id;
+    static async safeIncompleteSpell(
+        spellDefinition: SpellDefinition,
+        level: number,
+        spellClass: string,
+        speciality: string
+    ): Promise<ActorSpell> {
+        let spellId = spellClass + '.' + speciality + '.' + level + '.' + spellDefinition.id;
         return {
             id: spellId,
-            cost: level.toString(),
+            cost: level,
             description: "",
             icon: spellDefinition.icon,
             name: spellDefinition.name,
@@ -137,29 +151,15 @@ export class SpellManager {
         return updatedActorSpell;
     }
 
-    /**
-     * @param {string} spellId
-     * @return SpellDefinition|undefined
-     */
-    static getSpellById(spellId) {
-        let [spellCategory, speciality, level, id] = spellId.split('.', 4);
-        return spellsDefinitions[spellCategory][speciality][level]?.find(s => s.id === id);
-    }
-
-    /**
-     * @param {string} spellId
-     * @param {Object} context
-     * @return Promise<ActorSpell|undefined>
-     */
-    static async getComputedSpellForActorById(spellId, context: SpellContext) {
-        let spellDefinition = this.getSpellById(spellId);
+    static async getComputedSpellForActorById(spellId: string, context: SpellContext): Promise<ActorSpell | undefined> {
+        let spellDefinition = SpellRepository.getSpellById(spellId);
         if (!spellDefinition)
             return undefined;
-        let [spellCategory, speciality, level, id] = spellId.split('.', 4);
-        return await this.computeSpellForActor(spellDefinition, +level, spellCategory, speciality, context);
+        let [spellClass, speciality, level, id] = spellId.split('.', 4);
+        return await this.computeSpellForActor(spellDefinition, +level, spellClass, speciality, context);
     }
 
-    static computeSpellDescription(actorSpell, spellDefinition, context = {}) {
+    static computeSpellDescription(actorSpell, spellDefinition, context = {}): string | undefined {
         if (typeof spellDefinition.description === 'string')
             return spellDefinition.description
                 .replace('{{spell.area}}', `<em>${actorSpell.area}</em>`);
@@ -169,51 +169,44 @@ export class SpellManager {
         return undefined;
     }
 
-
-    static async getAvailableSpells(actor: Lvl0Actor, spellCategory: 'mage' | 'champion'): Promise<ActorSpell[]> {
-        assertIsCharacter(actor.data.type);
+    static async getAvailableSpells(actor: Lvl0Actor, spellClass: SpellClass): Promise<ActorSpell[]> {
+        assertIsCharacter(actor);
         let actorData = actor.data.data;
-        if (!(spellCategory in spellsDefinitions))
+
+        let specialities: string[];
+        if (actorData.computedData.bases.job.spellSpecialization === 'useSpecializations') {
+            specialities = actorData.job.specializations;
+        } else if (actorData.computedData.bases.job.spellSpecialization) {
+            specialities = [actorData.computedData.bases.job.spellSpecialization];
+        } else {
             return [];
+        }
 
-        let speciality = 'general';
-        if (spellCategory === 'mage') {
-            if (actorData.computedData.bases.job.spellCategory === 'useSpecializations') {
-                let availableSpells: ActorSpell[] = [];
-                for (const specialization of actorData.job.specializations) {
-                    let allCategorySpells = {};
-                    let specializationSpells = spellsDefinitions.mage[specialization];
-                    if (!specializationSpells) {
-                        console.warn('No spell for specialization ' + specialization);
-                        continue;
-                    }
-                    for (let level of Object.keys(specializationSpells)) {
-                        allCategorySpells[level] = (allCategorySpells[level] || []).concat(specializationSpells[level]);
-                    }
-                    availableSpells = availableSpells.concat(await SpellManager.computeAvailableSpells(actorData, allCategorySpells, spellCategory, specialization));
+        if (actor.data.data.computedData.bases.job.spellClass != spellClass) {
+            return [];
+        }
+
+        let actorSpells: ActorSpell[] = [];
+        for (let speciality of specialities) {
+            let specialitySpellsByLevels = SpellRepository.getSpellsByLevels(spellClass, speciality);
+            for (let [level, spellDefinitions] of Object.entries(specialitySpellsByLevels)) {
+                if (+level > actorData.computedData.magic.arcaneLevel)
+                    continue;
+                if (+level > actorData.mana.value)
+                    continue;
+                for (let spellDefinition of spellDefinitions) {
+                    let actorSpell = await SpellManager.computeSpellForActor(
+                        spellDefinition,
+                        +level,
+                        spellClass,
+                        speciality,
+                        SpellContext.fromActor(actor)
+                    );
+                    actorSpells.push(actorSpell);
                 }
-                return availableSpells;
-            } else {
-                speciality = actorData.computedData.bases.job.spellCategory!;
-                if (speciality in spellsDefinitions[spellCategory]) {
-                    return await SpellManager.computeAvailableSpells(actorData, spellsDefinitions[spellCategory][speciality], spellCategory, speciality);
-                }
-                speciality = 'general';
             }
         }
-        return await SpellManager.computeAvailableSpells(actorData, spellsDefinitions[spellCategory][speciality], spellCategory, speciality);
-    }
-
-    static async computeAvailableSpells(actorData, allCategorySpells, spellCategory, speciality): Promise<ActorSpell[]> {
-        let availableSpells: ActorSpell[] = [];
-        for (let level = 1; level <= actorData.computedData.magic.arcaneLevel && level <= actorData.mana.value; level++) {
-            if (!(level in allCategorySpells))
-                continue;
-            for (let spellDefinition of allCategorySpells[level]) {
-                availableSpells.push(await SpellManager.computeSpellForActor(spellDefinition, level, spellCategory, speciality, {arcaneLevel: actorData.computedData.magic.arcaneLevel}));
-            }
-        }
-        return availableSpells;
+        return actorSpells;
     }
 
     static computeSpellDistance(spellDefinition: SpellDefinition, context = {}): string | RolledSpellStat | undefined {
@@ -259,14 +252,14 @@ export class SpellManager {
         }
         if (damageData.rollFormula) {
             let rollFormula = this.computeFormula(damageData.rollFormula, context);
-            let rolledSpellStat = new RolledSpellStat(rollFormula, ElementsUtil.getName(damageData.element));
+            let rolledSpellStat = new RolledSpellStat(rollFormula, ElementRepository.getElementName(damageData.element));
             await rolledSpellStat.evaluateRoll();
             return rolledSpellStat;
         }
         if (damageData.formula) {
             let value = this.computeFormula(damageData.formula, context);
             if (damageData.element)
-                value += '(' + ElementsUtil.getName(damageData.element) + ')';
+                value += '(' + ElementRepository.getElementName(damageData.element) + ')';
             return value;
         }
         if (damageData.text) {

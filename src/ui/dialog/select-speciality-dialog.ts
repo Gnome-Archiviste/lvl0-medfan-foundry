@@ -1,5 +1,5 @@
-import specialities from '../../../data/specialities.js'
 import {DialogBase} from './dialog-base';
+import {SpecialityRepository} from '../../repositories/speciality-repository';
 
 export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
 
@@ -10,7 +10,7 @@ export class SelectSpecialityDialog extends DialogBase<null, string> {
 
         return {
             ...data,
-            specialities
+            specialitiesByIds: SpecialityRepository.getSpecialitiesById()
         };
     }
 

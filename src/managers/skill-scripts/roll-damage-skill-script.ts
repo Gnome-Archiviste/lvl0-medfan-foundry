@@ -1,45 +1,28 @@
 import {SkillScript} from "./skill-script.js";
 import {WeaponSelector} from "../../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util.js";
-import {ElementsUtil} from "../../utils/elements-util.js";
 import {EffectManager} from "../effect-manager.js";
 import {RollHelper} from '../roll-helper';
-
-/**
- * @typedef RollDamageSkillScriptData
- * @property {'range'|'melee'} weaponType
- */
+import {ElementRepository} from '../../repositories/element-repository';
+import {
+    RollDamageSkillScriptData,
+    RollDamageSkillScriptDefinition,
+    SkillDefinition
+} from '../../repositories/data/skills';
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../models/item/lvl0-item-types';
+import {foundryAssert} from '../../utils/error';
 
 export class RollDamageSkillScript extends SkillScript {
-    /**
-     * @private
-     * @property {Item|undefined} ammunition
-     */
-    ammunition;
-    /**
-     * @private
-     * @property {Item|undefined} weapon
-     */
-    weapon;
-    /**
-     * @private
-     * @property {RollDamageSkillScriptData} data
-     */
-    data;
+    data: RollDamageSkillScriptData;
+    ammunition?: Lvl0ItemAmmunition;
+    weapon?: Lvl0ItemWeapon;
 
-    /**
-     * @param {Token} token
-     * @param {SkillDefinition} skillDefinition
-     */
-    constructor(token, skillDefinition) {
+    constructor(token: Token, skillDefinition: SkillDefinition & { script: RollDamageSkillScriptDefinition }) {
         super(token, skillDefinition);
         this.data = skillDefinition.script.data;
     }
 
-    /**
-     * @override
-     */
-    async prepare() {
+    override async prepare() {
         let [weapon, ammunition] = await WeaponSelector.selectWeapon(this.token, this.data.weaponType);
         this.weapon = weapon;
         this.ammunition = ammunition;
@@ -47,6 +30,8 @@ export class RollDamageSkillScript extends SkillScript {
     }
 
     async postRoll(roll: Roll, result: number, minSuccessValue: number, success: boolean): Promise<void> {
+        foundryAssert(this.weapon, 'weapon should not be null in RollDamageSkillScript.postRoll');
+
         let useAmmunition = false;
         if (this.ammunition) {
             if (this.ammunition.data.data.quantity <= 0) {
@@ -121,19 +106,22 @@ export class RollDamageSkillScript extends SkillScript {
         await ChatMessage.create({...messageData, speaker, content});
     }
 
+
     async buildChatMessage(
-        roll,
-        result,
-        minSuccessValue,
-        success,
-        weaponRollFormula,
-        ammunitionRollFormula,
-        weaponDamage?,
-        ammunitionDamage?,
-        weaponRoll?,
-        ammunitionRoll?,
-        effectsWithBonusDamages?
+        roll: Roll,
+        result: number,
+        minSuccessValue: number,
+        success: boolean,
+        weaponRollFormula: string,
+        ammunitionRollFormula?: string,
+        weaponDamage?: number,
+        ammunitionDamage?: number,
+        weaponRoll?: Roll,
+        ammunitionRoll?: Roll,
+        effectsWithBonusDamages?: { name: string, value: number }[]
     ) {
+        foundryAssert(this.weapon, 'weapon should not be null in RollDamageSkillScript.buildChatMessage');
+
         let message = `<div class="skill-roll-damage">
             <div class="title">${this.skillDefinition.name}</div>
             <div class="test"><i class="fas fa-dice"></i> ${result} / ${minSuccessValue} (${this.getTestResultMessage(success, result)})</div>
@@ -142,7 +130,7 @@ export class RollDamageSkillScript extends SkillScript {
 
         let weaponDamageText = weaponRollFormula;
         if (this.weapon.data.data.element) {
-            weaponDamageText += ` (${ElementsUtil.getNameForWeapon(this.weapon.data.data.element)})`;
+            weaponDamageText += ` (${ElementRepository.getElementWeaponName(this.weapon.data.data.element)})`;
         }
         if (success) {
             weaponDamageText += ' = ' + weaponDamage;
@@ -151,7 +139,7 @@ export class RollDamageSkillScript extends SkillScript {
             <div class="name">${this.weapon.name}</div>
             <img class="img" src="${this.weapon.img}" />
             <div class="damage"><i class="fas fa-dice"></i> ${weaponDamageText}</div>`;
-        if (success) {
+        if (weaponRoll) {
             message += `<div class="roll">${await RollHelper.renderRollSmall(weaponRoll)}</div>`;
         }
         message += `</div>`;
@@ -159,7 +147,7 @@ export class RollDamageSkillScript extends SkillScript {
         if (this.ammunition) {
             let ammunitionDamageText = ammunitionRollFormula;
             if (this.ammunition.data.data.extraDamageEffect) {
-                ammunitionDamageText += ` (${ElementsUtil.getNameForWeapon(this.ammunition.data.data.extraDamageEffect)})`;
+                ammunitionDamageText += ` (${ElementRepository.getElementWeaponName(this.ammunition.data.data.extraDamageEffect)})`;
             }
             if (success) {
                 ammunitionDamageText += ' = ' + ammunitionDamage;
@@ -169,20 +157,20 @@ export class RollDamageSkillScript extends SkillScript {
                 <img class="img" src="${this.ammunition.img}" />
                 <div class="damage"><i class="fas fa-dice"></i> ${ammunitionDamageText}</div>`;
 
-            if (success) {
+            if (ammunitionRoll) {
                 message += `<div class="roll">${await RollHelper.renderRollSmall(ammunitionRoll)}</div>`;
             }
             message += '</div>';
         }
 
-        if (success) {
+        if (effectsWithBonusDamages) {
             let bonusDamage = 0;
             for (let effectsWithBonusDamage of effectsWithBonusDamages) {
                 message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
                 bonusDamage += effectsWithBonusDamage.value;
             }
 
-            message += `<div class="result">Total: <span class="total">${weaponDamage + ammunitionDamage + bonusDamage}</span></div>`;
+            message += `<div class="result">Total: <span class="total">${(weaponDamage || 0) + (ammunitionDamage || 0) + bonusDamage}</span></div>`;
         }
 
         message += '</div>';

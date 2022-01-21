@@ -1,34 +1,25 @@
 import {SkillScript} from "./skill-script.js";
 import {EffectManager} from "../effect-manager.js";
+import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../repositories/data/skills';
+import {Lvl0ItemShield} from '../../models/item/lvl0-item-types';
 
 export class RollShieldDamageSkillScript extends SkillScript {
-    /**
-     * @property {Item} shield
-     */
-    shield;
+    shield?: Lvl0ItemShield;
 
-    /**
-     * @param {Token} token
-     * @param {SkillDefinition} skillDefinition
-     */
-    constructor(token, skillDefinition) {
+    constructor(token, skillDefinition: SkillDefinition & {script: ShieldRollDamageSkillScriptDefinition}) {
         super(token, skillDefinition);
     }
 
-    /**
-     * @override
-     */
-    async prepare() {
+    override async prepare() {
         let actor = this.token.actor;
         if (!actor)
             throw new Error("Missing actor during prepare");
-        let shield = actor.items.find(x => x.data.data.equiped && x.type === 'shield');
+        let shield = actor.itemTypes['shield'].map(s => s as Lvl0ItemShield).find(x => x.data.data.equiped);
         if (!shield) {
             ui.notifications?.error("Vous devez équiper un bouclier pour cette action", {permanent: true});
             return false;
         }
-        if (shield.data.type !== 'shield')
-            throw new Error(`Expected item to be a shield but it was ${shield.data.type}`);
         if (!shield.data.data.damage) {
             ui.notifications?.error("Aucun dégâts configuré sur ce bouclier", {permanent: true});
             return false;
@@ -38,15 +29,11 @@ export class RollShieldDamageSkillScript extends SkillScript {
         return true;
     }
 
-    /**
-     * @override
-     */
-    async postRoll(roll, result, minSuccessValue, success) {
+    override async postRoll(roll, result, minSuccessValue, success) {
         let actor = this.token.actor;
-        if (!actor)
-            throw new Error("Missing actor during postRoll");
-        if (actor.type !== 'character')
-            throw new Error("Invalid actor type");
+        assertIsCharacter(actor);
+        if (!this.shield)
+            throw new Error('Missing shield during postRoll');
         let actorData = actor.data.data;
 
         let damageRollFormula = this.shield.data.data.damage.replace('phy', actorData.computedData.stats.baseStats.phy.value.toString());

@@ -2,6 +2,7 @@ import {ActorSpell} from '../../managers/spell/spell-definition.model';
 import {DialogBase} from './dialog-base';
 import ClickEvent = JQuery.ClickEvent;
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -22,11 +23,9 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
 
         let spellInNonFullWand = {};
         let emptyWandAvailable = false;
-        let wands = this.dialogData.actor.itemTypes['wand'];
+        let wands = this.dialogData.actor.itemTypes['wand'].map(w => w as Lvl0ItemWand);
         if (wands) {
             for (let wand of wands) {
-                if (wand.data.type !== 'wand')
-                    continue;
                 if (!wand.data.data.spell) {
                     emptyWandAvailable = true;
                     break;

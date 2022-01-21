@@ -1,8 +1,8 @@
 import {Lvl0ActorEffect} from '../../../managers/effects/lvl0-actor-effect';
-import {RaceDefinition} from '../../../../data/races';
-import {JobDefinition} from '../../../../data/jobs';
 import {Statistics} from './shared-properties-data';
-import {SpecialityDefinition} from '../../../../data/specialities';
+import {RaceDefinition} from '../../../repositories/data/races';
+import {JobDefinition} from '../../../repositories/data/jobs';
+import {SpecialityDefinition} from '../../../repositories/data/specialities';
 
 export interface Lvl0ActorCharacterData {
     computedData: ComputedCharacterData;

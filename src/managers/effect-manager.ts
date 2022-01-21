@@ -1,8 +1,8 @@
-import {RollSkillManager} from "./roll-skill-manager.js";
-import statsDefinition from '../../data/stats.js'
-import {Lvl0ActorEffect} from './effects/lvl0-actor-effect';
+import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './effects/lvl0-actor-effect';
 import {Lvl0Actor} from '../models/actor/lvl0-actor';
 import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
+import {StatsRepository} from '../repositories/stats-repository';
+import {SkillRepository} from '../repositories/skill-repository';
 
 export class EffectManager {
     static applyEffect(actor: Lvl0Actor, effect: Lvl0ActorEffect) {
@@ -34,12 +34,12 @@ export class EffectManager {
     }
 }
 
-Handlebars.registerHelper("effectModifierInfo", /** @type Lvl0ActorEffectModifier */ modifier => {
+Handlebars.registerHelper("effectModifierInfo", (modifier: Lvl0ActorEffectModifier) => {
     let prefix = '';
     if (modifier.skill)
-        prefix = RollSkillManager.getSkillFromId(modifier.skill).name;
+        prefix = SkillRepository.getSkillFromId(modifier.skill).name;
     else if (modifier.stat)
-        prefix = statsDefinition.stats[modifier.stat].name;
+        prefix = StatsRepository.getStatDisplayName(modifier.stat);
 
     if (modifier.value < 0) {
         return prefix + ' '+ modifier.value;

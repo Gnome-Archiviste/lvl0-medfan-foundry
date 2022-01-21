@@ -1,3 +1,5 @@
+import {SpellClass} from './jobs';
+
 export interface SkillDefinition {
     name: string;
     icon?: string;
@@ -6,10 +8,38 @@ export interface SkillDefinition {
     script?: SkillScriptDefinition;
 }
 
-export interface SkillScriptDefinition {
-    name: string;
-    data: object;
+export type SkillScriptDefinition =
+    RollDamageSkillScriptDefinition
+    | CastSpellSkillScriptDefinition
+    | ShieldRollDamageSkillScriptDefinition
+
+export interface RollDamageSkillScriptDefinition {
+    name: 'damageRoll';
+    data: RollDamageSkillScriptData;
 }
+
+export interface RollDamageSkillScriptData {
+    weaponType: 'range' | 'melee';
+    charge?: boolean;
+}
+
+export interface CastSpellSkillScriptDefinition {
+    name: 'castSpell';
+    data: CastSpellSkillScriptData;
+}
+
+export interface CastSpellSkillScriptData {
+    spellClass: SpellClass;
+}
+
+export interface ShieldRollDamageSkillScriptDefinition {
+    name: 'shieldDamageRoll';
+    data: ShieldRollDamageSkillScriptData;
+}
+
+export interface ShieldRollDamageSkillScriptData {
+}
+
 
 export default {
     champion: {
@@ -48,7 +78,7 @@ export default {
             script: {
                 name: 'castSpell',
                 data: {
-                    spellCategory: 'champion'
+                    spellClass: 'champion'
                 }
             }
         },
@@ -139,7 +169,7 @@ export default {
             script: {
                 name: 'castSpell',
                 data: {
-                    spellCategory: 'mage'
+                    spellClass: 'mage'
                 }
             }
         },
@@ -329,5 +359,5 @@ export default {
             stat: "per",
             description: "Chasse, pêche, cueillette en milieu sauvage, faire du feu, etc."
         },
-     },
-} as { [categoryId: string]: { [skillId: string]: SkillDefinition } }
+    },
+} as Record<string, Record<string, SkillDefinition>>

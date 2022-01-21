@@ -1,30 +1,33 @@
-import skills, {SkillDefinition} from '../../../../data/skills.js'
-import jobs, {JobDefinition} from '../../../../data/jobs.js'
-import races, {RaceDefinition} from '../../../../data/races.js'
-import statsDefinition from '../../../../data/stats.js'
 import {RollSkillManager} from '../../../managers/roll-skill-manager';
-import {RollSpecialityManager} from '../../../managers/roll-speciality-manager';
 import {Lvl0ActorCharacterData} from '../../../models/actor/properties-data/lvl0-actor-character-data';
 import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
 import {Lvl0ItemType} from '../../../models/item/lvl0-item-data';
+import {JobRepository} from '../../../repositories/job-repository';
+import {SkillRepository} from '../../../repositories/skill-repository';
+import {StatsRepository} from '../../../repositories/stats-repository';
+import {SkillDefinition} from '../../../repositories/data/skills';
+import {RaceDefinition} from '../../../repositories/data/races';
+import {RaceRepository} from '../../../repositories/race-repository';
+import {ExtensionJobDefinition, JobDefinition} from '../../../repositories/data/jobs';
+import {SpecialityRepository} from '../../../repositories/speciality-repository';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
-    skills: { [skillCategoryId: string]: { [skillId: string]: SkillDefinition } },
-    nonEquipableItemType: { [typeName: string]: boolean },
-    actionableItemType: { [typeName: string]: boolean },
+    skillsByCategories: Record<string, Record<string, SkillDefinition>>,
+    nonEquipableItemType: Record<string, boolean>,
+    actionableItemType: Record<string, boolean>,
     canLevelUp: boolean,
     canChangeStats: boolean,
     canSelectRace: boolean,
     canSelectJob: boolean,
     canEditLevel: boolean,
     canEditModifiers: boolean,
-    statsDefinition: { stats: { [statId: string]: string } },
+    statsDefinition: { stats: { [statId: string]: { name: string } } },
     modifierSkills: { [statId: string]: string },
     skillsByIds: { [skillId: string]: SkillDefinition },
-    jobs: typeof jobs,
+    jobs: { base: Record<string, JobDefinition>, advance: Record<string, ExtensionJobDefinition> },
     jobsNamesById: { [jobId: string]: string },
-    races: { [categoryId: string]: { [raceId: string]: RaceDefinition } },
+    races: Record<string, Record<string, RaceDefinition>>,
     racesByIds: { [raceId: string]: RaceDefinition },
     itemTypes: string[],
     itemTypesInInventoryTabs: string[],
@@ -35,15 +38,10 @@ export interface Lvl0mfActorSheetData extends ActorSheet.Data {
 
 // FIXME: Rename to character
 export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<Options, Lvl0mfActorSheetData> {
-
-    static skillsByIds: { [skillId: string]: SkillDefinition };
-    static jobsNamesById: { [jobId: string]: string };
-    static races = races;
     static armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
-    static racesByIds: { [raceId: string]: RaceDefinition };
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
-        assertIsCharacter(this.actor.data.type);
+        assertIsCharacter(this.actor);
 
         const context = await super.getData(options);
 
@@ -93,7 +91,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         return {
             ...context,
             actorData: this.actor.data.data,
-            skills,
+            skillsByCategories: SkillRepository.getSkillsByCategories(),
             canLevelUp,
             canChangeStats,
             nonEquipableItemType,
@@ -101,14 +99,14 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             canSelectRace,
             canSelectJob,
             canEditLevel,
-            statsDefinition,
+            statsDefinition: StatsRepository.getStats(),
             canEditModifiers,
             modifierSkills,
-            skillsByIds: Lvl0CharacterActorSheet.skillsByIds,
-            jobs: jobs,
-            jobsNamesById: Lvl0CharacterActorSheet.jobsNamesById,
-            races: Lvl0CharacterActorSheet.races,
-            racesByIds: Lvl0CharacterActorSheet.racesByIds,
+            skillsByIds: SkillRepository.getSkillsByIds(),
+            jobs: JobRepository.getJobsByCategories(),
+            jobsNamesById: JobRepository.getJobNamesByIds(),
+            races: RaceRepository.getRacesByCategories(),
+            racesByIds: RaceRepository.getRacesByIds(),
             itemTypes,
             itemTypesInInventoryTabs,
             itemsByType,
@@ -158,7 +156,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     break;
                 case "createSpecialityMacro": {
                     let specialityId = ev.target.dataset.specialityId;
-                    let speciality = RollSpecialityManager.getSpecialityFromId(specialityId);
+                    let speciality = SpecialityRepository.getSpecialityFromId(specialityId);
                     const macro = await Macro.create({
                         name: speciality.name,
                         type: "script",
@@ -225,7 +223,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         html.find("a[data-lvl0-action='deleteActorEffect']").on('click', ev => this._onRemoveEffect(ev));
 
         html.find('[data-permanent-modifier-checkbox]').on('click', ev => {
-            assertIsCharacter(this.actor.data.type);
+            assertIsCharacter(this.actor);
             const modifierId = $(ev.currentTarget).data('permanent-modifier-checkbox');
             this.actor.update({data: {modifiers: {[modifierId]: {isPermanent: !this.actor.data.data.modifiers[modifierId].isPermanent}}}});
         });
@@ -244,7 +242,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     _onRemoveModifier(ev: MouseEvent): void {
-        assertIsCharacter(this.actor.data.type);
+        assertIsCharacter(this.actor);
         if (!ev.target)
             return;
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
@@ -254,7 +252,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     _onAddModifier(ev: MouseEvent): void {
-        assertIsCharacter(this.actor.data.type);
+        assertIsCharacter(this.actor);
         if (!ev.target)
             return;
         let modifiers = this.actor.data.data.modifiers || {};
@@ -295,7 +293,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 icon: '<i class="fas fa-scroll"></i>',
                 callback: async el => {
                     let skillId = el.data('skill');
-                    let skillDefinition = RollSkillManager.getSkillFromId(skillId);
+                    let skillDefinition = SkillRepository.getSkillFromId(skillId);
                     const macro = await Macro.create({
                         name: skillDefinition.name,
                         type: "script",
@@ -317,8 +315,8 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 name: 'Changer la valeur sans limitation',
                 icon: '<i class="fas fa-cog"></i>',
                 callback: el => {
-                    assertIsCharacter(this.actor.data.type);
-                    let [skillCategory, skillName] = RollSkillManager.splitSkill(el.data('skill'));
+                    assertIsCharacter(this.actor);
+                    let [skillCategory, skillName] = SkillRepository.splitSkill(el.data('skill'));
                     let characterSkillData = this.actor.data.data.skills[skillCategory][skillName];
                     let manualMode = !!characterSkillData.manualMode;
                     let value = characterSkillData.value;
@@ -348,7 +346,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 icon: '<i class="fas fa-scroll"></i>',
                 callback: async el => {
                     let specialityId = el.data('speciality');
-                    let specialityDefinition = RollSpecialityManager.getSpecialityFromId(specialityId);
+                    let specialityDefinition = SpecialityRepository.getSpecialityFromId(specialityId);
                     const macro = await Macro.create({
                         name: specialityDefinition.name,
                         type: "script",
@@ -385,25 +383,5 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             scrollY: [".stats", ".items", ".inventory"],
             dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
         };
-    }
-}
-
-Lvl0CharacterActorSheet.skillsByIds = {};
-for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
-    for (let [skillId, skill] of Object.entries(categorySkills as { [skillId: string]: SkillDefinition })) {
-        Lvl0CharacterActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
-    }
-}
-Lvl0CharacterActorSheet.jobsNamesById = (Object.entries(jobs.base) as [key: string, value: { name: string }][])
-    .concat(Object.entries(jobs.advance))
-    .reduce(((previousValue, currentValue: [jobId: string, job: JobDefinition]) => {
-        previousValue[currentValue[0]] = currentValue[1].name;
-        return previousValue;
-    }), {})
-
-Lvl0CharacterActorSheet.racesByIds = {};
-for (let raceCategory of Object.values(races)) {
-    for (let [raceId, race] of Object.entries(raceCategory as { [raceId: string]: RaceDefinition })) {
-        Lvl0CharacterActorSheet.racesByIds[raceId] = race;
     }
 }

@@ -1,5 +1,4 @@
 import {ItemPropertiesTemplateBase} from './item-properties-template-base';
-import {Lvl0ItemType} from '../lvl0-item-data';
 
 export enum AmmunitionType {
     Arrow = 'arrow',
@@ -20,7 +19,3 @@ export interface AmmunitionItemProperties {
     data: AmmunitionItemPropertiesData;
 }
 
-export function assertIAmmunition(type: Lvl0ItemType): asserts type is 'ammunition' {
-    if (type !== 'ammunition')
-        throw new Error('Not supported for item of type: ' + this.actor.data.type);
-}

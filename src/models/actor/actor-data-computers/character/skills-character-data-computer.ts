@@ -1,9 +1,8 @@
-import {CharacterDataComputer} from "./character-data-computer.js";
-import skillLevels from '../../../../../data/skills-level.js';
+import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
-import {SkillValue} from '../../../../../data/skills';
-import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {Lvl0ActorCharacterData, SkillValue} from '../../properties-data/lvl0-actor-character-data';
+import {SkillRepository} from '../../../../repositories/skill-repository';
 
 export class SkillsCharacterDataComputer extends CharacterDataComputer {
     static pointTypes = ['general', 'job_combat', 'all', 'master', 'prodigy'];
@@ -25,16 +24,14 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         actorData.computedData.skills.skillModifiers = skillModifiers;
     }
 
-    /**
-     * @param {Lvl0CharacterData} actorData
-     */
-    countMaximumPoints(actorData) {
+    countMaximumPoints(actorData: Lvl0ActorCharacterData) {
         for (const pointType of SkillsCharacterDataComputer.pointTypes) {
             actorData.computedData.skills.maximumSkillPoints[pointType] = 0;
         }
 
-        for (let i = 0; i < skillLevels.levels.length && i < actorData.level.value; i++) {
-            let points = skillLevels.levels[i].skillPoints.split(' ');
+        let skillLevels = SkillRepository.getSkillLevels();
+        for (let i = 0; i < skillLevels.length && i < actorData.level.value; i++) {
+            let points = skillLevels[i].skillPoints.split(' ');
             for (const point of points) {
                 let pointNumber = +(point.substr(0, 1));
                 let pointType = point.substr(1, 1);

@@ -26,7 +26,7 @@
             {{#each jobs.base as | job | }}
                 <section class="sheet-job-skills">
                     <h4>{{job.name}}</h4>
-                    {{#each2 ../skills @key as | skill | }}
+                    {{#each2 ../skillsByCategories @key as | skill | }}
                         <span class="sheet-skill">
                             <span class="label-with-tooltip-description" data-skill="{{concat2 @../key '.' @key}}">
                                 {{skill.name}}
@@ -42,7 +42,7 @@
 
         <section class="sheet-combat-skills">
             <h4>Combat</h4>
-            {{#each2 skills 'combat' as | skill | }}
+            {{#each2 skillsByCategories 'combat' as | skill | }}
                 <span class="sheet-skill">
                     <span class="label-with-tooltip-description" data-skill="{{concat2 'combat.' @key}}">
                         {{skill.name}}
@@ -55,7 +55,7 @@
 
         <section class="sheet-misc-skills">
             <h4>Général</h4>
-            {{#each2 skills 'general' as | skill | }}
+            {{#each2 skillsByCategories 'general' as | skill | }}
                 <span class="sheet-skill">
                     <span class="label-with-tooltip-description" data-skill="{{concat2 'general.' @key}}">
                         {{skill.name}}

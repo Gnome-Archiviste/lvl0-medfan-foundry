@@ -1,6 +1,7 @@
 export interface JobDefinition {
     name: string;
-    spellCategory?: string;
+    spellClass?: SpellClass;
+    spellSpecialization?: string;
     hasJobSpecialization?: boolean;
     maxSpecializations?: number;
     specializations?: {[techName: string]: string};
@@ -9,6 +10,11 @@ export interface JobDefinition {
     arcaneLevels?: number[];
     requirements: JobRequirement[];
     specialityLevels: number[];
+}
+
+export enum SpellClass {
+    Mage = 'mage',
+    Champion = 'champion'
 }
 
 export interface ExtensionJobDefinition extends Partial<JobDefinition> {
@@ -46,6 +52,8 @@ export default {
                 {stat: "cha", min: 4},
                 {stat: "phy", min: 4}
             ],
+            spellClass: 'champion',
+            spellSpecialization: 'general',
             hasJobSpecialization: true,
             arcaneLevels: [
                 1, 4, 8, 13, 18, 23, 29, 36, 44, 53
@@ -122,7 +130,8 @@ export default {
         },
         mage: {
             name: "Magicien",
-            spellCategory: 'general',
+            spellClass: 'mage',
+            spellSpecialization: 'general',
             hasJobSpecialization: false,
             requirements: [
                 {stat: "int", min: 5}
@@ -181,13 +190,13 @@ export default {
         jester: {
             name: "Bouffon",
             baseJob: "mage",
-            spellCategory: 'jester',
+            spellSpecialization: 'jester',
             hasJobSpecialization: false
         },
         elementalist: {
             name: "Élémentaliste",
             baseJob: "mage",
-            spellCategory: 'useSpecializations',
+            spellSpecialization: 'useSpecializations',
             hasJobSpecialization: false,
             maxSpecializations: 2,
             specializations: {
@@ -201,19 +210,19 @@ export default {
         enchanter: {
             name: "Enchanteur",
             baseJob: "mage",
-            spellCategory: 'enchanter',
+            spellSpecialization: 'enchanter',
             hasJobSpecialization: false
         },
         necromancer: {
             name: "Nécromancien",
             baseJob: "mage",
-            spellCategory: 'necromancer',
+            spellSpecialization: 'necromancer',
             hasJobSpecialization: false
         },
         witch: {
             name: "Sorcière",
             baseJob: "mage",
-            spellCategory: 'witch',
+            spellSpecialization: 'witch',
             hasJobSpecialization: false
         }
     }

@@ -1,37 +1,13 @@
-import skills from "../../data/skills.js";
 import {SkillScriptFactory} from "./skill-scripts/skill-script-factory.js";
+import {SkillRepository} from '../repositories/skill-repository';
+import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
+import {assertIsCharacter} from '../models/actor/properties/character-properties';
 
 export class RollSkillManager {
-    /**
-     * @param {String} skillId
-     * @return [string, string]
-     */
-    static splitSkill(skillId) {
-        return skillId.split('.');
-    }
 
-    /**
-     * @param {string} skillCategory
-     * @param {string} skillName
-     * @return {SkillDefinition}
-     */
-    static getSkill(skillCategory, skillName) {
-        return skills[skillCategory][skillName];
-    }
-
-    static getSkillFromId(skillId) {
-        let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
-        return skills[skillCategory][skillName];
-    }
-
-    /**
-     * @param {Lvl0CharacterData} actorData
-     * @param {string} skillId
-     * @return {number}
-     */
-    static getSkillSuccessValue(actorData, skillId) {
-        let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
-        let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
+    static getSkillSuccessValue(actorData: Lvl0ActorCharacterData, skillId: string): number {
+        let [skillCategory, skillName] = SkillRepository.splitSkill(skillId);
+        let skillDefinition = SkillRepository.getSkill(skillCategory, skillName);
         let stat = skillDefinition.stat;
 
         let skillValue = actorData.skills[skillCategory]?.[skillName]?.value || 0;
@@ -50,17 +26,15 @@ export class RollSkillManager {
             return false;
         }
 
-        let [skillCategory, skillName] = RollSkillManager.splitSkill(skillId);
-        let skillDefinition = RollSkillManager.getSkill(skillCategory, skillName);
-
+        let skillDefinition = SkillRepository.getSkillFromId(skillId);
         let skillScript = new SkillScriptFactory().createScript(token, skillDefinition, options);
 
         if (!await skillScript.prepare())
             return false;
 
         let actor = token.actor;
-        if (!actor)
-            throw new Error('Missing actor on token');
+        assertIsCharacter(actor);
+
         let minSuccessValue = RollSkillManager.getSkillSuccessValue(actor.data.data, skillId);
         let roll = new Roll('2d6');
         await roll.roll({async: true});

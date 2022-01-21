@@ -1,11 +1,11 @@
 import {ActorSpell} from './spell-definition.model';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
-import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {ScrollItemPropertiesData} from '../../models/item/properties/scroll-item-properties-data';
+import {Lvl0ActorCharacter} from '../../models/actor/lvl0-actor-types';
 
 export class ScrollHelper {
-    static async createScroll(actor: Lvl0Actor, spell: ActorSpell): Promise<Item | undefined> {
+    static async createScroll(actor: Lvl0ActorCharacter, spell: ActorSpell): Promise<Item | undefined> {
         let emptyScroll = actor.getFirstEmptyScroll();
         if (!emptyScroll) {
             ui.notifications?.error('Aucun parchemin vierge disponible')

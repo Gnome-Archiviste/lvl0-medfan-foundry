@@ -1,8 +1,8 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import specialitiesDefinitions from "../../../../../data/specialities.js";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {SpecialityDefinition} from '../../../speciality/speciality-definition';
 import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {SpecialityDefinition} from '../../../../repositories/data/specialities';
+import {SpecialityRepository} from '../../../../repositories/speciality-repository';
 
 export class SpecialityCharacterDataComputer extends CharacterDataComputer {
 
@@ -20,11 +20,9 @@ export class SpecialityCharacterDataComputer extends CharacterDataComputer {
         }
         let knownSpecialities: SpecialityDefinition[] = [];
         for (const specialityId of Object.values(actorData.specialities) as string[]) {
-            if (specialityId in specialitiesDefinitions) {
-                knownSpecialities.push({
-                    ...specialitiesDefinitions[specialityId],
-                    id: specialityId
-                });
+            let speciality = SpecialityRepository.getSpecialityFromId(specialityId);
+            if (speciality) {
+                knownSpecialities.push(speciality);
             } else {
                 console.error('unknown speciality: ' + specialityId);
             }

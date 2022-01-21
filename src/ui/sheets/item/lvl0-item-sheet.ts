@@ -1,19 +1,10 @@
-import skills, {SkillDefinition} from "../../../../data/skills.js";
-import elements from "../../../../data/elements.js";
 import ClickEvent = JQuery.ClickEvent;
 import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/lvl0-item-data';
+import {ElementRepository} from '../../../repositories/element-repository';
 
 export class Lvl0ItemSheet extends ItemSheet {
-
-    /** @override */
-    getData(options?: Partial<ItemSheet.Options>) {
+    override getData(options?: Partial<ItemSheet.Options>) {
         let templateData = super.getData(options);
-
-        let extraSkills = {};
-        for (let [skillCategoryId, categorySkills] of Object.entries(skills) as [string, { [id: string]: SkillDefinition }][])
-            for (let [skillId, skill] of Object.entries(categorySkills)) {
-                extraSkills[skillCategoryId + '.' + skillId] = skill.name;
-            }
 
         let ammunitionTypes = {
             'arrow': 'Flèche',
@@ -41,10 +32,7 @@ export class Lvl0ItemSheet extends ItemSheet {
                 'melee-range': 'Mêlée et Distance',
             },
             ammunitionTypes,
-            elements: Object.entries(elements).reduce((previousValue, [key, value]) => {
-                previousValue[key] = value.nameForWeapon;
-                return previousValue;
-            }, {}),
+            elements: ElementRepository.getElementWeaponNameByElementsIds(),
             usedAmmunitionTypes: {
                 '': 'Aucune',
                 ...ammunitionTypes

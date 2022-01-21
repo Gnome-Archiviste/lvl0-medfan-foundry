@@ -1,13 +1,14 @@
 import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog/weapon-selector-dialog";
 import {DialogAwaiter} from './dialog-awaiter';
 import {WeaponItemProperties, WeaponType} from '../models/item/properties/weapon-item-properties';
-import {AmmunitionItemProperties} from '../models/item/properties/ammunition-item-properties';
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
 
 export class WeaponSelector {
-    static async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Item, ammunition?: Item]> {
+    static async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
         let itemsByType = token.actor!.itemTypes;
-
+2
         let weapons = itemsByType['weapon']
+            .map(w => w as Lvl0ItemWeapon)
             .filter(w => w.data.data.equiped)
             .filter(w => (w.data as WeaponItemProperties).data.weaponType === weaponType || (w.data as WeaponItemProperties).data.weaponType === WeaponType.MeleeRange);
         if (weapons.length === 0) {
@@ -19,7 +20,9 @@ export class WeaponSelector {
         }
 
         let useAmmunitionType = new Set(weapons.map(f => (f.data as WeaponItemProperties).data.usedAmmunitionType));
-        let ammunition = itemsByType['ammunition'].filter(a => useAmmunitionType.has((a.data as AmmunitionItemProperties).data.ammunitionType));
+        let ammunition = itemsByType['ammunition']
+            .map(w => w as Lvl0ItemAmmunition)
+            .filter(a => useAmmunitionType.has(a.data.data.ammunitionType));
 
         let weaponSelectorData: WeaponSelectorDialogData = {
             weapons: weapons,

@@ -16,6 +16,8 @@ import {
 import {LevelData, Lvl0ActorCharacterData} from './properties-data/lvl0-actor-character-data';
 import {DialogAwaiter} from '../../utils/dialog-awaiter';
 import {ActorDataComputer} from './actor-data-computers/actor-data-computer';
+import {SpecialityRepository} from '../../repositories/speciality-repository';
+import {Lvl0ItemScroll} from '../item/lvl0-item-types';
 
 const actorDataComputers: ActorDataComputer[] = [
     new BaseCharacterDataComputer(),
@@ -58,7 +60,7 @@ export class Lvl0Actor extends Actor {
             }
         } else {
             await this.useMana(1);
-            let specialityDefinition = RollSpecialityManager.getSpecialityFromId(specialityName);
+            let specialityDefinition = SpecialityRepository.getSpecialityFromId(specialityName);
             await ChatMessage.create({
                 type: CONST.CHAT_MESSAGE_TYPES.IC,
                 speaker: ChatMessage.getSpeaker({actor: this}),
@@ -223,12 +225,10 @@ export class Lvl0Actor extends Actor {
     }
 
     getFirstEmptyScroll(): Item | undefined {
-        let scrolls = this.itemTypes['scroll'];
+        let scrolls = this.itemTypes['scroll'].map(w => w as Lvl0ItemScroll);
         if (scrolls) {
             for (let scroll of scrolls) {
                 if (scroll.data.data.quantity < 1)
-                    continue;
-                if (scroll.data.type !== 'scroll')
                     continue;
                 if (!scroll.data.data.spell) {
                     return scroll;

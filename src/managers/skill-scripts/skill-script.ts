@@ -1,4 +1,4 @@
-import {SkillDefinition} from '../../models/all';
+import {SkillDefinition} from '../../repositories/data/skills';
 
 export class SkillScript {
     constructor(
@@ -7,10 +7,7 @@ export class SkillScript {
     ) {
     }
 
-    /**
-     * @return Promise<boolean>
-     */
-    prepare() {
+    prepare(): Promise<boolean> {
         return Promise.resolve(true);
     }
 
