@@ -118,6 +118,14 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     activateListeners(html) {
         super.activateListeners(html);
 
+        // Prevent [Enter] to "submit" the form, which in this case since there is no `submit` for this form it will
+        // press the first button available and often do something unwanted
+        html.find('input').on('keypress', function(event) {
+            if (event.key == 'Enter') {
+                event.preventDefault();
+            }
+        });
+
         html.find('[data-update-item-quantity]').on('change', ev => {
             ev.stopImmediatePropagation();
             ev.stopPropagation();
