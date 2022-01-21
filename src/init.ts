@@ -49,3 +49,7 @@ declare global {
         game: never; // the type doesn't matter
     }
 }
+Hooks.once('diceSoNiceReady', (dice3d) => {
+    RollSpecialityManager.registerDiceSoNiceColors(dice3d)
+});
+

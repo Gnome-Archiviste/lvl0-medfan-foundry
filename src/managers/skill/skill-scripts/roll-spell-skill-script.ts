@@ -109,7 +109,10 @@ export class RollSpellSkillScript extends SkillScript {
         await ChatMessage.create({
             ...messageData,
             content,
-            speaker
+            speaker,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
+            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, ...SpellManager.getRollsInSpell(spell)]).toJSON())
         });
     }
 }

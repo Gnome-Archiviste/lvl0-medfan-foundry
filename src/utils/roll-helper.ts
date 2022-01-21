@@ -37,7 +37,25 @@ export class RollHelper {
     static isSuccess(result: RollResult): result is SuccessRollResult {
         return result === 'success' || result === 'criticalSuccess';
     }
+
     static IsFailed(result: RollResult): result is FailedRollResult {
         return result === 'fail' || result === 'epicFail';
+    }
+
+    static mergeRolls(rolls: Roll[]) : Roll {
+        let groupedRoll = new Roll('').toJSON();
+        groupedRoll.terms = [PoolTerm.fromRolls(rolls)];
+        groupedRoll.dice = []
+        groupedRoll.evaluated = true;
+        groupedRoll.total = 0;
+
+        let formulas: string[] = [];
+        for (let roll of rolls) {
+            formulas.push(roll.formula);
+            groupedRoll.total += roll.total!;
+        }
+        groupedRoll.formula = `{${formulas.join(',')}}`;
+
+        return Roll.fromJSON(JSON.stringify(groupedRoll));
     }
 }

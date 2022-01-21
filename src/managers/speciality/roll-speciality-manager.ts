@@ -74,7 +74,8 @@ export class RollSpecialityManager {
             let ammunitionUsed = 0;
 
             for (let i = 0; i < 4; i++) {
-                let testRoll = new Roll('2d6');
+                let testRoll = new Roll(`2d6`);
+                testRoll.terms[0].options.flavor = `arrowTest${i}`;
                 await testRoll.roll({async: true});
                 let rollResult = RollHelper.getRollResult(testRoll.total!, successRollValue);
                 if (rollResult == 'epicFail') {
@@ -106,7 +107,8 @@ export class RollSpecialityManager {
                     damageRollFormula = weaponDamageWithAmmunitionRollFormula;
                 }
 
-                let damageRoll = new Roll(damageRollFormula);
+                let damageRoll = new Roll(`${damageRollFormula}`);
+                damageRoll.terms[0].options.flavor = `arrowDamage${i}`;
                 await damageRoll.roll({async: true});
                 arrows.push({
                     testRoll: testRoll,
@@ -156,7 +158,10 @@ export class RollSpecialityManager {
 
             let content = message;
             let speaker = ChatMessage.getSpeaker({actor: token.actor!});
-            await ChatMessage.create({speaker, content});
+            let damageRolls = arrows.filter(a => RollHelper.isSuccess(a.result)).map(a => a as {damageRoll: Roll}).map(x => x.damageRoll);
+            let allRolls = [...arrows.map(a => a.testRoll), ...damageRolls];
+            // @ts-ignore
+            await ChatMessage.create({speaker, content, type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: RollHelper.mergeRolls(allRolls)});
 
             if (ammunition) {
                 await ammunition.update({
@@ -168,6 +173,18 @@ export class RollSpecialityManager {
 
             resolve(true);
         })
+    }
+
+    static registerDiceSoNiceColors(dice3d: Dice3d) {
+        dice3d.addColorset({name: 'arrowTest0', category: 'macro', background: '#004bb4', edge: '#02214e', foreground: '#ffefef' }, 'default')
+        dice3d.addColorset({name: 'arrowTest1', category: 'macro', background: '#890101', edge: '#550000', foreground: '#ffb0b0' }, 'default')
+        dice3d.addColorset({name: 'arrowTest2', category: 'macro', background: '#00783c', edge: '#004523', foreground: '#c1ffeb' }, 'default')
+        dice3d.addColorset({name: 'arrowTest3', category: 'macro', background: '#bd9f25', edge: '#5f5b12', foreground: '#3b361c' }, 'default')
+
+        dice3d.addColorset({name: 'arrowDamage0', category: 'macro', background: '#7c00ff', edge: '#4c0096', foreground: '#ffefef' }, 'default')
+        dice3d.addColorset({name: 'arrowDamage1', category: 'macro', background: '#a15c00', edge: '#a64c00', foreground: '#ffb0b0' }, 'default')
+        dice3d.addColorset({name: 'arrowDamage2', category: 'macro', background: '#008c7a', edge: '#008142', foreground: '#c1ffeb' }, 'default')
+        dice3d.addColorset({name: 'arrowDamage3', category: 'macro', background: '#79a900', edge: '#526401', foreground: '#3b361c' }, 'default')
     }
 }
 

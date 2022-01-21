@@ -251,6 +251,7 @@ export class SpellManager {
             let rollFormula = this.computeFormula(damageData.rollFormula, context);
             let rolledSpellStat = new RolledSpellStat(rollFormula, ElementRepository.getElementName(damageData.element));
             await rolledSpellStat.evaluateRoll();
+            rolledSpellStat.roll.terms.forEach(t => t.options.flavor = damageData.element);
             return rolledSpellStat;
         }
         if (damageData.formula) {
@@ -386,4 +387,28 @@ export class SpellManager {
         }
     }
 
+    static getRollsInSpell(spell: ActorSpell): Roll[] {
+        let rolls: Roll[] = [];
+
+        if (spell.distance instanceof  RolledSpellStat)
+            rolls.push(spell.distance.roll);
+        if (spell.damage instanceof  RolledSpellStat)
+            rolls.push(spell.damage.roll);
+        if (spell.bonus instanceof  RolledSpellStat)
+            rolls.push(spell.bonus.roll);
+        if (spell.healFormula instanceof  RolledSpellStat)
+            rolls.push(spell.healFormula.roll);
+        if (spell.duration instanceof  RolledSpellStat)
+            rolls.push(spell.duration.roll);
+        if (spell.heal instanceof  RolledSpellStat)
+            rolls.push(spell.heal.roll);
+        if (spell.area instanceof  RolledSpellStat)
+            rolls.push(spell.area.roll);
+        if (spell.resilience instanceof  RolledSpellStat)
+            rolls.push(spell.resilience.roll);
+        if (spell.criticalSuccess instanceof  RolledSpellStat)
+            rolls.push(spell.criticalSuccess.roll);
+
+        return rolls;
+    }
 }

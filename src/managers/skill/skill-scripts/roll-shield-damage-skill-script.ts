@@ -4,6 +4,7 @@ import {assertIsCharacter} from '../../../models/actor/properties/character-prop
 import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../../repositories/data/skills';
 import {Lvl0ItemShield} from '../../../models/item/lvl0-item-types';
 import {RollHelper} from '../../../utils/roll-helper';
+import {SpellManager} from '../../spell/spell-manager';
 
 export class RollShieldDamageSkillScript extends SkillScript {
     shield?: Lvl0ItemShield;
@@ -39,6 +40,7 @@ export class RollShieldDamageSkillScript extends SkillScript {
 
         let damageRollFormula = this.shield.data.data.damage.replace('phy', actorData.computedData.stats.baseStats.phy.value.toString());
         let damageRoll = await (new Roll(damageRollFormula)).roll({async: true});
+        damageRoll.terms.forEach(t => t.options.flavor = 'black');
         let shieldDamage = damageRoll.total!;
 
         const messageData = testRoll.roll.toMessage({}, {create: false});
@@ -80,7 +82,10 @@ export class RollShieldDamageSkillScript extends SkillScript {
         await ChatMessage.create({
             ...messageData,
             content: message,
-            speaker: ChatMessage.getSpeaker({token: this.token.document})
+            speaker: ChatMessage.getSpeaker({token: this.token.document}),
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
+            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, damageRoll]).toJSON())
         });
     }
 }

@@ -61,14 +61,19 @@ export class RollDamageSkillScript extends SkillScript {
         const messageData = testRoll.roll.toMessage({}, {create: false});
         let content: string;
 
+        let damageRolls: Roll[] = [];
         if (testRoll.result !== 'fail') {
             let weaponRoll = await (new Roll(weaponRollFormula)).roll({async: true});
+            weaponRoll.terms.forEach(t => t.options.flavor = 'black')
+            damageRolls.push(weaponRoll);
             let weaponDamage = Math.max(weaponRoll.total!, 1);
             let ammunitionDamage = 0;
             let ammunitionRoll: Roll | undefined = undefined;
 
             if (useAmmunition && ammunitionRollFormula) {
                 ammunitionRoll = await (new Roll(ammunitionRollFormula)).roll({async: true});
+                ammunitionRoll.terms.forEach(t => t.options.flavor = 'white')
+                damageRolls.push(ammunitionRoll);
                 ammunitionDamage = ammunitionRoll.total!;
             }
 
@@ -94,7 +99,14 @@ export class RollDamageSkillScript extends SkillScript {
         }
 
         const speaker = ChatMessage.getSpeaker({token: this.token.document});
-        await ChatMessage.create({...messageData, speaker, content});
+        await ChatMessage.create({
+            ...messageData,
+            speaker,
+            content,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
+            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, ...damageRolls]).toJSON())
+        });
     }
 
 

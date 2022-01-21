@@ -31,6 +31,13 @@ export class SkillScript {
 
         let content = message;
         let speaker = ChatMessage.getSpeaker({token: this.token.document});
-        await ChatMessage.create({...messageData, speaker, content});
+        await ChatMessage.create({
+            ...messageData,
+            speaker,
+            content,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
+            roll: JSON.stringify(testRoll.roll.toJSON())
+        });
     }
 }
