@@ -1,11 +1,11 @@
 import {SpellClass} from './jobs';
 
 export interface SkillDefinition {
-    name: string;
-    icon?: string;
-    stat: string;
-    description: string;
-    script?: SkillScriptDefinition;
+    readonly name: string;
+    readonly icon?: string;
+    readonly stat: string;
+    readonly description: string;
+    readonly script?: SkillScriptDefinition;
 }
 
 export type SkillScriptDefinition =
@@ -14,27 +14,27 @@ export type SkillScriptDefinition =
     | ShieldRollDamageSkillScriptDefinition
 
 export interface RollDamageSkillScriptDefinition {
-    name: 'damageRoll';
-    data: RollDamageSkillScriptData;
+    readonly name: 'damageRoll';
+    readonly data: RollDamageSkillScriptData;
 }
 
 export interface RollDamageSkillScriptData {
-    weaponType: 'range' | 'melee';
-    charge?: boolean;
+    readonly weaponType: 'range' | 'melee';
+    readonly charge?: boolean;
 }
 
 export interface CastSpellSkillScriptDefinition {
-    name: 'castSpell';
-    data: CastSpellSkillScriptData;
+    readonly name: 'castSpell';
+    readonly data: CastSpellSkillScriptData;
 }
 
 export interface CastSpellSkillScriptData {
-    spellClass: SpellClass;
+    readonly spellClass: SpellClass;
 }
 
 export interface ShieldRollDamageSkillScriptDefinition {
-    name: 'shieldDamageRoll';
-    data: ShieldRollDamageSkillScriptData;
+    readonly name: 'shieldDamageRoll';
+    readonly data: ShieldRollDamageSkillScriptData;
 }
 
 export interface ShieldRollDamageSkillScriptData {

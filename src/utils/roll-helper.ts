@@ -1,4 +1,6 @@
 export type RollResult = 'epicFail' | 'fail' | 'success' | 'criticalSuccess';
+export type SuccessRollResult = 'success' | 'criticalSuccess';
+export type FailedRollResult = 'fail' | 'epicFail';
 
 export class RollHelper {
     static getRollResult(value, expectedValue): RollResult {
@@ -30,5 +32,12 @@ export class RollHelper {
         let totalIndex = result.indexOf('<h4 class="dice-total">')
         let endTotalIndex = result.indexOf('</h4>', totalIndex)
         return result.substring(0, totalIndex) + result.substring(endTotalIndex);
+    }
+
+    static isSuccess(result: RollResult): result is SuccessRollResult {
+        return result === 'success' || result === 'criticalSuccess';
+    }
+    static IsFailed(result: RollResult): result is FailedRollResult {
+        return result === 'fail' || result === 'epicFail';
     }
 }

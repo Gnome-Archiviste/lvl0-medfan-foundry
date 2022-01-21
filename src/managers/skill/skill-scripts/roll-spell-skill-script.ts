@@ -1,19 +1,19 @@
-import {SkillScript} from "./skill-script";
-import {SpellSelector} from "../../utils/spell-selector";
-import {SpellManager} from "../spell/spell-manager";
-import {RollMagicEpicFailManager} from "../roll-magic-epic-fail-manager";
-import {EffectManager} from "../effect-manager";
-import {ActorSpell} from '../spell/spell-definition.model';
-import {SpellCastAction} from '../../ui/dialog/spell-selector-dialog';
-import {RollHelper} from '../roll-helper';
-import {SpellChat} from '../spell/spell-chat';
-import {ScrollHelper} from '../spell/scroll-helper';
-import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {SkillScript, SkillTestRollResult} from "./skill-script";
+import {SpellSelector} from "../../../utils/spell-selector";
+import {SpellManager} from "../../spell/spell-manager";
+import {RollMagicEpicFailManager} from "../../spell/roll-magic-epic-fail-manager";
+import {EffectManager} from "../../effects/effect-manager";
+import {ActorSpell} from '../../spell/actor-spell.model';
+import {SpellCastAction} from '../../../ui/dialog/spell-selector-dialog';
+import {RollHelper} from '../../../utils/roll-helper';
+import {SpellChat} from '../../spell/spell-chat';
+import {ScrollHelper} from '../../spell/scroll-helper';
+import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
 import {
     CastSpellSkillScriptData,
     CastSpellSkillScriptDefinition,
     SkillDefinition
-} from '../../repositories/data/skills';
+} from '../../../repositories/data/skills';
 
 export class RollSpellSkillScript extends SkillScript {
     data: CastSpellSkillScriptData;
@@ -59,16 +59,15 @@ export class RollSpellSkillScript extends SkillScript {
         return true;
     }
 
-    override async postRoll(roll, rollValue, minSuccessValue, success) {
-        const messageData = roll.toMessage({}, {create: false});
+    override async postRoll(testRoll: SkillTestRollResult) {
+        const messageData = testRoll.roll.toMessage({}, {create: false});
         let actor = this.token.actor;
         assertIsCharacter(actor);
 
-        let result = RollHelper.getRollResult(rollValue, minSuccessValue);
         let context = {
             arcaneLevel: actor.data.data.computedData.magic.arcaneLevel,
-            criticalSuccess: result === 'criticalSuccess',
-            epicFail: result === 'epicFail',
+            criticalSuccess: testRoll.result === 'criticalSuccess',
+            epicFail: testRoll.result === 'epicFail',
         };
         let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, context);
 
@@ -76,9 +75,9 @@ export class RollSpellSkillScript extends SkillScript {
         if (this.action === 'cast') {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title">${this.skillDefinition.name}</div>
-                <div class="test"><i class="fas fa-dice"></i> ${rollValue} / ${minSuccessValue} (${RollHelper.getTestResultMessage(result)})</div>
-                <div class="roll">${await roll.render()}</div>
-                ${await SpellChat.renderSpellChat(spell, result)}
+                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
+                <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>
+                ${await SpellChat.renderSpellChat(spell, testRoll.result)}
             </div>
             `;
         } else if (this.action === 'fillWand') {
@@ -90,10 +89,10 @@ export class RollSpellSkillScript extends SkillScript {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title"><i class="fa fa-scroll"></i>Création d'un parchemin</div>
                 <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
-                <div class="test"><i class="fas fa-dice"></i> ${rollValue} / ${minSuccessValue} (${RollHelper.getTestResultMessage(result)})</div>
-                <div class="roll">${await roll.render()}</div>`;
+                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
+                <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>`;
 
-            if (success) {
+            if (RollHelper.isSuccess(testRoll.result)) {
                 await ScrollHelper.createScroll(actor, spell);
             }
             message += `</div>`;
@@ -101,13 +100,17 @@ export class RollSpellSkillScript extends SkillScript {
             throw new Error('Unsupported spell cast action: ' + this.action);
         }
 
-        if (success || result === 'epicFail') {
+        if (testRoll.result !== 'fail') {
             actor.useMana(spell.cost).then();
         }
 
-        messageData.content = message;
-        messageData.speaker = ChatMessage.getSpeaker({token: this.token.document});
-        await ChatMessage.create(messageData);
+        let content = message;
+        let speaker = ChatMessage.getSpeaker({token: this.token.document});
+        await ChatMessage.create({
+            ...messageData,
+            content,
+            speaker
+        });
     }
 }
 

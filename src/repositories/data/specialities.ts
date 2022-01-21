@@ -1,14 +1,14 @@
 export interface SpecialityDefinition {
-    id: string;
-    name: string;
-    description: string;
-    icon: string;
+    readonly id: string;
+    readonly name: string;
+    readonly description: string;
+    readonly icon: string;
 }
 
 export interface SpecialityData {
-    name: string;
-    description: string;
-    icon: string;
+    readonly name: string;
+    readonly description: string;
+    readonly icon: string;
 }
 
 export default {

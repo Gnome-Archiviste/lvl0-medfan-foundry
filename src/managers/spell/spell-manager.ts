@@ -1,17 +1,15 @@
 import * as marked from 'marked';
 import {
     ActorSpell,
-    ActorSpellActionDefinition,
-    SpellActionDefinition,
-    SpellDefinition,
-    SpellHealDefinition
-} from './spell-definition.model';
+    ActorSpellAction,
+} from './actor-spell.model';
 import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {SpellRepository} from '../../repositories/spell-repository';
 import {ElementRepository} from '../../repositories/element-repository';
 import {SpellClass} from '../../repositories/data/jobs';
 import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {SpellActionDefinition, SpellDefinition, SpellHealDefinition} from '../../repositories/data/spells';
 
 export class SpellContext {
     arcaneLevel: number;
@@ -155,7 +153,7 @@ export class SpellManager {
         let spellDefinition = SpellRepository.getSpellById(spellId);
         if (!spellDefinition)
             return undefined;
-        let [spellClass, speciality, level, id] = spellId.split('.', 4);
+        let [spellClass, speciality, level] = spellId.split('.', 4);
         return await this.computeSpellForActor(spellDefinition, +level, spellClass, speciality, context);
     }
 
@@ -350,13 +348,13 @@ export class SpellManager {
         actions: { [actionKey: string]: SpellActionDefinition },
         context: SpellContext
     )
-        : Promise<{ [actionKey: string]: ActorSpellActionDefinition } | undefined> {
+        : Promise<{ [actionKey: string]: ActorSpellAction } | undefined> {
         if (!actions)
             return undefined;
         let computedActions = {};
 
         for (let [key, action] of Object.entries(actions)) {
-            computedActions[key] = <ActorSpellActionDefinition>{
+            computedActions[key] = <ActorSpellAction>{
                 name: action.name,
                 type: action.type,
                 data: {

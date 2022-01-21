@@ -8,7 +8,7 @@ import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clu
 import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer";
 import {LevelUpDialog, LevelUpDialogData} from "../../ui/dialog/level-up-dialog";
 import {SelectSpecialityDialog} from "../../ui/dialog/select-speciality-dialog";
-import {RollSpecialityManager} from "../../managers/roll-speciality-manager";
+import {RollSpecialityManager} from "../../managers/speciality/roll-speciality-manager";
 import {
     GenerateMissingLevelUpDataDialog,
     GenerateMissingLevelUpDataDialogData

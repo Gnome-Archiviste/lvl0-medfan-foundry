@@ -27,5 +27,5 @@ export default {
         mana: {
             name: 'Magie',
         },
-    }
+    } as Record<string, { readonly name: string}>
 }

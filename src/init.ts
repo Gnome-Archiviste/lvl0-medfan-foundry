@@ -1,10 +1,10 @@
 import './handlebars_helpers';
 import {Lvl0Actor} from './models/actor/lvl0-actor';
 import {Lvl0Item} from './models/item/lvl0-item';
-import {RollSkillManager} from './managers/roll-skill-manager';
+import {RollSkillManager} from './managers/skill/roll-skill-manager';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
-import {RollSpecialityManager} from './managers/roll-speciality-manager';
+import {RollSpecialityManager} from './managers/speciality/roll-speciality-manager';
 
 Hooks.once("init", async function () {
     CONFIG.Actor.documentClass = Lvl0Actor;

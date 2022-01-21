@@ -1,8 +1,8 @@
 export interface RaceDefinition {
-    name: string;
-    display_subrace: boolean;
-    bonusStat: string;
-    extraSkillIds?: string[];
+    readonly name: string;
+    readonly display_subrace: boolean;
+    readonly bonusStat: string;
+    readonly extraSkillIds?: string[];
 }
 
 export default {

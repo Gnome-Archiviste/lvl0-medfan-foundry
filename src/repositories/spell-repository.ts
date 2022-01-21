@@ -1,5 +1,4 @@
-import spellsDefinitions from './data/spells'
-import {SpellDefinition} from '../managers/spell/spell-definition.model';
+import spellsDefinitions, {SpellDefinition} from './data/spells'
 import {SpellClass} from './data/jobs';
 
 export class SpellRepository {

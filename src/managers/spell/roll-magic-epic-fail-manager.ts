@@ -1,4 +1,4 @@
-import {MagicEpicFailRepository} from '../repositories/magic-epic-fail-repository';
+import {MagicEpicFailRepository} from '../../repositories/magic-epic-fail-repository';
 
 export class RollMagicEpicFailManager {
     static async roll() {

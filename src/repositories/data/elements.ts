@@ -1,7 +1,7 @@
 export interface ElementDefinition {
-    name: string;
-    nameForWeapon: string;
-    elementalistSpeciality: boolean;
+    readonly name: string;
+    readonly nameForWeapon: string;
+    readonly elementalistSpeciality: boolean;
 }
 
 export default {

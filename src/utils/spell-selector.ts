@@ -1,6 +1,6 @@
 import {SpellCastAction, SpellSelectorDialog} from "../ui/dialog/spell-selector-dialog";
 import {SpellManager} from "../managers/spell/spell-manager";
-import {ActorSpell} from '../managers/spell/spell-definition.model';
+import {ActorSpell} from '../managers/spell/actor-spell.model';
 import {DialogAwaiter} from './dialog-awaiter';
 import {SpellClass} from '../repositories/data/jobs';
 

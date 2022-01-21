@@ -2,7 +2,7 @@ import {RollDamageSkillScript} from "./roll-damage-skill-script";
 import {SkillScript} from "./skill-script";
 import {RollSpellSkillScript} from "./roll-spell-skill-script";
 import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script";
-import {SkillDefinition} from '../../repositories/data/skills';
+import {SkillDefinition} from '../../../repositories/data/skills';
 
 export class SkillScriptFactory {
     createScript(token: Token, skillDefinition: SkillDefinition, options: object): SkillScript {
@@ -11,14 +11,11 @@ export class SkillScriptFactory {
 
         switch (skillDefinition.script.name) {
             case 'damageRoll':
-                // @ts-ignore
-                return new RollDamageSkillScript(token, skillDefinition);
+                return new RollDamageSkillScript(token, {...skillDefinition, script: skillDefinition.script});
             case 'castSpell':
-                // @ts-ignore
-                return new RollSpellSkillScript(token, skillDefinition, options);
+                return new RollSpellSkillScript(token, {...skillDefinition, script: skillDefinition.script}, options);
             case 'shieldDamageRoll':
-                // @ts-ignore
-                return new RollShieldDamageSkillScript(token, skillDefinition);
+                return new RollShieldDamageSkillScript(token, {...skillDefinition, script: skillDefinition.script});
         }
 
         throw new Error(`skill script ${skillDefinition.script['name']} is not known`);

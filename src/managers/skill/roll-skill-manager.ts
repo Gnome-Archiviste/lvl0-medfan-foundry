@@ -1,7 +1,8 @@
 import {SkillScriptFactory} from "./skill-scripts/skill-script-factory";
-import {SkillRepository} from '../repositories/skill-repository';
-import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
-import {assertIsCharacter} from '../models/actor/properties/character-properties';
+import {SkillRepository} from '../../repositories/skill-repository';
+import {Lvl0ActorCharacterData} from '../../models/actor/properties-data/lvl0-actor-character-data';
+import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {RollHelper} from '../../utils/roll-helper';
 
 export class RollSkillManager {
 
@@ -38,11 +39,11 @@ export class RollSkillManager {
         let minSuccessValue = RollSkillManager.getSkillSuccessValue(actor.data.data, skillId);
         let roll = new Roll('2d6');
         await roll.roll({async: true});
-        let result = +roll.result;
-        let success = result !== 12 && (result === 2 || result <= minSuccessValue);
+        let total = roll.total!;
+        let result = RollHelper.getRollResult(total, minSuccessValue);
 
-        await skillScript.postRoll(roll, result, minSuccessValue, success);
+        await skillScript.postRoll({roll, total: total, successValue: minSuccessValue, result: result});
 
-        return success;
+        return RollHelper.isSuccess(result);
     }
 }

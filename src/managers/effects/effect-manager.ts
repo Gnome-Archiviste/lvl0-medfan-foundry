@@ -1,26 +1,25 @@
-import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './effects/lvl0-actor-effect';
-import {Lvl0Actor} from '../models/actor/lvl0-actor';
-import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
-import {StatsRepository} from '../repositories/stats-repository';
-import {SkillRepository} from '../repositories/skill-repository';
+import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './lvl0-actor-effect';
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {StatsRepository} from '../../repositories/stats-repository';
+import {SkillRepository} from '../../repositories/skill-repository';
 
 export class EffectManager {
-    static applyEffect(actor: Lvl0Actor, effect: Lvl0ActorEffect) {
+    static async applyEffect(actor: Lvl0Actor, effect: Lvl0ActorEffect): Promise<void> {
         let actorData = actor.data.data;
         let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-        actor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
+        await actor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
         ui.notifications?.info('Effet ' + effect.effectName + ' ajouté');
     }
 
-    static removeEffect(actor, effectId: string) {
-        actor.update({data: {effects: {['-=' + effectId]: null}}}, {diff: true});
+    static async removeEffect(actor: Lvl0Actor, effectId: string) {
+        await actor.update({data: {effects: {['-=' + effectId]: null}}}, {diff: true});
     }
 
-    static getEffectsWithBonusDamage(actor): {name: string, value: number}[] {
-        let actorData = <Lvl0ActorCharacterData> actor.data.data;
-        let effectsWithBonusDamage: {name: string, value: number}[] = [];
+    static getEffectsWithBonusDamage(actor: Lvl0Actor): { name: string, value: number }[] {
+        let actorData = actor.data.data;
+        let effectsWithBonusDamage: { name: string, value: number }[] = [];
         if (actorData.effects) {
-            for (let effect of Object.values(actorData.effects) as Lvl0ActorEffect[]) {
+            for (let effect of Object.values(actorData.effects)) {
                 let damageModifier = effect.modifiers.find(x => x.stat === 'damage');
                 if (damageModifier) {
                     effectsWithBonusDamage.push({
@@ -30,6 +29,7 @@ export class EffectManager {
                 }
             }
         }
+
         return effectsWithBonusDamage;
     }
 }
@@ -42,7 +42,7 @@ Handlebars.registerHelper("effectModifierInfo", (modifier: Lvl0ActorEffectModifi
         prefix = StatsRepository.getStatDisplayName(modifier.stat);
 
     if (modifier.value < 0) {
-        return prefix + ' '+ modifier.value;
+        return prefix + ' ' + modifier.value;
     } else {
         return prefix + ' +' + modifier.value;
     }

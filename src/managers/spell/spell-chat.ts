@@ -1,5 +1,5 @@
-import {ActorSpell} from './spell-definition.model';
-import {RollResult} from '../roll-helper';
+import {ActorSpell} from './actor-spell.model';
+import {RollHelper, RollResult} from '../../utils/roll-helper';
 import {RolledSpellStat} from './spell-manager';
 
 export class SpellChat {
@@ -24,7 +24,7 @@ export class SpellChat {
         message += await SpellChat.renderSpellStat('heal', spell.heal)
         if (result === 'criticalSuccess')
             message += await SpellChat.renderSpellStat('criticalSuccess', spell.criticalSuccess)
-        if (result === 'criticalSuccess' || result == 'success')
+        if (RollHelper.isSuccess(result))
             message += await SpellChat.renderActions(spell);
 
         if (result === 'epicFail')

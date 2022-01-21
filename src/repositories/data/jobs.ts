@@ -1,15 +1,15 @@
 export interface JobDefinition {
-    name: string;
-    spellClass?: SpellClass;
-    spellSpecialization?: string;
-    hasJobSpecialization?: boolean;
-    maxSpecializations?: number;
-    specializations?: {[techName: string]: string};
-    healthLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
-    manaLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
-    arcaneLevels?: number[];
-    requirements: JobRequirement[];
-    specialityLevels: number[];
+    readonly name: string;
+    readonly spellClass?: SpellClass;
+    readonly spellSpecialization?: string;
+    readonly hasJobSpecialization?: boolean;
+    readonly maxSpecializations?: number;
+    readonly specializations?: {[techName: string]: string};
+    readonly healthLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
+    readonly manaLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
+    readonly arcaneLevels?: number[];
+    readonly requirements: JobRequirement[];
+    readonly specialityLevels: number[];
 }
 
 export enum SpellClass {
@@ -18,15 +18,15 @@ export enum SpellClass {
 }
 
 export interface ExtensionJobDefinition extends Partial<JobDefinition> {
-    name: string;
-    baseJob: string;
+    readonly name: string;
+    readonly baseJob: string;
 }
 
 export interface JobRequirement {
-    stat: string;
-    min: number;
-    notRaces?: string[];
-    races?: string[];
+    readonly stat: string;
+    readonly min: number;
+    readonly notRaces?: string[];
+    readonly races?: string[];
 }
 
 function parseHealthManaInfo(info) {

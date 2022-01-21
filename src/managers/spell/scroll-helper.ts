@@ -1,4 +1,4 @@
-import {ActorSpell} from './spell-definition.model';
+import {ActorSpell} from './actor-spell.model';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
 import {ScrollItemPropertiesData} from '../../models/item/properties/scroll-item-properties-data';

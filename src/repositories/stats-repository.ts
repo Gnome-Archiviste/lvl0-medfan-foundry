@@ -1,7 +1,7 @@
 import stats from './data/stats';
 
 export class StatsRepository {
-    static getStats(): { stats: { [stat: string]: {name: string} } } {
+    static getStats(): { stats: { [stat: string]: {readonly name: string} } } {
         return stats;
     }
 

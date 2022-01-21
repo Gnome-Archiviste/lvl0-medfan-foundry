@@ -1,4 +1,4 @@
-import {ActorSpell} from '../../managers/spell/spell-definition.model';
+import {ActorSpell} from '../../managers/spell/actor-spell.model';
 import {DialogBase} from './dialog-base';
 import ClickEvent = JQuery.ClickEvent;
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
@@ -23,6 +23,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
 
         let spellInNonFullWand = {};
         let emptyWandAvailable = false;
+        // FIXME: Remove https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1551
         let wands = this.dialogData.actor.itemTypes['wand'].map(w => w as Lvl0ItemWand);
         if (wands) {
             for (let wand of wands) {

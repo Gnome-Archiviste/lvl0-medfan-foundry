@@ -1,4 +1,4 @@
-import {RollSkillManager} from '../../../managers/roll-skill-manager';
+import {RollSkillManager} from '../../../managers/skill/roll-skill-manager';
 import {Lvl0ActorCharacterData} from '../../../models/actor/properties-data/lvl0-actor-character-data';
 import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
 import {Lvl0ItemType} from '../../../models/item/lvl0-item-data';
