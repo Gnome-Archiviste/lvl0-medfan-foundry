@@ -7,11 +7,11 @@
             <p class="description">
                 {{speciality.description}}
             </p>
-            <button class="action" data-action="confirm" data-speciality-name="{{@key}}">Choisir</button>
+            <button class="action" data-action="selectSpeciality" data-speciality-name="{{@key}}">Choisir</button>
         </div>
         <div class="separator"></div>
     {{/each}}
     <div>
-        <button data-action="cancel">Fermer</button>
+        <button data-dialog-action="cancel">Fermer</button>
     </div>
 </div>

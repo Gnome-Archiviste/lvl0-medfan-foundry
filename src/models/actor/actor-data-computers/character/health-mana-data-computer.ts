@@ -1,10 +1,11 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import {Lvl0CharacterData} from '../../models/character/character';
-import {getItemModifiersIfAvailable} from '../../models/item/item-data';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {getItemModifiersIfAvailable} from '../../../item/lvl0-item-data';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class HealthManaDataComputer extends CharacterDataComputer {
 
-    compute(actorData: Lvl0CharacterData, actor: Actor): void {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor): void {
         let maxHealth = 0;
         let maxMana = 0;
 
@@ -17,7 +18,7 @@ export class HealthManaDataComputer extends CharacterDataComputer {
             }
         }
 
-        for (let /** @type {Item} */ item of actor.items) {
+        for (let item of actor.items) {
             if (!item.data.data.equiped)
                 continue;
 

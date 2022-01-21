@@ -1,6 +1,6 @@
 import specialities from '../../../data/specialities.js'
-import {AmmunitionType} from '../../models/item/ammunition-item-properties';
 import {DialogBase} from './dialog-base';
+import {AmmunitionType} from '../../models/item/properties/ammunition-item-properties';
 
 export interface WeaponSelectorDialogData {
     weapons: Item[],
@@ -12,7 +12,6 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
     private selectedWeapon?: Item = undefined;
     private selectedAmmo?: Item = undefined;
 
-    /** @override */
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
         return {
             ...super.getData(options),
@@ -51,7 +50,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         });
 
         let defaultWeapon = this.dialogData.weapons[0];
-        html.find(`.weapon-line input[name="weapon"][value="${defaultWeapon._id}"]`).prop('checked', true);
+        html.find(`.weapon-line input[name="weapon"][value="${defaultWeapon.id}"]`).prop('checked', true);
         this.selectWeapon(html, defaultWeapon);
     }
 
@@ -87,7 +86,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         html.find('.ammunition').hide();
     }
 
-    static get defaultOptions() {
+    static get defaultOptions(): Application.Options {
         return {
             ...super.defaultOptions,
             id: "weaponSelector",

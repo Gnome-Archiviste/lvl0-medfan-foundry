@@ -1,16 +1,14 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import skillLevels from '../../../data/skills-level.js';
-import {Lvl0ActorEffect} from '../../managers/effects/lvl0-actor-effect';
-import {SkillDefinition} from '../../models/all';
-import {SkillValue} from '../../models/data/skill/skill';
+import skillLevels from '../../../../../data/skills-level.js';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
+import {SkillValue} from '../../../../../data/skills';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class SkillsCharacterDataComputer extends CharacterDataComputer {
     static pointTypes = ['general', 'job_combat', 'all', 'master', 'prodigy'];
 
-    /**
-     * @override
-     */
-    compute(actorData, actor) {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         this.countMaximumPoints(actorData);
         this.computeAvailablePoints(actorData);
         this.computeExtraSkills(actorData, actor);

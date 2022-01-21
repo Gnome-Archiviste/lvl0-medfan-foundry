@@ -1,10 +1,9 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class LevelingCharacterDataComputer extends CharacterDataComputer {
-    /**
-     * @override
-     */
-    compute(actorData, actor) {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         if (actorData.level.value < 4)
             actorData.computedData.leveling.maximumSkillLevel = 2;
         else

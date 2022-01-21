@@ -8,13 +8,13 @@ export interface SpellDefinition {
     description: string;
     actions: { [actionName: string]: SpellActionDefinition };
     distance: SpellDefinitionDistance;
-    duration: ComputableSpellValue | null;
-    area: ComputableSpellValue | null;
-    bonus: ComputableSpellValue | null;
-    resilience: ComputableSpellValue | null;
-    criticalSuccess: ComputableSpellValue | null;
-    damage: SpellDamageDefinition | null;
-    heal: SpellHealDefinition | null;
+    duration?: ComputableSpellValue;
+    area?: ComputableSpellValue;
+    bonus?: ComputableSpellValue;
+    resilience?: ComputableSpellValue;
+    criticalSuccess?: ComputableSpellValue;
+    damage?: SpellDamageDefinition;
+    heal?: SpellHealDefinition;
 }
 
 export interface SpellActionDefinition {
@@ -40,7 +40,8 @@ export interface SpellDamageDefinition {
 }
 
 export interface SpellHealDefinition {
-    rollFormula: string | null;
+    rollFormula?: string;
+    formula?: string;
 }
 
 export interface SpellDefinitionDistance {

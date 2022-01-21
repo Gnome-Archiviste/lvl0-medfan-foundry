@@ -1,7 +1,7 @@
 import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog/weapon-selector-dialog";
-import {WeaponItemProperties, WeaponType} from '../models/item/weapon-item-properties';
-import {AmmunitionItemProperties} from '../models/item/ammunition-item-properties';
 import {DialogAwaiter} from './dialog-awaiter';
+import {WeaponItemProperties, WeaponType} from '../models/item/properties/weapon-item-properties';
+import {AmmunitionItemProperties} from '../models/item/properties/ammunition-item-properties';
 
 export class WeaponSelector {
     static async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Item, ammunition?: Item]> {

@@ -1,18 +1,9 @@
-import skills from "../../../../data/skills.js";
+import skills, {SkillDefinition} from "../../../../data/skills.js";
 import elements from "../../../../data/elements.js";
-import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/item-data';
-import {SkillDefinition} from '../../../models/all';
+import ClickEvent = JQuery.ClickEvent;
+import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/lvl0-item-data';
 
 export class Lvl0ItemSheet extends ItemSheet {
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["lvl0mf", "sheet", "item"],
-            template: "systems/lvl0mf-sheet/ui/sheets/item/lvl0-item-sheet.hbs",
-            blockFavTab: true,
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
-        });
-    }
 
     /** @override */
     getData(options?: Partial<ItemSheet.Options>) {
@@ -61,17 +52,20 @@ export class Lvl0ItemSheet extends ItemSheet {
         }
     }
 
-    /** @override */
-    activateListeners(html) {
+    override activateListeners(html: JQuery) {
         super.activateListeners(html);
-        if (!this.options.editable) return;
-        html.find("button[data-lvl0-action='addItemModifier']").click(ev => this._onAddModifier(ev));
-        html.find("a[data-lvl0-action='deleteModifier']").click(ev => this._onRemoveModifier(ev));
-        html.find("button[data-lvl0-action='addItemExtraSkill']").click(ev => this._onAddExtraSkill(ev));
-        html.find("a[data-lvl0-action='deleteExtraSkill']").click(ev => this._onRemoveExtraSkill(ev));
+
+        if (!this.options.editable) {
+            return;
+        }
+
+        html.find("button[data-lvl0-action='addItemModifier']").on('click', ev => this._onAddModifier(ev));
+        html.find("a[data-lvl0-action='deleteModifier']").on('click', ev => this._onRemoveModifier(ev));
+        html.find("button[data-lvl0-action='addItemExtraSkill']").on('click', ev => this._onAddExtraSkill(ev));
+        html.find("a[data-lvl0-action='deleteExtraSkill']").on('click', ev => this._onRemoveExtraSkill(ev));
     }
 
-    _onRemoveModifier(ev: MouseEvent) {
+    _onRemoveModifier(ev: ClickEvent) {
         if (!ev.target)
             return;
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
@@ -80,7 +74,7 @@ export class Lvl0ItemSheet extends ItemSheet {
         this.item.update({data: {modifiers: newModifiers}});
     }
 
-    _onAddModifier(ev: MouseEvent) {
+    _onAddModifier(ev: ClickEvent) {
         if (!ev.target)
             return;
         let modifiers = getItemModifiersIfAvailable(this.item.data) || {};
@@ -88,7 +82,7 @@ export class Lvl0ItemSheet extends ItemSheet {
         this.item.update({data: {modifiers: {...modifiers, [nextId]: {stat: 'phy', value: 1}}}});
     }
 
-    _onRemoveExtraSkill(ev: MouseEvent) {
+    _onRemoveExtraSkill(ev: ClickEvent) {
         if (!ev.target)
             return;
         let extraSkillId = +$(ev.target).parents('.extra-skill-line').data('extra-skill-id');
@@ -97,11 +91,20 @@ export class Lvl0ItemSheet extends ItemSheet {
         this.item.update({data: {extraSkills: newExtraSkills}});
     }
 
-    _onAddExtraSkill(ev: MouseEvent) {
+    _onAddExtraSkill(ev: ClickEvent) {
         if (!ev.target)
             return;
         let extraSkills = getItemExtraSkillsIfAvailable(this.item.data) || {};
         let nextId = (Object.keys(extraSkills).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         this.item.update({data: {extraSkills: {...extraSkills, [nextId]: {id: 'champion.shield_attack'}}}});
+    }
+
+    static get defaultOptions(): ItemSheet.Options {
+        return {
+            ...super.defaultOptions,
+            classes: ["lvl0mf", "sheet", "item"],
+            template: "systems/lvl0mf-sheet/ui/sheets/item/lvl0-item-sheet.hbs",
+            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
+        };
     }
 }

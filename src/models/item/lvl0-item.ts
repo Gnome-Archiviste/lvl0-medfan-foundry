@@ -1,4 +1,4 @@
-import {ScrollHelper} from './managers/spell/scroll-helper';
+import {ScrollHelper} from '../../managers/spell/scroll-helper';
 
 declare global {
     interface DocumentClassConfig {
@@ -6,10 +6,6 @@ declare global {
     }
 }
 
-
-/**
- * @extends {Item}
- */
 export class Lvl0Item extends Item {
     /**
      * Augment the basic Item data model with additional dynamic data.
@@ -39,3 +35,10 @@ export class Lvl0Item extends Item {
         }
     }
 }
+
+Hooks.on("createItem", async (document: Lvl0Item,  options: object, userId: string) => {
+    if (document.data.data.quantifiable) {
+        await document.update({ data: {quantity: 1}});
+    }
+});
+

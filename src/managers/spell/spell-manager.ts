@@ -1,9 +1,16 @@
 import spellsDefinitions from "../../../data/spells.js";
 import {ElementsUtil} from "../../utils/elements-util.js";
 import * as marked from 'marked';
-import {ActorSpell, ActorSpellActionDefinition, SpellActionDefinition, SpellDefinition} from './spell-definition.model';
-import {Lvl0CharacterData} from '../../models/character/character';
+import {
+    ActorSpell,
+    ActorSpellActionDefinition,
+    SpellActionDefinition,
+    SpellDefinition,
+    SpellHealDefinition
+} from './spell-definition.model';
 import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {assertIsCharacter} from '../../models/actor/properties/character-properties';
 
 export interface SpellContext {
     arcaneLevel: number;
@@ -163,13 +170,8 @@ export class SpellManager {
     }
 
 
-    /**
-     * @param {Actor} actor
-     * @param {'mage'|'champion'} spellCategory
-     * @return Promise<SpellDefinition[]>
-     */
-    static async getAvailableSpells(actor, spellCategory): Promise<ActorSpell[]> {
-        /** @type {Lvl0CharacterData} */
+    static async getAvailableSpells(actor: Lvl0Actor, spellCategory: 'mage' | 'champion'): Promise<ActorSpell[]> {
+        assertIsCharacter(actor.data.type);
         let actorData = actor.data.data;
         if (!(spellCategory in spellsDefinitions))
             return [];
@@ -192,7 +194,7 @@ export class SpellManager {
                 }
                 return availableSpells;
             } else {
-                speciality = actorData.computedData.bases.job.spellCategory;
+                speciality = actorData.computedData.bases.job.spellCategory!;
                 if (speciality in spellsDefinitions[spellCategory]) {
                     return await SpellManager.computeAvailableSpells(actorData, spellsDefinitions[spellCategory][speciality], spellCategory, speciality);
                 }
@@ -274,14 +276,7 @@ export class SpellManager {
         return undefined;
     }
 
-    /**
-     *
-     * @param {SpellHealDefinition|undefined} healData
-     * @param {Lvl0CharacterData} actorData
-     * @param {Object} context
-     * @return {Promise<RolledSpellStat|string|undefined>}
-     */
-    static async computeHealFormula(healData, context = {}) {
+    static async computeHealFormula(healData: SpellHealDefinition | undefined, context = {}): Promise<RolledSpellStat | string | undefined> {
         if (!healData) {
             return undefined;
         }
@@ -359,7 +354,7 @@ export class SpellManager {
     }
 
     static async computeActions(
-        actions: {[actionKey: string]: SpellActionDefinition},
+        actions: { [actionKey: string]: SpellActionDefinition },
         context: SpellContext
     )
         : Promise<{ [actionKey: string]: ActorSpellActionDefinition } | undefined> {

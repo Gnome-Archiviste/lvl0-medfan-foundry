@@ -1,6 +1,10 @@
-import {LevelData, Statistics} from '../../models/character/character';
-import {Lvl0Actor} from '../../lvl0-actor';
-import {StatsCharacterDataComputer} from '../../actor-data-computers/character/stats-character-data-computer';
+import {DialogBase} from './dialog-base';
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {Statistics} from '../../models/actor/properties-data/shared-properties-data';
+import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
+import {
+    StatsCharacterDataComputer
+} from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
 
 export interface LevelUpDialogData {
     toLevel: number;
@@ -9,9 +13,8 @@ export interface LevelUpDialogData {
     hasAdditionalPointInStat: boolean;
     hasNewSpeciality: boolean;
     actor: Lvl0Actor;
+    actorStats: Statistics;
 }
-
-export type CompleteLevelUpDialog = (selectedSpecialityName?: LevelData) => void;
 
 export interface LevelUpDialogApplicationData {
     toLevel: number;
@@ -25,28 +28,11 @@ export interface LevelUpDialogApplicationData {
     stats: {[statName: string]: string}
 }
 
-export class LevelUpDialog extends Application {
+export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
     public diceData = {};
     public additionalStat?: string;
 
-    constructor(
-        private readonly levelUpData: LevelUpDialogData,
-        private readonly actorStats: Statistics,
-        private readonly onComplete: CompleteLevelUpDialog
-    ) {
-        super();
-    }
-
-    _onKeyDown(event) {
-        // Close dialog
-        if (event.key === "Escape") {
-            event.preventDefault();
-            event.stopPropagation();
-            return this.close();
-        }
-    }
-
-    getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
+    override getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
         // FIXME: We should remove from this list stats already at max value, and handle special case when character is already maxed on every stat
         let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
             previousValue[currentValue] = currentValue;
@@ -55,19 +41,19 @@ export class LevelUpDialog extends Application {
 
         let data = <LevelUpDialogApplicationData>{
             ...super.getData(options),
-            ...this.levelUpData,
+            ...this.dialogData,
             additionalStat: this.additionalStat,
             stats: availableLevelUStats,
             diceData: {...this.diceData},
             ready: false
         };
 
-        if (this.levelUpData?.additionalHealth?.useStatValue) {
-            data.additionalHealth.value = (data.additionalHealth.value || 0) + this.actorStats[this.levelUpData?.additionalHealth?.useStatValue].value;
+        if (this.dialogData?.additionalHealth?.useStatValue) {
+            data.additionalHealth.value = (data.additionalHealth.value || 0) + this.dialogData.actorStats[this.dialogData?.additionalHealth?.useStatValue].value;
         }
 
-        if (this.levelUpData?.additionalMana?.useStatValue) {
-            data.additionalMana.value = (data.additionalMana.value || 0) + this.actorStats[this.levelUpData?.additionalMana?.useStatValue].value;
+        if (this.dialogData?.additionalMana?.useStatValue) {
+            data.additionalMana.value = (data.additionalMana.value || 0) + this.dialogData.actorStats[this.dialogData?.additionalMana?.useStatValue].value;
         }
 
         let ready = true;
@@ -92,29 +78,26 @@ export class LevelUpDialog extends Application {
         return data;
     }
 
-    /**
-     * @param {jQuery} html
-     */
-    updateDiceData(html) {
+    updateDiceData(html: JQuery) {
         let data = this.getData();
         if (data.additionalHealth.diceCount) {
             for (let i = 0; i < data.additionalHealth.diceCount; i++) {
-                this.diceData['health-' + i] = +html.find(`[data-dice-health='${i}']`)[0].value;
+                this.diceData['health-' + i] = +(html.find(`[data-dice-health='${i}']`)[0] as HTMLInputElement).value;
             }
         }
         if (data.additionalMana.diceCount) {
             for (let i = 0; i < data.additionalMana.diceCount; i++) {
-                this.diceData['mana-' + i] = +html.find(`[data-dice-mana='${i}']`)[0].value;
+                this.diceData['mana-' + i] = +(html.find(`[data-dice-mana='${i}']`)[0] as HTMLInputElement).value;
             }
         }
-        if (this.levelUpData.toLevel === 1) {
+        if (this.dialogData.toLevel === 1) {
             for (let i = 0; i < 2; i++) {
-                this.diceData['money-' + i] = +html.find(`[data-dice-money='${i}']`)[0].value;
+                this.diceData['money-' + i] = +(html.find(`[data-dice-money='${i}']`)[0] as HTMLInputElement).value;
             }
         }
     }
 
-    getCompleteData(): LevelData {
+    protected getResult(): LevelData | undefined {
         let data = this.getData();
         let health = data.additionalHealth.value || 0;
         let mana = data.additionalMana.value || 0;
@@ -132,7 +115,7 @@ export class LevelUpDialog extends Application {
             }
         }
 
-        if (this.levelUpData.toLevel === 1) {
+        if (this.dialogData.toLevel === 1) {
             money = (this.diceData['money-0'] || 0) + (this.diceData['money-1'] || 0);
         }
 
@@ -144,63 +127,49 @@ export class LevelUpDialog extends Application {
         }
     }
 
-    /** @override */
-    get title() {
-        return "Level Up !";
-    }
-
-    /** @override */
-    activateListeners(html) {
+    override activateListeners(html: JQuery) {
         super.activateListeners(html);
 
-        html.find('[data-dice-money]').on('change', ev => {
+        html.find('[data-dice-money]').on('change', _ev => {
             this.updateDiceData(html);
             this.render(true)
         });
-        html.find('[data-dice-health]').on('change', ev => {
+        html.find('[data-dice-health]').on('change', _ev => {
             this.updateDiceData(html);
             this.render(true)
         });
-        html.find('[data-dice-mana]').on('change', ev => {
+        html.find('[data-dice-mana]').on('change', _ev => {
             this.updateDiceData(html);
             this.render(true)
         });
         html.find('[name="additionalStat"]').on('change', ev => {
-            this.additionalStat = ev.target.value;
+            this.additionalStat = (ev.target as HTMLInputElement).value;
             this.render(true)
         });
 
-        html.find('[data-action]').on('click', ev => {
+        html.find('[data-action]').on('click', async ev => {
             switch (ev.target.dataset["action"]) {
-                case 'cancel': {
-                    this.close();
-                    break;
-                }
                 case 'rollHealthDice': {
-                    this.rollDice(this.getData().additionalHealth.diceCount, 'health');
+                    await this.rollDice(this.getData().additionalHealth.diceCount, 'health');
                     break;
                 }
                 case 'rollMoneyDice': {
-                    this.rollDice(2, 'money');
+                    await this.rollDice(2, 'money');
                     break;
                 }
                 case 'rollManaDice': {
-                    this.rollDice(this.getData().additionalMana.diceCount, 'mana');
-                    break;
-                }
-                case 'confirm': {
-                    this.updateDiceData(html);
-                    this.onComplete(this.getCompleteData());
-                    this.close();
+                    await this.rollDice(this.getData().additionalMana.diceCount, 'mana');
                     break;
                 }
             }
         });
     }
 
-    static get defaultOptions() {
+
+    static get defaultOptions(): Application.Options {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
+            title: 'Level Up !',
             template: "systems/lvl0mf-sheet/ui/dialog/level-up-dialog.hbs",
             popOut: true,
         });
@@ -221,7 +190,7 @@ export class LevelUpDialog extends Application {
         else
             content = `<p><strong>LevelUp</strong> Gain de ${roll.total} point de ${type === 'health' ? 'vie' : 'mana'} !</p> ${await roll.render()}`;
 
-        const speaker = ChatMessage.getSpeaker({actor: this.levelUpData.actor});
+        const speaker = ChatMessage.getSpeaker({actor: this.dialogData.actor});
         await ChatMessage.create({...messageData, content, speaker});
 
         this.render(true);

@@ -1,3 +1,16 @@
+export interface SkillDefinition {
+    name: string;
+    icon?: string;
+    stat: string;
+    description: string;
+    script?: SkillScriptDefinition;
+}
+
+export interface SkillScriptDefinition {
+    name: string;
+    data: object;
+}
+
 export default {
     champion: {
         shield_attack: {
@@ -316,5 +329,5 @@ export default {
             stat: "per",
             description: "Chasse, pêche, cueillette en milieu sauvage, faire du feu, etc."
         },
-    },
-}
+     },
+} as { [categoryId: string]: { [skillId: string]: SkillDefinition } }

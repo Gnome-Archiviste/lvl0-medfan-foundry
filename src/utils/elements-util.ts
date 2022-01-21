@@ -1,11 +1,7 @@
 import elements from "../../data/elements.js";
 
 export class ElementsUtil {
-    /**
-     * @param {string} elementId
-     * @return {string}
-     */
-    static getName(elementId) {
+    static getName(elementId: string) {
         if (!elementId)
             return '';
         if (elementId in elements) {
@@ -13,11 +9,8 @@ export class ElementsUtil {
         }
         return elementId;
     }
-    /**
-     * @param {string} elementId
-     * @return {string}
-     */
-    static getNameForWeapon(elementId) {
+
+    static getNameForWeapon(elementId: string) {
         if (!elementId)
             return '';
         if (elementId in elements) {

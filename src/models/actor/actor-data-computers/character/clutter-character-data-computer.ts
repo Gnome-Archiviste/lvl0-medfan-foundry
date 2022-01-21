@@ -1,12 +1,10 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import {Lvl0CharacterData} from '../../models/character/character';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class ClutterCharacterDataComputer extends CharacterDataComputer {
 
-    /**
-     * @override
-     */
-    compute(actorData: Lvl0CharacterData, actor: Actor): void {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor): void {
         let totalSpace = 0;
         let columnsPhy: number[] = [];
         let columnPerPhy = [2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];

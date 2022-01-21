@@ -15,10 +15,10 @@
             <div class="quantity"><b>Qtt</b></div>
         </div>
         {{#each2 ../itemsByType itemType as | item |}}
-            <div class="item-line" data-item-id="{{item.data._id}}">
+            <div class="item-line" data-item-id="{{item.id}}">
                 {{#if (not (lookup ../../nonEquipableItemType itemType))}}
                     <div class="equiped">
-                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.data._id}}">
+                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.id}}">
                     </div>
                 {{/if}}
                 {{#if item.actionnable}}
@@ -29,7 +29,7 @@
                 </div>
                 <div class="quantity">
                     {{#if item.data.data.quantifiable}}
-                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.data._id}}"/>
+                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.id}}"/>
                     {{/if}}
                 </div>
                 <div class="name">

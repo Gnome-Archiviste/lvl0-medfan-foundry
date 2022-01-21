@@ -1,12 +1,11 @@
 import {RollSkillManager} from "./roll-skill-manager.js";
 import {WeaponSelector} from "../utils/weapon-selector.js";
 import {WeaponDamageRollUtil} from "../utils/weapon-damage-roll-util.js";
-import specialitiesDefinitions from "../../data/specialities.js";
-import {WeaponType} from '../models/item/weapon-item-properties';
-import {RollHelper, RollResult} from './roll-helper';
-import {SpecialityDefinition} from '../models/speciality/speciality-definition';
+import specialitiesDefinitions, {SpecialityDefinition} from "../../data/specialities.js";
+import {RollHelper} from './roll-helper';
 import {ElementsUtil} from '../utils/elements-util';
-import {AmmunitionItemProperties} from '../models/item/ammunition-item-properties';
+import {WeaponType} from '../models/item/properties/weapon-item-properties';
+import {AmmunitionItemProperties} from '../models/item/properties/ammunition-item-properties';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';
@@ -25,18 +24,8 @@ type ArrowResult = {
     ammunition?: Item;
 };
 
-/**
- * @typedef SpecialityDefinition
- * @property {string} name
- * @property {string} description
- */
-
 export class RollSpecialityManager {
-    /**
-     * @param {string} specialityId
-     * @return {SpecialityDefinition}
-     */
-    static getSpecialityFromId(specialityId): SpecialityDefinition {
+    static getSpecialityFromId(specialityId: string): SpecialityDefinition {
         return {...specialitiesDefinitions[specialityId], id: specialityId};
     }
 

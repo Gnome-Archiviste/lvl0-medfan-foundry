@@ -9,9 +9,9 @@
             <div class="clutter">Encombrement</div>
         </div>
         {{#each itemsByType.weapon as |item| }}
-            <div class="weapon-line" data-item-id="{{item.data._id}}">
+            <div class="weapon-line" data-item-id="{{item.id}}">
                 <div class="equiped">
-                    <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.data._id}}">
+                    <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.id}}">
                 </div>
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
@@ -92,9 +92,9 @@
         <div class="content">
             {{#each itemsByType.ammunition as |item| }}
                 {{#if (eq item.data.data.ammunitionType 'arrow')}}
-                    <div class="ammunition-line" data-item-id="{{item.data._id}}">
+                    <div class="ammunition-line" data-item-id="{{item.id}}">
                         <div class="quantity">
-                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.data._id}}"/>
+                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.id}}"/>
                         </div>
                         <div class="icon"><img src="{{item.img}}"/></div>
                         <div class="name">
@@ -119,9 +119,9 @@
         <div class="content">
             {{#each itemsByType.ammunition as |item| }}
                 {{#if (or (eq item.data.data.ammunitionType 'marble') (eq item.data.data.ammunitionType 'dart'))}}
-                    <div class="ammunition-line" data-item-id="{{item.data._id}}">
+                    <div class="ammunition-line" data-item-id="{{item.id}}">
                         <div class="quantity">
-                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.data._id}}"/>
+                            <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.id}}"/>
                         </div>
                         <div class="icon"><img src="{{item.img}}"/></div>
                         <div class="name">
@@ -159,9 +159,9 @@
         <div class="info">Encombrement: 1 pour 2 potions</div>
         <div class="content">
             {{#each itemsByType.potions as |item| }}
-                <div class="ammunition-line" data-item-id="{{item.data._id}}">
+                <div class="ammunition-line" data-item-id="{{item.id}}">
                     <div class="quantity">
-                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.data._id}}"/>
+                        <input type="text" value="{{item.data.data.quantity}}" data-update-item-quantity="{{item.id}}"/>
                     </div>
                     <div class="icon"><img src="{{item.img}}"/></div>
                     <div class="name">

@@ -1,3 +1,16 @@
+export interface SpecialityDefinition {
+    id: string;
+    name: string;
+    description: string;
+    icon: string;
+}
+
+export interface SpecialityData {
+    name: string;
+    description: string;
+    icon: string;
+}
+
 export default {
     broadside: {
         name: "Attaque cinglante",
@@ -114,4 +127,4 @@ export default {
         description: "Le personnage peut utiliser quatre flèches qu’il peut utiliser pour attaquer un ou plusieurs adversaires qui sont près l’un de l’autre.",
         icon: 'icons/skills/ranged/arrows-flying-salvo-yellow.webp',
     }
-} as { [specialityId: string]: { name: string, description: string, icon: string } }
+} as { [specialityId: string]: SpecialityData }

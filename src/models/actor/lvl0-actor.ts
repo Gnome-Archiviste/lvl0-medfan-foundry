@@ -6,18 +6,18 @@ import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic
 import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer.js";
 import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer.js";
 import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer.js";
-import {LevelUpDialog} from "./ui/dialog/level-up-dialog.js";
-import {SelectSpecialityDialog} from "./ui/dialog/select-speciality-dialog.js";
-import {RollSpecialityManager} from "./managers/roll-speciality-manager.js";
-import {LevelData, Lvl0CharacterData} from './models/character/character';
+import {LevelUpDialog, LevelUpDialogData} from "../../ui/dialog/level-up-dialog.js";
+import {SelectSpecialityDialog} from "../../ui/dialog/select-speciality-dialog.js";
+import {RollSpecialityManager} from "../../managers/roll-speciality-manager.js";
 import {
     GenerateMissingLevelUpDataDialog,
     GenerateMissingLevelUpDataDialogData
-} from './ui/dialog/generate-missing-level-up-data-dialog';
-import {Lvl0Item} from './lvl0-item';
+} from '../../ui/dialog/generate-missing-level-up-data-dialog';
+import {LevelData, Lvl0ActorCharacterData} from './properties-data/lvl0-actor-character-data';
+import {DialogAwaiter} from '../../utils/dialog-awaiter';
+import {ActorDataComputer} from './actor-data-computers/actor-data-computer';
 
-
-const actorDataComputers = [
+const actorDataComputers: ActorDataComputer[] = [
     new BaseCharacterDataComputer(),
     new LevelingCharacterDataComputer(),
     new SpecialityCharacterDataComputer(),
@@ -35,20 +35,18 @@ declare global {
 }
 
 export class Lvl0Actor extends Actor {
-    prepareDerivedData() {
+
+    override prepareDerivedData(): void {
         super.prepareDerivedData();
 
-        const actorData = this.data;
-
         for (let actorDataComputer of actorDataComputers) {
-            if (actorDataComputer.isAvailableFor(actorData.type)) {
-                actorDataComputer.compute(actorData.data, this);
+            if (actorDataComputer.isAvailableFor(this.data.type)) {
+                actorDataComputer.compute(this);
             }
         }
     }
 
-    /** @param {string} specialityName*/
-    async useSpeciality(specialityName) {
+    async useSpeciality(specialityName: string): Promise<void> {
         if (this.data.data.mana.value <= 0) {
             ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", {permanent: true});
             return;
@@ -73,10 +71,9 @@ export class Lvl0Actor extends Actor {
                 </div>`
             })
         }
-
     }
 
-    async useMana(amount) {
+    async useMana(amount: number): Promise<void> {
         await this.update({
             data: {
                 mana: {value: this.data.data.mana.value - amount}
@@ -84,7 +81,7 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
-    async updateHealth(amount) {
+    async updateHealth(amount: number): Promise<void> {
         await this.update({
             data: {
                 health: {value: Math.min(this.data.data.health.value + amount, this.data.data.health.max)}
@@ -92,7 +89,11 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
-    openGenerateMissingLevelUpDataPopup(): void {
+    async openGenerateMissingLevelUpDataPopup(): Promise<void> {
+        if (this.data.type !== 'character') {
+            throw new Error('Level up is only supported for characters')
+        }
+
         let levelWithMissingData: number[] = [];
         for (let lvl = 1; lvl <= this.data.data.level.value; lvl++) {
             if (!(lvl in this.data.data.levelUpData)) {
@@ -120,25 +121,31 @@ export class Lvl0Actor extends Actor {
                 dialogData.levelWithAdditionalPointInStat.push(lvl);
         }
 
-        let levelUpDialog = new GenerateMissingLevelUpDataDialog(dialogData, async (missingLevelUpData: { [level: number]: LevelData }) => {
-            let totalNewHealth = 0;
-            let totalNewMana = 0;
-            for (let data of Object.values(missingLevelUpData)) {
-                totalNewHealth += data.health;
-                totalNewMana += data.mana;
+        let missingLevelUpData = await DialogAwaiter.openAndWaitResult(GenerateMissingLevelUpDataDialog, dialogData);
+        if (!missingLevelUpData)
+            return;
+
+        let totalNewHealth = 0;
+        let totalNewMana = 0;
+        for (let data of Object.values(missingLevelUpData)) {
+            totalNewHealth += data.health;
+            totalNewMana += data.mana;
+        }
+
+        await this.update({
+            data: {
+                health: {value: this.data.data.health.value + totalNewHealth},
+                mana: {value: this.data.data.mana.value + totalNewMana},
+                levelUpData: missingLevelUpData
             }
-            await this.update({
-                data: {
-                    health: {value: this.data.data.health.value + totalNewHealth},
-                    mana: {value: this.data.data.mana.value + totalNewMana},
-                    levelUpData: missingLevelUpData
-                }
-            }, {diff: true});
-        });
-        levelUpDialog.render(true);
+        }, {diff: true});
     }
 
     openLevelUpPopup() {
+        if (this.data.type !== 'character') {
+            throw new Error('Level up is only supported for characters')
+        }
+
         let actorData = this.data.data;
         let fromLevel = +actorData.level.value;
         let toLevel = fromLevel + 1;
@@ -165,36 +172,42 @@ export class Lvl0Actor extends Actor {
         let hasNewSpeciality = actorData.computedData.bases.job.specialityLevels.indexOf(toLevel) === -1;
         let hasAdditionalPointInStat = (toLevel % 20) == 0;
 
-        let levelUpData = {
+        let dialogData: LevelUpDialogData = {
             toLevel,
             additionalHealth,
             additionalMana,
             hasNewSpeciality,
             hasAdditionalPointInStat,
-            actor: this
+            actor: this,
+            actorStats: actorData.baseStats
         }
 
-        let levelUpDialog = new LevelUpDialog(levelUpData, actorData.baseStats, async (levelUpResultData: LevelData) => {
-            await this.doLevelUp(toLevel, actorData, levelUpResultData);
-            if (toLevel === 1) {
-                await this.addInitialInventory();
+        let levelUpDialog = new LevelUpDialog(dialogData, async (levelUpResultData: LevelData | undefined) => {
+            if (levelUpResultData) {
+                await this.doLevelUp(toLevel, actorData, levelUpResultData);
+                if (toLevel === 1) {
+                    await this.addInitialInventory();
+                }
             }
         });
         levelUpDialog.render(true);
     }
 
-    openSelectSpecialityDialog() {
-        let levelUpDialog = new SelectSpecialityDialog(async (selectedSpecialityName) => {
-            if (!selectedSpecialityName)
-                return;
-            let specialities = this.data.data.specialities || {};
-            let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-            await this.update({data: {specialities: {[nextId]: selectedSpecialityName}}}, {diff: true});
-        });
-        levelUpDialog.render(true);
+    async openSelectSpecialityDialog() {
+        if (this.data.type !== 'character') {
+            throw new Error('openSelectSpecialityDialog only supported for character')
+        }
+
+        let selectedSpecialityName = await DialogAwaiter.openAndWaitResult(SelectSpecialityDialog, null);
+        if (!selectedSpecialityName)
+            return;
+
+        let specialities = this.data.data.specialities || {};
+        let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        await this.update({data: {specialities: {[nextId]: selectedSpecialityName}}}, {diff: true});
     }
 
-    async doLevelUp(level: number, actorData: Lvl0CharacterData, levelUpResultData: LevelData): Promise<void> {
+    async doLevelUp(level: number, actorData: Lvl0ActorCharacterData, levelUpResultData: LevelData): Promise<void> {
         await this.update({
             data: {
                 level: {value: level},
@@ -225,7 +238,7 @@ export class Lvl0Actor extends Actor {
         return undefined;
     }
 
-    async addInitialInventory() {
+    async addInitialInventory(): Promise<void> {
         await this.update({
             data: {
                 staticInventory: {rationCount: 2, torchCount: 2}
@@ -243,13 +256,9 @@ export class Lvl0Actor extends Actor {
             let itemData = game.items!.get(resultElement.data.resultId);
             if (!itemData)
                 continue;
+
             await this.createEmbeddedDocuments('Item', [itemData.toObject()], {});
         }
     }
 }
 
-Hooks.on("createItem", async (document: Lvl0Item,  options: object, userId: string) => {
-    if (document.data.data.quantifiable) {
-        await document.update({ data: {quantity: 1}});
-    }
-});

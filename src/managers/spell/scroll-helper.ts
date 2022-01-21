@@ -1,9 +1,8 @@
 import {ActorSpell} from './spell-definition.model';
-import {ScrollItemPropertiesData} from '../../models/item/scroll-item-properties-data';
-import {Lvl0Actor} from '../../lvl0-actor';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
-import {RollHelper} from '../roll-helper';
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {ScrollItemPropertiesData} from '../../models/item/properties/scroll-item-properties-data';
 
 export class ScrollHelper {
     static async createScroll(actor: Lvl0Actor, spell: ActorSpell): Promise<Item | undefined> {

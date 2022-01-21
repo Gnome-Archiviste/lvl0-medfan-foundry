@@ -1,13 +1,11 @@
 import {RollSkillManager} from "./roll-skill-manager.js";
 import statsDefinition from '../../data/stats.js'
 import {Lvl0ActorEffect} from './effects/lvl0-actor-effect';
-import {Lvl0CharacterData} from '../models/character/character';
+import {Lvl0Actor} from '../models/actor/lvl0-actor';
+import {Lvl0ActorCharacterData} from '../models/actor/properties-data/lvl0-actor-character-data';
 
 export class EffectManager {
-    static applyEffect(actor, effect: Lvl0ActorEffect) {
-        /**
-         * @type {Lvl0CharacterData} actorData
-         */
+    static applyEffect(actor: Lvl0Actor, effect: Lvl0ActorEffect) {
         let actorData = actor.data.data;
         let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         actor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
@@ -19,7 +17,7 @@ export class EffectManager {
     }
 
     static getEffectsWithBonusDamage(actor): {name: string, value: number}[] {
-        let actorData = <Lvl0CharacterData> actor.data.data;
+        let actorData = <Lvl0ActorCharacterData> actor.data.data;
         let effectsWithBonusDamage: {name: string, value: number}[] = [];
         if (actorData.effects) {
             for (let effect of Object.values(actorData.effects) as Lvl0ActorEffect[]) {

@@ -1,4 +1,8 @@
-import {ElementDefinition} from '../modules/models/element-definition';
+export interface ElementDefinition {
+    name: string;
+    nameForWeapon: string;
+    elementalistSpeciality: boolean;
+}
 
 export default {
     'physic': {

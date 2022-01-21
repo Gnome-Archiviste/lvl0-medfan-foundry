@@ -1,18 +1,16 @@
-import skills from '../../../../data/skills.js'
-import jobs from '../../../../data/jobs.js'
-import races from '../../../../data/races.js'
+import skills, {SkillDefinition} from '../../../../data/skills.js'
+import jobs, {JobDefinition} from '../../../../data/jobs.js'
+import races, {RaceDefinition} from '../../../../data/races.js'
 import statsDefinition from '../../../../data/stats.js'
-import {Lvl0CharacterData} from '../../../models/character/character';
-import {SkillDefinition} from '../../../models/all';
-import {RaceDefinition} from '../../../models/data/race/race';
-import {JobDefinition} from '../../../models/data/job/job-definition';
 import {RollSkillManager} from '../../../managers/roll-skill-manager';
 import {RollSpecialityManager} from '../../../managers/roll-speciality-manager';
-import {SkillValue} from '../../../models/data/skill/skill';
+import {Lvl0ActorCharacterData} from '../../../models/actor/properties-data/lvl0-actor-character-data';
+import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
+import {Lvl0ItemType} from '../../../models/item/lvl0-item-data';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
-    actorData: Lvl0CharacterData,
-    skills: { [skillCategoryId: string]: { [skillId: string]: SkillValue } },
+    actorData: Lvl0ActorCharacterData,
+    skills: { [skillCategoryId: string]: { [skillId: string]: SkillDefinition } },
     nonEquipableItemType: { [typeName: string]: boolean },
     actionableItemType: { [typeName: string]: boolean },
     canLevelUp: boolean,
@@ -44,26 +42,13 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     static armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
     static racesByIds: { [raceId: string]: RaceDefinition };
 
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["lvl0mf", "sheet", "actor"],
-            template: "systems/lvl0mf-sheet/ui/sheets/actor/lvl0-character-actor-sheet.hbs",
-            blockFavTab: true,
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-            scrollY: [".stats", ".items", ".inventory"],
-            dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
-        });
-    }
+    async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
+        assertIsCharacter(this.actor.data.type);
 
-    /**
-     * @override
-     */
-    getData(options?: Partial<Options>): Lvl0mfActorSheetData | Promise<Lvl0mfActorSheetData> {
-        const context = super.getData(options);
+        const context = await super.getData(options);
 
         let itemsByType = this.actor.itemTypes;
-        let itemTypes = Object.keys(itemsByType);
+        let itemTypes = Object.keys(itemsByType) as Lvl0ItemType[];
         let equipedItemsByType = {};
         let itemTypesInInventoryTabs: string[] = [];
         for (let itemType of itemTypes) {
@@ -73,7 +58,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     equipedItemsByType[itemType].push(item);
                 }
             }
-            if (itemsByType[itemType].length > 0 && this._isItemTypeDisplayedInInventory(itemType))
+            if (itemsByType[itemType].length > 0 && this.isItemTypeDisplayedInInventory(itemType))
                 itemTypesInInventoryTabs.push(itemType);
         }
 
@@ -105,7 +90,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             'health': 'Vie',
         };
 
-        return <Lvl0mfActorSheetData>{
+        return {
             ...context,
             actorData: this.actor.data.data,
             skills,
@@ -129,13 +114,13 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             itemsByType,
             equipedItemsByType,
             armorSlots: Lvl0CharacterActorSheet.armorSlots
-        }
+        } as Lvl0mfActorSheetData
     }
 
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('[data-update-item-quantity]').change(ev => {
+        html.find('[data-update-item-quantity]').on('change', ev => {
             ev.stopImmediatePropagation();
             ev.stopPropagation();
 
@@ -149,7 +134,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 return;
             }
 
-            let newQuantity = 0;
+            let newQuantity: number;
             if (quantityInput.startsWith('+')) {
                 newQuantity = item.data.data.quantity + (+quantityInput.substr(1));
             } else if (quantityInput.startsWith('-')) {
@@ -240,6 +225,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         html.find("a[data-lvl0-action='deleteActorEffect']").on('click', ev => this._onRemoveEffect(ev));
 
         html.find('[data-permanent-modifier-checkbox]').on('click', ev => {
+            assertIsCharacter(this.actor.data.type);
             const modifierId = $(ev.currentTarget).data('permanent-modifier-checkbox');
             this.actor.update({data: {modifiers: {[modifierId]: {isPermanent: !this.actor.data.data.modifiers[modifierId].isPermanent}}}});
         });
@@ -258,6 +244,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     _onRemoveModifier(ev: MouseEvent): void {
+        assertIsCharacter(this.actor.data.type);
         if (!ev.target)
             return;
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
@@ -267,6 +254,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     _onAddModifier(ev: MouseEvent): void {
+        assertIsCharacter(this.actor.data.type);
         if (!ev.target)
             return;
         let modifiers = this.actor.data.data.modifiers || {};
@@ -274,7 +262,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.actor.update({data: {modifiers: {...modifiers, [nextId]: {stat: 'phy', value: 1}}}});
     }
 
-    canLevelUp(data: Lvl0CharacterData): boolean {
+    canLevelUp(data: Lvl0ActorCharacterData): boolean {
         if (!data.computedData.bases.job)
             return false;
         if (!data.computedData.bases.race)
@@ -329,6 +317,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 name: 'Changer la valeur sans limitation',
                 icon: '<i class="fas fa-cog"></i>',
                 callback: el => {
+                    assertIsCharacter(this.actor.data.type);
                     let [skillCategory, skillName] = RollSkillManager.splitSkill(el.data('skill'));
                     let characterSkillData = this.actor.data.data.skills[skillCategory][skillName];
                     let manualMode = !!characterSkillData.manualMode;
@@ -377,12 +366,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         ]
     }
 
-    /**
-     * @param {String} itemType
-     * @return {boolean}
-     * @private
-     */
-    _isItemTypeDisplayedInInventory(itemType) {
+    private isItemTypeDisplayedInInventory(itemType: Lvl0ItemType): boolean {
         if (itemType === 'ammunition')
             return false;
         if (itemType === 'potions')
@@ -390,6 +374,17 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         if (itemType === 'weapon')
             return false;
         return true;
+    }
+
+    static get defaultOptions(): ActorSheet.Options {
+        return {
+            ...super.defaultOptions,
+            classes: ["lvl0mf", "sheet", "actor"],
+            template: "systems/lvl0mf-sheet/ui/sheets/actor/lvl0-character-actor-sheet.hbs",
+            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+            scrollY: [".stats", ".items", ".inventory"],
+            dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+        };
     }
 }
 
@@ -399,7 +394,7 @@ for (let [skillCategoryId, categorySkills] of Object.entries(skills)) {
         Lvl0CharacterActorSheet.skillsByIds[skillCategoryId + '.' + skillId] = skill;
     }
 }
-Lvl0CharacterActorSheet.jobsNamesById = Object.entries(jobs.base)
+Lvl0CharacterActorSheet.jobsNamesById = (Object.entries(jobs.base) as [key: string, value: { name: string }][])
     .concat(Object.entries(jobs.advance))
     .reduce(((previousValue, currentValue: [jobId: string, job: JobDefinition]) => {
         previousValue[currentValue[0]] = currentValue[1].name;

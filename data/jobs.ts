@@ -1,3 +1,28 @@
+export interface JobDefinition {
+    name: string;
+    spellCategory?: string;
+    hasJobSpecialization?: boolean;
+    maxSpecializations?: number;
+    specializations?: {[techName: string]: string};
+    healthLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
+    manaLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
+    arcaneLevels?: number[];
+    requirements: JobRequirement[];
+    specialityLevels: number[];
+}
+
+export interface ExtensionJobDefinition extends Partial<JobDefinition> {
+    name: string;
+    baseJob: string;
+}
+
+export interface JobRequirement {
+    stat: string;
+    min: number;
+    notRaces?: string[];
+    races?: string[];
+}
+
 function parseHealthManaInfo(info) {
     if (info.indexOf('+') !== -1) {
         return info.split('+').reduce((result, currentValue) => {
@@ -192,4 +217,4 @@ export default {
             hasJobSpecialization: false
         }
     }
-}
+} as {base: { [jobId: string]: JobDefinition }, advance: { [jobId: string]: ExtensionJobDefinition} }

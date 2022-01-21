@@ -1,14 +1,17 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import {Lvl0ActorEffect} from '../../managers/effects/lvl0-actor-effect';
-import {CharacterModifierInfo, LevelData, Lvl0CharacterData} from '../../models/character/character';
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
+import {getItemModifiersIfAvailable} from '../../../item/lvl0-item-data';
+import {
+    CharacterModifierInfo,
+    LevelData,
+    Lvl0ActorCharacterData
+} from '../../properties-data/lvl0-actor-character-data';
 
 export class StatsCharacterDataComputer extends CharacterDataComputer {
     static statsNames = ['phy', 'dex', 'int', 'cha', 'per'];
 
-    /**
-     * @override
-     */
-    compute(actorData: Lvl0CharacterData, actor) {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor): void {
         let bonusPerStat = {};
         let baseStatModifier = {};
         let armorMalus = 0;
@@ -35,13 +38,14 @@ export class StatsCharacterDataComputer extends CharacterDataComputer {
             if (!item.data.data.equiped)
                 continue;
 
-            if (typeof item.data.data.modifiers === 'object') {
-                for (let modifier of Object.values(item.data.data.modifiers) as CharacterModifierInfo[]) {
+            let itemModifiers = getItemModifiersIfAvailable(item.data);
+            if (itemModifiers) {
+                for (let modifier of Object.values(itemModifiers) as CharacterModifierInfo[]) {
                     if (modifier.stat)
                         bonusPerStat[modifier.stat] = (bonusPerStat[modifier.stat] || 0) + modifier.value;
                 }
             }
-            if (item.type === 'armor') {
+            if (item.data.type === 'armor') {
                 armorMalus += item.data.data.dexMalus;
                 armorValue += +item.data.data.protection;
             }

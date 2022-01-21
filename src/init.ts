@@ -1,6 +1,6 @@
 import './handlebars_helpers';
-import {Lvl0Actor} from './lvl0-actor';
-import {Lvl0Item} from './lvl0-item';
+import {Lvl0Actor} from './models/actor/lvl0-actor';
+import {Lvl0Item} from './models/item/lvl0-item';
 import {RollSkillManager} from './managers/roll-skill-manager';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';

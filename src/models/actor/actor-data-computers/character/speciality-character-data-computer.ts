@@ -1,13 +1,12 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import specialitiesDefinitions from "../../../data/specialities.js";
-import {SpecialityDefinition} from '../../models/speciality/speciality-definition';
+import specialitiesDefinitions from "../../../../../data/specialities.js";
+import {Lvl0Actor} from '../../lvl0-actor';
+import {SpecialityDefinition} from '../../../speciality/speciality-definition';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class SpecialityCharacterDataComputer extends CharacterDataComputer {
 
-    /**
-     * @override
-     */
-    compute(actorData, actor) {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         let specialityLevels = actorData.computedData.bases.job?.specialityLevels;
         let specialitiesCount = 0;
 

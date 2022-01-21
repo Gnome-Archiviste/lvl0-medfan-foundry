@@ -1,4 +1,9 @@
-import {RaceDefinition} from '../modules/models/data/race/race';
+export interface RaceDefinition {
+    name: string;
+    display_subrace: boolean;
+    bonusStat: string;
+    extraSkillIds?: string[];
+}
 
 export default {
     base: {

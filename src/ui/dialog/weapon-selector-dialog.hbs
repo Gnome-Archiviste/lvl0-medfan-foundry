@@ -7,8 +7,8 @@
             <div class="damage">Dégâts</div>
         </div>
         {{#each weapons as |item| }}
-            <div class="{{ternary (eq item._id selectedWeaponId) "weapon-line selected" "weapon-line"}}" data-select-weapon data-item-id="{{item._id}}" >
-                <div class="select"><input type="radio" name="weapon" value="{{item._id}}"></div>
+            <div class="{{ternary (eq item.id selectedWeaponId) "weapon-line selected" "weapon-line"}}" data-select-weapon data-item-id="{{item.id}}" >
+                <div class="select"><input type="radio" name="weapon" value="{{item.id}}"></div>
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
                     <div class="title">{{item.name}}</div>
@@ -39,8 +39,8 @@
             <div class="quantity">&infin;</div>
         </div>
         {{#each ammunition as |item| }}
-            <div class="ammunition-line" data-select-ammo data-item-id="{{item._id}}" data-ammunition-type="{{item.data.data.ammunitionType}}">
-                <div class="select"><input type="radio" name="ammo" value="{{item._id}}"></div>
+            <div class="ammunition-line" data-select-ammo data-item-id="{{item.id}}" data-ammunition-type="{{item.data.data.ammunitionType}}">
+                <div class="select"><input type="radio" name="ammo" value="{{item.id}}"></div>
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
                     <div class="title">{{item.name}}</div>

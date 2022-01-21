@@ -1,9 +1,10 @@
-import {RaceDefinition} from '../data/race/race';
-import {JobDefinition} from '../data/job/job-definition';
-import {SkillValue} from '../data/skill/skill';
-import {Lvl0ActorEffect} from '../../managers/effects/lvl0-actor-effect';
+import {Lvl0ActorEffect} from '../../../managers/effects/lvl0-actor-effect';
+import {RaceDefinition} from '../../../../data/races';
+import {JobDefinition} from '../../../../data/jobs';
+import {Statistics} from './shared-properties-data';
+import {SpecialityDefinition} from '../../../../data/specialities';
 
-export interface Lvl0CharacterData {
+export interface Lvl0ActorCharacterData {
     computedData: ComputedCharacterData;
     levelUpData: LevelUpData;
     staticInventory: StaticInventoryData;
@@ -18,6 +19,13 @@ export interface Lvl0CharacterData {
     race: RaceData;
     effects: { [key: string]: Lvl0ActorEffect };
     specialities: { [key: string]: String };
+}
+
+export interface SkillValue {
+    value: number;
+    master: boolean;
+    prodigy: boolean;
+    manualMode?: boolean;
 }
 
 export interface CharacterModifierInfo {
@@ -45,14 +53,6 @@ export interface ComputedCharacterData {
 
 export interface RaceData {
     id: string;
-}
-
-export interface Statistics {
-    phy: { value: number };
-    dex: { value: number };
-    int: { value: number };
-    cha: { value: number };
-    per: { value: number };
 }
 
 export interface StaticInventoryData {
@@ -86,6 +86,7 @@ export interface ComputedCharacterSkillsData {
 export interface ComputedCharacterSpecialityData {
     maxSpecialities: number;
     canSelectNewSpeciality: boolean;
+    knownSpecialities: SpecialityDefinition[];
 }
 
 export interface ComputedCharacterClutterData {

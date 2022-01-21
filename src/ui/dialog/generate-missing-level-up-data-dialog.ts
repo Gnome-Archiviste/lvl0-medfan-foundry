@@ -1,6 +1,9 @@
-import {LevelData} from '../../models/character/character';
-import {Lvl0Actor} from '../../lvl0-actor';
-import {StatsCharacterDataComputer} from '../../actor-data-computers/character/stats-character-data-computer';
+import {DialogBase} from './dialog-base';
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
+import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
+import {
+    StatsCharacterDataComputer
+} from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
 
 export interface GenerateMissingLevelUpDataDialogData {
     levelWithMissingData: number[];
@@ -10,8 +13,6 @@ export interface GenerateMissingLevelUpDataDialogData {
     actor: Lvl0Actor;
 }
 
-export type CompleteGenerateMissingLevelUpData = (selectedSpecialityName?: { [level: number]: LevelData }) => void;
-
 export interface GenerateMissingLevelUpDataApplicationData {
     ready: boolean
     levelsData?: { [level: number]: LevelData }
@@ -19,26 +20,10 @@ export interface GenerateMissingLevelUpDataApplicationData {
     totalNewMana: number
 }
 
-export class GenerateMissingLevelUpDataDialog extends Application {
+export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissingLevelUpDataDialogData,  { [level: number]: LevelData }> {
     private levelsData?: { [level: number]: LevelData };
 
-    constructor(
-        private readonly dialogData: GenerateMissingLevelUpDataDialogData,
-        private readonly onComplete: CompleteGenerateMissingLevelUpData
-    ) {
-        super();
-    }
-
-    _onKeyDown(event) {
-        // Close dialog
-        if (event.key === "Escape") {
-            event.preventDefault();
-            event.stopPropagation();
-            return this.close();
-        }
-    }
-
-    async getData(options?: Partial<Application.Options>): Promise<GenerateMissingLevelUpDataApplicationData> {
+    override async getData(options?: Partial<Application.Options>): Promise<GenerateMissingLevelUpDataApplicationData> {
         let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
             previousValue[currentValue] = currentValue;
             return previousValue;
@@ -71,43 +56,19 @@ export class GenerateMissingLevelUpDataDialog extends Application {
         } as GenerateMissingLevelUpDataApplicationData;
     }
 
-    /** @override */
-    get title() {
-        return "Multiple Level Up";
+    protected getResult(): { [p: number]: LevelData } | undefined {
+        return this.levelsData;
     }
 
-    /** @override */
-    activateListeners(html) {
+    override activateListeners(html: JQuery) {
         super.activateListeners(html);
 
         for (let lvl of this.dialogData.levelWithAdditionalPointInStat) {
             html.find('[name="additionalStat' + lvl + '"]').on('change', ev => {
-                this.levelsData![lvl].additionalStat = ev.target.value;
+                this.levelsData![lvl].additionalStat = (ev.target as HTMLInputElement).value;
                 this.render(true)
             });
         }
-        html.find('[data-action]').on('click', ev => {
-            switch (ev.target.dataset["action"]) {
-                case 'cancel': {
-                    this.close();
-                    break;
-                }
-                case 'confirm': {
-                    this.onComplete(this.levelsData);
-                    this.close();
-                    break;
-                }
-            }
-        });
-    }
-
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            id: "levelUp",
-            width: 350,
-            template: "systems/lvl0mf-sheet/ui/dialog/generate-missing-level-up-data-dialog.hbs",
-            popOut: true,
-        });
     }
 
     private async initIfNeeded() {
@@ -136,5 +97,15 @@ export class GenerateMissingLevelUpDataDialog extends Application {
             return roll.total!;
         }
         return 0;
+    }
+
+    static get defaultOptions(): Application.Options {
+        return foundry.utils.mergeObject(super.defaultOptions, {
+            id: "levelUp",
+            width: 350,
+            title: 'Multiple Level Up',
+            template: "systems/lvl0mf-sheet/ui/dialog/generate-missing-level-up-data-dialog.hbs",
+            popOut: true,
+        });
     }
 }

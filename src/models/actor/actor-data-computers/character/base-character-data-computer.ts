@@ -1,19 +1,16 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
-import races from "../../../data/races.js";
-import jobs from "../../../data/jobs.js";
-import {RaceDefinition} from '../../models/data/race/race';
-import {JobDefinition} from '../../models/data/job/job-definition';
+import races, {RaceDefinition} from "../../../../../data/races";
+import jobs, {JobDefinition} from "../../../../../data/jobs";
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class BaseCharacterDataComputer extends CharacterDataComputer {
     static racesByIds = {};
     static jobsByIds = {};
 
-    /**
-     * @override
-     */
-    compute(actorData, actor) {
-        actorData.computedData.bases.race = BaseCharacterDataComputer.racesByIds[actor.data.data.race.id];
-        let job = BaseCharacterDataComputer.jobsByIds[actor.data.data.job.id];
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
+        actorData.computedData.bases.race = BaseCharacterDataComputer.racesByIds[actorData.race.id];
+        let job = BaseCharacterDataComputer.jobsByIds[actorData.job.id];
         if (job.baseJob) {
             job = {...BaseCharacterDataComputer.jobsByIds[job.baseJob], ...job};
         }

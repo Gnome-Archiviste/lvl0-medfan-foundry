@@ -1,5 +1,7 @@
 import {ActorSpell} from '../../managers/spell/spell-definition.model';
-import {Lvl0Actor} from '../../lvl0-actor';
+import {DialogBase} from './dialog-base';
+import ClickEvent = JQuery.ClickEvent;
+import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -7,20 +9,11 @@ export interface SpellSelectorDialogData {
 }
 
 export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
-export type CompleteSpellSelectorCallback = (selectedSpell?: ActorSpell, action?: SpellCastAction) => void;
 
-export class SpellSelectorDialog extends Application {
-    constructor(
-        private readonly data: SpellSelectorDialogData,
-        private readonly onComplete: CompleteSpellSelectorCallback
-    ) {
-        super();
-    }
-
-    /** @override */
-    getData(options = {}) {
+export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
+    override getData(options?: Partial<Application.Options>): object | Promise<object> {
         let data = super.getData(options);
-        let spellPerLevels = this.data.spells.reduce((previousValue, spell) => {
+        let spellPerLevels = this.dialogData.spells.reduce((previousValue, spell) => {
             if (!(spell.cost in previousValue))
                 previousValue[spell.cost] = [];
             previousValue[spell.cost].push(spell);
@@ -29,7 +22,7 @@ export class SpellSelectorDialog extends Application {
 
         let spellInNonFullWand = {};
         let emptyWandAvailable = false;
-        let wands = this.data.actor.itemTypes['wand'];
+        let wands = this.dialogData.actor.itemTypes['wand'];
         if (wands) {
             for (let wand of wands) {
                 if (wand.data.type !== 'wand')
@@ -44,11 +37,11 @@ export class SpellSelectorDialog extends Application {
             }
         }
 
-        let emptyScrollAvailable = this.data.actor.getFirstEmptyScroll() !== undefined;
+        let emptyScrollAvailable = this.dialogData.actor.getFirstEmptyScroll() !== undefined;
 
         return {
             ...data,
-            spells: this.data.spells,
+            spells: this.dialogData.spells,
             levels: Object.keys(spellPerLevels),
             spellPerLevels: spellPerLevels,
             emptyWandAvailable,
@@ -57,73 +50,63 @@ export class SpellSelectorDialog extends Application {
         };
     }
 
-    /** @override */
-    get title() {
-        return "Selection du sort";
+
+    protected getResult(): { spell: ActorSpell; action: SpellCastAction } | undefined {
+        return undefined;
     }
 
-    async close(options?: Application.CloseOptions & {selected: boolean}): Promise<void> {
-        if (!options?.selected) {
-            this.onComplete(undefined);
-        }
-        return super.close(options);
-    }
-
-    /** @override */
-    activateListeners(html) {
+    override activateListeners(html: JQuery) {
         super.activateListeners(html);
 
-        html.find('[data-action]').click(ev => {
+        html.find('[data-action]').on('click', async (ev: ClickEvent) => {
             switch (ev.target.dataset["action"]) {
-                case 'cancel': {
-                    this.close();
-                    break;
-                }
                 case 'fillWand':
                 case 'createScroll':
                 case 'cast': {
                     let spellId = ev.target.dataset['spellId'];
-                    let spell = this.data.spells.find(s => s.id === spellId);
-                    this.onComplete(spell, ev.target.dataset["action"]);
-                    this.close({selected: true});
+                    let spell = this.dialogData.spells.find(s => s.id === spellId);
+                    if (spell) {
+                        this.result({spell: spell, action: ev.target.dataset["action"]});
+                        await this.close({selected: true});
+                    }
                     break;
                 }
                 case 'addMacro': {
                     let spellId = ev.target.dataset['spellId'];
-                    let spell = this.data.spells.find(s => s.id === spellId);
+                    let spell = this.dialogData.spells.find(s => s.id === spellId);
                     if (!spell)
                         throw new Error("Spell not found: " + spellId);
                     let skillId = spell.id.startsWith('champion') ? 'champion.spellcasting' : 'mage.spell_casting';
-                    Macro.create({
+                    let macro = await Macro.create({
                         name: spell.name,
                         type: "script",
                         img: spell.icon,
                         scope: "actor",
                         command: `rollSkillManager.rollSkill(token, '${skillId}', {spellId: '${spellId}'})`
-                    }).then(async (macro) => {
-                        if (!macro) {
-                            ui.notifications?.error('Failed to create macro')
-                            throw new Error('Failed to create macro');
-                        }
-                        await game.user?.assignHotbarMacro(macro, '');
                     });
-
-                    this.close();
+                    if (!macro) {
+                        ui.notifications?.error('Failed to create macro')
+                        throw new Error('Failed to create macro');
+                    }
+                    await game.user?.assignHotbarMacro(macro, '');
+                    await this.close();
                     break;
                 }
             }
         });
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
+    static get defaultOptions(): Application.Options {
+        return {
+            ...super.defaultOptions,
             id: "spellSelector",
+            title: "Selection du sort",
             template: "systems/lvl0mf-sheet/ui/dialog/spell-selector-dialog.hbs",
             popOut: true,
             tabs: [{navSelector: ".tabs", contentSelector: ".spells", initial: "1"}],
             width: 500,
             height: 600
-        });
+        };
     }
 }
 

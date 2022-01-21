@@ -1,11 +1,10 @@
 import {CharacterDataComputer} from "./character-data-computer.js";
+import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 
 export class MagicCharacterDataComputer extends CharacterDataComputer {
 
-    /**
-     * @override
-     */
-    compute(actorData, actor) {
+    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         let arcaneLevels = actorData.computedData.bases.job?.arcaneLevels;
         let arcaneLevel = 0;
 
