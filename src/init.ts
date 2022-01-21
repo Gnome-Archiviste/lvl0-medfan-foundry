@@ -40,6 +40,9 @@ Hooks.once("ready", async function () {
     }
 });
 
+window.onerror = ((event, source, lineno, colno, error) => {
+    ui.notifications?.error(`Une erreur c'est produite. Voir la console [F12] pour plus d'informations: ${error?.message}`);
+})
 
 declare global {
     interface LenientGlobalVariableTypes {

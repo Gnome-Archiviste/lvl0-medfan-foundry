@@ -85,7 +85,6 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
                         command: `rollSkillManager.rollSkill(token, '${skillId}', {spellId: '${spellId}'})`
                     });
                     if (!macro) {
-                        ui.notifications?.error('Failed to create macro')
                         throw new Error('Failed to create macro');
                     }
                     await game.user?.assignHotbarMacro(macro, '');

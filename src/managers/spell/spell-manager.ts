@@ -106,7 +106,6 @@ export class SpellManager {
             return actorSpell;
         } catch (e) {
             console.error(`Error while processing spell ${spellId}`, e);
-            ui.notifications?.error(`Erreur avec le sort ${spellId}`);
             return SpellManager.safeIncompleteSpell(spellDefinition, level, spellClass, speciality);
         }
     }

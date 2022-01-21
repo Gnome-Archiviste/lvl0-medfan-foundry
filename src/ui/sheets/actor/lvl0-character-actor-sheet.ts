@@ -128,7 +128,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 throw new Error(`Failed to get item '${itemId}' when trying to update quantity`)
             let quantityInput = $(ev.currentTarget).val() as string;
             if (!quantityInput) {
-                ui.notifications?.error('Invalid quantity');
+                ui.notifications?.error('Quantité invalide');
                 return;
             }
 
@@ -165,8 +165,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                         command: `token.actor.useSpeciality('${specialityId}')`
                     });
                     if (!macro) {
-                        ui.notifications?.error('Failed to create macro');
-                        return;
+                        throw new Error('Failed to create macro');
                     }
                     await game.user?.assignHotbarMacro(macro, '');
                     break;
@@ -302,8 +301,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                         command: `rollSkillManager.rollSkill(token, '${skillId}')`
                     });
                     if (!macro) {
-                        ui.notifications?.error('Failed to create macro');
-                        return;
+                        throw new Error('Failed to create macro');
                     }
                     await game.user?.assignHotbarMacro(macro, '');
                 }
@@ -354,8 +352,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                         command: `rollSpecialityManager.rollSpeciality(token, '${specialityId}')`
                     });
                     if (!macro) {
-                        ui.notifications?.error('Failed to create macro');
-                        return;
+                        throw new Error('Failed to create macro');
                     }
 
                     await game.user?.assignHotbarMacro(macro, '');

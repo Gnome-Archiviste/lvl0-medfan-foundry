@@ -1,5 +1,4 @@
 import races, {RaceDefinition} from './data/races';
-import {throwAndError} from '../utils/error';
 
 export class RaceRepository {
     private static racesByIdsCache?: Record<string, RaceDefinition>
@@ -25,7 +24,7 @@ export class RaceRepository {
     static getRace(id: string): RaceDefinition {
         let race = RaceRepository.getRacesByIds()[id];
         if (!race)
-            throwAndError(`Cannot find race ${id}`);
+            throw new Error(`Cannot find race ${id}`);
         return race;
     }
 }

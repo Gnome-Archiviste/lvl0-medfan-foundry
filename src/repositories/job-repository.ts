@@ -1,5 +1,4 @@
 import jobs, {ExtensionJobDefinition, JobDefinition} from './data/jobs';
-import {throwAndError} from '../utils/error';
 
 export class JobRepository {
     private static jobsNamesByIdsCache?: Record<string, string>;
@@ -44,10 +43,10 @@ export class JobRepository {
         return jobsByIds;
     }
 
-    static getJob(id: string): JobDefinition {
-        let job = JobRepository.getJobsByIds()[id];
+    static getJob(jobId: string): JobDefinition {
+        let job = JobRepository.getJobsByIds()[jobId];
         if (!job)
-            throwAndError(`Cannot find race ${id}`);
+            throw new Error(`Cannot find race ${jobId}`);
         return job;
     }
 }

@@ -10,11 +10,9 @@ export interface CharacterProperties {
 
 export function assertIsCharacter(actor?: Lvl0Actor | null): asserts actor is Lvl0ActorCharacter {
     if (!actor) {
-        ui.notifications?.error('An error occurred: see console for more detail [F12]')
         throw new Error('Actor is not defined');
     }
     if (actor.data.type !== 'character') {
-        ui.notifications?.error('An error occurred: see console for more detail [F12]')
         throw new Error('Not supported for actor of type: ' + this.actor.data.type);
     }
 }
