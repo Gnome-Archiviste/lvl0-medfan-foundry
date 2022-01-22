@@ -6,6 +6,8 @@ import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sh
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
 import {RollSpecialityManager} from './managers/speciality/roll-speciality-manager';
 
+import './error-monitoring';
+
 Hooks.once("init", async function () {
     CONFIG.Actor.documentClass = Lvl0Actor;
     CONFIG.Item.documentClass = Lvl0Item;
@@ -40,15 +42,12 @@ Hooks.once("ready", async function () {
     }
 });
 
-window.onerror = ((event, source, lineno, colno, error) => {
-    ui.notifications?.error(`Une erreur c'est produite. Voir la console [F12] pour plus d'informations: ${error?.message}`);
-})
-
 declare global {
     interface LenientGlobalVariableTypes {
         game: never; // the type doesn't matter
     }
 }
+
 Hooks.once('diceSoNiceReady', (dice3d) => {
     RollSpecialityManager.registerDiceSoNiceColors(dice3d)
 });
