@@ -28,5 +28,9 @@ system.version = newVersion;
 fs.writeFileSync('system.json', JSON.stringify(system, null, '  '));
 const gitCommit = spawn('git', ['commit', '-am', 'Update to version ' + newVersion]);
 gitCommit.on('close', (data) => {
-    spawn('git', ['tag', 'v' + newVersion]);
+    spawn('git', ['tag', 'v' + newVersion]).on('close', () => {
+        spawn('git', ['push']).on('close', () => {
+            spawn('git', ['push', '--tags'])
+        })
+    });
 });
