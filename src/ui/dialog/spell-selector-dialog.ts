@@ -1,11 +1,11 @@
 import {ActorSpell} from '../../managers/spell/actor-spell.model';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import ClickEvent = JQuery.ClickEvent;
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
 import {InitializedGame} from '../../models/misc/game';
-import {container} from 'tsyringe';
+import {inject} from 'tsyringe';
 import {MacroUtil} from '../../utils/macro-util';
+import ClickEvent = JQuery.ClickEvent;
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -15,16 +15,14 @@ export interface SpellSelectorDialogData {
 export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
 
 export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
-    private game: InitializedGame;
-    private macroUtil: MacroUtil;
 
     constructor(
-        dialogData: SpellSelectorDialogData,
-        result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>
+        @inject("DIALOG_DATA") dialogData: SpellSelectorDialogData,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>,
+        @inject(MacroUtil) private readonly macroUtil: MacroUtil,
+        @inject(InitializedGame) private readonly game: InitializedGame,
     ) {
         super(dialogData, result);
-        this.game = container.resolve(InitializedGame)
-        this.macroUtil = container.resolve(MacroUtil)
     }
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {

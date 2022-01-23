@@ -1,15 +1,17 @@
+import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {SpecialityRepository} from '../../repositories/speciality-repository';
-import {container} from 'tsyringe';
 
 export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
 
-export class SelectSpecialityDialog extends DialogBase<null, string> {
-    private readonly specialityRepository: SpecialityRepository;
-
-    constructor(dialogData: null, result: DialogResultCallback<string>) {
-        super(dialogData, result);
-        this.specialityRepository = container.resolve(SpecialityRepository);
+@injectable()
+export class SelectSpecialityDialog extends DialogBase<object, string> {
+    constructor(
+        @inject("DIALOG_DATA") data: object,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<string>,
+        @inject(SpecialityRepository) private readonly specialityRepository: SpecialityRepository
+    ) {
+        super(data, result);
     }
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {

@@ -1,3 +1,4 @@
+import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Statistics} from '../../models/actor/properties-data/shared-properties-data';
@@ -6,7 +7,6 @@ import {
     StatsCharacterDataComputer
 } from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
 import {RollFactory} from '../../utils/roll-factory';
-import {container} from 'tsyringe';
 
 export interface LevelUpDialogData {
     toLevel: number;
@@ -30,16 +30,17 @@ export interface LevelUpDialogApplicationData {
     stats: {[statName: string]: string}
 }
 
+@injectable()
 export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
     public diceData = {};
     public additionalStat?: string;
 
-    private readonly rollFactory: RollFactory;
-
-    constructor(dialogData: LevelUpDialogData, result: DialogResultCallback<LevelData>) {
+    constructor(
+        @inject("DIALOG_DATA") dialogData: LevelUpDialogData,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<LevelData>,
+        @inject(RollFactory) private readonly rollFactory: RollFactory
+    ) {
         super(dialogData, result);
-
-        this.rollFactory = container.resolve(RollFactory);
     }
 
     override getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
@@ -174,7 +175,6 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
             }
         });
     }
-
 
     static get defaultOptions(): Application.Options {
         return foundry.utils.mergeObject(super.defaultOptions, {

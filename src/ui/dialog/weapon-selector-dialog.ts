@@ -1,6 +1,7 @@
-import {DialogBase} from './dialog-base';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 import {AmmunitionType} from '../../models/item/properties/ammunition-item-properties';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../models/item/lvl0-item-types';
+import {inject} from 'tsyringe';
 
 export interface WeaponSelectorDialogData {
     weapons: Lvl0ItemWeapon[],
@@ -11,6 +12,13 @@ export interface WeaponSelectorDialogData {
 export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
     private selectedWeapon?: Lvl0ItemWeapon = undefined;
     private selectedAmmo?: Lvl0ItemAmmunition = undefined;
+
+    constructor(
+        @inject("DIALOG_DATA") dialogData: WeaponSelectorDialogData,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]>,
+    ) {
+        super(dialogData, result);
+    }
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
         return {

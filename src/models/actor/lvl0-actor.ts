@@ -161,7 +161,7 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
-    openLevelUpPopup() {
+    async openLevelUpPopup() {
         if (this.data.type !== 'character') {
             throw new Error('Level up is only supported for characters')
         }
@@ -202,15 +202,13 @@ export class Lvl0Actor extends Actor {
             actorStats: actorData.baseStats
         }
 
-        let levelUpDialog = new LevelUpDialog(dialogData, async (levelUpResultData: LevelData | undefined) => {
-            if (levelUpResultData) {
-                await this.doLevelUp(toLevel, actorData, levelUpResultData);
-                if (toLevel === 1) {
-                    await this.addInitialInventory();
-                }
+        let levelUpResultData = await this.dialogAwaiter.openAndWaitResult(LevelUpDialog, dialogData);
+        if (levelUpResultData) {
+            await this.doLevelUp(toLevel, actorData, levelUpResultData);
+            if (toLevel === 1) {
+                await this.addInitialInventory();
             }
-        });
-        levelUpDialog.render(true);
+        }
     }
 
     async openSelectSpecialityDialog() {
@@ -218,7 +216,7 @@ export class Lvl0Actor extends Actor {
             throw new Error('openSelectSpecialityDialog only supported for character')
         }
 
-        let selectedSpecialityName = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, null);
+        let selectedSpecialityName = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, {});
         if (!selectedSpecialityName)
             return;
 

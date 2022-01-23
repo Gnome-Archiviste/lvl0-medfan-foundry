@@ -1,3 +1,4 @@
+import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
@@ -5,7 +6,6 @@ import {
     StatsCharacterDataComputer
 } from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
 import {RollFactory} from '../../utils/roll-factory';
-import {container} from 'tsyringe';
 
 export interface GenerateMissingLevelUpDataDialogData {
     levelWithMissingData: number[];
@@ -22,18 +22,16 @@ export interface GenerateMissingLevelUpDataApplicationData {
     totalNewMana: number
 }
 
-
-export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissingLevelUpDataDialogData,  Record<number, LevelData>> {
+@injectable()
+export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissingLevelUpDataDialogData, Record<number, LevelData>> {
     private levelsData?: Record<number, LevelData>;
-    private readonly rollFactory: RollFactory;
 
     constructor(
-        dialogData: GenerateMissingLevelUpDataDialogData,
-        result: DialogResultCallback<Record<number, LevelData>>
+        @inject("DIALOG_DATA") dialogData: GenerateMissingLevelUpDataDialogData,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<Record<number, LevelData>>,
+        @inject(RollFactory) private readonly rollFactory: RollFactory
     ) {
         super(dialogData, result);
-
-        this.rollFactory = container.resolve(RollFactory);
     }
 
     override async getData(options?: Partial<Application.Options>): Promise<GenerateMissingLevelUpDataApplicationData> {
