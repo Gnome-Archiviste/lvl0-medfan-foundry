@@ -1,9 +1,9 @@
+import {inject, injectable} from 'tsyringe';
 import {ActorSpell} from '../../managers/spell/actor-spell.model';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
 import {InitializedGame} from '../../models/misc/game';
-import {inject} from 'tsyringe';
 import {MacroUtil} from '../../utils/macro-util';
 import ClickEvent = JQuery.ClickEvent;
 
@@ -14,6 +14,7 @@ export interface SpellSelectorDialogData {
 
 export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
 
+@injectable()
 export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
 
     constructor(
