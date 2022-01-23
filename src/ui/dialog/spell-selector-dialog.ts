@@ -5,6 +5,7 @@ import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
 import {InitializedGame} from '../../models/misc/game';
 import {container} from 'tsyringe';
+import {MacroUtil} from '../../utils/macro-util';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -15,9 +16,15 @@ export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
 
 export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
     private game: InitializedGame;
-    constructor(dialogData: SpellSelectorDialogData, result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>) {
+    private macroUtil: MacroUtil;
+
+    constructor(
+        dialogData: SpellSelectorDialogData,
+        result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>
+    ) {
         super(dialogData, result);
         this.game = container.resolve(InitializedGame)
+        this.macroUtil = container.resolve(MacroUtil)
     }
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
@@ -85,17 +92,13 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
                     if (!spell)
                         throw new Error("Spell not found: " + spellId);
                     let skillId = spell.id.startsWith('champion') ? 'champion.spellcasting' : 'mage.spell_casting';
-                    let macro = await Macro.create({
+                    await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
                         name: spell.name,
                         type: "script",
                         img: spell.icon,
                         scope: "actor",
-                        command: `rollSkillManager.rollSkill(token, '${skillId}', {spellId: '${spellId}'})`
+                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`rollSkillManager.rollSkill(token, '${skillId}', {spellId: '${spellId}'})`)
                     });
-                    if (!macro) {
-                        throw new Error('Failed to create macro');
-                    }
-                    await this.game.user.assignHotbarMacro(macro, '');
                     await this.close();
                     break;
                 }

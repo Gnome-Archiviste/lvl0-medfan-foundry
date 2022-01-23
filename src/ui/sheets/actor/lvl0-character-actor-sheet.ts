@@ -13,6 +13,7 @@ import {SpecialityRepository} from '../../../repositories/speciality-repository'
 import {Lvl0Actor} from '../../../models/actor/lvl0-actor';
 import {container} from 'tsyringe';
 import {InitializedGame} from '../../../models/misc/game';
+import {MacroUtil} from '../../../utils/macro-util';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
@@ -48,6 +49,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     private readonly specialityRepository: SpecialityRepository;
     private readonly statsRepository: StatsRepository;
     private readonly rollSkillManager: RollSkillManager;
+    private readonly macroUtil: MacroUtil;
     private readonly game: InitializedGame;
 
     constructor(actor: Lvl0Actor, options: Partial<Options>) {
@@ -59,6 +61,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.specialityRepository = container.resolve(SpecialityRepository);
         this.statsRepository = container.resolve(StatsRepository);
         this.rollSkillManager = container.resolve(RollSkillManager);
+        this.macroUtil = container.resolve(MacroUtil);
         this.game = container.resolve(InitializedGame);
     }
 
@@ -179,7 +182,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     this.actor.openLevelUpPopup();
                     break;
                 case "generateMissingLevelUpData":
-                    this.actor.openGenerateMissingLevelUpDataPopup();
+                    await this.actor.openGenerateMissingLevelUpDataPopup();
                     break;
                 case "useSpeciality":
                     await this.actor.useSpeciality(ev.target.dataset.specialityId);
@@ -187,21 +190,17 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 case "createSpecialityMacro": {
                     let specialityId = ev.target.dataset.specialityId;
                     let speciality = this.specialityRepository.getSpecialityFromId(specialityId);
-                    const macro = await Macro.create({
+                    await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
                         name: speciality.name,
                         type: "script",
                         img: speciality.icon,
                         scope: "actor",
-                        command: `token.actor.useSpeciality('${specialityId}')`
+                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`token.actor.useSpeciality('${specialityId}')`)
                     });
-                    if (!macro) {
-                        throw new Error('Failed to create macro');
-                    }
-                    await this.game.user.assignHotbarMacro(macro, '');
                     break;
                 }
                 case "selectSpeciality":
-                    this.actor.openSelectSpecialityDialog();
+                    await this.actor.openSelectSpecialityDialog();
                     break;
             }
         });
@@ -323,17 +322,13 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 callback: async el => {
                     let skillId = el.data('skill');
                     let skillDefinition = this.skillRepository.getSkillFromId(skillId);
-                    const macro = await Macro.create({
+                    await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
                         name: skillDefinition.name,
                         type: "script",
                         img: skillDefinition.icon,
                         scope: "actor",
-                        command: `rollSkillManager.rollSkill(token, '${skillId}')`
+                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`rollSkillManager.rollSkill(token, '${skillId}')`)
                     });
-                    if (!macro) {
-                        throw new Error('Failed to create macro');
-                    }
-                    await this.game.user.assignHotbarMacro(macro, '');
                 }
             }
         ];
@@ -375,17 +370,12 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 callback: async el => {
                     let specialityId = el.data('speciality');
                     let specialityDefinition = this.specialityRepository.getSpecialityFromId(specialityId);
-                    const macro = await Macro.create({
+                    await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
                         name: specialityDefinition.name,
                         type: "script",
                         scope: "actor",
-                        command: `rollSpecialityManager.rollSpeciality(token, '${specialityId}')`
+                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`rollSpecialityManager.rollSpeciality(token, '${specialityId}')`)
                     });
-                    if (!macro) {
-                        throw new Error('Failed to create macro');
-                    }
-
-                    await this.game.user.assignHotbarMacro(macro, '');
                 }
             }
         ]
