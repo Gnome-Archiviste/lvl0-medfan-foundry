@@ -1,34 +1,36 @@
+import {singleton} from 'tsyringe';
 import jobs, {ExtensionJobDefinition, JobDefinition} from './data/jobs';
 
+@singleton()
 export class JobRepository {
-    private static jobsNamesByIdsCache?: Record<string, string>;
-    private static jobsByIds?: Record<string, JobDefinition>;
+    private jobsNamesByIdsCache?: Record<string, string>;
+    private jobsByIds?: Record<string, JobDefinition>;
 
-    static getJobsByCategories(): { base: Record<string, JobDefinition>, advance: Record<string, ExtensionJobDefinition> } {
+    getJobsByCategories(): { base: Record<string, JobDefinition>, advance: Record<string, ExtensionJobDefinition> } {
         return jobs;
     }
 
-    static getJobNamesByIds(): Record<string, string> {
-        if (JobRepository.jobsNamesByIdsCache)
-            return JobRepository.jobsNamesByIdsCache;
+    getJobNamesByIds(): Record<string, string> {
+        if (this.jobsNamesByIdsCache)
+            return this.jobsNamesByIdsCache;
 
-        let jobsByCategories = JobRepository.getJobsByCategories();
-        JobRepository.jobsNamesByIdsCache = (Object.entries(jobsByCategories.base) as [string, { name: string }][])
+        let jobsByCategories = this.getJobsByCategories();
+        this.jobsNamesByIdsCache = (Object.entries(jobsByCategories.base) as [string, { name: string }][])
             .concat(Object.entries(jobsByCategories.advance))
             .reduce(((previousValue, currentValue: [jobId: string, job: JobDefinition]) => {
                 previousValue[currentValue[0]] = currentValue[1].name;
                 return previousValue;
             }), {})
 
-        return JobRepository.jobsNamesByIdsCache;
+        return this.jobsNamesByIdsCache;
     }
 
-    static getJobsByIds(): Record<string, JobDefinition> {
-        if (JobRepository.jobsByIds)
-            return JobRepository.jobsByIds;
+    getJobsByIds(): Record<string, JobDefinition> {
+        if (this.jobsByIds)
+            return this.jobsByIds;
 
         let jobsByIds: Record<string, JobDefinition> = {};
-        for (let jobCategory of Object.values(JobRepository.getJobsByCategories())) {
+        for (let jobCategory of Object.values(this.getJobsByCategories())) {
             for (let [jobId, job] of Object.entries(jobCategory as { [jobId: string]: JobDefinition | ExtensionJobDefinition })) {
                 if ('baseJob' in job) {
                     jobsByIds[jobId] = {...jobsByIds[job.baseJob], ...job};
@@ -38,13 +40,13 @@ export class JobRepository {
             }
         }
 
-        JobRepository.jobsByIds = jobsByIds;
+        this.jobsByIds = jobsByIds;
 
         return jobsByIds;
     }
 
-    static getJob(jobId: string): JobDefinition {
-        let job = JobRepository.getJobsByIds()[jobId];
+    getJob(jobId: string): JobDefinition {
+        let job = this.getJobsByIds()[jobId];
         if (!job)
             throw new Error(`Cannot find race ${jobId}`);
         return job;

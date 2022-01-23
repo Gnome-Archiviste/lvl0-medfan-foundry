@@ -1,3 +1,4 @@
+import {container, singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
 import {SpellSelector} from "../../../utils/spell-selector";
 import {SpellManager} from "../../spell/spell-manager";
@@ -5,9 +6,9 @@ import {RollMagicEpicFailManager} from "../../spell/roll-magic-epic-fail-manager
 import {EffectManager} from "../../effects/effect-manager";
 import {ActorSpell} from '../../spell/actor-spell.model';
 import {SpellCastAction} from '../../../ui/dialog/spell-selector-dialog';
-import {RollHelper} from '../../../utils/roll-helper';
+import {RollUtil} from '../../../utils/roll-util';
 import {SpellChat} from '../../spell/spell-chat';
-import {ScrollHelper} from '../../spell/scroll-helper';
+import {ScrollUtil} from '../../spell/scroll-util';
 import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
 import {
     CastSpellSkillScriptData,
@@ -15,16 +16,24 @@ import {
     SkillDefinition
 } from '../../../repositories/data/skills';
 
+@singleton()
 export class RollSpellSkillScript extends SkillScript {
     data: CastSpellSkillScriptData;
     spell: ActorSpell;
-    options?: { spellId?: string };
     action: SpellCastAction = 'cast';
 
-    constructor(token, skillDefinition: SkillDefinition & { script: CastSpellSkillScriptDefinition }, options?: { spellId?: string }) {
-        super(token, skillDefinition);
+    constructor(
+        token,
+        skillDefinition: SkillDefinition & { script: CastSpellSkillScriptDefinition },
+        rollUtil: RollUtil,
+        private readonly options: { spellId?: string } | undefined,
+        private readonly spellChat: SpellChat,
+        private readonly scrollUtil: ScrollUtil,
+        private readonly spellManager: SpellManager,
+        private readonly spellSelector: SpellSelector,
+    ) {
+        super(token, skillDefinition, rollUtil);
         this.data = skillDefinition.script.data;
-        this.options = options;
     }
 
     override async prepare(): Promise<boolean> {
@@ -38,10 +47,10 @@ export class RollSpellSkillScript extends SkillScript {
         assertIsCharacter(actor);
 
         if (this.options?.spellId) {
-            spell = await SpellManager.getComputedSpellForActorById(this.options.spellId, {arcaneLevel: actor.data.data.computedData.magic.arcaneLevel});
+            spell = await this.spellManager.getComputedSpellForActorById(this.options.spellId, {arcaneLevel: actor.data.data.computedData.magic.arcaneLevel});
         }
         if (!spell) {
-            const result = await SpellSelector.selectSpell(this.token, this.data.spellClass);
+            const result = await this.spellSelector.selectSpell(this.token, this.data.spellClass);
             if (result) {
                 spell = result.spell;
                 action = result.action;
@@ -69,15 +78,15 @@ export class RollSpellSkillScript extends SkillScript {
             criticalSuccess: testRoll.result === 'criticalSuccess',
             epicFail: testRoll.result === 'epicFail',
         };
-        let spell = await SpellManager.reComputeSpellAfterRoll(this.spell, context);
+        let spell = await this.spellManager.reComputeSpellAfterRoll(this.spell, context);
 
         let message: string;
         if (this.action === 'cast') {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title">${this.skillDefinition.name}</div>
-                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
-                <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>
-                ${await SpellChat.renderSpellChat(spell, testRoll.result)}
+                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
+                <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>
+                ${await this.spellChat.renderSpellChat(spell, testRoll.result)}
             </div>
             `;
         } else if (this.action === 'fillWand') {
@@ -89,11 +98,11 @@ export class RollSpellSkillScript extends SkillScript {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title"><i class="fa fa-scroll"></i>Création d'un parchemin</div>
                 <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
-                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
-                <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>`;
+                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
+                <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>`;
 
-            if (RollHelper.isSuccess(testRoll.result)) {
-                await ScrollHelper.createScroll(actor, spell);
+            if (this.rollUtil.isSuccess(testRoll.result)) {
+                await this.scrollUtil.createScroll(actor, spell);
             }
             message += `</div>`;
         } else {
@@ -112,7 +121,7 @@ export class RollSpellSkillScript extends SkillScript {
             speaker,
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
-            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, ...SpellManager.getRollsInSpell(spell)]).toJSON())
+            roll: JSON.stringify(this.rollUtil.mergeRolls([testRoll.roll, ...this.spellManager.getRollsInSpell(spell)]).toJSON())
         });
     }
 }
@@ -122,7 +131,7 @@ Hooks.on('init', () => {
         ev.preventDefault()
         ev.stopPropagation()
         ev.stopImmediatePropagation()
-        await RollMagicEpicFailManager.roll();
+        await container.resolve(RollMagicEpicFailManager).roll();
     })
     $(document).on('click', '[data-lvl0-global-action-execute-spell-action]', async function (ev) {
         ev.preventDefault()
@@ -144,7 +153,7 @@ Hooks.on('init', () => {
             case 'addEffect':
                 if (!token.actor)
                     throw new Error('no actor available on the token')
-                EffectManager.applyEffect(token.actor, action.data)
+                await container.resolve(EffectManager).applyEffect(token.actor, action.data)
                 break;
         }
 

@@ -1,9 +1,17 @@
 import {ActorSpell} from './actor-spell.model';
-import {RollHelper, RollResult} from '../../utils/roll-helper';
+import {RollUtil, RollResult} from '../../utils/roll-util';
 import {RolledSpellStat} from './spell-manager';
+import {inject, singleton} from 'tsyringe';
 
+@singleton()
 export class SpellChat {
-    static async renderSpellChat(spell: ActorSpell, result: RollResult): Promise<string> {
+
+    constructor(
+        @inject(RollUtil) private readonly rollUtil: RollUtil,
+    ) {
+    }
+
+    async renderSpellChat(spell: ActorSpell, result: RollResult): Promise<string> {
         let message = `<div class="spell">
         <div class="header">
             <img class="icon" src="${spell.icon}">
@@ -13,19 +21,19 @@ export class SpellChat {
         <div class="stats">
         <div class="cost"><span class="label">Coût</span> ${spell.cost} point de magie</div>
         <div class="distance"><span class="label">Distance</span> ${spell.distance}</div>`;
-        message += await SpellChat.renderSpellStat('duration', spell.duration)
-        message += await SpellChat.renderSpellStat('area', spell.area)
+        message += await this.renderSpellStat('duration', spell.duration)
+        message += await this.renderSpellStat('area', spell.area)
         message += `
         </div>`;
 
-        message += await SpellChat.renderSpellStat('bonus', spell.bonus)
-        message += await SpellChat.renderSpellStat('resilience', spell.resilience)
-        message += await SpellChat.renderSpellStat('damage', spell.damage)
-        message += await SpellChat.renderSpellStat('heal', spell.heal)
+        message += await this.renderSpellStat('bonus', spell.bonus)
+        message += await this.renderSpellStat('resilience', spell.resilience)
+        message += await this.renderSpellStat('damage', spell.damage)
+        message += await this.renderSpellStat('heal', spell.heal)
         if (result === 'criticalSuccess')
-            message += await SpellChat.renderSpellStat('criticalSuccess', spell.criticalSuccess)
-        if (RollHelper.isSuccess(result))
-            message += await SpellChat.renderActions(spell);
+            message += await this.renderSpellStat('criticalSuccess', spell.criticalSuccess)
+        if (this.rollUtil.isSuccess(result))
+            message += await this.renderActions(spell);
 
         if (result === 'epicFail')
             message += ` <div class="epic-fail"><button data-lvl0-global-action-roll-magic-epic-fail><i class="fas fa-dice"></i> Échec critique</button></div>`;
@@ -34,7 +42,7 @@ export class SpellChat {
         return message;
     }
 
-    private static async renderSpellStat(name, value) {
+    private async renderSpellStat(name, value) {
         if (!value)
             return '';
         if (typeof value === 'string')
@@ -48,7 +56,7 @@ export class SpellChat {
             </div>`;
     }
 
-    private static async renderActions(spell: ActorSpell): Promise<string> {
+    private async renderActions(spell: ActorSpell): Promise<string> {
         if (!spell.actions)
             return "";
 

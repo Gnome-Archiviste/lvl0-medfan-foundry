@@ -1,14 +1,16 @@
+import {singleton} from 'tsyringe';
 import elements from './data/elements';
 
+@singleton()
 export class ElementRepository {
-    static getElementWeaponNameByElementsIds(): Record<string, string> {
+    getElementWeaponNameByElementsIds(): Record<string, string> {
         return Object.entries(elements).reduce((previousValue, [key, value]) => {
             previousValue[key] = value.nameForWeapon;
             return previousValue;
         }, {})
     }
 
-    static getElementName(elementId: string) {
+    getElementName(elementId: string) {
         if (!elementId)
             return '';
         if (elementId in elements) {
@@ -17,7 +19,7 @@ export class ElementRepository {
         return elementId;
     }
 
-    static getElementWeaponName(elementId: string) {
+    getElementWeaponName(elementId: string) {
         if (!elementId)
             return '';
         if (elementId in elements) {

@@ -1,7 +1,9 @@
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {singleton} from 'tsyringe';
 
+@singleton()
 export class LevelingCharacterDataComputer extends CharacterDataComputer {
     override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         if (actorData.level.value < 4)

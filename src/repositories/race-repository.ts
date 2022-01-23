@@ -1,15 +1,17 @@
+import {singleton} from 'tsyringe';
 import races, {RaceDefinition} from './data/races';
 
+@singleton()
 export class RaceRepository {
-    private static racesByIdsCache?: Record<string, RaceDefinition>
+    private racesByIdsCache?: Record<string, RaceDefinition>
 
-    static getRacesByCategories(): Record<string, Record<string, RaceDefinition>> {
+    getRacesByCategories(): Record<string, Record<string, RaceDefinition>> {
         return races;
     }
 
-    static getRacesByIds(): Record<string, RaceDefinition> {
-        if (RaceRepository.racesByIdsCache)
-            return RaceRepository.racesByIdsCache;
+    getRacesByIds(): Record<string, RaceDefinition> {
+        if (this.racesByIdsCache)
+            return this.racesByIdsCache;
 
         let racesByIds = {};
         for (let raceCategory of Object.values(races)) {
@@ -17,12 +19,12 @@ export class RaceRepository {
                 racesByIds[raceId] = race;
             }
         }
-        RaceRepository.racesByIdsCache = racesByIds;
+        this.racesByIdsCache = racesByIds;
         return racesByIds;
     }
 
-    static getRace(id: string): RaceDefinition {
-        let race = RaceRepository.getRacesByIds()[id];
+    getRace(id: string): RaceDefinition {
+        let race = this.getRacesByIds()[id];
         if (!race)
             throw new Error(`Cannot find race ${id}`);
         return race;

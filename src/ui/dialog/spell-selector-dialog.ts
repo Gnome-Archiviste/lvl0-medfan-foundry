@@ -1,8 +1,10 @@
 import {ActorSpell} from '../../managers/spell/actor-spell.model';
-import {DialogBase} from './dialog-base';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 import ClickEvent = JQuery.ClickEvent;
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
+import {InitializedGame} from '../../models/misc/game';
+import {container} from 'tsyringe';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
@@ -12,6 +14,12 @@ export interface SpellSelectorDialogData {
 export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
 
 export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
+    private game: InitializedGame;
+    constructor(dialogData: SpellSelectorDialogData, result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>) {
+        super(dialogData, result);
+        this.game = container.resolve(InitializedGame)
+    }
+
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
         let data = super.getData(options);
         let spellPerLevels = this.dialogData.spells.reduce((previousValue, spell) => {
@@ -87,7 +95,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
                     if (!macro) {
                         throw new Error('Failed to create macro');
                     }
-                    await game.user?.assignHotbarMacro(macro, '');
+                    await this.game.user.assignHotbarMacro(macro, '');
                     await this.close();
                     break;
                 }

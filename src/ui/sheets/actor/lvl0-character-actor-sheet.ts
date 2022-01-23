@@ -10,6 +10,9 @@ import {RaceDefinition} from '../../../repositories/data/races';
 import {RaceRepository} from '../../../repositories/race-repository';
 import {ExtensionJobDefinition, JobDefinition} from '../../../repositories/data/jobs';
 import {SpecialityRepository} from '../../../repositories/speciality-repository';
+import {Lvl0Actor} from '../../../models/actor/lvl0-actor';
+import {container} from 'tsyringe';
+import {InitializedGame} from '../../../models/misc/game';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
@@ -36,9 +39,28 @@ export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     armorSlots: string[]
 }
 
-// FIXME: Rename to character
 export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<Options, Lvl0mfActorSheetData> {
     static armorSlots = ['head', 'cloak', 'necklace', 'armor', 'belt', 'hand', 'shield', 'ring', 'foot'];
+
+    private readonly jobRepository: JobRepository;
+    private readonly raceRepository: RaceRepository;
+    private readonly skillRepository: SkillRepository;
+    private readonly specialityRepository: SpecialityRepository;
+    private readonly statsRepository: StatsRepository;
+    private readonly rollSkillManager: RollSkillManager;
+    private readonly game: InitializedGame;
+
+    constructor(actor: Lvl0Actor, options: Partial<Options>) {
+        super(actor, options);
+
+        this.jobRepository = container.resolve(JobRepository);
+        this.raceRepository = container.resolve(RaceRepository);
+        this.skillRepository = container.resolve(SkillRepository);
+        this.specialityRepository = container.resolve(SpecialityRepository);
+        this.statsRepository = container.resolve(StatsRepository);
+        this.rollSkillManager = container.resolve(RollSkillManager);
+        this.game = container.resolve(InitializedGame);
+    }
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
         assertIsCharacter(this.actor);
@@ -60,11 +82,11 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 itemTypesInInventoryTabs.push(itemType);
         }
 
-        let canSelectJob = this.actor.data.data.level.value === 0 || game.user?.isGM;
-        let canSelectRace = this.actor.data.data.level.value === 0 || game.user?.isGM;
+        let canSelectJob = this.actor.data.data.level.value === 0 || this.game.user.isGM;
+        let canSelectRace = this.actor.data.data.level.value === 0 || this.game.user.isGM;
         let canChangeStats = this.actor.data.data.level.value === 0;
-        let canEditModifiers = game.user?.isGM;
-        let canEditLevel = game.user?.isGM && this.actor.data.data.level.value > 0;
+        let canEditModifiers = this.game.user.isGM;
+        let canEditLevel = this.game.user.isGM && this.actor.data.data.level.value > 0;
         let canLevelUp = this.canLevelUp(this.actor.data.data);
         let nonEquipableItemType = {
             'misc': true,
@@ -91,7 +113,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         return {
             ...context,
             actorData: this.actor.data.data,
-            skillsByCategories: SkillRepository.getSkillsByCategories(),
+            skillsByCategories: this.skillRepository.getSkillsByCategories(),
             canLevelUp,
             canChangeStats,
             nonEquipableItemType,
@@ -99,14 +121,14 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             canSelectRace,
             canSelectJob,
             canEditLevel,
-            statsDefinition: StatsRepository.getStats(),
+            statsDefinition: this.statsRepository.getStats(),
             canEditModifiers,
             modifierSkills,
-            skillsByIds: SkillRepository.getSkillsByIds(),
-            jobs: JobRepository.getJobsByCategories(),
-            jobsNamesById: JobRepository.getJobNamesByIds(),
-            races: RaceRepository.getRacesByCategories(),
-            racesByIds: RaceRepository.getRacesByIds(),
+            skillsByIds: this.skillRepository.getSkillsByIds(),
+            jobs: this.jobRepository.getJobsByCategories(),
+            jobsNamesById: this.jobRepository.getJobNamesByIds(),
+            races: this.raceRepository.getRacesByCategories(),
+            racesByIds: this.raceRepository.getRacesByIds(),
             itemTypes,
             itemTypesInInventoryTabs,
             itemsByType,
@@ -164,7 +186,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     break;
                 case "createSpecialityMacro": {
                     let specialityId = ev.target.dataset.specialityId;
-                    let speciality = SpecialityRepository.getSpecialityFromId(specialityId);
+                    let speciality = this.specialityRepository.getSpecialityFromId(specialityId);
                     const macro = await Macro.create({
                         name: speciality.name,
                         type: "script",
@@ -175,7 +197,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     if (!macro) {
                         throw new Error('Failed to create macro');
                     }
-                    await game.user?.assignHotbarMacro(macro, '');
+                    await this.game.user.assignHotbarMacro(macro, '');
                     break;
                 }
                 case "selectSpeciality":
@@ -292,7 +314,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 name: 'Lancer les dés',
                 icon: '<i class="fas fa-dice"></i>',
                 callback: el => {
-                    RollSkillManager.rollSkill(this.actor.getActiveTokens()[0], el.data('skill'));
+                    this.rollSkillManager.rollSkill(this.actor.getActiveTokens()[0], el.data('skill')).then();
                 }
             },
             {
@@ -300,7 +322,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 icon: '<i class="fas fa-scroll"></i>',
                 callback: async el => {
                     let skillId = el.data('skill');
-                    let skillDefinition = SkillRepository.getSkillFromId(skillId);
+                    let skillDefinition = this.skillRepository.getSkillFromId(skillId);
                     const macro = await Macro.create({
                         name: skillDefinition.name,
                         type: "script",
@@ -311,18 +333,18 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     if (!macro) {
                         throw new Error('Failed to create macro');
                     }
-                    await game.user?.assignHotbarMacro(macro, '');
+                    await this.game.user.assignHotbarMacro(macro, '');
                 }
             }
         ];
 
-        if (game.user?.isGM) {
+        if (this.game.user.isGM) {
             skillContextMenu.push({
                 name: 'Changer la valeur sans limitation',
                 icon: '<i class="fas fa-cog"></i>',
                 callback: el => {
                     assertIsCharacter(this.actor);
-                    let [skillCategory, skillName] = SkillRepository.splitSkill(el.data('skill'));
+                    let [skillCategory, skillName] = this.skillRepository.splitSkill(el.data('skill'));
                     let characterSkillData = this.actor.data.data.skills[skillCategory][skillName];
                     let manualMode = !!characterSkillData.manualMode;
                     let value = characterSkillData.value;
@@ -352,7 +374,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 icon: '<i class="fas fa-scroll"></i>',
                 callback: async el => {
                     let specialityId = el.data('speciality');
-                    let specialityDefinition = SpecialityRepository.getSpecialityFromId(specialityId);
+                    let specialityDefinition = this.specialityRepository.getSpecialityFromId(specialityId);
                     const macro = await Macro.create({
                         name: specialityDefinition.name,
                         type: "script",
@@ -363,7 +385,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                         throw new Error('Failed to create macro');
                     }
 
-                    await game.user?.assignHotbarMacro(macro, '');
+                    await this.game.user.assignHotbarMacro(macro, '');
                 }
             }
         ]

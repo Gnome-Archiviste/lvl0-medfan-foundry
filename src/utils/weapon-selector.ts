@@ -2,11 +2,21 @@ import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog/weapo
 import {DialogAwaiter} from './dialog-awaiter';
 import {WeaponItemProperties, WeaponType} from '../models/item/properties/weapon-item-properties';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
+import {inject, singleton} from 'tsyringe';
 
+@singleton()
 export class WeaponSelector {
-    static async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
-        let itemsByType = token.actor!.itemTypes;
-2
+
+    constructor(
+        @inject(DialogAwaiter) private readonly dialogAwaiter: DialogAwaiter
+    ) {
+    }
+
+    async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
+        if (!token.actor)
+            throw new Error(`No actor associated with token: ${token.name} (${token.id})`)
+        let itemsByType = token.actor.itemTypes;
+
         let weapons = itemsByType['weapon']
             .map(w => w as Lvl0ItemWeapon)
             .filter(w => w.data.data.equiped)
@@ -34,6 +44,6 @@ export class WeaponSelector {
             return [weapons[0]];
         }
 
-        return (await DialogAwaiter.openAndWaitResult(WeaponSelectorDialog, weaponSelectorData)) || []
+        return (await this.dialogAwaiter.openAndWaitResult(WeaponSelectorDialog, weaponSelectorData)) || []
     }
 }

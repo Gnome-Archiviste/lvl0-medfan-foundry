@@ -1,3 +1,6 @@
+import './error-monitoring';
+import "reflect-metadata";
+import {container} from "tsyringe";
 import './handlebars_helpers';
 import {Lvl0Actor} from './models/actor/lvl0-actor';
 import {Lvl0Item} from './models/item/lvl0-item';
@@ -5,8 +8,12 @@ import {RollSkillManager} from './managers/skill/roll-skill-manager';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
 import {RollSpecialityManager} from './managers/speciality/roll-speciality-manager';
+import {InitializedGame} from './models/misc/game';
 
-import './error-monitoring';
+declare global {
+    const rollSkillManager: RollSkillManager;
+    const rollSpecialityManager: RollSpecialityManager;
+}
 
 Hooks.once("init", async function () {
     CONFIG.Actor.documentClass = Lvl0Actor;
@@ -23,23 +30,13 @@ Hooks.once("init", async function () {
     Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character']});
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("lvl0mf", Lvl0ItemSheet, {makeDefault: true});
+
+    container.register<InitializedGame>(InitializedGame, {useValue: game as InitializedGame});
 });
 
-(window as any).rollSkillManager = RollSkillManager;
-(window as any).rollSpecialityManager = RollSpecialityManager;
-
-
-declare global {
-    const rollSkillManager: RollSkillManager;
-    const rollSpecialityManager: RollSpecialityManager;
-}
-
 Hooks.once("ready", async function () {
-    // FOR DEBUG
-    if (game.user?.isGM) {
-        // await ui.sidebar.activateTab('actors');
-        // CONFIG.debug.hooks = true
-    }
+    (window as any).rollSkillManager = container.resolve(RollSkillManager);
+    (window as any).rollSpecialityManager = container.resolve(RollSpecialityManager);
 });
 
 declare global {
@@ -48,7 +45,7 @@ declare global {
     }
 }
 
-Hooks.once('diceSoNiceReady', (dice3d) => {
-    RollSpecialityManager.registerDiceSoNiceColors(dice3d)
+Hooks.once('diceSoNiceReady', (dice3d: Dice3d) => {
+    container.resolve(RollSpecialityManager).registerDiceSoNiceColors(dice3d);
 });
 

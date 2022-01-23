@@ -1,4 +1,8 @@
-import {ScrollHelper} from '../../managers/spell/scroll-helper';
+import {ScrollUtil} from '../../managers/spell/scroll-util';
+import {
+    ItemDataConstructorData
+} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';
+import {container} from 'tsyringe';
 
 declare global {
     interface DocumentClassConfig {
@@ -7,16 +11,14 @@ declare global {
 }
 
 export class Lvl0Item extends Item {
-    /**
-     * Augment the basic Item data model with additional dynamic data.
-     */
-    prepareDerivedData() {
-        super.prepareDerivedData();
+    private readonly scrollUtil: ScrollUtil;
 
-        // Get the Item's data
-        const itemData = this.data;
-        const actorData = this.actor ? this.actor.data : {};
-        const data = itemData.data;
+    constructor(
+        data: ItemDataConstructorData,
+        context: object
+    ) {
+        super(data, context);
+        this.scrollUtil = container.resolve(ScrollUtil);
     }
 
     get actionnable(): boolean {
@@ -31,7 +33,7 @@ export class Lvl0Item extends Item {
 
     async use(): Promise<void> {
         if (this.data.type === 'scroll') {
-            await ScrollHelper.useScroll(this);
+            await this.scrollUtil.useScroll(this);
         }
     }
 }

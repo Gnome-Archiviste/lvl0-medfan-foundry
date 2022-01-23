@@ -8,7 +8,8 @@
   "dependencies": {
     "@sentry/browser": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
-    "marked": "^4.0.9"
+    "marked": "^4.0.9",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@league-of-foundry-developers/foundry-vtt-types": "^0.8.9-10",
@@ -18,6 +19,7 @@
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "node-sass": "^7.0.1",
+    "tsyringe": "^4.6.0",
     "typescript": "^4.5.4"
   }
 }

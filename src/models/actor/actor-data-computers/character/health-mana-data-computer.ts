@@ -2,7 +2,9 @@ import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {getItemModifiersIfAvailable} from '../../../item/lvl0-item-data';
 import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {singleton} from 'tsyringe';
 
+@singleton()
 export class HealthManaDataComputer extends CharacterDataComputer {
 
     override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor): void {

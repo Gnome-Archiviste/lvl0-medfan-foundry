@@ -1,16 +1,23 @@
-import {DialogBase} from './dialog-base';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 import {SpecialityRepository} from '../../repositories/speciality-repository';
+import {container} from 'tsyringe';
 
 export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
 
 export class SelectSpecialityDialog extends DialogBase<null, string> {
+    private readonly specialityRepository: SpecialityRepository;
+
+    constructor(dialogData: null, result: DialogResultCallback<string>) {
+        super(dialogData, result);
+        this.specialityRepository = container.resolve(SpecialityRepository);
+    }
 
     override getData(options?: Partial<Application.Options>): object | Promise<object> {
         let data = super.getData(options);
 
         return {
             ...data,
-            specialitiesByIds: SpecialityRepository.getSpecialitiesById()
+            specialitiesByIds: this.specialityRepository.getSpecialitiesById()
         };
     }
 

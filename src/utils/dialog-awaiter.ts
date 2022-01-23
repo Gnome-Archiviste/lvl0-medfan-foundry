@@ -1,7 +1,9 @@
 import {DialogBase, DialogResultCallback} from '../ui/dialog/dialog-base';
+import {singleton} from 'tsyringe';
 
+@singleton()
 export class DialogAwaiter {
-    static async openAndWaitResult<TDialog extends DialogBase<TData, TResult>, TData, TResult>(
+    async openAndWaitResult<TDialog extends DialogBase<TData, TResult>, TData, TResult>(
         type: { new(data: TData, result: DialogResultCallback<TResult>): TDialog },
         data: TData
     ): Promise<TResult | undefined> {

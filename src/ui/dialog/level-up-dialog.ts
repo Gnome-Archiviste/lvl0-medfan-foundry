@@ -1,10 +1,12 @@
-import {DialogBase} from './dialog-base';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {Statistics} from '../../models/actor/properties-data/shared-properties-data';
 import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
 import {
     StatsCharacterDataComputer
 } from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
+import {RollFactory} from '../../utils/roll-factory';
+import {container} from 'tsyringe';
 
 export interface LevelUpDialogData {
     toLevel: number;
@@ -31,6 +33,14 @@ export interface LevelUpDialogApplicationData {
 export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
     public diceData = {};
     public additionalStat?: string;
+
+    private readonly rollFactory: RollFactory;
+
+    constructor(dialogData: LevelUpDialogData, result: DialogResultCallback<LevelData>) {
+        super(dialogData, result);
+
+        this.rollFactory = container.resolve(RollFactory);
+    }
 
     override getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
         // FIXME: We should remove from this list stats already at max value, and handle special case when character is already maxed on every stat
@@ -176,8 +186,7 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
     }
 
     async rollDice(count, type) {
-        let roll = new Roll(count + 'd6');
-        await roll.roll({async: true})
+        let roll = await this.rollFactory.createRoll(count + 'd6');
 
         for (let i = 0; i < roll.terms[0].results.length; i++) {
             this.diceData[type + '-' + i] = roll.terms[0].results[i].result;

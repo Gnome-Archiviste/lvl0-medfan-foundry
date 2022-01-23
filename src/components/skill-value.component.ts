@@ -1,4 +1,7 @@
 import {RollSkillManager} from "../managers/skill/roll-skill-manager";
+import {Lvl0ActorCharacterData, SkillValue} from '../models/actor/properties-data/lvl0-actor-character-data';
+import {SkillDefinition} from '../repositories/data/skills';
+import {container} from 'tsyringe';
 
 Hooks.on('renderActorSheet', (sheet, elements) => {
     /**
@@ -48,16 +51,14 @@ function getAvailableAddPointLevel(characterData, skillCategoryId) {
     return undefined;
 }
 
-/**
- * @param {SkillDefinition} skillDefinition
- * @param {Lvl0CharacterData} characterData
- * @param {SkillValue} characterSkillData
- * @param {string} skillCategoryId
- * @param {string} skillId
- * @return {Handlebars.SafeString|string}
- */
-function renderSkillValueManualMode(skillDefinition, characterData, characterSkillData, skillCategoryId, skillId) {
-    let skillTestValue = RollSkillManager.getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
+function renderSkillValueManualMode(
+    skillDefinition: SkillDefinition,
+    characterData: Lvl0ActorCharacterData,
+    characterSkillData: SkillValue,
+    skillCategoryId: string,
+    skillId: string
+): Handlebars.SafeString | string {
+    let skillTestValue = container.resolve(RollSkillManager).getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
 
     return new Handlebars.SafeString(`<span class="sheet-skill-value">
             <span class="sheet-skill-levels">
@@ -77,18 +78,9 @@ function renderSkillValueManualMode(skillDefinition, characterData, characterSki
 }
 
 Handlebars.registerHelper('skill-value',
-    /**
-     * @param {SkillDefinition} skillDefinition
-     * @param {Lvl0CharacterData} characterData
-     * @param {string} skillCategoryId
-     * @param {string} skillId
-     * @return {Handlebars.SafeString|string}
-     */
-    function (skillDefinition, characterData, skillCategoryId, skillId) {
-        /**
-         * @type {SkillValue}
-         */
-        let characterSkillData;
+    function (skillDefinition: SkillDefinition, characterData: Lvl0ActorCharacterData, skillCategoryId: string, skillId: string)
+        : Handlebars.SafeString | string {
+        let characterSkillData: SkillValue;
         let newPointMaxLevel = getAvailableAddPointLevel(characterData, skillCategoryId);
 
         if (!(skillCategoryId in characterData.skills)) {
@@ -106,7 +98,7 @@ Handlebars.registerHelper('skill-value',
         }
 
         let skillLevel = +characterSkillData.value;
-        let fullSkillId = skillCategoryId  + '.' + skillId;
+        let fullSkillId = skillCategoryId + '.' + skillId;
         let isExtra = characterData.computedData.skills.extraSkills.indexOf(fullSkillId) !== -1;
         let useExtra = false;
         if (isExtra) {
@@ -137,7 +129,7 @@ Handlebars.registerHelper('skill-value',
                 if (newPointMaxLevel)
                     availableSkillLevel[i] = i < characterData.computedData.leveling.maximumSkillLevel;
                 else
-                    availableSkillLevel[i] = (i+1) === skillLevel;
+                    availableSkillLevel[i] = (i + 1) === skillLevel;
                 if (i === 0 && useExtra)
                     availableSkillLevel[i] = false;
             }
@@ -150,7 +142,7 @@ Handlebars.registerHelper('skill-value',
                 availableSkillLevel[i] = false;
         }
 
-        let skillTestValue = RollSkillManager.getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
+        let skillTestValue = container.resolve(RollSkillManager).getSkillSuccessValue(characterData, skillCategoryId + '.' + skillId);
         let skillIsEffectedByAModifier = skillCategoryId + '.' + skillId in characterData.computedData.skills.skillModifiers;
 
         return new Handlebars.SafeString(`<span class="sheet-skill-value">

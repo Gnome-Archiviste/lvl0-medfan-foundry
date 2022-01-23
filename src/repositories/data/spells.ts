@@ -25,13 +25,15 @@ export interface SpellActionDefinition {
 
 export interface AddEffectActionDefinitionData {
     readonly effectName: string;
-    readonly duration: ComputableSpellValue | null;
+    readonly duration?: ComputableSpellValue;
     readonly modifiers: AddEffectActionModifierDefinition[];
 }
 
 export interface AddEffectActionModifierDefinition {
-    readonly stat: string | null;
-    readonly valueFormula: string | null;
+    readonly stat?: string;
+    readonly skill?: string;
+    readonly valueFormula?: string;
+    readonly value?: number;
 }
 
 export interface SpellDamageDefinition {

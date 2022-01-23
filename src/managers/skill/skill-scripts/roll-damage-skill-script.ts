@@ -2,7 +2,7 @@ import {SkillScript, SkillTestRollResult} from "./skill-script";
 import {WeaponSelector} from "../../../utils/weapon-selector";
 import {WeaponDamageRollUtil} from "../../../utils/weapon-damage-roll-util";
 import {EffectManager} from "../../effects/effect-manager";
-import {RollHelper} from '../../../utils/roll-helper';
+import {RollUtil} from '../../../utils/roll-util';
 import {ElementRepository} from '../../../repositories/element-repository';
 import {
     RollDamageSkillScriptData,
@@ -11,19 +11,29 @@ import {
 } from '../../../repositories/data/skills';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../../models/item/lvl0-item-types';
 import {foundryAssert} from '../../../utils/error';
+import {Evaluated, RollFactory} from '../../../utils/roll-factory';
 
 export class RollDamageSkillScript extends SkillScript {
     data: RollDamageSkillScriptData;
     ammunition?: Lvl0ItemAmmunition;
     weapon?: Lvl0ItemWeapon;
 
-    constructor(token: Token, skillDefinition: SkillDefinition & { script: RollDamageSkillScriptDefinition }) {
-        super(token, skillDefinition);
+    constructor(
+        token: Token,
+        skillDefinition: SkillDefinition & { script: RollDamageSkillScriptDefinition },
+        rollUtil: RollUtil,
+        private readonly rollFactory: RollFactory,
+        private readonly weaponDamageRollUtil: WeaponDamageRollUtil,
+        private readonly weaponSelector: WeaponSelector,
+        private readonly effectManager: EffectManager,
+        private readonly elementRepository: ElementRepository,
+    ) {
+        super(token, skillDefinition, rollUtil);
         this.data = skillDefinition.script.data;
     }
 
     override async prepare() {
-        let [weapon, ammunition] = await WeaponSelector.selectWeapon(this.token, this.data.weaponType);
+        let [weapon, ammunition] = await this.weaponSelector.selectWeapon(this.token, this.data.weaponType);
         this.weapon = weapon;
         this.ammunition = ammunition;
         return !!weapon;
@@ -48,7 +58,7 @@ export class RollDamageSkillScript extends SkillScript {
             }
         }
 
-        let [weaponRollFormula, ammunitionRollFormula] = WeaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(
+        let [weaponRollFormula, ammunitionRollFormula] = this.weaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(
             this.data.weaponType,
             this.weapon,
             this.ammunition
@@ -61,23 +71,25 @@ export class RollDamageSkillScript extends SkillScript {
         const messageData = testRoll.roll.toMessage({}, {create: false});
         let content: string;
 
-        let damageRolls: Roll[] = [];
+        let damageRolls: Evaluated<Roll>[] = [];
         if (testRoll.result !== 'fail') {
-            let weaponRoll = await (new Roll(weaponRollFormula)).roll({async: true});
+            let weaponRoll = await this.rollFactory.createRoll(weaponRollFormula);
             weaponRoll.terms.forEach(t => t.options.flavor = 'black')
             damageRolls.push(weaponRoll);
             let weaponDamage = Math.max(weaponRoll.total!, 1);
             let ammunitionDamage = 0;
-            let ammunitionRoll: Roll | undefined = undefined;
+            let ammunitionRoll: Evaluated<Roll> | undefined = undefined;
 
             if (useAmmunition && ammunitionRollFormula) {
-                ammunitionRoll = await (new Roll(ammunitionRollFormula)).roll({async: true});
+                ammunitionRoll = await this.rollFactory.createRoll(ammunitionRollFormula);
                 ammunitionRoll.terms.forEach(t => t.options.flavor = 'white')
                 damageRolls.push(ammunitionRoll);
                 ammunitionDamage = ammunitionRoll.total!;
             }
+            if (!this.token.actor)
+                throw new Error(`No actor associated with token: ${this.token.name} (${this.token.id})`)
 
-            let effectsWithBonusDamages = EffectManager.getEffectsWithBonusDamage(this.token.actor!);
+            let effectsWithBonusDamages = this.effectManager.getEffectsWithBonusDamage(this.token.actor);
 
             content = await this.buildChatMessage(
                 testRoll,
@@ -105,7 +117,7 @@ export class RollDamageSkillScript extends SkillScript {
             content,
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
-            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, ...damageRolls]).toJSON())
+            roll: JSON.stringify(this.rollUtil.mergeRolls([testRoll.roll, ...damageRolls]).toJSON())
         });
     }
 
@@ -116,23 +128,23 @@ export class RollDamageSkillScript extends SkillScript {
         ammunitionRollFormula?: string,
         weaponDamage?: number,
         ammunitionDamage?: number,
-        weaponRoll?: Roll,
-        ammunitionRoll?: Roll,
+        weaponRoll?: Evaluated<Roll>,
+        ammunitionRoll?: Evaluated<Roll>,
         effectsWithBonusDamages?: { name: string, value: number }[]
     ) {
         foundryAssert(this.weapon, 'weapon should not be null in RollDamageSkillScript.buildChatMessage');
 
         let message = `<div class="skill-roll-damage">
             <div class="title">${this.skillDefinition.name}</div>
-            <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
-            <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>
+            <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
+            <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>
         `;
 
         let weaponDamageText = weaponRollFormula;
         if (this.weapon.data.data.element) {
-            weaponDamageText += ` (${ElementRepository.getElementWeaponName(this.weapon.data.data.element)})`;
+            weaponDamageText += ` (${this.elementRepository.getElementWeaponName(this.weapon.data.data.element)})`;
         }
-        if (RollHelper.isSuccess(testRoll.result)) {
+        if (this.rollUtil.isSuccess(testRoll.result)) {
             weaponDamageText += ' = ' + weaponDamage;
         }
         message += `<div class="weapon item">
@@ -140,16 +152,16 @@ export class RollDamageSkillScript extends SkillScript {
             <img class="img" src="${this.weapon.img}" />
             <div class="damage"><i class="fas fa-dice"></i> ${weaponDamageText}</div>`;
         if (weaponRoll) {
-            message += `<div class="roll">${await RollHelper.renderRollSmall(weaponRoll)}</div>`;
+            message += `<div class="roll">${await this.rollUtil.renderRollSmall(weaponRoll)}</div>`;
         }
         message += `</div>`;
 
         if (this.ammunition) {
             let ammunitionDamageText = ammunitionRollFormula;
             if (this.ammunition.data.data.extraDamageEffect) {
-                ammunitionDamageText += ` (${ElementRepository.getElementWeaponName(this.ammunition.data.data.extraDamageEffect)})`;
+                ammunitionDamageText += ` (${this.elementRepository.getElementWeaponName(this.ammunition.data.data.extraDamageEffect)})`;
             }
-            if (RollHelper.isSuccess(testRoll.result)) {
+            if (this.rollUtil.isSuccess(testRoll.result)) {
                 ammunitionDamageText += ' = ' + ammunitionDamage;
             }
             message += `<div class="ammunition item">
@@ -158,7 +170,7 @@ export class RollDamageSkillScript extends SkillScript {
                 <div class="damage"><i class="fas fa-dice"></i> ${ammunitionDamageText}</div>`;
 
             if (ammunitionRoll) {
-                message += `<div class="roll">${await RollHelper.renderRollSmall(ammunitionRoll)}</div>`;
+                message += `<div class="roll">${await this.rollUtil.renderRollSmall(ammunitionRoll)}</div>`;
             }
             message += '</div>';
         }

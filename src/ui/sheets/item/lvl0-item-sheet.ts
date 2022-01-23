@@ -1,8 +1,18 @@
 import ClickEvent = JQuery.ClickEvent;
 import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/lvl0-item-data';
 import {ElementRepository} from '../../../repositories/element-repository';
+import {Lvl0Item} from '../../../models/item/lvl0-item';
+import {container} from 'tsyringe';
 
 export class Lvl0ItemSheet extends ItemSheet {
+    private readonly elementRepository: ElementRepository;
+
+    constructor(item: Lvl0Item, options: Partial<ItemSheet.Options>) {
+        super(item, options);
+
+        this.elementRepository = container.resolve(ElementRepository);
+    }
+
     override getData(options?: Partial<ItemSheet.Options>) {
         let templateData = super.getData(options);
 
@@ -32,7 +42,7 @@ export class Lvl0ItemSheet extends ItemSheet {
                 'melee-range': 'Mêlée et Distance',
             },
             ammunitionTypes,
-            elements: ElementRepository.getElementWeaponNameByElementsIds(),
+            elements: this.elementRepository.getElementWeaponNameByElementsIds(),
             usedAmmunitionTypes: {
                 '': 'Aucune',
                 ...ammunitionTypes

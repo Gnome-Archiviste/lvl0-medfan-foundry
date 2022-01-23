@@ -1,11 +1,21 @@
+import {inject, singleton} from 'tsyringe';
 import {MagicEpicFailRepository} from '../../repositories/magic-epic-fail-repository';
+import {RollFactory} from '../../utils/roll-factory';
 
+@singleton()
 export class RollMagicEpicFailManager {
-    static async roll() {
-        let epiFailRoll = await (new Roll('2d6').roll({async: true}));
+
+    constructor(
+        @inject(RollFactory) private readonly rollFactory: RollFactory,
+        @inject(MagicEpicFailRepository) private readonly magicEpicFailRepository: MagicEpicFailRepository
+    ) {
+    }
+
+    async roll(): Promise<void> {
+        let epiFailRoll = await this.rollFactory.createRoll('2d6');
         const messageData = epiFailRoll.toMessage({}, {create: false});
 
-        let effect = MagicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
+        let effect = this.magicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
 
         let content = `<div class="critical-failure-chat">
     <div class="title">Echec critique</div>

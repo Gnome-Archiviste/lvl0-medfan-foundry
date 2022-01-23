@@ -1,47 +1,61 @@
 import {RollSkillManager} from "../skill/roll-skill-manager";
 import {WeaponSelector} from "../../utils/weapon-selector";
 import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util";
-import {RollHelper} from '../../utils/roll-helper';
+import {RollUtil} from '../../utils/roll-util';
 import {WeaponType} from '../../models/item/properties/weapon-item-properties';
 import {AmmunitionItemProperties} from '../../models/item/properties/ammunition-item-properties';
 import {SpecialityDefinition} from '../../repositories/data/specialities';
 import {SpecialityRepository} from '../../repositories/speciality-repository';
 import {ElementRepository} from '../../repositories/element-repository';
 import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {inject, singleton} from 'tsyringe';
+import {Evaluated, RollFactory} from '../../utils/roll-factory';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';
-    testRoll: Roll;
+    testRoll: Evaluated<Roll>;
     testRollResult: number;
     arrowNumber: number;
 } | {
     result: 'success' | 'criticalSuccess';
     testRollResult: number;
-    testRoll: Roll;
+    testRoll: Evaluated<Roll>;
     arrowNumber: number;
     damageRollFormula: string;
     damage: number;
     element: string;
-    damageRoll: Roll;
+    damageRoll: Evaluated<Roll>;
     ammunition?: Item;
 };
 
+@singleton()
 export class RollSpecialityManager {
 
-    static needRoll(specialityId: string): boolean {
+    constructor(
+        @inject(RollFactory) private readonly rollFactory: RollFactory,
+        @inject(RollUtil) private readonly rollUtil: RollUtil,
+        @inject(SpecialityRepository) private readonly specialityRepository: SpecialityRepository,
+        @inject(RollSkillManager) private readonly rollSkillManager: RollSkillManager,
+        @inject(WeaponDamageRollUtil) private readonly weaponDamageRollUtil: WeaponDamageRollUtil,
+        @inject(WeaponSelector) private readonly weaponSelector: WeaponSelector,
+        @inject(ElementRepository) private readonly elementRepository: ElementRepository,
+    ) {
+    }
+
+    needRoll(specialityId: string): boolean {
         if (specialityId === 'arrow_volley')
             return true;
         return false;
     }
 
-    static async rollSpeciality(token: Token, specialityId: string): Promise<boolean> {
+    async rollSpeciality(token: Token, specialityId: string): Promise<boolean> {
         if (specialityId === 'arrow_volley') {
-            return await RollSpecialityManager.rollArrowVolley(token, SpecialityRepository.getSpecialityFromId(specialityId));
+            return await this.rollArrowVolley(token, this.specialityRepository.getSpecialityFromId(specialityId));
         }
         return true;
     }
 
-    static async rollArrowVolley(token: Token, specialityDefinition: SpecialityDefinition): Promise<boolean> {
+    async rollArrowVolley(token: Token, specialityDefinition: SpecialityDefinition): Promise<boolean> {
         if (!token) {
             ui.notifications?.error('Sélectionnez un token avant de faire cette action');
             return false;
@@ -51,8 +65,8 @@ export class RollSpecialityManager {
             if (!token.actor)
                 return;
             assertIsCharacter(token.actor);
-            let successRollValue = RollSkillManager.getSkillSuccessValue(token.actor.data.data, 'combat.throw_shoot');
-            let [weapon, ammunition] = await WeaponSelector.selectWeapon(token, WeaponType.Range);
+            let successRollValue = this.rollSkillManager.getSkillSuccessValue(token.actor.data.data, 'combat.throw_shoot');
+            let [weapon, ammunition] = await this.weaponSelector.selectWeapon(token, WeaponType.Range);
             if (!weapon) {
                 resolve(false);
                 return;
@@ -64,7 +78,7 @@ export class RollSpecialityManager {
                 ammunitionElement = ammunition.data.data.extraDamageEffect;
             }
 
-            let [weaponDamageRollFormula, weaponDamageWithAmmunitionRollFormula] = WeaponDamageRollUtil.getWeaponDamageRoll('range', weapon, ammunition);
+            let [weaponDamageRollFormula, weaponDamageWithAmmunitionRollFormula] = this.weaponDamageRollUtil.getWeaponDamageRoll('range', weapon, ammunition);
             let availableAmmunitionQuantity = 0;
             if (ammunition) {
                 availableAmmunitionQuantity = ammunition.data.data.quantity;
@@ -74,14 +88,13 @@ export class RollSpecialityManager {
             let ammunitionUsed = 0;
 
             for (let i = 0; i < 4; i++) {
-                let testRoll = new Roll(`2d6`);
+                let testRoll = await this.rollFactory.createRoll(`2d6`);
                 testRoll.terms[0].options.flavor = `arrowTest${i}`;
-                await testRoll.roll({async: true});
-                let rollResult = RollHelper.getRollResult(testRoll.total!, successRollValue);
+                let rollResult = this.rollUtil.getRollResult(testRoll.total, successRollValue);
                 if (rollResult == 'epicFail') {
                     arrows.push({
                         testRoll: testRoll,
-                        testRollResult: testRoll.total!,
+                        testRollResult: testRoll.total,
                         result: rollResult,
                         arrowNumber: i + 1
                     })
@@ -90,7 +103,7 @@ export class RollSpecialityManager {
                 if (rollResult == 'fail') {
                     arrows.push({
                         testRoll: testRoll,
-                        testRollResult: testRoll.total!,
+                        testRollResult: testRoll.total,
                         result: rollResult,
                         arrowNumber: i + 1
                     })
@@ -107,15 +120,14 @@ export class RollSpecialityManager {
                     damageRollFormula = weaponDamageWithAmmunitionRollFormula;
                 }
 
-                let damageRoll = new Roll(`${damageRollFormula}`);
+                let damageRoll = await this.rollFactory.createRoll(damageRollFormula);
                 damageRoll.terms[0].options.flavor = `arrowDamage${i}`;
-                await damageRoll.roll({async: true});
                 arrows.push({
                     testRoll: testRoll,
-                    testRollResult: testRoll.total!,
+                    testRollResult: testRoll.total,
                     result: rollResult,
                     arrowNumber: i + 1,
-                    damage: Math.ceil(Math.max(damageRoll.total!, 1)),
+                    damage: Math.ceil(Math.max(damageRoll.total, 1)),
                     element: arrowElement,
                     damageRollFormula: damageRollFormula,
                     damageRoll,
@@ -146,22 +158,22 @@ export class RollSpecialityManager {
                     }
                 }
                 message += `</span>`;
-                message += `<span class="test-result"><i class="fas fa-dice"></i> ${arrow.testRollResult} / ${successRollValue} (${RollHelper.getTestResultMessage(arrow.result)})</span>`;
-                message += `<span class="test-roll">${await RollHelper.renderRollSmall(arrow.testRoll)}</span>`;
+                message += `<span class="test-result"><i class="fas fa-dice"></i> ${arrow.testRollResult} / ${successRollValue} (${this.rollUtil.getTestResultMessage(arrow.result)})</span>`;
+                message += `<span class="test-roll">${await this.rollUtil.renderRollSmall(arrow.testRoll)}</span>`;
                 if (arrow.result === 'success' || arrow.result === 'criticalSuccess') {
-                    message += `<span class="damage-result">Dégâts: ${arrow.damage} ${arrow.element ? '(' + ElementRepository.getElementWeaponName(arrow.element) + ')' : ''}</span>`;
-                    message += `<span class="damage-roll">${await RollHelper.renderRollSmall(arrow.damageRoll)}</span>`;
+                    message += `<span class="damage-result">Dégâts: ${arrow.damage} ${arrow.element ? '(' + this.elementRepository.getElementWeaponName(arrow.element) + ')' : ''}</span>`;
+                    message += `<span class="damage-roll">${await this.rollUtil.renderRollSmall(arrow.damageRoll)}</span>`;
                 }
                 message += `</div>`;
             }
             message += `</div>`;
 
             let content = message;
-            let speaker = ChatMessage.getSpeaker({actor: token.actor!});
-            let damageRolls = arrows.filter(a => RollHelper.isSuccess(a.result)).map(a => a as {damageRoll: Roll}).map(x => x.damageRoll);
+            let speaker = ChatMessage.getSpeaker({actor: token.actor});
+            let damageRolls = arrows.filter(a => this.rollUtil.isSuccess(a.result)).map(a => a as {damageRoll: Roll}).map(x => x.damageRoll);
             let allRolls = [...arrows.map(a => a.testRoll), ...damageRolls];
             // @ts-ignore
-            await ChatMessage.create({speaker, content, type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: RollHelper.mergeRolls(allRolls)});
+            await ChatMessage.create({speaker, content, type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: this.rollUtil.mergeRolls(allRolls)});
 
             if (ammunition) {
                 await ammunition.update({
@@ -175,7 +187,7 @@ export class RollSpecialityManager {
         })
     }
 
-    static registerDiceSoNiceColors(dice3d: Dice3d) {
+    registerDiceSoNiceColors(dice3d: Dice3d) {
         dice3d.addColorset({name: 'arrowTest0', category: 'macro', background: '#004bb4', edge: '#02214e', foreground: '#ffefef' }, 'default')
         dice3d.addColorset({name: 'arrowTest1', category: 'macro', background: '#890101', edge: '#550000', foreground: '#ffb0b0' }, 'default')
         dice3d.addColorset({name: 'arrowTest2', category: 'macro', background: '#00783c', edge: '#004523', foreground: '#c1ffeb' }, 'default')

@@ -18,17 +18,20 @@ import {DialogAwaiter} from '../../utils/dialog-awaiter';
 import {ActorDataComputer} from './actor-data-computers/actor-data-computer';
 import {SpecialityRepository} from '../../repositories/speciality-repository';
 import {Lvl0ItemScroll} from '../item/lvl0-item-types';
+import {container} from 'tsyringe';
+import {
+    ActorDataConstructorData
+} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
+import {InitializedGame} from '../misc/game';
 
-const actorDataComputers: ActorDataComputer[] = [
-    new BaseCharacterDataComputer(),
-    new LevelingCharacterDataComputer(),
-    new SpecialityCharacterDataComputer(),
-    new SkillsCharacterDataComputer(),
-    new StatsCharacterDataComputer(),
-    new MagicCharacterDataComputer(),
-    new HealthManaDataComputer(),
-    new ClutterCharacterDataComputer(),
-];
+container.register("ActorDataComputer", {useClass: BaseCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: LevelingCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: SpecialityCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: SkillsCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: StatsCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: MagicCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: HealthManaDataComputer});
+container.register("ActorDataComputer", {useClass: ClutterCharacterDataComputer});
 
 declare global {
     interface DocumentClassConfig {
@@ -37,11 +40,26 @@ declare global {
 }
 
 export class Lvl0Actor extends Actor {
+    private readonly rollSpecialityManager: RollSpecialityManager;
+    private readonly specialityRepository: SpecialityRepository;
+    private readonly dialogAwaiter: DialogAwaiter;
+    private readonly game: InitializedGame;
+
+    constructor(
+        data: ActorDataConstructorData,
+        context?: object
+    ) {
+        super(data, context);
+        this.rollSpecialityManager = container.resolve(RollSpecialityManager);
+        this.specialityRepository = container.resolve(SpecialityRepository);
+        this.dialogAwaiter = container.resolve(DialogAwaiter);
+        this.game = container.resolve(InitializedGame);
+    }
 
     override prepareDerivedData(): void {
         super.prepareDerivedData();
 
-        for (let actorDataComputer of actorDataComputers) {
+        for (let actorDataComputer of container.resolveAll<ActorDataComputer>("ActorDataComputer")) {
             if (actorDataComputer.isAvailableFor(this.data.type)) {
                 actorDataComputer.compute(this);
             }
@@ -53,14 +71,14 @@ export class Lvl0Actor extends Actor {
             ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", {permanent: true});
             return;
         }
-        if (RollSpecialityManager.needRoll(specialityName)) {
+        if (this.rollSpecialityManager.needRoll(specialityName)) {
             let activeToken = this.getActiveTokens()[0];
-            if (await RollSpecialityManager.rollSpeciality(activeToken || this.token, specialityName)) {
+            if (await rollSpecialityManager.rollSpeciality(activeToken || this.token, specialityName)) {
                 await this.useMana(1);
             }
         } else {
             await this.useMana(1);
-            let specialityDefinition = SpecialityRepository.getSpecialityFromId(specialityName);
+            let specialityDefinition = this.specialityRepository.getSpecialityFromId(specialityName);
             await ChatMessage.create({
                 type: CONST.CHAT_MESSAGE_TYPES.IC,
                 speaker: ChatMessage.getSpeaker({actor: this}),
@@ -123,7 +141,7 @@ export class Lvl0Actor extends Actor {
                 dialogData.levelWithAdditionalPointInStat.push(lvl);
         }
 
-        let missingLevelUpData = await DialogAwaiter.openAndWaitResult(GenerateMissingLevelUpDataDialog, dialogData);
+        let missingLevelUpData = await this.dialogAwaiter.openAndWaitResult(GenerateMissingLevelUpDataDialog, dialogData);
         if (!missingLevelUpData)
             return;
 
@@ -200,7 +218,7 @@ export class Lvl0Actor extends Actor {
             throw new Error('openSelectSpecialityDialog only supported for character')
         }
 
-        let selectedSpecialityName = await DialogAwaiter.openAndWaitResult(SelectSpecialityDialog, null);
+        let selectedSpecialityName = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, null);
         if (!selectedSpecialityName)
             return;
 
@@ -245,7 +263,7 @@ export class Lvl0Actor extends Actor {
             }
         }, {diff: true});
 
-        let table = game.tables!.contents.find(s => s.name === "Objets de base") as RollTable;
+        let table = this.game.tables.contents.find(s => s.name === "Objets de base") as RollTable;
         if (!table) {
             return;
         }
@@ -253,7 +271,7 @@ export class Lvl0Actor extends Actor {
         for (let resultElement of table.data.results) {
             if (!resultElement.data.resultId)
                 continue;
-            let itemData = game.items!.get(resultElement.data.resultId);
+            let itemData = this.game.items.get(resultElement.data.resultId);
             if (!itemData)
                 continue;
 

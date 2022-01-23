@@ -1,22 +1,24 @@
+import {singleton} from 'tsyringe';
 import specialitiesDefinitions, {SpecialityDefinition} from './data/specialities';
 
+@singleton()
 export class SpecialityRepository {
-    static specialitiesByIdsCache?: Record<string, SpecialityDefinition>;
+    specialitiesByIdsCache?: Record<string, SpecialityDefinition>;
 
-    static getSpecialityFromId(specialityId: string): SpecialityDefinition {
+    getSpecialityFromId(specialityId: string): SpecialityDefinition {
         return {...specialitiesDefinitions[specialityId], id: specialityId};
     }
 
-    static getSpecialitiesById(): Record<string, SpecialityDefinition> {
-        if (SpecialityRepository.specialitiesByIdsCache)
-            return SpecialityRepository.specialitiesByIdsCache;
+    getSpecialitiesById(): Record<string, SpecialityDefinition> {
+        if (this.specialitiesByIdsCache)
+            return this.specialitiesByIdsCache;
 
         let specialitiesById = {};
         for (let [specialityId, speciality] of Object.entries(specialitiesDefinitions)) {
             specialitiesById[specialityId] = {...speciality, id: specialityId};
         }
 
-        SpecialityRepository.specialitiesByIdsCache = specialitiesById;
+        this.specialitiesByIdsCache = specialitiesById;
 
         return specialitiesById;
     }

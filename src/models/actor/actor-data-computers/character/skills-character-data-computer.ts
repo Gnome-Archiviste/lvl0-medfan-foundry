@@ -3,9 +3,17 @@ import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
 import {Lvl0ActorCharacterData, SkillValue} from '../../properties-data/lvl0-actor-character-data';
 import {SkillRepository} from '../../../../repositories/skill-repository';
+import {inject, singleton} from 'tsyringe';
 
+@singleton()
 export class SkillsCharacterDataComputer extends CharacterDataComputer {
     static pointTypes = ['general', 'job_combat', 'all', 'master', 'prodigy'];
+
+    constructor(
+        @inject(SkillRepository) private readonly skillRepository: SkillRepository,
+    ) {
+        super();
+    }
 
     override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         this.countMaximumPoints(actorData);
@@ -29,7 +37,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
             actorData.computedData.skills.maximumSkillPoints[pointType] = 0;
         }
 
-        let skillLevels = SkillRepository.getSkillLevels();
+        let skillLevels = this.skillRepository.getSkillLevels();
         for (let i = 0; i < skillLevels.length && i < actorData.level.value; i++) {
             let points = skillLevels[i].skillPoints.split(' ');
             for (const point of points) {

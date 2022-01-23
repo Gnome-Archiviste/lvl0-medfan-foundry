@@ -1,9 +1,11 @@
 import {foundryAssert} from './error';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
 import {ElementRepository} from '../repositories/element-repository';
+import {container, singleton} from 'tsyringe';
 
+@singleton()
 export class WeaponDamageRollUtil {
-    static getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition)
+    getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition)
         : [damageRollFormula: string, damageRollWithAmmunition: string] {
         foundryAssert(weapon.data.data.damage, `Weapon '${weapon.name}' does not have any damage configured`);
 
@@ -22,7 +24,7 @@ export class WeaponDamageRollUtil {
         return [damageRollFormula, damageRollWithAmmunition];
     }
 
-    static getWeaponAndAmmunitionDamageRolls(
+    getWeaponAndAmmunitionDamageRolls(
         weaponType: 'range' | 'melee',
         weapon: Lvl0ItemWeapon,
         ammunition?: Lvl0ItemAmmunition
@@ -47,8 +49,8 @@ export class WeaponDamageRollUtil {
 }
 
 Handlebars.registerHelper('weaponDamageFormula', (weaponType: 'range' | 'melee', weapon: Lvl0ItemWeapon) => {
-    let [weaponRollFormula] = WeaponDamageRollUtil.getWeaponAndAmmunitionDamageRolls(weaponType, weapon);
-    let element = ElementRepository.getElementWeaponName(weapon.data.data.element);
+    let [weaponRollFormula] = container.resolve(WeaponDamageRollUtil).getWeaponAndAmmunitionDamageRolls(weaponType, weapon);
+    let element = container.resolve(ElementRepository).getElementWeaponName(weapon.data.data.element);
 
     if (element) {
         return `${weaponRollFormula} (${element})`;

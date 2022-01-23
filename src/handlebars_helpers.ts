@@ -1,4 +1,5 @@
 import {ElementRepository} from './repositories/element-repository';
+import {container} from 'tsyringe';
 
 Handlebars.registerHelper('math', function (lvalue, operator, rvalue) {
     rvalue = parseFloat(rvalue);
@@ -95,8 +96,8 @@ Handlebars.registerHelper("nth", function(array, index) {
     return array[parseInt(index)];
 });
 Handlebars.registerHelper('weaponEffectName', (v) => {
-    return ElementRepository.getElementWeaponName(v);
+    return container.resolve(ElementRepository).getElementWeaponName(v);
 });
 Handlebars.registerHelper('elementName', (v) => {
-    return ElementRepository.getElementName(v);
+    return container.resolve(ElementRepository).getElementName(v);
 });

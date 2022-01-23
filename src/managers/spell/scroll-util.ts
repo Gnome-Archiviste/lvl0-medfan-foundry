@@ -1,11 +1,20 @@
+import {inject, singleton} from 'tsyringe';
 import {ActorSpell} from './actor-spell.model';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
 import {ScrollItemPropertiesData} from '../../models/item/properties/scroll-item-properties-data';
 import {Lvl0ActorCharacter} from '../../models/actor/lvl0-actor-types';
 
-export class ScrollHelper {
-    static async createScroll(actor: Lvl0ActorCharacter, spell: ActorSpell): Promise<Item | undefined> {
+@singleton()
+export class ScrollUtil {
+
+    constructor(
+        @inject(SpellChat) private readonly spellChat: SpellChat,
+        @inject(SpellManager) private readonly spellManager: SpellManager,
+    ) {
+    }
+
+    async createScroll(actor: Lvl0ActorCharacter, spell: ActorSpell): Promise<Item | undefined> {
         let emptyScroll = actor.getFirstEmptyScroll();
         if (!emptyScroll) {
             ui.notifications?.error('Aucun parchemin vierge disponible')
@@ -34,15 +43,15 @@ export class ScrollHelper {
         }
     }
 
-    static async useScroll(scroll: Item): Promise<void> {
+    async useScroll(scroll: Item): Promise<void> {
         if (scroll.data.type !== 'scroll')
             throw new Error('Item is not a scroll');
-        let spell = await SpellManager.getComputedSpellForActorById(scroll.data.data.spell, {arcaneLevel: scroll.data.data.arcane});
+        let spell = await this.spellManager.getComputedSpellForActorById(scroll.data.data.spell, {arcaneLevel: scroll.data.data.arcane});
         if (spell) {
             let speaker = scroll.actor ? ChatMessage.getSpeaker({actor: scroll.actor}) : undefined;
             let message = `<div class="skill-roll-spell-chat">
                 <div class="title">Utilisation d'un parchemin</div>
-                ${await SpellChat.renderSpellChat(spell, 'success')}
+                ${await this.spellChat.renderSpellChat(spell, 'success')}
             </div>`;
             await ChatMessage.create({
                 speaker: speaker,

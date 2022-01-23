@@ -7,7 +7,9 @@ import {
     LevelData,
     Lvl0ActorCharacterData
 } from '../../properties-data/lvl0-actor-character-data';
+import {singleton} from 'tsyringe';
 
+@singleton()
 export class StatsCharacterDataComputer extends CharacterDataComputer {
     static statsNames = ['phy', 'dex', 'int', 'cha', 'per'];
 

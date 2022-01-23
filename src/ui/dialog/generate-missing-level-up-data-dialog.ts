@@ -1,9 +1,11 @@
-import {DialogBase} from './dialog-base';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from '../../models/actor/lvl0-actor';
 import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
 import {
     StatsCharacterDataComputer
 } from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
+import {RollFactory} from '../../utils/roll-factory';
+import {container} from 'tsyringe';
 
 export interface GenerateMissingLevelUpDataDialogData {
     levelWithMissingData: number[];
@@ -15,13 +17,24 @@ export interface GenerateMissingLevelUpDataDialogData {
 
 export interface GenerateMissingLevelUpDataApplicationData {
     ready: boolean
-    levelsData?: { [level: number]: LevelData }
+    levelsData?: Record<number, LevelData>
     totalNewHealth: number
     totalNewMana: number
 }
 
-export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissingLevelUpDataDialogData,  { [level: number]: LevelData }> {
-    private levelsData?: { [level: number]: LevelData };
+
+export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissingLevelUpDataDialogData,  Record<number, LevelData>> {
+    private levelsData?: Record<number, LevelData>;
+    private readonly rollFactory: RollFactory;
+
+    constructor(
+        dialogData: GenerateMissingLevelUpDataDialogData,
+        result: DialogResultCallback<Record<number, LevelData>>
+    ) {
+        super(dialogData, result);
+
+        this.rollFactory = container.resolve(RollFactory);
+    }
 
     override async getData(options?: Partial<Application.Options>): Promise<GenerateMissingLevelUpDataApplicationData> {
         let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
@@ -92,9 +105,8 @@ export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissing
             return this.dialogData.actor.data.data.baseStats[valueOrRoll.useStatValue].value;
         }
         if (valueOrRoll.diceCount) {
-            const roll = new Roll(valueOrRoll.diceCount + 'd6');
-            await roll.roll({async: true});
-            return roll.total!;
+            const roll = await this.rollFactory.createRoll(valueOrRoll.diceCount + 'd6');
+            return roll.total;
         }
         return 0;
     }

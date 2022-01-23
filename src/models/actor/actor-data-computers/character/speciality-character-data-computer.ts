@@ -1,10 +1,18 @@
+import {inject, singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
 import {SpecialityDefinition} from '../../../../repositories/data/specialities';
 import {SpecialityRepository} from '../../../../repositories/speciality-repository';
 
+@singleton()
 export class SpecialityCharacterDataComputer extends CharacterDataComputer {
+
+    constructor(
+        @inject(SpecialityRepository) private readonly specialityRepository: SpecialityRepository
+    ) {
+        super();
+    }
 
     override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
         let specialityLevels = actorData.computedData.bases.job?.specialityLevels;
@@ -20,7 +28,7 @@ export class SpecialityCharacterDataComputer extends CharacterDataComputer {
         }
         let knownSpecialities: SpecialityDefinition[] = [];
         for (const specialityId of Object.values(actorData.specialities) as string[]) {
-            let speciality = SpecialityRepository.getSpecialityFromId(specialityId);
+            let speciality = this.specialityRepository.getSpecialityFromId(specialityId);
             if (speciality) {
                 knownSpecialities.push(speciality);
             } else {

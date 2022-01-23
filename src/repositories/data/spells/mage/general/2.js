@@ -288,7 +288,7 @@ export default [
     {
         "id": "deafness",
         "name": "Surdité",
-        "icon": "icons/svg/deaf.svg'[c]",
+        "icon": "icons/svg/deaf.svg",
         "description": "Rends une victime sourde pour trois (3) tour par niveau d’arcane. La perception de la victime est réduite de deux et ne peut plus utiliser l’habileté Écouter.",
         "distance": {
             "value": 20,

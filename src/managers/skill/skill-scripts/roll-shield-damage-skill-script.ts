@@ -1,16 +1,24 @@
+import {singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
 import {EffectManager} from "../../effects/effect-manager";
 import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
 import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../../repositories/data/skills';
 import {Lvl0ItemShield} from '../../../models/item/lvl0-item-types';
-import {RollHelper} from '../../../utils/roll-helper';
-import {SpellManager} from '../../spell/spell-manager';
+import {RollUtil} from '../../../utils/roll-util';
+import {RollFactory} from '../../../utils/roll-factory';
 
+@singleton()
 export class RollShieldDamageSkillScript extends SkillScript {
     shield?: Lvl0ItemShield;
 
-    constructor(token, skillDefinition: SkillDefinition & { script: ShieldRollDamageSkillScriptDefinition }) {
-        super(token, skillDefinition);
+    constructor(
+        token: Token,
+        skillDefinition: SkillDefinition & { script: ShieldRollDamageSkillScriptDefinition },
+        rollUtil: RollUtil,
+        private readonly rollFactory: RollFactory,
+        private readonly effectManager: EffectManager,
+    ) {
+        super(token, skillDefinition, rollUtil);
     }
 
     override async prepare() {
@@ -39,41 +47,41 @@ export class RollShieldDamageSkillScript extends SkillScript {
         let actorData = actor.data.data;
 
         let damageRollFormula = this.shield.data.data.damage.replace('phy', actorData.computedData.stats.baseStats.phy.value.toString());
-        let damageRoll = await (new Roll(damageRollFormula)).roll({async: true});
+        let damageRoll = await this.rollFactory.createRoll(damageRollFormula);
         damageRoll.terms.forEach(t => t.options.flavor = 'black');
-        let shieldDamage = damageRoll.total!;
+        let shieldDamage = damageRoll.total;
 
         const messageData = testRoll.roll.toMessage({}, {create: false});
 
         let message = `<div class="skill-shield-damage-roll-chat">
             <div class="title">${this.skillDefinition.name}</div>
-            <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${RollHelper.getTestResultMessage(testRoll.result)})</div>
-            <div class="roll">${await RollHelper.renderRollSmall(testRoll.roll)}</div>
+            <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
+            <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>
             <div class="shield">
                 <div class="name">${this.shield.name}</div>
                 <div class="img"><img src="${this.shield.img}" /></div>
                 <div class="danage"><span class="label">Dégâts</span> ${this.shield.data.data.damage}</div>
         `;
 
-        if (RollHelper.isSuccess(testRoll.result) && damageRollFormula.indexOf('d') !== -1)
+        if (this.rollUtil.isSuccess(testRoll.result) && damageRollFormula.indexOf('d') !== -1)
             message += `<div class="roll">${await damageRoll.render()}</div>`;
         else
             message += `<div class="roll"></div>`;
 
         message += '</div>';
-        if (RollHelper.isSuccess(testRoll.result)) {
+        if (this.rollUtil.isSuccess(testRoll.result)) {
             message += `<div class="damage"><i class="fas fa-dice"></i> <span class="label">Dégâts</span> ${damageRollFormula} = ${shieldDamage}</div>`;
         }
 
 
         let bonusDamage = 0;
-        let effectsWithBonusDamages = EffectManager.getEffectsWithBonusDamage(actor);
+        let effectsWithBonusDamages = this.effectManager.getEffectsWithBonusDamage(actor);
         for (let effectsWithBonusDamage of effectsWithBonusDamages) {
             message += `<div class="effect">${effectsWithBonusDamage.name}: ${effectsWithBonusDamage.value}</span></div>`;
             bonusDamage += effectsWithBonusDamage.value;
         }
 
-        if (RollHelper.isSuccess(testRoll.result) && bonusDamage) {
+        if (this.rollUtil.isSuccess(testRoll.result) && bonusDamage) {
             message += `<div class="result">Total: <span class="total">${shieldDamage + bonusDamage}</span></div>`
         }
 
@@ -85,7 +93,7 @@ export class RollShieldDamageSkillScript extends SkillScript {
             speaker: ChatMessage.getSpeaker({token: this.token.document}),
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
-            roll: JSON.stringify(RollHelper.mergeRolls([testRoll.roll, damageRoll]).toJSON())
+            roll: JSON.stringify(this.rollUtil.mergeRolls([testRoll.roll, damageRoll]).toJSON())
         });
     }
 }

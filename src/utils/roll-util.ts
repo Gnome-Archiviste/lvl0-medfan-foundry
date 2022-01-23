@@ -1,9 +1,13 @@
+import {singleton} from 'tsyringe';
+import {Evaluated} from './roll-factory';
+
 export type RollResult = 'epicFail' | 'fail' | 'success' | 'criticalSuccess';
 export type SuccessRollResult = 'success' | 'criticalSuccess';
 export type FailedRollResult = 'fail' | 'epicFail';
 
-export class RollHelper {
-    static getRollResult(value, expectedValue): RollResult {
+@singleton()
+export class RollUtil {
+    getRollResult(value, expectedValue): RollResult {
         if (value == 12)
             return 'epicFail';
         if (value == 2)
@@ -13,8 +17,7 @@ export class RollHelper {
         return 'fail';
     }
 
-
-    static getTestResultMessage(result: RollResult) {
+    getTestResultMessage(result: RollResult) {
         switch (result) {
             case 'criticalSuccess':
                 return `<span style="color: green; font-weight: bold">Succès critique</span>`;
@@ -27,22 +30,22 @@ export class RollHelper {
         }
     }
 
-    static async renderRollSmall(roll: Roll): Promise<string> {
+    async renderRollSmall(roll: Evaluated<Roll>): Promise<string> {
         let result = await roll.render();
         let totalIndex = result.indexOf('<h4 class="dice-total">')
         let endTotalIndex = result.indexOf('</h4>', totalIndex)
         return result.substring(0, totalIndex) + result.substring(endTotalIndex);
     }
 
-    static isSuccess(result: RollResult): result is SuccessRollResult {
+    isSuccess(result: RollResult): result is SuccessRollResult {
         return result === 'success' || result === 'criticalSuccess';
     }
 
-    static IsFailed(result: RollResult): result is FailedRollResult {
+    isFailed(result: RollResult): result is FailedRollResult {
         return result === 'fail' || result === 'epicFail';
     }
 
-    static mergeRolls(rolls: Roll[]) : Roll {
+    mergeRolls(rolls: Evaluated<Roll>[]) : Roll {
         let groupedRoll = new Roll('').toJSON();
         groupedRoll.terms = [PoolTerm.fromRolls(rolls)];
         groupedRoll.dice = []
@@ -52,7 +55,7 @@ export class RollHelper {
         let formulas: string[] = [];
         for (let roll of rolls) {
             formulas.push(roll.formula);
-            groupedRoll.total += roll.total!;
+            groupedRoll.total += roll.total;
         }
         groupedRoll.formula = `{${formulas.join(',')}}`;
 

@@ -2,13 +2,23 @@ import {SkillScriptFactory} from "./skill-scripts/skill-script-factory";
 import {SkillRepository} from '../../repositories/skill-repository';
 import {Lvl0ActorCharacterData} from '../../models/actor/properties-data/lvl0-actor-character-data';
 import {assertIsCharacter} from '../../models/actor/properties/character-properties';
-import {RollHelper} from '../../utils/roll-helper';
+import {RollUtil} from '../../utils/roll-util';
+import {inject, singleton} from 'tsyringe';
+import {RollFactory} from '../../utils/roll-factory';
 
+@singleton()
 export class RollSkillManager {
+    constructor(
+        @inject(RollUtil) private readonly rollUtil: RollUtil,
+        @inject(SkillScriptFactory) private readonly skillScriptFactory: SkillScriptFactory,
+        @inject(RollFactory) private readonly rollFactory: RollFactory,
+        @inject(SkillRepository) private readonly skillRepository: SkillRepository,
+    ) {
+    }
 
-    static getSkillSuccessValue(actorData: Lvl0ActorCharacterData, skillId: string): number {
-        let [skillCategory, skillName] = SkillRepository.splitSkill(skillId);
-        let skillDefinition = SkillRepository.getSkill(skillCategory, skillName);
+    getSkillSuccessValue(actorData: Lvl0ActorCharacterData, skillId: string): number {
+        let [skillCategory, skillName] = this.skillRepository.splitSkill(skillId);
+        let skillDefinition = this.skillRepository.getSkill(skillCategory, skillName);
         let stat = skillDefinition.stat;
 
         let skillValue = actorData.skills[skillCategory]?.[skillName]?.value || 0;
@@ -21,14 +31,14 @@ export class RollSkillManager {
         return +skillValue + +actorStatValue + (extraSkillPoint ? 1 : 0) + skillModifier;
     }
 
-    static async rollSkill(token: Token, skillId: string, options = {}): Promise<boolean> {
+    async rollSkill(token: Token, skillId: string, options = {}): Promise<boolean> {
         if (!token) {
             ui.notifications?.error('Sélectionnez un token avant de faire cette action');
             return false;
         }
 
-        let skillDefinition = SkillRepository.getSkillFromId(skillId);
-        let skillScript = new SkillScriptFactory().createScript(token, skillDefinition, options);
+        let skillDefinition = this.skillRepository.getSkillFromId(skillId);
+        let skillScript = this.skillScriptFactory.createScript(token, skillDefinition, options);
 
         if (!await skillScript.prepare())
             return false;
@@ -36,14 +46,17 @@ export class RollSkillManager {
         let actor = token.actor;
         assertIsCharacter(actor);
 
-        let minSuccessValue = RollSkillManager.getSkillSuccessValue(actor.data.data, skillId);
-        let roll = new Roll('2d6');
-        await roll.roll({async: true});
-        let total = roll.total!;
-        let result = RollHelper.getRollResult(total, minSuccessValue);
+        let minSuccessValue = this.getSkillSuccessValue(actor.data.data, skillId);
+        let roll = await this.rollFactory.createRoll('2d6');
+        let result = this.rollUtil.getRollResult(roll.total, minSuccessValue);
 
-        await skillScript.postRoll({roll, total: total, successValue: minSuccessValue, result: result});
+        await skillScript.postRoll({
+            roll,
+            total: roll.total,
+            successValue: minSuccessValue,
+            result: result
+        });
 
-        return RollHelper.isSuccess(result);
+        return this.rollUtil.isSuccess(result);
     }
 }
