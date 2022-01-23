@@ -9,8 +9,8 @@ export class RollFactory {
         let roll = new Roll(formula);
         await roll.roll({async: true});
         // FIXME: Remove this test after v9
-        if (!roll.total)
-            throw new Error('.roll() failed to provide total')
+        if (roll.total === undefined)
+            throw new Error(`.roll() failed to provide total for formula ${formula}`)
         return roll as Evaluated<Roll>;
     }
 }
