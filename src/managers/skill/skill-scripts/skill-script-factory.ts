@@ -3,17 +3,15 @@ import {RollDamageSkillScript} from "./roll-damage-skill-script";
 import {SkillScript} from "./skill-script";
 import {RollSpellSkillScript} from "./roll-spell-skill-script";
 import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script";
-import {SkillDefinition} from '../../../repositories/data/skills';
-import {RollUtil} from '../../../utils/roll-util';
-import {RollFactory} from '../../../utils/roll-factory';
-import {SpellChat} from '../../spell/spell-chat';
-import {ScrollUtil} from '../../spell/scroll-util';
-import {SpellManager} from '../../spell/spell-manager';
-import {WeaponDamageRollUtil} from '../../../utils/weapon-damage-roll-util';
-import {SpellSelector} from '../../../utils/spell-selector';
-import {WeaponSelector} from '../../../utils/weapon-selector';
-import {EffectManager} from '../../effects/effect-manager';
-import {ElementRepository} from '../../../repositories/element-repository';
+import {SkillDefinition} from 'repositories/data';
+import {RollUtil} from 'utils/roll-util';
+import {RollFactory} from 'utils/roll-factory';
+import {ScrollUtil, SpellChat, SpellManager} from 'managers/spell';
+import {EffectManager} from 'managers/effects';
+import {WeaponDamageRollUtil} from 'utils/weapon-damage-roll-util';
+import {SpellSelector} from 'utils/spell-selector';
+import {WeaponSelector} from 'utils/weapon-selector';
+import {ElementRepository} from 'repositories';
 
 @singleton()
 export class SkillScriptFactory {

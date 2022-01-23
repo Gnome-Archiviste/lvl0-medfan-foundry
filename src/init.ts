@@ -2,13 +2,13 @@ import './error-monitoring';
 import "reflect-metadata";
 import {container} from "tsyringe";
 import './handlebars_helpers';
-import {Lvl0Actor} from './models/actor/lvl0-actor';
-import {Lvl0Item} from './models/item/lvl0-item';
-import {RollSkillManager} from './managers/skill/roll-skill-manager';
+import {InitializedGame} from './models/misc/game';
+import {Lvl0Actor} from './models/actor';
+import {Lvl0Item} from './models/item';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
-import {RollSpecialityManager} from './managers/speciality/roll-speciality-manager';
-import {InitializedGame} from './models/misc/game';
+import {RollSkillManager} from './managers/skill';
+import {RollSpecialityManager} from './managers/speciality';
 
 declare global {
     const rollSkillManager: RollSkillManager;

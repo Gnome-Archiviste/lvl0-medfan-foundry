@@ -1,13 +1,9 @@
+import {singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
-import {getItemModifiersIfAvailable} from '../../../item/lvl0-item-data';
-import {
-    CharacterModifierInfo,
-    LevelData,
-    Lvl0ActorCharacterData
-} from '../../properties-data/lvl0-actor-character-data';
-import {singleton} from 'tsyringe';
+import {Lvl0ActorEffect} from 'managers/effects';
+import {getItemModifiersIfAvailable} from 'models/item';
+import {CharacterModifierInfo, LevelData, Lvl0ActorCharacterData} from '../../properties-data';
 
 @singleton()
 export class StatsCharacterDataComputer extends CharacterDataComputer {

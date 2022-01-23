@@ -1,12 +1,10 @@
-import {RollSkillManager} from "../managers/skill/roll-skill-manager";
-import {Lvl0ActorCharacterData, SkillValue} from '../models/actor/properties-data/lvl0-actor-character-data';
-import {SkillDefinition} from '../repositories/data/skills';
 import {container} from 'tsyringe';
+import {RollSkillManager} from "../managers/skill";
+import {Lvl0ActorCharacterData, SkillValue} from '../models/actor';
+import {SkillDefinition} from '../repositories/data';
+import ClickEvent = JQuery.ClickEvent;
 
-Hooks.on('renderActorSheet', (sheet, elements) => {
-    /**
-     * @type {HTMLElement}
-     */
+Hooks.on('renderActorSheet', (sheet: ActorSheet, elements) => {
     let form = elements[0];
     let checkBoxes = form.querySelectorAll('input[data-checkboxSkillValue]');
     for (let i = 0; i < checkBoxes.length; i++) {
@@ -15,14 +13,8 @@ Hooks.on('renderActorSheet', (sheet, elements) => {
     }
 })
 
-/**
- * @param {MouseEvent} e
- */
-function skillValueUpdateHiddenFieldValue(e) {
+function skillValueUpdateHiddenFieldValue(e: ClickEvent) {
     e.stopPropagation();
-    /**
-     * @type {HTMLInputElement}
-     */
     let checkBox = e.target;
     let hiddenField = checkBox.parentElement.querySelector('input[type=hidden]');
     if (checkBox.checked) {
@@ -32,12 +24,10 @@ function skillValueUpdateHiddenFieldValue(e) {
     }
 }
 
-/**
- * @param {Lvl0CharacterData} characterData
- * @param {string} skillCategoryId
- * @return {'prodigy'|'master'|'normal'|undefined}
- */
-function getAvailableAddPointLevel(characterData, skillCategoryId) {
+function getAvailableAddPointLevel(
+    characterData: Lvl0ActorCharacterData,
+    skillCategoryId: string
+): 'prodigy' | 'master' | 'normal' | undefined {
     if (characterData.computedData.skills.availableSkillPoints['prodigy'] > 0)
         return 'prodigy';
     if (characterData.computedData.skills.availableSkillPoints['master'] > 0)
@@ -65,7 +55,7 @@ function renderSkillValueManualMode(
                 <input type="text" name="data.skills.${skillCategoryId}.${skillId}.value" type="number" data-dtype="number" value="${characterSkillData.value}">
             </span>
             <span class="sheet-skill-stat">
-                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
+                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substring(1)}</span>
             </span>
             <span class="sheet-skill-level">
                 ${skillTestValue}
@@ -78,8 +68,12 @@ function renderSkillValueManualMode(
 }
 
 Handlebars.registerHelper('skill-value',
-    function (skillDefinition: SkillDefinition, characterData: Lvl0ActorCharacterData, skillCategoryId: string, skillId: string)
-        : Handlebars.SafeString | string {
+    function (
+        skillDefinition: SkillDefinition,
+        characterData: Lvl0ActorCharacterData,
+        skillCategoryId: string,
+        skillId: string
+    ): Handlebars.SafeString | string {
         let characterSkillData: SkillValue;
         let newPointMaxLevel = getAvailableAddPointLevel(characterData, skillCategoryId);
 
@@ -90,6 +84,7 @@ Handlebars.registerHelper('skill-value',
         } else {
             characterSkillData = characterData.skills[skillCategoryId][skillId];
         }
+
         if (characterSkillData.value == null)
             characterSkillData.value = 0;
 
@@ -156,7 +151,7 @@ Handlebars.registerHelper('skill-value',
                        ${checked[2] ? 'checked' : ''} ${availableSkillLevel[2] ? '' : 'disabled'}/>
             </span>
             <span class="sheet-skill-stat">
-                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substr(1)}</span>
+                + <span class="stat-${skillDefinition.stat}">${skillDefinition.stat.charAt(0).toUpperCase() + skillDefinition.stat.substring(1)}</span>
             </span>
             <span class="sheet-skill-level ${skillIsEffectedByAModifier ? 'affected-by-modifier' : ''}">
                 ${skillTestValue}

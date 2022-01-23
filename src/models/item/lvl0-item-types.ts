@@ -18,4 +18,4 @@ export type Lvl0ItemShield = Lvl0Item & { data: { type: 'shield' } }
 export type Lvl0ItemWand = Lvl0Item & { data: { type: 'wand' } }
 export type Lvl0ItemScroll = Lvl0Item & { data: { type: 'scroll' } }
 export type Lvl0ItemHandWeapon = Lvl0Item & { data: { type: 'handWeapon' } }
-export type Lvl0ItemWeapon = Lvl0Item & { data: { type: 'weapon' } };
+export type Lvl0ItemWeapon = Lvl0Item & { data: { type: 'weapon' } }

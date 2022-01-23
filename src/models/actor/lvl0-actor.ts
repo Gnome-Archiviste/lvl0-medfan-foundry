@@ -1,23 +1,26 @@
-import {LevelingCharacterDataComputer} from "./actor-data-computers/character/leveling-character-data-computer";
-import {SkillsCharacterDataComputer} from "./actor-data-computers/character/skills-character-data-computer";
-import {StatsCharacterDataComputer} from "./actor-data-computers/character/stats-character-data-computer";
-import {BaseCharacterDataComputer} from "./actor-data-computers/character/base-character-data-computer";
-import {MagicCharacterDataComputer} from "./actor-data-computers/character/magic-character-data-computer";
-import {HealthManaDataComputer} from "./actor-data-computers/character/health-mana-data-computer";
-import {ClutterCharacterDataComputer} from "./actor-data-computers/character/clutter-character-data-computer";
-import {SpecialityCharacterDataComputer} from "./actor-data-computers/character/speciality-character-data-computer";
-import {LevelUpDialog, LevelUpDialogData} from "../../ui/dialog/level-up-dialog";
-import {SelectSpecialityDialog} from "../../ui/dialog/select-speciality-dialog";
-import {RollSpecialityManager} from "../../managers/speciality/roll-speciality-manager";
 import {
+    BaseCharacterDataComputer,
+    ClutterCharacterDataComputer,
+    HealthManaDataComputer,
+    LevelingCharacterDataComputer,
+    MagicCharacterDataComputer,
+    SkillsCharacterDataComputer,
+    SpecialityCharacterDataComputer,
+    StatsCharacterDataComputer
+} from "./actor-data-computers/character";
+import {
+    DialogAwaiter,
     GenerateMissingLevelUpDataDialog,
-    GenerateMissingLevelUpDataDialogData
-} from '../../ui/dialog/generate-missing-level-up-data-dialog';
-import {LevelData, Lvl0ActorCharacterData} from './properties-data/lvl0-actor-character-data';
-import {DialogAwaiter} from '../../utils/dialog-awaiter';
-import {ActorDataComputer} from './actor-data-computers/actor-data-computer';
-import {SpecialityRepository} from '../../repositories/speciality-repository';
-import {Lvl0ItemScroll} from '../item/lvl0-item-types';
+    GenerateMissingLevelUpDataDialogData,
+    LevelUpDialog,
+    LevelUpDialogData,
+    SelectSpecialityDialog
+} from "ui/dialog";
+import {RollSpecialityManager} from "../../managers/speciality";
+import {LevelData, Lvl0ActorCharacterData} from './properties-data';
+import {ActorDataComputer} from './actor-data-computers';
+import {SpecialityRepository} from '../../repositories';
+import {Lvl0ItemScroll} from '../item';
 import {container} from 'tsyringe';
 import {
     ActorDataConstructorData

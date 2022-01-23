@@ -1,4 +1,4 @@
-import {Lvl0ActorMonsterData} from '../properties-data/lvl0-actor-monster-data';
+import {Lvl0ActorMonsterData} from '../properties-data';
 import {Lvl0Actor} from '../lvl0-actor';
 import {Lvl0ActorMonster} from '../lvl0-actor-types';
 

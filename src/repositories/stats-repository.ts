@@ -1,5 +1,5 @@
-import stats from './data/stats';
 import {singleton} from 'tsyringe';
+import stats from './data/stats';
 
 @singleton()
 export class StatsRepository {

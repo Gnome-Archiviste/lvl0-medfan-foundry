@@ -1,15 +1,13 @@
-import {RollSkillManager} from "../skill/roll-skill-manager";
-import {WeaponSelector} from "../../utils/weapon-selector";
-import {WeaponDamageRollUtil} from "../../utils/weapon-damage-roll-util";
-import {RollUtil} from '../../utils/roll-util';
-import {WeaponType} from '../../models/item/properties/weapon-item-properties';
-import {AmmunitionItemProperties} from '../../models/item/properties/ammunition-item-properties';
-import {SpecialityDefinition} from '../../repositories/data/specialities';
-import {SpecialityRepository} from '../../repositories/speciality-repository';
-import {ElementRepository} from '../../repositories/element-repository';
-import {assertIsCharacter} from '../../models/actor/properties/character-properties';
 import {inject, singleton} from 'tsyringe';
-import {Evaluated, RollFactory} from '../../utils/roll-factory';
+import {RollSkillManager} from "../skill";
+import {WeaponSelector} from "utils/weapon-selector";
+import {WeaponDamageRollUtil} from "utils/weapon-damage-roll-util";
+import {RollUtil} from 'utils/roll-util';
+import {AmmunitionItemProperties, WeaponType} from 'models/item';
+import {SpecialityDefinition} from 'repositories/data';
+import {ElementRepository, SpecialityRepository} from 'repositories';
+import {assertIsCharacter} from 'models/actor';
+import {Evaluated, RollFactory} from 'utils/roll-factory';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';

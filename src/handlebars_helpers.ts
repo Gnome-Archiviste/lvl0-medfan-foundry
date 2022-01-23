@@ -1,4 +1,4 @@
-import {ElementRepository} from './repositories/element-repository';
+import {ElementRepository} from './repositories';
 import {container} from 'tsyringe';
 
 Handlebars.registerHelper('math', function (lvalue, operator, rvalue) {

@@ -1,8 +1,7 @@
-import ClickEvent = JQuery.ClickEvent;
-import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable} from '../../../models/item/lvl0-item-data';
-import {ElementRepository} from '../../../repositories/element-repository';
-import {Lvl0Item} from '../../../models/item/lvl0-item';
 import {container} from 'tsyringe';
+import ClickEvent = JQuery.ClickEvent;
+import {getItemExtraSkillsIfAvailable, getItemModifiersIfAvailable, Lvl0Item} from 'models/item';
+import {ElementRepository} from 'repositories';
 
 export class Lvl0ItemSheet extends ItemSheet {
     private readonly elementRepository: ElementRepository;
@@ -55,7 +54,7 @@ export class Lvl0ItemSheet extends ItemSheet {
 
         // Prevent [Enter] to "submit" the form, which in this case since there is no `submit` for this form it will
         // press the first button available and often do something unwanted
-        html.find('input').on('keypress', function(event) {
+        html.find('input').on('keypress', function (event) {
             if (event.key == 'Enter') {
                 event.preventDefault();
             }

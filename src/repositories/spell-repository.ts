@@ -1,6 +1,6 @@
-import spellsDefinitions, {SpellDefinition} from './data/spells'
-import {SpellClass} from './data/jobs';
 import {singleton} from 'tsyringe';
+import spellsDefinitions, {SpellDefinition} from './data/spells'
+import {SpellClass} from './data';
 
 @singleton()
 export class SpellRepository {

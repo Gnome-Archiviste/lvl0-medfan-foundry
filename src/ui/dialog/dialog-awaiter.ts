@@ -1,5 +1,5 @@
-import {DialogBase, DialogResultCallback} from '../ui/dialog/dialog-base';
 import {container, singleton} from 'tsyringe';
+import {DialogBase, DialogResultCallback} from './dialog-base';
 
 @singleton()
 export class DialogAwaiter {

@@ -1,6 +1,6 @@
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {Lvl0ActorCharacterData} from '../../properties-data';
 import {singleton} from 'tsyringe';
 
 @singleton()

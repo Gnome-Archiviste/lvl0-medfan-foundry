@@ -1,7 +1,7 @@
 import {ActorDataComputer} from "../actor-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorType} from '../../lvl0-actor-data';
-import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
+import {Lvl0ActorCharacterData} from '../../properties-data';
 
 export abstract class CharacterDataComputer implements ActorDataComputer {
     isAvailableFor(actorType: Lvl0ActorType): boolean {

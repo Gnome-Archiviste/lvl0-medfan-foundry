@@ -1,20 +1,12 @@
 import {container, singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
-import {SpellSelector} from "../../../utils/spell-selector";
-import {SpellManager} from "../../spell/spell-manager";
-import {RollMagicEpicFailManager} from "../../spell/roll-magic-epic-fail-manager";
-import {EffectManager} from "../../effects/effect-manager";
-import {ActorSpell} from '../../spell/actor-spell.model';
-import {SpellCastAction} from '../../../ui/dialog/spell-selector-dialog';
-import {RollUtil} from '../../../utils/roll-util';
-import {SpellChat} from '../../spell/spell-chat';
-import {ScrollUtil} from '../../spell/scroll-util';
-import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
-import {
-    CastSpellSkillScriptData,
-    CastSpellSkillScriptDefinition,
-    SkillDefinition
-} from '../../../repositories/data/skills';
+import {SpellSelector} from "utils/spell-selector";
+import {ActorSpell, RollMagicEpicFailManager, ScrollUtil, SpellChat, SpellManager} from "managers/spell";
+import {EffectManager} from "managers/effects";
+import {SpellCastAction} from 'ui/dialog';
+import {RollUtil} from 'utils/roll-util';
+import {assertIsCharacter} from 'models/actor';
+import {CastSpellSkillScriptData, CastSpellSkillScriptDefinition, SkillDefinition} from 'repositories/data';
 
 @singleton()
 export class RollSpellSkillScript extends SkillScript {

@@ -1,10 +1,7 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Actor} from '../../models/actor/lvl0-actor';
-import {LevelData} from '../../models/actor/properties-data/lvl0-actor-character-data';
-import {
-    StatsCharacterDataComputer
-} from '../../models/actor/actor-data-computers/character/stats-character-data-computer';
+import {LevelData, Lvl0Actor} from '../../models/actor';
+import {StatsCharacterDataComputer} from '../../models/actor/actor-data-computers/character';
 import {RollFactory} from '../../utils/roll-factory';
 
 export interface GenerateMissingLevelUpDataDialogData {

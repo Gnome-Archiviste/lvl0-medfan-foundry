@@ -1,9 +1,8 @@
 import {inject, singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
-import {SpecialityDefinition} from '../../../../repositories/data/specialities';
-import {SpecialityRepository} from '../../../../repositories/speciality-repository';
+import {Lvl0ActorCharacterData} from '../../properties-data';
+import {SpecialityDefinition, SpecialityRepository} from 'repositories';
 
 @singleton()
 export class SpecialityCharacterDataComputer extends CharacterDataComputer {

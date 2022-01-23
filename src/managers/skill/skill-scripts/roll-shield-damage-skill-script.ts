@@ -1,9 +1,9 @@
 import {singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
-import {EffectManager} from "../../effects/effect-manager";
-import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
-import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../../repositories/data/skills';
-import {Lvl0ItemShield} from '../../../models/item/lvl0-item-types';
+import {EffectManager} from "../../effects";
+import {assertIsCharacter} from '../../../models/actor';
+import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../../repositories/data';
+import {Lvl0ItemShield} from '../../../models/item';
 import {RollUtil} from '../../../utils/roll-util';
 import {RollFactory} from '../../../utils/roll-factory';
 

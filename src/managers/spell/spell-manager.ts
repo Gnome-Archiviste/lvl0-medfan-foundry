@@ -1,20 +1,18 @@
 import {inject, singleton} from 'tsyringe';
 import * as marked from 'marked';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
-import {Lvl0ActorEffectModifier} from '../effects/lvl0-actor-effect';
-import {Lvl0Actor} from '../../models/actor/lvl0-actor';
-import {SpellRepository} from '../../repositories/spell-repository';
-import {ElementRepository} from '../../repositories/element-repository';
-import {SpellClass} from '../../repositories/data/jobs';
-import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {Lvl0ActorEffectModifier} from '../effects';
+import {assertIsCharacter, Lvl0Actor} from 'models/actor';
+import {ElementRepository, SpellRepository} from 'repositories';
 import {
     AddEffectActionModifierDefinition,
     ComputableSpellValue,
     SpellActionDefinition,
+    SpellClass,
     SpellDefinition,
     SpellHealDefinition
-} from '../../repositories/data/spells';
-import {Evaluated, RollFactory} from '../../utils/roll-factory';
+} from 'repositories/data';
+import {Evaluated, RollFactory} from 'utils/roll-factory';
 
 export class SpellContext {
     arcaneLevel: number;

@@ -1,7 +1,7 @@
 import {singleton} from 'tsyringe';
-import {SkillDefinition} from '../../../repositories/data/skills';
-import {RollResult, RollUtil} from '../../../utils/roll-util';
-import {Evaluated} from '../../../utils/roll-factory';
+import {SkillDefinition} from 'repositories/data';
+import {RollResult, RollUtil} from 'utils/roll-util';
+import {Evaluated} from 'utils/roll-factory';
 
 export interface SkillTestRollResult {
     result: RollResult,

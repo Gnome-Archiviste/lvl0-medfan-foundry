@@ -1,7 +1,6 @@
-import {DialogBase, DialogResultCallback} from './dialog-base';
-import {AmmunitionType} from '../../models/item/properties/ammunition-item-properties';
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../models/item/lvl0-item-types';
 import {inject, injectable} from 'tsyringe';
+import {DialogBase, DialogResultCallback} from './dialog-base';
+import {AmmunitionType, Lvl0ItemAmmunition, Lvl0ItemWeapon} from 'models/item';
 
 export interface WeaponSelectorDialogData {
     weapons: Lvl0ItemWeapon[],

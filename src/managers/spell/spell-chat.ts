@@ -1,5 +1,5 @@
 import {ActorSpell} from './actor-spell.model';
-import {RollUtil, RollResult} from '../../utils/roll-util';
+import {RollResult, RollUtil} from '../../utils/roll-util';
 import {RolledSpellStat} from './spell-manager';
 import {inject, singleton} from 'tsyringe';
 

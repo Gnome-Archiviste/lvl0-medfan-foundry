@@ -1,6 +1,6 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {SpecialityRepository} from '../../repositories/speciality-repository';
+import {SpecialityRepository} from 'repositories';
 
 export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
 

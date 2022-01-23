@@ -1,9 +1,9 @@
+import {inject, singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {Lvl0ActorEffect} from '../../../../managers/effects/lvl0-actor-effect';
-import {Lvl0ActorCharacterData, SkillValue} from '../../properties-data/lvl0-actor-character-data';
-import {SkillRepository} from '../../../../repositories/skill-repository';
-import {inject, singleton} from 'tsyringe';
+import {Lvl0ActorEffect} from 'managers/effects';
+import {Lvl0ActorCharacterData, SkillValue} from '../../properties-data';
+import {SkillRepository} from 'repositories';
 
 @singleton()
 export class SkillsCharacterDataComputer extends CharacterDataComputer {

@@ -1,19 +1,20 @@
-import {RollSkillManager} from '../../../managers/skill/roll-skill-manager';
-import {Lvl0ActorCharacterData} from '../../../models/actor/properties-data/lvl0-actor-character-data';
-import {assertIsCharacter} from '../../../models/actor/properties/character-properties';
-import {Lvl0ItemType} from '../../../models/item/lvl0-item-data';
-import {JobRepository} from '../../../repositories/job-repository';
-import {SkillRepository} from '../../../repositories/skill-repository';
-import {StatsRepository} from '../../../repositories/stats-repository';
-import {SkillDefinition} from '../../../repositories/data/skills';
-import {RaceDefinition} from '../../../repositories/data/races';
-import {RaceRepository} from '../../../repositories/race-repository';
-import {ExtensionJobDefinition, JobDefinition} from '../../../repositories/data/jobs';
-import {SpecialityRepository} from '../../../repositories/speciality-repository';
-import {Lvl0Actor} from '../../../models/actor/lvl0-actor';
 import {container} from 'tsyringe';
-import {InitializedGame} from '../../../models/misc/game';
-import {MacroUtil} from '../../../utils/macro-util';
+import {RollSkillManager} from 'managers/skill';
+import {assertIsCharacter, Lvl0Actor, Lvl0ActorCharacterData} from 'models/actor';
+import {Lvl0ItemType} from 'models/item';
+import {
+    ExtensionJobDefinition,
+    JobDefinition,
+    JobRepository,
+    RaceDefinition,
+    RaceRepository,
+    SkillDefinition,
+    SkillRepository,
+    SpecialityRepository,
+    StatsRepository
+} from 'repositories';
+import {InitializedGame} from 'models/misc/game';
+import {MacroUtil} from 'utils/macro-util';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,

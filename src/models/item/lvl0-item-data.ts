@@ -1,22 +1,24 @@
-import {WeaponItemProperties} from './properties/weapon-item-properties';
-import {AmmunitionItemProperties} from './properties/ammunition-item-properties';
-import {BeltItemProperties} from './properties/belt-item-properties';
-import {ArmorItemProperties} from './properties/armor-item-properties';
-import {CloakItemProperties} from './properties/cloak-item-properties';
-import {HandItemProperties} from './properties/hand-item-properties';
-import {MagicalItemProperties} from './properties/magical-item-properties';
-import {PurseItemProperties} from './properties/purse-item-properties';
-import {NecklaceItemProperties} from './properties/necklace-item-properties';
-import {FootItemProperties} from './properties/foot-item-properties';
-import {RingItemProperties} from './properties/ring-item-properties';
-import {HandWeaponItemProperties} from './properties/hand-weapon-item-properties';
-import {BagItemProperties} from './properties/bag-item-properties';
-import {HeadItemProperties} from './properties/head-item-properties';
-import {ShieldItemProperties} from './properties/shield-item-properties';
-import {WandItemProperties} from './properties/wand-item-properties';
-import {ScrollItemProperties} from './properties/scroll-item-properties-data';
-import {PotionsItemProperties} from './properties/potions-item-properties';
-import {MiscItemProperties} from './properties/misc-item-properties';
+import {
+    AmmunitionItemProperties,
+    ArmorItemProperties,
+    BagItemProperties,
+    BeltItemProperties,
+    CloakItemProperties,
+    FootItemProperties,
+    HandItemProperties,
+    HandWeaponItemProperties,
+    HeadItemProperties,
+    MagicalItemProperties,
+    MiscItemProperties,
+    NecklaceItemProperties,
+    PotionsItemProperties,
+    PurseItemProperties,
+    RingItemProperties,
+    ScrollItemProperties,
+    ShieldItemProperties,
+    WandItemProperties,
+    WeaponItemProperties
+} from './properties';
 import {ItemModifierInfo} from './item-modifier-info';
 
 type Lvl0ItemData =

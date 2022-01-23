@@ -2,8 +2,8 @@ import {inject, singleton} from 'tsyringe';
 import {ActorSpell} from './actor-spell.model';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
-import {ScrollItemPropertiesData} from '../../models/item/properties/scroll-item-properties-data';
-import {Lvl0ActorCharacter} from '../../models/actor/lvl0-actor-types';
+import {ScrollItemPropertiesData} from 'models/item';
+import {Lvl0ActorCharacter} from 'models/actor';
 
 @singleton()
 export class ScrollUtil {

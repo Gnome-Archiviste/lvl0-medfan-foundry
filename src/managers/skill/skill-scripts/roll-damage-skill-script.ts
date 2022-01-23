@@ -1,17 +1,13 @@
 import {SkillScript, SkillTestRollResult} from "./skill-script";
-import {WeaponSelector} from "../../../utils/weapon-selector";
-import {WeaponDamageRollUtil} from "../../../utils/weapon-damage-roll-util";
-import {EffectManager} from "../../effects/effect-manager";
-import {RollUtil} from '../../../utils/roll-util';
-import {ElementRepository} from '../../../repositories/element-repository';
-import {
-    RollDamageSkillScriptData,
-    RollDamageSkillScriptDefinition,
-    SkillDefinition
-} from '../../../repositories/data/skills';
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../../models/item/lvl0-item-types';
-import {foundryAssert} from '../../../utils/error';
-import {Evaluated, RollFactory} from '../../../utils/roll-factory';
+import {RollUtil} from 'utils/roll-util';
+import {WeaponSelector} from "utils/weapon-selector";
+import {WeaponDamageRollUtil} from "utils/weapon-damage-roll-util";
+import {EffectManager} from "managers/effects";
+import {ElementRepository} from 'repositories';
+import {RollDamageSkillScriptData, RollDamageSkillScriptDefinition, SkillDefinition} from 'repositories/data/skills';
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from 'models/item';
+import {foundryAssert} from 'utils/error';
+import {Evaluated, RollFactory} from 'utils/roll-factory';
 
 export class RollDamageSkillScript extends SkillScript {
     data: RollDamageSkillScriptData;

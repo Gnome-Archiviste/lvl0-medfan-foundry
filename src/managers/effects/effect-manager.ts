@@ -1,8 +1,8 @@
-import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './lvl0-actor-effect';
-import {Lvl0Actor} from '../../models/actor/lvl0-actor';
-import {StatsRepository} from '../../repositories/stats-repository';
-import {SkillRepository} from '../../repositories/skill-repository';
 import {container, singleton} from 'tsyringe';
+import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './lvl0-actor-effect';
+import {Lvl0Actor} from 'models/actor';
+import {StatsRepository} from 'repositories/stats-repository';
+import {SkillRepository} from 'repositories/skill-repository';
 
 @singleton()
 export class EffectManager {

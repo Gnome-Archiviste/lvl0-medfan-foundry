@@ -1,5 +1,4 @@
-import {CharacterProperties} from './properties/character-properties';
-import {MonsterProperties} from './properties/monster-properties';
+import {CharacterProperties, MonsterProperties} from './properties';
 
 export type Lvl0ActorData =
     CharacterProperties |

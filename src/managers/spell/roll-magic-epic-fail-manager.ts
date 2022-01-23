@@ -1,6 +1,6 @@
 import {inject, singleton} from 'tsyringe';
-import {MagicEpicFailRepository} from '../../repositories/magic-epic-fail-repository';
-import {RollFactory} from '../../utils/roll-factory';
+import {MagicEpicFailRepository} from 'repositories';
+import {RollFactory} from 'utils/roll-factory';
 
 @singleton()
 export class RollMagicEpicFailManager {

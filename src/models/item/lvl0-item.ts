@@ -1,4 +1,4 @@
-import {ScrollUtil} from '../../managers/spell/scroll-util';
+import {ScrollUtil} from 'managers/spell';
 import {
     ItemDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';

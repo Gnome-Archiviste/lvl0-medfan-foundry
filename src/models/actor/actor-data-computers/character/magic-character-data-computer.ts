@@ -1,7 +1,7 @@
+import {singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
-import {Lvl0ActorCharacterData} from '../../properties-data/lvl0-actor-character-data';
-import {singleton} from 'tsyringe';
+import {Lvl0ActorCharacterData} from '../../properties-data';
 
 @singleton()
 export class MagicCharacterDataComputer extends CharacterDataComputer {

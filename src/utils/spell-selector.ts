@@ -1,9 +1,7 @@
-import {SpellCastAction, SpellSelectorDialog} from "../ui/dialog/spell-selector-dialog";
-import {SpellManager} from "../managers/spell/spell-manager";
-import {ActorSpell} from '../managers/spell/actor-spell.model';
-import {DialogAwaiter} from './dialog-awaiter';
-import {SpellClass} from '../repositories/data/jobs';
 import {inject, singleton} from 'tsyringe';
+import {DialogAwaiter, SpellCastAction, SpellSelectorDialog} from "../ui/dialog";
+import {ActorSpell, SpellManager} from "managers/spell";
+import {SpellClass} from 'repositories';
 
 @singleton()
 export class SpellSelector {
@@ -24,6 +22,9 @@ export class SpellSelector {
             return undefined;
         }
 
-        return await this.dialogAwaiter.openAndWaitResult(SpellSelectorDialog, {spells: spellActors, actor: token.actor});
+        return await this.dialogAwaiter.openAndWaitResult(SpellSelectorDialog, {
+            spells: spellActors,
+            actor: token.actor
+        });
     }
 }

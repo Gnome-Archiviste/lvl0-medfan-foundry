@@ -1,10 +1,10 @@
 import {inject, injectable} from 'tsyringe';
-import {ActorSpell} from '../../managers/spell/actor-spell.model';
+import {ActorSpell} from 'managers/spell';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Actor} from '../../models/actor/lvl0-actor';
-import {Lvl0ItemWand} from '../../models/item/lvl0-item-types';
-import {InitializedGame} from '../../models/misc/game';
-import {MacroUtil} from '../../utils/macro-util';
+import {Lvl0Actor} from 'models/actor';
+import {Lvl0ItemWand} from 'models/item';
+import {InitializedGame} from 'models/misc/game';
+import {MacroUtil} from 'utils/macro-util';
 import ClickEvent = JQuery.ClickEvent;
 
 export interface SpellSelectorDialogData {

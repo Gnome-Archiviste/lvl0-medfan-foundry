@@ -1,8 +1,6 @@
-import {WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog/weapon-selector-dialog";
-import {DialogAwaiter} from './dialog-awaiter';
-import {WeaponItemProperties, WeaponType} from '../models/item/properties/weapon-item-properties';
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
 import {inject, singleton} from 'tsyringe';
+import {DialogAwaiter, WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog";
+import {Lvl0ItemAmmunition, Lvl0ItemWeapon, WeaponItemProperties, WeaponType} from '../models/item';
 
 @singleton()
 export class WeaponSelector {
