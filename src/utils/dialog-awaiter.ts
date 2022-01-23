@@ -7,7 +7,7 @@ export class DialogAwaiter {
         type: { new(data: TData, result: DialogResultCallback<TResult>, ...args): TDialog },
         data: TData
     ): Promise<TResult | undefined> {
-        return new Promise<TResult | undefined>(async (resolve) => {
+        return new Promise<TResult | undefined>((resolve) => {
             let childContainer = container.createChildContainer();
             childContainer.register('DIALOG_DATA', {useValue: data});
             childContainer.register('DIALOG_RESULT', {useValue: () => result => resolve(result)});

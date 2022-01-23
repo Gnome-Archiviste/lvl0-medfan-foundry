@@ -1,5 +1,4 @@
 import {Lvl0ActorCharacterData} from '../properties-data/lvl0-actor-character-data';
-import {Lvl0ActorType} from '../lvl0-actor-data';
 import {Lvl0Actor} from '../lvl0-actor';
 import {Lvl0ActorCharacter} from '../lvl0-actor-types';
 

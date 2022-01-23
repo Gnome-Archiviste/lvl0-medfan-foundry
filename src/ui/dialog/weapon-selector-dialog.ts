@@ -1,7 +1,7 @@
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {AmmunitionType} from '../../models/item/properties/ammunition-item-properties';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../../models/item/lvl0-item-types';
-import {inject} from 'tsyringe';
+import {inject, injectable} from 'tsyringe';
 
 export interface WeaponSelectorDialogData {
     weapons: Lvl0ItemWeapon[],
@@ -9,6 +9,7 @@ export interface WeaponSelectorDialogData {
     ammunition: Lvl0ItemAmmunition[],
 }
 
+@injectable()
 export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
     private selectedWeapon?: Lvl0ItemWeapon = undefined;
     private selectedAmmo?: Lvl0ItemAmmunition = undefined;
