@@ -3,7 +3,7 @@ import ClickEvent = JQuery.ClickEvent;
 export type DialogResultCallback<TResult> = (result: TResult | undefined) => void;
 
 export abstract class DialogBase<TData, TResult> extends Application {
-    constructor(
+    protected constructor(
         protected readonly dialogData: TData,
         protected readonly result: DialogResultCallback<TResult>
     ) {
