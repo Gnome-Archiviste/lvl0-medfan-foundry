@@ -23,11 +23,8 @@ export class RaceRepository {
         return racesByIds;
     }
 
-    getRace(id: string): RaceDefinition {
-        let race = this.getRacesByIds()[id];
-        if (!race)
-            throw new Error(`Cannot find race ${id}`);
-        return race;
+    getRace(id: string): RaceDefinition | undefined {
+        return this.getRacesByIds()[id];
     }
 }
 

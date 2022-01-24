@@ -97,8 +97,8 @@ export interface ComputedCharacterClutterData {
 }
 
 export interface ComputedCharacterBaseData {
-    race: RaceDefinition;
-    job: JobDefinition;
+    race?: RaceDefinition;
+    job?: JobDefinition;
 }
 
 export interface ComputedCharacterMagicData {

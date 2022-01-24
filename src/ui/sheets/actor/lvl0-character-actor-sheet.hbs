@@ -26,7 +26,7 @@
                             <span class="sheet-value">
                                 {{#if canSelectRace}}
                                     <select name="data.race.id" data-dtype="String">
-                                        <option>Choisir une race</option>
+                                        <option value="">Choisir une race</option>
                                         {{#select actorData.race.id}}
                                             {{#each races as |raceCategory| }}
                                                 <optgroup label="{{localize (concat2 'LVL0MF.RaceCategory.' @key)}}">

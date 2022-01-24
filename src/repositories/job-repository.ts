@@ -45,11 +45,8 @@ export class JobRepository {
         return jobsByIds;
     }
 
-    getJob(jobId: string): JobDefinition {
-        let job = this.getJobsByIds()[jobId];
-        if (!job)
-            throw new Error(`Cannot find race ${jobId}`);
-        return job;
+    getJob(jobId: string): JobDefinition | undefined {
+        return this.getJobsByIds()[jobId];
     }
 }
 
