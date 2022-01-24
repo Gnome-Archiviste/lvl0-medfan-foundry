@@ -160,6 +160,9 @@ export class SpellManager {
     async getAvailableSpells(actor: Lvl0Actor, spellClass: SpellClass): Promise<ActorSpell[]> {
         assertIsCharacter(actor);
         let actorData = actor.data.data;
+        if (!actorData.computedData.bases.job) {
+            return [];
+        }
 
         let specialities: string[];
         if (actorData.computedData.bases.job.spellSpecialization === 'useSpecializations') {
@@ -170,7 +173,7 @@ export class SpellManager {
             return [];
         }
 
-        if (actor.data.data.computedData.bases.job.spellClass != spellClass) {
+        if (actorData.computedData.bases.job.spellClass != spellClass) {
             return [];
         }
 

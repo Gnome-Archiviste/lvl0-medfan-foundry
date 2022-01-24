@@ -116,6 +116,14 @@ export class Lvl0Actor extends Actor {
         if (this.data.type !== 'character') {
             throw new Error('Level up is only supported for characters')
         }
+        if (!this.data.data.computedData.bases.job) {
+            ui.notifications?.error('Choisissez un métier avant');
+            return;
+        }
+        if (!this.data.data.computedData.bases.race) {
+            ui.notifications?.error('Choisissez une race avant');
+            return;
+        }
 
         let levelWithMissingData: number[] = [];
         for (let lvl = 1; lvl <= this.data.data.level.value; lvl++) {
@@ -174,6 +182,14 @@ export class Lvl0Actor extends Actor {
         let toLevel = fromLevel + 1;
         if (toLevel > 70) {
             ui.notifications?.warn('Niveau maximum atteint');
+            return;
+        }
+        if (!actorData.computedData.bases.job) {
+            ui.notifications?.error('Choisissez un métier avant');
+            return;
+        }
+        if (!actorData.computedData.bases.race) {
+            ui.notifications?.error('Choisissez une race avant');
             return;
         }
 
