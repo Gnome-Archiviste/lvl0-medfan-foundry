@@ -7,7 +7,8 @@ import {ElementRepository} from 'repositories';
 import {RollDamageSkillScriptData, RollDamageSkillScriptDefinition, SkillDefinition} from 'repositories/data/skills';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from 'models/item';
 import {foundryAssert} from 'utils/error';
-import {Evaluated, RollFactory} from 'utils/roll-factory';
+import {RollFactory} from 'utils/roll-factory';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
 
 export class RollDamageSkillScript extends SkillScript {
     data: RollDamageSkillScriptData;

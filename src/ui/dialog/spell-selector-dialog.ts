@@ -26,7 +26,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
         super(dialogData, result);
     }
 
-    override getData(options?: Partial<Application.Options>): object | Promise<object> {
+    override getData(options?: Partial<ApplicationOptions>): object | Promise<object> {
         let data = super.getData(options);
         let spellPerLevels = this.dialogData.spells.reduce((previousValue, spell) => {
             if (!(spell.cost in previousValue))
@@ -37,8 +37,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
 
         let spellInNonFullWand = {};
         let emptyWandAvailable = false;
-        // FIXME: Remove https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1551
-        let wands = this.dialogData.actor.itemTypes['wand'].map(w => w as Lvl0ItemWand);
+        let wands = this.dialogData.actor.itemTypes['wand'];
         if (wands) {
             for (let wand of wands) {
                 if (!wand.data.data.spell) {
@@ -105,7 +104,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
         });
     }
 
-    static get defaultOptions(): Application.Options {
+    static get defaultOptions(): ApplicationOptions {
         return {
             ...super.defaultOptions,
             id: "spellSelector",

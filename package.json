@@ -12,7 +12,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "^0.8.9-10",
+    "@league-of-foundry-developers/foundry-vtt-types": "League-of-Foundry-Developers/foundry-vtt-types#main",
     "esbuild": "^0.14.11",
     "esbuild-sass-plugin": "^2.0.3",
     "glob": "^7.2.0",

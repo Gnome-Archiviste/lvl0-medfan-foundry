@@ -1,13 +1,5 @@
 import '';
 
-declare interface RollTerm {
-    results: DiceTerm.Result[];
-}
-
-interface ChatMessageDataConstructorData {
-    roll?: Roll | null;
-}
-
 declare global {
     interface ColorSet {
         name: string,

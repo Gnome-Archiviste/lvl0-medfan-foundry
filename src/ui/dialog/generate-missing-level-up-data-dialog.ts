@@ -31,7 +31,7 @@ export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissing
         super(dialogData, result);
     }
 
-    override async getData(options?: Partial<Application.Options>): Promise<GenerateMissingLevelUpDataApplicationData> {
+    override async getData(options?: Partial<ApplicationOptions>): Promise<GenerateMissingLevelUpDataApplicationData> {
         let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
             previousValue[currentValue] = currentValue;
             return previousValue;
@@ -106,7 +106,7 @@ export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissing
         return 0;
     }
 
-    static get defaultOptions(): Application.Options {
+    static get defaultOptions(): ApplicationOptions {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
             width: 350,

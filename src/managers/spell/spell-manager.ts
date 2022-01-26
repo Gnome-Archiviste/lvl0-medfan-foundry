@@ -12,7 +12,8 @@ import {
     SpellDefinition,
     SpellHealDefinition
 } from 'repositories/data';
-import {Evaluated, RollFactory} from 'utils/roll-factory';
+import {RollFactory} from 'utils/roll-factory';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
 
 export class SpellContext {
     arcaneLevel: number;

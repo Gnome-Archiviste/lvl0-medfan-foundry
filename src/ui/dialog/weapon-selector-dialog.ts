@@ -20,7 +20,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         super(dialogData, result);
     }
 
-    override getData(options?: Partial<Application.Options>): object | Promise<object> {
+    override getData(options?: Partial<ApplicationOptions>): object | Promise<object> {
         return {
             ...super.getData(options),
             weapons: this.dialogData.weapons,
@@ -93,7 +93,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         html.find('.ammunition').hide();
     }
 
-    static get defaultOptions(): Application.Options {
+    static get defaultOptions(): ApplicationOptions {
         return {
             ...super.defaultOptions,
             id: "weaponSelector",

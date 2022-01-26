@@ -25,7 +25,7 @@ export class RollShieldDamageSkillScript extends SkillScript {
         let actor = this.token.actor;
         if (!actor)
             throw new Error("Missing actor during prepare");
-        let shield = actor.itemTypes['shield'].map(s => s as Lvl0ItemShield).find(x => x.data.data.equiped);
+        let shield = actor.itemTypes['shield'].find(x => x.data.data.equiped);
         if (!shield) {
             ui.notifications?.error("Vous devez équiper un bouclier pour cette action", {permanent: true});
             return false;

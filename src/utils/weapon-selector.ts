@@ -16,7 +16,6 @@ export class WeaponSelector {
         let itemsByType = token.actor.itemTypes;
 
         let weapons = itemsByType['weapon']
-            .map(w => w as Lvl0ItemWeapon)
             .filter(w => w.data.data.equiped)
             .filter(w => (w.data as WeaponItemProperties).data.weaponType === weaponType || (w.data as WeaponItemProperties).data.weaponType === WeaponType.MeleeRange);
         if (weapons.length === 0) {
@@ -29,7 +28,6 @@ export class WeaponSelector {
 
         let useAmmunitionType = new Set(weapons.map(f => (f.data as WeaponItemProperties).data.usedAmmunitionType));
         let ammunition = itemsByType['ammunition']
-            .map(w => w as Lvl0ItemAmmunition)
             .filter(a => useAmmunitionType.has(a.data.data.ammunitionType));
 
         let weaponSelectorData: WeaponSelectorDialogData = {

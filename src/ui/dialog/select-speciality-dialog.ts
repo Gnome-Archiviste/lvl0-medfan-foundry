@@ -14,7 +14,7 @@ export class SelectSpecialityDialog extends DialogBase<object, string> {
         super(data, result);
     }
 
-    override getData(options?: Partial<Application.Options>): object | Promise<object> {
+    override getData(options?: Partial<ApplicationOptions>): object | Promise<object> {
         let data = super.getData(options);
 
         return {
@@ -41,7 +41,7 @@ export class SelectSpecialityDialog extends DialogBase<object, string> {
         return undefined;
     }
 
-    static get defaultOptions(): Application.Options {
+    static get defaultOptions(): ApplicationOptions {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "selectSpeciality",
             template: "systems/lvl0mf-sheet/ui/dialog/select-speciality-dialog.hbs",

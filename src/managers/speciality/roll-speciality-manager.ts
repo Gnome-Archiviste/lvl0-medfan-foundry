@@ -7,7 +7,8 @@ import {AmmunitionItemProperties, WeaponType} from 'models/item';
 import {SpecialityDefinition} from 'repositories/data';
 import {ElementRepository, SpecialityRepository} from 'repositories';
 import {assertIsCharacter} from 'models/actor';
-import {Evaluated, RollFactory} from 'utils/roll-factory';
+import {RollFactory} from 'utils/roll-factory';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';

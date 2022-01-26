@@ -260,7 +260,7 @@ export class Lvl0Actor extends Actor {
     }
 
     getFirstEmptyScroll(): Item | undefined {
-        let scrolls = this.itemTypes['scroll'].map(w => w as Lvl0ItemScroll);
+        let scrolls = this.itemTypes['scroll'];
         if (scrolls) {
             for (let scroll of scrolls) {
                 if (scroll.data.data.quantity < 1)

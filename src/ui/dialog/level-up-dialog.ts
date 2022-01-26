@@ -41,7 +41,7 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
         super(dialogData, result);
     }
 
-    override getData(options?: Partial<Application.Options>): LevelUpDialogApplicationData {
+    override getData(options?: Partial<ApplicationOptions>): LevelUpDialogApplicationData {
         // FIXME: We should remove from this list stats already at max value, and handle special case when character is already maxed on every stat
         let availableLevelUStats = StatsCharacterDataComputer.statsNames.reduce((previousValue, currentValue) => {
             previousValue[currentValue] = currentValue;
@@ -174,7 +174,7 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
         });
     }
 
-    static get defaultOptions(): Application.Options {
+    static get defaultOptions(): ApplicationOptions {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "levelUp",
             title: 'Level Up !',
