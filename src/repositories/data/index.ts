@@ -7,3 +7,4 @@ export * from './skills-level';
 export * from './specialities';
 export * from './spells';
 export * from './stats';
+export * from './wand-config';

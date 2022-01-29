@@ -4,6 +4,7 @@ import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
 import {ScrollItemPropertiesData} from 'models/item';
 import {Lvl0ActorCharacter} from 'models/actor';
+import {ItemUtil} from '../../utils/item-util';
 
 @singleton()
 export class ScrollUtil {
@@ -11,6 +12,7 @@ export class ScrollUtil {
     constructor(
         @inject(SpellChat) private readonly spellChat: SpellChat,
         @inject(SpellManager) private readonly spellManager: SpellManager,
+        @inject(ItemUtil) private readonly itemUtil: ItemUtil,
     ) {
     }
 
@@ -20,9 +22,13 @@ export class ScrollUtil {
             ui.notifications?.error('Aucun parchemin vierge disponible')
             return undefined;
         }
+        let itemName = 'Parchemin: ' + spell.name;
+        if (spell.dependsOnArcaneLevel) {
+            itemName += ' (Arcane: ' + actor.data.data.computedData.magic.arcaneLevel + ')';
+        }
         let scrollData = {
             ...emptyScroll.toObject(),
-            name: 'Parchemin: ' + spell.name + ' (Arcane: ' + actor.data.data.computedData.magic.arcaneLevel + ')',
+            name: itemName,
             img: spell.icon,
             data: {
                 quantifiable: false,
@@ -32,15 +38,7 @@ export class ScrollUtil {
             } as ScrollItemPropertiesData
         };
         await actor.createEmbeddedDocuments('Item', [scrollData]);
-        if (emptyScroll.data.data.quantity === 1) {
-            await emptyScroll.delete();
-        } else {
-            await emptyScroll.update({
-                data: {
-                    quantity: emptyScroll.data.data.quantity - 1
-                }
-            })
-        }
+        await this.itemUtil.updateQuantity(emptyScroll, -1);
     }
 
     async useScroll(scroll: Item): Promise<void> {

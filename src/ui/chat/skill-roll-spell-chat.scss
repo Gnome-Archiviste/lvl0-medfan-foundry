@@ -12,6 +12,7 @@
     align-self: center;
     column-gap: 8px;
     align-items: center;
+
     > img {
       width: 24px;
       height: 24px;
@@ -22,37 +23,50 @@
     > * + * {
       margin-bottom: 8px;
     }
+
     .header {
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 8px;
       align-items: center;
+
       .name {
         font-size: 17px;
       }
+
       .icon {
         width: 48px;
         height: 48px;
       }
     }
+
     .stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
+
     .label {
       font-weight: bold;
     }
+
     .damage {
       font-size: 17px;
       text-align: center;
     }
+
     .heal {
       font-size: 17px;
       text-align: center;
     }
-    .criticalSuccess {
+
+    .critical-success {
       border: 1px dashed black;
       padding: 4px;
     }
+  }
+
+  > .epic-fail {
+    border: 1px dashed black;
+    padding: 4px;
   }
 }

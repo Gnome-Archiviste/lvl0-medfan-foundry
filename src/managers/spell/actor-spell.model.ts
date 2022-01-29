@@ -19,6 +19,7 @@ export interface ActorSpell {
     resilience?: string | RolledSpellStat;
     criticalSuccess?: string | RolledSpellStat;
     actions?: { [actionName: string]: ActorSpellAction };
+    dependsOnArcaneLevel: boolean;
 }
 
 export type ActorSpellAction = AddEffectActorSpellAction | HealActorSpellAction;

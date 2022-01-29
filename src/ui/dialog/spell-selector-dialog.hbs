@@ -33,7 +33,7 @@
                             {{#if ../../emptyScrollAvailable}}
                                 <button class="action" data-action="createScroll" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une parchemin</button>
                             {{/if}}
-                            {{#if ../../emptyWandAvailable}}
+                            {{#if (or ../../emptyWandAvailable (lookup ../../spellInNonFullWand spell.id))}}
                                 <button class="action" data-action="fillWand" data-spell-id="{{spell.id}}"><i class="fas fa-magic"></i> Remplir une baguette</button>
                             {{/if}}
                         </div>

@@ -39,13 +39,21 @@
     {{#if (or (eq item.type 'scroll') (eq item.type 'wand'))}}
         <div class="form-group">
             <label>Sort (id)</label>
-            <input type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" disabled/>
+            <input type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" />
         </div>
     {{/if}}
     {{#if (eq item.type 'wand')}}
         <div class="form-group">
-            <label>Charge</label>
-            <input type="number" name="data.charge" data-dtype="String" value="{{data.data.charge}}" step="1" min="0"/>
+            <label>Charge(s)</label>
+            <input name="data.charge" data-dtype="Number" type="number" value="{{data.data.charge}}" />
+        </div>
+        <div class="form-group">
+            <label>Niveau d'arcane (Laissez 0 si le sort n'en dépend pas)</label>
+            <input name="data.arcane" data-dtype="Number" type="number" value="{{data.data.arcane}}" />
+        </div>
+        <div class="form-group">
+            <label>Bloqué ? (Echec critique lors du remplissage)</label>
+            <input type="checkbox" name="data.blocked" data-dtype="Boolean" {{checked data.data.blocked}}/>
         </div>
     {{/if}}
     {{#if (eq item.type 'ammunition')}}

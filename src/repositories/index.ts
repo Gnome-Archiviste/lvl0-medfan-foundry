@@ -7,3 +7,4 @@ export * from './element-repository';
 export * from './stats-repository';
 export * from './spell-repository';
 export * from './magic-epic-fail-repository';
+export * from './wand-config-repository';

@@ -6,12 +6,13 @@ import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script";
 import {SkillDefinition} from 'repositories/data';
 import {RollUtil} from 'utils/roll-util';
 import {RollFactory} from 'utils/roll-factory';
-import {ScrollUtil, SpellChat, SpellManager} from 'managers/spell';
+import {ScrollUtil, SpellChat, SpellManager, WandUtil} from 'managers/spell';
 import {EffectManager} from 'managers/effects';
 import {WeaponDamageRollUtil} from 'utils/weapon-damage-roll-util';
 import {SpellSelector} from 'utils/spell-selector';
 import {WeaponSelector} from 'utils/weapon-selector';
 import {ElementRepository} from 'repositories';
+import {ItemSelector} from '../../../utils/item-selector';
 
 @singleton()
 export class SkillScriptFactory {
@@ -27,6 +28,8 @@ export class SkillScriptFactory {
         @inject(WeaponSelector) private readonly weaponSelector: WeaponSelector,
         @inject(EffectManager) private readonly effectManager: EffectManager,
         @inject(ElementRepository) private readonly elementRepository: ElementRepository,
+        @inject(WandUtil) private readonly wandUtil: WandUtil,
+        @inject(ItemSelector) private readonly itemSelector: ItemSelector,
     ) {
     }
 
@@ -55,7 +58,9 @@ export class SkillScriptFactory {
                     this.spellChat,
                     this.scrollUtil,
                     this.spellManager,
-                    this.spellSelector
+                    this.spellSelector,
+                    this.wandUtil,
+                    this.itemSelector
                 );
             case 'shieldDamageRoll':
                 return new RollShieldDamageSkillScript(

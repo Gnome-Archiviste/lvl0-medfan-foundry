@@ -1,0 +1,32 @@
+<div class="item-selector-dialog">
+    <section class="items">
+        <div class="item-line header">
+            <div class="name">Nom</div>
+        </div>
+        {{#each items as |item| }}
+            <div class="{{ternary (eq item.id selectedWeaponId) "item-line selected" "item-line"}}"
+                 data-select-item data-item-id="{{item.id}}">
+                <div class="select"><input type="radio" name="item" value="{{item.id}}" {{#if (eq item.id ../selectedItemId)}}checked{{/if}}></div>
+                <div class="icon"><img src="{{item.img}}"/></div>
+                <div class="name">
+                    <div class="title">
+                        {{#if item.data.data.quantifiable}}{{item.data.data.quantity}} {{/if}}{{item.name}}
+                        {{#if (gt item.data.data.charge 0)}} - {{item.data.data.charge}} charge(s){{/if}}
+                    </div>
+                    {{#if item.data.data.description}}
+                        <div class="description">
+                            {{item.data.data.description}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if (not @last)}}
+                <div class="separator"></div>
+            {{/if}}
+        {{/each}}
+    </section>
+    <div class="actions">
+        <button data-dialog-action="cancel">Annuler</button>
+        <button data-dialog-action="confirm" {{#if (not ready)}}disabled{{/if}}>Valider</button>
+    </div>
+</div>

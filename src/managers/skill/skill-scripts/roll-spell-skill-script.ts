@@ -1,12 +1,13 @@
 import {container, singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
 import {SpellSelector} from "utils/spell-selector";
-import {ActorSpell, RollMagicEpicFailManager, ScrollUtil, SpellChat, SpellManager} from "managers/spell";
+import {ActorSpell, RollMagicEpicFailManager, ScrollUtil, SpellChat, SpellManager, WandUtil} from "managers/spell";
 import {EffectManager} from "managers/effects";
 import {SpellCastAction} from 'ui/dialog';
 import {RollUtil} from 'utils/roll-util';
 import {assertIsCharacter} from 'models/actor';
 import {CastSpellSkillScriptData, CastSpellSkillScriptDefinition, SkillDefinition} from 'repositories/data';
+import {ItemSelector} from 'utils/item-selector';
 
 @singleton()
 export class RollSpellSkillScript extends SkillScript {
@@ -23,6 +24,8 @@ export class RollSpellSkillScript extends SkillScript {
         private readonly scrollUtil: ScrollUtil,
         private readonly spellManager: SpellManager,
         private readonly spellSelector: SpellSelector,
+        private readonly wandUtil: WandUtil,
+        private readonly itemSelector: ItemSelector,
     ) {
         super(token, skillDefinition, rollUtil);
         this.data = skillDefinition.script.data;
@@ -82,10 +85,25 @@ export class RollSpellSkillScript extends SkillScript {
             </div>
             `;
         } else if (this.action === 'fillWand') {
-            ui.notifications?.error('Non supporté pour le moment');
-            message = ``;
-            // Critical = la baguette est bloqué
-            // Aussi max 10 sorts pour des arcanes 1-5, 5 sorts pour arcanes 6-10 et 2 pour arcanes finale
+            let wands = this.wandUtil.getAvailableWandsForSpell(actor, spell.id, spell.dependsOnArcaneLevel ? actor.data.data.computedData.magic.arcaneLevel : 0);
+            if (!wands) {
+                ui.notifications?.warn('Aucune baguette disponible');
+                return;
+            }
+            let wand = await this.itemSelector.openItemSelector(wands, "Choisir la baguette à remplir");
+            if (!wand) {
+                return;
+            }
+            await this.wandUtil.fillWandWithSpell(testRoll.result, wand, spell, actor);
+            message = `<div class="skill-roll-spell-chat">
+                <div class="title"><i class="fa fa-scroll"></i>Remplissage d'une baguette</div>
+                <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
+                <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
+                <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>`;
+            if (testRoll.result == 'epicFail') {
+                message += `<div class="epic-fail">La baguette est désormais bloqué et ne peux plus être rempli</div>`;
+            }
+            message += `</div>`;
         } else if (this.action === 'createScroll') {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title"><i class="fa fa-scroll"></i>Création d'un parchemin</div>

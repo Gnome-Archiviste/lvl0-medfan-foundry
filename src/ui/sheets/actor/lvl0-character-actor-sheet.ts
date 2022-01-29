@@ -148,6 +148,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         // press the first button available and often do something unwanted
         html.find('input').on('keypress', function(event) {
             if (event.key == 'Enter') {
+                event.target.blur();
                 event.preventDefault();
             }
         });

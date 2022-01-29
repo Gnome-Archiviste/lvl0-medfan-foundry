@@ -1,8 +1,9 @@
-import {ScrollUtil} from 'managers/spell';
+import {ScrollUtil, WandUtil} from 'managers/spell';
 import {
     ItemDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';
 import {container} from 'tsyringe';
+import {Lvl0ItemWand} from './lvl0-item-types';
 
 declare global {
     interface DocumentClassConfig {
@@ -12,6 +13,7 @@ declare global {
 
 export class Lvl0Item extends Item {
     private readonly scrollUtil: ScrollUtil;
+    private readonly wandUtil: WandUtil;
 
     constructor(
         data: ItemDataConstructorData,
@@ -19,6 +21,7 @@ export class Lvl0Item extends Item {
     ) {
         super(data, context);
         this.scrollUtil = container.resolve(ScrollUtil);
+        this.wandUtil = container.resolve(WandUtil);
     }
 
     get actionnable(): boolean {
@@ -34,6 +37,9 @@ export class Lvl0Item extends Item {
     async use(): Promise<void> {
         if (this.data.type === 'scroll') {
             await this.scrollUtil.useScroll(this);
+        }
+        if (this.data.type === 'wand') {
+            await this.wandUtil.useWand(this as Lvl0ItemWand);
         }
     }
 }

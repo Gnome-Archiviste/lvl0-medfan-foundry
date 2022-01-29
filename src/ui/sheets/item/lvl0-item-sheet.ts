@@ -56,6 +56,7 @@ export class Lvl0ItemSheet extends ItemSheet {
         // press the first button available and often do something unwanted
         html.find('input').on('keypress', function (event) {
             if (event.key == 'Enter') {
+                event.target.blur();
                 event.preventDefault();
             }
         });

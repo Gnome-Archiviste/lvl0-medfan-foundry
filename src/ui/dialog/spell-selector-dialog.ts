@@ -1,8 +1,7 @@
 import {inject, injectable} from 'tsyringe';
-import {ActorSpell} from 'managers/spell';
+import {ActorSpell, WandUtil} from 'managers/spell';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {Lvl0Actor} from 'models/actor';
-import {Lvl0ItemWand} from 'models/item';
 import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
 import ClickEvent = JQuery.ClickEvent;
@@ -15,13 +14,14 @@ export interface SpellSelectorDialogData {
 export type SpellCastAction = 'fillWand' | 'createScroll' | 'cast';
 
 @injectable()
-export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {spell: ActorSpell, action: SpellCastAction}> {
+export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, { spell: ActorSpell, action: SpellCastAction }> {
 
     constructor(
         @inject("DIALOG_DATA") dialogData: SpellSelectorDialogData,
         @inject("DIALOG_RESULT") result: DialogResultCallback<{ spell: ActorSpell; action: SpellCastAction }>,
         @inject(MacroUtil) private readonly macroUtil: MacroUtil,
         @inject(InitializedGame) private readonly game: InitializedGame,
+        @inject(WandUtil) private readonly wandUtil: WandUtil,
     ) {
         super(dialogData, result);
     }
@@ -35,21 +35,7 @@ export class SpellSelectorDialog extends DialogBase<SpellSelectorDialogData, {sp
             return previousValue;
         }, {});
 
-        let spellInNonFullWand = {};
-        let emptyWandAvailable = false;
-        let wands = this.dialogData.actor.itemTypes['wand'];
-        if (wands) {
-            for (let wand of wands) {
-                if (!wand.data.data.spell) {
-                    emptyWandAvailable = true;
-                    break;
-                }
-                if (wand.data.data.charge < 10) {
-                    spellInNonFullWand[wand.data.data.spell] = true;
-                }
-            }
-        }
-
+        let [spellInNonFullWand, emptyWandAvailable] = this.wandUtil.getNonFullWands(this.dialogData.actor);
         let emptyScrollAvailable = this.dialogData.actor.getFirstEmptyScroll() !== undefined;
 
         return {

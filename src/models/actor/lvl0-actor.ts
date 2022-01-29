@@ -20,7 +20,7 @@ import {RollSpecialityManager} from "../../managers/speciality";
 import {LevelData, Lvl0ActorCharacterData} from './properties-data';
 import {ActorDataComputer} from './actor-data-computers';
 import {SpecialityRepository} from '../../repositories';
-import {Lvl0ItemScroll} from '../item';
+import {Lvl0Item, Lvl0ItemScroll} from '../item';
 import {container} from 'tsyringe';
 import {
     ActorDataConstructorData
@@ -259,7 +259,7 @@ export class Lvl0Actor extends Actor {
         }, {diff: true});
     }
 
-    getFirstEmptyScroll(): Item | undefined {
+    getFirstEmptyScroll(): Lvl0Item | undefined {
         let scrolls = this.itemTypes['scroll'];
         if (scrolls) {
             for (let scroll of scrolls) {

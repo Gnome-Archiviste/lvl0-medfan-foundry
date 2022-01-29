@@ -10,7 +10,8 @@
       grid-column-gap: 8px;
       grid-template-areas: "select icon name damage handCount";
       align-items: center;
-      border-bottom: 1px solid darkgrey;
+      height: 36px;
+      margin-block: 4px;
 
       .icon {
         > img {
@@ -21,9 +22,11 @@
       .name {
         grid-area: name;
         position: relative;
+
         .title {
           font-weight: bold;
         }
+
         .description {
           background: #23221d;
           top: 28px;
@@ -34,6 +37,7 @@
           visibility: hidden;
           position: absolute;
         }
+
         &:hover {
           .description {
             visibility: visible;
@@ -58,12 +62,13 @@
         font-weight: bold;
       }
 
+      height: 36px;
       display: grid;
       grid-template-columns: 32px 32px 1fr 150px 50px;
       grid-column-gap: 8px;
       grid-template-areas: "select icon name damage quantity";
       align-items: center;
-      border-bottom: 1px solid darkgrey;
+      margin-block: 4px;
 
       .icon {
         > img {
@@ -74,9 +79,11 @@
       .name {
         grid-area: name;
         position: relative;
+
         .title {
           font-weight: bold;
         }
+
         .description {
           background: #23221d;
           top: 28px;
@@ -87,6 +94,7 @@
           visibility: hidden;
           position: absolute;
         }
+
         &:hover {
           .description {
             visibility: visible;
@@ -108,6 +116,22 @@
         grid-area: damage;
       }
     }
+  }
+
+  .separator {
+    height: 1px;
+    background-color: black;
+    opacity: 0.25;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4px;
+  }
+
+  .actions {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

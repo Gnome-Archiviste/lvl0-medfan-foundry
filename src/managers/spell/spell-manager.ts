@@ -92,6 +92,7 @@ export class SpellManager {
                 name: spellDefinition.name,
                 resilience: await this.computeComplex(spellDefinition.resilience, context),
                 definition: spellDefinition,
+                dependsOnArcaneLevel: spellDefinition.dependsOnArcaneLevel
             };
             actorSpell.description = marked.parse(this.computeSpellDescription(actorSpell, spellDefinition, context));
 
@@ -116,6 +117,7 @@ export class SpellManager {
             icon: spellDefinition.icon,
             name: spellDefinition.name,
             definition: spellDefinition,
+            dependsOnArcaneLevel: spellDefinition.dependsOnArcaneLevel
         };
     }
 

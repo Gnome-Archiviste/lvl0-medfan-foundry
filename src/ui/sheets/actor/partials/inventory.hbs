@@ -36,6 +36,7 @@
                     <div>
                         <span class="title">
                             {{item.name}}
+                            {{#if (gt item.data.data.charge 0)}} - {{item.data.data.charge}} charge(s){{/if}}
                         </span>
                     </div>
                     {{#if item.data.data.description}}

@@ -185,9 +185,10 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
 
     async rollDice(count, type) {
         let roll = await this.rollFactory.createRoll(count + 'd6');
+        let diceTerm = roll.terms[0] as DiceTerm;
 
-        for (let i = 0; i < roll.terms[0].results.length; i++) {
-            this.diceData[type + '-' + i] = roll.terms[0].results[i].result;
+        for (let i = 0; i < diceTerm.results.length; i++) {
+            this.diceData[type + '-' + i] = diceTerm.results[i].result;
         }
 
         const messageData = roll.toMessage({}, {create: false});

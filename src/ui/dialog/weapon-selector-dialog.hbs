@@ -6,6 +6,7 @@
             <div class="handCount">Nbre de main</div>
             <div class="damage">Dégâts</div>
         </div>
+        <div class="separator"></div>
         {{#each weapons as |item| }}
             <div class="{{ternary (eq item.id selectedWeaponId) "weapon-line selected" "weapon-line"}}" data-select-weapon data-item-id="{{item.id}}" >
                 <div class="select"><input type="radio" name="weapon" value="{{item.id}}"></div>
@@ -21,6 +22,9 @@
                 <div class="handCount">{{item.data.data.handCount}}</div>
                 <div class="damage">{{weaponDamageFormula ../weaponType item}}</div>
             </div>
+            {{#if (not @last)}}
+                <div class="separator"></div>
+            {{/if}}
         {{/each}}
     </section>
     <section class="ammunition">
@@ -30,6 +34,7 @@
             <div class="damage">Dégâts additionnel</div>
             <div class="quantity">Quantité</div>
         </div>
+        <div class="separator"></div>
         <div class="ammunition-line" data-select-ammo>
             <div class="select"><input type="radio" name="ammo" value="default"></div>
             <div class="name">
@@ -38,6 +43,7 @@
             <div class="damage">0</div>
             <div class="quantity">&infin;</div>
         </div>
+        <div class="separator"></div>
         {{#each ammunition as |item| }}
             <div class="ammunition-line" data-select-ammo data-item-id="{{item.id}}" data-ammunition-type="{{item.data.data.ammunitionType}}">
                 <div class="select"><input type="radio" name="ammo" value="{{item.id}}"></div>
@@ -57,8 +63,13 @@
                 </div>
                 <div class="quantity">{{item.data.data.quantity}}</div>
             </div>
+            {{#if (not @last)}}
+                <div class="separator"></div>
+            {{/if}}
         {{/each}}
     </section>
-    <button data-dialog-action="cancel">Annuler</button>
-    <button data-dialog-action="confirm">Utiliser</button>
+    <div class="actions">
+        <button data-dialog-action="cancel">Annuler</button>
+        <button data-dialog-action="confirm">Utiliser</button>
+    </div>
 </div>
