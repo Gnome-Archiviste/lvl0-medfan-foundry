@@ -2,8 +2,8 @@ import {inject, singleton} from 'tsyringe';
 import * as marked from 'marked';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
-import {assertIsCharacter, Lvl0Actor} from 'models/actor';
-import {ElementRepository, SpellRepository} from 'repositories';
+import {assertIsCharacter, ComputedCharacterMagicArmorData, Lvl0Actor} from 'models/actor';
+import {ElementRepository, SpellActionMagicArmorDefinition, SpellRepository} from 'repositories';
 import {
     AddEffectActionModifierDefinition,
     ComputableSpellValue,
@@ -350,10 +350,7 @@ export class SpellManager {
         for (let [key, action] of Object.entries(actions)) {
             let magicArmor: Lvl0ActorEffectArmor | undefined;
             if (action.data.magicArmor) {
-                magicArmor = {
-                    remainingArmorPoint: action.data.magicArmor.value,
-                    totalArmorPoint: action.data.magicArmor.value
-                };
+                magicArmor = await this.computeMagicArmor(action.data.magicArmor, context);
             }
             computedActions[key] = {
                 name: action.name,
@@ -393,25 +390,44 @@ export class SpellManager {
     getRollsInSpell(spell: ActorSpell): Evaluated<Roll>[] {
         let rolls: Evaluated<Roll>[] = [];
 
-        if (spell.distance instanceof  RolledSpellStat)
+        if (spell.distance instanceof RolledSpellStat)
             rolls.push(spell.distance.roll);
-        if (spell.damage instanceof  RolledSpellStat)
+        if (spell.damage instanceof RolledSpellStat)
             rolls.push(spell.damage.roll);
-        if (spell.bonus instanceof  RolledSpellStat)
+        if (spell.bonus instanceof RolledSpellStat)
             rolls.push(spell.bonus.roll);
-        if (spell.healFormula instanceof  RolledSpellStat)
+        if (spell.healFormula instanceof RolledSpellStat)
             rolls.push(spell.healFormula.roll);
-        if (spell.duration instanceof  RolledSpellStat)
+        if (spell.duration instanceof RolledSpellStat)
             rolls.push(spell.duration.roll);
-        if (spell.heal instanceof  RolledSpellStat)
+        if (spell.heal instanceof RolledSpellStat)
             rolls.push(spell.heal.roll);
-        if (spell.area instanceof  RolledSpellStat)
+        if (spell.area instanceof RolledSpellStat)
             rolls.push(spell.area.roll);
-        if (spell.resilience instanceof  RolledSpellStat)
+        if (spell.resilience instanceof RolledSpellStat)
             rolls.push(spell.resilience.roll);
-        if (spell.criticalSuccess instanceof  RolledSpellStat)
+        if (spell.criticalSuccess instanceof RolledSpellStat)
             rolls.push(spell.criticalSuccess.roll);
 
         return rolls;
+    }
+
+    private async computeMagicArmor(magicArmor: SpellActionMagicArmorDefinition, context: SpellContext): Promise<Lvl0ActorEffectArmor | undefined> {
+        let value: number;
+        if (magicArmor.value) {
+            value = magicArmor.value;
+        } else if (magicArmor.rollFormula) {
+            let rollFormula = this.computeFormula(magicArmor.rollFormula, context);
+            let roll = await this.rollFactory.createRoll(rollFormula);
+            value = roll.total;
+        } else if (magicArmor.formula) {
+            value = this.computeFormula(magicArmor.formula, context);
+        } else {
+            return undefined;
+        }
+        return {
+            remainingArmorPoint: value,
+            totalArmorPoint: value
+        } as Lvl0ActorEffectArmor;
     }
 }

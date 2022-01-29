@@ -29,7 +29,13 @@ export interface AddEffectActionDefinitionData {
     readonly icon?: string;
     readonly duration?: ComputableSpellValue;
     readonly modifiers?: AddEffectActionModifierDefinition[];
-    readonly magicArmor?: {value: number};
+    readonly magicArmor?: SpellActionMagicArmorDefinition;
+}
+
+export interface SpellActionMagicArmorDefinition {
+    readonly rollFormula?: string;
+    readonly formula?: string;
+    readonly value?: number
 }
 
 export interface AddEffectActionModifierDefinition {
