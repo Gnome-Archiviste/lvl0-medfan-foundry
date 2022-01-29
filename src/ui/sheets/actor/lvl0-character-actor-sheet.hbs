@@ -284,6 +284,7 @@
                         <div>
                             <div class="effect-values" data-effect-id="{{@key}}">
                                 <div class="effect-value header">
+                                    <span></span>
                                     <span>Nom</span>
                                     <span>Durée</span>
                                     <span>Effets</span>
@@ -291,6 +292,7 @@
                                 </div>
                                 {{#each actorData.effects as |effect|}}
                                     <div class="effect-value" data-effect-id="{{@key}}">
+                                        <div><img src="{{effect.icon}}"></div>
                                         <div>{{effect.effectName}}</div>
                                         <div>{{effect.duration}}</div>
                                         <div>

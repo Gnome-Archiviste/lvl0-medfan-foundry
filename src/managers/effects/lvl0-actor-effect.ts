@@ -1,6 +1,7 @@
 export interface Lvl0ActorEffect {
     duration: string;
     effectName: string;
+    icon: string;
     modifiers: Lvl0ActorEffectModifier[];
     magicArmor?: Lvl0ActorEffectArmor;
 }

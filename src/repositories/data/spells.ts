@@ -26,6 +26,7 @@ export interface SpellActionDefinition {
 
 export interface AddEffectActionDefinitionData {
     readonly effectName: string;
+    readonly icon?: string;
     readonly duration?: ComputableSpellValue;
     readonly modifiers?: AddEffectActionModifierDefinition[];
     readonly magicArmor?: {value: number};

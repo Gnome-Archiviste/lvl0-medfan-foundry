@@ -78,7 +78,7 @@ export class SpellManager {
         try {
             let actorSpell: ActorSpell = {
                 id: spellId,
-                actions: await this.computeActions(spellDefinition.actions, context),
+                actions: await this.computeActions(spellDefinition.actions, context, spellDefinition.icon),
                 area: await this.computeComplex(spellDefinition.area, context),
                 bonus: await this.computeComplex(spellDefinition.bonus, context),
                 cost: level,
@@ -124,7 +124,7 @@ export class SpellManager {
     async reComputeSpellAfterRoll(actorSpell, context: SpellContext) {
         let updatedActorSpell = {
             ...actorSpell,
-            actions: await this.computeActions(actorSpell.definition.actions, context),
+            actions: await this.computeActions(actorSpell.definition.actions, context, actorSpell.definition.icon),
             area: await this.computeComplex(actorSpell.definition.area, context),
             bonus: await this.computeComplex(actorSpell.definition.bonus, context),
             criticalSuccess: await this.computeComplex(actorSpell.definition.criticalSuccess, context),
@@ -339,7 +339,8 @@ export class SpellManager {
 
     async computeActions(
         actions: { [actionKey: string]: SpellActionDefinition },
-        context: SpellContext
+        context: SpellContext,
+        spellIcon: string
     )
         : Promise<{ [actionKey: string]: ActorSpellAction } | undefined> {
         if (!actions)
@@ -360,6 +361,7 @@ export class SpellManager {
                 data: {
                     effectName: action.data.effectName,
                     duration: await this.computeComplex(action.data.duration, context),
+                    icon: action.data.icon || spellIcon,
                     modifiers: action.data.modifiers?.map(m => this.computeModifier(m, context)) || [],
                     magicArmor
                 }
