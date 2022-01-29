@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Crée une flamme de 20m³ par arcane"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMajeurDeFeu",
@@ -37,7 +38,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fascination",
@@ -65,7 +67,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "L’élémentaliste peut fasciner 2 cibles."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "pareFeu",
@@ -91,7 +94,8 @@ export default [
         },
         "damage": {
             "text": "1d6 +(1 par niveau d’arcane) points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "souffleDuDragon",
@@ -117,6 +121,7 @@ export default [
             "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "fire",
             "text": "2d6 + (4 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

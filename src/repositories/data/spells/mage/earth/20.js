@@ -21,6 +21,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "?"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

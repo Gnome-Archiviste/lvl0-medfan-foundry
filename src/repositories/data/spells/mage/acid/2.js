@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "causticBerries",
@@ -40,7 +41,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité de baies (les baies manquantes apparaissent)."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mofette",
@@ -71,7 +73,8 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "physic",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "repasDuFeroxyde",
@@ -96,7 +99,8 @@ export default [
         },
         "heal": {
             "rollFormula": "return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "acideTouch",
@@ -122,6 +126,7 @@ export default [
         "damage": {
             "rollFormula": "return '1d6+' + (1 * context.arcaneLevel);",
             "text": "1d6 + (1 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

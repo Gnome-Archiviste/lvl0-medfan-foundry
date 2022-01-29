@@ -23,7 +23,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mineMarineMajeure",
@@ -49,7 +50,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6+10';",
             "text": "5d6 + 10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murDeGlace",
@@ -75,7 +77,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6+1';",
             "text": "1d6 +1"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "velage",
@@ -101,7 +104,8 @@ export default [
         },
         "damage": {
             "text": "Aucun sauf à la paroie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "zoneDeFroid",
@@ -134,6 +138,7 @@ export default [
         },
         "damage": {
             "text": "2d6/tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

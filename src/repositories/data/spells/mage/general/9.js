@@ -30,7 +30,8 @@ export default [
         },
         "damage": {
             "text": "4d6 par tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murDePierre",
@@ -50,7 +51,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la largeur"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "œilDeDasha",
@@ -69,7 +71,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "orbeEnflammeDeKegan",
@@ -97,7 +100,8 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "fire",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "permanence",
@@ -113,7 +117,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "premonition",
@@ -132,7 +137,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Le prémonition est clair"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "souffleDuDragon",
@@ -158,7 +164,8 @@ export default [
             "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "fire",
             "text": "2d6 + (4 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "telepathie",
@@ -178,7 +185,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort et distance"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "transformation",
@@ -201,7 +209,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tremblementDeTerre",
@@ -235,6 +244,7 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

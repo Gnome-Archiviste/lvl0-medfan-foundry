@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMajeurDacide",
@@ -37,7 +38,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "souffleDuFeroxide",
@@ -63,6 +65,7 @@ export default [
             "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "acid",
             "text": "2d6 + (4 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

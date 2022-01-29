@@ -29,7 +29,8 @@ export default [
             "rollFormula": "return '12d6';",
             "element": "acid",
             "text": "12d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tempeteDacide",
@@ -63,6 +64,7 @@ export default [
         "damage": {
             "element": "acid",
             "text": "4d6 par tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

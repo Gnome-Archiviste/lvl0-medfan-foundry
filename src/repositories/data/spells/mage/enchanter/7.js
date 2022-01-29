@@ -22,7 +22,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6-2';",
             "text": "1d6-2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "creationDobjetIntercaste",
@@ -44,7 +45,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "donne 2 points dans l’habileté."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "destrierDePochee",
@@ -63,7 +65,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "invocation",
@@ -81,7 +84,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6+6';",
             "text": "1d6 + 6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resilienceAucune",
@@ -103,7 +107,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionsRehaussantes",
@@ -125,6 +130,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

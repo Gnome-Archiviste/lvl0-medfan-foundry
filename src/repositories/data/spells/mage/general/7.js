@@ -27,7 +27,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "confusion",
@@ -56,7 +57,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "desintegration",
@@ -78,7 +80,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Durée instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "eclairEnChaine",
@@ -102,7 +105,8 @@ export default [
         },
         "damage": {
             "text": "2d6 + (3 par victimes) sur chaque victime"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "invocation",
@@ -123,7 +127,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6+6';",
             "text": "1d6 + 6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "œilDeLaigle",
@@ -147,7 +152,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+4 en Perception"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "rapetissement",
@@ -173,7 +179,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "refletElfique",
@@ -197,7 +204,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+4 en Charisme"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ruseDuRenard",
@@ -221,7 +229,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+4 en Intelligence."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "runesExplosive",
@@ -246,6 +255,7 @@ export default [
         "damage": {
             "rollFormula": "return '4d6';",
             "text": "4d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

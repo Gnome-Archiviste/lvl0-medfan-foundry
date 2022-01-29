@@ -23,7 +23,8 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceALacide",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisé à l’acide"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceALelectricite",
@@ -71,7 +73,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée à l’électricité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFeu",
@@ -95,7 +98,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au feu"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFroid",
@@ -117,6 +121,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au froid."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

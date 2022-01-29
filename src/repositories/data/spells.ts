@@ -15,6 +15,7 @@ export interface SpellDefinition {
     readonly criticalSuccess?: ComputableSpellValue;
     readonly damage?: SpellDamageDefinition;
     readonly heal?: SpellHealDefinition;
+    readonly dependsOnArcaneLevel?: boolean;
 }
 
 export interface SpellActionDefinition {

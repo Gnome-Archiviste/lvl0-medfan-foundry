@@ -20,7 +20,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Repas redonnent 20 points de vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "animus",
@@ -41,7 +42,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Maximum 20 tours en combat"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "espritFaible",
@@ -68,7 +70,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "imageMiroir",
@@ -92,7 +95,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "6 doubles"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "levitation",
@@ -114,7 +118,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "nimbus",
@@ -133,7 +138,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ombrelleDinvisibilite",
@@ -161,7 +167,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double le rayon du sort (pré-calculé)'; } return 'Double le rayon du sort';",
             "text": "Double le rayon du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passeMuraille",
@@ -184,7 +191,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "telekinesie",
@@ -206,7 +214,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort et la vitesse"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "terreur",
@@ -234,6 +243,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

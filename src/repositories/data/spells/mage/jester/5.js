@@ -26,7 +26,8 @@ export default [
         },
         "damage": {
             "text": "aucun"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dissipationDeLaMagie",
@@ -45,6 +46,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Annule un sort de buffon d’arcane 6 et non-buffon d’arcane 3"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

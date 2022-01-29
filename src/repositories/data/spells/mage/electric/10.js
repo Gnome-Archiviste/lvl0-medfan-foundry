@@ -30,7 +30,8 @@ export default [
         },
         "damage": {
             "text": "10d6 +10 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tempeteTropicale",
@@ -63,6 +64,7 @@ export default [
         "damage": {
             "rollFormula": "return '6d6+15';",
             "text": "6d6+15"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "partoutatis",
@@ -51,7 +52,8 @@ export default [
             "rollFormula": "return '20d6+10';",
             "element": "physic",
             "text": "20d6 + 10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "petrification",
@@ -73,7 +75,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Il faut absolument le sort  du Baiser de la princesse des Champions pour briser"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "leSortLaPotionOuLeSortDeDepetrificationNeFonctionnePas",
@@ -93,6 +96,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la largeur"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

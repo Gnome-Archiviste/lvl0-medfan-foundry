@@ -25,7 +25,8 @@ export default [
         },
         "damage": {
             "text": "1d6 dégâts par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "personneEstDansLaZoneDuDemonDePoussiere",
@@ -45,7 +46,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la largeur"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "peauDeDiamant",
@@ -67,7 +69,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 100 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tremblementDeTerre",
@@ -101,6 +104,7 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

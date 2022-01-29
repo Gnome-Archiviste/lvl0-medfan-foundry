@@ -16,7 +16,8 @@ export default [
         },
         "bonus": {
             "text": "Contre les potions négatives"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "aveuglement",
@@ -42,7 +43,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bouleDeFeu",
@@ -71,7 +73,8 @@ export default [
         "damage": {
             "element": "fire",
             "text": "1d6 par niveau d’arcane du magicien"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "charme",
@@ -99,7 +102,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "guerison",
@@ -127,7 +131,8 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "invisibilite",
@@ -148,7 +153,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible a droit à une seule attaque sans devenir visible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "miroir",
@@ -167,7 +173,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Maximise les dégâts du sort reflété"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "nueeGrouillante",
@@ -191,7 +198,8 @@ export default [
         },
         "damage": {
             "text": "Selon l’attaque de la nuée."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passageSansTraces",
@@ -214,7 +222,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "runeDeKegan",
@@ -239,6 +248,7 @@ export default [
         "damage": {
             "rollFormula": "return '2d6';",
             "text": "2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

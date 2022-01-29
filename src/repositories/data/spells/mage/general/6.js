@@ -16,7 +16,8 @@ export default [
         },
         "resilience": {
             "text": "Le sort ne fonctionne pas"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "etatGazeux",
@@ -39,7 +40,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "forceDuGeant",
@@ -63,7 +65,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+4 en physique"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "graceFeline",
@@ -87,7 +90,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+4 en dextérité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "identificationDeTresor",
@@ -103,7 +107,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "jetDacide",
@@ -131,7 +136,8 @@ export default [
             "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "acid",
             "text": "2d6 + (4 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "marcherSurLeau",
@@ -154,7 +160,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "obscurite",
@@ -182,7 +189,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "parlerAuxAnimaux",
@@ -205,7 +213,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "pointeDePierre",
@@ -232,6 +241,7 @@ export default [
         },
         "damage": {
             "text": "1d6 par mètre"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

@@ -19,7 +19,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "airCreation",
@@ -39,7 +40,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "spark",
@@ -66,7 +68,8 @@ export default [
             "rollFormula": "return \"2\";",
             "element": "electric",
             "text": "2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "megaphone",
@@ -90,7 +93,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la distance"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "smug",
@@ -113,6 +117,7 @@ export default [
         "criticalSuccess": {
             "text": "Double le rayon du sort"
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",

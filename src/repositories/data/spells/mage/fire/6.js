@@ -20,7 +20,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "eruptionExplosive",
@@ -50,7 +51,8 @@ export default [
         "damage": {
             "rollFormula": "if (context.criticalSuccess) { return '(' + ('3d6+' + (1 * context.arcaneLevel)) + ')*2'; } return '3d6+' + (1 * context.arcaneLevel);",
             "text": "3d6 + (1 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "murDeFeu",
@@ -79,7 +81,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "petarade",
@@ -104,7 +107,8 @@ export default [
         "damage": {
             "rollFormula": "return '3d6+6';",
             "text": "3d6 + 6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "runesExplosive",
@@ -129,6 +133,7 @@ export default [
         "damage": {
             "rollFormula": "return '4d6';",
             "text": "4d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

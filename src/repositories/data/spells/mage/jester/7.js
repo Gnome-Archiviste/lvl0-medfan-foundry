@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "confusion",
@@ -46,7 +47,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "devouement",
@@ -70,7 +72,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "piedDansLaBouche",
@@ -98,6 +101,7 @@ export default [
             "value": 10,
             "unit": "tours",
             "text": "Durée 10 tours"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

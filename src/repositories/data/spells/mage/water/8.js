@@ -30,7 +30,8 @@ export default [
         },
         "damage": {
             "text": "4d6 par tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cephalee",
@@ -61,7 +62,8 @@ export default [
         "damage": {
             "rollFormula": "return '2d6+4';",
             "text": "2d6 + 4"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fantassinDeGlace",
@@ -81,7 +83,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "igloo",
@@ -104,7 +107,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Repas redonnent 20 points de vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "visionDeLetreMouille",
@@ -130,6 +134,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permanent"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "stinkingBomb",
@@ -49,7 +50,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "magicMouth",
@@ -68,7 +70,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "animatedRope",
@@ -87,7 +90,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "IceCreamCone",
@@ -114,7 +118,8 @@ export default [
         "damage": {
             "rollFormula": "return '(1d6/2) * ' + context.arcaneLevel;",
             "text": "1d6/2 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "talithaSneezing",
@@ -142,7 +147,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "TalitaPartialInvisibility",
@@ -163,7 +169,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "ChimericWall",
@@ -188,7 +195,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "PainfulLaughter",
@@ -216,7 +224,8 @@ export default [
         },
         "damage": {
             "text": "1d6-2 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "Switcharoo",
@@ -238,6 +247,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Échange le contenu de trois bouteilles"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

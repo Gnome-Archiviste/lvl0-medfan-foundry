@@ -21,6 +21,7 @@ export default [
         },
         "damage": {
             "text": "15d6 première victime et -1d pour chaque victime suivante"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

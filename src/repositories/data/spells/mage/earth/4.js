@@ -16,7 +16,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Effet maximum automatique (100%)[n]"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "pointesDePierre",
@@ -41,7 +42,8 @@ export default [
         },
         "damage": {
             "text": "1d6 par mètre"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "poussieresDansLesYeux",
@@ -67,6 +69,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

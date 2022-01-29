@@ -26,7 +26,8 @@ export default [
         "damage": {
             "rollFormula": "return '10d6+20';",
             "text": "10d6 + 20"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "frappeDeFlamme",
@@ -58,7 +59,8 @@ export default [
         "damage": {
             "rollFormula": "return '15d6+20';",
             "text": "15d6 + 20"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "phœnix",
@@ -74,6 +76,7 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

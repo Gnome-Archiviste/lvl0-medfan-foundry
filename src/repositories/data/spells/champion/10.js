@@ -18,7 +18,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "eruptionSolaire",
@@ -47,7 +48,8 @@ export default [
         "damage": {
             "rollFormula": "return '20d6';",
             "text": "20d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "phœnix",
@@ -63,7 +65,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resurrection",
@@ -87,7 +90,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "paramortus",
@@ -113,6 +117,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

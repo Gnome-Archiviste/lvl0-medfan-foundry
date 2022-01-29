@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+ 2d6 (acide)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "marinatedBody",
@@ -44,7 +45,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "corrosiveContact",
@@ -71,7 +73,8 @@ export default [
             "rollFormula": "return '3d6';",
             "element": "acid",
             "text": "3d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "minorAcidElemental",
@@ -91,7 +94,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "acidArrow",
@@ -121,6 +125,7 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "acid",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

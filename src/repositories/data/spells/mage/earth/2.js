@@ -29,7 +29,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6/2';",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sentierBucolique",
@@ -53,7 +54,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Triple le déplacement"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fruitsFossilisees",
@@ -74,7 +76,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité de noix (les noix manquantes apparaissent magiquement)."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "orDesFous",
@@ -98,7 +101,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double le temps de distraction"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "racines",
@@ -126,6 +130,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

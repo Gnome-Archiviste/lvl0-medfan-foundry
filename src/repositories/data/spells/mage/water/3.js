@@ -18,7 +18,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité de baies (les baies manquantes apparaissent)."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "icedSnowBall",
@@ -49,7 +50,8 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "water",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "blotter",
@@ -71,7 +73,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Ajoute 2d6 dégâts de glace"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cryogenics",
@@ -93,7 +96,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "minorWaterElemental",
@@ -113,6 +117,7 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

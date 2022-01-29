@@ -30,7 +30,8 @@ export default [
         },
         "damage": {
             "text": "4d6+3 par tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "orbeEnflammeDeKegan",
@@ -58,7 +59,8 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "fire",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "robeDeFeu",
@@ -86,7 +88,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tempeteDeFeu",
@@ -114,7 +117,8 @@ export default [
         "damage": {
             "rollFormula": "return \"56\";",
             "text": "56"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "deFeu",
@@ -143,6 +147,7 @@ export default [
         "damage": {
             "rollFormula": "return '20d6';",
             "text": "20d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

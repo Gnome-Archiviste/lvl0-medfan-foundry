@@ -25,7 +25,8 @@ export default [
         },
         "damage": {
             "text": "5d6 (Physique)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "uneGambadeSurLeau",
@@ -48,7 +49,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "obscurite",
@@ -76,7 +78,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "parlerAuxAnimaux",
@@ -99,7 +102,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "trucDeLaCorde",
@@ -118,7 +122,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "voirLaura",
@@ -140,6 +145,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Distance 10 mètres"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

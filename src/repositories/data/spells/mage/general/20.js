@@ -28,7 +28,8 @@ export default [
         "damage": {
             "rollFormula": "return '20d6';",
             "text": "20d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resurrectionAvance",
@@ -47,7 +48,8 @@ export default [
         },
         "bonus": {
             "text": "Ramène à la vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "rappelDeGroupe",
@@ -67,6 +69,7 @@ export default [
         },
         "bonus": {
             "text": "n/a"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

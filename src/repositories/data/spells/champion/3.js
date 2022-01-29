@@ -22,7 +22,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "detectLies",
@@ -44,7 +45,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permet de savoir si la cible, sans vraiment mentir, évite de réellement répondre à la question"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "healBlindness",
@@ -63,7 +65,8 @@ export default [
         },
         "bonus": {
             "text": "Annule un aveuglement"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "healDeafness",
@@ -82,7 +85,8 @@ export default [
         },
         "bonus": {
             "text": "Annule la surdité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "combatPrecognition",
@@ -107,6 +111,7 @@ export default [
         "criticalSuccess": {
             "text": "+2 armures, + 2 dommages"
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",

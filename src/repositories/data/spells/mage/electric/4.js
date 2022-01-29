@@ -26,7 +26,8 @@ export default [
             "rollFormula": "return '2d6+5';",
             "element": "physic",
             "text": "2d6 +5"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "flash",
@@ -52,7 +53,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "piedDansLesNuages",
@@ -73,7 +75,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la vitesse du mouvement"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ventDansLesCheveux",
@@ -97,7 +100,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2 en charisme"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "voleeDeVolees",
@@ -127,6 +131,7 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "electric",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

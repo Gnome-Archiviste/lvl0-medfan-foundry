@@ -22,7 +22,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double le rayon du sort (pré-calculé)'; } return 'Double le rayon du sort';",
             "text": "Double le rayon du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "detectUndead",
@@ -47,7 +48,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double le rayon du sort (pré-calculé)'; } return 'Double le rayon du sort';",
             "text": "Double le rayon du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "plonk",
@@ -77,7 +79,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6/2';",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "firstHeal",
@@ -102,7 +105,8 @@ export default [
         },
         "heal": {
             "rollFormula": "return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "purifyFood",
@@ -118,6 +122,7 @@ export default [
         },
         "area": {
             "text": "Un repas ou cruche"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

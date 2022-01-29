@@ -19,7 +19,8 @@ export default [
         },
         "damage": {
             "text": "Détruit"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "emousser",
@@ -44,7 +45,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "L’arme est détruite."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murDacide",
@@ -74,6 +76,7 @@ export default [
             "rollFormula": "return '5d6';",
             "element": "acid",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

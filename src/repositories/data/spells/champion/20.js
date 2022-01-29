@@ -20,7 +20,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resurrectionAvance",
@@ -39,7 +40,8 @@ export default [
         },
         "bonus": {
             "text": "Ramène à la vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "secondSouffle",
@@ -57,6 +59,7 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

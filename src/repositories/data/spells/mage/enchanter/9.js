@@ -25,7 +25,8 @@ export default [
         "damage": {
             "element": "acid",
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "electrisation",
@@ -53,7 +54,8 @@ export default [
         "damage": {
             "element": "electric",
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "lameIncendiaire",
@@ -81,7 +83,8 @@ export default [
         "damage": {
             "element": "fire",
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "surgelation",
@@ -109,7 +112,8 @@ export default [
         "damage": {
             "element": "water",
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionsUtilitairesRaresf",
@@ -131,6 +135,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

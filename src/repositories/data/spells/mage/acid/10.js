@@ -19,6 +19,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 100 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

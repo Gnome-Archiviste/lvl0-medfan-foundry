@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "magicMouth",
@@ -38,7 +39,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "talithaBuble",
@@ -60,7 +62,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La bulle est deux fois plus résistante (12 points de vie)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "animatedRope",
@@ -82,7 +85,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "talithaSneezing",
@@ -110,7 +114,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "illumination",
@@ -139,6 +144,7 @@ export default [
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
@@ -225,7 +231,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mudTrap",
@@ -255,7 +262,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "firstHeal",
@@ -283,12 +291,13 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "deafness",
         "name": "Surdité",
-        "icon": "icons/svg/deaf.svg",
+        "icon": "icons/svg/deaf.svg'[c]",
         "description": "Rends une victime sourde pour trois (3) tour par niveau d’arcane. La perception de la victime est réduite de deux et ne peut plus utiliser l’habileté Écouter.",
         "distance": {
             "value": 20,
@@ -310,6 +319,7 @@ export default [
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",

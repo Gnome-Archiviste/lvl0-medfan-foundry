@@ -16,6 +16,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Annule un sort de non-bouffon d’arcane 7 ou moins."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

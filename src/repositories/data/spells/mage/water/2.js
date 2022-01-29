@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "snowBall",
@@ -45,7 +46,8 @@ export default [
             "rollFormula": "return '1d6+2';",
             "element": "water",
             "text": "1d6 +2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mudTrap",
@@ -75,7 +77,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "underWaterBreath",
@@ -94,7 +97,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "source",
@@ -116,6 +120,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "6 points de vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

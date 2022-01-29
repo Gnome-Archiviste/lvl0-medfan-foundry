@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 30 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "auraDacide",
@@ -42,7 +43,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "contactAcide",
@@ -69,7 +71,8 @@ export default [
             "rollFormula": "return '5d6+' + (1 * context.arcaneLevel);",
             "element": "acid",
             "text": "5d6 + (1 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "degatsMarines",
@@ -93,7 +96,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permanent"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "rongeArmure",
@@ -119,6 +123,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible lance un d6. Si le résultat est cinq (5) ou six (6), l’armure est détruite."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

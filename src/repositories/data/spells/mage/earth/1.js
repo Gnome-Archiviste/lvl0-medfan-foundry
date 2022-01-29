@@ -26,7 +26,8 @@ export default [
         "damage": {
             "rollFormula": "if (context.criticalSuccess) { return '(' + ('1d6/2') + ')*2'; } return '1d6/2';",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "earthCreation",
@@ -46,7 +47,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Créer 2 m² de terre par arcane de l'élémentaliste."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mitraille",
@@ -69,7 +71,8 @@ export default [
         },
         "damage": {
             "text": "2 dégâts par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "earthFist",
@@ -93,7 +96,8 @@ export default [
         },
         "damage": {
             "text": "Physique + deux (2)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "quicksand",
@@ -123,6 +127,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

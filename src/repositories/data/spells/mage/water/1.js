@@ -22,6 +22,7 @@ export default [
         "criticalSuccess": {
             "text": "Double le rayon du sort"
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
@@ -60,7 +61,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "iceHand",
@@ -91,7 +93,8 @@ export default [
         "damage": {
             "element": "water",
             "text": "1d6 - 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "splash",
@@ -120,7 +123,8 @@ export default [
             "rollFormula": "if (context.criticalSuccess) { return '(' + ('1d6/2') + ')*2'; } return '1d6/2';",
             "element": "water",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ice",
@@ -146,6 +150,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

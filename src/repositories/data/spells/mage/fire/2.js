@@ -29,7 +29,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6/2';",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "boilingOil",
@@ -60,7 +61,8 @@ export default [
         },
         "damage": {
             "text": "1d6 (au lancé seulement)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "maledictionDeLacierBrulantH",
@@ -88,7 +90,8 @@ export default [
         },
         "damage": {
             "text": "2d6 dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "incandescenteNuts",
@@ -109,7 +112,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité de noix (les noix manquantes apparaissent)."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "halfWorldGrips",
@@ -137,6 +141,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

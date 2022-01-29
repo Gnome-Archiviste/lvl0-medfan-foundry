@@ -16,7 +16,8 @@ export default [
         },
         "bonus": {
             "text": "Contrer les potions"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "armeEnchantee",
@@ -40,7 +41,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Ajouté 6 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "guerison",
@@ -65,7 +67,8 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '24' } return '4d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "protectionDautrui",
@@ -88,7 +91,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe jusqu’à 20 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "repulsionDesMortsVivants",
@@ -113,6 +117,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

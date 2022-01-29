@@ -19,6 +19,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

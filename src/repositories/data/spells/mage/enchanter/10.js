@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double le nombre de point de vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "maximiserDegat",
@@ -43,6 +44,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Une journée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

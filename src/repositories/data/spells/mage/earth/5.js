@@ -22,7 +22,8 @@ export default [
         "damage": {
             "element": "physic",
             "text": "+1d6 + 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "auraDePoussiere",
@@ -45,7 +46,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience[o]"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passerelle",
@@ -65,7 +67,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la largeur"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "plierLaPierre",
@@ -84,6 +87,7 @@ export default [
         },
         "criticalSuccess": {
             "text": ""
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

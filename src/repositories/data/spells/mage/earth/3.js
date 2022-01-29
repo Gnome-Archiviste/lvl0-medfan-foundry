@@ -18,7 +18,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMineurDePierre",
@@ -38,7 +39,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "maledictionDeLacierBrulant",
@@ -66,7 +68,8 @@ export default [
         },
         "damage": {
             "text": "2d6 dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "peauDePierre",
@@ -88,7 +91,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 30 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "rocher",
@@ -118,6 +122,7 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "physic",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

@@ -25,7 +25,8 @@ export default [
             "rollFormula": "return '3d6';",
             "element": "water",
             "text": "3d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMineurDeGlace",
@@ -45,7 +46,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mineMarineMineure",
@@ -71,7 +73,8 @@ export default [
         "damage": {
             "rollFormula": "return '2d6';",
             "text": "2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "purification",
@@ -90,7 +93,8 @@ export default [
         },
         "bonus": {
             "text": "Contrer les potions négative"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFroid",
@@ -112,6 +116,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au froid."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

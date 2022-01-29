@@ -27,7 +27,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "auraDeChaleur",
@@ -50,7 +51,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience[k]"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "formeDeFeu",
@@ -73,7 +75,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "lameEnflammee",
@@ -101,7 +104,8 @@ export default [
         "damage": {
             "element": "fire",
             "text": "+1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "missileThermique",
@@ -126,6 +130,7 @@ export default [
         "damage": {
             "rollFormula": "return '2d6+9';",
             "text": "2d6 + 9"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

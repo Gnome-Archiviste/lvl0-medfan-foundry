@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 40 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "formeLiquide",
@@ -42,7 +43,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "geyser",
@@ -71,7 +73,8 @@ export default [
         "damage": {
             "rollFormula": "return '3d6+' + (1 * context.arcaneLevel);",
             "text": "3d6 + (1 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "hypothermie",
@@ -102,7 +105,8 @@ export default [
         },
         "damage": {
             "text": "1d6/tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "nessy",
@@ -123,6 +127,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

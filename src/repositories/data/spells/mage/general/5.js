@@ -20,7 +20,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cornetDeFroid",
@@ -53,7 +54,8 @@ export default [
             "rollFormula": "return '3d6';",
             "element": "water",
             "text": "3d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dissipationDeLaMagie",
@@ -72,7 +74,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Annule un sort de magicien d’arcane 6 et non-magicien d’arcane 3"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "illusion",
@@ -98,7 +101,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "peauDePierre",
@@ -120,7 +124,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 30 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceALacide",
@@ -144,7 +149,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée à l’acide"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceALelectricite",
@@ -168,7 +174,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée à l’électricité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFeu",
@@ -192,7 +199,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au feu"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFroid",
@@ -214,7 +222,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au froid."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "voirLinvisible",
@@ -235,6 +244,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La durée devient une journée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

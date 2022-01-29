@@ -19,7 +19,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fireCreation",
@@ -39,7 +40,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Crée une flamme de 50 cm³ par arcane"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bengalLight",
@@ -62,7 +64,8 @@ export default [
         },
         "damage": {
             "text": "3 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fireSlap",
@@ -90,7 +93,8 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "fire",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dancingLight",
@@ -112,6 +116,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Triple la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

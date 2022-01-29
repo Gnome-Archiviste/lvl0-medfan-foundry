@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "phosphene",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "pluieDeLave",
@@ -81,7 +83,8 @@ export default [
         "damage": {
             "rollFormula": "return '3d6';",
             "text": "3d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "resistanceAuFeu",
@@ -105,7 +108,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée au feu"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "soufflerLaChandelle",
@@ -127,6 +131,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Les feux dans la zone ne se rallument que si l’élémentaliste le souhaite"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

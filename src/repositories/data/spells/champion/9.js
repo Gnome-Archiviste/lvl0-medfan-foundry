@@ -13,7 +13,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "eclatDeRectitude",
@@ -36,7 +37,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "exorcisme",
@@ -59,7 +61,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "premonition",
@@ -78,7 +81,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Le prémonition est clair"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "regeneration",
@@ -101,6 +105,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Soigne 10 point de vie par tour"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

@@ -23,7 +23,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "enchantement",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Dégâts +4"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "liberation",
@@ -64,7 +66,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ligneDeVie",
@@ -80,7 +83,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "marcherSurLeau",
@@ -104,6 +108,7 @@ export default [
             "value": 20,
             "unit": "tours",
             "text": "Durée 20 tours"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

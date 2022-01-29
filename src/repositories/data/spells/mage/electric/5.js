@@ -20,7 +20,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience[c]"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "eclairEnChaine",
@@ -45,7 +46,8 @@ export default [
         "damage": {
             "element": "electric",
             "text": "2d6 + (3 par victimes) sur chaque victime"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "electrification",
@@ -69,7 +71,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permanent"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "etatGazeux",
@@ -92,7 +95,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sphereDeTesla",
@@ -120,7 +124,8 @@ export default [
             "rollFormula": "return '5d6';",
             "element": "electric",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "estDansLanneau",
@@ -153,7 +158,8 @@ export default [
         },
         "damage": {
             "text": "4d6 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "mainParalysante",
@@ -185,7 +191,8 @@ export default [
         },
         "damage": {
             "text": "5d6 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murDeVent",
@@ -213,7 +220,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Projette ceux qui veulent traverser à dix (10) mètres."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "hippogriffe",
@@ -236,6 +244,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

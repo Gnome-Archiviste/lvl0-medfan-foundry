@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Ajouté 6 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "auraDePlacebo",
@@ -41,7 +42,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permanant"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "boulePuante",
@@ -73,7 +75,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "braoulebDePouvoir",
@@ -106,7 +109,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6-2';",
             "text": "1d6-2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "fixateurMagique",
@@ -128,7 +132,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Fait 6 potions par 2 points de mana au lieu de 5."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "glypheDeDeclenchement",
@@ -150,7 +155,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Le glyphe est encore bon pour un 2e déclenchement."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "meteorites",
@@ -175,7 +181,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6-2';",
             "text": "1d6-2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "objetAnime",
@@ -197,7 +204,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "potionDeMana",
@@ -219,7 +227,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "premiersSoins",
@@ -247,6 +256,7 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

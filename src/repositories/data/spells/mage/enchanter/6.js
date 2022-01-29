@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+3 de bonus dans la statistique choisie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "referezVousALaTableDesPierresPrecieusesEtSemiPrecieuses",
@@ -43,7 +44,8 @@ export default [
         },
         "damage": {
             "text": "Détruit"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionsUtilitairesClefs",
@@ -65,6 +67,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

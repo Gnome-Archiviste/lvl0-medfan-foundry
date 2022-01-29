@@ -20,7 +20,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "inspirationDeCombat",
@@ -46,7 +47,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2 d’armure, +4 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "marchesDuCiel",
@@ -64,7 +66,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Deux personnages peuvent passer de front"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murDeFeu",
@@ -95,7 +98,8 @@ export default [
         "damage": {
             "rollFormula": "return '5d6';",
             "text": "5d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "survolteurDeBollardon",
@@ -123,6 +127,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

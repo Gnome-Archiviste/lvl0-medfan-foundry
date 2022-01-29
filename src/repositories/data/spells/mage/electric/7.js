@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMajeurDair",
@@ -37,7 +38,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passageAerien",
@@ -58,6 +60,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Deux personnages peuvent passer de front"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

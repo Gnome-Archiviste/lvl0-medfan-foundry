@@ -23,7 +23,8 @@ export default [
             "rollFormula": "return '1d6+2';",
             "element": "electric",
             "text": "1d6 + 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dashaWhispering",
@@ -41,7 +42,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "etherealSkates",
@@ -66,7 +68,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "jump",
@@ -88,7 +91,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Bon pour 3 tours"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "WindInTheSails",
@@ -112,6 +116,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Déplacement 2.5x en bateau et 2x sur les routes"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

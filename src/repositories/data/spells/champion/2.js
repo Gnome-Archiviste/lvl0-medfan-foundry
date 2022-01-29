@@ -21,7 +21,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "blind",
@@ -50,13 +51,14 @@ export default [
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
         },
+        "dependsOnArcaneLevel": true,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
                 "type": "addEffect",
                 "data": {
                     "duration": {
-                        "formula": "return context.arcaneLevel",
+                        "formula": "return context.actorData.computedData.magic.arcaneLevel",
                         "unit": "tours"
                     },
                     "effectName": "Aveuglement",
@@ -119,7 +121,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "duel",
@@ -147,7 +150,8 @@ export default [
         },
         "damage": {
             "text": "1 (sans armure)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "heroMeal",
@@ -173,6 +177,7 @@ export default [
         },
         "heal": {
             "rollFormula": "return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

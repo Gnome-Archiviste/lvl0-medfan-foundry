@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "crue",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMajeurDeau",
@@ -67,7 +69,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "etiage",
@@ -97,7 +100,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "siphon",
@@ -121,6 +125,7 @@ export default [
         },
         "damage": {
             "text": "2d6 + (4 par niveau d’arcane) (eau)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

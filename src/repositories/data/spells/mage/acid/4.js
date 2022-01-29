@@ -25,7 +25,8 @@ export default [
             "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
             "element": "acid",
             "text": "2d6 + (4 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "pluieDacide",
@@ -60,7 +61,8 @@ export default [
             "rollFormula": "return '3d6';",
             "element": "acid",
             "text": "3d6"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "postillonAcide",
@@ -86,7 +88,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceALacide",
@@ -110,7 +113,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée à l’acide"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sourireScintillant",
@@ -134,6 +138,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2 en charisme"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

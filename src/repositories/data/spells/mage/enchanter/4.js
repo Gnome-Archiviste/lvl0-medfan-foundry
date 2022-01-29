@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Donne un bonus d’une seconde habileté choisie par le magicien."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dissipationDeLaMagie",
@@ -40,7 +41,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Annule un sort de magicien d’arcane 6 et non-magicien d’arcane 3"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "effacer",
@@ -60,7 +62,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "efface jusqu’à 4 pages"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "guerison",
@@ -88,7 +91,8 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '18' } return '3d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "invisibilite",
@@ -107,7 +111,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "objetBelliqueux",
@@ -129,7 +134,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "potionDeGuerison",
@@ -151,7 +157,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistance",
@@ -175,7 +182,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La résistance devient une immunité, ce qui veut dire que tous les dégâts de l’élément seront ignorés."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "voirLinvisible",
@@ -196,6 +204,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La durée devient une journée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

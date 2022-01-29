@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Pas besoin d’une permanence pour le 2eme enchantement"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "enchantementSuperieur",
@@ -45,7 +46,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Dégâts +10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "permanenceSuperieur",
@@ -61,6 +63,7 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

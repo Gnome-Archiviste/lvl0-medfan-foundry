@@ -19,7 +19,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "fog",
@@ -44,6 +45,7 @@ export default [
         "criticalSuccess": {
             "text": "Double le rayon du sort"
         },
+        "dependsOnArcaneLevel": false,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
@@ -94,7 +96,8 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "fire",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "light",
@@ -117,7 +120,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "iceHand",
@@ -148,7 +152,8 @@ export default [
         "damage": {
             "element": "water",
             "text": "1d6 - 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "spiderHand",
@@ -174,7 +179,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "magicParachute",
@@ -196,7 +202,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bananaPeel",
@@ -222,7 +229,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sesame",
@@ -247,7 +255,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La serrure ne fait pas de bruit"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "personalHeal",
@@ -272,6 +281,7 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

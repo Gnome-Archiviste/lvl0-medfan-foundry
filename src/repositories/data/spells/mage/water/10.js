@@ -26,7 +26,8 @@ export default [
         "damage": {
             "rollFormula": "return '10d6+20';",
             "text": "10d6 + 20"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bulleDeProtection",
@@ -50,7 +51,8 @@ export default [
         },
         "bonus": {
             "text": "200 point de protection"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "engloutir",
@@ -79,7 +81,8 @@ export default [
         },
         "damage": {
             "text": "4d6 de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tempeteDeGresil",
@@ -108,7 +111,8 @@ export default [
             "rollFormula": "return '8d6+10';",
             "element": "water",
             "text": "8d6 + 10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tourbillon",
@@ -125,6 +129,7 @@ export default [
         },
         "area": {
             "text": "Selon l’étendu d'eau"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

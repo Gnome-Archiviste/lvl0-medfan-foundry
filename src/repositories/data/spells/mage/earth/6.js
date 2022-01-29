@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 50 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "chevalDePierre",
@@ -42,6 +43,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

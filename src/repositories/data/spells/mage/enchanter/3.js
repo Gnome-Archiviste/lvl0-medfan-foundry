@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Donne un bonus d’une seconde habileté choisie par le magicien."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "auraDeBanalite",
@@ -44,7 +45,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun jet de résilience possible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bonification",
@@ -68,7 +70,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2 de bonus dans la statistique choisie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cadenasMagique",
@@ -84,7 +87,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "charmerUneConstruction",
@@ -112,7 +116,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "eclair",
@@ -138,7 +143,8 @@ export default [
             "rollFormula": "return '1d6+2';",
             "element": "electric",
             "text": "1d6 + 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "pageSecrete",
@@ -158,7 +164,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "&"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionsToniques",
@@ -180,7 +187,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionsUtilitairesCommunes",
@@ -202,7 +210,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "runeDeKegan",
@@ -227,6 +236,7 @@ export default [
         "damage": {
             "rollFormula": "return '2d6';",
             "text": "2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

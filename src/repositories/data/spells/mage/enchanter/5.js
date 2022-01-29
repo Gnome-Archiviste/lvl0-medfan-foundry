@@ -21,7 +21,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "electrification",
@@ -45,7 +46,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "enchantement",
@@ -69,7 +71,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Dégâts +4"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "glaciation",
@@ -93,7 +96,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "lameEnflammee",
@@ -117,7 +121,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "+2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "permanence",
@@ -133,7 +138,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionDeGuerisonDesMaledictions",
@@ -155,7 +161,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 7 potions par 5  points de mana au lieu de 5."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "potionTheurgique",
@@ -177,6 +184,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

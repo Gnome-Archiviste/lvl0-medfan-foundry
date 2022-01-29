@@ -27,7 +27,8 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "fire",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "minorFireElemental",
@@ -47,7 +48,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "piegeDeFeu",
@@ -72,7 +74,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6+' + (1 * context.arcaneLevel);",
             "text": "1d6 + (1 par niveau d’arcane)"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "retourDeFlammes",
@@ -94,7 +97,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort[j]"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "runeDeKegan",
@@ -119,6 +123,7 @@ export default [
         "damage": {
             "rollFormula": "return '2d6';",
             "text": "2d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

@@ -24,7 +24,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "baratiner",
@@ -44,7 +45,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun sort de Détection des mensonges possible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "decouverteFortuite",
@@ -64,7 +66,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Ne déclenche pas le piège s’il y en a un (mais le piège reste actif)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "detectionDesMensonges",
@@ -86,7 +89,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permet de savoir si la cible, sans vraiment mentir, évite de réellement répondre à la question"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "invocationDunFrankfurterDansant",
@@ -113,7 +117,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murmureDeDasha",
@@ -134,7 +139,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "poussiereScintillante",
@@ -161,7 +167,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "serpentins",
@@ -189,7 +196,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sphereGlaceeDeTalitha",
@@ -222,7 +230,8 @@ export default [
             "rollFormula": "return '1d6+2';",
             "element": "water",
             "text": "1d6+2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "trompeLoeil",
@@ -252,6 +261,7 @@ export default [
         },
         "damage": {
             "text": "Équivalent du mouvement de la victime en dommage"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

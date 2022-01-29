@@ -19,7 +19,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "waldenArmor",
@@ -40,7 +41,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "spark",
@@ -67,7 +69,8 @@ export default [
             "rollFormula": "return \"2\";",
             "element": "electric",
             "text": "2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "spiderHand",
@@ -93,7 +96,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "pierresDeLune",
@@ -115,13 +119,15 @@ export default [
         },
         "criticalSuccess": {
             "text": "crée jusqu’à 8 pierres. Les pierres manquantes apparaissent"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "moonStone",
         "name": "        d'elles-mêmes.",
         "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp",
-        "description": ""
+        "description": "",
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "healingPotion",
@@ -143,7 +149,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "fait 4 potions par mana au lieu de 3."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "failedPotion",
@@ -169,7 +176,8 @@ export default [
         "damage": {
             "rollFormula": "return '1d6-2';",
             "text": "1d6-2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "healthSyringes",
@@ -191,7 +199,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Guérit 2 points de vie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sesame",
@@ -216,7 +225,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La serrure ne fait pas de bruit"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "personalHeal",
@@ -241,6 +251,7 @@ export default [
         },
         "heal": {
             "rollFormula": "if (context.criticalSuccess) { return '6' } return '1d6';"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

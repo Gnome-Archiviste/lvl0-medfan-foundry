@@ -13,7 +13,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "destructionDesMortsVivants",
@@ -41,7 +42,8 @@ export default [
         "damage": {
             "rollFormula": "return '10d6';",
             "text": "10d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "dissipationDuMal",
@@ -67,7 +69,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sanctuaire",
@@ -88,7 +91,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "verite",
@@ -116,6 +120,7 @@ export default [
             "value": 10,
             "unit": "tours",
             "text": "Durée 10 tours"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

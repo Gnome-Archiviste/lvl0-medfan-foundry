@@ -28,6 +28,7 @@ export default [
         "damage": {
             "rollFormula": "return '20d6+10';",
             "text": "20d6+10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

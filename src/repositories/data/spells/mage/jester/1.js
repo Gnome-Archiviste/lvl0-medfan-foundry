@@ -25,7 +25,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "talithaBuble",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La bulle est deux fois plus résistante (12 points de vie)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "guardRattle",
@@ -66,7 +68,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "light",
@@ -89,7 +92,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "stickyHand",
@@ -115,7 +119,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "bananaPeel",
@@ -141,7 +146,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "caramelizedTrap",
@@ -171,7 +177,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sesame",
@@ -196,7 +203,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La serrure ne fait pas de bruit"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "suspension",
@@ -218,7 +226,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "ventriloquism",
@@ -239,6 +248,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun test de résilience possible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

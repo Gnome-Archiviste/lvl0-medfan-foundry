@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée et distance"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "œilDeDasha",
@@ -35,7 +36,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "premonition",
@@ -53,6 +55,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Le prémonition est clair"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

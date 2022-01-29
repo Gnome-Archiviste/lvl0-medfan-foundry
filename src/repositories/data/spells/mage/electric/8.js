@@ -19,7 +19,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "tornade",
@@ -50,6 +51,7 @@ export default [
         "damage": {
             "rollFormula": "return \"55\";",
             "text": "55"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

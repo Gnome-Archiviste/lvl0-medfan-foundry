@@ -13,7 +13,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "conservationDuCadavre",
@@ -38,7 +39,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée de conservation (pré-calculé)'; } return 'Double la durée de conservation';",
             "text": "Double la durée de conservation"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "deguisement",
@@ -57,7 +59,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "detectionDesPassagesSecrets",
@@ -78,7 +81,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "eclair",
@@ -104,7 +108,8 @@ export default [
             "rollFormula": "return '1d6+2';",
             "element": "electric",
             "text": "1d6 + 2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "murmureDeDasha",
@@ -125,7 +130,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "racines",
@@ -153,7 +159,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "respirerSousLeau",
@@ -176,7 +183,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "sphereGlaceeDeTalitha",
@@ -209,7 +217,8 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "water",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "visionClairObscure",
@@ -232,6 +241,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

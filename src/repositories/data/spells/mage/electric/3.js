@@ -19,7 +19,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Éteint toute flamme dans la zone."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "minorAirElemental",
@@ -39,7 +40,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "indistinguishablePassage",
@@ -62,7 +64,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "recharge",
@@ -84,7 +87,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "electricityResistance",
@@ -108,6 +112,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible est immunisée à l’électricité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

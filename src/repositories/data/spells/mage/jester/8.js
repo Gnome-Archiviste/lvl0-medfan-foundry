@@ -24,7 +24,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "imageMiroir",
@@ -47,7 +48,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "6 doubles"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "levitation",
@@ -68,7 +70,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "ombrelleDinvisibilite",
@@ -95,7 +98,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double le rayon (pré-calculé)'; } return 'Double le rayon';",
             "text": "Double le rayon"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passeMuraille",
@@ -118,7 +122,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "telekinesie",
@@ -140,6 +145,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée et la vitesse"
-        }
+        },
+        "dependsOnArcaneLevel": true
     }
 ]

@@ -22,7 +22,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Aucun test de résilience possible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cadenasMagique",
@@ -38,7 +39,8 @@ export default [
         },
         "area": {
             "text": "Une cible"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "charme",
@@ -66,7 +68,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "entartrage",
@@ -94,7 +97,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "illusion",
@@ -120,7 +124,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tartesALaCreme",
@@ -150,7 +155,8 @@ export default [
             "rollFormula": "return context.arcaneLevel + 'd6';",
             "element": "physic",
             "text": "1d6 par niveau d’arcane"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "unBrinInvisible",
@@ -169,6 +175,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la durée"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

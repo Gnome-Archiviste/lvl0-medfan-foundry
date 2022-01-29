@@ -21,7 +21,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "fureurDuYeti",
@@ -45,7 +46,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "glaciation",
@@ -69,7 +71,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Permanent"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "marcherSurLeau",
@@ -92,7 +95,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "separerLesEaux",
@@ -112,6 +116,7 @@ export default [
         },
         "criticalSuccess": {
             "text": "4 mètres de large par 60 mètre de long"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

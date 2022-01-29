@@ -23,7 +23,8 @@ export default [
         },
         "damage": {
             "text": "Aucun sauf à la paroie"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "solfatare",
@@ -50,6 +51,7 @@ export default [
             "rollFormula": "return '5d6+10';",
             "element": "acid",
             "text": "5d6 + 10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

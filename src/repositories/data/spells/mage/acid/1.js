@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Double la quantité"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "cobra",
@@ -48,7 +49,8 @@ export default [
             "rollFormula": "return '1d6/2';",
             "element": "acid",
             "text": "1d6/2"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "stinkingCloud",
@@ -80,7 +82,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "toxicCloud",
@@ -108,7 +111,8 @@ export default [
         "damage": {
             "element": "acid",
             "text": "2 dégâts (passe armure)"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "corrosiveTouch",
@@ -135,6 +139,7 @@ export default [
             "rollFormula": "return '1d6';",
             "element": "acid",
             "text": "1d6"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

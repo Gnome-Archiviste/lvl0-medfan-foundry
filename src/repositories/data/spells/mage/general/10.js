@@ -16,7 +16,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Annule un sort de non-magicien d’arcane 7 ou moins."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "champDeForce",
@@ -41,7 +42,8 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "depetrification",
@@ -65,7 +67,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "partoutatis",
@@ -95,7 +98,8 @@ export default [
             "rollFormula": "return '20d6+10';",
             "element": "physic",
             "text": "20d6 + 10"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "peauDeDiamant",
@@ -117,7 +121,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Absorbe 100 points de dégâts"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resurrection",
@@ -139,7 +144,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Instantané"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "teleportation",
@@ -157,7 +163,8 @@ export default [
             "value": 2,
             "unit": "m",
             "text": "2 mètres"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "tornade",
@@ -188,6 +195,7 @@ export default [
         "damage": {
             "rollFormula": "return \"55\";",
             "text": "55"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

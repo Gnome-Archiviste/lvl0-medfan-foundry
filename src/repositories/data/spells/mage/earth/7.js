@@ -17,7 +17,8 @@ export default [
         },
         "criticalSuccess": {
             "text": "Créer 20 m² de terre par arcane de l'élémentaliste."
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMajeurDePierre",
@@ -37,7 +38,8 @@ export default [
         },
         "damage": {
             "text": "Voir statistique de l’élémental"
-        }
+        },
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "passeMuraille",
@@ -60,6 +62,7 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
-        }
+        },
+        "dependsOnArcaneLevel": false
     }
 ]
