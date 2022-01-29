@@ -20,7 +20,7 @@ export default [
             "text": "transforme les dégâts normaux en dégâts magiques"
         },
         "criticalSuccess": {
-            "text": "Ajouté 6 de dégâts"
+            "text": "Ajouter 6 de dégâts"
         },
         "dependsOnArcaneLevel": false
     },
@@ -41,7 +41,7 @@ export default [
             "text": "Un objet"
         },
         "criticalSuccess": {
-            "text": "Permanant"
+            "text": "Permanent"
         },
         "dependsOnArcaneLevel": false
     },
@@ -49,7 +49,7 @@ export default [
         "id": "boulePuante",
         "name": "Boule puante",
         "icon": "icons/magic/unholy/orb-smoking-green.webp",
-        "description": "Dans un contenant composé de 2 ½ sphères se vissant l’une sur l’autre sur lequel il a gravé un glyphe de déclenchement, l’enchanteur verse une concoction d’oeufs pourris et de satyrs puants (champignons) en bouillie, ce qui déclenche une zone nauséabonde de 2 mètres de rayon lorsque  quelqu’un s’en approche à moins de 50 cm. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
+        "description": "Dans un contenant composé de 2 ½ sphères se vissant l’une sur l’autre sur lequel il a gravé un glyphe de déclenchement, l’enchanteur verse une concoction d’oeufs pourris et de satyrs puants (champignons) en bouillie, ce qui déclenche une zone nauséabonde de 2 mètres de rayon lorsque  quelqu’un s’en approche à moins de 50 cm. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger de  la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
             "unit": "mètre",
@@ -79,8 +79,8 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "braoulebDePouvoir",
-        "name": "Braoule[b] de pouvoir",
+        "id": "braouleaDePouvoir",
+        "name": "Braoule[a] de pouvoir",
         "icon": "icons/tools/hand/hammer-mallet-brown.webp",
         "description": "L’enchanteur imbue d’énergie magique un objet de la vie de tous les jours, qui habituellement ne fait pas vraiment de dégât, afin que ce dernier devienne une arme qui inflige 1d6-2 de dégât. ex: balai, braoule, louche, brosse à cheveux...",
         "distance": {
@@ -145,7 +145,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "tant que le glyph n’est pas activé"
+            "text": "tant que le glyphe n’est pas activé"
         },
         "area": {
             "text": "un objet"
@@ -211,7 +211,7 @@ export default [
         "id": "potionDeMana",
         "name": "Potion de mana",
         "icon": "icons/consumables/potions/bottle-conical-corked-blue.webp",
-        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la pulpe de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par point de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
+        "description": "L’enchanteur prépare une potion claire et bleutée dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la pulpe de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions de soin par point de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -234,7 +234,7 @@ export default [
         "id": "premiersSoins",
         "name": "Premiers soins",
         "icon": "icons/magic/life/heart-hand-gold-green.webp",
-        "description": "Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas magicien lui-même. Ne peut pas dépasser le maximum de points de vie. Au lieu de guérir, ce sort fait du dommage sur les morts-vivants.",
+        "description": "Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas au magicien lui-même. Ne peut pas dépasser le maximum de points de vie. Au lieu de guérir, ce sort fait du dommage sur les morts-vivants.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

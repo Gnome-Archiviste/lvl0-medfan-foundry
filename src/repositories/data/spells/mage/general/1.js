@@ -159,7 +159,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
+        "description": "Ce sort donne le pouvoir de  se déplacer le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

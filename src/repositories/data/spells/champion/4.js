@@ -92,7 +92,22 @@ export default [
         "criticalSuccess": {
             "text": "Absorbe jusqu’à 20 points de dégâts"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "text": "Quand les points ont été absorbés"
+                    },
+                    "effectName": "Protection d’autrui",
+                    "magicArmor": {
+                        "formula": "return context.criticalSuccess ? 20 : 10"
+                    }
+                }
+            }
+        }
     },
     {
         "id": "repulsionDesMortsVivants",

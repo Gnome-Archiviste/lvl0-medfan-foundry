@@ -28,7 +28,7 @@ export default [
         "id": "auraDeBanalite",
         "name": "Aura de Banalité",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Met sur un objet magique un aura qui masque l’aura magique de celui-ci. ex: une potion de chance semblera n’être qu’une bouteille d’eau colorée en vert.",
+        "description": "Met sur un objet magique une aura qui masque l’aura magique de celui-ci. ex: une potion de chance semblera n’être qu’une bouteille d’eau colorée en vert.",
         "distance": {
             "text": "Touché"
         },
@@ -94,7 +94,7 @@ export default [
         "id": "charmerUneConstruction",
         "name": "Charmer une construction",
         "icon": "icons/magic/life/heart-cross-green.webp",
-        "description": "Ce sort fait qu’une construction considère l’enchanteur comme son un allié. Le sort ne permet pas au personnage de contrôler la construction charmée comme s’il s’agissait d’un automate, mais perturbe sa programmation qui maintenant perçoit les paroles et les actions de l’enchanteur de la manière la plus favorable. Le magicien peut essayer de donner des ordres au sujet, mais il doit réussir un test d’éloquence pour le convaincre de faire tout ce qu’il ne ferait pas d’ordinaire.\n\nCe sort est efficace contre les golems et toutes les autres constructions. Il n’a aucun effet contre les autres créatures.\n\nTout acte de l’enchanteur, ou de ses alliés apparents, qui menace la construction charmée brise le sort. Notez également que l’enchanteur doit parler la langue de la construction pour communiquer ou donner des ordres.\n\nLa construction charmée peut faire des tests de résilience pour se défaire du sort, mais elle doit réussir trois tests de suite un fois charmée.",
+        "description": "Ce sort fait qu’une construction considère l’enchanteur comme son allié. Le sort ne permet pas au personnage de contrôler la construction charmée comme s’il s’agissait d’un automate, mais perturbe sa programmation qui maintenant perçoit les paroles et les actions de l’enchanteur de la manière la plus favorable. L’enchanteur peut essayer de donner des ordres au sujet, mais il doit réussir un test d’éloquence pour le convaincre de faire tout ce qu’il ne ferait pas d’ordinaire.\n\nCe sort est efficace contre les golems et toutes les autres constructions. Il n’a aucun effet contre les autres créatures.\n\nTout acte de l’enchanteur, ou de ses alliés apparents, qui menace la construction charmée brise le sort. Notez également que l’enchanteur doit parler la langue de la construction pour communiquer ou donner des ordres.\n\nLa construction charmée peut faire des tests de résilience pour se défaire du sort, mais elle doit réussir trois tests de suite un fois charmée.",
         "distance": {
             "value": 5,
             "unit": "mètre",
@@ -155,15 +155,13 @@ export default [
             "text": "Touché"
         },
         "duration": {
-            "value": 1,
-            "unit": "scène",
-            "text": "1 scène"
+            "text": "1 scène semble court"
         },
         "area": {
             "text": "Un objet"
         },
         "criticalSuccess": {
-            "text": "&"
+            "text": "Manquant"
         },
         "dependsOnArcaneLevel": false
     },
@@ -171,7 +169,7 @@ export default [
         "id": "potionsToniques",
         "name": "Potions toniques",
         "icon": "icons/tools/laboratory/bowls-liuid-pink-yellow-green.webp",
-        "description": "L’enchanteur prépare une potion claire de couleur variable dans un grand chaudron contenant divers ingrédients ainsi qu’une pincée de poudre de perlépipein et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions par 3 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane. Selon la potion, l'ingrédient principal est le suivant:\n\nPotion de Force: 1 litre de sève de chêne\n\nPotion de Dextérité: 3 cuillères à thé de grains de caféier [c]moulus\n\nPotion d’Intelligence: 1 litre d’huile de foie de morue\n\nPotion de Perception: 1 litre de jus de carotte\n\nShampoing de Charisme: 200 grammes de purée d’abricot frais",
+        "description": "L’enchanteur prépare une potion claire de couleur variable dans un grand chaudron contenant divers ingrédients ainsi qu’une pincée de poudre de perlépipein et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions par 3 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane. Selon la potion, l'ingrédient principal est le suivant:\n\nPotion de Force: 1 litre de sève de chêne\n\nPotion de Dextérité: 3 cuillères à thé de grains de cafés moulus\n\nPotion d’Intelligence: 1 litre d’huile de foie de morue\n\nPotion de Perception: 1 litre de jus de carotte\n\nShampoing de Charisme: 200 grammes de purée d’abricot frais",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -194,7 +192,7 @@ export default [
         "id": "potionsUtilitairesCommunes",
         "name": "Potions utilitaires communes",
         "icon": "icons/tools/laboratory/vials-blue-pink.webp",
-        "description": "L’enchanteur prépare la potion (de couleur et de consistance variant la potion. Voir le manuel des objets) dans un grand chaudron contenant divers ingrédients ainsi qu’une pincée de poudre de perlépipein et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions par 3 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane. Selon la potion, l'ingrédient principal est le suivant:\n\nAntidote: 500 g. d’orge, 1 l. de lait et 25 g. de poudre de charbon de bois. Faire frémir \n\nseulement. Presser et conserver seulement le jus.\n\nPetite vache: 2 cuillères à soupe de craie, 1 cuillère à soupe de sel et une pincée de \n\ncharbon. Faire évaporer entièrement.\n\nPotion de lévitation: 1 choux, 500 g. de flageolets, 1 artichaut et un bouquet de persil. \n\nBrasser avec une plume d’albatros.\n\nPotion d’invisibilité: 1 litre d’eau distillée, 100 ml de vinaigre blanc et 5 g. de sel. Mettre \n\nun quartz clair dans le fond de la marmite.\n\n*Si l’enchanteur fait un double six (6) lors du jet de sorcellerie, la potion devient une potion d’in-visibiliste.\n\nPoudre de fée: 100 g. de talc, 50 g. de poudre de magnétite, 6 dahlia roses (fleurs) et\n\nune pincée supplémentaire de poudre de perlépipein. Faire évaporer\n\nentièrement.\n\nPoudre du souffle de l’araignée: 100 g. de toile d’araignée, 200 g. de poussière et \n\n12 feuilles mortes tombées naturellement en poudre. \n\nFaire évaporer entièrement.",
+        "description": "L’enchanteur prépare la potion (de couleur et de consistance variant selon la potion; voir le manuel des objets) dans un grand chaudron contenant divers ingrédients ainsi qu’une pincée de poudre de perlépipein et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions par 3 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane. Selon la potion, l'ingrédient principal est le suivant:\n\nAntidote: 500 g. d’orge, 1 l. de lait et 25 g. de poudre de charbon de bois. Faire frémir \n\nseulement. Presser et conserver seulement le jus.\n\nPetite vache: 2 cuillères à soupe de craie, 1 cuillère à soupe de sel et une pincée de \n\ncharbon. Faire évaporer entièrement.\n\nPotion de lévitation: 1 choux, 500 g. de flageolets, 1 artichaut et un bouquet de persil. \n\nBrasser avec une plume d’albatros.\n\nPotion d’invisibilité: 1 litre d’eau distillée, 100 ml de vinaigre blanc et 5 g. de sel. Mettre \n\nun quartz clair dans le fond de la marmite.\n\n*Si l’enchanteur fait un double six (6) lors du jet de sorcellerie, la potion devient une potion d’in-visibiliste.\n\nPoudre de fée: 100 g. de talc, 50 g. de poudre de magnétite, 6 dahlia roses (fleurs) et\n\nune pincée supplémentaire de poudre de perlépipein. Faire évaporer\n\nentièrement.\n\nPoudre du souffle de l’araignée: 100 g. de toile d’araignée, 200 g. de poussière et \n\n12 feuilles mortes tombées naturellement en poudre. \n\nFaire évaporer entièrement.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

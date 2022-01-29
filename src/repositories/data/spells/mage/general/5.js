@@ -125,7 +125,22 @@ export default [
         "criticalSuccess": {
             "text": "Absorbe 30 points de dégâts"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "text": "Tant que les 15 points ne sont pas utilisés"
+                    },
+                    "effectName": "Peau de pierre",
+                    "magicArmor": {
+                        "formula": "return context.criticalSuccess ? 30 : 15"
+                    }
+                }
+            }
+        }
     },
     {
         "id": "resistanceALacide",

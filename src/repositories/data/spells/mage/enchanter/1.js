@@ -92,7 +92,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de mouvement [a]le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
+        "description": "Ce sort donne le pouvoir de se déplacer le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -116,9 +116,9 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "pierresDeLune",
+        "id": "moonStone",
         "name": "Pierres de lune",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp",
         "description": "L'enchanteur infuse une lueur dans de petites pierres (maximum 5). Pour activer une pierre, l’utilisateur n'a qu’à la cogner contre une surface dure (la semelle d’une botte, le plat d’une arme ou la boucle d’une ceinture suffit). Une fois activée, la pierre illumine pendant 30 minutes avec la moitié de la force d’une torche puis s'éteint, redevenant une simple pierre à la fin du sort. Ce sort ne requiert pas de fixateur.\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -134,15 +134,8 @@ export default [
             "text": "Permet de voir dans la nuit"
         },
         "criticalSuccess": {
-            "text": "crée jusqu’à 8 pierres. Les pierres manquantes apparaissent"
+            "text": "créer jusqu’à 8 pierres. Les pierres manquantes apparaissent d'elles-mêmes."
         },
-        "dependsOnArcaneLevel": false
-    },
-    {
-        "id": "moonStone",
-        "name": "        d'elles-mêmes.",
-        "icon": "icons/commodities/currency/coin-engraved-moon-silver.webp",
-        "description": "",
         "dependsOnArcaneLevel": false
     },
     {
@@ -199,7 +192,7 @@ export default [
         "id": "healthSyringes",
         "name": "Seringues de santé",
         "icon": "icons/weapons/thrown/dart-feathered.webp",
-        "description": "L'enchanteur infuse un peu d’essence de vie dans de petites fléchettes de sarbacane (maximum 5) en les faisant mariner dans une fiole de potion de soin au moins 8 heures. Les darts s’utilisent avec une sarbacane de portée. Une fois la cible touchée, la cible reçoit 1 seul point de vie qui peut le ramener à la vie puis redevient une simple bout de bois. Ce sort requiert 5 darts en bois de cèdre, une potion de soin mais ne requiert pas de fixateur.",
+        "description": "L'enchanteur infuse un peu d’essence de vie dans de petites fléchettes de sarbacane (maximum 5) en les faisant mariner dans une fiole de potion de soin au moins 8 heures. Les darts s’utilisent avec une sarbacane de portée. Une fois la cible touchée, la cible reçoit 1 seul point de vie qui peut la ramener à la vie puis redevient une simple bout de bois. Ce sort requiert 5 darts en bois de cèdre, une potion de soin mais ne requiert pas de fixateur.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

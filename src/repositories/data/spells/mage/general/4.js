@@ -2,7 +2,7 @@ export default [
     {
         "id": "antidote",
         "name": "Antidote",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/holy/chalice-glowing-gold.webp",
         "description": "Permets de contrer les potions négatives pendant une scène (comme celle de sommeil).",
         "distance": {
             "type": "touch",
@@ -22,7 +22,7 @@ export default [
     {
         "id": "aveuglement",
         "name": "Aveuglement",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/eyes/humanoid-single-blind.webp",
         "description": "Rends une tête de la victime aveugle pour un tour par niveau d’arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
@@ -49,7 +49,7 @@ export default [
     {
         "id": "bouleDeFeu",
         "name": "Boule de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/projectile-fireball-orange-yellow.webp",
         "description": "D’un geste, le magicien envoie une boule de feu dans les airs pour exploser avec un rugissement à la hauteur et à la distance que le magicien désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). L’explosion remplit la zone d’effet d’un feu et d’une chaleur intense, causant 1d6 dégâts par niveau d’arcane du magicien à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. La boule de feu suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
@@ -65,7 +65,7 @@ export default [
             "text": "2 mètres"
         },
         "resilience": {
-            "text": "Divise le dommage par deux (arrondissement favorable[d])"
+            "text": "Divise le dommage par deux (arrondissement favorable)"
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
