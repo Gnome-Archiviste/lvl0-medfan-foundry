@@ -1,7 +1,7 @@
 import {inject, singleton} from 'tsyringe';
 import * as marked from 'marked';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
-import {Lvl0ActorEffectModifier} from '../effects';
+import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
 import {assertIsCharacter, Lvl0Actor} from 'models/actor';
 import {ElementRepository, SpellRepository} from 'repositories';
 import {
@@ -347,13 +347,21 @@ export class SpellManager {
         let computedActions = {};
 
         for (let [key, action] of Object.entries(actions)) {
+            let magicArmor: Lvl0ActorEffectArmor | undefined;
+            if (action.data.magicArmor) {
+                magicArmor = {
+                    remainingArmorPoint: action.data.magicArmor.value,
+                    totalArmorPoint: action.data.magicArmor.value
+                };
+            }
             computedActions[key] = {
                 name: action.name,
                 type: action.type,
                 data: {
                     effectName: action.data.effectName,
                     duration: await this.computeComplex(action.data.duration, context),
-                    modifiers: action.data.modifiers.map(m => this.computeModifier(m, context))
+                    modifiers: action.data.modifiers?.map(m => this.computeModifier(m, context)) || [],
+                    magicArmor
                 }
             } as ActorSpellAction;
         }

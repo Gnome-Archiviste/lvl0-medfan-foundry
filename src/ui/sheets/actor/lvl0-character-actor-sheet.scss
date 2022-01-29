@@ -249,9 +249,9 @@
   .sheet-health {
     border: 1px solid black;
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "header header header" "maximum damage armor";
+    grid-template-areas: "header header header" "maximum damage armor" "magic-armor magic-armor magic-armor";
 
     input {
       text-align: center;
@@ -291,6 +291,14 @@
     .sheet-health-armor {
       display: grid;
       grid-area: armor;
+      border-top: 1px solid black;
+      .sheet-value {
+        justify-self: center;
+      }
+    }
+    .magic-armor {
+      display: grid;
+      grid-area: magic-armor;
       border-top: 1px solid black;
       .sheet-value {
         justify-self: center;

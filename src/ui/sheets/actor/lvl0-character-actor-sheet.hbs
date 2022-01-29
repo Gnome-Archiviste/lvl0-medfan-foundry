@@ -234,19 +234,18 @@
                         </label>
                         <label class="sheet-health-damage">
                             <div class="sheet-label">Restant</div>
-                            <div class="sheet-value"><input type="text" name="data.health.value" value="{{actorData.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
+                            <div class="sheet-value"><input type="number" name="data.health.value" value="{{actorData.health.value}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
                         </label>
                         <label class="sheet-health-armor">
                             <div class="sheet-label">Armure</div>
                             <div class="sheet-value">{{actorData.computedData.stats.armor.value}}</div>
                         </label>
-                        <div class="hp-bar" style="background: linear-gradient(
-                                -90deg,
-                                transparent 0%,
-                                transparent calc(100% - ((100% / ({{#if (eq actorData.health.max 0)}} 1 {{else}} {{actorData.health.max}} {{/if}} + {{#if actorData.health.tempmax}}{{actorData.health.tempmax}}{{else}}0{{/if}} )) * ({{actorData.health.value}} + {{#if actorData.health.temp}}{{actorData.health.temp}}{{else}}0{{/if}})) ),
-                                rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq actorData.health.max 0)}} 1 {{else}} {{actorData.health.max}} {{/if}} + {{#if actorData.health.tempmax}}{{actorData.health.tempmax}}{{else}}0{{/if}} )) * ({{actorData.health.value}} + {{#if actorData.health.temp}}{{actorData.health.temp}}{{else}}0{{/if}})) ),
-                                rgba(0,200,0,0.5) 100%);">
-                        </div>
+                        {{#if actorData.computedData.magicArmor}}
+                            <div class="magic-armor">
+                                <div class="sheet-label">Armure Magique</div>
+                                <div class="sheet-value"><input type="number" data-magic-armor value="{{actorData.computedData.magicArmor.remainingArmorPoint}}" data-dtype="Number" placeholder="0" maxlength="4"/></div>
+                            </div>
+                        {{/if}}
                     </section>
 
                     <section class="sheet-magic">
@@ -257,7 +256,7 @@
                         </label>
                         <label class="sheet-magic-left">
                             <div class="sheet-label">Restant</div>
-                            <div class="sheet-value"><input type="text" name="data.mana.value" value="{{actorData.mana.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
+                            <div class="sheet-value"><input type="number" name="data.mana.value" value="{{actorData.mana.value}}" data-dtype="Number" placeholder="0" maxlength="3"/></div>
                         </label>
                         <label class="sheet-magic-level">
                             <div class="sheet-label">Arcane</div>
@@ -287,7 +286,7 @@
                                 <div class="effect-value header">
                                     <span>Nom</span>
                                     <span>Durée</span>
-                                    <span>Stats</span>
+                                    <span>Effets</span>
                                     <span></span>
                                 </div>
                                 {{#each actorData.effects as |effect|}}
@@ -295,6 +294,9 @@
                                         <div>{{effect.effectName}}</div>
                                         <div>{{effect.duration}}</div>
                                         <div>
+                                            {{#if effect.magicArmor}}
+                                                <div>Armure magique: {{effect.magicArmor.remainingArmorPoint}} / {{effect.magicArmor.totalArmorPoint}}</div>
+                                            {{/if}}
                                             {{#each effect.modifiers as |modifier|}}
                                                 <div>{{effectModifierInfo modifier}}</div>
                                             {{/each}}

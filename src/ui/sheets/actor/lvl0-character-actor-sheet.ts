@@ -15,6 +15,8 @@ import {
 } from 'repositories';
 import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
+import {EffectManager} from '../../../managers/effects';
+import {ModifierManager} from '../../../managers/modifiers/modifier-manager';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
@@ -52,6 +54,8 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     private readonly rollSkillManager: RollSkillManager;
     private readonly macroUtil: MacroUtil;
     private readonly game: InitializedGame;
+    private readonly effectManager: EffectManager;
+    private readonly modifierManager: ModifierManager;
 
     constructor(actor: Lvl0Actor, options: Partial<Options>) {
         super(actor, options);
@@ -64,6 +68,8 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.rollSkillManager = container.resolve(RollSkillManager);
         this.macroUtil = container.resolve(MacroUtil);
         this.game = container.resolve(InitializedGame);
+        this.effectManager = container.resolve(EffectManager);
+        this.modifierManager = container.resolve(ModifierManager);
     }
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
@@ -150,6 +156,22 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             if (event.key == 'Enter') {
                 event.target.blur();
                 event.preventDefault();
+            }
+        });
+
+        html.find('[data-magic-armor]').on('change', async ev => {
+            assertIsCharacter(this.actor);
+            let value = +($(ev.currentTarget).val() as string);
+            if (this.actor.data.data.effects) {
+                for (let [effectId, effect] of Object.entries(this.actor.data.data.effects)) {
+                    if (effect.magicArmor?.remainingArmorPoint) {
+                        if (value > 0) {
+                            await this.effectManager.updateEffect(this.actor, +effectId, {magicArmor: {remainingArmorPoint: value}});
+                        } else {
+                            await this.effectManager.removeEffect(this.actor, +effectId);
+                        }
+                    }
+                }
             }
         });
 
@@ -248,7 +270,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             item.update({data: {equiped: !item.data.data.equiped}}).then();
         });
 
-        html.find("button[data-lvl0-action='addActorModifier']").on('click', ev => this._onAddModifier(ev));
+        html.find("button[data-lvl0-action='addActorModifier']").on('click', _ev => this._onAddModifier());
         html.find("a[data-lvl0-action='deleteActorModifier']").on('click', ev => this._onRemoveModifier(ev));
         html.find("a[data-lvl0-action='deleteActorEffect']").on('click', ev => this._onRemoveEffect(ev));
 
@@ -262,33 +284,25 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         new ContextMenu(html.find('.lvl0mf-sheet .sheet-body'), "[data-speciality]", this._getSpecialityContextMenu());
     }
 
-    _onRemoveEffect(ev: MouseEvent): void {
+    private async _onRemoveEffect(ev: MouseEvent): Promise<void> {
         if (!ev.target)
             return;
-        let effectId = +$(ev.target).parents('.effect-value').data('effect-id');
-        let effects = this.actor.data.data.effects || {};
-        let newModifiers = {...effects, ['-=' + effectId]: null};
-        this.actor.update({data: {effects: newModifiers}});
+        let effectId = $(ev.target).parents('.effect-value').data('effect-id');
+        await this.effectManager.removeEffect(this.actor, effectId);
     }
 
-    _onRemoveModifier(ev: MouseEvent): void {
+    private async _onRemoveModifier(ev: MouseEvent): Promise<void> {
         assertIsCharacter(this.actor);
         if (!ev.target)
             return;
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
-        let modifiers = this.actor.data.data.modifiers || {};
-        let newModifiers = {...modifiers, ['-=' + modifierId]: null};
-        this.actor.update({data: {modifiers: newModifiers}});
+        await this.modifierManager.removeModifier(this.actor, modifierId);
     }
 
-    _onAddModifier(ev: MouseEvent): void {
+    private async _onAddModifier(): Promise<void> {
         assertIsCharacter(this.actor);
-        if (!ev.target)
-            return;
-        let modifiers = this.actor.data.data.modifiers || {};
-        let nextId = (Object.keys(modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-        this.actor.update({data: {modifiers: {...modifiers, [nextId]: {stat: 'phy', value: 1}}}});
-    }
+        await this.modifierManager.addModifier(this.actor, {name: '', stat: 'phy', value: 1, isPermanent: false});
+   }
 
     canLevelUp(data: Lvl0ActorCharacterData): boolean {
         if (!data.computedData.bases.job)

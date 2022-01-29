@@ -3,7 +3,7 @@ import {
     ItemDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';
 import {container} from 'tsyringe';
-import {Lvl0ItemWand} from './lvl0-item-types';
+import {Lvl0ItemScroll, Lvl0ItemWand} from './lvl0-item-types';
 
 declare global {
     interface DocumentClassConfig {
@@ -36,7 +36,7 @@ export class Lvl0Item extends Item {
 
     async use(): Promise<void> {
         if (this.data.type === 'scroll') {
-            await this.scrollUtil.useScroll(this);
+            await this.scrollUtil.useScroll(this as Lvl0ItemScroll);
         }
         if (this.data.type === 'wand') {
             await this.wandUtil.useWand(this as Lvl0ItemWand);

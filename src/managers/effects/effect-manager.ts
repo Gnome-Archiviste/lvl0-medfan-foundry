@@ -1,6 +1,6 @@
 import {container, singleton} from 'tsyringe';
 import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './lvl0-actor-effect';
-import {Lvl0Actor} from 'models/actor';
+import {CharacterProperties, Lvl0Actor} from 'models/actor';
 import {StatsRepository} from 'repositories/stats-repository';
 import {SkillRepository} from 'repositories/skill-repository';
 
@@ -13,8 +13,14 @@ export class EffectManager {
         ui.notifications?.info('Effet ' + effect.effectName + ' ajouté');
     }
 
-    async removeEffect(actor: Lvl0Actor, effectId: string) {
+    async removeEffect(actor: Lvl0Actor, effectId: number) {
         await actor.update({data: {effects: {['-=' + effectId]: null}}}, {diff: true});
+    }
+
+    async updateEffect(actor: Lvl0Actor, effectId: number, partialEffect: RecursivePartial<Lvl0ActorEffect>) {
+        await actor.update({
+            data: {effects: {[effectId]: partialEffect}}
+        } as CharacterProperties, {diff: true});
     }
 
     getEffectsWithBonusDamage(actor: Lvl0Actor): { name: string, value: number }[] {
@@ -22,6 +28,8 @@ export class EffectManager {
         let effectsWithBonusDamage: { name: string, value: number }[] = [];
         if (actorData.effects) {
             for (let effect of Object.values(actorData.effects)) {
+                if (!effect.modifiers)
+                    continue;
                 let damageModifier = effect.modifiers.find(x => x.stat === 'damage');
                 if (damageModifier) {
                     effectsWithBonusDamage.push({

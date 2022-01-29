@@ -1,6 +1,10 @@
 import '';
 
 declare global {
+    type RecursivePartial<T> = {
+        [P in keyof T]?: RecursivePartial<T[P]>;
+    };
+
     interface ColorSet {
         name: string,
         description?: string,

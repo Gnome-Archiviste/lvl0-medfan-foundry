@@ -2,7 +2,7 @@ import {inject, singleton} from 'tsyringe';
 import {ActorSpell} from './actor-spell.model';
 import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
-import {ScrollItemPropertiesData} from 'models/item';
+import {Lvl0ItemScroll, ScrollItemPropertiesData} from 'models/item';
 import {Lvl0ActorCharacter} from 'models/actor';
 import {ItemUtil} from '../../utils/item-util';
 
@@ -41,9 +41,7 @@ export class ScrollUtil {
         await this.itemUtil.updateQuantity(emptyScroll, -1);
     }
 
-    async useScroll(scroll: Item): Promise<void> {
-        if (scroll.data.type !== 'scroll')
-            throw new Error('Item is not a scroll');
+    async useScroll(scroll: Lvl0ItemScroll): Promise<void> {
         let spell = await this.spellManager.getComputedSpellForActorById(scroll.data.data.spell, {arcaneLevel: scroll.data.data.arcane});
         if (spell) {
             let speaker = scroll.actor ? ChatMessage.getSpeaker({actor: scroll.actor}) : undefined;

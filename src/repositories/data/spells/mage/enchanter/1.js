@@ -42,7 +42,23 @@ export default [
         "criticalSuccess": {
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "value": "5",
+                        "unit": "tours"
+                    },
+                    "effectName": "Armure magique de Walden",
+                    "magicArmor": {
+                        "value": 10
+                    }
+                }
+            }
+        }
     },
     {
         "id": "spark",

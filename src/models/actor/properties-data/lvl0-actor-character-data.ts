@@ -47,10 +47,15 @@ export interface ComputedCharacterData {
     magic: ComputedCharacterMagicData;
     clutter: ComputedCharacterClutterData;
     speciality: ComputedCharacterSpecialityData;
+    magicArmor?: ComputedCharacterMagicArmorData;
 }
 
 export interface RaceData {
     id: string;
+}
+
+export interface ComputedCharacterMagicArmorData {
+    remainingArmorPoint: number;
 }
 
 export interface StaticInventoryData {

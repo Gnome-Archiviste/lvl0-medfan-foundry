@@ -3,6 +3,7 @@ import {
     ClutterCharacterDataComputer,
     HealthManaDataComputer,
     LevelingCharacterDataComputer,
+    MagicalArmorDataComputer,
     MagicCharacterDataComputer,
     SkillsCharacterDataComputer,
     SpecialityCharacterDataComputer,
@@ -20,7 +21,7 @@ import {RollSpecialityManager} from "../../managers/speciality";
 import {LevelData, Lvl0ActorCharacterData} from './properties-data';
 import {ActorDataComputer} from './actor-data-computers';
 import {SpecialityRepository} from '../../repositories';
-import {Lvl0Item, Lvl0ItemScroll} from '../item';
+import {Lvl0Item} from '../item';
 import {container} from 'tsyringe';
 import {
     ActorDataConstructorData
@@ -35,6 +36,7 @@ container.register("ActorDataComputer", {useClass: StatsCharacterDataComputer});
 container.register("ActorDataComputer", {useClass: MagicCharacterDataComputer});
 container.register("ActorDataComputer", {useClass: HealthManaDataComputer});
 container.register("ActorDataComputer", {useClass: ClutterCharacterDataComputer});
+container.register("ActorDataComputer", {useClass: MagicalArmorDataComputer});
 
 declare global {
     interface DocumentClassConfig {
