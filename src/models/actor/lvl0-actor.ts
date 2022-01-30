@@ -27,6 +27,8 @@ import {
     ActorDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
 import {InitializedGame} from '../misc/game';
+import {SpecialityUtil} from '../../managers/speciality/speciality-util';
+import {assertIsCharacter} from './properties';
 
 container.register("ActorDataComputer", {useClass: BaseCharacterDataComputer});
 container.register("ActorDataComputer", {useClass: LevelingCharacterDataComputer});
@@ -49,6 +51,7 @@ export class Lvl0Actor extends Actor {
     private readonly specialityRepository: SpecialityRepository;
     private readonly dialogAwaiter: DialogAwaiter;
     private readonly game: InitializedGame;
+    private readonly specialityUtil: SpecialityUtil;
 
     constructor(
         data: ActorDataConstructorData,
@@ -59,6 +62,7 @@ export class Lvl0Actor extends Actor {
         this.specialityRepository = container.resolve(SpecialityRepository);
         this.dialogAwaiter = container.resolve(DialogAwaiter);
         this.game = container.resolve(InitializedGame);
+        this.specialityUtil = container.resolve(SpecialityUtil);
     }
 
     override prepareDerivedData(): void {
@@ -233,17 +237,13 @@ export class Lvl0Actor extends Actor {
     }
 
     async openSelectSpecialityDialog() {
-        if (this.data.type !== 'character') {
-            throw new Error('openSelectSpecialityDialog only supported for character')
-        }
+        assertIsCharacter(this);
 
-        let selectedSpecialityName = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, {});
-        if (!selectedSpecialityName)
+        let selectedSpecialityId = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, {});
+        if (!selectedSpecialityId)
             return;
 
-        let specialities = this.data.data.specialities || {};
-        let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-        await this.update({data: {specialities: {[nextId]: selectedSpecialityName}}}, {diff: true});
+        await this.specialityUtil.addSpeciality(this, selectedSpecialityId);
     }
 
     async doLevelUp(level: number, actorData: Lvl0ActorCharacterData, levelUpResultData: LevelData): Promise<void> {

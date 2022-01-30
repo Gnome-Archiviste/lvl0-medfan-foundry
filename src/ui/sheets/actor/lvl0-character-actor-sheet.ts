@@ -18,6 +18,7 @@ import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
 import {EffectManager} from 'managers/effects';
 import {ActorModifierManager} from 'managers/modifiers';
+import {SpecialityUtil} from '../../../managers/speciality/speciality-util';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
@@ -58,6 +59,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     private readonly effectManager: EffectManager;
     private readonly modifierManager: ActorModifierManager;
     private readonly itemTypesConfigRepository: ItemTypesConfigRepository;
+    private readonly specialityUtil: SpecialityUtil;
 
     constructor(actor: Lvl0Actor, options: Partial<Options>) {
         super(actor, options);
@@ -73,6 +75,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.effectManager = container.resolve(EffectManager);
         this.modifierManager = container.resolve(ActorModifierManager);
         this.itemTypesConfigRepository = container.resolve(ItemTypesConfigRepository);
+        this.specialityUtil = container.resolve(SpecialityUtil);
     }
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
@@ -208,18 +211,6 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 case "useSpeciality":
                     await this.actor.useSpeciality(ev.target.dataset.specialityId);
                     break;
-                case "createSpecialityMacro": {
-                    let specialityId = ev.target.dataset.specialityId;
-                    let speciality = this.specialityRepository.getSpecialityFromId(specialityId);
-                    await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
-                        name: speciality.name,
-                        type: "script",
-                        img: speciality.icon,
-                        scope: "actor",
-                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`token.actor.useSpeciality('${specialityId}')`)
-                    });
-                    break;
-                }
                 case "selectSpeciality":
                     await this.actor.openSelectSpecialityDialog();
                     break;
@@ -379,7 +370,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     _getSpecialityContextMenu() {
-        return [
+        let skillContextMenu =  [
             {
                 name: 'Créer une macro',
                 icon: '<i class="fas fa-scroll"></i>',
@@ -389,12 +380,25 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     await this.macroUtil.createAndAssignMacroToFirstAvailableSlot({
                         name: specialityDefinition.name,
                         type: "script",
+                        img: specialityDefinition.icon,
                         scope: "actor",
-                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`rollSpecialityManager.rollSpeciality(token, '${specialityId}')`)
+                        command: this.macroUtil.guardScriptExecutionWithTokenCheck(`token.actor.useSpeciality('${specialityId}')`)
                     });
                 }
             }
         ]
+
+        if (this.game.user.isGM) {
+            skillContextMenu.push({
+                name: 'Supprimer',
+                icon: '<i class="fas fa-trash"></i>',
+                callback: async el => {
+                    let specialityId = el.data('speciality');
+                    await this.specialityUtil.removeSpeciality(this.actor, specialityId);
+                }
+            })
+        }
+        return skillContextMenu;
     }
 
     private isItemTypeDisplayedInInventory(itemType: Lvl0ItemType): boolean {
