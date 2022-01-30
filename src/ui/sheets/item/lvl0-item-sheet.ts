@@ -5,6 +5,7 @@ import {ItemModifierManager} from '../../../managers/modifiers';
 import ClickEvent = JQuery.ClickEvent;
 import {DialogAwaiter} from '../../dialog';
 import {SpellDefinitionSelectorDialog} from '../../dialog/spell-definition-selector-dialog';
+import {data} from 'jquery';
 
 export class Lvl0ItemSheet extends ItemSheet {
     private readonly elementRepository: ElementRepository;
@@ -100,6 +101,29 @@ export class Lvl0ItemSheet extends ItemSheet {
                         }
                     }
                     break;
+                case 'copySpellInfo':
+                    if (this.item.data.type !== 'wand' && this.item.data.type !== 'scroll') {
+                        return;
+                    }
+                    if (!this.item.data.data.spell) {
+                        return;
+                    }
+                    let spellDefinition = this.spellRepository.getSpellById(this.item.data.data.spell);
+                    if (!spellDefinition) {
+                        return;
+                    }
+                    let prefix = this.item.data.type !== 'wand' ? 'Baguette' : 'Parchemin';
+                    let suffix = '';
+                    if (spellDefinition.dependsOnArcaneLevel) {
+                        suffix = ` (Arcane: ${this.item.data.data.arcane})`;
+                    }
+                    await this.item.update({
+                        name: `${prefix}: ${spellDefinition.name}${suffix}`,
+                        img: spellDefinition.icon,
+                        data: {description: spellDefinition.description}
+                    }, {diff: true});
+
+                    break
                 case 'addItemModifier':
                     await this.onAddModifier(ev)
                     break;

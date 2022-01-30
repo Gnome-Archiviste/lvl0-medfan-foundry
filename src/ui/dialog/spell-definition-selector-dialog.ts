@@ -68,8 +68,9 @@ export class SpellDefinitionSelectorDialog extends DialogBase<SpellDefinitionSel
             title: "Selection du sort",
             template: "systems/lvl0mf-sheet/ui/dialog/spell-definition-selector-dialog.hbs",
             popOut: true,
-            width: 500,
-            height: 600
+            resizable: true,
+            width: 450,
+            height: 450
         };
     }
 

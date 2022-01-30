@@ -30,8 +30,8 @@
       display: grid;
       column-gap: 8px;
       grid-template-rows: auto auto;
-      grid-template-columns: 36px 1fr;
-      grid-template-areas: "icon name" "icon details";
+      grid-template-columns: 36px 1fr 120px;
+      grid-template-areas: "icon name actions" "icon details actions";
       .icon {
         grid-area: icon;
       }
@@ -40,6 +40,9 @@
       }
       .details {
         grid-area: details;
+      }
+      .actions {
+        grid-area: actions;
       }
     }
   }
