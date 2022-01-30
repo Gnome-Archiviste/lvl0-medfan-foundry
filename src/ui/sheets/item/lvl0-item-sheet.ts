@@ -97,7 +97,7 @@ export class Lvl0ItemSheet extends ItemSheet {
                     if (spell) {
                         if (this.item.data.type === 'wand' || this.item.data.type === 'scroll') {
                             let newArcane = spell.dependsOnArcaneLevel ? this.item.data.data.arcane || spell.level : 0;
-                            await this.item.update({data: {spell: spell.id, arcane: newArcane}});
+                            await this.item.update({data: {spell: spell.id, quantifiable: false, quantity: 0, arcane: newArcane}});
                         }
                     }
                     break;
@@ -112,7 +112,7 @@ export class Lvl0ItemSheet extends ItemSheet {
                     if (!spellDefinition) {
                         return;
                     }
-                    let prefix = this.item.data.type !== 'wand' ? 'Baguette' : 'Parchemin';
+                    let prefix = this.item.data.type === 'wand' ? 'Baguette' : 'Parchemin';
                     let suffix = '';
                     if (spellDefinition.dependsOnArcaneLevel) {
                         suffix = ` (Arcane: ${this.item.data.data.arcane})`;
