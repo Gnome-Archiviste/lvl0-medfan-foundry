@@ -15,7 +15,7 @@
                     <div class="title">{{item.name}}</div>
                     {{#if item.data.data.description}}
                         <div class="description">
-                            {{item.data.data.description}}
+                            {{markdown item.data.data.description}}
                         </div>
                     {{/if}}
                 </div>
@@ -52,7 +52,7 @@
                     <div class="title">{{item.name}}</div>
                     {{#if item.data.data.description}}
                         <div class="description">
-                            {{item.data.data.description}}
+                            {{markdown item.data.data.description}}
                         </div>
                     {{/if}}
                 </div>

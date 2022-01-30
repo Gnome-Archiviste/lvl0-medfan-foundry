@@ -3,10 +3,9 @@
         <h2>{{localize (concat2 'ITEM.Type' (titleCase itemType)) }}</h2>
         <div class="item-line">
             <div class="equiped">
-                {{#if (not (lookup ../nonEquipableItemType itemType))}}
+                {{#if (lookup (lookup ../itemTypesConfigs itemType) "canBeEquiped")}}
                     <b>Équipé</b>
-                {{/if}}
-                {{#if (lookup ../actionableItemType itemType)}}
+                {{else}}
                     <b>Utiliser</b>
                 {{/if}}
             </div>
@@ -16,14 +15,17 @@
         </div>
         {{#each2 ../itemsByType itemType as | item |}}
             <div class="item-line" data-item-id="{{item.id}}">
-                {{#if (not (lookup ../../nonEquipableItemType itemType))}}
-                    <div class="equiped">
-                        <input type="checkbox" {{checked item.data.data.equiped}} data-equip-item-checkbox="{{item.id}}">
-                    </div>
-                {{/if}}
-                {{#if item.actionnable}}
-                    <button data-item-action="use">Activer</button>
-                {{/if}}
+                <div class="equiped">
+                    {{#if (lookup (lookup ../../itemTypesConfigs itemType) "canBeEquiped")}}
+                        <input type="checkbox" {{checked item.data.data.equiped}}
+                               data-equip-item-checkbox="{{item.id}}">
+                    {{else}}
+                        {{#if item.actionnable}}
+                            <a data-item-action="use" title="Utiliser"><i class="fa fa-play"></i></a>
+                        {{/if}}
+                    {{/if}}
+                </div>
+
                 <div class="icon">
                     <img src="{{item.img}}"/>
                 </div>
@@ -42,7 +44,7 @@
                     {{#if item.data.data.description}}
                         <div>
                             <span class="description">
-                                {{item.data.data.description}}
+                                {{markdown item.data.data.description}}
                             </span>
                         </div>
                     {{/if}}

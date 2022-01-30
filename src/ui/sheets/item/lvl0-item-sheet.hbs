@@ -7,7 +7,7 @@
     <div class="attribute-group">
         <div class="form-group-small">
             <label>Encombrement</label>
-            <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.clutter}}" />
+            <input name="data.clutter" data-dtype="Number" type="number" min="0" value="{{data.data.clutter}}" />
         </div>
         <div class="form-group-small">
             <label><i class="fa fa-coins"></i> Prix</label>
@@ -50,7 +50,7 @@
 
     {{#if (or (eq item.type 'scroll') (eq item.type 'wand'))}}
         <div class="form-group">
-            <label>Sort <button data-select-spell>Choisir</button></label>
+            <label>Sort <button data-lvl0-action="selectSpell">Choisir</button></label>
             <input type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" />
         </div>
     {{/if}}

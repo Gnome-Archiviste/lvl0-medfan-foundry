@@ -21,7 +21,7 @@
                             <div class="content">
                                 {{#if item.data.data.description}}
                                     <div>
-                                        {{item.data.data.description}}
+                                        {{markdown item.data.data.description}}
                                     </div>
                                 {{/if}}
                                 {{#if item.data.data.restriction}}
@@ -100,7 +100,7 @@
                         <div class="name">
                             <div class="title">{{item.name}}</div>
                             {{#if item.data.data.description}}
-                                <div class="description">{{item.data.data.description}}</div>
+                                <div class="description">{{markdown item.data.data.description}}</div>
                             {{/if}}
                         </div>
                         <div class="actions">
@@ -127,7 +127,7 @@
                         <div class="name">
                             <div class="title">{{item.name}}</div>
                             {{#if item.data.data.description}}
-                                <div class="description">{{item.data.data.description}}</div>
+                                <div class="description">{{markdown item.data.data.description}}</div>
                             {{/if}}
                         </div>
                         <div class="actions">
@@ -167,7 +167,7 @@
                     <div class="name">
                         <div class="title">{{item.name}}</div>
                         {{#if item.data.data.description}}
-                            <div class="description">{{item.data.data.description}}</div>
+                            <div class="description">{{markdown item.data.data.description}}</div>
                         {{/if}}
                     </div>
                     <div class="actions">

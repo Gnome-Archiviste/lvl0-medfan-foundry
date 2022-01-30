@@ -3,7 +3,8 @@ import {RollSkillManager} from 'managers/skill';
 import {assertIsCharacter, Lvl0Actor, Lvl0ActorCharacterData} from 'models/actor';
 import {Lvl0ItemType} from 'models/item';
 import {
-    ExtensionJobDefinition,
+    ExtensionJobDefinition, ItemTypeConfig,
+    ItemTypesConfigRepository,
     JobDefinition,
     JobRepository,
     RaceDefinition,
@@ -15,13 +16,13 @@ import {
 } from 'repositories';
 import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
-import {EffectManager} from '../../../managers/effects';
-import {ActorModifierManager} from '../../../managers/modifiers/actor-modifier-manager';
+import {EffectManager} from 'managers/effects';
+import {ActorModifierManager} from 'managers/modifiers';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
     skillsByCategories: Record<string, Record<string, SkillDefinition>>,
-    nonEquipableItemType: Record<string, boolean>,
+    itemTypesConfigs: Record<string, ItemTypeConfig>,
     actionableItemType: Record<string, boolean>,
     canLevelUp: boolean,
     canChangeStats: boolean,
@@ -56,6 +57,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     private readonly game: InitializedGame;
     private readonly effectManager: EffectManager;
     private readonly modifierManager: ActorModifierManager;
+    private readonly itemTypesConfigRepository: ItemTypesConfigRepository;
 
     constructor(actor: Lvl0Actor, options: Partial<Options>) {
         super(actor, options);
@@ -70,6 +72,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.game = container.resolve(InitializedGame);
         this.effectManager = container.resolve(EffectManager);
         this.modifierManager = container.resolve(ActorModifierManager);
+        this.itemTypesConfigRepository = container.resolve(ItemTypesConfigRepository);
     }
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
@@ -98,12 +101,6 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         let canEditModifiers = this.game.user.isGM;
         let canEditLevel = this.game.user.isGM && this.actor.data.data.level.value > 0;
         let canLevelUp = this.canLevelUp(this.actor.data.data);
-        let nonEquipableItemType = {
-            'misc': true,
-            'magical': true,
-            'wand': true,
-            'scroll': true
-        };
         let actionableItemType = {
             'wand': true,
             'scroll': true
@@ -126,7 +123,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
             skillsByCategories: this.skillRepository.getSkillsByCategories(),
             canLevelUp,
             canChangeStats,
-            nonEquipableItemType,
+            itemTypesConfigs: this.itemTypesConfigRepository.getItemTypesConfigs(),
             actionableItemType,
             canSelectRace,
             canSelectJob,
@@ -230,6 +227,9 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         });
 
         html.find('[data-item-action]').on('click', async ev => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            ev.stopImmediatePropagation();
             const itemLine = $(ev.currentTarget).parents("[data-item-id]");
             const item = this.actor.items.get(itemLine.data("item-id"));
             if (!item) {
@@ -252,7 +252,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     item.sheet?.render(true);
                     break;
                 case 'delete':
-                    Dialog.confirm({
+                    await Dialog.confirm({
                         title: 'Supression', content: 'Voulez vous supprimer ' + item?.name, yes: () => {
                             this.actor.items.get(itemLine.data("item-id"))?.delete();
                         }

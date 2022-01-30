@@ -1,7 +1,8 @@
+import {inject, singleton} from 'tsyringe';
+import * as marked from 'marked';
 import {ActorSpell} from './actor-spell.model';
 import {RollResult, RollUtil} from '../../utils/roll-util';
 import {RolledSpellStat} from './spell-manager';
-import {inject, singleton} from 'tsyringe';
 
 @singleton()
 export class SpellChat {
@@ -17,7 +18,7 @@ export class SpellChat {
             <img class="icon" src="${spell.icon}">
             <div class="name">${spell.name}</div>
         </div>
-        <div class="description">${spell.description}</div>
+        <div class="description">${marked.parse(spell.description)}</div>
         <div class="stats">
         <div class="cost"><span class="label">Coût</span> ${spell.cost} point de magie</div>
         <div class="distance"><span class="label">Distance</span> ${spell.distance}</div>`;

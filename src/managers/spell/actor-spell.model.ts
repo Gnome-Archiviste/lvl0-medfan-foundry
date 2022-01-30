@@ -8,7 +8,7 @@ export interface ActorSpell {
     icon: string;
     name: string;
     cost: number;
-    description: string;
+    description?: string;
     distance?: string | RolledSpellStat;
     damage?: string | RolledSpellStat;
     bonus?: string | RolledSpellStat;

@@ -1,8 +1,7 @@
 import {inject, singleton} from 'tsyringe';
-import * as marked from 'marked';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
-import {assertIsCharacter, ComputedCharacterMagicArmorData, Lvl0Actor} from 'models/actor';
+import {assertIsCharacter, Lvl0Actor} from 'models/actor';
 import {ElementRepository, SpellActionMagicArmorDefinition, SpellRepository} from 'repositories';
 import {
     AddEffectActionModifierDefinition,
@@ -94,7 +93,7 @@ export class SpellManager {
                 definition: spellDefinition,
                 dependsOnArcaneLevel: spellDefinition.dependsOnArcaneLevel
             };
-            actorSpell.description = marked.parse(this.computeSpellDescription(actorSpell, spellDefinition, context));
+            actorSpell.description = this.computeSpellDescription(actorSpell, spellDefinition, context);
 
             return actorSpell;
         } catch (e) {
@@ -137,7 +136,7 @@ export class SpellManager {
 
         this.addAdditionalActions(actorSpell.definition.actions, context, updatedActorSpell)
 
-        updatedActorSpell.description = marked.parse(this.computeSpellDescription(updatedActorSpell, actorSpell.definition, context));
+        updatedActorSpell.description = this.computeSpellDescription(updatedActorSpell, actorSpell.definition, context);
 
         return updatedActorSpell;
     }
