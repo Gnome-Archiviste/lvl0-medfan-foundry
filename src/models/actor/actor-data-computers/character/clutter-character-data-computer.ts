@@ -34,7 +34,11 @@ export class ClutterCharacterDataComputer extends CharacterDataComputer {
                 continue;
             }
 
-            usedSpacesByItemType[item.type] = (usedSpacesByItemType[item.type] || 0) + item.data.data.clutter
+            let quantity = 1;
+            if (item.data.data.quantifiable) {
+                quantity = item.data.data.quantity;
+            }
+            usedSpacesByItemType[item.type] = (usedSpacesByItemType[item.type] || 0) + item.data.data.clutter * quantity
         }
 
         usedSpacesByItemType['money'] = actorData.staticInventory.money * 0.01
