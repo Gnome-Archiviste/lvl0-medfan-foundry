@@ -25,6 +25,13 @@ export class SkillRepository {
         return skillsByIds;
     }
 
+    getSkillsNamesByIds(): Record<string, string> {
+        let skillsNamesById = {};
+        for (let [id, skill] of Object.entries(this.getSkillsByIds())) {
+            skillsNamesById[id] = skill.name;
+        }
+        return skillsNamesById;
+    }
 
     splitSkill(skillId: string): [skillCategory: string, skillName: string] {
         let [skillCategory, skillName] = skillId.split('.', 2);

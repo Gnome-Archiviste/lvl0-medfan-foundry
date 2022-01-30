@@ -16,7 +16,7 @@ import {
 import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
 import {EffectManager} from '../../../managers/effects';
-import {ModifierManager} from '../../../managers/modifiers/modifier-manager';
+import {ActorModifierManager} from '../../../managers/modifiers/actor-modifier-manager';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
     actorData: Lvl0ActorCharacterData,
@@ -55,7 +55,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     private readonly macroUtil: MacroUtil;
     private readonly game: InitializedGame;
     private readonly effectManager: EffectManager;
-    private readonly modifierManager: ModifierManager;
+    private readonly modifierManager: ActorModifierManager;
 
     constructor(actor: Lvl0Actor, options: Partial<Options>) {
         super(actor, options);
@@ -69,7 +69,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         this.macroUtil = container.resolve(MacroUtil);
         this.game = container.resolve(InitializedGame);
         this.effectManager = container.resolve(EffectManager);
-        this.modifierManager = container.resolve(ModifierManager);
+        this.modifierManager = container.resolve(ActorModifierManager);
     }
 
     async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
@@ -262,7 +262,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         });
 
 
-        html.find('[data-equip-item-checkbox]').click(ev => {
+        html.find('[data-equip-item-checkbox]').on('click', ev => {
             const itemId = $(ev.currentTarget).data('equip-item-checkbox');
             const item = this.actor.items.get(itemId);
             if (!item)

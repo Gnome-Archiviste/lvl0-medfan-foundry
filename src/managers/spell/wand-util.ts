@@ -78,6 +78,7 @@ export class WandUtil {
                 name: itemName,
                 img: spell.icon,
                 data: {
+                    description: spell.description,
                     quantifiable: false,
                     quantity: 0,
                     spell: spell.id,

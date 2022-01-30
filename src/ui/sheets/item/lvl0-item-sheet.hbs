@@ -4,8 +4,32 @@
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
 
-    {{#if isOwned}}
-        <div class="form-group">
+    <div class="attribute-group">
+        <div class="form-group-small">
+            <label>Encombrement</label>
+            <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.clutter}}" />
+        </div>
+        <div class="form-group-small">
+            <label><i class="fa fa-coins"></i> Prix</label>
+            <input name="data.price" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.price}}" />
+        </div>
+    </div>
+    <div class="attribute-group">
+        <div class="form-group-small">
+            <label>Quantifiable</label>
+            <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked data.data.quantifiable}}/>
+        </div>
+
+        {{#if (and isOwned data.data.quantifiable)}}
+            <div class="form-group-small">
+                <label>Quantité</label>
+                <input name="data.quantity" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.quantity}}" />
+            </div>
+        {{/if}}
+    </div>
+
+    {{#if canBeEquiped}}
+        <div class="form-group-small">
             <label>Équipé ?</label>
             <input type="checkbox" name="data.equiped" data-dtype="Boolean" {{checked data.data.equiped}}/>
         </div>
@@ -20,25 +44,13 @@
         <textarea name="data.details" data-dtype="String">{{data.data.details}}</textarea>
     </div>
     <div class="form-group">
-        <label>Encombrement</label>
-        <input name="data.clutter" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.clutter}}" />
-    </div>
-    <div class="form-group">
-        <label>Prix</label>
-        <input name="data.price" data-dtype="Number" type="number" min="0" step="1" value="{{data.data.price}}" />
-    </div>
-    <div class="form-group">
-        <label>Quantifiable</label>
-        <input type="checkbox" name="data.quantifiable" data-dtype="Boolean" {{checked data.data.quantifiable}}/>
-    </div>
-    <div class="form-group">
         <label>Limitation</label>
         <input type="text" name="data.restriction" data-dtype="String" value="{{data.data.restriction}}"/>
     </div>
 
     {{#if (or (eq item.type 'scroll') (eq item.type 'wand'))}}
         <div class="form-group">
-            <label>Sort (id)</label>
+            <label>Sort <button data-select-spell>Choisir</button></label>
             <input type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" />
         </div>
     {{/if}}
@@ -156,7 +168,7 @@
             <input type="checkbox" name="data.noLimit" data-dtype="Boolean" {{checked data.data.noLimit}}/>
         </div>
     {{/if}}
-    {{#if (or (eq item.type 'ring') (eq item.type 'weapon') (eq item.type 'armor') (eq item.type 'cloak') (eq item.type 'belt') (eq item.type 'head') (eq item.type 'necklace') (eq item.type 'hand') (eq item.type 'foot') (eq item.type 'handWeapon'))}}
+    {{#if itemTypeConfig.canHaveModifiers}}
         <div>
             <div>Modificateurs:</div>
             <div class="modifier-values">

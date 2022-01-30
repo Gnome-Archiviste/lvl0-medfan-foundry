@@ -27,9 +27,9 @@ Hooks.once("init", async function () {
     ]);
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character']});
+    Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character'], label: 'Character'});
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("lvl0mf", Lvl0ItemSheet, {makeDefault: true});
+    Items.registerSheet("lvl0mf", Lvl0ItemSheet, {makeDefault: true, label: 'Objet'});
 
     container.register<InitializedGame>(InitializedGame, {useValue: game as InitializedGame});
 });
@@ -37,6 +37,7 @@ Hooks.once("init", async function () {
 Hooks.once("ready", async function () {
     (window as any).rollSkillManager = container.resolve(RollSkillManager);
     (window as any).rollSpecialityManager = container.resolve(RollSpecialityManager);
+    await ui.sidebar?.activateTab('items');
 });
 
 declare global {

@@ -1,4 +1,5 @@
 export * from './elements';
+export * from './item-config';
 export * from './jobs';
 export * from './magic-epic-fail-effects';
 export * from './races';

@@ -2,7 +2,7 @@ import {singleton} from 'tsyringe';
 import {CharacterModifierInfo, CharacterProperties, Lvl0Actor, Lvl0ActorCharacter} from 'models/actor';
 
 @singleton()
-export class ModifierManager {
+export class ActorModifierManager {
 
     async addModifier(actor: Lvl0ActorCharacter, modifier: CharacterModifierInfo) {
         let modifiers = actor.data.data.modifiers || {};
