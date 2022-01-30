@@ -37,7 +37,6 @@ Hooks.once("init", async function () {
 Hooks.once("ready", async function () {
     (window as any).rollSkillManager = container.resolve(RollSkillManager);
     (window as any).rollSpecialityManager = container.resolve(RollSpecialityManager);
-    await ui.sidebar?.activateTab('items');
 });
 
 declare global {

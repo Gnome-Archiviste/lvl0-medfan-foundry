@@ -50,8 +50,22 @@
 
     {{#if (or (eq item.type 'scroll') (eq item.type 'wand'))}}
         <div class="form-group">
-            <label>Sort <button data-lvl0-action="selectSpell">Choisir</button></label>
-            <input type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" />
+            <label>Sort</label>
+            <div class="spell-selection">
+                <input class="spell-id" type="text" name="data.spell" data-dtype="String" value="{{data.data.spell}}" />
+                <span class="arcane-level">
+                    <span>Niveau arcane:</span>
+                    <input type="number" name="data.arcane" data-dtype="Number" value="{{data.data.arcane}}" {{#if (and spellDefinition (not spellDefinition.dependsOnArcaneLevel))}}disabled{{/if}}/>
+                </span>
+                <button class="select-button" data-lvl0-action="selectSpell">Choisir</button>
+                {{#if spellDefinition}}
+                    <div class="spell">
+                        <img class="icon" src="{{spellDefinition.icon}}">
+                        <span class="name">{{spellDefinition.name}}</span>
+                        <span class="details">Niveau d'arcane: {{spellDefinition.level}} - Spe: {{spellDefinition.specializationName}}</span>
+                    </div>
+                {{/if}}
+            </div>
         </div>
     {{/if}}
     {{#if (eq item.type 'wand')}}

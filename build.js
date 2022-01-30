@@ -23,7 +23,7 @@ copyAndWatchFiles([
         ],
         loader: {'.hbs': 'default'},
         bundle: true,
-        minify: true,
+        minify: !watch,
         sourcemap: true,
         logLevel: "info",
         target: ['es6'],

@@ -1,7 +1,7 @@
 import mage from './spells/mage/mage.js';
 import champion from "./spells/champion/champion";
 
-export interface SpellDefinition {
+export interface SpellData {
     readonly id: string;
     readonly icon: string;
     readonly name: string;
@@ -72,6 +72,6 @@ export interface ComputableSpellValue {
 }
 
 export default {
-    mage: mage as Record<string, Record<number, SpellDefinition[]>>,
-    champion: champion as Record<string, Record<number, SpellDefinition[]>>
+    mage: mage as Record<string, Record<number, SpellData[]>>,
+    champion: champion as Record<string, Record<number, SpellData[]>>
 }

@@ -8,6 +8,7 @@
   "dependencies": {
     "@sentry/browser": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
+    "fuzzysort": "^1.1.4",
     "marked": "^4.0.9",
     "reflect-metadata": "^0.1.13"
   },

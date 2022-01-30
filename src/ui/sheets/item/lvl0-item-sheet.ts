@@ -1,14 +1,18 @@
 import {container} from 'tsyringe';
 import {getItemExtraSkillsIfAvailable, Lvl0Item, Lvl0ItemWithModifiers} from 'models/item';
-import {ElementRepository, ItemTypesConfigRepository, SkillRepository} from 'repositories';
+import {ElementRepository, ItemTypesConfigRepository, SkillRepository, SpellRepository} from 'repositories';
 import {ItemModifierManager} from '../../../managers/modifiers';
 import ClickEvent = JQuery.ClickEvent;
+import {DialogAwaiter} from '../../dialog';
+import {SpellDefinitionSelectorDialog} from '../../dialog/spell-definition-selector-dialog';
 
 export class Lvl0ItemSheet extends ItemSheet {
     private readonly elementRepository: ElementRepository;
     private readonly itemTypesConfigRepository: ItemTypesConfigRepository;
     private readonly itemModifierManager: ItemModifierManager;
     private readonly skillRepository: SkillRepository;
+    private readonly dialogAwaiter: DialogAwaiter;
+    private readonly spellRepository: SpellRepository;
 
     constructor(item: Lvl0Item, options: Partial<ItemSheet.Options>) {
         super(item, options);
@@ -17,6 +21,8 @@ export class Lvl0ItemSheet extends ItemSheet {
         this.itemTypesConfigRepository = container.resolve(ItemTypesConfigRepository);
         this.itemModifierManager = container.resolve(ItemModifierManager);
         this.skillRepository = container.resolve(SkillRepository);
+        this.dialogAwaiter = container.resolve(DialogAwaiter);
+        this.spellRepository = container.resolve(SpellRepository);
     }
 
     override getData(options?: Partial<ItemSheet.Options>) {
@@ -29,8 +35,15 @@ export class Lvl0ItemSheet extends ItemSheet {
             'marble': 'Bille',
         };
         let itemTypeConfig = this.itemTypesConfigRepository.getItemTypeConfig(this.item.data.type);
+        let spellDefinition;
+        if (this.item.data.type === 'wand' || this.item.data.type === 'scroll') {
+            if (this.item.data.data.spell) {
+                spellDefinition = this.spellRepository.getSpellById(this.item.data.data.spell);
+            }
+        }
         return {
             ...templateData,
+            spellDefinition: spellDefinition,
             isOwned: this.item.isOwned,
             canBeEquiped: this.item.isOwned && itemTypeConfig.canBeEquiped,
             itemTypeConfig: itemTypeConfig,
@@ -75,40 +88,60 @@ export class Lvl0ItemSheet extends ItemSheet {
         if (!this.options.editable) {
             return;
         }
-
-        html.find("button[data-select-spell='addItemModifier']").on('click', ev => this._onAddModifier(ev));
-        html.find("button[data-lvl0-action='addItemModifier']").on('click', ev => this._onAddModifier(ev));
-        html.find("a[data-lvl0-action='deleteModifier']").on('click', ev => this._onRemoveModifier(ev));
-        html.find("button[data-lvl0-action='addItemExtraSkill']").on('click', ev => this._onAddExtraSkill(ev));
-        html.find("a[data-lvl0-action='deleteExtraSkill']").on('click', ev => this._onRemoveExtraSkill(ev));
+        html.find("[data-lvl0-action]").on('click', async ev => {
+            ev.preventDefault();
+            switch (ev.currentTarget.dataset.lvl0Action) {
+                case 'selectSpell':
+                    let spell = await this.dialogAwaiter.openAndWaitResult(SpellDefinitionSelectorDialog, {});
+                    if (spell) {
+                        if (this.item.data.type === 'wand' || this.item.data.type === 'scroll') {
+                            let newArcane = spell.dependsOnArcaneLevel ? this.item.data.data.arcane || spell.level : 0;
+                            await this.item.update({data: {spell: spell.id, arcane: newArcane}});
+                        }
+                    }
+                    break;
+                case 'addItemModifier':
+                    await this.onAddModifier(ev)
+                    break;
+                case 'deleteModifier':
+                    await this.onRemoveModifier(ev)
+                    break;
+                case 'addItemExtraSkill':
+                    await this.onAddExtraSkill(ev)
+                    break;
+                case 'deleteExtraSkill':
+                    await this.onRemoveExtraSkill(ev)
+                    break;
+            }
+        });
     }
 
-    async _onRemoveModifier(ev: ClickEvent) {
+    private async onRemoveModifier(ev: ClickEvent) {
         if (!ev.target)
             return;
         let modifierId = +$(ev.target).parents('.modifier-value').data('modifier-id');
         await this.itemModifierManager.removeModifier(this.item, modifierId);
     }
 
-    async _onAddModifier(ev: ClickEvent) {
-        await this.itemModifierManager.addModifier(this.item as Lvl0ItemWithModifiers,  {stat: 'phy', value: 1});
+    private async onAddModifier(ev: ClickEvent) {
+        await this.itemModifierManager.addModifier(this.item as Lvl0ItemWithModifiers, {stat: 'phy', value: 1});
     }
 
-    _onRemoveExtraSkill(ev: ClickEvent) {
+    private async onRemoveExtraSkill(ev: ClickEvent) {
         if (!ev.target)
             return;
         let extraSkillId = +$(ev.target).parents('.extra-skill-line').data('extra-skill-id');
         let extraSkills = getItemExtraSkillsIfAvailable(this.item.data) || {};
         let newExtraSkills = {...extraSkills, ['-=' + extraSkillId]: null};
-        this.item.update({data: {extraSkills: newExtraSkills}});
+        await this.item.update({data: {extraSkills: newExtraSkills}});
     }
 
-    _onAddExtraSkill(ev: ClickEvent) {
+    private async onAddExtraSkill(ev: ClickEvent) {
         if (!ev.target)
             return;
         let extraSkills = getItemExtraSkillsIfAvailable(this.item.data) || {};
         let nextId = (Object.keys(extraSkills).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-        this.item.update({data: {extraSkills: {[nextId]: {id: 'champion.shield_attack'}}}}, {diff: true});
+        await this.item.update({data: {extraSkills: {[nextId]: {id: 'champion.shield_attack'}}}}, {diff: true});
     }
 
     static get defaultOptions(): ItemSheet.Options {
