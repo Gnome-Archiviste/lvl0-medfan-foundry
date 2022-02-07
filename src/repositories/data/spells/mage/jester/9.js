@@ -29,6 +29,8 @@ export default [
             "text": "Bouffon"
         },
         "duration": {
+            "rollFormula": "return '2d6+' + (context.arcaneLevel * 1);",
+            "unit": "tours",
             "text": "2d6 + (1 par niveau d’arcane)"
         },
         "area": {
@@ -37,7 +39,7 @@ export default [
         "criticalSuccess": {
             "text": "Double la durée"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "premonition",
