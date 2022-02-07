@@ -1,5 +1,5 @@
 import {singleton} from 'tsyringe';
-import {Lvl0Actor, Lvl0ActorCharacter} from '../../models/actor';
+import {Lvl0ActorCharacter} from '../../models/actor';
 
 @singleton()
 export class SpecialityUtil {

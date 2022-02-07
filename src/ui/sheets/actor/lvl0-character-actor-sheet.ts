@@ -3,7 +3,8 @@ import {RollSkillManager} from 'managers/skill';
 import {assertIsCharacter, Lvl0Actor, Lvl0ActorCharacterData} from 'models/actor';
 import {Lvl0ItemType} from 'models/item';
 import {
-    ExtensionJobDefinition, ItemTypeConfig,
+    ExtensionJobDefinition,
+    ItemTypeConfig,
     ItemTypesConfigRepository,
     JobDefinition,
     JobRepository,
@@ -394,6 +395,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                 icon: '<i class="fas fa-trash"></i>',
                 callback: async el => {
                     let specialityId = el.data('speciality');
+                    assertIsCharacter(this.actor);
                     await this.specialityUtil.removeSpeciality(this.actor, specialityId);
                 }
             })
