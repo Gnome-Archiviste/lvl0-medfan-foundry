@@ -77,9 +77,9 @@ export default [
         "icon": "icons/magic/light/orb-lightbulb-gray.webp",
         "description": "Fait apparaître une boule de lumière pour éclairer une pièce ou un corridor. La lumière est fixe.\n\nÀ partir d’arcane 2, le bouffon peut choisir la couleur de la lumière.\n\nÀ partir d’arcane 5, le bouffon peut l'avoir qui le suit pour le coût de 2 points de magie additionnels.",
         "distance": {
-            "value": 2,
+            "value": 10,
             "unit": "mètre",
-            "text": "2 mètres"
+            "text": "10 mètres"
         },
         "duration": {
             "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
@@ -99,7 +99,7 @@ export default [
         "id": "stickyHand",
         "name": "Main collante",
         "icon": "icons/magic/unholy/hand-marked-pink.webp",
-        "description": "Ce sort fait apparaître une substance collante et sucrée très similaire à de la confiture. Le sort donne le pouvoir de mouvement le long des murs et des plafonds à la cible. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
+        "description": "Ce sort fait apparaître une substance collante et sucrée très similaire à de la confiture. Le sort donne le pouvoir de se déplacer le long des murs et des plafonds à la cible. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

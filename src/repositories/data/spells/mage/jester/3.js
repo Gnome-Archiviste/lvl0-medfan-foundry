@@ -121,9 +121,9 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "murmureDeDasha",
+        "id": "dashaWhispering",
         "name": "Murmure de Dasha",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/svg/silenced.svg",
         "description": "Conversation chuchotée à distance. Il faut pouvoir voir la cible.",
         "distance": {
             "text": "5 mètres + 1 mètre par niveau d’arcane."
@@ -202,7 +202,7 @@ export default [
     {
         "id": "sphereGlaceeDeTalitha",
         "name": "Sphère glacée de Talitha",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/orb-ice-opaque.webp",
         "description": "Créer une boule glacée attaquant une victime qui est figée pendant 2 tours.",
         "distance": {
             "value": 15,

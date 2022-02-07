@@ -107,7 +107,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "text": "1 tour par arcane"
+            "text": "5 tours par arcane"
         },
         "area": {
             "value": 2,

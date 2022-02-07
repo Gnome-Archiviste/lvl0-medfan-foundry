@@ -54,7 +54,7 @@ export default [
     {
         "id": "piegeDeFeu",
         "name": "Piège de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/explosion-flame-lightning-strike.webp",
         "description": "Installé sur n’importe quel objet pouvant être fermé, un piège de feu s’enflamme lorsque quelqu’un d’autre que l’élémentaliste, ou toute autre personnage sélectionné par celui-ci, ouvre l’objet protégé par le sort. Lorsqu’elle est déclenchée, une explosion de feu remplit la zone à moins de 2 mètres de rayon de l’objet. L’explosion inflige 1d6 dégâts + 1 point par niveau d’arcane de l’élémentaliste au lancé du sort. L’objet n’est pas endommagé par le sort.\n\n\n\n\n\nUn sort dissipation de la magie qui n’a pas fonctionné ne déclenchera pas l’explosion mais le sort restera actif.\n\n\n\n",
         "distance": {
             "text": "toucher"
@@ -63,7 +63,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "?[i]"
+            "text": "2"
         },
         "resilience": {
             "text": "Divise le dommage par deux"
@@ -80,7 +80,7 @@ export default [
     {
         "id": "retourDeFlammes",
         "name": "Retour de flammes",
-        "icon": "icons/magic/defense/shield-barrier-flaming-pentagon-red.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
         "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance au feu jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts de feu supplémentaires, et le sort prend fin.",
         "distance": {
             "type": "self",

@@ -79,7 +79,7 @@ export default [
     {
         "id": "repasDuFeroxyde",
         "name": "Repas du feroxyde",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/life/heart-cross-green.webp",
         "description": "Avec ce sort, l’élémentaliste peut utiliser manger et digérer des morceaux de métal afin de se guérir de 1d6 points de vie (pour 10 bouchées).",
         "distance": {
             "type": "self",

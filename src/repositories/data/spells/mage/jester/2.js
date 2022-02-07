@@ -153,7 +153,7 @@ export default [
     {
         "id": "TalitaPartialInvisibility",
         "name": "Invisibilité éphémère de Talitha",
-        "icon": "'icons/magic/symbols/triangle-glow-purple.webp'",
+        "icon": "icons/magic/symbols/triangle-glow-purple.webp",
         "description": "Le sort ne fonctionne que sur les objets non vivants et immobiles pesant moins que le bouffon qui le lance. Cela rend un objet temporairement invisible. Si l’objet est déplacé, le sort est annulé. L’objet ne peut pas mesurer plus d’un mètre de haut ou de large.",
         "distance": {
             "text": "Touché"

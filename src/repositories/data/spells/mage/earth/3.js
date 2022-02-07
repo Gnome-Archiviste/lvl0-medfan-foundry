@@ -2,7 +2,7 @@ export default [
     {
         "id": "contreCoup",
         "name": "Contre-coup",
-        "icon": "icons/magic/defensive/shield-barrier-faming-pentagon-orange.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
         "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[l]",
         "distance": {
             "text": "Une cible"

@@ -29,7 +29,7 @@ export default [
             "text": "Bouffon"
         },
         "duration": {
-            "text": "2d6 + Intelligence"
+            "text": "2d6 + (1 par niveau d’arcane)"
         },
         "area": {
             "text": "Durée"

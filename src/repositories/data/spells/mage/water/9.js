@@ -29,7 +29,7 @@ export default [
     {
         "id": "mineMarineMajeure",
         "name": "Mine marine majeure",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/wave-water-explosion.webp",
         "description": "L'élémentaliste crée une gigantesque bulle d'eau qui finit par exploser projetant tous ceux autour à 10 mètres\n\n\n\n",
         "distance": {
             "value": 20,

@@ -46,7 +46,7 @@ export default [
     {
         "id": "indistinguishablePassage",
         "name": "Passage sans traces",
-        "icon": "Passage sans traces",
+        "icon": "icons/svg/stone-path.svg",
         "description": "En recevant ce sort, la cible peut se déplacer sur n’importe quel type de terrain et ne laisser ni empreintes ni odeurs. Pister la cible devient impossible par des moyens non magiques.",
         "distance": {
             "value": 5,

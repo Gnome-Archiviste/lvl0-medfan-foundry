@@ -2,7 +2,7 @@ export default [
     {
         "id": "marqueDeKegan",
         "name": "Marque de Kegan",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/symbols/rune-sigil-black-pink.webp",
         "description": "L’élémentaliste applique le sceau magique sur une cible vivante. Permet à l’élémentaliste de tracer cette cible sur un rayon de 100 mètres par niveau d'arcane. Kegan usait de ce sort pour \"libérer\" un ork pour que celui-ci le guide vers le terrier et l'anéantir. ",
         "distance": {
             "text": "toucher"

@@ -35,7 +35,7 @@ export default [
     {
         "id": "boilingOil",
         "name": "Huile bouillante",
-        "icon": "icons/commodities/material/liquid-orange.webp",
+        "icon": "icons/commodities/materials/liquid-orange.webp",
         "description": "Immobilise les victimes pendant deux (2) tours sur une distance de trois (3) mètres carrés. Les victimes ne peuvent plus se déplacer.\n\n\n\n",
         "distance": {
             "text": "8 mètres + 1 m par arcane"
@@ -65,9 +65,9 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "maledictionDeLacierBrulantH",
-        "name": "Malédiction de l’acier brûlant [h]",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "id": "maledictionDeLacierBrulantHi",
+        "name": "Malédiction de l’acier brûlant [h][i]",
+        "icon": "icons/commodities/metal/barstock-heated-steel.webp",
         "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
             "value": 20,
