@@ -30,7 +30,14 @@
                         <span class="sheet-skill">
                             <span class="label-with-tooltip-description" data-skill="{{concat2 @../key '.' @key}}">
                                 {{skill.name}}
-                                <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                                <div class="description">
+                                    {{#if skill.icon}}
+                                        <img class="icon" src="{{skill.icon}}">
+                                    {{/if}}
+                                    <span>
+                                        <strong>{{skill.name}}</strong> {{markdown skill.description}}
+                                    </span>
+                                </div>
                             </span>
                             {{skill-value skill ../../actorData @../key @key}}
                         </span>
@@ -46,7 +53,14 @@
                 <span class="sheet-skill">
                     <span class="label-with-tooltip-description" data-skill="{{concat2 'combat.' @key}}">
                         {{skill.name}}
-                        <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                        <div class="description">
+                            {{#if skill.icon}}
+                                <img class="icon" src="{{skill.icon}}">
+                            {{/if}}
+                            <span>
+                                <strong>{{skill.name}}</strong> {{markdown skill.description}}
+                            </span>
+                        </div>
                     </span>
                     {{skill-value skill ../actorData 'combat' @key}}
                 </span>
@@ -59,7 +73,14 @@
                 <span class="sheet-skill">
                     <span class="label-with-tooltip-description" data-skill="{{concat2 'general.' @key}}">
                         {{skill.name}}
-                        <div class="description"><strong>{{skill.name}}</strong>: {{skill.description}}</div>
+                        <div class="description">
+                            {{#if skill.icon}}
+                                <img class="icon" src="{{skill.icon}}">
+                            {{/if}}
+                            <span>
+                                <strong>{{skill.name}}</strong> {{markdown skill.description}}
+                            </span>
+                        </div>
                     </span>
                     {{skill-value skill ../actorData 'general' @key}}
                 </span>
@@ -77,7 +98,11 @@
                         <img class="icon" src="{{speciality.icon}}" />
                         <div class="label label-with-tooltip-description" data-speciality="{{speciality.id}}">
                             {{speciality.name}}
-                            <div class="description"><strong>{{speciality.name}}</strong>: {{speciality.description}}</div>
+                            <div class="description">
+                                <span>
+                                    <strong>{{speciality.name}}</strong> {{markdown speciality.description}}
+                                </span>
+                            </div>
                         </div>
                         <div class="cost">Coût: 1 point de magie</div>
                         <div class="action">

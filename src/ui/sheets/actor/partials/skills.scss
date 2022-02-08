@@ -127,6 +127,16 @@
   .label-with-tooltip-description {
     position: relative;
     .description {
+      display: flex;
+      flex-direction: row;
+      .icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 4px 1em 4px 4px;
+      }
+      > span {
+        display: block;
+      }
       background: #23221d;
       border: 1px solid #000;
       border-radius: 5px;

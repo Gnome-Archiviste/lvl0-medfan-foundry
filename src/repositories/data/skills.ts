@@ -47,7 +47,7 @@ export default {
             name: "Attaque de bouclier",
             icon: 'icons/magic/defensive/shield-barrier-blue.webp',
             stat: "phy",
-            description: "Permet au champion de se battre avec un bouclier. Cette attaque peut se faire comme une seconde attaque durant son tour, il faut cependant faire un jet de dés pour chaque attaque. La première se fait toujours avec un Combat de mêlées, la deuxième avec Attaque de bouclier. Seuls les Champions peuvent faire une attaque de bouclier.",
+            description: "Permet au champion de se battre avec un bouclier.\n\nCette attaque peut se faire comme une seconde attaque durant son tour, il faut cependant faire un jet de dés pour chaque attaque.\n\nLa première se fait toujours avec un Combat de mêlées, la deuxième avec Attaque de bouclier.\n\nSeuls les Champions peuvent faire une attaque de bouclier.",
             script: {
                 name: 'shieldDamageRoll',
                 data: {}
@@ -86,6 +86,7 @@ export default {
     ranger: {
         stealth: {
             name: "Camouflage",
+            icon: 'icons/magic/nature/stealth-hide-eyes-green.webp',
             stat: "dex",
             description: "Permet au forestier de se dissimuler pour des embuscades."
         },
@@ -101,6 +102,7 @@ export default {
         },
         tracking: {
             name: "Pister",
+            icon: 'icons/creatures/abilities/paw-print-tan.webp',
             stat: "per",
             description: "Permet au forestier de suivre à la trace un animal ou quelqu’un."
         }
@@ -108,6 +110,7 @@ export default {
     warrior: {
         charge: {
             name: "Charge",
+            icon: 'icons/skills/movement/figure-running-gray.webp',
             stat: "phy",
             description: "Double les dégâts de l’attaque, mais le personnage ne peut plus éviter ni utiliser son bouclier pour se protéger.",
             script: {
@@ -121,7 +124,7 @@ export default {
         two_handed_combat: {
             name: "Combat à deux mains",
             stat: "phy",
-            description: "ermet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains.",
+            description: "Permet au guerrier de se battre avec deux armes (ou ses deux mains). Il faut cependant faire un jet de dés pour chaque arme (ou main). La première avec combat de mêlées ou combats à mains nues, la deuxième avec combat à deux mains. Seuls les guerriers peuvent faire du combat avec deux armes. On doit faire son combat, soit avec deux armes ou soit avec ses deux mains.",
             script: {
                 name: 'damageRoll',
                 data: {
@@ -131,6 +134,7 @@ export default {
         },
         intimidation: {
             name: "Intimidation",
+            icon: 'icons/skills/social/intimidation-impressing.webp',
             stat: "cha",
             description: "Pour intimider un adversaire. L’adversaire doit faire un test de « résilience ». Celui s’enfuit comme un lâche. À chaque tour suivant l’intimidation peut refaire un test de « résilience » pour savoir s’il revient. Le maximum de tours est 1d6/2."
         },
@@ -147,7 +151,8 @@ export default {
             description: "Lorsque le magicien prend un tour pour faire un jet de concentration et le réussit, le mage a un bonus de 2 sur le jet de son prochain sort."
         },
         knowledge: {
-            name: "Connnaissance",
+            name: "Connaissance",
+            icon: "icons/skills/trades/academics-book-study-purple.webp",
             stat: "int",
             description: "Permet de savoir si le magicien a des informations sur un sujet quelconque."
         },
@@ -187,11 +192,13 @@ export default {
         },
         forgery: {
             name: "Faux-semblant",
+            icon: 'icons/skills/trades/academics-scribe-quill-gray.webp',
             stat: "int",
             description: "Permet au voleur de faire une copie réaliste d’un objet ou d’un document."
         },
         larceny: {
             name: "Larcin",
+            icon: 'icons/skills/social/theft-pickpocket-bribery-brown.webp',
             stat: "dex",
             description: "Permet au voleur de voler des objets, déverrouillage des serrures, faire du vol à la tire, léger-de-main, crochetage. Permet de trouver des portes secrètes, des compartiments cachés, les pièges et d’autres zones cachées spécialement construites pour échapper à la détection."
         }
@@ -229,6 +236,7 @@ export default {
         },
         dodge: {
             name: "Éviter",
+            icon: "icons/magic/defensive/shield-barrier-deflect-teal.webp",
             stat: "dex",
             description: "Le personnage a une aisance à éviter les coups."
         },
@@ -242,20 +250,24 @@ export default {
         crafting: {
             name: "Artisanat",
             stat: "dex",
+            icon: 'icons/skills/trades/construction-carpentry-hammer-gray.webp',
             description: "Travail du cuir, soufflage du verre, maçonnerie, couture, poterie, peinture, taillage de pierre, fabrication du papier et reliure, etc."
         },
         athletic: {
             name: "Athlétique",
+            icon: 'icons/magic/control/buff-strength-muscle-damage.webp',
             stat: "phy",
             description: "Permet de faire des actions physiques demandant une certaine force (courir, nager, sauter, main de fer, faire trébucher, etc.)."
         },
         cooking: {
             name: "Cuisiner",
+            icon: 'icons/tools/cooking/bowl-steaming-brown.webp',
             stat: "dex",
             description: "Permet de faire à manger sur un poêle à bois, un feu de camp, avec des ressources trouvées, etc… Permet de redonner 1 point de vie en mangeant le repas, si le test de Cuisiner est réussi."
         },
         disguise: {
             name: "Déguisement",
+            icon: 'icons/equipment/head/hood-cowl-mask-purple.webp',
             stat: "cha",
             description: "Permet de se déguiser et de passer inaperçu dans une foule ou un endroit."
         },
@@ -271,6 +283,7 @@ export default {
         },
         riding: {
             name: "Équitation",
+            icon: 'icons/environment/creatures/horse-tan.webp',
             stat: "dex",
             description: "Permet de faire des actions exceptionnelles à cheval, pas nécessaires pour simplement monter à cheval."
         },
@@ -281,6 +294,7 @@ export default {
         },
         blacksmith: {
             name: "Forgeron",
+            icon: 'icons/skills/trades/smithing-anvil-silver-red.webp',
             stat: "phy",
             description: "Permet de travailler le métal (maréchal ferrant, armurier, etc.)"
         },
@@ -291,6 +305,7 @@ export default {
         },
         herbalist: {
             name: "Herboriste",
+            icon: 'icons/consumables/plants/leaf-herb-green.webp',
             stat: "int",
             description: "Permet de trouver des herbes, les cultiver, faire des onguents, faire des tisanes, etc. Ajouté avec le test de soin, il permet aussi d'ajouter un autre point de vie à ce dernier."
         },
@@ -307,11 +322,13 @@ export default {
         },
         haggling: {
             name: "Marchandage",
+            icon: 'icons/skills/social/trading-justice-scale-gold.webp',
             stat: "cha",
             description: "Permet d’avoir des meilleurs prix, lors de ventes et d’achats (10 %)."
         },
         monster_lore: {
             name: "Monstrologie",
+            icon: 'icons/sundries/books/book-symbol-skull-grey.webp',
             stat: "int",
             description: "Permet de savoir si le personnage a des informations sur un monstre."
         },
@@ -340,11 +357,13 @@ export default {
         },
         hiding: {
             name: "Se cacher",
+            icon: 'icons/magic/nature/stealth-hide-beast-eyes-green.webp',
             stat: "dex",
             description: "Permet de passer inaperçu, mais le personnage doit rester immobile."
         },
         science: {
             name: "Science",
+            icon: 'icons/sundries/documents/blueprint-recipe-alchemical.webp',
             stat: "int",
             description: "Pour comprendre, concevoir ou modifier des engins et mécanismes. Faire de l’alchimie et de l’astrologie."
         },
@@ -356,6 +375,7 @@ export default {
         },
         survival: {
             name: "Survie",
+            icon: 'icons/magic/fire/flame-burning-campfire-smoke.webp',
             stat: "per",
             description: "Chasse, pêche, cueillette en milieu sauvage, faire du feu, etc."
         },
