@@ -50,7 +50,7 @@ export default [
             "text": "+1 d’armure, +1 éviter"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience[k]"
+            "text": "La cible ne peut pas faire de test de résilience[g]"
         },
         "dependsOnArcaneLevel": false
     },

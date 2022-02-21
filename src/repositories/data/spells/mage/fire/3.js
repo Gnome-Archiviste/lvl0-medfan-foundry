@@ -96,7 +96,7 @@ export default [
             "text": "Ajoute 1d6 dégâts de feu"
         },
         "criticalSuccess": {
-            "text": "Double la durée du sort[j]"
+            "text": "Double la durée du sort[f]"
         },
         "dependsOnArcaneLevel": false
     },

@@ -48,5 +48,27 @@ export default [
             "text": "Annule un sort de buffon d’arcane 6 et non-buffon d’arcane 3"
         },
         "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "invocationDunZanni",
+        "name": "Invocation d’un Zanni",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Fait apparaître un type d’un démon servant pour combattre avec le bouffon. La créature a la peau blanche, des pieds et des mains démesurés, une chevelure hirsute flamboyante et un nez vermillon. La créature est habillée de vêtements aux couleurs criardes et ne cesse de rigoler de façon… malaisante. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient. Les caractéristiques de la créature : Phy=9, Int=7, Cha=4, Dex=8, Per=6 (aucune habileté), 80 points de vie.",
+        "distance": {
+            "value": 2,
+            "unit": "mètre",
+            "text": "2 mètres"
+        },
+        "duration": {
+            "text": "Un combat ou jusqu’à détruit"
+        },
+        "criticalSuccess": {
+            "text": "130 points de vie"
+        },
+        "damage": {
+            "rollFormula": "return '1d6+6';",
+            "text": "1d6 + 6"
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

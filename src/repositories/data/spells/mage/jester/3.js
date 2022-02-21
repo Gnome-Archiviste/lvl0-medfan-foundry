@@ -1,25 +1,21 @@
 export default [
     {
-        "id": "appelDeLaNature",
-        "name": "Appel de la nature",
+        "id": "babelfish",
+        "name": "Babelfish",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort crée une sensation d’urgence, chez la cible, de se soulager de ses besoins naturels. Pendant 3 tours, la cible ne peut plus se concentrer sur autre chose. Elle doit se retirer pour aller faire ses besoins. Si elle est en combat, elle ne peut plus attaquer ou faire des sorts. Il doit partir du combat ou de la situation, en se déplaçant à la moitié du déplacement normal. ",
+        "description": "Permet de comprendre toute langue des créatures pensantes pendant sept tours.",
         "distance": {
-            "value": 10,
-            "unit": "mètre",
-            "text": "10 mètres"
+            "type": "self",
+            "text": "Magicien"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 3",
-            "value": 3,
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 7",
+            "value": 7,
             "unit": "tours",
-            "text": "3 tours"
+            "text": "7 tours"
         },
         "area": {
             "text": "Une cible"
-        },
-        "resilience": {
-            "text": "Le sort ne fonctionne pas"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",

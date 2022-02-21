@@ -1,5 +1,33 @@
 export default [
     {
+        "id": "appelDeLaNature",
+        "name": "Appel de la nature",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort crée une sensation d’urgence, chez la cible, de se soulager de ses besoins naturels. Pendant 3 tours, la cible ne peut plus se concentrer sur autre chose. Elle doit se retirer pour aller faire ses besoins. Si elle est en combat, elle ne peut plus attaquer ou faire des sorts. Il doit partir du combat ou de la situation, en se déplaçant à la moitié du déplacement normal. ",
+        "distance": {
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
+        },
+        "duration": {
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 3",
+            "value": 3,
+            "unit": "tours",
+            "text": "3 tours"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "resilience": {
+            "text": "Le sort ne fonctionne pas"
+        },
+        "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "bulleDeCRazigloo",
         "name": "Bulle de C. Razigloo",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -72,6 +100,27 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "detectionDesIllusions",
+        "name": "Détection des illusions",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Au moyen de ce sort, le bouffon peut détecter la présence d’illusions dans la direction vers laquelle le lanceur fait face, le long d’un chemin de 15 mètres de long et 3 mètres de large. Contrairement à la détection de magie, ce sort peut être lancé sur une autre créature au toucher.\n\nLe lanceur doit passer un tour à se concentrer le long du chemin pour détecter toute illusion, bien que le lanceur puisse à la fois lancer le sort et commencer à détecter dans le même tour que le sort est lancé. La force de l’illusion détectée sera révélée comme persistante, faible, moyenne, forte ou écrasante. Des zones illusoires, de multiples types d’illusions ou de fortes émanations illusoires peuvent confondre ou dissimuler des illusions plus faibles ; le bouffon doit passer des tours supplémentaires à se concentrer (test de concentration) pour déchiffrer la confusion ou révéler des illusions.",
+        "distance": {
+            "text": "Vers laquelle le lanceur fait face sur 15 mètres de long et 3 mètres de large."
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Bouffon"
+        },
+        "criticalSuccess": {
+            "text": "Rayon de 20 mètres."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "entartrage",
         "name": "Entartrage",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -101,6 +150,33 @@ export default [
         "dependsOnArcaneLevel": true
     },
     {
+        "id": "grelot",
+        "name": "Grelôt",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Fait qu’une cible émet des sons de grelots lorsqu’elle marche.",
+        "distance": {
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
+        },
+        "duration": {
+            "text": "une scène"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Empêche d’utiliser l’habileté Déplacement silencieux"
+        },
+        "resilience": {
+            "text": "Annule le sort"
+        },
+        "criticalSuccess": {
+            "text": "Double la durée"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "illusion",
         "name": "Illusion",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -111,10 +187,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 15",
-            "value": 15,
-            "unit": "tours",
-            "text": "15 tours"
+            "text": "2 minutes par arcanes"
         },
         "area": {
             "value": 5,
@@ -122,7 +195,6 @@ export default [
             "text": "5 mètres"
         },
         "criticalSuccess": {
-            "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
         },
         "dependsOnArcaneLevel": false

@@ -2,7 +2,7 @@ export default [
     {
         "id": "armureNitrique",
         "name": "Armure nitrique",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-glowing-triangle-green.webp",
         "description": "L’élémentaliste fait apparaître une couche gélatineuse blanchâtre et légèrement fumante qui absorbe jusqu’à 15 points de dégâts. Le sort peut être fait sur l’élémentaliste ou un allié. L’élémentaliste doit toucher la cible. De plus, l’attaquant reçoit 1 point de dégât dû aux éclaboussures de l’armure lorsqu’on l’attaque. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",
@@ -25,7 +25,7 @@ export default [
     {
         "id": "auraDacide",
         "name": "Aura d’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/control/sihouette-hold-beam-green.webp",
         "description": "Le contour du sujet semble déformé, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
         "distance": {
             "text": "toucher"
@@ -49,7 +49,7 @@ export default [
     {
         "id": "contactAcide",
         "name": "Contact acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/acid/dissolve-arm-flesh.webp",
         "description": "Les mains de l’élémentaliste sont entourées d’un liquide vert brillant qui semble bouillonner. Le toucher de l’élémentaliste inflige 5d6 points de dégâts d’acide, +1  par niveau d’arcane.",
         "distance": {
             "type": "touch",

@@ -1,5 +1,26 @@
 export default [
     {
+        "id": "cercleDeTeleportation",
+        "name": "Cercle de téléportation",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort permet de téléporter une personne ou un groupe de personnes vers un autre cercle de téléportation. Chaque cercle peut être relié à plusieurs autres cercles. Pour ce faire, un mot d’activation différent doit être utilisé pour chaque cercle de destination. L’enchanteur doit créer un cercle de 3 mètres de diamètre sur n’importe quelle surface horizontale suffisamment grande. Une fois que l’enchanteur a choisi une destination (et un mot d’activation), elle ne peut pas être modifiée. Mais, un deuxième sort peut-être lancé pour le lier à un autre cercle. Les emplacements des cercles doivent être connus de l’enchanteur.\n\nPour utiliser le cercle, une seule personne doit connaître le mot d’activation, mais chaque personne doit utiliser un point de mana pour activer le cercle. Un point supplémentaire par animal et véhicule qui accompagne les personnes utilisant le cercle.",
+        "distance": {
+            "text": "Touché"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Un objet"
+        },
+        "criticalSuccess": {
+            "text": "&"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "creationDunGolemDeChair",
         "name": "Création d’un Golem de chair",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",

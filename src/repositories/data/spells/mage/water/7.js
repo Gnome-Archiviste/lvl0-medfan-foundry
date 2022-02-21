@@ -55,7 +55,7 @@ export default [
         "id": "elementaireMajeurDeau",
         "name": "Élémentaire majeur d'eau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un élémentaire d'eau à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste.\n\nPHY 8, DEX 6, INT 4, CHA 6, PER 5\n\nHP 80, Armure : 2, H2H : 10, Lancer/tir : 9\n\nAttaques : H2H = 10 de dégâts, Siphon: 3d6+4 (jet d'eau, 5 m.)\n\n\n\n",
+        "description": "L'élémentaliste invoque un élémentaire d'eau à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient.\n\nPHY 8, DEX 6, INT 4, CHA 6, PER 5\n\nHP 80, Armure : 2, H2H : 10, Lancer/tir : 9\n\nAttaques : H2H = 10 de dégâts, Siphon: 3d6+4 (jet d'eau, 5 m.)\n\n\n\n",
         "distance": {
             "value": 2,
             "unit": "mètre",

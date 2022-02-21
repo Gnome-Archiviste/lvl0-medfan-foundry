@@ -24,7 +24,7 @@ export default [
         "id": "elementaireMajeurDair",
         "name": "Élémentaire majeur d’air",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un élémentaire d’air, tant qu’il y a de l’air de disponible (donc il ne peut être créé sous l’eau, par exemple). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\nPHY 8, DEX 7, INT 4, CHA 6, PER 4\n\nHP 80, Armure : 2, H2H : 10, Lancer/tir : 10\n\nAttaques : H2H = 10 de dégâts, jet d’air: 3d6+4 (rayon 3 m.), ennemis projeté à 10 mètres",
+        "description": "L'élémentaliste invoque un élémentaire d’air, tant qu’il y a de l’air de disponible (donc il ne peut être créé sous l’eau, par exemple). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient.\n\nPHY 8, DEX 7, INT 4, CHA 6, PER 4\n\nHP 80, Armure : 2, H2H : 10, Lancer/tir : 10\n\nAttaques : H2H = 10 de dégâts, jet d’air: 3d6+4 (rayon 3 m.), ennemis projeté à 10 mètres",
         "distance": {
             "value": 2,
             "unit": "mètre",

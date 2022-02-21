@@ -28,7 +28,28 @@ export default [
         "id": "referezVousALaTableDesPierresPrecieusesEtSemiPrecieuses",
         "name": "* Référez-vous à la table des pierres précieuses et semi-précieuses",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Désintégration\n\nDésintègre des objets fixes. Le magicien doit toucher l’objet pendant une minute.",
+        "description": "Création primordiale\n\nCe sort crée un objet non magique de matière végétale, pierre, cristal, métal ou pierre précieuse. Le volume de l’objet créé ne peut excéder 40 centimètres cubes par niveau d’arcane de l’enchanteur. Le lanceur doit réussir un ou plusieurs tests d’une habilité spécifiques pour fabriquer un objet complexe. Par exemple, forgeron pour une arme non commune ou ayant plusieurs types d’éléments. La durée de l’objet créé varie avec sa dureté et sa rareté relatives : la matière végétale dure 2 heures/arcane; la pierre, le cristal et les métaux communs durent 1 heure/arcane; les métaux précieux durent 20 minutes/arcane; les pierres précieuses durent 10 minutes/arcane. \n\nOn ne peut pas faire de permanence sur les objets créés par ce sort.",
+        "distance": {
+            "text": "Touché"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Un objet"
+        },
+        "criticalSuccess": {
+            "text": "&"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "desintegration",
+        "name": "Désintégration",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Désintègre des objets fixes. Le magicien doit toucher l’objet pendant une minute.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

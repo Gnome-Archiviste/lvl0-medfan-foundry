@@ -25,6 +25,31 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "nexusTellurique",
+        "name": "Nexus tellurique",
+        "icon": "",
+        "description": "L'élémentaliste créé une zone dans laquelle plusieurs magiciens peuvent regagner 15 points de mana. Les magiciens doivent rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "text": "10 minutes de jeu"
+        },
+        "area": {
+            "value": 2,
+            "unit": "m",
+            "text": "2 mètres"
+        },
+        "bonus": {
+            "text": "permet de regagner du mana"
+        },
+        "criticalSuccess": {
+            "text": "diminue la durée à 5 minutes"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "partoutatis",
         "name": "Partoutatis",
         "icon": "icons/magic/earth/projectile-orb-asteroid-yellow.webp",

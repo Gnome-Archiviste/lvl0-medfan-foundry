@@ -1,5 +1,60 @@
 export default [
     {
+        "id": "cahotementDePierres",
+        "name": "Cahotement de pierres",
+        "icon": "",
+        "description": "L'élémentaliste fait sauter les pierres environnantes du sol sur les ennemis dans une zone. Au début, les pierres tout autour se mettent à trembler avant de littéralement se jeter sur l’ennemi le plus proche.",
+        "distance": {
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "tour",
+            "text": "1 tour"
+        },
+        "area": {
+            "value": 5,
+            "unit": "m",
+            "text": "5 mètres"
+        },
+        "resilience": {
+            "text": "moitié des dégâts"
+        },
+        "criticalSuccess": {
+            "text": "Fait le maximum de dégâts."
+        },
+        "damage": {
+            "rollFormula": "return '3d6';",
+            "text": "3d6"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "jonctionTellurique",
+        "name": "Jonction tellurique",
+        "icon": "",
+        "description": "L'élémentaliste créé une zone dans laquelle il peut regagner 15 points de mana. L’élémentaliste doit rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort. L’élémentaliste peut faire le sort pour un autre magicien au niveau d’arcane 6.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "text": "10 minutes de jeu"
+        },
+        "area": {
+            "text": "Un cible"
+        },
+        "bonus": {
+            "text": "Permet de regagner du mana"
+        },
+        "criticalSuccess": {
+            "text": "diminue la durée à 5 minutes"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "plusValue",
         "name": "Plus value",
         "icon": "icons/commodities/gems/gem-rough-pendeloque-blue.webp",
@@ -15,7 +70,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Effet maximum automatique (100%)[n]"
+            "text": "Effet maximum automatique (100%)"
         },
         "dependsOnArcaneLevel": false
     },

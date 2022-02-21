@@ -45,5 +45,30 @@ export default [
             "text": "Double la durée du sort"
         },
         "dependsOnArcaneLevel": true
+    },
+    {
+        "id": "priseTellurique",
+        "name": "Prise tellurique",
+        "icon": "",
+        "description": "L'élémentaliste crée une zone dans laquelle il peut regagner 3 points de mana par tour tant qu’il reste dans la zone sans être déconcentré. Ce sort est utilisable en combat mais si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort. L’élémentaliste peut faire le sort pour un autre magicien au niveau d’arcane 7.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "text": "1 tour par arcane"
+        },
+        "area": {
+            "value": 1,
+            "unit": "cible",
+            "text": "1 cible"
+        },
+        "bonus": {
+            "text": "permet de regagner du mana"
+        },
+        "criticalSuccess": {
+            "text": "diminue la durée à 5 minutes"
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

@@ -3,7 +3,7 @@ export default [
         "id": "contreCoup",
         "name": "Contre-coup",
         "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
-        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[l]",
+        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[h]",
         "distance": {
             "text": "Une cible"
         },
@@ -46,16 +46,16 @@ export default [
         "id": "maledictionDeLacierBrulant",
         "name": "Malédiction de l’acier brûlant ",
         "icon": "icons/commodities/metal/barstock-heated-steel.webp",
-        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[m]",
+        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[i]",
         "distance": {
             "value": 20,
             "unit": "mètre",
             "text": "20 mètres"
         },
         "duration": {
-            "formula": "return 2 * context.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
-            "text": "2 tours par niveau d’arcane"
+            "text": "1 tours par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"

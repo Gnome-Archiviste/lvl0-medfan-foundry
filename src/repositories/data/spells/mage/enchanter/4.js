@@ -160,10 +160,31 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "raccommodage",
+        "name": "Raccommodage",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort répare les petites cassures ou déchirures d’objets pesant moins de 3 kilos. Dans les objets métalliques, il soudera un anneau cassé, un maillon de chaîne, un médaillon ou un poignard élancé, à condition qu’il n’y ait qu’une seule rupture. Les objets en céramique ou en bois avec plusieurs cassures peuvent être réunis de manière invisible pour être aussi solides que neufs. Un trou dans un sac en cuir ou une bouteille de vin est complètement réparé par raccommodage. Le sort ne peut pas réparer un objet magique.",
+        "distance": {
+            "text": "Touché"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Un objet"
+        },
+        "criticalSuccess": {
+            "text": "&"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "resistance",
         "name": "Résistance",
         "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
-        "description": "L’enchanteur infuse à une cible l’énergie nécessaire pour la protéger contre la moitié des dégâts faits par un élément donné. L’enchanteur doit tenir en main le bon type de matériel qui servira de catalyseur au sort*.\n\nL’enchanteur infuse dans un objet l’énergie nécessaire pour protéger le porteur de l’objet contre la moitié des dégâts faits par un élément donné. L’objet en question doit être neuf et préalablement traité pour recevoir l’enchantement. De plus, il doit être certi du bon type de matériel qui servira de catalyseur au sort*. Pour que l'enchantement ne s’estompe pas à la fin de la première utilisation, il faut le sceller avec le sort de Permanence.\n\nVoici les résistances à utiliser avec ce sort:.\n\n* Résistance à l’acide: protection partielle contre les sorts d’acide.\n\n* Résistance à l’air / électricité: protection partielle contre les sorts d’air et d’électricité.\n\n* Résistance à l’eau / froid: protection partielle contre les sorts d’eau et de froid.\n\n* Résistance au feu: protection partielle contre le feu.\n\n*Liste des matériaux à utiliser:\n\n    * Acide: larme de verre\n\n    * Air/Électricité: morceau d’hématite\n\n    * Eau/froid: Pierre de flocon de neige obsidienne\n\n    * Feu: Pierre de soleil\n\n\n\n",
+        "description": "L’enchanteur infuse à une cible l’énergie nécessaire pour la protéger contre la moitié des dégâts faits par un élément donné. L’enchanteur doit tenir en main le bon type de matériel qui servira de catalyseur au sort*.\n\nL’enchanteur infuse dans un objet l’énergie nécessaire pour protéger le porteur de l’objet contre la moitié des dégâts faits par un élément donné. Dans ce cas, la protection ne dure qu’une scène.\n\nPour que l'enchantement ne s’estompe pas à la fin de la première utilisation, il faut le sceller avec le sort de Permanence. de plus, l’objet en question doit être neuf et préalablement traité pour recevoir l’enchantement si l’enchanteur prévoit de rendre la résistance permanente et doit être certi du bon type de matériel qui servira de catalyseur au sort*.\n\nVoici les résistances à utiliser avec ce sort:.\n\n* Résistance à l’acide: protection partielle contre les sorts d’acide.\n\n* Résistance à l’air / électricité: protection partielle contre les sorts d’air et d’électricité.\n\n* Résistance à l’eau / froid: protection partielle contre les sorts d’eau et de froid.\n\n* Résistance au feu: protection partielle contre le feu.\n\n*Liste des catalyseurs à utiliser:\n\n    * Acide: larme de verre\n\n    * Air/Électricité: morceau d’hématite\n\n    * Eau/froid: Pierre de flocon de neige obsidienne\n\n    * Feu: Pierre de soleil\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"

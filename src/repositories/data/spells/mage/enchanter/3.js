@@ -155,7 +155,7 @@ export default [
             "text": "Touché"
         },
         "duration": {
-            "text": "1 scène semble court"
+            "text": "1 scène semble court[b]"
         },
         "area": {
             "text": "Un objet"

@@ -49,8 +49,8 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "destrierDePocheb",
-        "name": "Destrier de poche[b]",
+        "id": "destrierDePochec",
+        "name": "Destrier de poche[c]",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "L’enchanteur infuse le sort dans une figurine de bois représentant un animal (pas nécessairement un cheval) pouvant servir de destrier. La figurine, une fois activé, devient pleine grandeur.\n\n\n\n\n\nBonus : ",
         "distance": {

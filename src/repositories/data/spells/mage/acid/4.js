@@ -67,7 +67,7 @@ export default [
     {
         "id": "postillonAcide",
         "name": "Postillon acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/acid/projectiles-trio-salvo.webp",
         "description": "L’élémentaliste envoie un jet d’acide dans les yeux d’une cible. Cela rend une tête de la victime aveugle pour un (1) tour par arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,
@@ -94,7 +94,7 @@ export default [
     {
         "id": "resistanceALacide",
         "name": "Résistance à l’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-acide.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -119,7 +119,7 @@ export default [
     {
         "id": "sourireScintillant",
         "name": "Sourire scintillant",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/sundries/misc/teeth-dentures.webp",
         "description": "Certains groupes de héros ont en fait été moins héroïques que leur légende. Ce sort en est partiellement la cause. Il permet d’avoir l’air plus héroïque que nature. \n\nLes dents de la cible deviennent d’un blanc éclatant et brillent comme celles d’une vedette de cinéma. Donne un + 1 en charisme. ",
         "distance": {
             "type": "touch",

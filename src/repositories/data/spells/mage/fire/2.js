@@ -65,19 +65,19 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "maledictionDeLacierBrulantHi",
-        "name": "Malédiction de l’acier brûlant [h][i]",
+        "id": "maledictionDeLacierBrulant",
+        "name": "Malédiction de l’acier brûlant ",
         "icon": "icons/commodities/metal/barstock-heated-steel.webp",
         "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
-            "value": 20,
+            "value": 10,
             "unit": "mètre",
-            "text": "20 mètres"
+            "text": "10 mètres"
         },
         "duration": {
-            "formula": "return 2 * context.arcaneLevel;",
+            "formula": "return 1 * context.arcaneLevel;",
             "unit": "tours",
-            "text": "2 tours par niveau d’arcane"
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"
@@ -89,7 +89,7 @@ export default [
             "text": "Double les dégâts"
         },
         "damage": {
-            "text": "2d6 dégâts"
+            "text": "1d6 + 2 dégâts"
         },
         "dependsOnArcaneLevel": true
     },

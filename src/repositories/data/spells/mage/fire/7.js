@@ -24,7 +24,7 @@ export default [
         "id": "elementaireMajeurDeFeu",
         "name": "Élémentaire majeur de feu",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\nPHY 7, DEX 6, INT 4, CHA 6, PER 6\n\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\n\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)\n\n\n\n",
+        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient.\n\nPHY 7, DEX 6, INT 4, CHA 6, PER 6\n\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\n\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)\n\n\n\n",
         "distance": {
             "value": 2,
             "unit": "mètre",

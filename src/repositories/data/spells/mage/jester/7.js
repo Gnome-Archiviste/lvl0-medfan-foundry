@@ -76,6 +76,40 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "inondationDeMaisSouffle",
+        "name": "Inondation de maïs soufflé",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce vilain tour ralentit même l’ennemi le plus implacable. Ce sort créera une averse de grains de maïs, qui remplira jusqu’à 1 mètre cube par niveau d’arcane du Bouffon. Puis ces grains se mettront à éclater pour devenir du maïs soufflé, infligent des blessures à ceux dans la zone. Le maïs soufflé lui-même est normal et peut avoir n’importe quelle saveur que le Bouffon souhaite. Peut être ramassé pour fournir 1 ration.",
+        "distance": {
+            "value": 20,
+            "unit": "mètre",
+            "text": "20 mètres"
+        },
+        "duration": {
+            "value": 10,
+            "unit": "tours",
+            "text": "10 tours"
+        },
+        "area": {
+            "value": 10,
+            "unit": "m",
+            "text": "10 mètres"
+        },
+        "bonus": {
+            "text": "Déplacement divisé par 2"
+        },
+        "resilience": {
+            "text": "Divise le dommage par deux (plus haut)."
+        },
+        "criticalSuccess": {
+            "text": "La cible ne peut pas faire de test de résilience."
+        },
+        "damage": {
+            "text": "6d6 de dégâts"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "piedDansLaBouche",
         "name": "Pied dans la bouche",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
