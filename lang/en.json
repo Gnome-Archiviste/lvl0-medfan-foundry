@@ -154,6 +154,14 @@
   "LVL0MF.RaceCategory.goblinoids": "Goblinoids",
   "LVL0MF.RaceCategory.monsters": "Other monsters",
 
+  "LVL0MF.Spell.Label.distance" : "Distance",
+  "LVL0MF.Spell.Label.duration" : "Duration",
+  "LVL0MF.Spell.Label.area" : "Area",
+  "LVL0MF.Spell.Label.criticalSuccess" : "Critical success",
+  "LVL0MF.Spell.Label.resilience" : "Resilience",
+  "LVL0MF.Spell.Label.bonus" : "Bonus",
+  "LVL0MF.Spell.Label.heal" : "Heal",
+  "LVL0MF.Spell.Label.damage" : "Damage",
 
   "LVL0MF.End" : "End of Translation"
 
