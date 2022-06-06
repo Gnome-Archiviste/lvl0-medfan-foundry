@@ -50,7 +50,7 @@ export default [
     {
         "id": "glaciation",
         "name": "Glaciation",
-        "icon": "icons/weapons/axe/axe-double-ice-blue.webp",
+        "icon": "icons/weapons/axes/axe-double-ice-blue.webp",
         "description": "Change les dégâts d’une arme en dégât de froid pour une scène et ajoute 1d6.",
         "distance": {
             "type": "touch",
@@ -75,7 +75,7 @@ export default [
     {
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
-        "icon": "icons/magic/water/wave-wave-teal.webp",
+        "icon": "icons/magic/water/wave-waterve-teal.webp",
         "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.\n\n\n\n",
         "distance": {
             "type": "touch",

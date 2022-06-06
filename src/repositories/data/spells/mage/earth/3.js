@@ -3,14 +3,12 @@ export default [
         "id": "contreCoup",
         "name": "Contre-coup",
         "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
-        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[d][e][f]",
+        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, il la stock pour votre prochaine attaque de mêlée lors de votre prochain tour, ce qui fait que la cible subit 1d6 dégâts supplémentaires.",
         "distance": {
             "text": "Une cible"
         },
         "duration": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
-            "unit": "tours",
-            "text": "1 tour par niveau d’arcane"
+            "text": "Jusqu’à utilisation."
         },
         "area": {
             "text": "Une cible"
@@ -19,10 +17,9 @@ export default [
             "text": "Ajoute 1d6 dégâts"
         },
         "criticalSuccess": {
-            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": true
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "elementaireMineurDePierre",

@@ -78,7 +78,7 @@ export default [
         "id": "earthFist",
         "name": "Poing de pierre",
         "icon": "icons/magic/earth/strike-fist-stone-light.webp",
-        "description": "Le poing de l’élémentaliste deviennent de pierre, lui permettant de donner un coup de poing plus puissant qu'il ne le pourrait normalement, infligeant son Physique + deux (2) en dégâts à son adversaire.[c]",
+        "description": "Grâce à ce sort, l’élémentaliste transforme son poing de pierre, lui permettant par la suite de donner un coup de poing plus puissant qu'il ne le pourrait normalement en réussissant une épreuve de combat mains nues, infligeant son Physique + deux (2) en dégâts à son adversaire.",
         "distance": {
             "text": "L’élémentaliste"
         },

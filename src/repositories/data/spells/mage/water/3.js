@@ -2,7 +2,7 @@ export default [
     {
         "id": "icedBerries",
         "name": "Baies glacées",
-        "icon": "icons/consumables/fruit-berry-shiny-leaf-blue-teal.webp",
+        "icon": "icons/consumables/fruit/berry-shiny-leaf-blue-teal.webp",
         "description": "Avec ce sort, l’élémentaliste utilise des baies (jusqu’à 6 par sort) qui deviennent glacées. Il peut utiliser lui-même ces baies ou les offrir à ses alliés. Ces baies sont utilisées comme projectiles avec une fronde. Lorsqu’ utilisées, si le succès du tir est exceptionnel, la cible est gelée pour 2 tours.\n\n\n\n\n\ndégâts\n\n\t1d6 de glace\n\n\tAvec tir exceptionnel\n\n\t1d6 + cible gelée pendant 2 tours\n\n\t\n\n\n\n\n\n",
         "distance": {
             "text": "1 mètre en avant de l’élémentaliste"
@@ -79,14 +79,14 @@ export default [
     {
         "id": "cryogenics",
         "name": "Cryogénie",
-        "icon": "icons/magic/water/barrier-ce-water-cube.webp",
+        "icon": "icons/magic/water/barrier-ice-water-cube.webp",
         "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant 4 jours par niveau d’arcane de l’élémentaliste. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
         },
         "duration": {
-            "text": "1 mois (ou 3 jours par niveau d’arcane)[b]"
+            "text": "1 mois (ou 3 jours par niveau d’arcane)[c]"
         },
         "area": {
             "text": "Une cible"

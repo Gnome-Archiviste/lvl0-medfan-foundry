@@ -28,7 +28,7 @@ export default [
     {
         "id": "auraDePoussiere",
         "name": "Aura de poussière",
-        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagone-purple-orange.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-purple-orange.webp",
         "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\n\n\n\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.\n\n\n\n",
         "distance": {
             "text": "toucher"
@@ -70,7 +70,7 @@ export default [
             "text": "protection de 15 points de résistance, 2 attaques par tour"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience[h][i]"
+            "text": "La cible ne peut pas faire de test de résilience[d][e]"
         },
         "dependsOnArcaneLevel": false
     },
@@ -111,7 +111,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Durée instantannée ?[j]"
+            "text": "Durée instantannée ?[f]"
         },
         "dependsOnArcaneLevel": false
     }

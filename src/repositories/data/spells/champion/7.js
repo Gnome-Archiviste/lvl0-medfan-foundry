@@ -2,7 +2,7 @@ export default [
     {
         "id": "coursierFantome",
         "name": "Coursier fantôme",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/environment/creatures/horse-white.webp",
         "description": "Créer un cheval magique pour une (1) heure par niveau d’arcane. Le cheval est semi-transparent et semble fait de lumière blanche. Le coursier peut emmener son cavalier et un passager (ou 4 fantasques).",
         "distance": {
             "value": 1,

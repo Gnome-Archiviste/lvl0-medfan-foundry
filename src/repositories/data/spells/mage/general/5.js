@@ -244,7 +244,7 @@ export default [
     {
         "id": "voirLinvisible",
         "name": "Voir l’invisible",
-        "icon": "icons/magic/perception/orb-eye-crying.webp",
+        "icon": "icons/magic/perception/orb-eye-scrying.webp",
         "description": "Ce sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.",
         "distance": {
             "type": "touch",

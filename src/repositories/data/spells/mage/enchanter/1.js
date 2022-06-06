@@ -207,10 +207,10 @@ export default [
             "text": "jusqu’à 5 darts"
         },
         "bonus": {
-            "text": "Guérit 1 point de vie[a]"
+            "text": "Crée des darts qui guérit 1 point de vie"
         },
         "criticalSuccess": {
-            "text": "Guérit 2 points de vie"
+            "text": "Les darts guérissent 2 points de vie"
         },
         "dependsOnArcaneLevel": false
     },

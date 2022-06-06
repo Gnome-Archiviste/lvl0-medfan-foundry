@@ -80,8 +80,8 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "braoulebDePouvoir",
-        "name": "Braoule[b] de pouvoir",
+        "id": "braouleaDePouvoir",
+        "name": "Braoule[a] de pouvoir",
         "icon": "icons/tools/hand/hammer-mallet-brown.webp",
         "description": "L’enchanteur imbue d’énergie magique un objet de la vie de tous les jours, qui habituellement ne fait pas vraiment de dégât, afin que ce dernier devienne une arme qui inflige 1d6-2 de dégât. ex: balai, braoule, louche, brosse à cheveux...",
         "distance": {

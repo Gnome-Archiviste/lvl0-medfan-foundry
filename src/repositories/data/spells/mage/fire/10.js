@@ -2,7 +2,7 @@ export default [
     {
         "id": "eruptionJefoldienne",
         "name": "Éruption jéfoldienne",
-        "icon": "icons/magic/fire/projectile-meteor-salvo-heavy-read.webp",
+        "icon": "icons/magic/fire/projectile-meteor-salvo-heavy-red.webp",
         "description": "L’élémentaliste déclenche la chute d'une incroyable quantité de lave et magma, il faut simplement qu'il y ait quelque chose en hauteur d'où la lave peut tomber (montagne, tour, toit de maison). La lave ensevelit les cibles et elles doivent réussir un test d’athlétique pour s’en sortir.\n\n\n\n",
         "distance": {
             "value": 60,

@@ -113,7 +113,7 @@ export default [
     {
         "id": "invocation",
         "name": "Invocation",
-        "icon": "icons/creatures/magical/spirit-fear-energypink.webp",
+        "icon": "icons/creatures/magical/spirit-fear-energy-pink.webp",
         "description": "Fait apparaître une créature sans nom pour combattre à la place du magicien. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient. Les caractéristiques de la créature : Phy=9, Int=7, Cha=4, Dex=8, Per=6 (aucune habileté), 100 points de vie.",
         "distance": {
             "value": 2,
@@ -190,7 +190,7 @@ export default [
     {
         "id": "refletElfique",
         "name": "Reflet elfique",
-        "icon": "icons/magic/life/heart-hand-gold-green-webp",
+        "icon": "icons/magic/life/heart-hand-gold-green.webp",
         "description": "Donne un bonus de +2 en Charisme. Le magicien doit toucher la cible. Étrangement, fait sur un objet pour le rendre permanent, la valeur est toujours divisée par deux.",
         "distance": {
             "type": "touch",

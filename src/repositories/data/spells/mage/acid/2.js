@@ -25,7 +25,7 @@ export default [
     {
         "id": "causticBerries",
         "name": "Baies caustiques",
-        "icon": "icons/consumables/fruit/nanking-cherry-leaf-red.webp",
+        "icon": "images/Objets/baies_caustiques.png",
         "description": "Avec ce sort, l’élémentaliste utilise des baies (jusqu’à 6 par sort) qui deviennent acides. Il peut utiliser lui-même ces baies ou les offrir à ses alliés. Ces glands ou ces baies sont utilisés comme des billes d’acide.",
         "distance": {
             "text": "1 mètre en avant de l’élémentaliste"

@@ -75,8 +75,8 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "destrierDePochec",
-        "name": "Destrier de poche[c]",
+        "id": "destrierDePocheb",
+        "name": "Destrier de poche[b]",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "L’enchanteur infuse le sort dans une figurine de bois représentant un animal (pas nécessairement un cheval) pouvant servir de destrier. La figurine, une fois activé, devient pleine grandeur.\n\nBonus : ",
         "distance": {
@@ -90,7 +90,7 @@ export default [
             "text": "La figurine"
         },
         "criticalSuccess": {
-            "text": "fait 4 potions par mana au lieu de 3.[d]"
+            "text": "fait 4 potions par mana au lieu de 3.[c]"
         },
         "dependsOnArcaneLevel": false
     },
@@ -116,7 +116,7 @@ export default [
     {
         "id": "resilienceAucune",
         "name": "Résilience  Aucune",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/magical/spirit-fear-energy-pink.webp",
         "description": "Succès remarquable : 150 points de vie",
         "area": {
             "text": "Aucune"

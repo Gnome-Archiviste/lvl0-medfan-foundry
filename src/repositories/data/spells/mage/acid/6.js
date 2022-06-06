@@ -26,7 +26,7 @@ export default [
     {
         "id": "deflagrationGazeuse",
         "name": "Déflagration gazeuse",
-        "icon": "icons/magic/air/fog-gas-smoke-swirling-green-webp",
+        "icon": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
         "description": "Voici un sort sournois et quelque peu… répugnant, souvent utilisé contre les voleurs mais difficile à réaliser car il doit être fait sans regarder la ou les cibles derrière. L’élémentaliste invoque le sort devant lui, comme à l’habitude mais l’effet, une explosion mineure, accompagnée d’une forte odeur d’oeufs pourris et d’un son de dégonflement se produit juste derrière lui, infligeant 3d6 points de dégât à la cible(s) derrière lui. Les victimes tombent inconscientes et ont besoin d'un antidote pour se réveiller.",
         "distance": {
             "text": "1 mètres derrière l’élémentaliste"

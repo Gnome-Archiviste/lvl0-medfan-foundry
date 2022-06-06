@@ -2,7 +2,7 @@ export default [
     {
         "id": "cornetDeFroid",
         "name": "Cornet de froid",
-        "icon": "icons/magic/water/projectile-icecicle-webp",
+        "icon": "icons/magic/water/projectile-icecicle.webp",
         "description": "Un cône de froid extrême jaillit de la main de  l'élémentaliste, affectant jusqu’à trois (3) victimes dans une zone de 10 mètres de large et jusqu’à 10 mètres de long en avant de l'élémentaliste, causant 3d6 points de dégâts et les figent sur place.",
         "distance": {
             "text": "Devant l’élémentaliste"
@@ -86,7 +86,7 @@ export default [
     {
         "id": "purification",
         "name": "Purification",
-        "icon": "icons/magic/water/water-hand-webp",
+        "icon": "icons/magic/water/water-hand.webp",
         "description": "L'élémentaliste purifie un peu d'eau que la cible boit. Permets de contrer les potions négatives (comme celle de sommeil).\n\n\n\n",
         "distance": {
             "type": "touch",

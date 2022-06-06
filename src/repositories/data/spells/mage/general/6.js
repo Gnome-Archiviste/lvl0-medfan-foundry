@@ -142,7 +142,7 @@ export default [
     {
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
-        "icon": "icons/magic/water/wave-wave-teal.webp",
+        "icon": "icons/magic/water/wave-water-teal.webp",
         "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.",
         "distance": {
             "type": "touch",
@@ -166,7 +166,7 @@ export default [
     {
         "id": "obscurite",
         "name": "Obscurité",
-        "icon": "eye-ringed-glow-angry-small-teal.webp",
+        "icon": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
         "description": "Englobe un espace de 21x21 mètres dans la noirceur la plus totale. La perception et les habiletés de combat dans l’espace est réduite de trois. Il faut utiliser l'habileté « Écouter » pour trouver un nouvel adversaire.",
         "distance": {
             "value": 20,

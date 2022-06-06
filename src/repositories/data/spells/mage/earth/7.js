@@ -71,7 +71,7 @@ export default [
     {
         "id": "terraeFusiona",
         "name": "Terrae fusiona",
-        "icon": "icons/magic/earth/shield-barrier-blades-teal.webp",
+        "icon": "icons/magic/defensive/shield-barrier-blades-teal.web",
         "description": "L’élémentaliste peut entrer dans la terre ou la roche et fusionner avec, afin de fuire un danger. L’élémentaliste ne peut pas étouffer, avoir faim ou se faire blesser, (pratiquement) indéfiniment mais il ne peut pas se déplacer car l’élémentaliste fait un avec le sol.",
         "distance": {
             "text": "soi-même"
@@ -86,7 +86,7 @@ export default [
             "text": "Donne une protection infaillible."
         },
         "criticalSuccess": {
-            "text": "?"
+            "text": "Durée du sort équivalente à l’intelligence du magicien sans devoir faire un test d’intelligence aux 12 heures."
         },
         "dependsOnArcaneLevel": false
     }

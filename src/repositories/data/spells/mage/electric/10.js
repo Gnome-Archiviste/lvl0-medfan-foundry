@@ -37,7 +37,7 @@ export default [
     {
         "id": "tempeteTropicale",
         "name": "Tempête tropicale",
-        "icon": "icons/magic/lightning/bolt-salvo-cloud.sky.webp",
+        "icon": "icons/magic/lightning/bolt-salvo-cloud-sky.webp",
         "description": "Une pluie torrentielle s’abat autour d’un bâtiment où se trouve l’élémentaliste pendant 10 tours, rendant le terrain autour impraticable. Le déplacement dans la zone est réduit de moitié, la perception est réduite de -2 et à chaque tour les créatures dans la zone peuvent être foudroyées par la foudre, infligeant 6d6+15 de dégâts. Le joueur lance un d6 à chaque tour pour voir si la foudre frappe. La foudre frappe sur un  un (1) ou un deux (2).",
         "distance": {
             "type": "self",

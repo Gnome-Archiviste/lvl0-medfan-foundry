@@ -65,7 +65,7 @@ export default [
         "id": "maledictionDeLacierBrulant",
         "name": "Malédiction de l’acier brûlant ",
         "icon": "icons/commodities/metal/barstock-heated-steel.webp",
-        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[k][l]",
+        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
             "value": 20,
             "unit": "mètre",

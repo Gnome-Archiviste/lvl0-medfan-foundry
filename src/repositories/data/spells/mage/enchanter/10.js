@@ -44,6 +44,32 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "laboratoireMobileDeLuxisys",
+        "name": "Laboratoire mobile de Luxisys",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort permet de créer une tour de deux étages de haut rétractable qui sert de laboratoire à l’enchanteur. L’enchanteur aura besoin d’une petite tour en bois ou en pierre de 4cm de haut ainsi que de la véritable tour (meublée ou non. Prévoir un coût d’au moins 10 000 oricaux), une potion cabalistique, une potion d’urgence ainsi qu’un sort d’alarme et de permanence (les sorts de permanence et d’alarme peuvent être sur parchemin). La construction et la figurine doivent êtres neuves. ",
+        "distance": {
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "la tour"
+        },
+        "bonus": {
+            "text": "Dégâts physiques maximums"
+        },
+        "criticalSuccess": {
+            "text": "Double les points de vie de la tour ou ajouter un étage à la tour, au choix du MdJ."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "maximiserDegat",
         "name": "Maximiser dégât",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",

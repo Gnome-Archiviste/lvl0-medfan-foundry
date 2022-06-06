@@ -2,7 +2,7 @@ export default [
     {
         "id": "auraDePoussiere",
         "name": "Aura de poussière",
-        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagone-blue-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
         "description": "Le contour du sujet semble flou, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
         "distance": {
             "text": "toucher"

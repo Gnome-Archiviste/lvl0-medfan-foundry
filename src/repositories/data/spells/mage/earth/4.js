@@ -71,7 +71,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Effet maximum automatique (100%)[g]"
+            "text": "Effet maximum automatique (100%)"
         },
         "dependsOnArcaneLevel": false
     },

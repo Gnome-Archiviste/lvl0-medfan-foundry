@@ -35,7 +35,9 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "text": "1 tour/arcane"
+            "formula": "return 1 * context.arcaneLevel;",
+            "unit": "tours",
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"
@@ -49,7 +51,7 @@ export default [
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "pluieDeLave",

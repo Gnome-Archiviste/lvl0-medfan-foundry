@@ -97,6 +97,9 @@ export default [
         "bonus": {
             "text": "Pétrifie une cible"
         },
+        "resilience": {
+            "text": "La cible est pétrifiée seulement pour une scène."
+        },
         "criticalSuccess": {
             "text": "Il faut absolument le sort  du Baiser de la princesse des Champions pour briser"
         },

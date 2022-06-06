@@ -77,7 +77,7 @@ export default [
     {
         "id": "glaciation",
         "name": "Glaciation",
-        "icon": "icons/weapons/axe/axe-double-ice-blue.webp",
+        "icon": "icons/weapons/axes/axe-double-ice-blue.webp",
         "description": "Change les dégâts d’une arme en dégât de glace provoquant 1d6 de dégât bonus, pour une scène.",
         "distance": {
             "type": "touch",

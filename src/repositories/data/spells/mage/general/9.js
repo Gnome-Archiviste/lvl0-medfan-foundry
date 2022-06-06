@@ -65,7 +65,7 @@ export default [
             "text": "Magicien"
         },
         "duration": {
-            "text": "2d6 + par niveau d[c]'arcane"
+            "text": "2d6 tours + 10 tours par niveau d'arcane (en combat) et 10 minutes par niveau d'arcane (hors-combat)"
         },
         "area": {
             "width": 1,

@@ -76,7 +76,7 @@ export default [
     {
         "id": "pareFeu",
         "name": "Pare-feu",
-        "icon": "icons/magicdefensive/shield-barrier-flaming-diamond-red.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-red.webp",
         "description": "Une flamme vaporeuse et colorée entourant le personnage comme une cape de feu. Toute créature infligeant des dégâts physiques subit 1d6 points de dégâts +1 par arcane de l’élémentaliste en raison des flammes intenses mais la résilience aux sorts s’applique à ces dégâts. Cependant le sort ne bloque aucun dégât physique infligé à l’élémentaliste. Les personnages entourés d’un pare-feu ne subissent que la moitié des dégâts des attaques à froid, et aucun dommage si l’attaque permet une résilience de la moitié des dégâts et que le lanceur réussit.  Le personnage recouvert de flammes émet de la lumière comme une torche tamisée, dont la couleur est choisie par l’élémentaliste (bleu, violet ou orange rougeâtre).\n\n\n\n",
         "distance": {
             "text": "Aucune"

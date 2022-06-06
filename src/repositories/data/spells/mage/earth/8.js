@@ -62,7 +62,7 @@ export default [
     {
         "id": "peauDeDiamant",
         "name": "Peau de diamant",
-        "icon": "icons/commodities/gems/gem-faceted-diamond-silver.webp",
+        "icon": "icons/commodities/gems/gem-faceted-diamond-silver-.webp",
         "description": "Permet d’absorber 50 points de dégâts. Le sort peut être fait sur le magicien ou un allié. L'élémentaliste doit toucher la cible. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",
@@ -85,7 +85,7 @@ export default [
     {
         "id": "terrierDuLapin",
         "name": "Terrier du lapin",
-        "icon": "icons/tools/hand/pickaxe-worn-steel-gray.webp",
+        "icon": "icons/tools/hand/pickaxe-worn-steel-grey.webp",
         "description": "Ce sort permet à une cible de créer un tunnel au fur et à mesure que l’élémentaliste avance sous terre, comme s'il marchait sur la terre ferme. Le sort dure 10 tours et le tunnel se remblai après 24 heures.\n\n\n\n",
         "distance": {
             "text": "Soi-même"
