@@ -16,7 +16,7 @@ export default [
         },
         "area": {
             "width": 21,
-            "widthPerArcane": 21,
+            "height": 21,
             "text": "21x21 mètres",
             "comment": ""
         },
@@ -69,7 +69,7 @@ export default [
         },
         "area": {
             "width": 1,
-            "widthPerArcane": 1,
+            "height": 1,
             "text": "1x1 mètre",
             "comment": ""
         },
@@ -91,7 +91,7 @@ export default [
         },
         "area": {
             "width": 5,
-            "widthPerArcane": 5,
+            "height": 5,
             "text": "5x5 mètres",
             "comment": ""
         },
@@ -157,9 +157,9 @@ export default [
         },
         "area": {
             "width": 1,
-            "widthPerArcane": 1,
+            "height": 20,
             "text": "1x20 mètres (en avant du magicien)",
-            "comment": "(en avant du magicien)"
+            "comment": "en avant du magicien"
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"
@@ -239,7 +239,7 @@ export default [
         },
         "area": {
             "width": 21,
-            "widthPerArcane": 21,
+            "height": 21,
             "text": "21x21 mètres",
             "comment": ""
         },

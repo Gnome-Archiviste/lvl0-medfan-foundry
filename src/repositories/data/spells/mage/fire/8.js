@@ -16,7 +16,7 @@ export default [
         },
         "area": {
             "width": 21,
-            "widthPerArcane": 21,
+            "height": 21,
             "text": "21x21 mètres",
             "comment": ""
         },
@@ -47,7 +47,7 @@ export default [
         },
         "area": {
             "width": 5,
-            "widthPerArcane": 5,
+            "height": 5,
             "text": "5x5 mètres",
             "comment": ""
         },
@@ -78,7 +78,7 @@ export default [
         },
         "area": {
             "width": 5,
-            "widthPerArcane": 5,
+            "height": 5,
             "text": "5x5 mètres",
             "comment": ""
         },
@@ -125,7 +125,7 @@ export default [
         "description": "Succès remarquable : La cible ne peut pas faire de test de résilience",
         "area": {
             "width": 7,
-            "widthPerArcane": 7,
+            "height": 7,
             "text": "7x7 mètres",
             "comment": ""
         },

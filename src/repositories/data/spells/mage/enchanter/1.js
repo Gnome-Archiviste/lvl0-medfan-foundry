@@ -15,9 +15,9 @@ export default [
         },
         "area": {
             "width": 21,
-            "widthPerArcane": 21,
+            "height": 21,
             "text": "21x21 mètres (maximum une pièce)",
-            "comment": "(maximum une pièce)"
+            "comment": "maximum une pièce"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",

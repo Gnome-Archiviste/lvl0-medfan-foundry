@@ -16,7 +16,7 @@ export default [
         },
         "area": {
             "width": 21,
-            "widthPerArcane": 21,
+            "height": 21,
             "text": "21x21 mètres",
             "comment": ""
         },
@@ -105,7 +105,7 @@ export default [
         },
         "area": {
             "width": 10,
-            "widthPerArcane": 10,
+            "height": 10,
             "text": "10x10 mètres",
             "comment": ""
         },
@@ -135,7 +135,7 @@ export default [
         },
         "area": {
             "width": 3,
-            "widthPerArcane": 3,
+            "height": 3,
             "text": "3x3 mètres",
             "comment": ""
         },

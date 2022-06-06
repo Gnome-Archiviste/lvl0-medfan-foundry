@@ -113,9 +113,9 @@ export default [
         },
         "area": {
             "width": 1,
-            "widthPerArcane": 1,
+            "height": 20,
             "text": "1x20 mètres (en avant du magicien)",
-            "comment": "(en avant du magicien)"
+            "comment": "en avant du magicien"
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"

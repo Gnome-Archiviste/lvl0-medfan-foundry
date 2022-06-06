@@ -16,7 +16,7 @@ export default [
         },
         "area": {
             "width": 11,
-            "widthPerArcane": 11,
+            "height": 11,
             "text": "11x11 mètres",
             "comment": ""
         },

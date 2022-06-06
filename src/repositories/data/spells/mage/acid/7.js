@@ -108,9 +108,9 @@ export default [
         },
         "area": {
             "width": 1,
-            "widthPerArcane": 1,
+            "height": 20,
             "text": "1x20 mètres (en avant de l’élémentaliste)",
-            "comment": "(en avant de l’élémentaliste)"
+            "comment": "en avant de l’élémentaliste"
         },
         "resilience": {
             "text": "Divise le dommage par deux"
