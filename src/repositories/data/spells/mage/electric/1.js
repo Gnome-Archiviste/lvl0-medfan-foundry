@@ -116,7 +116,7 @@ export default [
             "heightPerArcane": 2,
             "text": "(3 + 2 par niveau d’arcane)x(3 + 2 par niveau d’arcane) mètres",
             "comment": "",
-            "epicSuccess": {
+            "criticalSuccessArea": {
                 "width": 6,
                 "height": 6,
                 "widthPerArcane": 4,

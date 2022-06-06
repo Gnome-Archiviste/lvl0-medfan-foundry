@@ -82,6 +82,7 @@ export interface SpellDefinitionArea {
     readonly heightPerArcane?: number;
     readonly text: string;
     readonly comment?: string;
+    readonly criticalSuccessArea?: SpellDefinitionArea;
 }
 
 export default {

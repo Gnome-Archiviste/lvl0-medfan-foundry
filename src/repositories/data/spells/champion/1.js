@@ -18,7 +18,7 @@ export default [
             "height": 21,
             "text": "21x21 mètres",
             "comment": "",
-            "epicSuccess": {
+            "criticalSuccessArea": {
                 "width": 41,
                 "height": 41,
                 "text": "41x41 mètres",
@@ -56,7 +56,7 @@ export default [
             "height": 21,
             "text": "21x21 mètres",
             "comment": "",
-            "epicSuccess": {
+            "criticalSuccessArea": {
                 "width": 41,
                 "height": 41,
                 "text": "41x41 mètres",

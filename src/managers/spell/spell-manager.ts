@@ -285,6 +285,9 @@ export class SpellManager {
             if (!areaDefinition) {
                 return undefined;
             }
+            if (context.criticalSuccess && areaDefinition.criticalSuccessArea) {
+                return await this.computeArea(areaDefinition.criticalSuccessArea, context)
+            }
             let value: string | undefined = undefined;
             if (areaDefinition.height && areaDefinition.width && areaDefinition.heightPerArcane && areaDefinition.widthPerArcane) {
                 let width = areaDefinition.width + (areaDefinition.widthPerArcane * context.arcaneLevel)
