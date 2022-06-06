@@ -81,7 +81,7 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "Le chaudron"
+            "text": "le chaudron"
         },
         "bonus": {
             "text": "Dépends de la potion"

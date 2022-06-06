@@ -5,8 +5,7 @@ export default [
         "icon": "icons/magic/defensive/shield-barrier-blue.webp",
         "description": "Donne une armure qui absorbe dix (10) points de dégâts au magicien, dure 5 tours ou dix points de dégâts (l’armure disparaît après 5 tours même si tous les points de dégâts n’ont pas été utilisés). Ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
-            "type": "self",
-            "text": "Magicien"
+            "text": "Soi même"
         },
         "duration": {
             "text": "5 tours ou tous utilisés"
@@ -51,7 +50,7 @@ export default [
             "text": "jusqu'à ce que le message soit délivré 2 fois par niveau d’arcane."
         },
         "area": {
-            "text": "Déclenche à (1) mètre par niveau du magicien"
+            "text": "1 objet. Déclenche à (1) mètre par niveau d’arcane du magicien"
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
@@ -221,7 +220,7 @@ export default [
         "id": "stinkingCloud",
         "name": "Nuage puant",
         "icon": "icons/magic/acid/dissolve-pool-bubbles.webp",
-        "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger à la moitié de leur déplacement normal. ",
+        "description": "Déclenche une zone nauséabonde de 5x5 mètres Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger à la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
             "unit": "mètre",
@@ -234,9 +233,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "rends les victimes inoffensives"
@@ -266,9 +266,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 3,
-            "unit": "m",
-            "text": "3 mètres"
+            "width": 7,
+            "widthPerArcane": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes immobilisées"

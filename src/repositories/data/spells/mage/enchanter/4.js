@@ -14,7 +14,7 @@ export default [
             "text": "1 heure"
         },
         "area": {
-            "text": "La bague"
+            "text": "la bague"
         },
         "bonus": {
             "text": "+1 point dans une habileté générale choisie en début de partie."
@@ -100,13 +100,13 @@ export default [
         "icon": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
         "description": "L’enchanteur (et tout son équipement) disparaît de toutes les formes de vision naturelle. Les objets lâchés ou déposés par une créature invisible deviennent visibles ; les objets ramassés disparaissent s’ils sont rentrés dans les vêtements ou les sacs portés par la créature. La lumière, cependant, ne devient jamais invisible, bien qu’une source de lumière puisse le devenir (ainsi, l’effet est celui d’une lumière sans source visible). Toute partie d’un objet que le sujet porte, mais qui s’étend à plus de trois (3) mètres de lui devient visible, comme une corde qui traîne. Le sort prend fin si le sujet attaque une créature. Dans ce cas, est considéré comme une attaque toute action ou sort infligeant des dégâts ou effets négatifs à une cible. Notez que les sorts affectant spécifiquement les alliés, mais pas les ennemis ne sont pas des attaques à cet effet, même lorsqu’ils incluent des ennemis dans leur zone. Les personnes affectées par ce sort ne peuvent se voir entre elles, ni elle-même. ",
         "distance": {
-            "text": "Enchanteur"
+            "text": "Soi-même"
         },
         "duration": {
             "text": "une (1) scène"
         },
         "area": {
-            "text": "Le magicien"
+            "text": "L’Enchanteur"
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
@@ -116,7 +116,7 @@ export default [
     {
         "id": "objetBelliqueux",
         "name": "Objet belliqueux",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/weapons/axes/axe-battle-orange.webp",
         "description": "L’enchanteur donne un semblant de vie à un objet qui bouge sur l’ordre de celui-ci selon des actions simples mais qui peuvent être offensives : frapper quelqu’un ou quelque chose, hacher, abattre un arbre, fouetter , etc. Les dégâts infligés dépendent de l’objet.",
         "distance": {
             "type": "touch",
@@ -128,7 +128,7 @@ export default [
             "text": "5 tours par niveau d’arcane"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",

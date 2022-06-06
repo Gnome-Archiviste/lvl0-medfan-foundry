@@ -2,8 +2,8 @@ export default [
     {
         "id": "fusionDeKegan",
         "name": "Fusion de Kegan ",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Créer un globe de 25 m. de rayon à partir du magicien, faisant 20d6+10 de dégâts. Tout être survivant à l’impact initial sera aussi propulsé à la limite du globe. Le magicien ne reçoit AUCUN dégât.",
+        "icon": "icons/magic/fire/barrier-shield-explosion-yellow.webp",
+        "description": "Créer un globe de 51x51 mètres à partir du magicien, faisant 20d6+10 de dégâts. Tout être survivant à l’impact initial sera aussi propulsé à la limite du globe. Le magicien ne reçoit AUCUN dégât.",
         "distance": {
             "type": "self",
             "text": "Magicien"
@@ -14,7 +14,10 @@ export default [
             "text": "1 tour"
         },
         "area": {
-            "text": "25 m."
+            "width": 51,
+            "widthPerArcane": 51,
+            "text": "51x51 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "propulse les adversaires restants à 25 m."

@@ -15,7 +15,10 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "2 x 2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes ralenties"
@@ -46,9 +49,10 @@ export default [
             "text": "2 tours"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes immobilisées"
@@ -68,7 +72,7 @@ export default [
         "id": "maledictionDeLacierBrulant",
         "name": "Malédiction de l’acier brûlant ",
         "icon": "icons/commodities/metal/barstock-heated-steel.webp",
-        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
+        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 1d6 + 2 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.",
         "distance": {
             "value": 10,
             "unit": "mètre",
@@ -86,10 +90,12 @@ export default [
             "text": "La cible est capable de conserver l’objet en main."
         },
         "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double les dégâts (pré-calculé)'; } return 'Double les dégâts';",
             "text": "Double les dégâts"
         },
         "damage": {
-            "text": "1d6 + 2 dégâts"
+            "rollFormula": "if (context.criticalSuccess) { return '(' + ('1d6+2') + ')*2'; } return '1d6+2';",
+            "text": "1d6 + 2"
         },
         "dependsOnArcaneLevel": true
     },
@@ -105,7 +111,7 @@ export default [
             "text": "instantanée"
         },
         "area": {
-            "text": "1-6 cibles"
+            "text": "1 à 6 cibles"
         },
         "bonus": {
             "text": "le projectile fait 1d6 de dégâts de feu"

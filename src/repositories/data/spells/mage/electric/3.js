@@ -12,7 +12,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "cône de 3 mètre devant Élémentaliste"
+            "text": "7x7 mètres devant l’élémentaliste"
         },
         "bonus": {
             "text": "-2 sur perception"
@@ -34,6 +34,9 @@ export default [
         },
         "duration": {
             "text": "1 scène ou jusqu'à destruction"
+        },
+        "area": {
+            "text": "Aucune"
         },
         "criticalSuccess": {
             "text": "Double les points de vie"
@@ -69,7 +72,7 @@ export default [
     },
     {
         "id": "recharge",
-        "name": "Recharge[b]",
+        "name": "Recharge[a]",
         "icon": "icons/magic/control/silhouette-hold-change-blue.webp",
         "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance à l’électricité jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts électriques supplémentaires, et le sort prend fin.",
         "distance": {
@@ -84,9 +87,6 @@ export default [
         },
         "bonus": {
             "text": "Ajoute 1d6 dégâts électrique"
-        },
-        "criticalSuccess": {
-            "text": "Double la durée du sort"
         },
         "dependsOnArcaneLevel": false
     },

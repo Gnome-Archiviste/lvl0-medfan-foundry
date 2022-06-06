@@ -3,7 +3,7 @@ export default [
         "id": "preserveDead",
         "name": "Conservation du cadavre",
         "icon": "icons/magic/life/cross-embers-glow-yellow-purple.webp",
-        "description": "Ce sort a deux effets. Premièrement, le champion préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane du champion. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nCe sort a aussi un deuxième effet: le sort empêche le cadavre ciblé d’être animé par un sort d’animation des morts.\n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
+        "description": "Ce sort a deux effets. Premièrement, le champion préserve le cadavre ciblé afin qu’il ne se décompose pas, pendant trois (3) jours par niveau d’arcane du champion. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\nCe sort a aussi un deuxième effet: le sort empêche le cadavre ciblé d’être animé par un sort d’animation des morts.\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -92,7 +92,7 @@ export default [
         "id": "combatPrecognition",
         "name": "Précognition de combat",
         "icon": "icons/magic/time/clock-spinning-gold-pink.webp",
-        "description": "La cible gagne une prémonition contre les attaques imminentes et peut y répondre un peu plus rapidement que d'habitude, donnant un bonus de 1 à vos points d’armure. Elle prévoit aussi les défenses et les esquives de son adversaire, ce qui donne un bonus de + I aux dommages.\n\n\n\n",
+        "description": "La cible gagne une prémonition contre les attaques imminentes et peut y répondre un peu plus rapidement que d'habitude, donnant un bonus de 1 à vos points d’armure. Elle prévoit aussi les défenses et les esquives de son adversaire, ce qui donne un bonus de + I aux dommages.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

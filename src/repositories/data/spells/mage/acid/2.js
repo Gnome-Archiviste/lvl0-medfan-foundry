@@ -34,7 +34,7 @@ export default [
             "text": "instantanée"
         },
         "area": {
-            "text": "1-6 cibles"
+            "text": "1 à 6 cibles"
         },
         "bonus": {
             "text": "voir les statistiques de la bille d’acide"
@@ -56,9 +56,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 1,
-            "unit": "mètre",
-            "text": "1 mètre"
+            "width": 3,
+            "widthPerArcane": 3,
+            "text": "3x3 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Recul de 2 mètres"
@@ -80,7 +81,7 @@ export default [
         "id": "repasDuFeroxyde",
         "name": "Repas du feroxyde",
         "icon": "icons/magic/life/heart-cross-green.webp",
-        "description": "Avec ce sort, l’élémentaliste peut utiliser manger et digérer des morceaux de métal afin de se guérir de 1d6 points de vie (pour 10 bouchées).",
+        "description": "Avec ce sort, l’élémentaliste est capable de manger et digérer des morceaux de métal afin de se guérir de 1d6 points de vie (pour 10 bouchées).",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"

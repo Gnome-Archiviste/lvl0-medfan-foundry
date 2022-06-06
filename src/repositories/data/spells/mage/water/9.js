@@ -2,7 +2,7 @@ export default [
     {
         "id": "communiquerAvecLetreMouille",
         "name": "Communiquer avec l’être mouillé",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/perception/orb-crystal-ball-scrying.webp",
         "description": "Le sort permet à l’élémentaliste de voir une personne qu’il cherche ainsi qu’une partie de son environnement, lui donnant un indice sur l’endroit où cette personne se trouve. De plus, l’élémentaliste peut dialoguer avec cette personne bien que les sons seront un peu étouffés.\n\n\n\n",
         "distance": {
             "value": 2,
@@ -16,9 +16,10 @@ export default [
             "text": "5 tours"
         },
         "area": {
-            "value": 1,
-            "unit": "mètre",
-            "text": "1 mètre"
+            "width": 3,
+            "widthPerArcane": 3,
+            "text": "3x3 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -40,9 +41,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Recul de 10 mètres"
@@ -69,7 +71,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "1m. de large par  niveau d’arcane"
+            "text": "1 mètre de largeur par niveau d’arcane"
         },
         "criticalSuccess": {
             "text": "Double l’épaisseur et les points de vie"
@@ -83,7 +85,7 @@ export default [
     {
         "id": "velage",
         "name": "Vêlage",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/projectile-icecicle-glowing.webp",
         "description": "L'élémentaliste envoie un jet d’eau, semblable au sort de siphon, qui s’infiltre dans les fissures d’une paroie. L'élémentaliste transforme rapidement l’eau en glace, ce qui crée une brèche dans le mur.\n\n\n\n",
         "distance": {
             "value": 20,
@@ -94,7 +96,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "2.5 m de haut par 1 m. de large"
+            "text": "2,5 mètres de haut par 1 mètre de large"
         },
         "bonus": {
             "text": "Créer une brèche 2.5 m. de haut par 1 m. de large dans la paroie"
@@ -110,7 +112,7 @@ export default [
     {
         "id": "zoneDeFroid",
         "name": "Zone de froid",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/snowflake-ice-snow-white.webp",
         "description": "Produit une zone de froid qui enveloppe les ennemis d’une brume qui les glace jusqu’aux os, ce qui les empêche de se concentrer sur leurs attaques tellement ils grelottent.\n\n\n\n",
         "distance": {
             "value": 25,
@@ -123,9 +125,10 @@ export default [
             "text": "1d6 tours"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "-1 en attaque, -2 en perceptions"

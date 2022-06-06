@@ -3,7 +3,7 @@ export default [
         "id": "passageALAutreCote",
         "name": "Passage à l’Autre côté",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le sort permet au champion de forcer un esprit malin (fantômes, spectre, banshee, etc.) à passer de l’Autre côté.\n\n\n\n",
+        "description": "Le sort permet au champion de forcer un esprit malin (fantômes, spectre, banshee, etc.) à passer de l’Autre côté.",
         "distance": {
             "value": 10,
             "unit": "mètre",

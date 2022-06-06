@@ -3,7 +3,7 @@ export default [
         "id": "blotter",
         "name": "Buvard",
         "icon": "icons/equipment/shield/kite-wooden-oak-glow.webp",
-        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts d’acides supplémentaires.\n\n[a]",
+        "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts d’acides supplémentaires.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -12,7 +12,7 @@ export default [
             "text": "jusqu’à utilisation ou une (1) scène"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "bonus": {
             "text": "Ajoute 1d6 dégâts acides"
@@ -89,6 +89,9 @@ export default [
         "duration": {
             "text": "1 scène ou jusqu'à destruction"
         },
+        "area": {
+            "text": "Aucune"
+        },
         "criticalSuccess": {
             "text": "Double les points de vie"
         },
@@ -111,9 +114,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise les dégâts par deux (plus haut)"

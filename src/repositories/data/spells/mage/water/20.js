@@ -11,7 +11,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "50 mètres de large"
+            "width": 51,
+            "widthPerArcane": 51,
+            "text": "51x51 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Moitié des dégâts seulement"

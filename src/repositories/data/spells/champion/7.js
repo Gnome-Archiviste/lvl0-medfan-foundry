@@ -27,7 +27,7 @@ export default [
         "id": "inspirationDeCombat",
         "name": "Inspiration de combat",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le champion donne, dans un rayon de 5 m. autour de lui, un bonus d’un point d’armure à ses compagnons autour de lui ainsi que 2 points de dégâts supplémentaires sur leurs attaques.",
+        "description": "Le champion donne, dans une zone de 11x11 mètres. autour de lui, un bonus d’un point d’armure à ses compagnons autour de lui ainsi que 2 points de dégâts supplémentaires sur leurs attaques.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -38,9 +38,10 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "+1 d'armure, +2 de dégâts"
@@ -56,6 +57,8 @@ export default [
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Des marches apparaissent et peuvent être utilisés par les personnages et leurs alliés. Peut servir de pont. Utilisable avec un destrier ou avec beaucoup de poids sur le personnages. 10 mètres par niveau d’arcane. Disparaît quand les joueurs ont atteint leur destination, le champion doit être le dernier du groupe.",
         "distance": {
+            "formula": "return context.arcaneLevel * 10;",
+            "unit": "m",
             "text": "10 mètres par niveau d’arcane"
         },
         "duration": {
@@ -67,7 +70,7 @@ export default [
         "criticalSuccess": {
             "text": "Deux personnages peuvent passer de front"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "murDeFeu",
@@ -85,15 +88,13 @@ export default [
             "text": "1 tour par niveau d’arcane"
         },
         "area": {
-            "value": 1,
-            "unit": "mètre",
-            "text": "1 mètre"
+            "text": "2 mètres de large"
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut). Faire a chaque tour qu’une créature est dans le mur de feu"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience."
+            "text": "Les créatures dans la zone (ou entrant dans la zone) ne peuvent pas faire de test de résilience"
         },
         "damage": {
             "rollFormula": "return '5d6';",
@@ -102,10 +103,10 @@ export default [
         "dependsOnArcaneLevel": true
     },
     {
-        "id": "survolteurDeBollardon",
-        "name": "Survolteur de Bollardon",
+        "id": "iconsmagicfirebeamJetStreamTrailsOrangewebp",
+        "name": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Avec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone. Le champion doit faire ce sort avant de faire le sort qui sera remplacé en sort de zone.",
+        "description": "Survolteur de Bollardon\n\nAvec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone. Le champion doit faire ce sort avant de faire le sort qui sera remplacé en sort de zone.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -117,9 +118,10 @@ export default [
             "text": "5 minutes"
         },
         "area": {
-            "value": 5,
-            "unit": "mètre",
-            "text": "5 mètre"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Transforme un sort en sort de zone"

@@ -78,7 +78,7 @@ export default [
         "id": "earthFist",
         "name": "Poing de pierre",
         "icon": "icons/magic/earth/strike-fist-stone-light.webp",
-        "description": "Le poing de l’élémentaliste deviennent de pierre, lui permettant de donner un coup de poing plus puissant qu'il ne le pourrait normalement, infligeant son Physique + deux (2) en dégâts à son adversaire.",
+        "description": "Le poing de l’élémentaliste deviennent de pierre, lui permettant de donner un coup de poing plus puissant qu'il ne le pourrait normalement, infligeant son Physique + deux (2) en dégâts à son adversaire.[c]",
         "distance": {
             "text": "L’élémentaliste"
         },
@@ -86,7 +86,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "L’élémentaliste"
+            "text": "Élémentaliste"
         },
         "resilience": {
             "text": "Dégâts divisés par deux (2)."
@@ -115,9 +115,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 3,
-            "unit": "m",
-            "text": "3 mètres"
+            "width": 7,
+            "widthPerArcane": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes immobilisées"
@@ -126,7 +127,7 @@ export default [
             "text": "On fait un test par tour pour ne pas avoir l’effet du piège pour ce tour."
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience"
+            "text": "La cible ne peut pas faire de test de résilience."
         },
         "dependsOnArcaneLevel": false
     }

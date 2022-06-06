@@ -2,7 +2,7 @@ export default [
     {
         "id": "buffetDuHeros",
         "name": "Buffet du héros",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/food/bowl-ribs-meat-rice-mash-brown-white.webp",
         "description": "Le sort fait apparaître un buffet bien garni pour dix convives et guérit de 3d6 points de vie par personnes.",
         "distance": {
             "value": 1,
@@ -29,7 +29,7 @@ export default [
     {
         "id": "resistanceALacide",
         "name": "Résistance à l’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-acid.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -54,7 +54,7 @@ export default [
     {
         "id": "resistanceALelectricite",
         "name": "Résistance à l’électricité",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/svg/aura.svg",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’électricité. Le sort réduit de moitié le dommage produit par l’électricité, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -79,7 +79,7 @@ export default [
     {
         "id": "resistanceAuFeu",
         "name": "Résistance au feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-glowing-triangle-red.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre le feu. Le sort réduit de moitié le dommage produit par le feu, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -104,7 +104,7 @@ export default [
     {
         "id": "resistanceAuFroid",
         "name": "Résistance au froid",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible. ",
         "distance": {
             "type": "touch",

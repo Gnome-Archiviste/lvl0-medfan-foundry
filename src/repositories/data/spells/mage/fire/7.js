@@ -2,7 +2,7 @@ export default [
     {
         "id": "creationMajeureDeFeu",
         "name": "Création majeure de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/flame-burning-campfire-red.webp",
         "description": "Créer une flamme 10 m³ par niveau d’arcane de l'élémentaliste.",
         "distance": {
             "value": 6,
@@ -23,8 +23,8 @@ export default [
     {
         "id": "elementaireMajeurDeFeu",
         "name": "Élémentaire majeur de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient.\n\nPHY 7, DEX 6, INT 4, CHA 6, PER 6\n\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\n\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)\n\n\n\n",
+        "icon": "icons/magic/fire/elemental-fire-humanoid.webp",
+        "description": "L'élémentaliste invoque un petit élémentaire de feu à partir d'une source de feu (au moins l’équivalent d’une feu de foyer). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. Attention, on ne peut avoir plus de deux invocations à la fois, sinon on perd le contrôle des créatures, qui attaqueront tous ceux qu’ils voient.\n\nPHY 7, DEX 6, INT 4, CHA 6, PER 6\n\nHP 80, Armure : 2, H2H : 9, Lancer/tir : 8\n\nAttaques : H2H = 10 de dégâts, projectile de feu: 2d6+2 (2 fois)",
         "distance": {
             "value": 2,
             "unit": "mètre",
@@ -32,6 +32,9 @@ export default [
         },
         "duration": {
             "text": "1 scène ou jusqu'à destruction"
+        },
+        "area": {
+            "text": "Aucune"
         },
         "criticalSuccess": {
             "text": "Double les points de vie"
@@ -44,7 +47,7 @@ export default [
     {
         "id": "fascination",
         "name": "Fascination",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/flame-burning-hand-white.webp",
         "description": "Le feu est un élément qui a fasciné l'homme depuis le début des temps. L’élémentaliste crée une petite flamme dans la paume de sa main qui bouge avec un mouvement circulaire répétitif qui concentre l’attention de la victime. La victime est figée, concentrée sur la flamme, faisant ainsi abstraction de tout ce qui l'entoure tant que le sort fait effet ou qu’on l’attaque. L’élémentaliste peut laisser la flamme en suspens et se déplacer, la laissant sur place.",
         "distance": {
             "value": 1,
@@ -73,7 +76,7 @@ export default [
     {
         "id": "pareFeu",
         "name": "Pare-feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magicdefensive/shield-barrier-flaming-diamond-red.webp",
         "description": "Une flamme vaporeuse et colorée entourant le personnage comme une cape de feu. Toute créature infligeant des dégâts physiques subit 1d6 points de dégâts +1 par arcane de l’élémentaliste en raison des flammes intenses mais la résilience aux sorts s’applique à ces dégâts. Cependant le sort ne bloque aucun dégât physique infligé à l’élémentaliste. Les personnages entourés d’un pare-feu ne subissent que la moitié des dégâts des attaques à froid, et aucun dommage si l’attaque permet une résilience de la moitié des dégâts et que le lanceur réussit.  Le personnage recouvert de flammes émet de la lumière comme une torche tamisée, dont la couleur est choisie par l’élémentaliste (bleu, violet ou orange rougeâtre).\n\n\n\n",
         "distance": {
             "text": "Aucune"
@@ -84,7 +87,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "L’élémentaliste"
+            "text": "Élémentaliste"
         },
         "resilience": {
             "text": "Divise le dommage par deux"
@@ -100,7 +103,7 @@ export default [
     {
         "id": "souffleDuDragon",
         "name": "Souffle du dragon",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/beam-jet-stream-embers.webp",
         "description": "L'élémentaliste crache un jet de feu devant lui tel un dragon. ",
         "distance": {
             "text": "20 mètre de long a partir du magicien"
@@ -109,7 +112,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "1 mètre en avant de l'élémentaliste"
+            "width": 1,
+            "widthPerArcane": 1,
+            "text": "1x20 mètres (en avant du magicien)",
+            "comment": "(en avant du magicien)"
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"

@@ -51,7 +51,7 @@ export default [
     {
         "id": "bonification",
         "name": "Bonification",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/life/cross-yellow-green.webp",
         "description": "L’enchanteur infuse à une cible l’énergie nécessaire pour augmenter une statistique de base de celle-ci. L’enchanteur doit tenir en main le bon type de matériel qui servira de catalyseur au sort*.\n\nL’enchanteur infuse dans un objet l’énergie nécessaire pour augmenter une statistique de base du porteur de l’objet. L’objet en question doit être neuf et préalablement traité pour recevoir l’enchantement. De plus il doit être certi du bon type de pierre qui servira de réceptacle au sort*. Pour que l'enchantement ne s’estompe pas à la fin de la première utilisation, il faut le sceller avec le sort de Permanence.\n\nVoici les enchantements à utiliser avec ce sort:.\n\nAgilité du lutin: Donne un bonus de +1 en dextérité.\n\nÉclat elfique: Donne un bonus de +1 en Charisme.\n\nForce du nain: Donne un bonus de +1 en Physique.\n\nNez du haufelin: Donne un bonus de +1 en Perception.\n\nRuse du gnome: Donne un bonus de +1 en Intelligence.\n\n* Référez-vous à la table des pierres précieuses et semi-précieuses\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -101,7 +101,7 @@ export default [
             "text": "5 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.arcaneLevel;",
+            "formula": "return context.arcaneLevel * 1;",
             "unit": "minutes",
             "text": "1 minute par niveau d’arcane"
         },
@@ -150,12 +150,14 @@ export default [
         "id": "pageSecrete",
         "name": "Page secrète",
         "icon": "icons/sundries/scrolls/scroll-worn-beige.webp",
-        "description": "Ce sort masque toute information sur une page ou un parchemin de telle sorte que la page apparaît vierge ou couverte par d’autres informations. L’enchanteur peut invoquer un mot de commande pour révéler les informations cachées et un autre mot de commande pour remettre l’illusion. Détecter la magie révèle une faible aura magique, mais pas sa nature. Dissiper la magie dissipera le sort, mais peut également affecter l’écriture cachée. Le sort « Effacer » supprimera à la fois l’illusion et toute autre information masquée par la page secrète.",
+        "description": "Ce sort masque toute information sur une page ou un parchemin de telle sorte que la page apparaît vierge ou couverte par d’autres informations. L’enchanteur peut invoquer un mot de commande pour révéler les informations cachées et un autre mot de commande pour remettre l’illusion. Détecter la magie révèle une faible aura magique, mais pas sa nature. Dissiper la magie dissipera le sort, mais peut également affecter l’écriture cachée. Le sort « Effacer » supprimera à la fois l’illusion et toute autre information masquée par la page secrète. N’oubliez pas d’utiliser le sort Permanence. ",
         "distance": {
             "text": "Touché"
         },
         "duration": {
-            "text": "1 scène semble court[b]"
+            "formula": "return 1 * context.arcaneLevel;",
+            "unit": "jours",
+            "text": "1 jour par niveau d’arcane"
         },
         "area": {
             "text": "Un objet"
@@ -163,7 +165,7 @@ export default [
         "criticalSuccess": {
             "text": "Manquant"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "potionsToniques",
@@ -224,9 +226,10 @@ export default [
             "text": "Jusqu’à l’utilisation (Préparation 2 minutes)"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "4d6"

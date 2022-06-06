@@ -2,7 +2,7 @@ export default [
     {
         "id": "armeEnchantee",
         "name": "Arme enchantée",
-        "icon": "icons/magic/weapons/daggers/dagger-magical-glowing-blue.webp",
+        "icon": "icons/weapons/daggers/dagger-magical-glowing-blue.webp",
         "description": "Transforme les dégâts normaux d’une arme en dégâts magiques et permet ainsi de toucher les créatures qui requièrent ce type de dégâts pour les combattre. ex: fantôme, vampires, morts-vivants.",
         "distance": {
             "type": "touch",
@@ -14,7 +14,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "Une cible"
+            "text": "Une arme"
         },
         "bonus": {
             "text": "transforme les dégâts normaux en dégâts magiques"
@@ -62,9 +62,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes inoffensives"
@@ -79,8 +80,8 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "braouleaDePouvoir",
-        "name": "Braoule[a] de pouvoir",
+        "id": "braoulebDePouvoir",
+        "name": "Braoule[b] de pouvoir",
         "icon": "icons/tools/hand/hammer-mallet-brown.webp",
         "description": "L’enchanteur imbue d’énergie magique un objet de la vie de tous les jours, qui habituellement ne fait pas vraiment de dégât, afin que ce dernier devienne une arme qui inflige 1d6-2 de dégât. ex: balai, braoule, louche, brosse à cheveux...",
         "distance": {
@@ -93,9 +94,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "value": 1,
-            "unit": "objet",
-            "text": "1 objet"
+            "text": "Un objet"
         },
         "bonus": {
             "text": "aucun"
@@ -170,7 +169,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "1-3 cible"
+            "text": "1 à 3 cibles"
         },
         "bonus": {
             "text": "Laisse les mains libres"
@@ -199,7 +198,7 @@ export default [
             "text": "5 tours par niveau d’arcane"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -220,7 +219,7 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "le chaudron"
+            "text": "Le chaudron"
         },
         "bonus": {
             "text": "Donne 6 points de mana à la cible"

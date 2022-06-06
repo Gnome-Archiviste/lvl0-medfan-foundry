@@ -110,9 +110,10 @@ export default [
             "text": "5 tours par arcane"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "Triple la durée"

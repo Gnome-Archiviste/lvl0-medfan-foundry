@@ -3,7 +3,7 @@ export default [
         "id": "marqueDeKegan",
         "name": "Marque de Kegan",
         "icon": "icons/magic/symbols/rune-sigil-black-pink.webp",
-        "description": "L’élémentaliste applique le sceau magique sur une cible vivante. Permet à l’élémentaliste de tracer cette cible sur un rayon de 100 mètres par niveau d'arcane. Kegan usait de ce sort pour \"libérer\" un ork pour que celui-ci le guide vers le terrier et l'anéantir. ",
+        "description": "L’élémentaliste applique le sceau magique sur une cible vivante. Permet à l’élémentaliste de tracer cette cible a une distance de 100 mètres par niveau d'arcane. Kegan usait de ce sort pour \"libérer\" un ork pour que celui-ci le guide vers son terrier et l'anéantir. ",
         "distance": {
             "text": "toucher"
         },
@@ -57,34 +57,34 @@ export default [
         "icon": "icons/magic/fire/projectile-beams-salvo-red.webp",
         "description": "Lorsque l’élémentaliste lance ce sort, le ciel se couvre de nuages orangés et des gouttelettes de lave tombent du ciel, brûlant gravement ceux dans la zone du sort.\n\n\n\n",
         "distance": {
-            "value": 10,
-            "unit": "mètre",
-            "text": "10 mètres"
-        },
-        "duration": {
-            "formula": "return 1 * context.arcaneLevel;",
-            "unit": "tours",
-            "text": "1 tour par niveau d’arcane"
-        },
-        "area": {
             "value": 5,
             "unit": "mètre",
-            "text": "5 mètre"
+            "text": "5 mètres"
+        },
+        "duration": {
+            "value": 5,
+            "unit": "tours",
+            "text": "5 tours"
+        },
+        "area": {
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
-            "text": "Possibilité d’endommager l’armure"
+            "text": "Possibilité d’endommager l’armure (sur un succès remarquable)"
         },
         "resilience": {
             "text": "Divise les dégâts en 2"
         },
         "criticalSuccess": {
-            "text": "Dégâts maximum"
+            "text": "L’armure des victimes ne fait plus que la moitié de la protection."
         },
         "damage": {
-            "rollFormula": "return '3d6';",
-            "text": "3d6"
+            "text": "2d6 par tour"
         },
-        "dependsOnArcaneLevel": true
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "resistanceAuFeu",
@@ -115,7 +115,7 @@ export default [
         "id": "soufflerLaChandelle",
         "name": "Souffler la chandelle",
         "icon": "icons/magic/fire/flame-burning-campfire-smoke.webp",
-        "description": "Avec ce sort l’élémentaliste peut éteindre tout feu brûlant dans un rayon d’un mètre par niveau d’arcane. Il n’y a pas de limite à la taille ou au nombre de feux s’ils sont complètement dans le rayon du sort. Le feu magique est immunisé contre ce sort.\n\n\n\n",
+        "description": "Avec ce sort l’élémentaliste peut éteindre tout feu brûlant dans une zone d’un mètre plus deux mètres d’un mètre par niveau d’arcane. Il n’y a pas de limite à la taille ou au nombre de feux s’ils sont complètement dans la zone du sort. Le feu magique est immunisé contre ce sort.\n\n\n\n",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"
@@ -124,7 +124,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "1m par niveau d’arcane"
+            "text": "(1 + 2 par niveau d’arcane)x(1 + 2 par niveau d’arcane)"
         },
         "bonus": {
             "text": "-2 sur perception si de nuit, double les dégâts de froid si en terrain froid."

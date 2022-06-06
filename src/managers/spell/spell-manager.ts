@@ -2,7 +2,13 @@ import {inject, singleton} from 'tsyringe';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
 import {assertIsCharacter, Lvl0Actor} from 'models/actor';
-import {ElementRepository, SpellActionMagicArmorDefinition, SpellDefinition, SpellRepository} from 'repositories';
+import {
+    ElementRepository,
+    SpellActionMagicArmorDefinition,
+    SpellDefinition,
+    SpellDefinitionArea, SpellDefinitionCritical,
+    SpellRepository
+} from 'repositories';
 import {
     AddEffectActionModifierDefinition,
     ComputableSpellValue,
@@ -72,10 +78,10 @@ export class SpellManager {
             let actorSpell: ActorSpell = {
                 id: spellDefinition.id,
                 actions: await this.computeActions(spellDefinition.actions, context, spellDefinition.icon),
-                area: await this.computeComplex(spellDefinition.area, context),
+                area: await this.computeArea(spellDefinition.area, context),
                 bonus: await this.computeComplex(spellDefinition.bonus, context),
                 cost: spellDefinition.level,
-                criticalSuccess: await this.computeComplex(spellDefinition.criticalSuccess, context),
+                criticalSuccess: await this.computeCritical(spellDefinition.criticalSuccess, context),
                 damage: await this.computeDamageFormula(spellDefinition.damage, context),
                 description: "",
                 distance: this.computeSpellDistance(spellDefinition, context),
@@ -114,9 +120,9 @@ export class SpellManager {
         let updatedActorSpell = {
             ...actorSpell,
             actions: await this.computeActions(actorSpell.definition.actions, context, actorSpell.definition.icon),
-            area: await this.computeComplex(actorSpell.definition.area, context),
+            area: await this.computeArea(actorSpell.definition.area, context),
             bonus: await this.computeComplex(actorSpell.definition.bonus, context),
-            criticalSuccess: await this.computeComplex(actorSpell.definition.criticalSuccess, context),
+            criticalSuccess: await this.computeCritical(actorSpell.definition.criticalSuccess, context),
             damage: await this.computeDamageFormula(actorSpell.definition.damage, context),
             distance: this.computeSpellDistance(actorSpell.definition, context),
             duration: await this.computeComplex(actorSpell.definition.duration, context),
@@ -269,6 +275,35 @@ export class SpellManager {
         return undefined;
     }
 
+    async computeArea(areaDefinition: SpellDefinitionArea, context: SpellContext): Promise<string>;
+    async computeArea(areaDefinition: SpellDefinitionArea | undefined, context: SpellContext): Promise<undefined>;
+    async computeArea(
+        areaDefinition: SpellDefinitionArea | undefined,
+        context: SpellContext
+    ): Promise<string | undefined> {
+        try {
+            if (!areaDefinition) {
+                return undefined;
+            }
+            let value: string | undefined = undefined;
+            if (areaDefinition.height && areaDefinition.width && areaDefinition.heightPerArcane && areaDefinition.widthPerArcane) {
+                let width = areaDefinition.width + (areaDefinition.widthPerArcane * context.arcaneLevel)
+                let height = areaDefinition.height + (areaDefinition.heightPerArcane * context.arcaneLevel)
+                value = width + ' x ' + height + ' mètres';
+            } else if (areaDefinition.height && areaDefinition.width) {
+                value = areaDefinition.width + ' x ' + areaDefinition.height + ' mètres';
+            } else if (areaDefinition.text) {
+                value = areaDefinition.text;
+            }
+            if (areaDefinition.comment) {
+                value = value + ' (' + areaDefinition.comment + ')';
+            }
+            return value;
+        } catch (e) {
+            throw new Error("Error during computeArea for data " + JSON.stringify(areaDefinition) + "\n" + e + "\n" + e.stack + "\n")
+        }
+    }
+
     async computeComplex(
         computable: ComputableSpellValue | undefined,
         context: SpellContext
@@ -293,6 +328,23 @@ export class SpellManager {
                 value = value + ' ' + computable.unit;
             }
             return value;
+        } catch (e) {
+            throw new Error("Error during computeComplex for data " + JSON.stringify(computable) + "\n" + e + "\n" + e.stack + "\n")
+        }
+    }
+
+    async computeCritical(
+        computable: SpellDefinitionCritical | undefined,
+        context: SpellContext
+    ): Promise<string | RolledSpellStat | undefined> {
+        try {
+            if (!computable) {
+                return undefined;
+            }
+            if (computable.area) {
+                return 'Zone = ' + await this.computeArea(computable.area, context);
+            }
+           return await this.computeComplex(computable, context);
         } catch (e) {
             throw new Error("Error during computeComplex for data " + JSON.stringify(computable) + "\n" + e + "\n" + e.stack + "\n")
         }

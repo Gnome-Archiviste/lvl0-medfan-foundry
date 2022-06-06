@@ -14,7 +14,10 @@ export default [
             "text": "2 heures par niveau d’arcane"
         },
         "area": {
-            "text": "10 mètres (maximum une pièce)"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres (maximum une pièce)",
+            "comment": "(maximum une pièce)"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -128,7 +131,7 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "Jusqu’à 5 petites pierres"
+            "text": "Jusqu’à 5 pierres"
         },
         "bonus": {
             "text": "Permet de voir dans la nuit"
@@ -165,7 +168,7 @@ export default [
         "id": "failedPotion",
         "name": "Potion ratée",
         "icon": "icons/consumables/potions/potion-flash-open-blue.webp",
-        "description": "L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit réussir un jet de lancer/tir.\n\n\n\n",
+        "description": "L’enchanteur utilise n’importe quelle potion (idéalement les inutilisables) et lui infuse de l’énergie magique en la secouant vigoureusement avant de la lancer sur son adversaire. Au contact, elle explose infligeant 1d6-2 points de dégâts. Cependant, comme l’enchanteur lance la potion il doit aussi réussir un jet de lancer/tir.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -174,7 +177,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "La potion"
+            "text": "la potion"
         },
         "bonus": {
             "text": "Accessoirement fait de la place dans votre inventaire"
@@ -201,10 +204,10 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "Jusqu’à 5 darts"
+            "text": "jusqu’à 5 darts"
         },
         "bonus": {
-            "text": "Guérit 1 point de vie"
+            "text": "Guérit 1 point de vie[a]"
         },
         "criticalSuccess": {
             "text": "Guérit 2 points de vie"
@@ -250,7 +253,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "Magicien"
+            "text": "Enchanteur"
         },
         "bonus": {
             "text": "Guérit 1d6 points de vie"

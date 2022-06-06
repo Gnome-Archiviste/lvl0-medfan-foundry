@@ -34,22 +34,23 @@ export default [
         "icon": "icons/magic/acid/projectile-beams-salvo-green.webp",
         "description": "L’élémentaliste déclenche une forte pluie acide qui brûle la peau et ronge l’armure.",
         "distance": {
-            "value": 10,
-            "unit": "mètre",
-            "text": "10 mètres"
-        },
-        "duration": {
-            "formula": "return 1 * context.arcaneLevel;",
-            "unit": "tours",
-            "text": "1 tour par niveau d’arcane"
-        },
-        "area": {
             "value": 5,
-            "unit": "m",
+            "unit": "mètre",
             "text": "5 mètres"
         },
+        "duration": {
+            "value": 5,
+            "unit": "tours",
+            "text": "5 tours"
+        },
+        "area": {
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
+        },
         "bonus": {
-            "text": "Possibilité d’endommager l’armure"
+            "text": "Possibilité d’endommager l’armure (sur un succès remarquable)"
         },
         "resilience": {
             "text": "Divise les dégâts en 2"
@@ -58,11 +59,9 @@ export default [
             "text": "L’armure des victimes ne fait plus que la moitié de la protection."
         },
         "damage": {
-            "rollFormula": "return '3d6';",
-            "element": "acid",
-            "text": "3d6"
+            "text": "2d6 par tour"
         },
-        "dependsOnArcaneLevel": true
+        "dependsOnArcaneLevel": false
     },
     {
         "id": "postillonAcide",
@@ -94,7 +93,7 @@ export default [
     {
         "id": "resistanceALacide",
         "name": "Résistance à l’acide",
-        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-acide.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-acid.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
         "distance": {
             "type": "touch",

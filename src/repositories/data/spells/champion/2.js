@@ -3,7 +3,7 @@ export default [
         "id": "protectAuraEvil",
         "name": "Aura de protection contre le mal",
         "icon": "icons/magic/unholy/barrier-fire-pink.webp",
-        "description": "Empêche les mauvaises créatures de pénétrer dans une zone de 5 mètres de rayon autour du champion. Attention, bien que l’aura ce fait à l’entour du champion, cette dernière ne se déplace pas.",
+        "description": "Empêche les mauvaises créatures de pénétrer dans une zone de 11 mètres carrés autour du champion. Attention, bien que l’aura ce fait à l’entour du champion, cette dernière ne se déplace pas.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -14,9 +14,10 @@ export default [
             "text": "1d6 tours + 1 tour par niveau d’arcane"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -58,7 +59,7 @@ export default [
                 "type": "addEffect",
                 "data": {
                     "duration": {
-                        "formula": "return context.actorData.computedData.magic.arcaneLevel",
+                        "formula": "return context.arcaneLevel",
                         "unit": "tours"
                     },
                     "effectName": "Aveuglement",

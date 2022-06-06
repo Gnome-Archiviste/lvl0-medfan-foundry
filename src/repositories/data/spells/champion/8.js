@@ -20,7 +20,7 @@ export default [
         "id": "destructionDesMortsVivants",
         "name": "Destruction des morts vivants",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le champion frappe le sol avec ses poings et déploie 10d6 de dégâts qui frappent tous les morts-vivants dans un rayon de 10 mètres.",
+        "description": "Le champion frappe le sol avec ses poings et déploie 10d6 de dégâts qui frappent tous les morts-vivants dans une zone de 21 mètres carrés.",
         "distance": {
             "type": "self",
             "text": "Champion"
@@ -29,9 +29,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)."
@@ -49,7 +50,7 @@ export default [
         "id": "dissipationDuMal",
         "name": "Dissipation du mal",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le sort permet au champion de forcer une créature d’une autre dimension (comme les démons et les diablotins) de retourner dans leur monde d’origine. Il oblige aussi les esprits malins (fantômes, spectre, banshee, etc.) à se dissiper. \n\n\n\n",
+        "description": "Le sort permet au champion de forcer une créature d’une autre dimension (comme les démons et les diablotins) de retourner dans leur monde d’origine. Il oblige aussi les esprits malins (fantômes, spectre, banshee, etc.) à se dissiper. ",
         "distance": {
             "value": 10,
             "unit": "mètre",
@@ -82,12 +83,13 @@ export default [
             "text": "Champion"
         },
         "duration": {
-            "text": "4 heures + 1d6 (lancer par le maître de jeu)"
+            "text": "4 heures + 1d6 heure.s (lancer par le maître de jeu)"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "Double la durée du sort"
@@ -105,10 +107,10 @@ export default [
             "text": "1 mètre"
         },
         "duration": {
-            "formula": "if (context.criticalSuccess) { return 10; } return 5",
-            "value": 5,
-            "unit": "tours",
-            "text": "5 tours"
+            "formula": "if (context.criticalSuccess) { return 10; } return 1",
+            "value": 1,
+            "unit": "heure",
+            "text": "1 heure"
         },
         "area": {
             "text": "Une cible"

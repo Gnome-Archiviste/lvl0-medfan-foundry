@@ -27,8 +27,8 @@ export default [
     {
         "id": "nexusTellurique",
         "name": "Nexus tellurique",
-        "icon": "",
-        "description": "L'élémentaliste créé une zone dans laquelle plusieurs magiciens peuvent regagner 15 points de mana. Les magiciens doivent rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort.",
+        "icon": "icons/magic/symbols/runes-star-pentagon-orange-purple.webp",
+        "description": "L'élémentaliste crée une zone dans laquelle plusieurs magiciens peuvent regagner 15 points de mana. Les magiciens doivent rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -37,9 +37,10 @@ export default [
             "text": "10 minutes de jeu"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "permet de regagner du mana"
@@ -53,7 +54,7 @@ export default [
         "id": "partoutatis",
         "name": "Partoutatis",
         "icon": "icons/magic/earth/projectile-orb-asteroid-yellow.webp",
-        "description": "Un météore tombe sur la cible. Touche tout sur un 5 mètre de rayon.",
+        "description": "Un météore tombe sur la cible. Touche tout sur une zone de 7x7 mètres.",
         "distance": {
             "value": 60,
             "unit": "mètre",
@@ -63,9 +64,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 7,
+            "widthPerArcane": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"
@@ -92,9 +94,6 @@ export default [
         "duration": {
             "text": "Jusqu’à dépétrification"
         },
-        "area": {
-            "text": "Une cible"
-        },
         "bonus": {
             "text": "Pétrifie une cible"
         },
@@ -106,21 +105,10 @@ export default [
     {
         "id": "leSortLaPotionOuLeSortDeDepetrificationNeFonctionnePas",
         "name": "        le sort. La potion ou le sort de Dépétrification ne fonctionne pas.",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Arcane 10\n\nMur de fer\n\nCe sort crée un mur de roche qui fusionne avec les surfaces rocheuses adjacentes. Le mur mesure 10 cm d’épaisseur par niveau d’arcane du magicien ainsi que jusqu’à 1 mètre de large par niveau d’arcane du magicien et jusqu’à 1 mètre de haut par niveau d’arcane du magicien. Le mur ne peut pas être évoqué de manière à occuper le même espace qu’une créature ou un autre objet.\n\n\n\n\n\nChaque zone d’un pied carré du mur a 30 points de vie par 10 cm d’épaisseur. Les créatures peuvent frapper le mur automatiquement, mais le mur est si dur que les 10 premiers points de dégâts de chaque coup sont ignorés. Une section de mur dont les points de vie tombent à 0 est fissurée. \n\n\n\n",
-        "distance": {
-            "value": 2,
-            "unit": "mètre",
-            "text": "2 mètres"
-        },
-        "duration": {
-            "text": "Combat"
-        },
+        "icon": "icons/magic/earth/strike-body-stone-crumble.webp",
+        "description": "",
         "area": {
-            "text": "1 mètre de large/arcane"
-        },
-        "criticalSuccess": {
-            "text": "Double la largeur"
+            "text": "Une cible"
         },
         "dependsOnArcaneLevel": false
     }

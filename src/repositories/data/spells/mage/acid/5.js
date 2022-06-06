@@ -28,7 +28,8 @@ export default [
         "icon": "icons/magic/control/sihouette-hold-beam-green.webp",
         "description": "Le contour du sujet semble déformé, accordant un bonus de 1 point d’armure. Comme il est plus dur à voir, ce qui le rend plus difficile à toucher, ajoutant 1 point dans l’habileté Éviter.\n\nUn sort de « Voir l’invisibilité » ne neutralise pas l’effet de flou. Les adversaires qui ne peuvent pas voir le sujet ignorent l’effet du sort.",
         "distance": {
-            "text": "toucher"
+            "type": "touch",
+            "text": "Toucher"
         },
         "duration": {
             "value": 1,
@@ -36,7 +37,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "bonus": {
             "text": "+1 d’armure, +1 éviter"
@@ -102,7 +103,7 @@ export default [
     {
         "id": "rongeArmure",
         "name": "Ronge armure",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/commodities/metal/mail-plate-steel.webp",
         "description": "Le sort s’attaque à l’armure de la cible et lui enlève un point de protection. Il faut faire réparer l’armure pour lui redonner sa pleine protection.",
         "distance": {
             "value": 10,
@@ -113,7 +114,7 @@ export default [
             "text": "Jusqu’à ce que l’armure soit réparée"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "bonus": {
             "text": "-1 d’armure"

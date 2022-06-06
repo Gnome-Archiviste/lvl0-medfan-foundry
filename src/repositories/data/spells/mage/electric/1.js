@@ -84,9 +84,10 @@ export default [
             "text": "1 minute par arcane"
         },
         "area": {
-            "value": 300,
-            "unit": "m",
-            "text": "300 mètres"
+            "width": 601,
+            "widthPerArcane": 601,
+            "text": "601x601 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Permet d’être entendu à 300 m."
@@ -100,7 +101,7 @@ export default [
         "id": "smug",
         "name": "Smug",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Un épais nuage de poussière entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers, sur une zone de 5 mètres de diamètre. Donne 2 points de pénalité sur la perception de tous ceux dans la zone. Il faut faire un jet de perception pour trouver une nouvelle cible. ",
+        "description": "Un épais nuage de poussière entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers. Donne 2 points de pénalité sur la perception de tous ceux dans la zone. Il faut faire un jet de perception pour trouver une nouvelle cible. ",
         "distance": {
             "type": "self",
             "text": "Élémentaliste"
@@ -109,15 +110,37 @@ export default [
             "text": "Trois tours"
         },
         "area": {
-            "text": "4 mètres. +1 mètre par niveau d’arcane."
+            "width": 3,
+            "height": 3,
+            "widthPerArcane": 2,
+            "heightPerArcane": 2,
+            "text": "(3 + 2 par niveau d’arcane)x(3 + 2 par niveau d’arcane) mètres",
+            "comment": "",
+            "epicSuccess": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            }
         },
         "bonus": {
             "text": "Pénalité de 2 point sur  les jets utilisant la caractéristique de Perception"
         },
         "criticalSuccess": {
-            "text": "Double le rayon du sort"
+            "area": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            },
+            "formula": "if (context.criticalSuccess) { return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres (pré-calculé)'; } return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres';",
+            "text": "Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres"
         },
-        "dependsOnArcaneLevel": false,
+        "dependsOnArcaneLevel": true,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",

@@ -1,5 +1,31 @@
 export default [
     {
+        "id": "chaumiereDeWalden",
+        "name": "Chaumière de Walden",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort permet de créer une chaumière rétractable qui sert de refuge sur la route. L’enchanteur aura besoin d’une petite maison en bois ou en pierre de 4cm de haut ainsi que de la véritable chaumière (meublée ou non. Prévoir un coût d’au moins 10 000 oricaux), une potion théurgique, une potion d’urgence ainsi qu’un sort d’alarme et d’un sort de permanence (le sort de permanence et d’alarme peuvent être sur parchemin). La construction et la figurine doivent êtres neuves. ",
+        "distance": {
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "la chaumière"
+        },
+        "bonus": {
+            "text": "Dégâts physiques maximums"
+        },
+        "criticalSuccess": {
+            "text": "Double les points de vie de la chaumière."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "cometes",
         "name": "Comètes",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -11,7 +37,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "1-3 cible"
+            "text": "1 à 3 cibles"
         },
         "bonus": {
             "text": "Laisse les mains libres"
@@ -52,7 +78,7 @@ export default [
         "id": "destrierDePochec",
         "name": "Destrier de poche[c]",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur infuse le sort dans une figurine de bois représentant un animal (pas nécessairement un cheval) pouvant servir de destrier. La figurine, une fois activé, devient pleine grandeur.\n\n\n\n\n\nBonus : ",
+        "description": "L’enchanteur infuse le sort dans une figurine de bois représentant un animal (pas nécessairement un cheval) pouvant servir de destrier. La figurine, une fois activé, devient pleine grandeur.\n\nBonus : ",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -61,10 +87,10 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "le chaudron"
+            "text": "La figurine"
         },
         "criticalSuccess": {
-            "text": "fait 4 potions par mana au lieu de 3."
+            "text": "fait 4 potions par mana au lieu de 3.[d]"
         },
         "dependsOnArcaneLevel": false
     },
@@ -91,7 +117,17 @@ export default [
         "id": "resilienceAucune",
         "name": "Résilience  Aucune",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Succès remarquable : 150 points de vie\n\nPotion d’urgence\n\nL’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (100 ml), une pincée de poudre de perlépipein et de la pulpe de papyrus (250 grammes) et qui doit mijoter et être touillée pendant 6 heures. L’enchanteur fait 3 potions de soin par 7 points de mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
+        "description": "Succès remarquable : 150 points de vie",
+        "area": {
+            "text": "Aucune"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "potionDurgence",
+        "name": "Potion d’urgence",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre du sang de troll (100 ml), une pincée de poudre de perlépipein et de la pulpe de papyrus (250 grammes) et qui doit mijoter et être touillée pendant 6 heures. L’enchanteur fait 3 potions de soin par 7 points de mana dépensées durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -100,7 +136,7 @@ export default [
             "text": "instantané"
         },
         "area": {
-            "text": "le chaudron"
+            "text": "Le chaudron"
         },
         "bonus": {
             "text": "Donne 50 pv à la cible"
@@ -120,7 +156,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "instantané"
+            "text": "Instantané"
         },
         "area": {
             "text": "Le chaudron"

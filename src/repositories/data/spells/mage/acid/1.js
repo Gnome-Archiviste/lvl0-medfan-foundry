@@ -13,7 +13,7 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "text": "Devant l’élémentaliste"
+            "text": "1x1 mètre devant l'élémentaliste"
         },
         "criticalSuccess": {
             "text": "Double la quantité"
@@ -56,7 +56,7 @@ export default [
         "id": "stinkingCloud",
         "name": "Nuage puant",
         "icon": "icons/magic/acid/dissolve-pool-bubbles.webp",
-        "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts, mais ils peuvent se défendre ou bouger de la moitié de leur déplacement normal. ",
+        "description": "Déclenche une zone nauséabonde de 5x5 mètres. Les victimes ne peuvent plus attaquer ou jeter des sorts, mais ils peuvent se défendre ou bouger de la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
             "unit": "mètre",
@@ -69,9 +69,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes inoffensives"
@@ -100,7 +101,7 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "text": "2 mètres de rayons autour de l’élémentaliste"
+            "text": "5x5 mètres, l’élémentaliste au centre"
         },
         "resilience": {
             "text": "Divise les dégâts en 2"

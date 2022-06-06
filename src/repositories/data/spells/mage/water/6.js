@@ -2,7 +2,7 @@ export default [
     {
         "id": "armureDeGlace",
         "name": "Armure de glace",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/snowflake-ice-blue.webp",
         "description": "Permet d’absorber 20 points de dégâts. Le sort peut être fait sur l'élémentaliste ou un allié. L'élémentaliste doit toucher la cible. Le sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",
@@ -25,7 +25,7 @@ export default [
     {
         "id": "formeLiquide",
         "name": "Forme liquide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/elemental-water.webp",
         "description": "Une créature touchée et tout son équipement deviennent liquide, apparaissant comme un élémentaire d’eau. Dans cet état, le personnage ne peut pas être touché ou interagit physiquement, devenant immunisé contre toute attaque qui n’est pas de nature magique. Le personnage se déplace à 3 mètres par tour sauf dans l’eau où son déplacement normal est doublé. Dans l’eau la cible devient effectivement invisible, puisqu'il est impossible de la différencier du reste de l’environnement. Le personnage peut également passer à travers de petits trous ou des ouvertures étroites, même de simples fissures, avec tout ce qu’il portait ou tenait, tant que le sort persiste. Par contre, il ne peut pas attaquer physiquement ou affecter les autres, ne peut pas lancer de sorts autres que ceux d’eau, et ne peut pas du feu ou autre matière solide. Cela affecte une créature consentante.",
         "distance": {
             "type": "touch",
@@ -49,7 +49,7 @@ export default [
     {
         "id": "geyser",
         "name": "Geyser",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/bubbles-air-water-light.webp",
         "description": "L'élémentaliste fait jaillir du sol un puissant jet d'eau chaude de 3 mètres + 3 mètres/arcane de haut.",
         "distance": {
             "value": 10,
@@ -60,9 +60,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise les dégâts en deux"
@@ -79,7 +80,7 @@ export default [
     {
         "id": "hypothermie",
         "name": "Hypothermie",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/snowflake-ice-blue-white.webp",
         "description": "Enveloppe un ennemi d’une brume qui le glace jusqu’aux os, ce qui l’empêche de se concentrer sur ses attaques tellement il grelotte.",
         "distance": {
             "value": 10,
@@ -111,8 +112,8 @@ export default [
     {
         "id": "nessy",
         "name": "Nessy",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Appelle une créature marine mythique comme destrier aquatique pour traverser une étendue d'eau.\n\n\n\n",
+        "icon": "icons/creatures/fish/squid-kraken-teal.webp",
+        "description": "Appelle une créature marine mythique comme destrier aquatique pour traverser une étendue d'eau.",
         "distance": {
             "text": "1 mètre dans une étendue d’eau"
         },

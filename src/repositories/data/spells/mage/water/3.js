@@ -11,7 +11,7 @@ export default [
             "text": "instantanée"
         },
         "area": {
-            "text": "1-6 cibles"
+            "text": "1 à 6 cibles"
         },
         "bonus": {
             "text": "voir le tableau ci-dessous"
@@ -55,7 +55,7 @@ export default [
     },
     {
         "id": "blotter",
-        "name": "Buvard[d]",
+        "name": "Buvard",
         "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
         "description": "En touchant une cible, l’élémentaliste imprègne d’énergies magiques protectrices la cible, offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique, pour une seule fois. \n\nDe plus, une fois que le sort capture une partie de l’énergie élémentaire, il la stock pour votre prochaine attaque de mêlée, ajoutant 1d6 dégâts de glace supplémentaires.",
         "distance": {
@@ -66,7 +66,7 @@ export default [
             "text": "jusqu’à utilisation ou une (1) scène"
         },
         "area": {
-            "text": "une cible"
+            "text": "Une cible"
         },
         "bonus": {
             "text": "Ajoute 1d6 dégâts de glace"
@@ -80,13 +80,13 @@ export default [
         "id": "cryogenics",
         "name": "Cryogénie",
         "icon": "icons/magic/water/barrier-ce-water-cube.webp",
-        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant un mois[e]. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
+        "description": "Ce sort congèle le corps d’un coéquipier décédé et permet de le conserver, afin qu’il ne se décompose pas, pendant 4 jours par niveau d’arcane de l’élémentaliste. Ce sort prolonge le temps pour ressusciter la créature touchée d’entre les morts. Le sort fonctionne sur les parties du corps coupées et autres. \n\n\n\n\n\nLe sort se termine lorsque le cadavre est ressuscité des morts ou arrive au bout de sa durée.\n\n\n\n",
         "distance": {
             "type": "touch",
             "text": "Toucher"
         },
         "duration": {
-            "text": "1 mois (ou 3 jours par niveau d’arcane)"
+            "text": "1 mois (ou 3 jours par niveau d’arcane)[b]"
         },
         "area": {
             "text": "Une cible"
@@ -111,6 +111,9 @@ export default [
         },
         "duration": {
             "text": "1 scène ou jusqu'à destruction"
+        },
+        "area": {
+            "text": "Aucune"
         },
         "criticalSuccess": {
             "text": "Double les points de vie"

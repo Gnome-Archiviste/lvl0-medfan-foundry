@@ -9,10 +9,10 @@ export interface SpellData {
     readonly actions: { [actionName: string]: SpellActionDefinition };
     readonly distance: SpellDefinitionDistance;
     readonly duration?: ComputableSpellValue;
-    readonly area?: ComputableSpellValue;
+    readonly area?: SpellDefinitionArea;
     readonly bonus?: ComputableSpellValue;
     readonly resilience?: ComputableSpellValue;
-    readonly criticalSuccess?: ComputableSpellValue;
+    readonly criticalSuccess?: SpellDefinitionCritical;
     readonly damage?: SpellDamageDefinition;
     readonly heal?: SpellHealDefinition;
     readonly dependsOnArcaneLevel: boolean;
@@ -69,6 +69,19 @@ export interface ComputableSpellValue {
     readonly text?: string;
     readonly value?: string;
     readonly unit?: string;
+}
+
+export interface SpellDefinitionCritical extends ComputableSpellValue {
+    readonly area?: SpellDefinitionArea;
+}
+
+export interface SpellDefinitionArea {
+    readonly width?: number;
+    readonly height?: number;
+    readonly widthPerArcane?: number;
+    readonly heightPerArcane?: number;
+    readonly text: string;
+    readonly comment?: string;
 }
 
 export default {

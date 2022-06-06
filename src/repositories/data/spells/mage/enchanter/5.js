@@ -27,7 +27,7 @@ export default [
     {
         "id": "electrification",
         "name": "Électrification",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/skills/melee/blade-tips-double-blue.webp",
         "description": "Change les dégâts d’une arme en dégât électrique provoquant 1d6 de dégât bonus, pour une scène.",
         "distance": {
             "type": "touch",
@@ -52,7 +52,7 @@ export default [
     {
         "id": "enchantement",
         "name": "Enchantement",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/weapons/swords/sword-runed-glowing.webp",
         "description": "Enchanté une arme pour un combat. Ajoute +2 aux dégâts et les doubles 3 sont aussi considérés comme un succès exceptionnel. Besoin de permanence pour conserver l’effet.",
         "distance": {
             "type": "touch",
@@ -64,7 +64,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "Une cible"
+            "text": "Une arme"
         },
         "bonus": {
             "text": "+2 dégâts, double 3 = succès exceptionnel."
@@ -77,7 +77,7 @@ export default [
     {
         "id": "glaciation",
         "name": "Glaciation",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/weapons/axe/axe-double-ice-blue.webp",
         "description": "Change les dégâts d’une arme en dégât de glace provoquant 1d6 de dégât bonus, pour une scène.",
         "distance": {
             "type": "touch",
@@ -102,8 +102,8 @@ export default [
     {
         "id": "lameEnflammee",
         "name": "Lame enflammée",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Change les dégâts d’une arme en dégât de feu provoquant 1d6 de dégât bonus, pour une scène\n\n\n\n",
+        "icon": "icons/weapons/swords/sword-jeweled-red.webp",
+        "description": "Change les dégâts d’une arme en dégât de feu provoquant 1d6 de dégât bonus, pour une scène",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -127,7 +127,7 @@ export default [
     {
         "id": "permanence",
         "name": "Permanence",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/time/hourglass-tilted-gray.webp",
         "description": "Permet de rendre un sort permanent. Grâce au sort de permanence, le sort sur lequel on l’applique n’a plus de limite de temps. \n\nNe peut se faire que sur un objet préparé pour faire le sort.",
         "distance": {
             "type": "touch",
@@ -145,7 +145,7 @@ export default [
         "id": "potionDeGuerisonDesMaledictions",
         "name": "Potion de guérison des malédictions",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -168,7 +168,7 @@ export default [
         "id": "potionTheurgique",
         "name": "Potion théurgique",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la gelée de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 3 potions de soin par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.\n\n\n\n",
+        "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la gelée de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 3 potions de soin par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

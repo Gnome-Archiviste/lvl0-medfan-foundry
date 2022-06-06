@@ -15,16 +15,16 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "2 x 2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes ralenties"
         },
         "resilience": {
-            "text": "La victime peut continuer son chemin."
-        },
-        "criticalSuccess": {
-            "text": "Plein dommage, soit 3 points de dégâts."
+            "text": "La victime peut continuer son chemin.Succès remarquable : Plein dommage, soit 3 points de dégâts."
         },
         "damage": {
             "rollFormula": "return '1d6/2';",
@@ -69,7 +69,7 @@ export default [
             "text": "instantanée"
         },
         "area": {
-            "text": "1-6 cibles"
+            "text": "1 à 6 cibles"
         },
         "bonus": {
             "text": "le projectile fait 1d6 de dégâts"

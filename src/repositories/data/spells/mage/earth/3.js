@@ -3,12 +3,14 @@ export default [
         "id": "contreCoup",
         "name": "Contre-coup",
         "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
-        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[h]",
+        "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance aux dégâts physiques jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts supplémentaires, et le sort prend fin.[d][e][f]",
         "distance": {
             "text": "Une cible"
         },
         "duration": {
-            "text": "Un tour par niveau d’arcane"
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
+            "unit": "tours",
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"
@@ -17,9 +19,10 @@ export default [
             "text": "Ajoute 1d6 dégâts"
         },
         "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "elementaireMineurDePierre",
@@ -34,6 +37,9 @@ export default [
         "duration": {
             "text": "1 scène ou jusqu'à destruction"
         },
+        "area": {
+            "text": "Aucune"
+        },
         "criticalSuccess": {
             "text": "Double les points de vie"
         },
@@ -43,31 +49,26 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "maledictionDeLacierBrulant",
-        "name": "Malédiction de l’acier brûlant ",
-        "icon": "icons/commodities/metal/barstock-heated-steel.webp",
-        "description": "Un objet métallique à portée (comme une arme, un morceau d’armure, ou poigné de porte) devient chauffé au rouge. Toute créature touchant l’objet subit 2d6 blessures et échappe ou lâche l’objet. L’objet émet une faible lumière et peut mettre le feu à des objets inflammables.[i]",
+        "id": "passageSansTraces",
+        "name": "Passage sans traces",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "En recevant ce sort, la cible peut se déplacer sur n’importe quel type de terrain et ne laisser ni empreintes ni odeurs. Pister la cible devient impossible par des moyens non magiques.",
         "distance": {
-            "value": 20,
+            "value": 5,
             "unit": "mètre",
-            "text": "20 mètres"
+            "text": "5 mètres"
         },
         "duration": {
-            "formula": "return 1 * context.arcaneLevel;",
-            "unit": "tours",
-            "text": "1 tours par niveau d’arcane"
+            "formula": "return (context.criticalSuccess ? 2 : 1) * context.arcaneLevel",
+            "unit": "minutes",
+            "text": "Une minute par niveau du magicien"
         },
         "area": {
             "text": "Une cible"
         },
-        "resilience": {
-            "text": "La cible est capable de conserver l’objet en main."
-        },
         "criticalSuccess": {
-            "text": "Double les dégâts"
-        },
-        "damage": {
-            "text": "2d6 dégâts"
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
         },
         "dependsOnArcaneLevel": true
     },
@@ -92,13 +93,28 @@ export default [
         "criticalSuccess": {
             "text": "Absorbe 30 points de dégâts"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "text": "Tant que les 15 points ne sont pas utilisés"
+                    },
+                    "effectName": "Peau de pierre",
+                    "magicArmor": {
+                        "formula": "return context.criticalSuccess ? 30 : 15"
+                    }
+                }
+            }
+        }
     },
     {
         "id": "rocher",
         "name": "Rocher",
         "icon": "icons/magic/earth/projectile-boulder-yellow.webp",
-        "description": "D’un geste, l'élémentaliste envoie un rocher dans les airs qui éclate avec un rugissement à la hauteur et à la distance que l’élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). Les éclats remplissent la zone d’effet, causant 1d6 dégâts par niveau d’arcane de l’élémentaliste à toutes les créatures de la zone. Il affecte une sphère de deux mètres de rayon. Le rocher suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
+        "description": "D’un geste, l'élémentaliste envoie un rocher dans les airs qui éclate avec un rugissement à la hauteur et à la distance que l’élémentaliste désire, tant qu’elle se trouve dans la portée maximale du sort (15 mètres). Les éclats remplissent la zone d’effet, causant 1d6 dégâts par niveau d’arcane de l’élémentaliste à toutes les créatures de la zone. Il affecte une sphère de 5x5 mètres. Le rocher suit une trajectoire rectiligne et si elle heurte une barrière solide avant d’atteindre la portée prescrite, l’impact provoque une explosion précoce. \n\n\n\n",
         "distance": {
             "value": 15,
             "unit": "mètre",
@@ -108,9 +124,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "widthPerArcane": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"

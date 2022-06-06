@@ -26,7 +26,7 @@ export default [
     {
         "id": "cornetDeFroid",
         "name": "Cornet de froid",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/water/projectile-icecicle-webp",
         "description": "Un cône de froid extrême jaillit de la main du magicien, affectant jusqu’à trois (3) victimes dans une zone de 10 mètres de large et jusqu’à 10 mètres de long en avant du magicien, causant 3d6 points de dégâts et les figent sur place.",
         "distance": {
             "value": 10,
@@ -39,7 +39,7 @@ export default [
             "text": "2 tours"
         },
         "area": {
-            "text": "Trois cibles qui sont dans les 10 mètres"
+            "text": "11x11 mètres Trois cibles qui sont dans la zone"
         },
         "bonus": {
             "text": "Victimes immobiliser"
@@ -60,7 +60,7 @@ export default [
     {
         "id": "dissipationDeLaMagie",
         "name": "Dissipation de la magie",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/symbols/triangle-glow-purple.webp",
         "description": "Annule un sort de magie général d’arcane 5 ou moins. Annule un sort de magie spécialisé d’arcane 2 ou moins. Doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -80,7 +80,7 @@ export default [
     {
         "id": "illusion",
         "name": "Illusion",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/magical/spirit-undead-winged-ghost.webp",
         "description": "Permet de faire apparaître une illusion jusqu’à 20 mètres de haut.",
         "distance": {
             "value": 20,
@@ -94,9 +94,10 @@ export default [
             "text": "15 tours"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -107,7 +108,7 @@ export default [
     {
         "id": "peauDePierre",
         "name": "Peau de pierre",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/armor-stone-skin.webp",
         "description": "Permets d’absorber 15 points de dégâts. Le sort peut être fait sur le magicien ou un allié. Le magicien doit toucher la cible. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",
@@ -145,7 +146,7 @@ export default [
     {
         "id": "resistanceALacide",
         "name": "Résistance à l’acide",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-diamond-acid.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’acide. Le sort réduit de moitié le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -170,7 +171,7 @@ export default [
     {
         "id": "resistanceALelectricite",
         "name": "Résistance à l’électricité",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/svg/aura.svg",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre l’électricité. Le sort réduit de moitié le dommage produit par l’électricité, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -195,7 +196,7 @@ export default [
     {
         "id": "resistanceAuFeu",
         "name": "Résistance au feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-glowing-triangle-red.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre le feu. Le sort réduit de moitié le dommage produit par le feu, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible.",
         "distance": {
             "type": "touch",
@@ -220,7 +221,7 @@ export default [
     {
         "id": "resistanceAuFroid",
         "name": "Résistance au froid",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
         "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection partielle contre le froid. Le sort réduit de moitié le dommage produit par le froid, que la source des dégâts soit naturelle ou magique. Le magicien doit toucher la cible. ",
         "distance": {
             "type": "touch",
@@ -243,8 +244,8 @@ export default [
     {
         "id": "voirLinvisible",
         "name": "Voir l’invisible",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Ce sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.\n\n\n\n",
+        "icon": "icons/magic/perception/orb-eye-crying.webp",
+        "description": "Ce sort permet au destinataire de voir tous les êtres invisibles (incluant l’invisibilité magique), éthérés ou astraux comme s’ils étaient normalement visibles. Le sort ne permet pas de reconnaître les illusions ni de détecter les choses cachées par des moyens autres que l’invisibilité.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

@@ -2,7 +2,7 @@ export default [
     {
         "id": "cahotementDePierres",
         "name": "Cahotement de pierres",
-        "icon": "",
+        "icon": "icons/magic/earth/projectiles-stone-salvo-red.webp",
         "description": "L'élémentaliste fait sauter les pierres environnantes du sol sur les ennemis dans une zone. Au début, les pierres tout autour se mettent à trembler avant de littéralement se jeter sur l’ennemi le plus proche.",
         "distance": {
             "value": 10,
@@ -15,9 +15,10 @@ export default [
             "text": "1 tour"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "moitié des dégâts"
@@ -34,8 +35,8 @@ export default [
     {
         "id": "jonctionTellurique",
         "name": "Jonction tellurique",
-        "icon": "",
-        "description": "L'élémentaliste créé une zone dans laquelle il peut regagner 15 points de mana. L’élémentaliste doit rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort. L’élémentaliste peut faire le sort pour un autre magicien au niveau d’arcane 6.",
+        "icon": "icons/magic/symbols/runes-star-pentagon-orange-purple.webp",
+        "description": "L'élémentaliste crée une zone dans laquelle il peut regagner 15 points de mana. L’élémentaliste doit rester dans la zone pendant 10 minutes sans être déconcentré. Si l’élémentaliste est touché (poussé ou blessé), il doit réussir un jet de concentration pour conserver son sort. L’élémentaliste peut faire le sort pour un autre magicien au niveau d’arcane 6.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -44,7 +45,7 @@ export default [
             "text": "10 minutes de jeu"
         },
         "area": {
-            "text": "Un cible"
+            "text": "Une cible"
         },
         "bonus": {
             "text": "Permet de regagner du mana"
@@ -70,7 +71,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Effet maximum automatique (100%)"
+            "text": "Effet maximum automatique (100%)[g]"
         },
         "dependsOnArcaneLevel": false
     },
@@ -78,7 +79,7 @@ export default [
         "id": "pointesDePierre",
         "name": "Pointes de pierre",
         "icon": "icons/magic/earth/barrier-stone-explosion-debris.webp",
-        "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour de l'élémentaliste. L'élémentaliste peut affecter un rayon de 1 mètre par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que l'élémentaliste les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base, la zone de pointe de pierre dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour de l'élémentaliste. L'élémentaliste peut affecter une zone de un mètre plus deux mètres par niveau d’arcane par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que l'élémentaliste les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base, la zone de pointe de pierre dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -87,7 +88,7 @@ export default [
             "text": "un (1) tour par niveau d’arcane"
         },
         "area": {
-            "text": "1 mètre de rayon par niveau d’arcane."
+            "text": "(1 + 2 par niveau d’arcane)x(1 + 2 par niveau d’arcane)"
         },
         "resilience": {
             "text": "moitié des dégâts"
@@ -103,7 +104,7 @@ export default [
     {
         "id": "poussieresDansLesYeux",
         "name": "Poussières dans les yeux",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/air/air-wave-gust-smoke-yellow.webp",
         "description": "L’élémentaliste envoie un jet de sable dans les yeux de sa victime, ce qui rend une tête de la victime aveugle pour un (1) tour par arcane. La perception de la victime est réduite de trois ainsi que toutes habilités de combats et d’évitements.",
         "distance": {
             "value": 20,

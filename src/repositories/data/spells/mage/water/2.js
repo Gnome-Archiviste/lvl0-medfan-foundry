@@ -5,8 +5,7 @@ export default [
         "icon": "icons/magic/defensive/shield-barrier-blue.webp",
         "description": "Le sort recouvre l'élémentaliste d’une mince couche neige (sur lui-même) qui le protège de 10 points de dégât jusqu’à ce que tous les points de protection soient épuisés  ou qu’elle fonde après 4 tours. Ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
-            "type": "self",
-            "text": "Élémentaliste"
+            "text": "Soi-même"
         },
         "duration": {
             "text": "5 tours ou tous utilisés"
@@ -65,9 +64,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 3,
-            "unit": "m",
-            "text": "3 mètres"
+            "width": 7,
+            "widthPerArcane": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes immobilisées"
@@ -90,6 +90,8 @@ export default [
             "text": "Toucher"
         },
         "duration": {
+            "formula": "return 10 + context.arcaneLevel;",
+            "unit": "tours",
             "text": "10 tours + 1 tour par niveau d’arcane"
         },
         "area": {
@@ -98,7 +100,7 @@ export default [
         "criticalSuccess": {
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "source",

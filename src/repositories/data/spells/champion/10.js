@@ -25,7 +25,7 @@ export default [
         "id": "eruptionSolaire",
         "name": "Éruption solaire",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Une colonne de feu, de cinq (5) mètres de rayon, tombe du ciel et inflige une quantité effroyable de dégâts à tous ceux qu’elle touche.\n\n\n\n",
+        "description": "Une colonne de feu tombe du ciel dans une zone de 11 mètres carrés et inflige une quantité effroyable de dégâts à tous ceux qu’elle touche.\n\n\n\n",
         "distance": {
             "value": 60,
             "unit": "mètre",
@@ -35,9 +35,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut)"

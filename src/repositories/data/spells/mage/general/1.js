@@ -14,7 +14,10 @@ export default [
             "text": "2 heures par niveau d’arcane"
         },
         "area": {
-            "text": "10 mètres (maximum une pièce)"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres (maximum une pièce)",
+            "comment": "(maximum une pièce)"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -28,8 +31,7 @@ export default [
         "icon": "icons/magic/air/weather-clouds.webp",
         "description": "Une épaisse brume entoure le magicien, permettant de le cacher ainsi que ses coéquipiers. Donne 2 points de pénalité sur la perception de tous ceux affectés par le sort (il faut faire une perception pour trouver un nouvel adversaire).",
         "distance": {
-            "type": "self",
-            "text": "Magicien"
+            "text": "Soi-même"
         },
         "duration": {
             "value": 3,
@@ -37,15 +39,37 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "text": "4 mètres + 1 mètre par niveau d’arcane du magicien"
+            "width": 3,
+            "height": 3,
+            "widthPerArcane": 2,
+            "heightPerArcane": 2,
+            "text": "(3 + 2 par niveau d’arcane)x(3 + 2 par niveau d’arcane) mètres",
+            "comment": "",
+            "epicSuccess": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            }
         },
         "bonus": {
             "text": "-2 sur perception"
         },
         "criticalSuccess": {
-            "text": "Double le rayon du sort"
+            "area": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            },
+            "formula": "if (context.criticalSuccess) { return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres (pré-calculé)'; } return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres';",
+            "text": "Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres"
         },
-        "dependsOnArcaneLevel": false,
+        "dependsOnArcaneLevel": true,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
@@ -115,7 +139,10 @@ export default [
             "text": "1 heure par niveau d’arcane"
         },
         "area": {
-            "text": "10 mètres (maximum une pièce)"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres (maximum une pièce)",
+            "comment": "(maximum une pièce)"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -159,7 +186,7 @@ export default [
         "id": "spiderHand",
         "name": "Main de l’araignée",
         "icon": "icons/creatures/webs/web-spider-glowing-purple.webp",
-        "description": "Ce sort donne le pouvoir de  se déplacer le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.\n\n\n\n",
+        "description": "Ce sort donne le pouvoir de  se déplacer le long des murs et des plafonds à la cible comme s’il s’agissait d’une araignée. Cette dernière se déplace à un demi-mouvement de base sur des surfaces verticales et inversées. Les mains et les pieds doivent être découverts afin d’entrer en contact direct avec la surface à grimper.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -264,8 +291,7 @@ export default [
         "icon": "icons/magic/life/cross-area-circle-green-white.webp",
         "description": "Guérit le magicien de 1d6 points de vie. Le sort guérit seulement le magicien et ne s’applique pas aux coéquipiers. Ne peut pas dépasser le maximum de points de vie.",
         "distance": {
-            "type": "touch",
-            "text": "Toucher"
+            "text": "Soi même"
         },
         "duration": {
             "text": "Instantané"

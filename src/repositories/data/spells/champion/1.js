@@ -14,14 +14,26 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 10",
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres",
+            "comment": "",
+            "epicSuccess": {
+                "width": 41,
+                "widthPerArcane": 41,
+                "text": "41x41 mètres",
+                "comment": ""
+            }
         },
         "criticalSuccess": {
-            "formula": "if (context.criticalSuccess) { return 'Double le rayon du sort (pré-calculé)'; } return 'Double le rayon du sort';",
-            "text": "Double le rayon du sort"
+            "area": {
+                "width": 41,
+                "widthPerArcane": 41,
+                "text": "41x41 mètres",
+                "comment": ""
+            },
+            "formula": "if (context.criticalSuccess) { return 'Zone = 41x41 mètres (pré-calculé)'; } return 'Zone = 41x41 mètres';",
+            "text": "Zone = 41x41 mètres"
         },
         "dependsOnArcaneLevel": false
     },
@@ -40,14 +52,26 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "formula": "return (context.criticalSuccess ? 2 : 1) * 10",
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres",
+            "comment": "",
+            "epicSuccess": {
+                "width": 41,
+                "widthPerArcane": 41,
+                "text": "41x41 mètres",
+                "comment": ""
+            }
         },
         "criticalSuccess": {
-            "formula": "if (context.criticalSuccess) { return 'Double le rayon du sort (pré-calculé)'; } return 'Double le rayon du sort';",
-            "text": "Double le rayon du sort"
+            "area": {
+                "width": 41,
+                "widthPerArcane": 41,
+                "text": "41x41 mètres",
+                "comment": ""
+            },
+            "formula": "if (context.criticalSuccess) { return 'Zone = 41x41 mètres (pré-calculé)'; } return 'Zone = 41x41 mètres';",
+            "text": "Zone = 41x41 mètres"
         },
         "dependsOnArcaneLevel": false
     },
@@ -86,7 +110,7 @@ export default [
         "id": "firstHeal",
         "name": "Premiers soins",
         "icon": "icons/magic/life/crosses-trio-red.webp",
-        "description": "Guérit un coéquipier de 1d6 points de vie. Ne s’applique pas au champion lui-même. Ne peut pas dépasser le maximum de points de vie.",
+        "description": "Guérit autrui de 1d6 points de vie. Ne s’applique pas au champion lui-même. Ne peut pas dépasser le maximum de points de vie.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

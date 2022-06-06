@@ -3,7 +3,8 @@
   "scripts": {
     "esbuild": "esbuild",
     "dev": "node ./build.js --watch",
-    "build": "node ./build.js"
+    "build": "node ./build.js",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "@sentry/browser": "^6.16.1",

@@ -3,10 +3,9 @@ export default [
         "id": "fog",
         "name": "Brume",
         "icon": "icons/magic/air/weather-clouds.webp",
-        "description": "Une épaisse brume entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers, sur une zone de 5 mètres. Donne 2 points de pénalité sur leur perception (il faut faire une perception pour trouver un nouvel adversaire). On ajoute un mètre par niveau d’arcane de l'élémentaliste à partir du 5e arcane",
+        "description": "Une épaisse brume entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers, sur une zone de 5 mètres. Donne 2 points de pénalité sur leur perception (il faut faire une perception pour trouver un nouvel adversaire). On ajoute un mètre par niveau d’arcane de l'élémentaliste à partir du 5e arcane\n\nUne épaisse brume entoure le magicien, permettant de le cacher ainsi que ses coéquipiers. Donne 2 points de pénalité sur la perception de tous ceux affectés par le sort (il faut faire une perception pour trouver un nouvel adversaire).",
         "distance": {
-            "type": "self",
-            "text": "Magicien"
+            "text": "Soi-même"
         },
         "duration": {
             "value": 3,
@@ -14,15 +13,37 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "text": "Arcane 1 : 5 mètres,  Arcane 5: 6 mètres, Arcane 6: 7 mètres, Arcane 7: 8 mètres, Arcane 8 : 9 mètres, Arcane 8: 10 mètres, Arcane 10: 11 mètres"
+            "width": 3,
+            "height": 3,
+            "widthPerArcane": 2,
+            "heightPerArcane": 2,
+            "text": "(3 + 2 par niveau d’arcane)x(3 + 2 par niveau d’arcane) mètres",
+            "comment": "",
+            "epicSuccess": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            }
         },
         "bonus": {
-            "text": "2 points de pénalité sur perception"
+            "text": "-2 sur perception"
         },
         "criticalSuccess": {
-            "text": "Double le rayon du sort"
+            "area": {
+                "width": 6,
+                "height": 6,
+                "widthPerArcane": 4,
+                "heightPerArcane": 4,
+                "text": "(6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres",
+                "comment": ""
+            },
+            "formula": "if (context.criticalSuccess) { return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres (pré-calculé)'; } return 'Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres';",
+            "text": "Zone = (6 + 4 par niveau d’arcane)x(6 + 4 par niveau d’arcane) mètres"
         },
-        "dependsOnArcaneLevel": false,
+        "dependsOnArcaneLevel": true,
         "actions": {
             "addEffect": {
                 "name": "Ajouter l'effet",
@@ -32,11 +53,15 @@ export default [
                         "value": 3,
                         "unit": "tours"
                     },
-                    "effectName": "Brume",
+                    "effectName": "Surdité",
                     "modifiers": [
                         {
                             "stat": "per",
                             "value": -2
+                        },
+                        {
+                            "skill": "general.listening",
+                            "value": -10
                         }
                     ]
                 }

@@ -20,7 +20,7 @@ export default [
         "id": "eclatDeRectitude",
         "name": "Éclat de rectitude",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Le champion émet une lueur qui guérit les personnages bons de 35 points de vie et qui délivre 35 points de dégâts aux personnages mauvais sur 4 mètres de rayon autour du champion.",
+        "description": "Le champion émet une lueur qui guérit les personnages bons de 35 points de vie et qui délivre 35 points de dégâts aux personnages mauvais dans une zone de 9x9 mètres autour du champion.",
         "distance": {
             "text": "champion"
         },
@@ -28,9 +28,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 9,
+            "widthPerArcane": 9,
+            "text": "9x9 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Moitié des dégâts/ soins"
@@ -70,8 +71,7 @@ export default [
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
         "description": "Lancer au coucher, le sort permet au champion de voir de l’information sur le futur probable durant ses rêves. Le champion se souvient de ses rêves prémonitoires. \n\nLe maître de jeu donne des indices sur un événement qui devrait (le plus possible) se passer dans la soirée. Permet au maître de jeu de donner des informations importantes que les joueurs auraient ratées.\n\nComme la prémonition est un rêve, celui-ci peut-être représentatif et non une image précise sur un événement.",
         "distance": {
-            "type": "self",
-            "text": "Champion"
+            "text": "Soi-même"
         },
         "duration": {
             "text": "Durant le sommeil"
@@ -99,9 +99,10 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "value": 8,
-            "unit": "m",
-            "text": "8 mètres"
+            "width": 17,
+            "widthPerArcane": 17,
+            "text": "17x17 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "Soigne 10 point de vie par tour"

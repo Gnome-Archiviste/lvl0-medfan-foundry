@@ -2,7 +2,7 @@ export default [
     {
         "id": "envol",
         "name": "Envol",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/birds/dove-pigeon-flying-white.webp",
         "description": "Ce sort permet à l'élémentaliste de voler dans les airs. Il peut aussi se diriger. Il peut se déplacer de son plein mouvement. Ce vol semble aussi naturel que la marche. \n\nIl permet à l’élémentaliste de se battre, s’il réussit un test de navigation (qui ne compte pas comme l’action du joueur pour ce tour). Il permet aussi de lancer des sorts, s’il réussit un test de concentration  (qui ne compte pas comme l’action du joueur pour ce tour). L’élémentaliste ne peut pas supporter plus de poids qu’une charge maximale normale.",
         "distance": {
             "type": "self",
@@ -14,7 +14,7 @@ export default [
             "text": "8 tours par niveau d’arcane"
         },
         "area": {
-            "text": "Une cible"
+            "text": "Élémentaliste"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -25,7 +25,7 @@ export default [
     {
         "id": "tornade",
         "name": "Tornade",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/air/wind-tornado-funnel-gray.webp",
         "description": "Crée une tornade magique qui se déplace dans la direction que le magicien lui donne, de 10 mètres par tour, mais elle touche tout sur son chemin, faisant 55 points de dégâts (sans armure) à tout ce qu’elle touche.",
         "distance": {
             "value": 10,
@@ -38,12 +38,13 @@ export default [
             "text": "15 tours"
         },
         "area": {
-            "value": 3,
-            "unit": "m",
-            "text": "3 mètres"
+            "width": 7,
+            "widthPerArcane": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "resilience": {
-            "text": "Divise le dommage par deux. Faire a chaque tour qu’une personne est dans la tornade"
+            "text": "Divise le dommage par deux. À faire à chaque tour qu’une personne est dans la tornade"
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"

@@ -107,9 +107,10 @@ export default [
             "text": "1h par niveau d’arcane"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Déplacement 2x en bateau, 1.5x sur les routes"

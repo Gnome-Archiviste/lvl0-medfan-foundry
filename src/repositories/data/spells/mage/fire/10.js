@@ -2,7 +2,7 @@ export default [
     {
         "id": "eruptionJefoldienne",
         "name": "Éruption jéfoldienne",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/projectile-meteor-salvo-heavy-read.webp",
         "description": "L’élémentaliste déclenche la chute d'une incroyable quantité de lave et magma, il faut simplement qu'il y ait quelque chose en hauteur d'où la lave peut tomber (montagne, tour, toit de maison). La lave ensevelit les cibles et elles doivent réussir un test d’athlétique pour s’en sortir.\n\n\n\n",
         "distance": {
             "value": 60,
@@ -13,9 +13,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "widthPerArcane": 21,
+            "text": "21x21 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Divise les dégâts par deux"
@@ -32,8 +33,8 @@ export default [
     {
         "id": "frappeDeFlamme",
         "name": "Frappe de flamme",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste appelle une colonne verticale rugissante de feu, dans une zone de 5 mètres de rayon et de 12 mètres de haut, surgissant du sol et infligeant 15d6 + 20 dégâts, à quiconque est pris à l’intérieur tout en les propulsant hors de la zone d’action du sort. \n\n\n\n",
+        "icon": "icons/magic/fire/projectile-wave-arrow.webp",
+        "description": "L’élémentaliste appelle une colonne verticale rugissante de feu, dans une zone de 11x11 mètres et de 12 mètres de haut, surgissant du sol et infligeant 15d6 + 20 dégâts, à quiconque est pris à l’intérieur tout en les propulsant hors de la zone d’action du sort. \n\n\n\n",
         "distance": {
             "value": 60,
             "unit": "mètre",
@@ -43,9 +44,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "widthPerArcane": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Expulse les victimes à la limite de la zone du sort."
@@ -65,7 +67,7 @@ export default [
     {
         "id": "phœnix",
         "name": "Phœnix ",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/projectile-feathers-embers-gold.webp",
         "description": "Lorsque l’élémentaliste meurt, s’il lui reste 10 points de mana, le sort se déclenche automatiquement. Dans 1d6 heures, le corps du champion s'enflammera puis, lorsque le feu s’éteindra de lui-même, la cendre tombe du corps du champion qui est revenu à la vie avec la moitié de ses points de vie. L’élémentaliste est alors nu et doit prendre son temps pour se rééquiper.",
         "distance": {
             "type": "self",
