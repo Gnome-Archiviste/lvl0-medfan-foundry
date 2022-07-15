@@ -23,8 +23,7 @@
           "stats magic magic xp"
           "stats mv mv xp"
           "effects effects effects effects"
-          "specialities-skills specialities-skills specialities-skills specialities-skills"
-    ;
+          "specialities-skills specialities-skills specialities-skills specialities-skills";
 
     .sheet-header {
       grid-area: header;
@@ -276,6 +275,7 @@
       grid-area: maximum;
       border-top: 1px solid black;
       border-right: 1px solid black;
+
       .sheet-value {
         justify-self: center;
       }
@@ -292,14 +292,17 @@
       display: grid;
       grid-area: armor;
       border-top: 1px solid black;
+
       .sheet-value {
         justify-self: center;
       }
     }
+
     .magic-armor {
       display: grid;
       grid-area: magic-armor;
       border-top: 1px solid black;
+
       .sheet-value {
         justify-self: center;
       }
@@ -336,6 +339,7 @@
       grid-area: maximum;
       border-top: 1px solid black;
       border-right: 1px solid black;
+
       .sheet-value {
         justify-self: center;
       }
@@ -352,6 +356,7 @@
       display: grid;
       grid-area: level;
       border-top: 1px solid black;
+
       .sheet-value {
         justify-self: center;
       }
@@ -398,6 +403,7 @@
         &.header {
           font-weight: bold;
         }
+
         margin: 0 8px;
 
         display: grid;
@@ -440,6 +446,7 @@
     .character-face {
       z-index: 1;
       grid-area: logo;
+
       > img {
         width: 170px;
         height: 170px;

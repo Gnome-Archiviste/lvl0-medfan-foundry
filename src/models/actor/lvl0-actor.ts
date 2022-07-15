@@ -17,28 +17,29 @@ import {
     LevelUpDialogData,
     SelectSpecialityDialog
 } from "ui/dialog";
-import {RollSpecialityManager} from "../../managers/speciality";
-import {LevelData, Lvl0ActorCharacterData} from './properties-data';
-import {ActorDataComputer} from './actor-data-computers';
-import {SpecialityRepository} from '../../repositories';
-import {Lvl0Item} from '../item';
-import {container} from 'tsyringe';
+import { RollSpecialityManager } from "../../managers/speciality";
+import { LevelData, Lvl0ActorCharacterData } from './properties-data';
+import { ActorDataComputer } from './actor-data-computers';
+import { SpecialityRepository } from '../../repositories';
+import { Lvl0Item } from '../item';
+import { container } from 'tsyringe';
 import {
     ActorDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
-import {InitializedGame} from '../misc/game';
-import {SpecialityUtil} from '../../managers/speciality/speciality-util';
-import {assertIsCharacter} from './properties';
+import { InitializedGame } from '../misc/game';
+import { SpecialityUtil } from '../../managers/speciality/speciality-util';
+import { assertIsCharacter } from './properties';
+import { RollStatDialog } from '../../ui/dialog/roll-stats-dialog';
 
-container.register("ActorDataComputer", {useClass: BaseCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: LevelingCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: SpecialityCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: SkillsCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: StatsCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: MagicCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: HealthManaDataComputer});
-container.register("ActorDataComputer", {useClass: ClutterCharacterDataComputer});
-container.register("ActorDataComputer", {useClass: MagicalArmorDataComputer});
+container.register("ActorDataComputer", { useClass: BaseCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: LevelingCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: SpecialityCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: SkillsCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: StatsCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: MagicCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: HealthManaDataComputer });
+container.register("ActorDataComputer", { useClass: ClutterCharacterDataComputer });
+container.register("ActorDataComputer", { useClass: MagicalArmorDataComputer });
 
 declare global {
     interface DocumentClassConfig {
@@ -77,7 +78,7 @@ export class Lvl0Actor extends Actor {
 
     async useSpeciality(specialityName: string): Promise<void> {
         if (this.data.data.mana.value <= 0) {
-            ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", {permanent: true});
+            ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", { permanent: true });
             return;
         }
         if (this.rollSpecialityManager.needRoll(specialityName)) {
@@ -90,7 +91,7 @@ export class Lvl0Actor extends Actor {
             let specialityDefinition = this.specialityRepository.getSpecialityFromId(specialityName);
             await ChatMessage.create({
                 type: CONST.CHAT_MESSAGE_TYPES.IC,
-                speaker: ChatMessage.getSpeaker({actor: this}),
+                speaker: ChatMessage.getSpeaker({ actor: this }),
                 content: `<div class="speciality-chat">
                     <div class="title">
                         <span class="name">${specialityDefinition.name}</span>
@@ -105,17 +106,17 @@ export class Lvl0Actor extends Actor {
     async useMana(amount: number): Promise<void> {
         await this.update({
             data: {
-                mana: {value: this.data.data.mana.value - amount}
+                mana: { value: this.data.data.mana.value - amount }
             }
-        }, {diff: true});
+        }, { diff: true });
     }
 
     async updateHealth(amount: number): Promise<void> {
         await this.update({
             data: {
-                health: {value: Math.min(this.data.data.health.value + amount, this.data.data.health.max)}
+                health: { value: Math.min(this.data.data.health.value + amount, this.data.data.health.max) }
             }
-        }, {diff: true});
+        }, { diff: true });
     }
 
     async openGenerateMissingLevelUpDataPopup(): Promise<void> {
@@ -171,11 +172,33 @@ export class Lvl0Actor extends Actor {
 
         await this.update({
             data: {
-                health: {value: this.data.data.health.value + totalNewHealth},
-                mana: {value: this.data.data.mana.value + totalNewMana},
+                health: { value: this.data.data.health.value + totalNewHealth },
+                mana: { value: this.data.data.mana.value + totalNewMana },
                 levelUpData: missingLevelUpData
             }
-        }, {diff: true});
+        }, { diff: true });
+    }
+
+    async openRollStatsDialog() {
+        assertIsCharacter(this);
+
+        let result = await this.dialogAwaiter.openAndWaitResult(RollStatDialog, {});
+        if (!result)
+            return;
+
+        await this.update({
+            data: {
+                baseStats:
+                    {
+                        int: { value: result.statsValue['int'] },
+                        phy: { value: result.statsValue['phy'] },
+                        cha: { value: result.statsValue['cha'] },
+                        per: { value: result.statsValue['per'] },
+                        dex: { value: result.statsValue['dex'] }
+                    }
+            }
+        }, { diff: true })
+
     }
 
     async openLevelUpPopup() {
@@ -249,16 +272,16 @@ export class Lvl0Actor extends Actor {
     async doLevelUp(level: number, actorData: Lvl0ActorCharacterData, levelUpResultData: LevelData): Promise<void> {
         await this.update({
             data: {
-                level: {value: level},
-                health: {value: actorData.health.value + (levelUpResultData.health || 0)},
-                mana: {value: actorData.mana.value + (levelUpResultData.mana || 0)},
-                experience: {value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience},
-                staticInventory: {money: actorData.staticInventory.money + levelUpResultData.money},
+                level: { value: level },
+                health: { value: actorData.health.value + (levelUpResultData.health || 0) },
+                mana: { value: actorData.mana.value + (levelUpResultData.mana || 0) },
+                experience: { value: actorData.experience.value - actorData.computedData.leveling.nextLevelExperience },
+                staticInventory: { money: actorData.staticInventory.money + levelUpResultData.money },
                 levelUpData: {
                     [level]: levelUpResultData
                 }
             }
-        }, {diff: true});
+        }, { diff: true });
     }
 
     getFirstEmptyScroll(): Lvl0Item | undefined {
@@ -278,9 +301,9 @@ export class Lvl0Actor extends Actor {
     async addInitialInventory(): Promise<void> {
         await this.update({
             data: {
-                staticInventory: {rationCount: 2, torchCount: 2}
+                staticInventory: { rationCount: 2, torchCount: 2 }
             }
-        }, {diff: true});
+        }, { diff: true });
 
         let table = this.game.tables.contents.find(s => s.name === "Objets de base") as RollTable;
         if (!table) {

@@ -216,6 +216,12 @@
                             </span>
                             <span class="sheet-bonus">{{actorData.computedData.stats.baseStats.per.bonus}}</span>
                         </label>
+
+                        {{#if canChangeStats}}
+                            <div class="actions">
+                                <button data-action="rollStats">Lancer les dés</button>
+                            </div>
+                        {{/if}}
                     </section>
 
                     <section class="sheet-mv">

@@ -2,8 +2,6 @@ import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
 import {SpecialityRepository} from 'repositories';
 
-export type CompleteSelectSpecialityCallback = (selectedSpecialityName?: string) => void
-
 @injectable()
 export class SelectSpecialityDialog extends DialogBase<object, string> {
     constructor(

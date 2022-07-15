@@ -203,6 +203,9 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
 
         html.find('[data-action]').on('click', async ev => {
             switch (ev.target.dataset.action) {
+                case "rollStats":
+                    this.actor.openRollStatsDialog();
+                    break;
                 case "levelUp":
                     this.actor.openLevelUpPopup();
                     break;

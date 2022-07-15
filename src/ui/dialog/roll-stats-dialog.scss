@@ -1,0 +1,38 @@
+.roll-stats-dialog {
+  .mode-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .select-column {
+    display: grid;
+    grid-template-columns: 60px 60px 60px;
+    justify-content: center;
+    gap: 8px;
+    .column {
+      display: grid;
+      justify-items: center;
+      .dice {
+        .value {
+          font-size: 2.5em;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .select-values {
+    display: grid;
+    justify-items: center;
+    .dice {
+      display: grid;
+      align-items: center;
+      gap: 8px;
+      grid-template-columns: 40px 200px;
+      .value {
+        font-size: 2.5em;
+        text-align: center;
+
+      }
+    }
+  }
+}
