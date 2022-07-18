@@ -24,7 +24,7 @@ export default [
         "id": "stinkingBomb",
         "name": "Bombe puante",
         "icon": "icons/magic/acid/projectile-glowing-bubbles.webp",
-        "description": "Déclenche une zone nauséabonde de 2 mètres de rayon. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
+        "description": "Déclenche une zone nauséabonde dans une zone de 5x5 mètres. Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger la moitié de leur déplacement normal. ",
         "distance": {
             "value": 5,
             "unit": "mètre",
@@ -37,9 +37,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "height": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes inoffensives"
@@ -66,7 +67,7 @@ export default [
             "text": "jusqu'à ce que le message soit délivré 2 fois par niveau d’arcane."
         },
         "area": {
-            "text": "Déclenche à (1) mètre par niveau du bouffon"
+            "text": "1x1 mètre. Déclenche à (1) mètre par niveau du bouffon"
         },
         "criticalSuccess": {
             "text": "Double la durée"
@@ -83,6 +84,8 @@ export default [
             "text": "Toucher"
         },
         "duration": {
+            "formula": "return 2 + context.arcaneLevel;",
+            "unit": "tours",
             "text": "2 tours + 1 tour par niveau d’arcane"
         },
         "area": {
@@ -91,7 +94,7 @@ export default [
         "criticalSuccess": {
             "text": "Double la durée"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "IceCreamCone",
@@ -113,7 +116,7 @@ export default [
             "text": "Divise le dommage par deux (plus haut)"
         },
         "criticalSuccess": {
-            "text": "Ajoute 1d6 de dégât car une cerise confite s’additionne à la confection."
+            "text": "Ajoute 1d6 de dégât, car une cerise confite s’additionne à la confection."
         },
         "damage": {
             "rollFormula": "return '(1d6/2) * ' + context.arcaneLevel;",
@@ -125,7 +128,7 @@ export default [
         "id": "talithaSneezing",
         "name": "Éternuement de Talitha",
         "icon": "icons/magic/sonic/scream-wail-shout-teal.webp",
-        "description": "En soufflant dans le creux de sa main, le magicien envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.",
+        "description": "En soufflant dans le creux de sa main, le bouffon envoie une poussière magique qui déclenche de puissants éternuements chez la victime. La victime est immobilisée pour 2 tours. Empêche un magicien de lancer des sorts.",
         "distance": {
             "value": 10,
             "unit": "mètre",
@@ -188,9 +191,10 @@ export default [
             "text": "1 heure par niveau d’arcane"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "height": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
@@ -241,9 +245,10 @@ export default [
             "text": "Instantané"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "height": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "Échange le contenu de trois bouteilles"

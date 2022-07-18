@@ -3,9 +3,9 @@ export default [
         "id": "berner",
         "name": "Berner",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Un double illusoire du bouffon apparaît, et en même temps, le bouffon est affecté par un sort d’invisibilité. Le bouffon est libre d’aller ailleurs pendant que le double du bouffon s’éloigne. Le double apparaît à portée du sort, mais se déplace ensuite en fonction de l’intention du bouffon au moment de l’incantation. Le bouffon fait apparaître son double parfaitement superposé sur son corps afin que les observateurs ne remarquent pas l’apparition d’une image tandis que le bouffon devient invisible. Le bouffon et le double peuvent alors se déplacer dans des directions différentes. Le double se déplace à la vitesse du bouffon et fait des gestes comme s’il était réel. Le double ne peut ni attaquer ni lancer de sorts, mais il peut prétendre le faire. Le double disparaît lorsqu’il se trouve à 80 mètres de son original.",
+        "description": "Un double illusoire du bouffon apparaît, et en même temps, le bouffon est affecté par un sort d’invisibilité. Le bouffon est libre d’aller ailleurs pendant que le double du bouffon s’éloigne. Le double apparaît à portée du sort, mais se déplace ensuite en fonction de l’intention du bouffon au moment de l’incantation. Le bouffon fait apparaître son double parfaitement superposé sur son corps afin que les observateurs ne remarquent pas l’apparition d’une image tandis que le bouffon devient invisible. Le bouffon et le double peuvent alors se déplacer dans des directions différentes. Le double se déplace à la vitesse du bouffon et fait des gestes comme s’il était réel. Le double ne peut ni attaquer ni lancer de sorts, mais il peut prétendre le faire. Le double disparaît lorsqu’il se trouve à 100 mètres de son original.",
         "distance": {
-            "text": "Le bouffon"
+            "text": "Soi-même"
         },
         "duration": {
             "value": 1,
@@ -13,7 +13,7 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "text": "40 mètres (voir texte)"
+            "text": "Magicien"
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
@@ -23,7 +23,7 @@ export default [
     {
         "id": "confusion",
         "name": "Confusion",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/amphibians/frog-confused-green-blue.webp",
         "description": "Désoriente la cible. Tous les jets avec des dés doivent être un succès exceptionnel étendu (double un, deux, trois, quatre ou cinq) pour fonctionner de façon normale (ne pas le compter comme un succès exceptionnel).",
         "distance": {
             "type": "touch",
@@ -65,9 +65,10 @@ export default [
             "text": "1 scène"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "height": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
@@ -91,9 +92,10 @@ export default [
             "text": "10 tours"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "height": 21,
+            "text": "21x21 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Déplacement divisé par 2"

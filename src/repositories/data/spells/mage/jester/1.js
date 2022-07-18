@@ -38,7 +38,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "3 tours + 2d6 (tirer par le maître de jeu)."
+            "text": "3 tours + 2d6 tours (tirer par le maître de jeu)."
         },
         "area": {
             "text": "Une cible"
@@ -64,7 +64,10 @@ export default [
             "text": "2 heures par niveau"
         },
         "area": {
-            "text": "10 mètres (maximum une pièce)"
+            "width": 21,
+            "height": 21,
+            "text": "21x21 mètres (maximum une pièce)",
+            "comment": "maximum une pièce"
         },
         "criticalSuccess": {
             "text": "Double la durée"
@@ -87,7 +90,10 @@ export default [
             "text": "1 heure par niveau d’arcane"
         },
         "area": {
-            "text": "10 mètres (maximum une pièce)"
+            "width": 21,
+            "height": 21,
+            "text": "21x21 mètres (maximum une pièce)",
+            "comment": "maximum une pièce"
         },
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
@@ -165,9 +171,10 @@ export default [
             "text": "3 tours"
         },
         "area": {
-            "value": 3,
-            "unit": "m",
-            "text": "3 mètres"
+            "width": 7,
+            "height": 7,
+            "text": "7x7 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "Victimes immobilisées"
@@ -212,7 +219,7 @@ export default [
         "icon": "icons/magic/air/wind-vortex-swirl-blue-purple.webp",
         "description": "Les créatures et les objets affectés par ce sort tombent doucement, descendant vers le bas dans les airs un peu comme s’il dansait dans les airs. Les sujets affectés par le sort ne subissent aucun dommage d’une chute de n’importe quelle hauteur. Le sort peut être lancé suffisamment rapidement pour sauver le bouffon en cas de chute inattendue d’une hauteur minimum de 6 mètres (2 étages). Un poids total allant jusqu’à 500 kilos peut être affecté. Les créatures et objets affectés par le sort tombent à une vitesse de 5 mètres par tour. Si le sort se termine alors qu’ils tombent encore, ils tombent normalement à partir de ce point et ne subissent des dégâts que pour cette distance tombée.\n\nLe sort ne fonctionne que sur les objets en chute libre. Cela n’affecte pas un coup d’épée ou une créature qui charge ou une créature volante.",
         "distance": {
-            "text": "2m + 1m par niveau d’arcane"
+            "text": "2 mètres + (1 mètre par niveau d’arcane)"
         },
         "duration": {
             "formula": "return (context.criticalSuccess ? 2 : 1) * 10",
@@ -235,13 +242,15 @@ export default [
         "icon": "icons/creatures/abilities/mouth-teeth-tongue-purple.webp",
         "description": "Le bouffon peut faire en sorte que sa voix (ou tout son que le bouffon puisse normalement faire vocalement) semble émettre d’un autre endroit. Le bouffon peut parler dans n’importe quelle langue qu’il connaît. Quiconque entend la voix et effectue un test de résilience reconnaît le son comme illusoire (mais l’entend toujours).",
         "distance": {
-            "text": "10m"
+            "value": 10,
+            "unit": "mètre",
+            "text": "10 mètres"
         },
         "duration": {
             "text": "Instantané"
         },
         "area": {
-            "text": "un point fixe"
+            "text": "Un point fixe"
         },
         "resilience": {
             "text": "Reconnaît le son comme illusoire"

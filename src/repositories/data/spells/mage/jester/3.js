@@ -26,7 +26,7 @@ export default [
     {
         "id": "baratiner",
         "name": "Baratiner",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/abilities/mouth-teeth-human.webp",
         "description": "Avec ce sort, le bouffon peut cacher un mensonge qu’il dit à une victime, ce qui fait qu’il peut résister à un sort de Détection des mensonges. Si ça arrive, les deux (2) joueurs doivent faire un jet d’opposition.",
         "distance": {
             "text": "Le bouffon"
@@ -47,7 +47,7 @@ export default [
     {
         "id": "decouverteFortuite",
         "name": "Découverte fortuite",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/svg/door-secret-outline.svg",
         "description": "Le bouffon peut utiliser ce sort pour trouver des portes secrètes, des compartiments cachés, et autres zones cachées, spécialement construites pour échapper à la détection. Lorsque le sort est lancé, le bouffon trouvera accidentellement le passage secret s’il passe près de celui-ci, activant par accident le levier ou tombant dans la trappe sans le vouloir. \n\n\n\n\n\nLe sort ne détecte pas les dangers naturels. Il ne détecte pas non plus les pièges magiques, ce qui les déclenche lorsque le bouffon ouvre le passage secret par accident.\n\n\n\n",
         "distance": {
             "text": "Bouffon"
@@ -56,9 +56,10 @@ export default [
             "text": "1 scène ou jusqu’à la découverte d'une zone secrète (le premier des deux)"
         },
         "area": {
-            "value": 2,
-            "unit": "m",
-            "text": "2 mètres"
+            "width": 5,
+            "height": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "criticalSuccess": {
             "text": "Ne déclenche pas le piège s’il y en a un (mais le piège reste actif)"
@@ -68,7 +69,7 @@ export default [
     {
         "id": "detectionDesMensonges",
         "name": "Détection des mensonges",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/abilities/mouth-teeth-crooked-blue.webp",
         "description": "À chaque tour, le bouffon peut se concentrer sur un sujet à portée et saura instantanément si le sujet ment délibérément.\n\nLe sort ne révèle pas la vérité, ne découvre pas les inexactitudes involontaires ni ne révèle des évasions. À chaque tour, le personnage peut se concentrer sur un sujet différent.",
         "distance": {
             "value": 5,
@@ -91,7 +92,7 @@ export default [
     {
         "id": "invocationDunFrankfurterDansant",
         "name": "Invocation d’un Frankfurter dansant",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/food/sausage-bratwurst-mustard-red-yellow.webp",
         "description": "Un sort vraiment farfelue qui invoque une saucisse dansante, habillée d’un petit pain long et d’un chapeau bavarois, au secours du Bouffon. Ce hot-dog va danser, bondir et faire des galipettes, le tout pour attirer l’attention des personnages et des adversaires. Tous, à l’exception du Bouffon, doivent effectuer un jet de résilience pour éviter d’être fascinés par ce petit bonhomme loufoque. Les victimes distraites seront bouche bée d’horreur, se demandant à haute voix pourquoi de telles choses sont autorisées. Hélas, ce dilemme existentiel ne sera peut-être jamais résolu.",
         "distance": {
             "value": 10,
@@ -104,9 +105,10 @@ export default [
             "text": "5 tours"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "height": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "La personne n’est pas bouche bée"
@@ -141,7 +143,7 @@ export default [
     {
         "id": "poussiereScintillante",
         "name": "Poussière scintillante",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/air/fog-gas-smoke-dense-brown.webp",
         "description": "En soufflant dans sa main, le Bouffon déclenche un nuage de poussière scintillante. En plus d’être très jolie, cette poussière a tendance à se coller partout (sauf le Bouffon) et de révéler la silhouette des gens et choses invisibles.",
         "distance": {
             "value": 10,
@@ -154,9 +156,10 @@ export default [
             "text": "1 tour par niveau d’arcane"
         },
         "area": {
-            "value": 5,
-            "unit": "m",
-            "text": "5 mètres"
+            "width": 11,
+            "height": 11,
+            "text": "11x11 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Le sort ne fonctionne pas."
@@ -169,7 +172,7 @@ export default [
     {
         "id": "serpentins",
         "name": "Serpentins",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/creatures/reptiles/snake-fangs-bite-green-yellow.webp",
         "description": "Ce sort fait jaillir des serpentins du bout des doigts du bouffon qui immobilise la victime pendant 5 tours. La victime peut se déprendre en réussissant un jet de l'habileté « Évasion ».",
         "distance": {
             "value": 10,
@@ -232,7 +235,7 @@ export default [
     {
         "id": "trompeLoeil",
         "name": "Trompe-l’oeil",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
         "description": "Ce sort crée l’illusion d’un passage, corridor, porte, trappe ou toute ouverture similaire sur une surface. Il semble absolument vrai, mais le passage est totalement illusoire. Lorsqu'une victime tente de passer, elle heurte violemment le mur. Toucher ou sonder la surface révèle sa nature illusoire, bien que cela ne fasse pas disparaître l’illusion. Il affecte une zone de trois (3) mètres sur trois (3) mètres sur trente (30) cm.",
         "distance": {
             "value": 5,
@@ -245,9 +248,10 @@ export default [
             "text": "1 heure par niveau d’arcane"
         },
         "area": {
-            "value": 2,
-            "unit": "mètre",
-            "text": "2 mètre"
+            "width": 5,
+            "height": 5,
+            "text": "5x5 mètres",
+            "comment": ""
         },
         "resilience": {
             "text": "Annule le sort"

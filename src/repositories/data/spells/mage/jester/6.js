@@ -29,6 +29,31 @@ export default [
         "dependsOnArcaneLevel": true
     },
     {
+        "id": "bonneteauAuxNoix",
+        "name": "Bonneteau aux noix",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Le bouffon peut escamoter un petit objet (grosseur d’une potion) devant les yeux de badeaux ébaillis en utilisant deux ou trois contenants suffisamment grands pour recouvrir l’objet. En intervertissant à répétition les contenants durant le sort, le bouffon téléporte l’objet dans son sac. En dépensant un point de mana supplémentaire, il peut le téléporter dans le sac d’un coéquipier à moins de 5 mètres de lui.\n\n\n\n",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "value": 2,
+            "unit": "tours",
+            "text": "2 tours"
+        },
+        "area": {
+            "text": "1 mètre devant le bouffon"
+        },
+        "resilience": {
+            "text": "Le sort ne fonctionne pas."
+        },
+        "criticalSuccess": {
+            "text": "La cible ne peut pas faire de test de résilience."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "uneGambadeSurLeau",
         "name": "Une gambadé sur l’eau",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -56,7 +81,7 @@ export default [
         "id": "obscurite",
         "name": "Obscurité",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Englobe un espace de 10 de rayon dans la noirceur la plus totale. La perception de dans l’espace est réduite de deux et ne peuvent plus utiliser les habiletés « Observer » ou « Lancer/Tir ». Les tests d’habiletés « Combat à mains nues » et « Combat de mêlée » se font avec un moins deux en physique. Il faut utiliser l'habileté « Écouter » pour trouver un nouvel adversaire (sans le -2 de perception).",
+        "description": "Englobe un espace de 21x21 mètres dans la noirceur la plus totale. La perception de dans l’espace est réduite de deux et ne peuvent plus utiliser les habiletés « Observer » ou « Lancer/Tir ». Les tests d’habiletés « Combat à mains nues » et « Combat de mêlée » se font avec un moins deux en physique. Il faut utiliser l'habileté « Écouter » pour trouver un nouvel adversaire (sans le -2 de perception).",
         "distance": {
             "value": 20,
             "unit": "mètre",
@@ -68,9 +93,10 @@ export default [
             "text": "1 tour par niveau d’arcane"
         },
         "area": {
-            "value": 10,
-            "unit": "m",
-            "text": "10 mètres"
+            "width": 21,
+            "height": 21,
+            "text": "21x21 mètres",
+            "comment": ""
         },
         "bonus": {
             "text": "-2 perception. Habilités « Observer » et « Lancer/Tir » impossible. -2 habiletés « Combat à mains nues » et « Combat de mêlée »."
@@ -106,6 +132,85 @@ export default [
         "dependsOnArcaneLevel": true
     },
     {
+        "id": "pyrotechnie",
+        "name": "Pyrotechnie",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Lancer ce sort transforme un feu en une rafale de feux d’artifice multicolores et pétaradants. Les projectiles toucheront toute créature dans une zone autour de la source de feu pendant 1d6 tours. Les créatures n’ont pas besoin d’avoir une ligne de vue vers le feu pour être affectées car les projectiles contourneront ce derrière quoi ils pourraient se cacher. Le sort consomme une source de feu, qui s’éteint immédiatement. Les feux magiques ne sont pas affectés.\n\n\n\n",
+        "distance": {
+            "value": 20,
+            "unit": "mètre",
+            "text": "20 mètres"
+        },
+        "duration": {
+            "text": "Instantané"
+        },
+        "area": {
+            "width": 9,
+            "height": 9,
+            "text": "9x9 mètres",
+            "comment": ""
+        },
+        "resilience": {
+            "text": "Divise le dommage par deux"
+        },
+        "criticalSuccess": {
+            "text": "Aucun test de résilience possible"
+        },
+        "damage": {
+            "rollFormula": "return '2d6+' + (4 * context.arcaneLevel);",
+            "element": "fire",
+            "text": "2d6 + (4 par niveau d’arcane)"
+        },
+        "dependsOnArcaneLevel": true
+    },
+    {
+        "id": "singeAile",
+        "name": "Singe ailé",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Ce sort crée un petit singe avec des ailes, habillé d’une petite veste et un petit chapeau rouges, qui peut transporter le bouffon pour traverser une étendue. Comme l’animal est petit (mais fort), il agrippe le bouffon, par les épaules ou un bras, par exemple, et décolle avec ce dernier.\n\nLe singe peut aussi servir à récupérer un objet à une distance maximum de 15 mètres du bouffon.",
+        "distance": {
+            "value": 1,
+            "unit": "mètre",
+            "text": "1 mètre"
+        },
+        "duration": {
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
+            "unit": "heures",
+            "text": "1 heure par niveau d’arcane"
+        },
+        "area": {
+            "text": "Aucune"
+        },
+        "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
+            "text": "Double la durée du sort"
+        },
+        "dependsOnArcaneLevel": true
+    },
+    {
+        "id": "sonsFantomatiques",
+        "name": "Sons fantomatiques",
+        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "description": "Des grincements et des gémissements étranges, des hurlements de loups, des rires chaleureux, une conversation silencieuse, le grondement du tonnerre et le choc des épées, le doux pas des pieds nus; tous ces sons peuvent être créés avec ce sort. Ces sons peuvent sembler monter, reculer, s’approcher ou rester constants selon le désir du lanceur de sorts. Pratiquement, n'importe quel type de son peut être produit, émanant de n’importe où dans la portée, bien que le volume ne puisse pas dépasser autant de bruit que quatre humains normaux pourraient produire.",
+        "distance": {
+            "value": 15,
+            "unit": "mètre",
+            "text": "15 mètres"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "21x21 mètres[b]"
+        },
+        "criticalSuccess": {
+            "text": "La cible ne peut pas faire de test de résilience."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "trucDeLaCorde",
         "name": "Truc de la corde",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
@@ -119,6 +224,9 @@ export default [
             "value": 1,
             "unit": "scène",
             "text": "1 scène"
+        },
+        "area": {
+            "text": "Aucune"
         },
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience."
