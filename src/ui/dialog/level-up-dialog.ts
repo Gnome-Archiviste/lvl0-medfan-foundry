@@ -58,11 +58,11 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
         };
 
         if (this.dialogData?.additionalHealth?.useStatValue) {
-            data.additionalHealth.value = (data.additionalHealth.value || 0) + this.dialogData.actorStats[this.dialogData?.additionalHealth?.useStatValue].value;
+            data.additionalHealth.value = this.dialogData.actorStats[this.dialogData?.additionalHealth?.useStatValue].value;
         }
 
         if (this.dialogData?.additionalMana?.useStatValue) {
-            data.additionalMana.value = (data.additionalMana.value || 0) + this.dialogData.actorStats[this.dialogData?.additionalMana?.useStatValue].value;
+            data.additionalMana.value = this.dialogData.actorStats[this.dialogData?.additionalMana?.useStatValue].value;
         }
 
         let ready = true;
