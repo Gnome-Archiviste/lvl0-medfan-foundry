@@ -78,7 +78,7 @@ export class Lvl0Actor extends Actor {
 
     async useSpeciality(specialityName: string): Promise<void> {
         if (this.data.data.mana.value <= 0) {
-            ui.notifications?.error("Vous n'avez pas assez de point de magie pour lancer cette spécialité", { permanent: true });
+            ui.notifications?.error("Vous n'avez pas assez de point de mana pour lancer cette spécialité", { permanent: true });
             return;
         }
         if (this.rollSpecialityManager.needRoll(specialityName)) {

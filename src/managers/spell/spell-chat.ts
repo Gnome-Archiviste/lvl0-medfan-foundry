@@ -20,7 +20,7 @@ export class SpellChat {
         </div>
         <div class="description">${marked.parse(spell.description)}</div>
         <div class="stats">
-        <div class="cost"><span class="label">Coût</span> ${spell.cost} point de magie</div>
+        <div class="cost"><span class="label">Coût</span> ${spell.cost} point de mana</div>
         <div class="distance"><span class="label">Distance</span> ${spell.distance}</div>`;
         message += await this.renderSpellStat('duration', spell.duration)
         message += await this.renderSpellStat('area', spell.area)

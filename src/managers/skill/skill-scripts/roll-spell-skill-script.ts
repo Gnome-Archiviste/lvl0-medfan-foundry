@@ -55,7 +55,7 @@ export class RollSpellSkillScript extends SkillScript {
             return false;
         }
         if (spell.cost > actor.data.data.mana.value) {
-            ui.notifications?.error('Pas assez de point de magie.');
+            ui.notifications?.error('Pas assez de point de mana.');
             return false;
         }
         this.spell = spell;
