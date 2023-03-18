@@ -27,7 +27,7 @@ export default [
     {
         "id": "auraDeBanalite",
         "name": "Aura de Banalité",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/drinks/alcohol-spirits-bottle-blue.webp",
         "description": "Met sur un objet magique une aura qui masque l’aura magique de celui-ci. ex: une potion de chance semblera n’être qu’une bouteille d’eau colorée en vert.",
         "distance": {
             "text": "Touché"
@@ -170,7 +170,7 @@ export default [
     {
         "id": "potionsToniques",
         "name": "Potions toniques",
-        "icon": "icons/tools/laboratory/bowls-liuid-pink-yellow-green.webp",
+        "icon": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
         "description": "L’enchanteur prépare une potion claire de couleur variable dans un grand chaudron contenant divers ingrédients ainsi qu’une pincée de poudre de perlépipein et qui doit mijoter et être touillée pendant 4 heures. L’enchanteur fait 3 potions par 3 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane. Selon la potion, l'ingrédient principal est le suivant:\n\nPotion de Force: 1 litre de sève de chêne\n\nPotion de Dextérité: 3 cuillères à thé de grains de cafés moulus\n\nPotion d’Intelligence: 1 litre d’huile de foie de morue\n\nPotion de Perception: 1 litre de jus de carotte\n\nShampoing de Charisme: 200 grammes de purée d’abricot frais",
         "distance": {
             "type": "touch",
@@ -216,7 +216,7 @@ export default [
     {
         "id": "runeDeKegan",
         "name": "Rune de Kegan",
-        "icon": "icons/magic/symbols/rune-sigil-red-or-ange.webp",
+        "icon": "icons/magic/symbols/rune-sigil-red-orange.webp",
         "description": "Le magicien dessine sur une surface un symbole. Lorsqu’un ennemi s’en approche à moins de soixante (60) centimètres, une explosion fait deux (2) dés de dégâts sur toutes les créatures se trouvant dans un rayon de deux (2) mètres.",
         "distance": {
             "type": "touch",

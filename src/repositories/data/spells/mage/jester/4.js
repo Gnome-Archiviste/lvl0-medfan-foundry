@@ -245,12 +245,16 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "une (1) scène"
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1",
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
         },
         "area": {
             "text": "Une cible"
         },
         "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée (pré-calculé)'; } return 'Double la durée';",
             "text": "Double la durée"
         },
         "dependsOnArcaneLevel": false

@@ -69,6 +69,28 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "retournerLesMouchesBourdonnantes",
+        "name": "Retourner les mouches bourdonnantes",
+        "icon": "",
+        "description": "La cible est immunisée contre les missiles (lancer/tir) non magiques qui rebondissent simplement sur elle, tels les projectiles de fronde, les flèches et les carreaux d’arbalète, mais elle n’est pas protégée contre les très gros projectiles tels que les rochers.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "rollFormula": "return '2d6'",
+            "unit": "tours",
+            "text": "2d6 tours"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "criticalSuccess": {
+            "text": "Pleine durée (12 tours)"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "terraeFusiona",
         "name": "Terrae fusiona",
         "icon": "icons/magic/defensive/shield-barrier-blades-teal.web",

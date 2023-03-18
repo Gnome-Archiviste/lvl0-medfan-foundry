@@ -168,15 +168,13 @@ export default [
             "text": "Touché"
         },
         "duration": {
-            "value": 1,
-            "unit": "scène",
-            "text": "1 scène"
+            "text": "instantané"
         },
         "area": {
             "text": "Un objet"
         },
         "criticalSuccess": {
-            "text": "&"
+            "text": "TODO"
         },
         "dependsOnArcaneLevel": false
     },

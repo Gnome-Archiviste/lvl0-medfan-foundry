@@ -3,7 +3,7 @@ export default [
         "id": "canonAAir",
         "name": "Canon à air",
         "icon": "icons/magic/air/weather-wind-gust.webp",
-        "description": "Le sort propulse jusqu’à un maximum de 2 cibles à 10 mètres de l'élémentaliste. N’éloigne pas les très grosses créatures comme les dragons.",
+        "description": "Le sort propulse jusqu’à un maximum de 2 cibles à 10 mètres de l'élémentaliste. N’éloigne pas les créatures gigantesques comme les dragons.",
         "distance": {
             "text": "1 m"
         },

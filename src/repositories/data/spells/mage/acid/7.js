@@ -70,32 +70,6 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "projectileSulfurique",
-        "name": "Projectile sulfurique",
-        "icon": "icons/magic/fire/projectile-fireball-green.webp",
-        "description": "L’élémentaliste invoque une boule acidulée qui va frapper plusieurs cibles dans une zone de 7 mètres par 7 mètres à moins de 60 mètres du magicien. Le projectile inflige 2d6 +10 points de dégâts à chacune des victimes. Le missile peut atteindre un maximum de victimes égales au niveau  d'arcane de l’élémentaliste. Tous les sujets peuvent tenter des jets de résilience pour la moitié des dégâts. Les cibles doivent toutes être à moins de 60 mètres au total (du magicien à la dernière cible). Aucune cible ne peut être touchée plus d’une fois. Le magicien peut choisir d’affecter moins de cibles que le maximum.\n\n\n\n",
-        "distance": {
-            "text": "60 mètres maximum"
-        },
-        "duration": {
-            "text": "Instantanée"
-        },
-        "area": {
-            "text": "7x7  mètres. Maximum de victimes égales à l’arcane du magicien"
-        },
-        "resilience": {
-            "text": "Divise le dommage par deux (plus haut) chaque victime doit faire un test"
-        },
-        "criticalSuccess": {
-            "text": "réduit les armures des cibles de moitié."
-        },
-        "damage": {
-            "rollFormula": "return '2d6+10';",
-            "text": "2d6 + 10"
-        },
-        "dependsOnArcaneLevel": false
-    },
-    {
         "id": "souffleDuFeroxide",
         "name": "Souffle du feroxide",
         "icon": "icons/magic/acid/dissolve-arm-flesh.webp",

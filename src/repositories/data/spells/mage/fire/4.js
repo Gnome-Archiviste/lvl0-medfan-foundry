@@ -59,9 +59,9 @@ export default [
         "icon": "icons/magic/fire/projectile-beams-salvo-red.webp",
         "description": "Lorsque l’élémentaliste lance ce sort, le ciel se couvre de nuages orangés et des gouttelettes de lave tombent du ciel, brûlant gravement ceux dans la zone du sort.\n\n\n\n",
         "distance": {
-            "value": 5,
+            "value": 10,
             "unit": "mètre",
-            "text": "5 mètres"
+            "text": "10 mètres"
         },
         "duration": {
             "value": 5,

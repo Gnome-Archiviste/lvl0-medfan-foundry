@@ -1,9 +1,9 @@
 export default [
     {
-        "id": "demonDePoussiere",
-        "name": "Démon de poussière",
+        "id": "demonDePoussierekl",
+        "name": "Démon de poussière[k][l]",
         "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’élémentaliste crée un vortex tourbillonnant de sable et de gravats martelant une zone de 7x7 mètres, infligeant 1d6 dégâts par niveau d’arcane. Le sort se nomme ainsi à cause des vents rugissants qui l'accompagnent, donnant l’impression qu’un démon fou se marre au centre.  À cause des débris et des éboulis créés, la zone devient glissante pendant toute la durée du sort. Toute personne se déplaçant de plus d’un mètre doit effectuer un test d’agilité ou tomber à plat ventre.  L’élémentaliste peut  déplacer le Démon de poussière à une vitesse de 5 mètres par tour.",
+        "description": "L’élémentaliste crée un vortex tourbillonnant de sable et de gravats martelant une zone de 7x7 mètres, infligeant 1d6 dégâts par niveau d’arcane. Le sort se nomme ainsi à cause des vents rugissants qui l'accompagnent, donnant l’impression qu’un démon fou se marre au centre.  À cause des débris et du déplacement d’air, le déplacement est divisé par deux et les victimes ont un malus de 1 sur tout test demandant la statistique de Perception dans la zone pendant toute la durée du sort. L’élémentaliste peut  déplacer le Démon de poussière à une vitesse de 5 mètres par tour.",
         "distance": {
             "value": 20,
             "unit": "mètre",
@@ -15,7 +15,7 @@ export default [
             "text": "2d6 tours"
         },
         "bonus": {
-            "text": "Ralentit les cibles"
+            "text": "Ralentit les cibles et donne un malus de Perception"
         },
         "resilience": {
             "text": "Divise le dommage par deux (plus haut). Il faut faire le jet pour chaque tour qu’une"

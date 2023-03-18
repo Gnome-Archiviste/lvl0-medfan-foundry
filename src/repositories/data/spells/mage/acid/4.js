@@ -34,9 +34,9 @@ export default [
         "icon": "icons/magic/acid/projectile-beams-salvo-green.webp",
         "description": "L’élémentaliste déclenche une forte pluie acide qui brûle la peau et ronge l’armure.",
         "distance": {
-            "value": 5,
+            "value": 10,
             "unit": "mètre",
-            "text": "5 mètres"
+            "text": "10 mètres"
         },
         "duration": {
             "value": 5,

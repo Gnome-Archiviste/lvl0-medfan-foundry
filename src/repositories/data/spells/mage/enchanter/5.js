@@ -144,8 +144,8 @@ export default [
     {
         "id": "potionDeGuerisonDesMaledictions",
         "name": "Potion de guérison des malédictions",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "L’enchanteur prépare une potion claire et rougeâtre dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
+        "icon": "icons/consumables/potions/bottle-pear-corked-pink.webp",
+        "description": "L’enchanteur prépare une potion claire et rougeâtre[b] dans un grand chaudron contenant entre autre de l’argent liquide (100 ml), une pincée de poudre de perlépipein, un bouquet de sauge, 1 cristal de sel (50 g.) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 5 potions de guérison des malédictions par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -167,7 +167,7 @@ export default [
     {
         "id": "potionTheurgique",
         "name": "Potion théurgique",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/consumables/potions/bottle-corked-blue.webp",
         "description": "L’enchanteur prépare une potion claire et bleuté dans un grand chaudron contenant entre autre une amanite (champignon), une pincée de poudre de perlépipein et de la gelée de coing (1 kilogramme) et qui doit mijoter et être touillée pendant 5 heures. L’enchanteur fait 3 potions de soin par 5 points de mana dépensés durant la confection. L’enchanteur ne peut dépenser plus de points de mana que son niveau d’arcane.",
         "distance": {
             "type": "touch",

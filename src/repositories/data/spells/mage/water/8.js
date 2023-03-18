@@ -70,7 +70,7 @@ export default [
         "id": "fantassinDeGlace",
         "name": "Fantassin de glace",
         "icon": "icons/creatures/magical/spirit-undead-horned-blue.webp",
-        "description": "L'élémentaliste invoque un élémentaire de glace à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\n\n\n\n\nPHY 8, DEX 6, INT 4, CHA 6, PER 5\n\nHP 100, Armure : 2, H2H : 10, Lancer/tir : 9\n\nAttaques : H2H = 10 de dégâts, Haleine glacée: 3d6+4 (cône de glace, 2 m., immobilisation), Lance de glace : 2d6 + 2\n\n\n\n",
+        "description": "L'élémentaliste invoque un élémentaire de glace à partir d'une source d'eau (au moins un baril). L'élémentaire majeur obéit à des ordres complexes et peut se battre pour défendre l'élémentaliste. \n\n\n\n\n\nPHY 8, DEX 6, INT 4, CHA 6, PER 5\n\nHP 100, Armure : 2, H2H : 10, Lancer/tir : 9 \n\nAttaques : H2H = 10 de dégâts, Haleine glacée: 3d6+4 (cône de glace, 2 m., immobilisation), Lance de glace : 2d6 + 2\n\n\n\n",
         "distance": {
             "value": 2,
             "unit": "mètre",

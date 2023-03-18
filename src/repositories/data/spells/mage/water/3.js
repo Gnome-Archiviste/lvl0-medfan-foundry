@@ -86,7 +86,7 @@ export default [
             "text": "Toucher"
         },
         "duration": {
-            "text": "1 mois (ou 3 jours par niveau d’arcane)[c]"
+            "text": "1 mois (ou 3 jours par niveau d’arcane)[d]"
         },
         "area": {
             "text": "Une cible"

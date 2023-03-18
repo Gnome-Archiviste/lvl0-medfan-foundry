@@ -26,7 +26,7 @@ export default [
     {
         "id": "inspirationDeCombat",
         "name": "Inspiration de combat",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/weapons/swords/sword-winged-pink.webp",
         "description": "Le champion donne, dans une zone de 11x11 mètres. autour de lui, un bonus d’un point d’armure à ses compagnons autour de lui ainsi que 2 points de dégâts supplémentaires sur leurs attaques.",
         "distance": {
             "type": "self",
@@ -54,7 +54,7 @@ export default [
     {
         "id": "marchesDuCiel",
         "name": "Marches du ciel",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/environment/settlement/stone-stairs.webp",
         "description": "Des marches apparaissent et peuvent être utilisés par les personnages et leurs alliés. Peut servir de pont. Utilisable avec un destrier ou avec beaucoup de poids sur le personnages. 10 mètres par niveau d’arcane. Disparaît quand les joueurs ont atteint leur destination, le champion doit être le dernier du groupe.",
         "distance": {
             "formula": "return context.arcaneLevel * 10;",
@@ -75,7 +75,7 @@ export default [
     {
         "id": "murDeFeu",
         "name": "Mur de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
         "description": "En lançant ce sort, un mur de feu scintillant jaillit à la demande du champion. Le mur mesure cinq mètres de haut, fait un mètre par niveau d’arcane du champion de largeur et deux mètres de profondeur.\n\nLe mur inflige 5d6 blessures de feu à toute créature entrant ou traversant le mur. Le mur inflige le double de dégâts aux créatures mortes. Si le champion évoque le mur pour qu’il apparaisse là où les créatures sont déjà présentes, chaque créature subit des blessures comme si elle passait à travers le mur.\n\nLe champion peut maintenir le sort indéfiniment en se concentrant continuellement (faire un test de concentration par tour, et le champion ne peut que faire ce test durant le tour) pour le faire, ou peut renoncer à une concentration continue, auquel cas le mur durera un (1) tour par niveau d’arcane du champion.",
         "distance": {
             "value": 5,
@@ -103,10 +103,10 @@ export default [
         "dependsOnArcaneLevel": true
     },
     {
-        "id": "iconsmagicfirebeamJetStreamTrailsOrangewebp",
-        "name": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
-        "description": "Survolteur de Bollardon\n\nAvec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone. Le champion doit faire ce sort avant de faire le sort qui sera remplacé en sort de zone.",
+        "id": "survolteurDeBollardon",
+        "name": "Survolteur de Bollardon",
+        "icon": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "description": "Avec ce sort, le champion peut transformer n’importe lequel de ses sorts en sort de zone. Le champion doit faire ce sort avant de faire le sort qui sera remplacé en sort de zone.",
         "distance": {
             "type": "self",
             "text": "Champion"

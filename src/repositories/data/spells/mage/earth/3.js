@@ -48,7 +48,7 @@ export default [
     {
         "id": "passageSansTraces",
         "name": "Passage sans traces",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/movement/trail-streak-impact-blue.webp",
         "description": "En recevant ce sort, la cible peut se déplacer sur n’importe quel type de terrain et ne laisser ni empreintes ni odeurs. Pister la cible devient impossible par des moyens non magiques.",
         "distance": {
             "value": 5,

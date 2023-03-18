@@ -218,7 +218,7 @@ export default [
     },
     {
         "id": "stinkingCloud",
-        "name": "Nuage puant",
+        "name": "Nuage puant de Talitha",
         "icon": "icons/magic/acid/dissolve-pool-bubbles.webp",
         "description": "Déclenche une zone nauséabonde de 5x5 mètres Les victimes ne peuvent plus attaquer ou jeter des sorts. Mais ils peuvent se défendre ou bouger à la moitié de leur déplacement normal. ",
         "distance": {

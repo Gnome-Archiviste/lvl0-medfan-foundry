@@ -3,7 +3,7 @@ export default [
         "id": "anguille",
         "name": "Anguille",
         "icon": "icons/magic/lightning/claws-unarmed-strike-teal.webp",
-        "description": "Des arcs électriques parcourent le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, les arcs électriques s’étendent sur les mains de la cible, lui permettant d’attaquer avec les deux (2) mains et faire 1d6 par attaque.",
+        "description": "Des arcs électriques parcourent le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, les arcs électriques s’étendent sur les mains de la cible, lui permettant d’attaquer avec les deux (2) mains et faire 1d6 par attaque. La protection de ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

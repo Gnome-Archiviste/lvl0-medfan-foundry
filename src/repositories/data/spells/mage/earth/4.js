@@ -5,9 +5,9 @@ export default [
         "icon": "icons/magic/earth/projectiles-stone-salvo-red.webp",
         "description": "L'élémentaliste fait sauter les pierres environnantes du sol sur les ennemis dans une zone. Au début, les pierres tout autour se mettent à trembler avant de littéralement se jeter sur l’ennemi le plus proche.",
         "distance": {
-            "value": 10,
+            "value": 15,
             "unit": "mètre",
-            "text": "10 mètres"
+            "text": "15 mètres"
         },
         "duration": {
             "value": 1,
@@ -79,7 +79,7 @@ export default [
         "id": "pointesDePierre",
         "name": "Pointes de pierre",
         "icon": "icons/magic/earth/barrier-stone-explosion-debris.webp",
-        "description": "Ce sort provoque la création de formations en pointes longues, étroites et aiguisées sur un sol déjà en pierre autour de l'élémentaliste. L'élémentaliste peut affecter une zone de un mètre plus deux mètres par niveau d’arcane par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que l'élémentaliste les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base, la zone de pointe de pierre dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
+        "description": "Ce sort provoque la création de formations en pointes étroites et aiguisées sur un sol déjà en pierre autour de l'élémentaliste. L'élémentaliste peut affecter une zone de un mètre plus deux mètres par niveau d’arcane par niveau d’arcane. Ces pointes de pierre restent discrètes jusqu’à ce que quelqu’un d’autre que l'élémentaliste les traverse. Dans ce cas, ils peuvent infliger des dégâts et réduire le mouvement. Les pierres aiguisées causent 1d6 dégâts aux imprudents. Une créature se déplaçant dans la zone subit des blessures à tous les mètres de mouvement.\n\nDe base, la zone de pointe de pierre dure un (1) tour par niveau d’arcane de l'élémentaliste. S’il le veut, l'élémentaliste peut maintenir l’anneau plus longtemps en se concentrant continuellement. Pour ce faire, il doit faire un test de concentration par tour supplémentaire qui sera sa seule action durant le tour. ",
         "distance": {
             "type": "touch",
             "text": "Toucher"

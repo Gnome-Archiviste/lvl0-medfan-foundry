@@ -45,15 +45,38 @@ export default [
             "text": "+1 d’armure, +1 éviter"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience"
+            "text": "+2 d’armure, +2 éviter"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "value": 1,
+                        "unit": "scène"
+                    },
+                    "effectName": "Aura de poussière",
+                    "modifiers": [
+                        {
+                            "skill": "combat.dodge",
+                            "valueFormula": "return (context.criticalSuccess ? 2 : 1);"
+                        },
+                        {
+                            "stat": "protection",
+                            "valueFormula": "return (context.criticalSuccess ? 2 : 1);"
+                        }
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "defenseDuFeroxyde",
         "name": "Défense du Feroxyde",
         "icon": "icons/commodities/tech/metal-claws.webp",
-        "description": "Une couche métallique rappelant la carapace d’un feroxyde recouvre le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, des griffes de métalliques recouvrent les mains de la cible, lui permettant d’attaquer avec ses deux (2) mains et faire 1d6 par attaque.",
+        "description": "Une couche métallique rappelant la carapace d’un feroxyde recouvre le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, des griffes de métalliques recouvrent les mains de la cible, lui permettant d’attaquer avec ses deux (2) mains et faire 1d6 par attaque. La protection de ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
             "type": "touch",
             "text": "Toucher"
@@ -70,7 +93,7 @@ export default [
             "text": "protection de 15 points de résistance, 2 attaques par tour"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience[d][e]"
+            "text": "La cible ne peut pas faire de test de résilience[h][i]"
         },
         "dependsOnArcaneLevel": false
     },
@@ -111,7 +134,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Durée instantannée ?[f]"
+            "text": "Durée instantannée ?[j]"
         },
         "dependsOnArcaneLevel": false
     }

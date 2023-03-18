@@ -26,7 +26,7 @@ export default [
         "id": "fureurDuYeti",
         "name": "Fureur du Yéti",
         "icon": "icons/magic/water/strike-ice-blade-axe.webp",
-        "description": "Une couche de glace recouvre le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, des griffes de glace recouvrent les mains de la cible, lui permettant d’attaquer avec les deux (2) mains et faire 1d6 par attaque.",
+        "description": "Une couche de glace recouvre le torse et les bras de la cible, lui donnant une armure pouvant encaisser 15 pts de dégâts. De plus, des griffes de glace recouvrent les mains de la cible, lui permettant d’attaquer avec les deux (2) mains et faire 1d6 par attaque. La protection de ce sort ne peut pas s’additionner d’autres sorts de protections qui absorbent les dégâts.",
         "distance": {
             "type": "touch",
             "text": "Toucher"

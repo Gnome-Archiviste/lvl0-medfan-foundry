@@ -2,7 +2,7 @@ export default [
     {
         "id": "enchantementAdditionnel",
         "name": "Enchantement additionnel ",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/symbols/circled-gem-pink.webp",
         "description": "Permet de mettre un deuxième enchantement sur un objet. Doit-être fait après la première permanence. Le deuxième enchantement doit être fait tout de suite suivi d'une seconde permanence. ",
         "distance": {
             "type": "touch",
@@ -27,7 +27,7 @@ export default [
     {
         "id": "enchantementSuperieur",
         "name": "Enchantement supérieur",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/symbols/runes-carved-stone-yellow.webp",
         "description": "Enchanté une arme pour un combat. Ajouter +5 aux dégâts et les tous les doubles (sauf les 6) sont aussi considérés comme un succès exceptionnel. Besoin de permanence pour conserver l’effet.",
         "distance": {
             "type": "touch",
