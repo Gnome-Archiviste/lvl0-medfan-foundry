@@ -1,19 +1,19 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Item} from 'models/item';
+import {Lvl0FoundryItem} from 'models/item';
 
 export interface ItemSelectorDialogData {
-    items: Lvl0Item[],
+    items: Lvl0FoundryItem[],
     title: string,
 }
 
 @injectable()
-export class ItemSelectorDialog extends DialogBase<ItemSelectorDialogData, Lvl0Item> {
+export class ItemSelectorDialog extends DialogBase<ItemSelectorDialogData, Lvl0FoundryItem> {
     private selectedItemId?: string | null = undefined;
 
     constructor(
         @inject("DIALOG_DATA") dialogData: ItemSelectorDialogData,
-        @inject("DIALOG_RESULT") result: DialogResultCallback<Lvl0Item>,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<Lvl0FoundryItem>,
     ) {
         super(dialogData, result);
         if (this.dialogData.items[0]) {
@@ -34,7 +34,7 @@ export class ItemSelectorDialog extends DialogBase<ItemSelectorDialogData, Lvl0I
         };
     }
 
-    protected override getResult(): Lvl0Item | undefined {
+    protected override getResult(): Lvl0FoundryItem | undefined {
         return this.dialogData.items.find(i => i.id === this.selectedItemId);
     }
 

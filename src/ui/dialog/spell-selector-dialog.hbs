@@ -1,45 +1,7 @@
 <div class="spell-selector-dialog sheet">
-    <nav class="sheet-tabs tabs">
-        Arcane:
-        {{#each levels as |level|}}
-            <a class="item" data-tab="{{level}}">{{level}}</a>
-        {{/each}}
-    </nav>
-
-    <div class="spells">
-        {{#each levels as |level|}}
-            <div class="tab" data-tab="{{level}}">
-                {{#each2 ../spellPerLevels level as |spell|}}
-                    <div class="spell">
-                        <div class="header">
-                            <img class="icon" src="{{spell.icon}}">
-                            <h2 class="name">{{spell.name}}</h2>
-                        </div>
-                        <div class="description">{{markdown spell.description}}</div>
-                        <div class="stats">
-                            <div class="cost"><span class="label">Coût</span> {{spell.cost}} point de mana</div>
-                            {{spellSelectorStat 'distance' spell.distance}}
-                            {{spellSelectorStat 'duration' spell.duration}}
-                            {{spellSelectorStat 'area' spell.area}}
-                        </div>
-                        {{spellSelectorStat 'criticalSuccess' spell.criticalSuccess}}
-                        {{spellSelectorStat 'resilience' spell.resilience}}
-                        {{spellSelectorStat 'bonus' spell.bonus}}
-                        {{spellSelectorStat 'damage' spell.damage}}
-                        {{spellSelectorStat 'heal' spell.heal}}
-                        <div class="actions">
-                            <button class="action" data-action="addMacro" data-spell-id="{{spell.id}}"><i class="fas fa-cogs"></i> Créer une macro</button>
-                            <button class="action" data-action="cast" data-spell-id="{{spell.id}}"><i class="fas fa-dice"></i> Lancer</button>
-                            {{#if ../../emptyScrollAvailable}}
-                                <button class="action" data-action="createScroll" data-spell-id="{{spell.id}}"><i class="fas fa-scroll"></i> Créer une parchemin</button>
-                            {{/if}}
-                            {{#if (or ../../emptyWandAvailable (lookup ../../spellInNonFullWand spell.id))}}
-                                <button class="action" data-action="fillWand" data-spell-id="{{spell.id}}"><i class="fas fa-magic"></i> Remplir une baguette</button>
-                            {{/if}}
-                        </div>
-                    </div>
-                {{/each2}}
-            </div>
-        {{/each}}
-    </div>
+    <lvl0-spell-selector
+        id="spell-selector"
+        character-id="{{actorId}}"
+        spell-class="{{spellClass}}">
+    </lvl0-spell-selector>
 </div>

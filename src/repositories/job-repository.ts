@@ -1,7 +1,11 @@
 import {singleton} from 'tsyringe';
 import jobs, {ExtensionJobDefinition, JobDefinition} from './data/jobs';
+import {Injectable} from '@angular/core';
 
 @singleton()
+@Injectable({
+    providedIn: 'root'
+})
 export class JobRepository {
     private jobsNamesByIdsCache?: Record<string, string>;
     private jobsByIds?: Record<string, JobDefinition>;

@@ -1,7 +1,11 @@
 import {singleton} from 'tsyringe';
 import races, {RaceDefinition} from './data/races';
+import {Injectable} from '@angular/core';
 
 @singleton()
+@Injectable({
+    providedIn: 'root'
+})
 export class RaceRepository {
     private racesByIdsCache?: Record<string, RaceDefinition>
 

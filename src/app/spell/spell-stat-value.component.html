@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="valueType()">
+    <ng-container *ngSwitchCase="'string'">
+        <div [class]="label">
+            <span class="label">{{label | translate:'Spell.Label'}}&nbsp;</span>
+            <span class="value">{{value}}</span>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'rollable'">
+        <div [class]="label">
+            <span class="label">{{label | translate:'Spell.Label'}}&nbsp;</span>
+            <span class="value">{{valueAsRollable().toDisplayString()}}</span>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <div>
+            UNK: {{label}}:{{value|json}}
+        </div>
+    </ng-container>
+</ng-container>

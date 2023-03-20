@@ -1,8 +1,8 @@
 import {container} from 'tsyringe';
 import {RollSkillManager} from "../managers/skill";
-import {Lvl0ActorCharacterData, SkillValue} from '../models/actor';
 import {SkillDefinition} from '../repositories/data';
 import ClickEvent = JQuery.ClickEvent;
+import {Lvl0CharacterData, SkillValue} from '../app/data-accessor/models/lvl0-character';
 
 Hooks.on('renderActorSheet', (sheet: ActorSheet, elements) => {
     let form = elements[0];
@@ -25,7 +25,7 @@ function skillValueUpdateHiddenFieldValue(e: ClickEvent) {
 }
 
 function getAvailableAddPointLevel(
-    characterData: Lvl0ActorCharacterData,
+    characterData: Lvl0CharacterData,
     skillCategoryId: string
 ): 'prodigy' | 'master' | 'normal' | undefined {
     if (characterData.computedData.skills.availableSkillPoints['prodigy'] > 0)
@@ -43,7 +43,7 @@ function getAvailableAddPointLevel(
 
 function renderSkillValueManualMode(
     skillDefinition: SkillDefinition,
-    characterData: Lvl0ActorCharacterData,
+    characterData: Lvl0CharacterData,
     characterSkillData: SkillValue,
     skillCategoryId: string,
     skillId: string
@@ -70,7 +70,7 @@ function renderSkillValueManualMode(
 Handlebars.registerHelper('skill-value',
     function (
         skillDefinition: SkillDefinition,
-        characterData: Lvl0ActorCharacterData,
+        characterData: Lvl0CharacterData,
         skillCategoryId: string,
         skillId: string
     ): Handlebars.SafeString | string {

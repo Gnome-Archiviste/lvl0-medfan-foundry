@@ -16,7 +16,7 @@ export class ScrollUtil {
     ) {
     }
 
-    async createScroll(actor: Lvl0ActorCharacter, spell: ActorSpell): Promise<Item | undefined> {
+    async createScroll(actor: Lvl0ActorCharacter, spell: ActorSpell): Promise<void> {
         let emptyScroll = actor.getFirstEmptyScroll();
         if (!emptyScroll) {
             ui.notifications?.error('Aucun parchemin vierge disponible')

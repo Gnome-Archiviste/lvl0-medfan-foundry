@@ -5,9 +5,3 @@ export type Lvl0ActorData =
     MonsterProperties
 
 export type Lvl0ActorType = 'character' | 'monster' ;
-
-declare global {
-    interface DataConfig {
-        Actor: Lvl0ActorData;
-    }
-}

@@ -2,8 +2,8 @@ import {inject, singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0Actor} from '../../lvl0-actor';
 import {Lvl0ActorEffect} from 'managers/effects';
-import {Lvl0ActorCharacterData, SkillValue} from '../../properties-data';
 import {SkillRepository} from 'repositories';
+import {Lvl0CharacterData, SkillValue} from '../../../../app/data-accessor/models/lvl0-character';
 
 @singleton()
 export class SkillsCharacterDataComputer extends CharacterDataComputer {
@@ -15,7 +15,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         super();
     }
 
-    override computeCharacter(actorData: Lvl0ActorCharacterData, actor: Lvl0Actor) {
+    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0Actor) {
         this.countMaximumPoints(actorData);
         this.computeAvailablePoints(actorData);
         this.computeExtraSkills(actorData, actor);
@@ -32,7 +32,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         actorData.computedData.skills.skillModifiers = skillModifiers;
     }
 
-    countMaximumPoints(actorData: Lvl0ActorCharacterData) {
+    countMaximumPoints(actorData: Lvl0CharacterData) {
         for (const pointType of SkillsCharacterDataComputer.pointTypes) {
             actorData.computedData.skills.maximumSkillPoints[pointType] = 0;
         }
@@ -41,8 +41,8 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         for (let i = 0; i < skillLevels.length && i < actorData.level.value; i++) {
             let points = skillLevels[i].skillPoints.split(' ');
             for (const point of points) {
-                let pointNumber = +(point.substr(0, 1));
-                let pointType = point.substr(1, 1);
+                let pointNumber = +(point.substring(0, 1));
+                let pointType = point.substring(1, 1);
                 switch (pointType) {
                     case 'G':
                         actorData.computedData.skills.maximumSkillPoints['general'] += pointNumber;

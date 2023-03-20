@@ -8,7 +8,7 @@ import {SpecialityDefinition} from 'repositories/data';
 import {ElementRepository, SpecialityRepository} from 'repositories';
 import {assertIsCharacter} from 'models/actor';
 import {RollFactory} from 'utils/roll-factory';
-import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 
 type ArrowResult = {
     result: 'fail' | 'epicFail';

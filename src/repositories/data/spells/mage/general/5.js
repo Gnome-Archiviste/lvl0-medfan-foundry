@@ -26,7 +26,7 @@ export default [
     {
         "id": "cornetDeFroid",
         "name": "Cornet de froid",
-        "icon": "icons/magic/water/projectile-icecicle-webp",
+        "icon": "icons/magic/water/projectile-icecicle.webp",
         "description": "Un cône de froid extrême jaillit de la main du magicien, affectant jusqu’à trois (3) victimes dans une zone de 10 mètres de large et jusqu’à 10 mètres de long en avant du magicien, causant 3d6 points de dégâts et les figent sur place.",
         "distance": {
             "value": 10,

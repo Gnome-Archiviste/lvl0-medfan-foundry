@@ -1,7 +1,7 @@
 import {singleton} from 'tsyringe';
 import {SkillDefinition} from 'repositories/data';
 import {RollResult, RollUtil} from 'utils/roll-util';
-import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 
 export interface SkillTestRollResult {
     result: RollResult,

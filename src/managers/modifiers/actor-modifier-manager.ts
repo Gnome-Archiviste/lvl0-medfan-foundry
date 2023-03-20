@@ -1,5 +1,6 @@
 import {singleton} from 'tsyringe';
-import {CharacterModifierInfo, CharacterProperties, Lvl0Actor, Lvl0ActorCharacter} from 'models/actor';
+import {CharacterProperties, Lvl0Actor, Lvl0ActorCharacter} from 'models/actor';
+import {CharacterModifierInfo} from '../../app/data-accessor/models/lvl0-character';
 
 @singleton()
 export class ActorModifierManager {

@@ -17,8 +17,11 @@ import {
     SpellHealDefinition
 } from 'repositories/data';
 import {RollFactory} from 'utils/roll-factory';
-import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 
+/**
+ * @deprecated
+ */
 export class SpellContext {
     arcaneLevel: number;
     epicFail?: boolean;

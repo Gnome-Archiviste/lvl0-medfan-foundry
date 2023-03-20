@@ -1,5 +1,5 @@
 import {container} from 'tsyringe';
-import {getItemExtraSkillsIfAvailable, Lvl0Item, Lvl0ItemWithModifiers} from 'models/item';
+import {getItemExtraSkillsIfAvailable, Lvl0FoundryItem, Lvl0ItemWithModifiers} from 'models/item';
 import {ElementRepository, ItemTypesConfigRepository, SkillRepository, SpellRepository} from 'repositories';
 import {ItemModifierManager} from '../../../managers/modifiers';
 import ClickEvent = JQuery.ClickEvent;
@@ -15,7 +15,7 @@ export class Lvl0ItemSheet extends ItemSheet {
     private readonly dialogAwaiter: DialogAwaiter;
     private readonly spellRepository: SpellRepository;
 
-    constructor(item: Lvl0Item, options: Partial<ItemSheet.Options>) {
+    constructor(item: Lvl0FoundryItem, options: Partial<ItemSheet.Options>) {
         super(item, options);
 
         this.elementRepository = container.resolve(ElementRepository);

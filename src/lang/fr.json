@@ -164,5 +164,7 @@
   "LVL0MF.Spell.Label.heal" : "Soin",
   "LVL0MF.Spell.Label.damage" : "Dégâts",
 
+  "LVL0MF.Misc.Filter.PlaceHolder" : "Utilisez ce champ pour filtrer les résultat",
+
   "LVL0MF.End" : "Fin de la traduction"
 }

@@ -7,13 +7,14 @@
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "esmodules": [
-    "init.js",
-    "handlebars.js",
-    "components.js"
+    "vendor.js",
+    "runtime.js",
+    "polyfill.js",
+    "main.js"
   ],
   "scripts": [],
   "styles": [
-    "ui/style.css"
+    "styles.css"
   ],
   "packs": [],
   "languages": [

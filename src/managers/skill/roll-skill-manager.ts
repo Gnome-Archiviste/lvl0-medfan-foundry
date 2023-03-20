@@ -1,10 +1,10 @@
-import {SkillScriptFactory} from "./skill-scripts/skill-script-factory";
-import {SkillRepository} from '../../repositories/skill-repository';
-import {Lvl0ActorCharacterData} from '../../models/actor/properties-data/lvl0-actor-character-data';
-import {assertIsCharacter} from '../../models/actor/properties/character-properties';
+import {SkillScriptFactory} from "./skill-scripts";
+import {SkillRepository} from '../../repositories';
+import {assertIsCharacter} from '../../models/actor';
 import {RollUtil} from '../../utils/roll-util';
 import {inject, singleton} from 'tsyringe';
 import {RollFactory} from '../../utils/roll-factory';
+import {Lvl0CharacterData} from '../../app/data-accessor/models/lvl0-character';
 
 @singleton()
 export class RollSkillManager {
@@ -16,7 +16,7 @@ export class RollSkillManager {
     ) {
     }
 
-    getSkillSuccessValue(actorData: Lvl0ActorCharacterData, skillId: string): number {
+    getSkillSuccessValue(actorData: Lvl0CharacterData, skillId: string): number {
         let [skillCategory, skillName] = this.skillRepository.splitSkill(skillId);
         let skillDefinition = this.skillRepository.getSkill(skillCategory, skillName);
         let stat = skillDefinition.stat;

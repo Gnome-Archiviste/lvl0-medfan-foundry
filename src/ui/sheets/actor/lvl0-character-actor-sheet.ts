@@ -1,6 +1,6 @@
 import {container} from 'tsyringe';
 import {RollSkillManager} from 'managers/skill';
-import {assertIsCharacter, Lvl0Actor, Lvl0ActorCharacterData} from 'models/actor';
+import {assertIsCharacter, Lvl0Actor} from 'models/actor';
 import {Lvl0ItemType} from 'models/item';
 import {
     ExtensionJobDefinition,
@@ -20,9 +20,10 @@ import {MacroUtil} from 'utils/macro-util';
 import {EffectManager} from 'managers/effects';
 import {ActorModifierManager} from 'managers/modifiers';
 import {SpecialityUtil} from '../../../managers/speciality/speciality-util';
+import {Lvl0CharacterData} from '../../../app/data-accessor/models/lvl0-character';
 
 export interface Lvl0mfActorSheetData extends ActorSheet.Data {
-    actorData: Lvl0ActorCharacterData,
+    actorData: Lvl0CharacterData,
     skillsByCategories: Record<string, Record<string, SkillDefinition>>,
     itemTypesConfigs: Record<string, ItemTypeConfig>,
     actionableItemType: Record<string, boolean>,
@@ -85,7 +86,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         const context = await super.getData(options);
 
         let itemsByType = this.actor.itemTypes;
-        let itemTypes = Object.keys(itemsByType) as Lvl0ItemType[];
+        let itemTypes = Object.keys(itemsByType);
         let equipedItemsByType = {};
         let itemTypesInInventoryTabs: string[] = [];
         for (let itemType of itemTypes) {
@@ -95,7 +96,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
                     equipedItemsByType[itemType].push(item);
                 }
             }
-            if (itemsByType[itemType].length > 0 && this.isItemTypeDisplayedInInventory(itemType))
+            if (itemsByType[itemType].length > 0 && this.isItemTypeDisplayedInInventory(itemType as any as Lvl0ItemType))
                 itemTypesInInventoryTabs.push(itemType);
         }
 
@@ -299,7 +300,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
         await this.modifierManager.addModifier(this.actor, {name: '', stat: 'phy', value: 1, isPermanent: false});
    }
 
-    canLevelUp(data: Lvl0ActorCharacterData): boolean {
+    canLevelUp(data: Lvl0CharacterData): boolean {
         if (!data.computedData.bases.job)
             return false;
         if (!data.computedData.bases.race)
@@ -407,11 +408,11 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
     }
 
     private isItemTypeDisplayedInInventory(itemType: Lvl0ItemType): boolean {
-        if (itemType === 'ammunition')
+        if (itemType === Lvl0ItemType.ammunition)
             return false;
-        if (itemType === 'potions')
+        if (itemType === Lvl0ItemType.potions)
             return false;
-        if (itemType === 'weapon')
+        if (itemType === Lvl0ItemType.weapon)
             return false;
         return true;
     }

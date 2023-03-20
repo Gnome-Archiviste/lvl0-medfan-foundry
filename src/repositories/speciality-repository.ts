@@ -1,7 +1,11 @@
 import {singleton} from 'tsyringe';
 import specialitiesDefinitions, {SpecialityDefinition} from './data/specialities';
+import {Injectable} from '@angular/core';
 
 @singleton()
+@Injectable({
+    providedIn: 'root'
+})
 export class SpecialityRepository {
     specialitiesByIdsCache?: Record<string, SpecialityDefinition>;
 

@@ -5,13 +5,7 @@ import {
 import {container} from 'tsyringe';
 import {Lvl0ItemScroll, Lvl0ItemWand} from './lvl0-item-types';
 
-declare global {
-    interface DocumentClassConfig {
-        Item: typeof Lvl0Item;
-    }
-}
-
-export class Lvl0Item extends Item {
+export class Lvl0FoundryItem extends Item {
     private readonly scrollUtil: ScrollUtil;
     private readonly wandUtil: WandUtil;
 
@@ -44,7 +38,7 @@ export class Lvl0Item extends Item {
     }
 }
 
-Hooks.on("createItem", async (document: Lvl0Item,  options: object, userId: string) => {
+Hooks.on("createItem", async (document: Lvl0FoundryItem, options: object, userId: string) => {
     if (document.data.data.quantifiable) {
         await document.update({ data: {quantity: 1}});
     }

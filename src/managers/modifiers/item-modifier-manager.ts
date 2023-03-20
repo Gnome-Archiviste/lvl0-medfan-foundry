@@ -2,7 +2,7 @@ import {singleton} from 'tsyringe';
 import {
     ItemModifierInfo,
     ItemPropertiesTemplateStatModifiers,
-    Lvl0Item,
+    Lvl0FoundryItem,
     Lvl0ItemWithModifiers
 } from '../../models/item';
 
@@ -15,11 +15,11 @@ export class ItemModifierManager {
         await item.update({data: {modifiers: {[nextId]: modifier}}}, {diff: true});
     }
 
-    async removeModifier(item: Lvl0Item, modifierId: number) {
+    async removeModifier(item: Lvl0FoundryItem, modifierId: number) {
         await item.update({data: {modifiers: {['-=' + modifierId]: null}}}, {diff: true});
     }
 
-    async updateModifier(item: Lvl0Item, modifierId: number, partialModifier: RecursivePartial<ItemModifierInfo>) {
+    async updateModifier(item: Lvl0FoundryItem, modifierId: number, partialModifier: RecursivePartial<ItemModifierInfo>) {
         await item.update({
             data: {modifiers: {[modifierId]: partialModifier}}
         } as {data: ItemPropertiesTemplateStatModifiers}, {diff: true});

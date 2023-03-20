@@ -1,8 +1,8 @@
 import {ItemModifierInfo} from '../item-modifier-info';
-import {Lvl0Item} from '../lvl0-item';
+import {Lvl0FoundryItem} from '../lvl0-foundry-item';
 
 export interface ItemPropertiesTemplateStatModifiers {
     modifiers: { [id: string]: ItemModifierInfo };
 }
 
-export type Lvl0ItemWithModifiers = Lvl0Item & { data: { data: ItemPropertiesTemplateStatModifiers } };
+export type Lvl0ItemWithModifiers = Lvl0FoundryItem & { data: { data: ItemPropertiesTemplateStatModifiers } };

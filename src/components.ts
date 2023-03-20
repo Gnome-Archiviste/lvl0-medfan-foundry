@@ -1,1 +1,1 @@
-import './components/skill-value.component.js'
+import './components/skill-value.component'

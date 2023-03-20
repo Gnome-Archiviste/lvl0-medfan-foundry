@@ -24,7 +24,8 @@ export class SpellSelector {
 
         return await this.dialogAwaiter.openAndWaitResult(SpellSelectorDialog, {
             spells: spellActors,
-            actor: token.actor
+            actor: token.actor,
+            spellClass: spellClass
         });
     }
 }

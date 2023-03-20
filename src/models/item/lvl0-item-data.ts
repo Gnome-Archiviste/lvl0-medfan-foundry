@@ -21,7 +21,7 @@ import {
 } from './properties';
 import {ItemModifierInfo} from './item-modifier-info';
 
-type Lvl0ItemData =
+export type Lvl0ItemData =
     AmmunitionItemProperties
     | ArmorItemProperties
     | BagItemProperties
@@ -42,26 +42,27 @@ type Lvl0ItemData =
     | HandWeaponItemProperties
     | WeaponItemProperties
 
-export type Lvl0ItemType =
-    "ammunition"
-    | "armor"
-    | "bag"
-    | "belt"
-    | "cloak"
-    | "foot"
-    | "hand"
-    | "head"
-    | "magical"
-    | "misc"
-    | "necklace"
-    | "potions"
-    | "purse"
-    | "ring"
-    | "shield"
-    | "wand"
-    | "scroll"
-    | "handWeapon"
-    | "weapon";
+export enum Lvl0ItemType {
+    "ammunition",
+    "armor",
+    "bag",
+    "belt",
+    "cloak",
+    "foot",
+    "hand",
+    "head",
+    "magical",
+    "misc",
+    "necklace",
+    "potions",
+    "purse",
+    "ring",
+    "shield",
+    "wand",
+    "scroll",
+    "handWeapon",
+    "weapon"
+}
 
 export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]: ItemModifierInfo } | undefined {
     if (data.type == 'armor'
@@ -91,8 +92,3 @@ export function getItemExtraSkillsIfAvailable(data: Lvl0ItemData): { [id: string
     return undefined;
 }
 
-declare global {
-    interface DataConfig {
-        Item: Lvl0ItemData;
-    }
-}

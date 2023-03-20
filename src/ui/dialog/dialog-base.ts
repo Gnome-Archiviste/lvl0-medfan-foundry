@@ -1,4 +1,5 @@
 import ClickEvent = JQuery.ClickEvent;
+import {SpellClass} from '../../repositories';
 
 export type DialogResultCallback<TResult> = (result: TResult | undefined) => void;
 
@@ -35,11 +36,11 @@ export abstract class DialogBase<TData, TResult> extends Application {
         return super.close(options);
     }
 
-    protected _onKeyDown(event: KeyboardEvent) {
+    protected async _onKeyDown(event: KeyboardEvent) {
         if (event.key === "Escape") {
             event.preventDefault();
             event.stopPropagation();
-            return this.close();
+            await this.close();
         }
     }
 }

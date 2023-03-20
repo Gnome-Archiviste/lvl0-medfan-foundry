@@ -1,3 +1,4 @@
+/*
 import * as Sentry from "@sentry/browser";
 import {Integrations} from "@sentry/tracing";
 
@@ -18,3 +19,4 @@ Sentry.addGlobalEventProcessor((event, hint) => {
     }
     return event;
 })
+*/

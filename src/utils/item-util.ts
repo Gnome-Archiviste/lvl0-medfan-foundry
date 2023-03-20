@@ -1,9 +1,9 @@
 import {singleton} from 'tsyringe';
-import {Lvl0Item} from '../models/item';
+import {Lvl0FoundryItem} from '../models/item';
 
 @singleton()
 export class ItemUtil {
-    async updateQuantity(item: Lvl0Item, quantity: number): Promise<void> {
+    async updateQuantity(item: Lvl0FoundryItem, quantity: number): Promise<void> {
         if (quantity < 0 && item.data.data.quantity + quantity <= 0) {
             await item.delete();
         } else {

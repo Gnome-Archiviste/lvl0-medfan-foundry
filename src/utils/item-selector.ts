@@ -1,5 +1,5 @@
 import {inject, singleton} from 'tsyringe';
-import {Lvl0Item} from '../models/item';
+import {Lvl0FoundryItem} from '../models/item';
 import {DialogAwaiter, ItemSelectorDialog} from '../ui/dialog';
 
 @singleton()
@@ -10,7 +10,7 @@ export class ItemSelector {
     ) {
     }
 
-    async openItemSelector<T extends Lvl0Item>(items: T[], title: string): Promise<T | undefined> {
+    async openItemSelector<T extends Lvl0FoundryItem>(items: T[], title: string): Promise<T | undefined> {
         return await this.dialogAwaiter.openAndWaitResult(ItemSelectorDialog, {
             items: items,
             title: title

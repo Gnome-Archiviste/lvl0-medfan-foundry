@@ -1,0 +1,78 @@
+<form class="filter-form" #filterForm="ngForm">
+    <div class="filter-line">
+        <input [(ngModel)]="filterModel.filter" name="filter" type="text" [placeholder]="'Misc.Filter.PlaceHolder' | translate">
+        <button [cdkMenuTriggerFor]="menu" ><i class="fas fa-filter"></i></button>
+    </div>
+    <div style="display: none">
+        <input type="checkbox" name="showDamageSpells" [(ngModel)]="filterModel.showDamageSpells" />
+        <input type="checkbox" name="showHealSpells" [(ngModel)]="filterModel.showHealSpells" />
+        <input type="checkbox" name="otherSpells" [(ngModel)]="filterModel.otherSpells" />
+    </div>
+    <div class="arcane-levels tabs">
+        Niveau d'arcane:
+        <ng-container *ngFor="let arcaneLevel of arcanesLevels$ | async">
+            <a (click)="toggleArcaneLevel($event, arcaneLevel)" [class.active]="filterModel.arcaneLevels.includes(arcaneLevel)" class="level item">
+                {{arcaneLevel}}
+            </a>
+        </ng-container>
+        <a (click)="toggleArcaneLevel($event, 0)" [class.active]="filterModel.arcaneLevels.length === 0" class="level item">
+            Tout
+        </a>
+    </div>
+</form>
+
+<ng-template #menu>
+    <div class="app window-app" cdkMenu>
+        <div class="window-content">
+            <div>
+                <div class="filter-option">
+                    <input  id="showDamageSpells" type="checkbox" [(ngModel)]="filterModel.showDamageSpells" [ngModelOptions]="{standalone: true}"/>
+                    <label for="showDamageSpells">Sort de dégâts</label>
+                </div>
+                <div class="filter-option">
+                    <input  id="showHealSpells" type="checkbox" [(ngModel)]="filterModel.showHealSpells" [ngModelOptions]="{standalone: true}"/>
+                    <label for="showHealSpells">Sort de soin</label>
+                </div>
+                <div class="filter-option">
+                    <input  id="otherSpells" type="checkbox" [(ngModel)]="filterModel.otherSpells" [ngModelOptions]="{standalone: true}"/>
+                    <label for="otherSpells">Autre sorts</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-container *ngFor="let spell of visibleSpells$ | async; trackBy: identitySpell">
+    <div class="spell">
+        <div class="header">
+            <img class="icon" [src]="spell.definition.icon">
+            <div>
+                <h2 class="name">{{spell.definition.name}}</h2>
+                <span class="level">Arcane: {{spell.definition.level}}</span>
+
+            </div>
+        </div>
+        <div class="description" [innerHTML]="spell.computedData.description | markdown"></div>
+        <div class="stats">
+            <div class="cost"><span class="label">Coût</span> {{spell.computedData.effectiveCost}} point de mana</div>
+            <lvl0-spell-stat-value *ngIf="spell.computedData.distance" [label]="'distance'" [value]="spell.computedData.distance"></lvl0-spell-stat-value>
+            <lvl0-spell-stat-value *ngIf="spell.computedData.duration" [label]="'duration'" [value]="spell.computedData.duration"></lvl0-spell-stat-value>
+            <lvl0-spell-stat-value *ngIf="spell.computedData.area" [label]="'area'" [value]="spell.computedData.area"></lvl0-spell-stat-value>
+        </div>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.criticalSuccess" [label]="'criticalSuccess'" [value]="spell.computedData.criticalSuccess"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.resilience" [label]="'resilience'" [value]="spell.computedData.resilience"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.bonus" [label]="'bonus'" [value]="spell.computedData.bonus"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.damage" [label]="'damage'" [value]="spell.computedData.damage"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.heal" [label]="'heal'" [value]="spell.computedData.heal"></lvl0-spell-stat-value>
+        <div class="actions">
+            <button class="action" (click)="addMacro.emit(spell.definition.id)"><i class="fas fa-cogs"></i> Créer une macro</button>
+            <button class="action" (click)="castSpell.emit(spell.definition.id)"><i class="fas fa-dice"></i> Lancer</button>
+            <ng-container *ngIf="emptyScrollAvailable$ | async">
+                <button class="action" (click)="createScroll.emit(spell.definition.id)"><i class="fas fa-scroll"></i> Créer une parchemin</button>
+            </ng-container>
+            <ng-container *ngIf="(emptyWandAvailable$ | async) || (canFillAWandWith(spell.definition.id) | async)">
+                <button class="action" (click)="fillWand.emit(spell.definition.id)"><i class="fas fa-magic"></i> Remplir une baguette</button>
+            </ng-container>
+        </div>
+    </div>
+
+</ng-container>

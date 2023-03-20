@@ -55,6 +55,7 @@ export class SpellChat {
                 </div>
                 <div class="roll">${await value.roll.render()}</div>
             </div>`;
+        return '';
     }
 
     private async renderActions(spell: ActorSpell): Promise<string> {

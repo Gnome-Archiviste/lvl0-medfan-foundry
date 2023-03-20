@@ -1,12 +1,43 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "experimentalDecorators": true,
-    "target": "ES6",
-    "types": ["@league-of-foundry-developers/foundry-vtt-types"],
-    "moduleResolution": "node",
-    "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
-  }
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outDir": "./dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitOverride": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "baseUrl": "./src",
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "strictNullChecks": true,
+        "importHelpers": true,
+        "target": "ES2022",
+        "module": "ES2022",
+        "useDefineForClassFields": false,
+        "types": [
+            "@league-of-foundry-developers/foundry-vtt-types"
+        ],
+        "lib": [
+            "ES2022",
+            "dom"
+        ],
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    },
+    "include": [
+        "src/**/*.d.ts",
+        "global.d.ts"
+    ]
 }

@@ -1,6 +1,6 @@
 import {
     ConfiguredCollectionClassForName
-} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/game';
+} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/game';
 import {ConfiguredDocumentClass} from '@league-of-foundry-developers/foundry-vtt-types/src/types/helperTypes';
 
 export class InitializedGame extends Game {

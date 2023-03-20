@@ -1,5 +1,5 @@
-import {Statistics} from './shared-properties-data';
 import {Lvl0ActorEffect} from 'managers/effects';
+import {Statistics} from '../../../app/shared/statistic-model';
 
 export interface Lvl0ActorMonsterData {
     baseStats: Statistics;

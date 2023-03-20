@@ -1,7 +1,11 @@
 import {singleton} from 'tsyringe';
 import elements from './data/elements';
+import {Injectable} from '@angular/core';
 
 @singleton()
+@Injectable({
+    providedIn: 'root'
+})
 export class ElementRepository {
     getElementWeaponNameByElementsIds(): Record<string, string> {
         return Object.entries(elements).reduce((previousValue, [key, value]) => {

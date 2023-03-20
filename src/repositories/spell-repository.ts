@@ -2,6 +2,7 @@ import {inject, singleton} from 'tsyringe';
 import spellsDefinitions, {SpellData} from './data/spells'
 import {SpellClass} from './data';
 import {JobRepository} from './job-repository';
+import {Injectable} from '@angular/core';
 
 export interface SpellDefinition extends SpellData {
     readonly level: number;
@@ -9,6 +10,9 @@ export interface SpellDefinition extends SpellData {
 }
 
 @singleton()
+@Injectable({
+    providedIn: 'root'
+})
 export class SpellRepository {
     constructor(
         @inject(JobRepository) private readonly jobRepository: JobRepository

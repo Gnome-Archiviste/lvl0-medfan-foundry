@@ -18,10 +18,9 @@ import {
     SelectSpecialityDialog
 } from "ui/dialog";
 import { RollSpecialityManager } from "../../managers/speciality";
-import { LevelData, Lvl0ActorCharacterData } from './properties-data';
 import { ActorDataComputer } from './actor-data-computers';
 import { SpecialityRepository } from '../../repositories';
-import { Lvl0Item } from '../item';
+import { Lvl0FoundryItem } from '../item';
 import { container } from 'tsyringe';
 import {
     ActorDataConstructorData
@@ -30,6 +29,7 @@ import { InitializedGame } from '../misc/game';
 import { SpecialityUtil } from '../../managers/speciality/speciality-util';
 import { assertIsCharacter } from './properties';
 import { RollStatDialog } from '../../ui/dialog/roll-stats-dialog';
+import {LevelData, Lvl0CharacterData} from '../../app/data-accessor/models/lvl0-character';
 
 container.register("ActorDataComputer", { useClass: BaseCharacterDataComputer });
 container.register("ActorDataComputer", { useClass: LevelingCharacterDataComputer });
@@ -41,11 +41,6 @@ container.register("ActorDataComputer", { useClass: HealthManaDataComputer });
 container.register("ActorDataComputer", { useClass: ClutterCharacterDataComputer });
 container.register("ActorDataComputer", { useClass: MagicalArmorDataComputer });
 
-declare global {
-    interface DocumentClassConfig {
-        Actor: typeof Lvl0Actor;
-    }
-}
 
 export class Lvl0Actor extends Actor {
     private readonly rollSpecialityManager: RollSpecialityManager;
@@ -64,6 +59,12 @@ export class Lvl0Actor extends Actor {
         this.dialogAwaiter = container.resolve(DialogAwaiter);
         this.game = container.resolve(InitializedGame);
         this.specialityUtil = container.resolve(SpecialityUtil);
+    }
+
+    get lvl0Id() {
+        if (this.isToken)
+            return this.id + "@" + this.token?.id;
+        return this.id;
     }
 
     override prepareDerivedData(): void {
@@ -269,7 +270,7 @@ export class Lvl0Actor extends Actor {
         await this.specialityUtil.addSpeciality(this, selectedSpecialityId);
     }
 
-    async doLevelUp(level: number, actorData: Lvl0ActorCharacterData, levelUpResultData: LevelData): Promise<void> {
+    async doLevelUp(level: number, actorData: Lvl0CharacterData, levelUpResultData: LevelData): Promise<void> {
         await this.update({
             data: {
                 level: { value: level },
@@ -284,7 +285,7 @@ export class Lvl0Actor extends Actor {
         }, { diff: true });
     }
 
-    getFirstEmptyScroll(): Lvl0Item | undefined {
+    getFirstEmptyScroll(): Lvl0FoundryItem | undefined {
         let scrolls = this.itemTypes['scroll'];
         if (scrolls) {
             for (let scroll of scrolls) {
