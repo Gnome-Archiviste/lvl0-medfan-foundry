@@ -59,3 +59,20 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 import './components'
+
+import {environment} from './environments/environment';
+
+if (environment.liveServer) {
+    let webSocket = new WebSocket(environment.liveServer);
+    webSocket.onopen = (event) => {
+        console.log('Connected to live server!');
+    }
+
+    webSocket.onmessage = (event) => {
+        console.log(event);
+        if (event.data ===  'reload') {
+            window.location.reload();
+
+        }
+    }
+}
