@@ -57,6 +57,6 @@ export class FoundryDialogBase<TResult> extends Application {
     }
 
     private randomId(): string {
-        return Math.random().toString(36).substring(5, 7) + Math.random().toString(36).substring(5, 7);
+        return Math.random().toString(36).substring(5) + Math.random().toString(36).substring(5);
     }
 }

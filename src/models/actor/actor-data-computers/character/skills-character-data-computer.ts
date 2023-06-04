@@ -41,8 +41,8 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         for (let i = 0; i < skillLevels.length && i < actorData.level.value; i++) {
             let points = skillLevels[i].skillPoints.split(' ');
             for (const point of points) {
-                let pointNumber = +(point.substring(0, 1));
-                let pointType = point.substring(1, 1);
+                let pointNumber = +(point[0]);
+                let pointType = point[1];
                 switch (pointType) {
                     case 'G':
                         actorData.computedData.skills.maximumSkillPoints['general'] += pointNumber;
@@ -64,7 +64,7 @@ export class SkillsCharacterDataComputer extends CharacterDataComputer {
         }
     }
 
-    computeAvailablePoints(actorData) {
+    computeAvailablePoints(actorData: Lvl0CharacterData) {
         let availableSkillPoints = {};
         for (const pointType of SkillsCharacterDataComputer.pointTypes) {
             availableSkillPoints[pointType] = actorData.computedData.skills.maximumSkillPoints[pointType];
