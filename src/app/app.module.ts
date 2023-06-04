@@ -4,6 +4,7 @@ import {createCustomElement} from '@angular/elements';
 import {SpellSelectorComponent} from './spell/spell-selector.component';
 import {SpellModule} from './spell/spell.module';
 import {FoundryModule} from './foundry/foundry.module';
+import {SpellDefinitionSelectorComponent} from './item/spell-definition-selector.component';
 
 @NgModule({
     declarations: [],
@@ -21,6 +22,7 @@ export class AppModule {
 
         const elements: any[] = [
             [SpellSelectorComponent, 'lvl0-spell-selector'],
+            [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
         ];
 
         for (const [component, name] of elements) {

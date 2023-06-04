@@ -6,7 +6,8 @@ import {RollFactory} from '../shared/roll-factory';
 import {FoundryRollFactory} from './foundry-roll-factory';
 import {TranslateService} from '../shared/translate.service';
 import {FoundryTranslateService} from './foundry-translate-service';
-
+import {FoundryDialogService} from './foundry-dialog-service';
+import {DialogService} from '../data-accessor/dialog-service';
 
 @NgModule({
     declarations: [],
@@ -17,6 +18,10 @@ import {FoundryTranslateService} from './foundry-translate-service';
         {
             provide: CharacterAccessorService,
             useClass: FoundryCharacterAccessorService
+        },
+        {
+            provide: DialogService,
+            useClass: FoundryDialogService
         },
         {
             provide: RollFactory,
