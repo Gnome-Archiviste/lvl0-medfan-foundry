@@ -1,3 +1,3 @@
 export interface ItemPropertiesTemplateExtraSkills {
-    extraSkills: {[id: string]: string}
+    extraSkills: {[id: string]: {id: string}}
 }

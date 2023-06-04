@@ -1,6 +1,6 @@
 import {CharacterProperties, Lvl0Actor} from '../../models/actor';
 import {Lvl0Character} from '../data-accessor/models/lvl0-character';
-import {Lvl0ItemData, Lvl0ItemType} from '../../models/item';
+import {Lvl0FoundryItem, Lvl0ItemData, Lvl0ItemType} from '../../models/item';
 import {Lvl0Item} from '../data-accessor/models/lvl0-item';
 import {Injectable} from '@angular/core';
 import {GroupBy, groupBy} from '../shared/group-by';
@@ -32,11 +32,14 @@ export class FoundryToLvl0Mapper {
         };
     }
 
-    public createLvl0ItemFromFoundryItem(item: Item): Lvl0Item {
+    public createLvl0ItemFromFoundryItem(item: Lvl0FoundryItem): Lvl0Item {
         let itemData = item.data;
         let lvl0ItemData = itemData as Lvl0ItemData
         return {
             ...lvl0ItemData,
+            id: item.lvl0Id!,
+            img: item.img,
+            isOwned: item.isOwned,
             name: item.name || ''
         };
     }

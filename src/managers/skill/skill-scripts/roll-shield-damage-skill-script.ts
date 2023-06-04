@@ -3,13 +3,13 @@ import {SkillScript, SkillTestRollResult} from "./skill-script";
 import {EffectManager} from "../../effects";
 import {assertIsCharacter} from '../../../models/actor';
 import {ShieldRollDamageSkillScriptDefinition, SkillDefinition} from '../../../repositories/data';
-import {Lvl0ItemShield} from '../../../models/item';
+import {Lvl0FoundryItemShield} from '../../../models/item';
 import {RollUtil} from '../../../utils/roll-util';
 import {RollFactory} from '../../../utils/roll-factory';
 
 @singleton()
 export class RollShieldDamageSkillScript extends SkillScript {
-    shield?: Lvl0ItemShield;
+    shield?: Lvl0FoundryItemShield;
 
     constructor(
         token: Token,

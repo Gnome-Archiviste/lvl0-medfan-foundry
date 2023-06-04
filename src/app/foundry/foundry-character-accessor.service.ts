@@ -5,6 +5,7 @@ import {Lvl0Character} from '../data-accessor/models/lvl0-character';
 import {Lvl0Actor} from '../../models/actor';
 import {Lvl0FoundryItem} from '../../models/item';
 import {FoundryToLvl0Mapper} from './foundry-to-lvl0-mapper';
+import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 
 // This allow `game` to be resolved
 declare global {
@@ -13,13 +14,16 @@ declare global {
     }
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FoundryCharacterAccessorService extends CharacterAccessorService {
     private readonly characterSubjectByIds: Map<string, Subject<Lvl0Character>> = new Map<string, Subject<Lvl0Character>>();
 
     constructor(
         private readonly ngZone: NgZone,
-        private readonly foundryToLvl0Mapper: FoundryToLvl0Mapper
+        private readonly foundryToLvl0Mapper: FoundryToLvl0Mapper,
+        private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver,
     ) {
         super();
 
@@ -47,13 +51,7 @@ export class FoundryCharacterAccessorService extends CharacterAccessorService {
             return existingSubject;
         }
 
-        let actor: Lvl0Actor;
-        if (id.includes('@')) {
-            let tokenId = id.substring(id.indexOf('@') + 1);
-            actor = canvas?.tokens?.get(tokenId)?.actor as Lvl0Actor
-        } else {
-            actor = game.actors?.get(id) as Lvl0Actor;
-        }
+        let actor = this.foundryLvl0IdResolver.getActorFromLvl0Id(id);
         if (!actor) {
             throw new Error(`Actor '${id}' not found`);
         }

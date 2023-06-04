@@ -1,0 +1,52 @@
+<form class="filter-form" #filterForm="ngForm" [style.display]="selectedSpellDefinition ? 'none' : undefined">
+    <div class="filter-line">
+        <input [(ngModel)]="filterModel.filter" name="filter" type="text" [placeholder]="'Misc.Filter.PlaceHolder' | translate">
+    </div>
+
+    <div class="arcane-levels tabs">
+        Niveau d'arcane:
+        <ng-container *ngFor="let arcaneLevel of arcanesLevels">
+            <a (click)="toggleArcaneLevel($event, arcaneLevel)" [class.active]="filterModel.arcaneLevels.includes(arcaneLevel)" class="level item">
+                {{arcaneLevel}}
+            </a>
+        </ng-container>
+        <a (click)="toggleArcaneLevel($event, 0)" [class.active]="filterModel.arcaneLevels.length === 0" class="level item">
+            Tout
+        </a>
+    </div>
+</form>
+
+<ng-container *ngIf="!selectedSpellDefinition">
+    <div class="spells">
+        <div *ngFor="let spellResult of availableSpells$ | async" class="spell">
+            <div class="header">
+                <img class="icon" src="{{spellResult.obj.icon}}">
+                <h2 class="title" [innerHTML]="highlightSpellName(spellResult)"></h2>
+                <span class="subtitle">Niveau: {{spellResult.obj.level}} - Spe: {{spellResult.obj.specializationName}}</span>
+            </div>
+            <div class="description" [innerHTML]="highlightDescription(spellResult) | markdown"></div>
+            <div class="actions">
+                <button type="button" *ngIf="!spellResult.obj.dependsOnArcaneLevel" (click)="selectSpellDefinition(spellResult.obj)">Choisir</button>
+                <button type="button" *ngIf="spellResult.obj.dependsOnArcaneLevel" (click)="selectSpellDefinition(spellResult.obj)">Choisir...</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="selectedSpell">
+    <div class="selected-spell">
+        <h2>Choisir le niveau d'arcane</h2>
+
+        <div class="arcane-levels">
+            <ng-container *ngFor="let arcaneLevel of arcanesLevels">
+                <a (click)="selectArcaneLevelForSpell(arcaneLevel)" class="level" [class.active]="arcaneLevel === selectedSpellContext.arcaneLevel">
+                    {{arcaneLevel}}
+                </a>
+            </ng-container>
+        </div>
+        <h2>Sort</h2>
+        <lvl0-spell [spell]="selectedSpell"></lvl0-spell>
+        <button type="button" (click)="selectSpell()">Choisir</button>
+    </div>
+</ng-container>
+

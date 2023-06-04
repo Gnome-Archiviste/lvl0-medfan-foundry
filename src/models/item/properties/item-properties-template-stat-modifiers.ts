@@ -5,4 +5,4 @@ export interface ItemPropertiesTemplateStatModifiers {
     modifiers: { [id: string]: ItemModifierInfo };
 }
 
-export type Lvl0ItemWithModifiers = Lvl0FoundryItem & { data: { data: ItemPropertiesTemplateStatModifiers } };
+export type Lvl0FoundryItemWithModifiers = Lvl0FoundryItem & { data: { data: ItemPropertiesTemplateStatModifiers } };

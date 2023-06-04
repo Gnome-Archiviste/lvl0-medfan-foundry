@@ -3,13 +3,13 @@ import {
     ItemModifierInfo,
     ItemPropertiesTemplateStatModifiers,
     Lvl0FoundryItem,
-    Lvl0ItemWithModifiers
+    Lvl0FoundryItemWithModifiers
 } from '../../models/item';
 
 @singleton()
 export class ItemModifierManager {
 
-    async addModifier(item: Lvl0ItemWithModifiers, modifier: ItemModifierInfo) {
+    async addModifier(item: Lvl0FoundryItemWithModifiers, modifier: ItemModifierInfo) {
         let modifiers = item.data.data.modifiers || {};
         let nextId = (Object.keys(modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         await item.update({data: {modifiers: {[nextId]: modifier}}}, {diff: true});

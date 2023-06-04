@@ -1,0 +1,22 @@
+<div class="spell">
+    <div class="header">
+        <img class="icon" [src]="spell.definition.icon">
+        <div>
+            <h2 class="name" *ngIf="overrideSpellName" [innerHTML]="overrideSpellName"></h2>
+            <h2 class="name" *ngIf="!overrideSpellName">{{spell.definition.name}}</h2>
+            <span class="level">Arcane: {{spell.definition.level}}</span><span *ngIf="spell.context.arcaneLevel && spell.context.arcaneLevel !== spell.definition.level"> - (Calculé au niveau d'arcane {{spell.context.arcaneLevel}})</span>
+        </div>
+    </div>
+    <div class="description" [innerHTML]="(overrideDescription || spell.computedData.description) | markdown"></div>
+    <div class="stats">
+        <div class="cost"><span class="label">Coût</span> {{spell.computedData.effectiveCost}} point de mana</div>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.distance" [label]="'distance'" [value]="spell.computedData.distance"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.duration" [label]="'duration'" [value]="spell.computedData.duration"></lvl0-spell-stat-value>
+        <lvl0-spell-stat-value *ngIf="spell.computedData.area" [label]="'area'" [value]="spell.computedData.area"></lvl0-spell-stat-value>
+    </div>
+    <lvl0-spell-stat-value *ngIf="spell.computedData.criticalSuccess" [label]="'criticalSuccess'" [value]="spell.computedData.criticalSuccess"></lvl0-spell-stat-value>
+    <lvl0-spell-stat-value *ngIf="spell.computedData.resilience" [label]="'resilience'" [value]="spell.computedData.resilience"></lvl0-spell-stat-value>
+    <lvl0-spell-stat-value *ngIf="spell.computedData.bonus" [label]="'bonus'" [value]="spell.computedData.bonus"></lvl0-spell-stat-value>
+    <lvl0-spell-stat-value *ngIf="spell.computedData.damage" [label]="'damage'" [value]="spell.computedData.damage"></lvl0-spell-stat-value>
+    <lvl0-spell-stat-value *ngIf="spell.computedData.heal" [label]="'heal'" [value]="spell.computedData.heal"></lvl0-spell-stat-value>
+</div>

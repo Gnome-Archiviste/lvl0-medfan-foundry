@@ -36,32 +36,6 @@
 }
 
 .spell {
-    > * + * {
-        margin-bottom: 8px;
-    }
-
-
-    .header {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-gap: 8px;
-        align-items: center;
-
-        .icon {
-            width: 64px;
-            height: 64px;
-        }
-    }
-
-    .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .label {
-        font-weight: bold;
-    }
-
     .actions {
         display: grid;
         grid-template-columns: 1fr 1fr;

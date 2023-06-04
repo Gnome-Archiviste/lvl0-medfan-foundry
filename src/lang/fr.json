@@ -164,7 +164,17 @@
   "LVL0MF.Spell.Label.heal" : "Soin",
   "LVL0MF.Spell.Label.damage" : "Dégâts",
 
-  "LVL0MF.Misc.Filter.PlaceHolder" : "Utilisez ce champ pour filtrer les résultat",
+  "LVL0MF.Misc.Filter.PlaceHolder" : "Utilisez ce champ pour filtrer les résultat (Nom ou Description)",
+
+  "LVL0MF.Misc.Stat.phy": "Physique",
+  "LVL0MF.Misc.Stat.dex": "Dextérité",
+  "LVL0MF.Misc.Stat.int": "Intelligence",
+  "LVL0MF.Misc.Stat.cha": "Charisme",
+  "LVL0MF.Misc.Stat.per": "Perception",
+  "LVL0MF.Misc.Stat.protection": "Protection",
+  "LVL0MF.Misc.Stat.damage": "Dégâts",
+  "LVL0MF.Misc.Stat.health": "Vie",
+  "LVL0MF.Misc.Stat.mana": "Magie",
 
   "LVL0MF.End" : "Fin de la traduction"
 }

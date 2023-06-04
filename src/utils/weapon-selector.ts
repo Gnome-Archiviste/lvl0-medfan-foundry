@@ -1,6 +1,6 @@
 import {inject, singleton} from 'tsyringe';
 import {DialogAwaiter, WeaponSelectorDialog, WeaponSelectorDialogData} from "../ui/dialog";
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon, WeaponItemProperties, WeaponType} from '../models/item';
+import {Lvl0FoundryItemAmmunition, Lvl0FoundryItemWeapon, WeaponItemProperties, WeaponType} from '../models/item';
 
 @singleton()
 export class WeaponSelector {
@@ -10,7 +10,7 @@ export class WeaponSelector {
     ) {
     }
 
-    async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
+    async selectWeapon(token: Token, weaponType: 'range' | 'melee'): Promise<[weapon?: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition]> {
         if (!token.actor)
             throw new Error(`No actor associated with token: ${token.name} (${token.id})`)
         let itemsByType = token.actor.itemTypes;

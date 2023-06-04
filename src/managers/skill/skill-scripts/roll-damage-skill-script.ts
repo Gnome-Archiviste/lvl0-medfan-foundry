@@ -5,15 +5,15 @@ import {WeaponDamageRollUtil} from "utils/weapon-damage-roll-util";
 import {EffectManager} from "managers/effects";
 import {ElementRepository} from 'repositories';
 import {RollDamageSkillScriptData, RollDamageSkillScriptDefinition, SkillDefinition} from 'repositories/data/skills';
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from 'models/item';
+import {Lvl0FoundryItemAmmunition, Lvl0FoundryItemWeapon} from 'models/item';
 import {foundryAssert} from 'utils/error';
 import {RollFactory} from 'utils/roll-factory';
 import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 
 export class RollDamageSkillScript extends SkillScript {
     data: RollDamageSkillScriptData;
-    ammunition?: Lvl0ItemAmmunition;
-    weapon?: Lvl0ItemWeapon;
+    ammunition?: Lvl0FoundryItemAmmunition;
+    weapon?: Lvl0FoundryItemWeapon;
 
     constructor(
         token: Token,

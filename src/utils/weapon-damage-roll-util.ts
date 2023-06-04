@@ -1,11 +1,11 @@
 import {foundryAssert} from './error';
-import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../models/item/lvl0-item-types';
+import {Lvl0FoundryItemAmmunition, Lvl0FoundryItemWeapon} from '../models/item/lvl0-item-types';
 import {ElementRepository} from '../repositories/element-repository';
 import {container, singleton} from 'tsyringe';
 
 @singleton()
 export class WeaponDamageRollUtil {
-    getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition)
+    getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition)
         : [damageRollFormula: string, damageRollWithAmmunition: string] {
         foundryAssert(weapon.data.data.damage, `Weapon '${weapon.name}' does not have any damage configured`);
 
@@ -26,8 +26,8 @@ export class WeaponDamageRollUtil {
 
     getWeaponAndAmmunitionDamageRolls(
         weaponType: 'range' | 'melee',
-        weapon: Lvl0ItemWeapon,
-        ammunition?: Lvl0ItemAmmunition
+        weapon: Lvl0FoundryItemWeapon,
+        ammunition?: Lvl0FoundryItemAmmunition
     ): [damageRollFormula: string, ammunitionDamageRollFormula?: string] {
         if (!weapon.data.data.damage)
             throw new Error('No damage configured for the weapon ' + weapon.name);
@@ -48,7 +48,7 @@ export class WeaponDamageRollUtil {
     }
 }
 
-Handlebars.registerHelper('weaponDamageFormula', (weaponType: 'range' | 'melee', weapon: Lvl0ItemWeapon) => {
+Handlebars.registerHelper('weaponDamageFormula', (weaponType: 'range' | 'melee', weapon: Lvl0FoundryItemWeapon) => {
     let [weaponRollFormula] = container.resolve(WeaponDamageRollUtil).getWeaponAndAmmunitionDamageRolls(weaponType, weapon);
     let element = container.resolve(ElementRepository).getElementWeaponName(weapon.data.data.element);
 

@@ -8,6 +8,12 @@ import {TranslateService} from '../shared/translate.service';
 import {FoundryTranslateService} from './foundry-translate-service';
 import {FoundryDialogService} from './foundry-dialog-service';
 import {DialogService} from '../data-accessor/dialog-service';
+import {FoundryItemAccessorService} from './foundry-item-accessor.service';
+import {ItemAccessorService} from '../data-accessor/item-accessor-service';
+import {FoundryItemUpdaterService} from './foundry-item-updater.service';
+import {ItemUpdaterService} from '../data-accessor/item-updater.service';
+import {FoundryFileSelectorService} from './foundry-file-selector.service';
+import {FileSelectorService} from '../data-accessor/file-selector.service';
 
 @NgModule({
     declarations: [],
@@ -22,6 +28,18 @@ import {DialogService} from '../data-accessor/dialog-service';
         {
             provide: DialogService,
             useClass: FoundryDialogService
+        },
+        {
+            provide: ItemAccessorService,
+            useClass: FoundryItemAccessorService
+        },
+        {
+            provide: ItemUpdaterService,
+            useClass: FoundryItemUpdaterService
+        },
+        {
+            provide: FileSelectorService,
+            useClass: FoundryFileSelectorService
         },
         {
             provide: RollFactory,

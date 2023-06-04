@@ -36,7 +36,7 @@ export class SpellRepository {
                     allSpells[spellClass][specialization][level] = spellsDefinitions[spellClass][specialization][level].map(s => ({
                         ...s,
                         id: spellClass + '.' + specialization + '.' + level + '.' + s.id,
-                        level: level,
+                        level: +level,
                         specializationName: this.getSpecializationName(spellClass as SpellClass, specialization)
                     }))
                 }

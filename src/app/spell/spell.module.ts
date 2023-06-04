@@ -6,12 +6,17 @@ import {SpellStatValueComponent} from './spell-stat-value.component';
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule} from '@angular/forms';
 import {CdkMenuModule} from '@angular/cdk/menu';
+import { SpellComponent } from './spell.component';
 
 
 @NgModule({
     declarations: [
         SpellSelectorComponent,
-        SpellStatValueComponent
+        SpellStatValueComponent,
+        SpellComponent
+    ],
+    exports: [
+        SpellComponent
     ],
     imports: [
         CommonModule,

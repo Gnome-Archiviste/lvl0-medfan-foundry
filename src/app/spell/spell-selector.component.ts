@@ -2,16 +2,16 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} fr
 import {Lvl0Character} from '../data-accessor/models/lvl0-character';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {BehaviorSubject, combineLatest, map, Observable, Subject, Subscription, withLatestFrom} from 'rxjs';
-import {SpellClass} from '../../repositories';
+import {SpellClass, SpellDefinition} from '../../repositories';
 import {selectAvailableSpells} from '../data-accessor/selectors/character-available-spell-selector';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
 import {SpellUtil} from './spell-util';
 import {Spell, SpellContext} from './spell';
 import {selectCharacterArcaneLevel} from '../data-accessor/selectors/character-arcane-level-selector';
 import {NgForm} from '@angular/forms';
-import {search} from 'fast-fuzzy';
 import {selectCharacterEmptyWands} from '../data-accessor/selectors/character-empty-wand-selector';
 import {selectCharacterFillableWands} from '../data-accessor/selectors/character-fillable-wand-selector';
+import fuzzysort from 'fuzzysort';
 
 type FilterModel = {
     arcaneLevels: number[];
@@ -47,7 +47,7 @@ export class SpellSelectorComponent implements OnInit, OnDestroy {
 
     character$: Observable<Lvl0Character>;
     spells$: Observable<Spell[]>;
-    visibleSpells$: Observable<Spell[]>;
+    visibleSpells$: Observable<Fuzzysort.KeysResults<Spell>>;
     emptyScrollAvailable$: Observable<boolean>;
     emptyWandAvailable$: Observable<boolean>;
     arcanesLevels$: Observable<number[]>;
@@ -133,12 +133,10 @@ export class SpellSelectorComponent implements OnInit, OnDestroy {
                 ];
             }),
             map(([spells, filterForm]: [Spell[], FilterModel]) => {
-                if (!filterForm.filter)
-                    return spells;
-                return search(filterForm.filter, spells, {
-                    keySelector: (obj) => obj.definition.name,
-                    ignoreCase: true,
-                    threshold: 0.7,
+                return fuzzysort.go<Spell>(filterForm.filter, spells, {
+                    keys: ['definition.name', 'computedData.description'],
+                    all: true,
+                    threshold: -20000
                 })
             })
         );
@@ -168,7 +166,23 @@ export class SpellSelectorComponent implements OnInit, OnDestroy {
         this.filterModel$.next(this.filterModel);
     }
 
-    identitySpell(index: number, item: Spell): string {
-        return item.definition.id;
+    identitySpell(index: number, item: Fuzzysort.KeysResult<Spell>): string {
+        return item.obj.definition.id;
+    }
+
+    highlightSpellName(result: Fuzzysort.KeysResult<Spell>) {
+        if (!result[0])
+            return result.obj.definition.name;
+        if (result[0].score == -Infinity)
+            return result.obj.definition.name;
+        return fuzzysort.highlight(result[0], '<b>', '</b>') || '';
+    }
+
+    highlightDescription(result: Fuzzysort.KeysResult<Spell>) {
+        if (!result[1])
+            return result.obj.computedData.description;
+        if (result[1].score == -Infinity)
+            return result.obj.computedData.description;
+        return fuzzysort.highlight(result[1], '<b>', '</b>') || undefined;
     }
 }

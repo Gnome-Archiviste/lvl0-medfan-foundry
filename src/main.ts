@@ -42,8 +42,13 @@ Hooks.once("init", async function () {
 Hooks.once("ready", async function () {
   (window as any).rollSkillManager = container.resolve(RollSkillManager);
   (window as any).rollSpecialityManager = container.resolve(RollSpecialityManager);
-});
 
+  // DEBUG do not commit
+  // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)
+  // game.items!.find(i => i.type === 'weapon').sheet?.render(true)
+  // canvas?.tokens?.get('ksI0ie2fQHaZADrN')?.actor?.items!.get('IEmnMakdAf4UNxGm').sheet?.render(true)
+
+});
 declare global {
     interface LenientGlobalVariableTypes {
         game: never; // the type doesn't matter
@@ -76,3 +81,4 @@ if (environment.liveServer) {
         }
     }
 }
+

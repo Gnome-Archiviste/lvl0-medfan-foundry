@@ -1,21 +1,21 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {AmmunitionType, Lvl0ItemAmmunition, Lvl0ItemWeapon} from 'models/item';
+import {AmmunitionType, Lvl0FoundryItemAmmunition, Lvl0FoundryItemWeapon} from 'models/item';
 
 export interface WeaponSelectorDialogData {
-    weapons: Lvl0ItemWeapon[],
+    weapons: Lvl0FoundryItemWeapon[],
     weaponType: 'range' | 'melee',
-    ammunition: Lvl0ItemAmmunition[],
+    ammunition: Lvl0FoundryItemAmmunition[],
 }
 
 @injectable()
-export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]> {
-    private selectedWeapon?: Lvl0ItemWeapon = undefined;
-    private selectedAmmo?: Lvl0ItemAmmunition = undefined;
+export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [weapon?: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition]> {
+    private selectedWeapon?: Lvl0FoundryItemWeapon = undefined;
+    private selectedAmmo?: Lvl0FoundryItemAmmunition = undefined;
 
     constructor(
         @inject("DIALOG_DATA") dialogData: WeaponSelectorDialogData,
-        @inject("DIALOG_RESULT") result: DialogResultCallback<[weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition]>,
+        @inject("DIALOG_RESULT") result: DialogResultCallback<[weapon?: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition]>,
     ) {
         super(dialogData, result);
     }
@@ -29,8 +29,8 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         };
     }
 
-    protected override getResult(): [weapon?: Lvl0ItemWeapon, ammunition?: Lvl0ItemAmmunition] {
-        let selectedItems: [Lvl0ItemWeapon | undefined, Lvl0ItemAmmunition | undefined] = [undefined, undefined];
+    protected override getResult(): [weapon?: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition] {
+        let selectedItems: [Lvl0FoundryItemWeapon | undefined, Lvl0FoundryItemAmmunition | undefined] = [undefined, undefined];
         if (this.selectedWeapon)
             selectedItems[0] = this.selectedWeapon;
         if (this.selectedAmmo)
@@ -61,7 +61,7 @@ export class WeaponSelectorDialog extends DialogBase<WeaponSelectorDialogData, [
         this.selectWeapon(html, defaultWeapon);
     }
 
-    private selectWeapon(html: JQuery, selectedWeapon: Lvl0ItemWeapon) {
+    private selectWeapon(html: JQuery, selectedWeapon: Lvl0FoundryItemWeapon) {
         this.selectedWeapon = selectedWeapon;
         if (selectedWeapon) {
             if (selectedWeapon.data.type !== 'weapon')

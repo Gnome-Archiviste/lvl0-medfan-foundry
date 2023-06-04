@@ -1,0 +1,79 @@
+:host,
+.editor-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+:host {
+    padding-bottom: 16px;
+}
+
+label {
+    &.one-line {
+        flex: 1;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        input {
+            width: 100%
+        }
+    }
+    &.multi-line {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+.editor-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    >* {
+        flex: 1;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    .item-icon {
+        width: 64px;
+        height: 64px;
+        cursor: pointer;
+    }
+
+    input {
+        height: 48px;
+        padding: 4px;
+        font-size: 2em;
+        flex: 1;
+    }
+}
+
+.spell-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .actions {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        button {
+            flex: 1;
+        }
+    }
+}
+
+input {
+    // Reset
+    width: unset;
+}

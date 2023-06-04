@@ -14,7 +14,8 @@ export class FoundryDialogService extends DialogService {
         let dialogDataId = this.dialogDataService.storeData(data);
         return new Observable<TResult>(subscriber => {
             let dialog = new FoundryDialogBase<TResult>(dialogId, dialogDataId, (result) => {
-                subscriber.next(result);
+                if (result)
+                    subscriber.next(result);
                 subscriber.complete();
             }, dialogParameter);
             dialog.render(true);

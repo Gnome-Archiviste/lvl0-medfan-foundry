@@ -5,12 +5,15 @@ import {SpellSelectorComponent} from './spell/spell-selector.component';
 import {SpellModule} from './spell/spell.module';
 import {FoundryModule} from './foundry/foundry.module';
 import {SpellDefinitionSelectorComponent} from './item/spell-definition-selector.component';
+import {ItemEditorComponent} from './item/item-editor.component';
+import {ItemModule} from './item/item.module';
 
 @NgModule({
     declarations: [],
     imports: [
         BrowserModule,
         SpellModule,
+        ItemModule,
         FoundryModule,
     ],
     providers: [],
@@ -23,6 +26,7 @@ export class AppModule {
         const elements: any[] = [
             [SpellSelectorComponent, 'lvl0-spell-selector'],
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
+            [ItemEditorComponent, 'lvl0-item-editor'],
         ];
 
         for (const [component, name] of elements) {

@@ -78,7 +78,7 @@ export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]:
     return undefined;
 }
 
-export function getItemExtraSkillsIfAvailable(data: Lvl0ItemData): { [id: string]: string } | undefined {
+export function getItemExtraSkillsIfAvailable(data: Lvl0ItemData): { [id: string]: {id: string} } | undefined {
     if (data.type == "armor"
         || data.type == "belt"
         || data.type == "cloak"

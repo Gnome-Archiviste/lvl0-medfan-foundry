@@ -1,7 +1,7 @@
 import {inject, singleton} from 'tsyringe';
 import {Lvl0Actor, Lvl0ActorCharacter} from 'models/actor';
 import {WandConfigRepository} from 'repositories';
-import {Lvl0ItemWand, WandItemPropertiesData} from 'models/item';
+import {Lvl0FoundryItemWand, WandItemPropertiesData} from 'models/item';
 import {RollResult, RollUtil} from 'utils/roll-util';
 import {ActorSpell} from './actor-spell.model';
 import {ItemUtil} from 'utils/item-util';
@@ -44,7 +44,7 @@ export class WandUtil {
         return [spellInNonFullWand, emptyWandAvailable];
     }
 
-    getAvailableWandsForSpell(actor: Lvl0Actor, spellId: string, arcaneLevel: number): Lvl0ItemWand[] {
+    getAvailableWandsForSpell(actor: Lvl0Actor, spellId: string, arcaneLevel: number): Lvl0FoundryItemWand[] {
         let wandConfig = this.wandConfigRepository.getWandConfig(arcaneLevel);
 
         if (!wandConfig)
@@ -58,7 +58,7 @@ export class WandUtil {
             )
     }
 
-    async fillWandWithSpell(testResult: RollResult, wand: Lvl0ItemWand, spell: ActorSpell, actor: Lvl0ActorCharacter): Promise<void> {
+    async fillWandWithSpell(testResult: RollResult, wand: Lvl0FoundryItemWand, spell: ActorSpell, actor: Lvl0ActorCharacter): Promise<void> {
         if (testResult === 'fail') {
             return;
         }
@@ -92,7 +92,7 @@ export class WandUtil {
         }
     }
 
-    async useWand(wand: Lvl0ItemWand) {
+    async useWand(wand: Lvl0FoundryItemWand) {
         if (wand.data.data.charge <= 0) {
             ui.notifications?.warn('La baguette est vide');
             return;

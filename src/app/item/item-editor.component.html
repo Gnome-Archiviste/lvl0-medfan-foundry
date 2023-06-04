@@ -1,0 +1,493 @@
+<ng-container *ngIf="item$ | async; let item">
+    <div class="header">
+        <img [src]="item.img"
+             class="item-icon"
+             (click)="selectImage(item.id, item.img)"
+             [alt]="'Icône de l\'objet ' + item.name"
+        />
+        <input lvl0ItemPropertyField="name"
+               [lvl0Item]="item"
+               [ngModel]="item.name"
+               type="text">
+    </div>
+
+    <h2>Générale</h2>
+    <section class="editor-section generic">
+        <div class="editor-line">
+            <label class="one-line">
+                <span>Encombrement</span>
+                <input lvl0ItemPropertyField="data.clutter"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.clutter"
+                       min="0"
+                       type="number">
+            </label>
+            <label class="one-line">
+                <span>Prix</span>
+                <input lvl0ItemPropertyField="data.price"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.price"
+                       min="0"
+                       type="number">
+            </label>
+            <label class="one-line">
+                <input lvl0ItemPropertyField="data.quantifiable"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.quantifiable"
+                       type="checkbox">
+                <span>Quantifiable</span>
+            </label>
+            <label class="one-line" *ngIf="item.isOwned">
+                <span>Quantity</span>
+                <input lvl0ItemPropertyField="data.quantity"
+                       [disabled]="!item.data.quantifiable"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.quantity"
+                       min="0"
+                       type="number">
+            </label>
+        </div>
+
+        <div *ngIf="canBeEquiped$ | async">
+            <label class="one-line">
+                <input lvl0ItemPropertyField="data.equiped"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.equiped"
+                       type="checkbox">
+                Équipé
+            </label>
+        </div>
+
+        <div class="editor-line">
+            <label class="multi-line">
+                Description
+                <textarea lvl0ItemPropertyField="data.description"
+                          cdkTextareaAutosize
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="10"
+                          [lvl0Item]="item"
+                          [ngModel]="item.data.description"></textarea>
+            </label>
+        </div>
+
+        <div class="editor-line">
+            <label class="multi-line">
+                Details
+                <textarea lvl0ItemPropertyField="data.details"
+                          cdkTextareaAutosize
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="10"
+                          [lvl0Item]="item"
+                          [ngModel]="item.data.details"></textarea>
+            </label>
+        </div>
+
+        <div class="editor-line">
+            <label class="multi-line">
+                Limitation
+                <input lvl0ItemPropertyField="data.restriction"
+                       type="text"
+                       [lvl0Item]="item"
+                       [ngModel]="item.data.restriction">
+            </label>
+        </div>
+
+    </section>
+
+    <section class="editor-section specific">
+        <ng-container [ngSwitch]="item.type">
+            <ng-container *ngSwitchCase="'ammunition'">
+                <h2>Munition / Projectile</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Type
+                        <select lvl0ItemPropertyField="data.ammunitionType"
+                                [lvl0Item]="item"
+                                [ngModel]="ammunition$(item).data.ammunitionType">
+                            <option *ngFor="let ammunitionType of ammunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Dégâts additionnel
+                        <input lvl0ItemPropertyField="data.extraDamage"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="ammunition$(item).data.extraDamage">
+                        <select lvl0ItemPropertyField="data.extraDamageEffect"
+                                [lvl0Item]="item"
+                                [ngModel]="ammunition$(item).data.extraDamageEffect">
+                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Bonus
+                        <input lvl0ItemPropertyField="data.bonus"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="ammunition$(item).data.bonus">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'armor'">
+                <h2>Armure</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Protection
+                        <input lvl0ItemPropertyField="data.protection"
+                               type="number"
+                               [lvl0Item]="item"
+                               [ngModel]="armor$(item).data.protection">
+                    </label>
+                    <label class="one-line">
+                        Malus dextérité
+                        <input lvl0ItemPropertyField="data.dexMalus"
+                               type="number"
+                               [lvl0Item]="item"
+                               [ngModel]="armor$(item).data.dexMalus">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="armor$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'bag'">
+                <h2>Sac</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Lignes supplémentaires
+                        <input lvl0ItemPropertyField="data.extraRows"
+                               type="number"
+                               [lvl0Item]="item"
+                               [disabled]="bag$(item).data.noLimit"
+                               [ngModel]="bag$(item).data.extraRows">
+                    </label>
+                    <label class="one-line">
+                        Colones supplémentaires
+                        <input lvl0ItemPropertyField="data.extraColumns"
+                               type="number"
+                               [lvl0Item]="item"
+                               [disabled]="bag$(item).data.noLimit"
+                               [ngModel]="bag$(item).data.extraColumns">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        <input lvl0ItemPropertyField="data.noLimit"
+                               [lvl0Item]="item"
+                               [ngModel]="bag$(item).data.noLimit"
+                               type="checkbox">
+                        Taille infini
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'belt'">
+                <h2>Ceinture</h2>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="belt$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'cloak'">
+                <h2>Cape</h2>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="cloak$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'hand'">
+                <h2>Avant-Bras / Mains</h2>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="hand$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'handWeapon'">
+                <h2>Arme de pugilat</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Dégâts
+                        <input lvl0ItemPropertyField="data.damage"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="handWeapon$(item).data.damage">
+                        <select lvl0ItemPropertyField="data.element"
+                                [lvl0Item]="item"
+                                [ngModel]="handWeapon$(item).data.element">
+                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="handWeapon$(item).data.immunity">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Bonus
+                        <input lvl0ItemPropertyField="data.bonus"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="handWeapon$(item).data.bonus">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        <input lvl0ItemPropertyField="data.canUseWeapon"
+                               [lvl0Item]="item"
+                               [ngModel]="handWeapon$(item).data.canUseWeapon"
+                               type="checkbox">
+                        Peux utiliser une arme
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'head'">
+                <h2>Tête</h2>
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="head$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'magical'">
+            </ng-container>
+            <ng-container *ngSwitchCase="'misc'">
+            </ng-container>
+            <ng-container *ngSwitchCase="'necklace'">
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="ring$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'potions'">
+            </ng-container>
+            <ng-container *ngSwitchCase="'purse'">
+            </ng-container>
+            <ng-container *ngSwitchCase="'ring'">
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Immunités et Invulnérabilités
+                        <input lvl0ItemPropertyField="data.immunity"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="ring$(item).data.immunity">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'shield'">
+                <h2>Bouclier</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Dégâts
+                        <input lvl0ItemPropertyField="data.damage"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="shield$(item).data.damage">
+                    </label>
+                    <label class="one-line">
+                        Blocage
+                        <input lvl0ItemPropertyField="data.blockValue"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="shield$(item).data.blockValue">
+                    </label>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'scroll'">
+                <h2>Parchemin</h2>
+                <h2>Sort</h2>
+                <div class="spell-selection">
+                    <div class="actions">
+                        <button (click)="openSpellSelector(item)"
+                                type="button">
+                            Choisir...
+                        </button>
+                        <button *ngIf="relatedSpell$ | async; let spell" (click)="copySpellInfoToItem(item, spell)"
+                                type="button">
+                            Copier le nom et l'image du sort
+                        </button>
+                    </div>
+                    <div class="selected-spell" *ngIf="relatedSpell$ | async; let spell">
+                        <lvl0-spell [spell]="spell"></lvl0-spell>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'wand'">
+                <h2>Baguette</h2>
+                <div class="editor-line" *ngIf="item.isOwned">
+                    <label class="one-line">
+                        <input lvl0ItemPropertyField="data.blocked"
+                               [lvl0Item]="item"
+                               [ngModel]="wand$(item).data.blocked"
+                               type="checkbox">
+                        Bloqué ? (Échec critique lors du remplissage)
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        <span>Charge</span>
+                        <input lvl0ItemPropertyField="data.charge"
+                               [lvl0Item]="item"
+                               [ngModel]="wand$(item).data.charge"
+                               min="0"
+                               type="number">
+                    </label>
+                </div>
+
+                <h2>Sort</h2>
+                <div class="spell-selection">
+                    <div class="actions">
+                        <button (click)="openSpellSelector(item)"
+                                type="button">
+                            Choisir...
+                        </button>
+                        <button *ngIf="relatedSpell$ | async; let spell" (click)="copySpellInfoToItem(item, spell)"
+                                type="button">
+                            Copier le nom et l'image du sort
+                        </button>
+                    </div>
+                    <div class="selected-spell" *ngIf="relatedSpell$ | async; let spell">
+                        <lvl0-spell [spell]="spell"></lvl0-spell>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'weapon'">
+                <h2>Arme</h2>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Dégâts
+                        <input lvl0ItemPropertyField="data.damage"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="weapon$(item).data.damage">
+                        <select lvl0ItemPropertyField="data.element"
+                                [lvl0Item]="item"
+                                [ngModel]="weapon$(item).data.element">
+                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="editor-line">
+                    <label class="one-line">
+                        Type
+                        <select lvl0ItemPropertyField="data.weaponType"
+                                [lvl0Item]="item"
+                                [ngModel]="weapon$(item).data.weaponType">
+                            <option *ngFor="let weaponType of weaponTypes | keyvalue" [value]="weaponType.key">{{weaponType.value}}</option>
+                        </select>
+                    </label>
+                    <label class="one-line" *ngIf="weapon$(item).data.weaponType !== 'melee'">
+                        Type de munition
+                        <select lvl0ItemPropertyField="data.usedAmmunitionType"
+                                [lvl0Item]="item"
+                                [ngModel]="weapon$(item).data.usedAmmunitionType">
+                            <option *ngFor="let ammunitionType of usedAmmunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        Nombre de main
+                        <input lvl0ItemPropertyField="data.handCount"
+                               type="number"
+                               [lvl0Item]="item"
+                               [ngModel]="weapon$(item).data.handCount">
+                    </label>
+                </div>
+
+                <div class="editor-line">
+                    <label class="multi-line">
+                        Bonus
+                        <input lvl0ItemPropertyField="data.bonus"
+                               type="text"
+                               [lvl0Item]="item"
+                               [ngModel]="weapon$(item).data.bonus">
+                    </label>
+                </div>
+            </ng-container>
+        </ng-container>
+    </section>
+
+    <section *ngIf="canHaveModifier$ | async" class="editor-section modifiers">
+        <h2>Modificateurs</h2>
+        <ng-container *ngIf="modifiers$ | async; let modifiers">
+            <div *ngFor="let modifier of modifiers | keyvalue" class="editor-line">
+                <select [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.stat'"
+                        [lvl0Item]="item"
+                        [ngModel]="modifier.value.stat">
+                    <option *ngFor="let stat of stats" [value]="stat">
+                        {{stat | translate:'Misc.Stat' }}
+                    </option>
+                </select>
+                +
+                <input [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.value' "
+                       type="number"
+                       [lvl0Item]="item"
+                       [ngModel]="modifier.value.value">
+                <a title="Supprimer modificateur" (click)="removeModifier(item, modifier.key)"><i class="fas fa-trash"></i></a>
+            </div>
+        </ng-container>
+        <button (click)="addModifier(itemWithModifier$(item))">Ajouter un modificateur</button>
+    </section>
+
+    <section *ngIf="canHaveExtraSkills$ | async" class="editor-section extra-skills">
+        <h2>Compétences</h2>
+        <ng-container *ngIf="extraSkills$ | async; let extraSkills">
+            <div *ngFor="let extraSkill of extraSkills | keyvalue" class="editor-line">
+                <select [lvl0ItemPropertyField]="'data.extraSkills.' + extraSkill.key + '.id'"
+                        [lvl0Item]="item"
+                        [ngModel]="extraSkill.value.id">
+                    <ng-container *ngFor="let skillCategory of skillsByCategories | keyvalue">
+                        <optgroup [label]="skillCategory.key">
+                            <option *ngFor="let skill of skillCategory.value | keyvalue" [value]="skillCategory.key + '.' + skill.key">
+                                {{skill.value.name}}
+                            </option>
+                        </optgroup>
+                    </ng-container>
+                </select>
+                <a title="Supprimer compétence" (click)="removeExtraSkill(item, extraSkill.key)"><i class="fas fa-trash"></i></a>
+            </div>
+        </ng-container>
+        <button (click)="addExtraSkill(itemWithExtraSkills$(item))">Ajouter une compétence</button>
+    </section>
+
+</ng-container>
