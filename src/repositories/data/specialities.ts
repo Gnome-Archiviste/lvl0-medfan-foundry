@@ -126,5 +126,10 @@ export default {
         name: "Volée de flèches",
         description: "Le personnage peut utiliser quatre flèches qu’il peut utiliser pour attaquer un ou plusieurs adversaires qui sont près l’un de l’autre.",
         icon: 'icons/skills/ranged/arrows-flying-salvo-yellow.webp',
+    },
+    bivalente_attack: {
+        name: "Attaque bivalente",
+        description: "Le personnage peut faire une attaque physique et lancer un sort.",
+        icon: 'icons/skills/ranged/arrows-flying-salvo-yellow.webp',
     }
 } as { [specialityId: string]: SpecialityData }
