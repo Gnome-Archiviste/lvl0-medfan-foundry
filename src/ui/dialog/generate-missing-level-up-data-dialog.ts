@@ -1,16 +1,17 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Actor} from '../../models/actor';
+import {Lvl0FoundryActor} from '../../models/actor';
 import {StatsCharacterDataComputer} from '../../models/actor/actor-data-computers/character';
 import {RollFactory} from '../../utils/roll-factory';
 import {LevelData} from '../../app/data-accessor/models/lvl0-character';
+import {isActorBasicStatName} from '../../models/shared';
 
 export interface GenerateMissingLevelUpDataDialogData {
     levelWithMissingData: number[];
     additionalHealth: { [level: number]: { value?: number, useStatValue?: string, diceCount?: number } };
     additionalMana: { [level: number]: { value?: number, useStatValue?: string, diceCount?: number } };
     levelWithAdditionalPointInStat: number[];
-    actor: Lvl0Actor;
+    actor: Lvl0FoundryActor;
 }
 
 export interface GenerateMissingLevelUpDataApplicationData {
@@ -74,8 +75,11 @@ export class GenerateMissingLevelUpDataDialog extends DialogBase<GenerateMissing
 
         for (let lvl of this.dialogData.levelWithAdditionalPointInStat) {
             html.find('[name="additionalStat' + lvl + '"]').on('change', ev => {
-                this.levelsData![lvl].additionalStat = (ev.target as HTMLInputElement).value;
-                this.render(true)
+                let statName = (ev.target as HTMLInputElement).value;
+                if (isActorBasicStatName(statName)) {
+                    this.levelsData![lvl].additionalStat = statName;
+                    this.render(true)
+                }
             });
         }
     }

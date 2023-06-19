@@ -1,10 +1,11 @@
 import {inject, injectable} from 'tsyringe';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Actor} from 'models/actor/lvl0-actor';
+import {Lvl0FoundryActor} from 'models/actor/lvl0-foundry-actor';
 import {StatsCharacterDataComputer} from 'models/actor/actor-data-computers/character';
 import {RollFactory} from 'utils/roll-factory';
 import {Statistics} from '../../app/shared/statistic-model';
 import {LevelData} from '../../app/data-accessor/models/lvl0-character';
+import {ActorBasicStatNames, isActorBasicStatName, isActorStatName} from '../../models/shared';
 
 export interface LevelUpDialogData {
     toLevel: number;
@@ -12,14 +13,14 @@ export interface LevelUpDialogData {
     additionalMana: { value?: number, useStatValue?: string, diceCount?: number };
     hasAdditionalPointInStat: boolean;
     hasNewSpeciality: boolean;
-    actor: Lvl0Actor;
+    actor: Lvl0FoundryActor;
     actorStats: Statistics;
 }
 
 export interface LevelUpDialogApplicationData {
     toLevel: number;
     hasAdditionalPointInStat: boolean;
-    additionalStat?: string;
+    additionalStat?: ActorBasicStatNames;
     additionalHealth: { value?: number, diceCount?: number };
     additionalMana: { value?: number, diceCount?: number };
     hasNewSpeciality: boolean;
@@ -31,7 +32,7 @@ export interface LevelUpDialogApplicationData {
 @injectable()
 export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
     public diceData = {};
-    public additionalStat?: string;
+    public additionalStat?: ActorBasicStatNames;
 
     constructor(
         @inject("DIALOG_DATA") dialogData: LevelUpDialogData,
@@ -152,8 +153,11 @@ export class LevelUpDialog extends DialogBase<LevelUpDialogData, LevelData> {
             this.render(true)
         });
         html.find('[name="additionalStat"]').on('change', ev => {
-            this.additionalStat = (ev.target as HTMLInputElement).value;
-            this.render(true)
+            let statName = (ev.target as HTMLInputElement).value;
+            if (isActorBasicStatName(statName)) {
+                this.additionalStat = statName;
+                this.render(true)
+            }
         });
 
         html.find('[data-action]').on('click', async ev => {

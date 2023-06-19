@@ -1,4 +1,4 @@
-import {Lvl0Actor} from './lvl0-actor';
+import {Lvl0FoundryActor} from './lvl0-foundry-actor';
 
-export type Lvl0ActorCharacter = Lvl0Actor & { data: { type: 'character' } }
-export type Lvl0ActorMonster = Lvl0Actor & { data: { type: 'monster' } }
+export type Lvl0ActorCharacter = Lvl0FoundryActor & { data: { type: 'character' } }
+export type Lvl0ActorMonster = Lvl0FoundryActor & { data: { type: 'monster' } }

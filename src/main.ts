@@ -4,7 +4,7 @@ import './error-monitoring';
 import {container} from "tsyringe";
 import './handlebars_helpers';
 import {InitializedGame} from './models/misc/game';
-import {Lvl0Actor} from './models/actor';
+import {Lvl0FoundryActor} from './models/actor';
 import {Lvl0FoundryItem} from './models/item';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
@@ -21,15 +21,8 @@ declare global {
 }
 
 Hooks.once("init", async function () {
-  CONFIG.Actor.documentClass = Lvl0Actor;
+  CONFIG.Actor.documentClass = Lvl0FoundryActor;
   CONFIG.Item.documentClass = Lvl0FoundryItem;
-
-  await loadTemplates([
-    "systems/lvl0mf-sheet/ui/sheets/actor/partials/equipment.hbs",
-    "systems/lvl0mf-sheet/ui/sheets/actor/partials/skills.hbs",
-    "systems/lvl0mf-sheet/ui/sheets/actor/partials/inventory.hbs",
-    "systems/lvl0mf-sheet/ui/sheets/actor/partials/modifiers.hbs",
-  ]);
 
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character'], label: 'Character'});
@@ -46,8 +39,10 @@ Hooks.once("ready", async function () {
   // DEBUG do not commit
   // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)
   // game.items!.find(i => i.type === 'weapon').sheet?.render(true)
-  game.actors!.get('29muKc1C0kokkhGw')!.sheet?.render(true)
+  //game.actors!.get('29muKc1C0kokkhGw')!.sheet?.render(true)
+  game.actors!.find(i => i.data.name.endsWith('Active'))?.sheet?.render(true)
   // canvas?.tokens?.get('ksI0ie2fQHaZADrN')?.actor?.items!.get('IEmnMakdAf4UNxGm').sheet?.render(true)
+    // CONFIG.debug.hooks = true;
 
 });
 declare global {
@@ -55,6 +50,18 @@ declare global {
         game: never; // the type doesn't matter
     }
 }
+
+/* Will use when rework skill messages
+Hooks.on("renderChatMessage", (message: ChatMessage, html: JQuery, data) => {
+    let customElement = message.getFlag('lvl0mf-sheet', 'lvl0CustomElement') as any;
+    if (customElement?.name && customElement?.params) {
+        let element = document.createElement(customElement.name);
+        for (let [key, value] of Object.entries(customElement.params)) {
+            element.setAttribute(key, (value as any).toString())
+        }
+        html.find('.message-content').html(element)
+    }
+});*/
 
 Hooks.once('diceSoNiceReady', (dice3d: Dice3d) => {
   container.resolve(RollSpecialityManager).registerDiceSoNiceColors(dice3d);

@@ -1,12 +1,12 @@
 import {CharacterDataComputer} from "./character-data-computer";
-import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0FoundryActor} from '../../lvl0-foundry-actor';
 import {singleton} from 'tsyringe';
 import {Lvl0CharacterData} from '../../../../app/data-accessor/models/lvl0-character';
 
 @singleton()
 export class ClutterCharacterDataComputer extends CharacterDataComputer {
 
-    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0Actor): void {
+    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0FoundryActor): void {
         let totalSpace = 0;
         let columnsPhy: number[] = [];
         let columnPerPhy = [2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
@@ -41,10 +41,10 @@ export class ClutterCharacterDataComputer extends CharacterDataComputer {
             usedSpacesByItemType[item.type] = (usedSpacesByItemType[item.type] || 0) + item.data.data.clutter * quantity
         }
 
-        usedSpacesByItemType['money'] = actorData.staticInventory.money * 0.01
-            + actorData.staticInventory.money100 * 0.1
-            + actorData.staticInventory.money500 * 0.1
-            + actorData.staticInventory.money1000 * 0.1
+        usedSpacesByItemType['money'] = (actorData.staticInventory.money ?? 0) * 0.01
+            + (actorData.staticInventory.money100 ?? 0) * 0.1
+            + (actorData.staticInventory.money500 ?? 0) * 0.1
+            + (actorData.staticInventory.money1000 ?? 0) * 0.1
 
         if (noLimit) {
             totalSpace = -1;

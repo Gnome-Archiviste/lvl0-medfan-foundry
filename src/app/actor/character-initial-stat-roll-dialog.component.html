@@ -1,0 +1,53 @@
+<div class="roll-stats-dialog">
+    <h2>Rouler les stats du personnage</h2>
+    <ng-container [ngSwitch]="state">
+        <ng-container *ngSwitchCase="'modeSelection'">
+            <p>Vous pouvez choisir le mode utiliser pour rouler les stats:</p>
+            <ul>
+                <li>
+                    5 valeurs aléatoires, sans `1`
+                    <button (click)="selectMode('random-1')">Choisir</button>
+                </li>
+                <li>
+                    Choisir parmi 3 ensemble de valeur aléatoire
+                    <button (click)="selectMode('random-3')">Choisir</button>
+                </li>
+            </ul>
+        </ng-container>
+        <ng-container *ngSwitchCase="'selectColumn'">
+            <p>
+                Choisir une colonne parmi les 3 suivantes. Vous pouvez choisir dans quel stat mettre chaque valeur ensuite.
+            </p>
+            <div class="select-column">
+                <div class="column" *ngFor="let roll of rolls; let index = index">
+                    <div class="dice" *ngFor="let value of roll">
+                        <span class="value">
+                            {{value}}
+                        </span>
+                    </div>
+                    <div class="actions">
+                        <button (click)="selectRoll(index)">Choisir</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'selectValues'">
+            <p>
+                Associer chaque statistique avec les valeurs roulés
+            </p>
+            <div class="select-values">
+                <div class="dice" *ngFor="let value of selectedValues; let index = index">
+                    <span class="value">
+                        {{value}}
+                    </span>
+                    <select [ngModel]="statForValue[index]" (ngModelChange)="selectStat(index, $event)">
+                        <option *ngFor="let statName of statNames" [value]="statName">{{'Misc.Stat.' + statName | translate}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button (click)="valid()">Valider</button>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

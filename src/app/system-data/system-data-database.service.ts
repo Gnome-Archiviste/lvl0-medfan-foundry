@@ -1,5 +1,12 @@
 import {Injectable} from '@angular/core';
-import {JobRepository, RaceRepository, SpellRepository, WandConfigRepository} from '../../repositories';
+import {
+    ItemTypesConfigRepository,
+    JobRepository,
+    RaceRepository,
+    SkillRepository, SpecialityRepository,
+    SpellRepository,
+    WandConfigRepository
+} from '../../repositories';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +16,9 @@ export class SystemDataDatabaseService {
         public readonly jobRepository: JobRepository,
         public readonly raceRepository: RaceRepository,
         public readonly spellRepository: SpellRepository,
-        public readonly wandConfigRepository: WandConfigRepository
+        public readonly specialityRepository: SpecialityRepository,
+        public readonly wandConfigRepository: WandConfigRepository,
+        public readonly skillRepository: SkillRepository,
     ) {
     }
 }

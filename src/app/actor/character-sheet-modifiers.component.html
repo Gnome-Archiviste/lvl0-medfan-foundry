@@ -1,0 +1,67 @@
+<ng-container *ngIf="canEditLevel$ | async">
+    <h2>Level</h2>
+    <input type="text" name="data.level.value" value="{{(level$ | async)?.value}}" data-dtype="Number"/>
+    <button (click)="generateMissingLevelUpData()">Faire les level up pour mettre à jour les point de vie et de mana
+    </button>
+</ng-container>
+
+<h2>Modificateurs supplémentaires</h2>
+<div>
+    <p>Permet au MJ d'ajuster certains détails</p>
+    <div class="modifier-values">
+        <div class="modifier-value header">
+            <span>Nom</span>
+            <span>Stat</span>
+            <span></span>
+            <span>Valeur</span>
+            <span>Permanent</span>
+        </div>
+
+        <ng-container *ngFor="let modifier of modifiers$ | async">
+            <div class="modifier-value">
+                <ng-container *ngIf="canEditModifiers$ | async; else modifierNotEditable">
+                    <input type="text" value="{{modifier.name}}"
+                           (blur)="updateModifierName(modifier.entityId, $event)"/>
+                    <select [ngModel]="modifier.stat" (change)="updateModifierStat(modifier.entityId, $event)">
+                        <option *ngFor="let stat of stats" [value]="stat">{{ stat | translate: 'Misc.Stat' }}</option>
+                    </select>
+                    <span>+</span>
+                    <input type="number" value="{{modifier.value}}"
+                           (change)="updateModifierValue(modifier.entityId, $event)"/>
+                    <input type="checkbox" [checked]="modifier.isPermanent"
+                           (change)="updateModifierIsPermanent(modifier.entityId, $event)">
+                    <a (click)="deleteActorModifier(modifier.entityId)" title="Supprimer modificateur"><i
+                        class="fas fa-trash"></i></a>
+                </ng-container>
+                <ng-template #modifierNotEditable>
+                    <span>{{ modifier.name }}</span>
+                    <span>{{ modifier.stat | translate: 'Misc.Stat' }}</span>
+                    <span>+</span>
+                    <span>{{ modifier.value }}</span>
+                    <input type="checkbox" [checked]="modifier.isPermanent" disabled>
+                </ng-template>
+            </div>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="canEditModifiers$ | async">
+        <button (click)="addActorModifier()">Ajouter un modificateur</button>
+    </ng-container>
+</div>
+<h2>Statistiques gagné lié aux niveaux</h2>
+<div>
+    <div class="level-up-info header">
+        <div class="level">Niveau</div>
+        <div class="health">Pt de vie additionnel</div>
+        <div class="mana">Pt de magie additionnel</div>
+        <div class="stat">Caractéristique</div>
+    </div>
+    <ng-container *ngFor="let levelData of levelUpData$ | async; let i = index">
+        <div class="level-up-info">
+            <div class="level">{{ levelData.level }}</div>
+            <div class="health">{{ levelData.health }}</div>
+            <div class="mana">{{ levelData.mana }}</div>
+            <div class="stat">{{ levelData.additionalStat }}</div>
+        </div>
+        <div *ngIf="i % 4 == 3" class="separator"></div>
+    </ng-container>
+</div>

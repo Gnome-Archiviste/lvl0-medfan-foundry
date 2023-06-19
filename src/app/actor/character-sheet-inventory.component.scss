@@ -1,0 +1,174 @@
+
+.item-line {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 50px 32px 32px 1fr 64px 60px;
+  align-items: center;
+  grid-template-areas: "equiped icon quantity name clutter actions";
+  border-bottom: 1px solid darkgrey;
+  margin-top: 4px;
+
+  .actions {
+    grid-area: actions;
+  }
+
+  .equiped {
+    justify-self: center;
+    grid-area: equiped;
+  }
+
+  .icon {
+    grid-area: icon;
+  }
+
+  .quantity {
+    justify-self: center;
+    grid-area: quantity;
+    text-align: center;
+  }
+
+  .name {
+    grid-area: name;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .damage {
+
+    }
+
+    .description {
+      color: #555;
+    }
+
+    .restriction {
+      color: #555;
+    }
+  }
+
+  .clutter {
+    justify-self: center;
+    grid-area: clutter;
+  }
+}
+
+.bag-full {
+  color: #ba0000;
+}
+
+.clutter-table {
+  display: flex;
+  flex-direction: row;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+
+    .cell {
+      position: relative;
+
+      .description {
+        background: #23221d;
+        border: 1px solid #000;
+        border-radius: 5px;
+        color: #EEE;
+        z-index: 1;
+        visibility: hidden;
+        position: absolute;
+      }
+
+      &:hover {
+        .description {
+          visibility: visible;
+        }
+      }
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid black;
+      margin-top: -1px;
+      margin-left: -1px;
+
+      &[data-item-type=ammunition] {
+        background: #586fc2;
+      }
+
+      &[data-item-type=armor] {
+        background: #58b6c2;
+      }
+
+      &[data-item-type=bag] {
+        background: #58c29d;
+      }
+
+      &[data-item-type=belt] {
+        background: #6bc258;
+      }
+
+      &[data-item-type=cloak] {
+        background: #b2c258;
+      }
+
+      &[data-item-type=foot] {
+        background: #c28658;
+      }
+
+      &[data-item-type=hand] {
+        background: #c25858;
+      }
+
+      &[data-item-type=head] {
+        background: #c258b0;
+      }
+
+      &[data-item-type=magical] {
+        background: #a658c2;
+      }
+
+      &[data-item-type=necklace] {
+        background: #6858c2;
+      }
+
+      &[data-item-type=potions] {
+        background: #586ac2;
+      }
+
+      &[data-item-type=ring] {
+        background: #99c258;
+      }
+
+      &[data-item-type=shield] {
+        background: #c29b58;
+      }
+
+      &[data-item-type=wand] {
+        background: #58c291;
+      }
+
+      &[data-item-type=scroll] {
+        background: #516396;
+      }
+
+      &[data-item-type=handWeapon] {
+        background: #7f9651;
+      }
+
+      &[data-item-type=weapon] {
+        background: #c25858;
+      }
+
+      &[data-item-type=money] {
+        background: #ecb52b;
+      }
+
+      &[data-item-type=misc] {
+        background: #6f6f6f;
+      }
+
+      &[data-item-type=purse] {
+        background: #896327;
+      }
+    }
+  }
+}

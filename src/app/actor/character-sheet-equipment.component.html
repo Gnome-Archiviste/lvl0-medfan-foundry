@@ -1,0 +1,211 @@
+<section class="weapons">
+    <h3>Armes</h3>
+    <div class="weapon-line header">
+        <div class="equiped">Équipé</div>
+        <div class="name">Nom</div>
+        <div class="handCount">Nbre de main</div>
+        <div class="damage">Dégâts</div>
+        <div class="clutter">Encombrement</div>
+    </div>
+    <ng-container *ngFor="let item of weaponsItems$ | async">
+        <div class="weapon-line">
+            <div class="equiped">
+                <input type="checkbox" [checked]="item.data.equiped" (change)="equipItem(item, $event)">
+            </div>
+            <div class="icon"><img src="{{item.img}}"/></div>
+            <div class="name">
+                <div class="title">{{ item.name }}</div>
+                <ng-container *ngIf="item.data.description || item.data.restriction">
+                    <div class="description">
+                        <div class="content">
+                            <div *ngIf="item.data.description" [innerHTML]="item.data.description | markdown">
+                            </div>
+                            <div *ngIf="item.data.restriction">
+                                <strong>Limitation: </strong> {{ item.data.restriction }}
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="handCount">{{ item.data.handCount }}</div>
+
+            <ng-container *ngIf="item.data.weaponType === 'melee-range'; else singleDamage">
+                <div class="damage">
+                    <div>Mêlée: {{ item.data.damage }}</div>
+                    <div>Lancer/Tir: {{ item.data.rangeDamage }}</div>
+                </div>
+            </ng-container>
+            <ng-template #singleDamage>
+                <div class="damage">{{ item.data.damage }}</div>
+            </ng-template>
+
+            <div class="clutter">{{ item.data.clutter }}</div>
+            <div class="actions">
+                <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i
+                    class="fa fa-share"></i></a>
+                <a class="item-control" (click)="editItem(item)" title="Edit Item"><i class="fas fa-edit"></i></a>
+                <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+    </ng-container>
+</section>
+<section class="equipment">
+    <ng-container *ngFor="let slot of armorItems | keyvalue; let last = last">
+
+        <div [class]="['slot', slot.key]">
+            <h3>{{ slot.key | translate: 'Misc.ItemType' }}</h3>
+            <ng-container *ngFor="let item of slot.value | async">
+                <div class="slot-line">
+                    <div class="icon"><img [src]="item.img"/></div>
+                    <div class="info">
+                        <div class="item-name">{{ item.name }}</div>
+                        <ng-container *ngFor="let modifier of itemModifiers(item)">
+                            <div class="modifier"><span
+                                class="stat-{{modifier.stat}}">{{ modifier.stat| uppercase }}</span>
+                                + {{ modifier.value }}
+                            </div>
+                        </ng-container>
+                        <ng-container *ngFor="let extraSkill of itemExtraSkills(item)">
+                            <div class="extra-skill">{{ skillsById[extraSkill].name }}</div>
+                        </ng-container>
+                        <ng-container *ngIf="item.type === 'shield'">
+                            <div class="description">
+                                <strong>Dégât: </strong> {{ item.data.damage }}
+                            </div>
+                            <div class="description">
+                                <strong>Blocage: </strong> {{ item.data.blockValue }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div *ngIf="!last" class="separator"></div>
+    </ng-container>
+</section>
+<section class="arrow">
+    <h3>Flèche spéciales</h3>
+    <div class="info">Encombrement: 1 pour 10 flèches</div>
+    <div class="content">
+        <ng-container *ngFor="let item of arrowsItems$ | async">
+            <div class="ammunition-line">
+                <div class="quantity">
+                    <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                        {{item.data.quantity}}
+                    </lvl0-relative-value-editor>
+                </div>
+                <div class="icon"><img [src]="item.img"/></div>
+                <div class="name">
+                    <div class="title">{{item.name}}</div>
+                    <ng-container *ngIf="item.data.description">
+                        <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                    </ng-container>
+                </div>
+                <div class="actions">
+                    <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i class="fa fa-share"></i></a>
+                    <a class="item-control" (click)="editItem(item)" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>
+<section class="dart">
+    <h3>Billes et dards spéciales</h3>
+    <div class="info">Encombrement: 1 pour 20 billes/dard</div>
+    <div class="content">
+        <ng-container *ngFor="let item of dartMarbleItems$ | async">
+        <div class="ammunition-line">
+            <div class="quantity">
+                <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                    {{item.data.quantity}}
+                </lvl0-relative-value-editor>
+            </div>
+            <div class="icon"><img src="{{item.img}}"/></div>
+            <div class="name">
+                <div class="title">{{item.name}}</div>
+                <ng-container *ngIf="item.data.description">
+                    <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                </ng-container>
+            </div>
+            <div class="actions">
+                <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i class="fa fa-share"></i></a>
+                <a class="item-control" (click)="editItem(item)" title="Edit Item"><i class="fas fa-edit"></i></a>
+                <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+        </ng-container>
+    </div>
+</section>
+<section class="ration">
+    <h3>Rations</h3>
+    <div class="info">Encombrement: 1 pour 5 jours</div>
+    <div class="content">
+        <lvl0-relative-value-editor [value$]="rationCount" [editable]="true" (onChange)="updateRationCount($event)">
+            {{rationCount | async}}
+        </lvl0-relative-value-editor>
+    </div>
+</section>
+<section class="torch">
+    <h3>Torches</h3>
+    <div class="info">Encombrement: 1 pour 4 torches</div>
+    <div class="content">
+        <lvl0-relative-value-editor [value$]="torchCount$" [editable]="true" (onChange)="updateTorchCount($event)">
+            {{torchCount$ | async}}
+        </lvl0-relative-value-editor>
+    </div>
+</section>
+<section class="potions">
+    <h3>Potions</h3>
+    <div class="info">Encombrement: 1 pour 2 potions</div>
+    <div class="content">
+        <ng-container *ngFor="let item of potionItems$ | async">
+        <div class="ammunition-line">
+            <div class="quantity">
+                <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                    {{item.data.quantity}}
+                </lvl0-relative-value-editor>
+            </div>
+            <div class="icon"><img src="{{item.img}}"/></div>
+            <div class="name">
+                <div class="title">{{item.name}}</div>
+                <ng-container *ngIf="item.data.description">
+                    <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                </ng-container>
+            </div>
+            <div class="actions">
+                <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i class="fa fa-share"></i></a>
+                <a class="item-control" (click)="editItem(item)" title="Edit Item"><i class="fas fa-edit"></i></a>
+                <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+        </ng-container>
+    </div>
+</section>
+<section class="money">
+    <h3>Oricaux</h3>
+    <div class="money-detail">
+        <lvl0-relative-value-editor [value$]="money$" [editable]="true"
+                                    (onChange)="updateMoney($event)">{{money$ | async | number}}
+        </lvl0-relative-value-editor> Pièces
+    </div>
+    <div class="money-detail">
+        <lvl0-relative-value-editor [value$]="money100$" [editable]="true"
+                                    (onChange)="updateMoney100($event)">{{money100$ | async | number}}
+        </lvl0-relative-value-editor>
+        Plaquette (100 oricaux)
+    </div>
+    <div class="money-detail">
+        <lvl0-relative-value-editor [value$]="money500$" [editable]="true"
+                                    (onChange)="updateMoney500($event)">{{money500$ | async | number}}
+        </lvl0-relative-value-editor> Plaquette (500 oricaux)
+    </div>
+    <div class="money-detail">
+        <lvl0-relative-value-editor [value$]="money1000$" [editable]="true"
+                                    (onChange)="updateMoney1000($event)">{{money1000$ | async | number}}
+        </lvl0-relative-value-editor> Plaquette (1000 oricaux)
+    </div>
+    <div class="money-detail">
+        Total: <strong>{{totalMoney$ | async | number}}</strong> Oricaux
+    </div>
+</section>

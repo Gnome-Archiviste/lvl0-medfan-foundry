@@ -31,7 +31,7 @@ export class RollSkillManager {
         return +skillValue + +actorStatValue + (extraSkillPoint ? 1 : 0) + skillModifier;
     }
 
-    async rollSkill(token: Token, skillId: string, options = {}): Promise<boolean> {
+    async rollSkill(token: Token | undefined, skillId: string, options = {}): Promise<boolean> {
         if (!token) {
             ui.notifications?.error('Sélectionnez un token avant de faire cette action');
             return false;

@@ -1,7 +1,7 @@
 import {inject, singleton} from 'tsyringe';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
-import {assertIsCharacter, Lvl0Actor} from 'models/actor';
+import {assertIsCharacter, Lvl0FoundryActor} from 'models/actor';
 import {
     ElementRepository,
     SpellActionMagicArmorDefinition,
@@ -27,7 +27,7 @@ export class SpellContext {
     epicFail?: boolean;
     criticalSuccess?: boolean;
 
-    static fromActor(actor: Lvl0Actor): SpellContext {
+    static fromActor(actor: Lvl0FoundryActor): SpellContext {
         let spellContext = new SpellContext();
         if (actor.data.type === 'character') {
             spellContext.arcaneLevel = actor.data.data.computedData.magic.arcaneLevel;
@@ -157,7 +157,7 @@ export class SpellManager {
         return undefined;
     }
 
-    async getAvailableSpells(actor: Lvl0Actor, spellClass: SpellClass): Promise<ActorSpell[]> {
+    async getAvailableSpells(actor: Lvl0FoundryActor, spellClass: SpellClass): Promise<ActorSpell[]> {
         assertIsCharacter(actor);
         let actorData = actor.data.data;
         if (!actorData.computedData.bases.job) {

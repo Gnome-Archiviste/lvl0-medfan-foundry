@@ -127,6 +127,25 @@
   "LVL0MF.Sheet.Tab.Inventory.title" : "Inventaire",
   "LVL0MF.Sheet.Tab.Modifiers.title" : "Modificateurs (MJ)",
   "LVL0MF.Sheet.Tab.Notes.title" : "Notes",
+  "LVL0MF.Sheet.MagicArmor.Label": "Armure magique",
+
+  "LVL0MF.Sheet.SkillCategory.combat.name" : "Combat",
+  "LVL0MF.Sheet.SkillCategory.general.name" : "Général",
+  "LVL0MF.Sheet.SkillCategory.champion.name" : "Champion",
+  "LVL0MF.Sheet.SkillCategory.warrior.name" : "Guerrier",
+  "LVL0MF.Sheet.SkillCategory.ranger.name" : "Forestier",
+  "LVL0MF.Sheet.SkillCategory.mage.name" : "Magicien",
+  "LVL0MF.Sheet.SkillCategory.rogue.name" : "Voleur",
+
+  "LVL0MF.Sheet.Specialities.Title" : "Spécialités",
+
+  "LVL0MF.Sheet.Skills.ConfirmSkillPoints" : "Valider les points de compétences",
+  "LVL0MF.Sheet.Skills.AvailableSkillPoints" : "Point de compétences disponible",
+  "LVL0MF.Sheet.Skills.AvailablePoint.job_combat" : "points à placer dans les habilitées de combat ou de classe",
+  "LVL0MF.Sheet.Skills.AvailablePoint.general" : "points à placer dans les habilitées général",
+  "LVL0MF.Sheet.Skills.AvailablePoint.all" : "points à placer n'importe où",
+  "LVL0MF.Sheet.Skills.AvailablePoint.master" : "points à placer n'importe où (possibilité de cocher les cases expertises \"Maître\")",
+  "LVL0MF.Sheet.Skills.AvailablePoint.prodigy" : "points à placer n'importe où, incluant les cases expertises \"Maître\" ou \"Prodige\"",
 
   "ITEM.TypeAmmunition" : "Munitions",
   "ITEM.TypeArmor" : "Corps",
@@ -155,6 +174,9 @@
   "LVL0MF.RaceCategory.goblinoids": "Goblinoïdes",
   "LVL0MF.RaceCategory.monsters": "Autres monstres",
 
+  "LVL0MF.JobCategory.base": "Base",
+  "LVL0MF.JobCategory.advance": "Avancé",
+
   "LVL0MF.Spell.Label.distance" : "Distance",
   "LVL0MF.Spell.Label.duration" : "Durée",
   "LVL0MF.Spell.Label.area" : "Zone",
@@ -166,6 +188,7 @@
 
   "LVL0MF.Misc.Filter.PlaceHolder" : "Utilisez ce champ pour filtrer les résultat (Nom ou Description)",
 
+  "LVL0MF.Misc.Stat.arcane": "Arcane",
   "LVL0MF.Misc.Stat.phy": "Physique",
   "LVL0MF.Misc.Stat.dex": "Dextérité",
   "LVL0MF.Misc.Stat.int": "Intelligence",
@@ -175,6 +198,42 @@
   "LVL0MF.Misc.Stat.damage": "Dégâts",
   "LVL0MF.Misc.Stat.health": "Vie",
   "LVL0MF.Misc.Stat.mana": "Magie",
+  "LVL0MF.Misc.Stat.experience": "Experience",
+  "LVL0MF.Misc.Stat.movement": "Mouvement",
+  "LVL0MF.Misc.ShortStat.phy": "Phy",
+  "LVL0MF.Misc.ShortStat.dex": "Dex",
+  "LVL0MF.Misc.ShortStat.int": "Int",
+  "LVL0MF.Misc.ShortStat.cha": "Cha",
+  "LVL0MF.Misc.ShortStat.per": "Per",
+
+  "LVL0MF.Misc.ItemType.ammunition" : "Munitions",
+  "LVL0MF.Misc.ItemType.armor" : "Corps",
+  "LVL0MF.Misc.ItemType.bag" : "Sacs",
+  "LVL0MF.Misc.ItemType.belt" : "Ceinture",
+  "LVL0MF.Misc.ItemType.cloak" : "Cape",
+  "LVL0MF.Misc.ItemType.foot" : "Jambes / Pieds",
+  "LVL0MF.Misc.ItemType.hand" : "Avant-bras / Mains",
+  "LVL0MF.Misc.ItemType.head" : "Tête",
+  "LVL0MF.Misc.ItemType.magical" : "Objet magiques",
+  "LVL0MF.Misc.ItemType.misc" : "Objet commun",
+  "LVL0MF.Misc.ItemType.money" : "Oricaux",
+  "LVL0MF.Misc.ItemType.necklace" : "Cou",
+  "LVL0MF.Misc.ItemType.purse" : "Bourse",
+  "LVL0MF.Misc.ItemType.potions" : "Potions",
+  "LVL0MF.Misc.ItemType.ring" : "Bagues",
+  "LVL0MF.Misc.ItemType.shield" : "Bouclier",
+  "LVL0MF.Misc.ItemType.wand" : "Baguette",
+  "LVL0MF.Misc.ItemType.scroll" : "Parchemin",
+  "LVL0MF.Misc.ItemType.handWeapon" : "Gantelet de combat",
+  "LVL0MF.Misc.ItemType.weapon" : "Arme",
+
+
+
+    "LVL0MF.Job.Speciality.water": "Glace/Eau",
+  "LVL0MF.Job.Speciality.electric": "Air/Électricité",
+  "LVL0MF.Job.Speciality.fire": "Feu",
+  "LVL0MF.Job.Speciality.acid": "Acide",
+  "LVL0MF.Job.Speciality.earth": "Minéraux",
 
   "LVL0MF.End" : "Fin de la traduction"
 }

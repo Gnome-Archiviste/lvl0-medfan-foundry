@@ -64,6 +64,28 @@ export enum Lvl0ItemType {
     "weapon"
 }
 
+
+export const Lvl0ItemTypes = [
+    "armor",
+    "ammunition",
+    "bag",
+    "belt",
+    "cloak",
+    "foot",
+    "hand",
+    "head",
+    "magical",
+    "misc",
+    "necklace",
+    "potions",
+    "purse",
+    "ring",
+    "shield",
+    "wand",
+    "scroll",
+    "handWeapon",
+    "weapon"]
+
 export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]: ItemModifierInfo } | undefined {
     if (data.type == 'armor'
         || data.type == 'belt'

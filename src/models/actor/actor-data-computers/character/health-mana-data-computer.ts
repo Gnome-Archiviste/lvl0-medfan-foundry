@@ -1,13 +1,13 @@
 import {singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
-import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0FoundryActor} from '../../lvl0-foundry-actor';
 import {getItemModifiersIfAvailable} from 'models/item';
 import {Lvl0CharacterData} from '../../../../app/data-accessor/models/lvl0-character';
 
 @singleton()
 export class HealthManaDataComputer extends CharacterDataComputer {
 
-    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0Actor): void {
+    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0FoundryActor): void {
         let maxHealth = 0;
         let maxMana = 0;
 

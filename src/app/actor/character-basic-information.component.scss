@@ -1,0 +1,76 @@
+:host {
+  display: grid;
+  grid-template-areas:
+          "name level avatar"
+          "race age avatar"
+          "job size avatar";
+  gap: 8px;
+  grid-template-columns: 1fr 100px 150px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    grid-area: name;
+    input {
+      font-size: 1.5em;
+    }
+  }
+  .race {
+    grid-area: race;
+    .value {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      >* {
+        flex: 1 100px;
+      }
+    }
+  }
+  .avatar {
+    grid-area: avatar;
+    display: grid;
+    grid-template-areas: "logo";
+    .lvl0-logo {
+      grid-area: logo;
+      opacity: 0.2;
+    }
+    .character-face {
+      grid-area: logo;
+      z-index: 1;
+    }
+  }
+  .job {
+    grid-area: job;
+    .value {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      .job-selector,
+      .job-specialization
+      {
+        flex: 1 100px;
+      }
+      .job-specializations {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex: 2 100px;
+        > * {
+          flex: 1 100px;
+        }
+      }
+    }
+  }
+  .level {
+    grid-area: level;
+  }
+  .age {
+    grid-area: age;
+  }
+  .size {
+    grid-area: size;
+  }
+}

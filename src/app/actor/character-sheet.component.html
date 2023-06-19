@@ -1,19 +1,38 @@
-<section class="character-basic-information">
-<input type="text" value="abc">
-</section>
+<ng-container *ngIf="character$ | async; let character">
+    <div class="tab-header">
+        <span><a class="tab" [class.active]="selectedTab === 'character'" (click)="selectTab('character')">{{'Sheet.Tab.Character.title' | translate}}</a></span>
+        <span><a class="tab" [class.active]="selectedTab === 'equipment'" (click)="selectTab('equipment')">{{'Sheet.Tab.Equipment.title' | translate}}</a></span>
+        <span><a class="tab" [class.active]="selectedTab === 'inventory'" (click)="selectTab('inventory')">{{'Sheet.Tab.Inventory.title' | translate}}</a></span>
+        <span><a class="tab" [class.active]="selectedTab === 'modifiers'" (click)="selectTab('modifiers')">{{'Sheet.Tab.Modifiers.title' | translate}}</a></span>
+        <span><a class="tab" [class.active]="selectedTab === 'notes'" (click)="selectTab('notes')">{{'Sheet.Tab.Notes.title' | translate}}</a></span>
+    </div>
+    <section class="character-tab" *ngIf="selectedTab === 'character'">
+        <section class="character-basic-information">
+            <lvl0-character-basic-information [characterId]="character.id"/>
+        </section>
 
-<section class="character-health">
+        <section class="character-stats">
+            <lvl0-character-sheet-stats [characterId]="character.id"/>
+        </section>
 
-</section>
+        <section class="character-effects">
+            <lvl0-character-sheet-effects [characterId]="character.id"/>
+        </section>
 
-<section class="character-mana">
-
-</section>
-
-<section class="character-statistics">
-
-</section>
-
-<section class="character-experience">
-
-</section>
+        <section class="character-skills">
+            <lvl0-character-sheet-skills [characterId]="character.id"/>
+        </section>
+    </section>
+    <section class="equipment-tab" *ngIf="selectedTab === 'equipment'">
+        <lvl0-character-sheet-equipment [characterId]="character.id"></lvl0-character-sheet-equipment>
+    </section>
+    <section class="inventory-tab" *ngIf="selectedTab === 'inventory'">
+        <lvl0-character-sheet-inventory [characterId]="character.id"></lvl0-character-sheet-inventory>
+    </section>
+    <section class="notes-tab" *ngIf="selectedTab === 'modifiers'">
+        <lvl0-character-sheet-modifiers [characterId]="character.id"></lvl0-character-sheet-modifiers>
+    </section>
+    <section class="modifiers-tab" *ngIf="selectedTab === 'notes'">
+        <lvl0-character-sheet-notes [characterId]="character.id"></lvl0-character-sheet-notes>
+    </section>
+</ng-container>

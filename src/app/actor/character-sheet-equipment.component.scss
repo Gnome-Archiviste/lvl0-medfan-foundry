@@ -1,4 +1,5 @@
-.partial-root-equipment {
+:host {
+
   display: grid;
   grid-template-areas:
           "weapons    weapons   weapons"
@@ -8,10 +9,9 @@
           "equipment  torch     torch"
           "equipment  potions   money";
   grid-gap: 8px;
-  grid-template-columns: 200px 1fr 170px;
+  grid-template-columns: 200px 1fr 190px;
 
   > section {
-    border: 1px solid black;
     padding: 4px;
   }
 
@@ -45,6 +45,17 @@
 
   .money {
     grid-area: money;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .money-detail {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      lvl0-relative-value-editor {
+        text-decoration: underline;
+      }
+    }
   }
 
   .equipment {
@@ -82,6 +93,7 @@
           .extra-skill {
             margin-left: 16px;
           }
+
           .description {
             margin-left: 16px;
           }
@@ -121,6 +133,7 @@
         &:not(:last-child) {
           margin-bottom: 8px;
         }
+
         &.header {
           font-weight: bold;
         }
@@ -140,9 +153,12 @@
         }
 
         .name {
-          grid-area: name;          .title {
+          grid-area: name;
+
+          .title {
             font-weight: bold;
           }
+
           .description {
             color: #555;
           }
@@ -183,18 +199,22 @@
       .name {
         grid-area: name;
         position: relative;
+
         .title {
           font-weight: bold;
         }
+
         .description {
           .content {
             position: relative;
+
             > * + * {
               border-top: 1px solid white;
               margin-top: 4px;
               padding-top: 4px;
             }
           }
+
           background: #23221d;
           top: 28px;
           border: 1px solid #000;
@@ -204,6 +224,7 @@
           visibility: hidden;
           position: absolute;
         }
+
         &:hover {
           .description {
             visibility: visible;

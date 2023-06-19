@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@angular/animations": "^15.2.0",
+    "@angular/cdk": "^15.2.3",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
     "@angular/elements": "^15.2.3",
-    "@angular/cdk": "^15.2.3",
     "@angular/forms": "^15.2.0",
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
@@ -28,15 +28,16 @@
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "League-of-Foundry-Developers/foundry-vtt-types#v9.280.0",
     "@angular-devkit/build-angular": "^15.2.4",
     "@angular/cli": "~15.2.4",
     "@angular/compiler-cli": "^15.2.0",
+    "@league-of-foundry-developers/foundry-vtt-types": "League-of-Foundry-Developers/foundry-vtt-types#v9.280.0",
+    "@types/lodash": "^4.14.197",
+    "cors": "^2.8.5",
     "glob": "^7.2.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.6.4",
     "live-server": "^1.2.2",
-    "cors": "^2.8.5",
     "tsyringe": "^4.6.0",
     "typescript": "~4.9.4"
   }

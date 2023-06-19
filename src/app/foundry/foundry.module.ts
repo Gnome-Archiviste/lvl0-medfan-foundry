@@ -14,6 +14,18 @@ import {FoundryItemUpdaterService} from './foundry-item-updater.service';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 import {FoundryFileSelectorService} from './foundry-file-selector.service';
 import {FileSelectorService} from '../data-accessor/file-selector.service';
+import {FoundryActorUpdaterService} from './foundry-actor-udpater.service';
+import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
+import {ActorEffectService} from '../data-accessor/actor-effect.service';
+import {FoundryActorEffectService} from './foundry-actor-effect.service';
+import {ChatService} from '../shared/chat.service';
+import {FoundryChatService} from './foundry-chat.service';
+import {MacroService} from '../shared/macro.service';
+import {FoundryMacroService} from './foundry-macro.service';
+import {FoundrySpecialityService} from './foundry-speciality.service';
+import {SpecialityService} from '../shared/speciality.service';
+import {ItemService} from '../data-accessor/item.service';
+import {FoundryItemService} from './foundry-item.service';
 
 @NgModule({
     declarations: [],
@@ -24,6 +36,22 @@ import {FileSelectorService} from '../data-accessor/file-selector.service';
         {
             provide: CharacterAccessorService,
             useClass: FoundryCharacterAccessorService
+        },
+        {
+            provide: ActorEffectService,
+            useClass: FoundryActorEffectService
+        },
+        {
+            provide: ChatService,
+            useClass: FoundryChatService
+        },
+        {
+            provide: MacroService,
+            useClass: FoundryMacroService
+        },
+        {
+            provide: ActorUpdaterService,
+            useClass: FoundryActorUpdaterService
         },
         {
             provide: DialogService,
@@ -38,8 +66,16 @@ import {FileSelectorService} from '../data-accessor/file-selector.service';
             useClass: FoundryItemUpdaterService
         },
         {
+            provide: SpecialityService,
+            useClass: FoundrySpecialityService
+        },
+        {
             provide: FileSelectorService,
             useClass: FoundryFileSelectorService
+        },
+        {
+            provide: ItemService,
+            useClass: FoundryItemService
         },
         {
             provide: RollFactory,
@@ -48,7 +84,7 @@ import {FileSelectorService} from '../data-accessor/file-selector.service';
         {
             provide: TranslateService,
             useClass: FoundryTranslateService
-        }
+        },
     ]
 })
 export class FoundryModule {

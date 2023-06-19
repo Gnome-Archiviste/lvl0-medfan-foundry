@@ -2,12 +2,12 @@ import {Injectable, NgZone} from '@angular/core';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {BehaviorSubject, Observable, ReplaySubject, Subject} from 'rxjs';
 import {Lvl0Character} from '../data-accessor/models/lvl0-character';
-import {Lvl0Actor} from '../../models/actor';
+import {Lvl0FoundryActor} from '../../models/actor';
 import {Lvl0FoundryItem} from '../../models/item';
 import {FoundryToLvl0Mapper} from './foundry-to-lvl0-mapper';
 import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 
-// This allow `game` to be resolved
+// This allows `game` to be resolved
 declare global {
     interface LenientGlobalVariableTypes {
         game: never; // the type doesn't matter
@@ -29,13 +29,23 @@ export class FoundryCharacterAccessorService extends CharacterAccessorService {
 
         // FIXME: Add hook on actor delete
 
-        Hooks.on('updateActor', (actor: Lvl0Actor, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
+        Hooks.on('updateActor', (actor: Lvl0FoundryActor, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
             this.ngZone.run(() => {
                 this.updateActor(actor);
             })
         })
 
         Hooks.on('updateItem', (item: Lvl0FoundryItem, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
+            this.ngZone.run(() => {
+                this.updateActor(item.actor);
+            })
+        })
+        Hooks.on('deleteItem', (item: Lvl0FoundryItem, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
+            this.ngZone.run(() => {
+                this.updateActor(item.actor);
+            })
+        })
+        Hooks.on('createItem', (item: Lvl0FoundryItem, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
             this.ngZone.run(() => {
                 this.updateActor(item.actor);
             })
@@ -62,7 +72,7 @@ export class FoundryCharacterAccessorService extends CharacterAccessorService {
         return subject;
     }
 
-    private updateActor(actor?: Lvl0Actor | null) {
+    private updateActor(actor?: Lvl0FoundryActor | null) {
         if (!actor) {
             return;
         }
@@ -74,7 +84,7 @@ export class FoundryCharacterAccessorService extends CharacterAccessorService {
 
         let subject = this.characterSubjectByIds.get(actorId);
         if (subject) {
-            subject.next(this.foundryToLvl0Mapper.createLvl0CharacterFromFoundryActor(actor as Lvl0Actor));
+            subject.next(this.foundryToLvl0Mapper.createLvl0CharacterFromFoundryActor(actor as Lvl0FoundryActor));
         }
     }
 }

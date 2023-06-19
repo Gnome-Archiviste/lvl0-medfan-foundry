@@ -55,7 +55,7 @@ export function selectAvailableSpells(systemDataDatabaseService: SystemDataDatab
                 source.pipe(selectCharacterJobSpecializations(systemDataDatabaseService)),
                 source.pipe(selectCharacterMana()),
             ]).subscribe({
-                next([arcaneLevel, jobDefinition, jobSpecializations, mana]) {
+                next([arcaneLevel, jobDefinition, jobSpecializations, mana]: [number, JobDefinition, string[], number]) {
                     subscriber.next(CharacterAvailableSpellsSelector.listAvailableSpells(
                         systemDataDatabaseService,
                         arcaneLevel,

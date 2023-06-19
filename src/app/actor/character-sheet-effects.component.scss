@@ -1,0 +1,26 @@
+h3 {
+  text-align: center;
+  font-weight: bold;
+  margin-block: 8px;
+}
+.effect-values {
+  .effect-value {
+    &.header {
+      font-weight: bold;
+    }
+
+    margin: 0 8px;
+
+    display: grid;
+    grid-gap: 8px;
+    align-items: center;
+    grid-template-columns: 24px 1fr 1fr 150px auto;
+  }
+}
+.separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 80%;
+  margin: 16px auto;
+}

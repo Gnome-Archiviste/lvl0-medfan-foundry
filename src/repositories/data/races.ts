@@ -1,93 +1,97 @@
-export interface RaceDefinition {
+export interface RaceDefinitionBase {
     readonly name: string;
-    readonly display_subrace: boolean;
+    readonly hasRaceSpecifier: boolean;
     readonly bonusStat: string;
     readonly extraSkillIds?: string[];
+}
+
+export interface RaceDefinition extends RaceDefinitionBase {
+    readonly id: string;
 }
 
 export default {
     base: {
         halfelf: {
             name: "Demi-Elfe",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'dex'
         },
         elf: {
             name: "Elfe",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'cha'
         },
         hauflin: {
             name: "Haufelin",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'per'
         },
         human: {
             name: "Humain",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'int'
         },
         dwarf: {
             name: "Nain",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'phy'
         }
     },
     anthropomorph: {
         katachas: {
             name: "Katachas",
-            display_subrace: true,
+            hasRaceSpecifier: true,
             bonusStat: 'dex'
         },
         canissabilys: {
             name: "Canissabilys",
-            display_subrace: true,
+            hasRaceSpecifier: true,
             bonusStat: 'per'
         },
         ekydeos: {
             name: "Ekydeös",
-            display_subrace: true,
+            hasRaceSpecifier: true,
             bonusStat: 'phy'
         },
         gryvolier: {
             name: "Gryvolier",
-            display_subrace: true,
+            hasRaceSpecifier: true,
             bonusStat: 'cha'
         },
         zelosaur: {
             name: "Zélosaure",
-            display_subrace: true,
+            hasRaceSpecifier: true,
             bonusStat: 'int'
         }
     },
     fantastic: {
         leprechaun: {
             name: "Farfadet",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'per',
             extraSkillIds: ['ranger.move_silently']
         },
         fairy: {
             name: "Fée",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'cha',
             extraSkillIds: ['ranger.move_silently']
         },
         gnome: {
             name: "Gnome",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'int',
             extraSkillIds: ['ranger.move_silently']
         },
         pixie: {
             name: "Lutin",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'dex',
             extraSkillIds: ['ranger.move_silently']
         },
         pooka: {
             name: "Pooka",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'phy',
             extraSkillIds: ['ranger.move_silently']
         }
@@ -95,55 +99,55 @@ export default {
     goblinoids: {
         halforc: {
             name: "Demi-Ork",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'cha'
         },
         goblin: {
             name: "Gobelin",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'dex'
         },
         hobgoblin: {
             name: "Hobgobelin",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'int'
         },
         korrigan: {
             name: "Korrigan",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'per'
         },
         orc: {
             name: "Ork",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'phy'
         }
     },
     monsters: {
         bonhemseptar: {
             name: "Bonhem-Septar",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'dex'
         },
         cambion: {
             name: "Cambion",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'int'
         },
         dokalben: {
             name: "Dokälben",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'cha'
         },
         knacker: {
             name: "Knacker",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'per'
         },
         revenant: {
             name: "Revenant",
-            display_subrace: false,
+            hasRaceSpecifier: false,
             bonusStat: 'phy'
         }
     }
-} as { [categoryId: string]: { [raceId: string]: RaceDefinition } };
+} as { [categoryId: string]: { [raceId: string]: RaceDefinitionBase } };

@@ -1,0 +1,39 @@
+<fieldset class="available-point" *ngIf="haveAvailableSkillPointsOrPendingPoints$ | async">
+    <legend>{{'Sheet.Skills.AvailableSkillPoints' | translate}}</legend>
+    <ul>
+        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.job_combat; let availablePoints">
+            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.job_combat' | translate}}
+        </li>
+        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.general; let availablePoints">
+            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.general' | translate}}
+        </li>
+        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.all; let availablePoints">
+            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.all' | translate}}
+        </li>
+        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.master; let availablePoints">
+            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.master' | translate}}
+        </li>
+        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.prodigy; let availablePoints">
+            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.prodigy' | translate}}
+        </li>
+    </ul>
+    <button (click)="validPendingPoints()">{{'Sheet.Skills.ConfirmSkillPoints' | translate}}</button>
+</fieldset>
+<div class="skills">
+    <div class="job-categories">
+        <ng-container *ngFor="let categoryId of orderedJobsSkillCategoryIds$ | async">
+            <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
+                                 [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
+                                 [skills]="skillsByCategories[categoryId]"/>
+        </ng-container>
+        <lvl0-character-specialities [characterId]="characterId" />
+    </div>
+
+    <div class="common-categories">
+        <ng-container *ngFor="let categoryId of commonSkillCategoryIds">
+            <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
+                                 [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
+                                 [skills]="skillsByCategories[categoryId]"/>
+        </ng-container>
+    </div>
+</div>

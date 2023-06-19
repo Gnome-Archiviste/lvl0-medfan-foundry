@@ -1,14 +1,14 @@
 import {inject, injectable} from 'tsyringe';
 import {ActorSpell, WandUtil} from 'managers/spell';
 import {DialogBase, DialogResultCallback} from './dialog-base';
-import {Lvl0Actor} from 'models/actor';
+import {Lvl0FoundryActor} from 'models/actor';
 import {InitializedGame} from 'models/misc/game';
 import {MacroUtil} from 'utils/macro-util';
 import {SpellClass} from '../../repositories';
 
 export interface SpellSelectorDialogData {
     spells: ActorSpell[];
-    actor: Lvl0Actor;
+    actor: Lvl0FoundryActor;
     spellClass: SpellClass;
 }
 

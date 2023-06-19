@@ -5,8 +5,8 @@ import {JobDefinition} from '../../../repositories';
 import {selectCharacterJobDefinition} from './character-job-definition-selector';
 import _ from 'lodash';
 
-export class CharacterJobSpecializationsDefinitionSelector {
-    static getJobSpecializationsDefinition(
+export class CharacterJobSpecializationsSelector {
+    static getJobSpecializations(
         character: Lvl0Character,
         jobDefinition: JobDefinition | undefined,
     ): string[] {
@@ -14,7 +14,13 @@ export class CharacterJobSpecializationsDefinitionSelector {
             return [];
 
         if (jobDefinition.spellSpecialization === 'useSpecializations') {
-            return character.data.job.specializations;
+            if (jobDefinition.specializations && jobDefinition.maxSpecializations) {
+                if (character.data.job.specializations.length == jobDefinition.maxSpecializations) {
+                    return character.data.job.specializations;
+                }
+                return jobDefinition.specializations.slice(0, jobDefinition.maxSpecializations);
+            }
+            return [];
         } else if (jobDefinition.spellSpecialization) {
             return [jobDefinition.spellSpecialization];
         } else {
@@ -31,7 +37,7 @@ export function selectCharacterJobSpecializations(systemDataDatabaseService: Sys
                 source.pipe(selectCharacterJobDefinition(systemDataDatabaseService)),
             ]).subscribe({
                 next([character, jobDefinition]) {
-                    subscriber.next(CharacterJobSpecializationsDefinitionSelector.getJobSpecializationsDefinition(character, jobDefinition));
+                    subscriber.next(CharacterJobSpecializationsSelector.getJobSpecializations(character, jobDefinition));
                 },
                 error(error) {
                     subscriber.error(error);

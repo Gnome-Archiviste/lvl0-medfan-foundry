@@ -1,0 +1,115 @@
+<section class="stats">
+    <fieldset class="stat health">
+        <legend>{{'Misc.Stat.health' | translate}}</legend>
+        <div class="value">
+            <lvl0-relative-value-editor [value$]="characterHealth$" (onChange)="updateHealth($event)">
+                {{characterHealth$ | async}} / {{characterMaxHealth$ | async}}
+            </lvl0-relative-value-editor>
+        </div>
+        <ng-container *ngIf="characterMagicArmor$ | async as magicArmor">
+            <div class="magic-armor">
+                <span>{{'Sheet.MagicArmor.Label' | translate}}</span>
+                <span class="value">
+                    <lvl0-relative-value-editor [value$]="characterMagicArmorRemaining$" (onChange)="updateMagicArmorRemaining(magicArmor.effectId, $event)">
+                        {{magicArmor.remainingArmorPoint}}
+                    </lvl0-relative-value-editor>
+                </span>
+            </div>
+        </ng-container>
+    </fieldset>
+    <fieldset class="stat armor">
+        <legend>{{'Misc.Stat.protection' | translate}}</legend>
+        <span class="value">{{characterArmor$ | async}}</span>
+    </fieldset>
+    <fieldset class="stat mana">
+        <legend>{{'Misc.Stat.mana' | translate}}</legend>
+        <div class="value">
+            <lvl0-relative-value-editor [value$]="characterMana$" (onChange)="updateMana($event)">
+                {{characterMana$ | async}} / {{characterMaxMana$ | async}}
+            </lvl0-relative-value-editor>
+        </div>
+    </fieldset>
+    <fieldset class="stat arcane">
+        <legend>{{'Misc.Stat.arcane' | translate}}</legend>
+        <span class="value">{{characterArcaneLevel$ | async}}</span>
+    </fieldset>
+
+</section>
+<section class="stats stats-basics">
+    <fieldset class="stat phy">
+        <legend>{{'Misc.Stat.phy' | translate}}</legend>
+        <span class="value stat-phy">
+            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPhy$" (onChange)="updateInitialStat($event, 'phy')">
+                {{characterPhy$ | async}}
+            </lvl0-relative-value-editor>
+        </span>
+    </fieldset>
+    <fieldset class="stat dex">
+        <legend>{{'Misc.Stat.dex' | translate}}</legend>
+        <span class="value stat-dex">
+            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialDex$" (onChange)="updateInitialStat($event, 'dex')">
+                {{characterDex$ | async}}
+            </lvl0-relative-value-editor>
+        </span>
+    </fieldset>
+    <fieldset class="stat int">
+        <legend>{{'Misc.Stat.int' | translate}}</legend>
+        <span class="value stat-int">
+            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialInt$" (onChange)="updateInitialStat($event, 'int')">
+                {{characterInt$ | async}}
+            </lvl0-relative-value-editor>
+        </span>
+    </fieldset>
+    <fieldset class="stat cha">
+        <legend>{{'Misc.Stat.cha' | translate}}</legend>
+        <span class="value stat-cha">
+            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialCha$" (onChange)="updateInitialStat($event, 'cha')">
+                {{characterCha$ | async}}
+            </lvl0-relative-value-editor>
+        </span>
+    </fieldset>
+    <fieldset class="stat per">
+        <legend>{{'Misc.Stat.per' | translate}}</legend>
+        <span class="value stat-per">
+            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPer$" (onChange)="updateInitialStat($event, 'per')">
+                {{characterPer$ | async}}
+            </lvl0-relative-value-editor>
+        </span>
+    </fieldset>
+    <fieldset class="stat roll-dice-initial-stat" *ngIf="!(characterLevel$ | async)?.value">
+        <legend>Valeur initiales</legend>
+        <button (click)="openRollDiceInitialStat()">Lancer les dés</button>
+    </fieldset>
+</section>
+
+<section class="stats">
+    <fieldset class="stat experience">
+        <legend>{{'Misc.Stat.experience' | translate}}</legend>
+        <div class="value">
+            <lvl0-relative-value-editor [value$]="characterExperience$" (onChange)="updateExperience($event)" *ngIf="nextLevelExperience$ | async">
+                {{characterExperience$ | async}} / {{nextLevelExperience$ | async}}
+            </lvl0-relative-value-editor>
+
+
+            <ng-template #levelUpButton let-nextLevelExperience="nextLevelExperience">
+                <ng-container *ngIf="character$ | async as character">
+                <ng-container *ngIf="characterJob$ | async as characterJob">
+                <ng-container *ngIf="characterRace$ | async as characterRace">
+                    <button *ngIf="characterCanLevelUp$ | async" (click)="openLevelUpDialog(character, characterJob, characterRace, nextLevelExperience)">Level Up!</button>
+                </ng-container>
+                </ng-container>
+                </ng-container>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="levelUpButton; context: {nextLevelExperience: nextLevelExperience$ | async}">
+            </ng-container>
+        </div>
+    </fieldset>
+
+
+    <fieldset class="stat movement">
+        <legend>{{'Misc.Stat.movement' | translate}}</legend>
+        <span class="value">
+            {{characterMovement$ | async}} (<span class="stat-phy">{{'Misc.ShortStat.phy' | translate}}</span> + <span class="stat-dex">{{'Misc.ShortStat.dex' | translate}}</span>)
+        </span>
+    </fieldset>
+</section>

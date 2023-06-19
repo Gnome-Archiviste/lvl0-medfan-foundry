@@ -7,16 +7,18 @@ import {
     FootItemProperties,
     HandItemProperties,
     HandWeaponItemProperties,
-    HeadItemProperties, ItemPropertiesTemplateExtraSkills, ItemPropertiesTemplateStatModifiers,
+    HeadItemProperties,
+    ItemPropertiesTemplateExtraSkills,
+    ItemPropertiesTemplateStatModifiers,
     MagicalItemProperties,
     MiscItemProperties,
     NecklaceItemProperties,
     PotionsItemProperties,
     PurseItemProperties,
     RingItemProperties,
-    ScrollItemProperties, ScrollItemPropertiesData,
+    ScrollItemProperties,
     ShieldItemProperties,
-    WandItemProperties, WandItemPropertiesData,
+    WandItemProperties,
     WeaponItemProperties
 } from '../../../models/item';
 
@@ -68,5 +70,6 @@ export type Lvl0Item =
     | Lvl0ItemHandWeapon
     | Lvl0ItemWeapon;
 
-export type Lvl0ItemWithModifiers = Lvl0Item & {data: ItemPropertiesTemplateStatModifiers};
-export type Lvl0ItemWitExtraSkills = Lvl0Item & {data: ItemPropertiesTemplateExtraSkills};
+export type Lvl0ItemWithModifiers = Lvl0Item & { data: ItemPropertiesTemplateStatModifiers };
+export type Lvl0ItemWitExtraSkills = Lvl0Item & { data: ItemPropertiesTemplateExtraSkills };
+

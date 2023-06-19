@@ -1,6 +1,6 @@
 import {inject, singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
-import {Lvl0Actor} from '../../lvl0-actor';
+import {Lvl0FoundryActor} from '../../lvl0-foundry-actor';
 import {SpecialityDefinition, SpecialityRepository} from 'repositories';
 import {Lvl0CharacterData} from '../../../../app/data-accessor/models/lvl0-character';
 
@@ -13,7 +13,7 @@ export class SpecialityCharacterDataComputer extends CharacterDataComputer {
         super();
     }
 
-    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0Actor) {
+    override computeCharacter(actorData: Lvl0CharacterData, actor: Lvl0FoundryActor) {
         let specialityLevels = actorData.computedData.bases.job?.specialityLevels;
         let specialitiesCount = 0;
 

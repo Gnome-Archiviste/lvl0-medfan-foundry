@@ -1,1 +1,29 @@
 @import '@angular/cdk/overlay-prebuilt.css';
+
+:root {
+    --color-stat-phy: #cf2541;
+    --color-stat-dex: #3da610;
+    --color-stat-int: #0633ff;
+    --color-stat-cha: #ff9500;
+    --color-stat-per: #ab31d8;
+}
+
+.stat-phy {
+    color: var(--color-stat-phy);
+}
+
+.stat-dex {
+    color: var(--color-stat-dex);
+}
+
+.stat-int {
+    color: var(--color-stat-int);
+}
+
+.stat-cha {
+    color: var(--color-stat-cha);
+}
+
+.stat-per {
+    color: var(--color-stat-per);
+}

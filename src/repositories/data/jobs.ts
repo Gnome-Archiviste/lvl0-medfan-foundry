@@ -1,15 +1,20 @@
-export interface JobDefinition {
+export interface JobDefinitionBase {
     readonly name: string;
     readonly spellClass?: SpellClass;
     readonly spellSpecialization?: string;
     readonly hasJobSpecialization?: boolean;
     readonly maxSpecializations?: number;
-    readonly specializations?: {[techName: string]: string};
+    readonly specializations?: string[];
     readonly healthLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
     readonly manaLevels: { value?: number, useStatValue?: string, diceCount?: number }[];
     readonly arcaneLevels?: number[];
     readonly requirements: JobRequirement[];
     readonly specialityLevels: number[];
+}
+
+export interface JobDefinition extends JobDefinitionBase {
+    readonly id: string;
+    readonly skillCategoryId: string;
 }
 
 export enum SpellClass {
@@ -199,13 +204,13 @@ export default {
             spellSpecialization: 'useSpecializations',
             hasJobSpecialization: false,
             maxSpecializations: 2,
-            specializations: {
-                'water': 'Glace/Eau',
-                'electric': 'Air/Électricité',
-                'fire': 'Feu',
-                'acid': 'Acide',
-                'earth': 'Minéraux',
-            }
+            specializations: [
+                'water',
+                'electric',
+                'fire',
+                'acid',
+                'earth'
+            ]
         },
         enchanter: {
             name: "Enchanteur",
@@ -226,4 +231,4 @@ export default {
             hasJobSpecialization: false
         }
     }
-} as {base: { [jobId: string]: JobDefinition }, advance: { [jobId: string]: ExtensionJobDefinition} }
+} as { base: { [jobId: string]: JobDefinitionBase }, advance: { [jobId: string]: ExtensionJobDefinition } }

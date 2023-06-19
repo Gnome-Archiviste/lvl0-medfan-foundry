@@ -38,7 +38,11 @@
           "value": "1m"
         },
         "notes": {
-          "content": ""
+          "content": "",
+          "mode": "markdown"
+        },
+        "levelUpData": {
+            "levels": {}
         }
       },
       "stats": {

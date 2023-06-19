@@ -1,0 +1,65 @@
+<ng-container *ngIf="data">
+    <h2>Passage au niveau <strong>{{data.toLevel}}</strong></h2>
+    <div *ngIf="data.toLevel === 1">
+        <div class="dices">
+            <span>Gain de 2d6 oricaux</span>
+            <div class="inputs" *ngIf="moneyDices">
+                <input type="number" [(ngModel)]="moneyDices[0]" />
+                <input type="number" [(ngModel)]="moneyDices[1]" />
+                <span>
+                    <button (click)="rollMoneyDices()">Rouler les dés</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="data.additionalHealth?.value as value">
+        Gain de {{value}} point(s) de vie
+    </div>
+    <div *ngIf="data.additionalHealth?.diceCount as diceCount">
+        <div class="dices">
+            Gain de {{diceCount}}d6 point(s) de vie
+            <div class="inputs" *ngIf="additionalHealthDices">
+                <ng-container *ngFor="let d of generateArray(diceCount); let index = index">
+                    <input type="number" [(ngModel)]="additionalHealthDices[index]"/>
+                </ng-container>
+                <span>
+                    <button (click)="rollHealthDice()">Rouler les dés</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="data.additionalMana?.value as value">
+        Gain de {{value}} point(s) de mana
+    </div>
+    <div *ngIf="data.additionalMana?.diceCount as diceCount">
+        <div>
+            Gain de {{diceCount}}d6 point(s) de mana
+        </div>
+        <div class="inputs" *ngIf="additionalManaDices">
+            <ng-container *ngFor="let d of generateArray(diceCount); let index = index">
+                <input type="number" [(ngModel)]="additionalManaDices[index]"/>
+            </ng-container>
+            <span>
+                <button (click)="rollManaDice()">Rouler les dés</button>
+            </span>
+        </div>
+    </div>
+    <ng-container *ngIf="data.hasAdditionalPointInStat">
+        <div class="form-group">
+            <label>Gain d'un point dans une caractéristique</label>
+            <div class="form-fields">
+                <ng-container *ngFor="let basicStat of basicStats">
+                    <label>
+                        <input [value]="basicStat" type="radio" [(ngModel)]="additionalStat">
+                        {{basicStat}}
+                    </label>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <div class="actions">
+        <button (click)="cancel()">Annuler</button>
+        <button (click)="valid()" [disabled]="!isValid()">Valider</button>
+    </div>
+</ng-container>
+

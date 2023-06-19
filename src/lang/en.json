@@ -128,6 +128,7 @@
   "LVL0MF.Sheet.Tab.Inventory.title" : "Inventory",
   "LVL0MF.Sheet.Tab.Modifiers.title" : "Modifiers (GM)",
   "LVL0MF.Sheet.Tab.Notes.title" : "Notes",
+  "LVL0MF.Sheet.MagicArmor.Label": "Magic Armor",
 
   "ITEM.TypeAmmunition" : "Ammunition",
   "ITEM.TypeArmor" : "Body",
@@ -162,6 +163,30 @@
   "LVL0MF.Spell.Label.bonus" : "Bonus",
   "LVL0MF.Spell.Label.heal" : "Heal",
   "LVL0MF.Spell.Label.damage" : "Damage",
+
+  "LVL0MF.Misc.Stat.arcane": "Arcane",
+  "LVL0MF.Misc.Stat.phy": "Physique",
+  "LVL0MF.Misc.Stat.dex": "Dextérité",
+  "LVL0MF.Misc.Stat.int": "Intelligence",
+  "LVL0MF.Misc.Stat.cha": "Charisme",
+  "LVL0MF.Misc.Stat.per": "Perception",
+  "LVL0MF.Misc.Stat.protection": "Protection",
+  "LVL0MF.Misc.Stat.damage": "Dégâts",
+  "LVL0MF.Misc.Stat.health": "Vie",
+  "LVL0MF.Misc.Stat.mana": "Magie",
+  "LVL0MF.Misc.Stat.experience": "Experience",
+  "LVL0MF.Misc.Stat.movement": "Movement",
+  "LVL0MF.Misc.ShortStat.phy": "Phy",
+  "LVL0MF.Misc.ShortStat.dex": "Dex",
+  "LVL0MF.Misc.ShortStat.int": "Int",
+  "LVL0MF.Misc.ShortStat.cha": "Cha",
+  "LVL0MF.Misc.ShortStat.per": "Per",
+
+  "LVL0MF.Job.Speciality.water": "Ice/Water",
+  "LVL0MF.Job.Speciality.electric": "Air/Electricity",
+  "LVL0MF.Job.Speciality.fire": "Fire",
+  "LVL0MF.Job.Speciality.acid": "Acid",
+  "LVL0MF.Job.Speciality.earth": "Earth",
 
   "LVL0MF.End" : "End of Translation"
 

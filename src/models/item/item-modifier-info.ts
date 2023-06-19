@@ -1,5 +1,7 @@
+import {ActorStatNames} from '../shared';
+
 export interface ItemModifierInfo {
-    stat: 'protection' | 'cha' | 'int' | 'per' | 'phy' | 'dex' | 'health' | 'mana';
+    stat: ActorStatNames;
     value: number;
 }
 

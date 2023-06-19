@@ -1,17 +1,21 @@
-import {JobDefinition, RaceDefinition, SpecialityDefinition} from '../../../repositories';
+import {JobDefinition, RaceDefinition, SkillDefinition, SpecialityDefinition} from '../../../repositories';
 import {Statistics} from '../../shared/statistic-model';
 import {Lvl0ActorEffect} from '../../../managers/effects';
 import {Lvl0Item} from './lvl0-item';
 import {GroupBy} from '../../shared/group-by';
+import {ActorBasicStatNames, ActorStatNames} from '../../../models/shared';
 
 export interface Lvl0Character {
+    readonly id: string
     readonly name: string;
     readonly data: Lvl0CharacterData;
     readonly items: Lvl0Item[];
     readonly itemsByType: GroupBy<Lvl0Item, 'type'>;
+    readonly img: string | null;
 }
 
 export type Lvl0CharacterModifiers = { [key: string]: CharacterModifierInfo };
+
 
 export interface Lvl0CharacterData {
     /**
@@ -20,21 +24,51 @@ export interface Lvl0CharacterData {
     readonly computedData: ComputedCharacterData;
     readonly levelUpData: LevelUpData;
     readonly staticInventory: StaticInventoryData;
-    readonly skills: { readonly [key: string]: SkillValue };
+    readonly skills: CharacterSkillPoints;
+    readonly usedSkillMastery?: Record<string, Record<string, boolean>>;
+    readonly usedSkillProdigy?: Record<string, Record<string, boolean>>;
+    // Skill points not yet validated during level-up phase
+    readonly pendingSkills?: CharacterPendingSkillPoints;
     readonly baseStats: Statistics;
     readonly modifiers: Lvl0CharacterModifiers;
     readonly health: { readonly min: number, max: number, readonly value: number };
     readonly mana: { readonly min: number, max: number, readonly value: number };
     readonly level: LevelValue;
     readonly experience: { readonly value: number };
+    readonly size: { readonly value: number };
+    readonly age: { readonly value: number };
     readonly job: JobData;
     readonly race: RaceData;
-    readonly effects: { [key: string]: Lvl0ActorEffect };
-    readonly specialities: { [key: string]: String };
+    readonly effects: CharacterEffects;
+    readonly specialities: CharacterSpecialities;
+    readonly notes: CharacterNote;
+}
+
+export type CharacterNote = { content: string, mode: 'markdown' | 'html' };
+export type CharacterEffects = { [key: string]: Lvl0ActorEffect };
+export type CharacterSkillPoints = { readonly [categoryId: string]: { [id: string]: SkillValue } };
+export type CharacterPendingSkillPoints = { readonly [categoryId: string]: { [id: string]: PendingSkillValue } };
+export type CharacterSpecialities = { readonly [key: string]: string };
+
+export type CharacterSpeciality = {
+    entityId: string;
+    speciality: SpecialityDefinition;
+}
+
+export type CharacterSpecialitiesInfo = {
+    maxSpecialities: number;
+    canSelectNewSpeciality: boolean;
+    specialities: CharacterSpeciality[];
 }
 
 export interface LevelValue {
     value: number
+}
+
+export interface PendingSkillValue {
+    value: number;
+    master: boolean;
+    prodigy: boolean;
 }
 
 export interface SkillValue {
@@ -44,9 +78,19 @@ export interface SkillValue {
     manualMode?: boolean;
 }
 
+export interface ActiveSkillValue {
+    value: number;
+    master: boolean;
+    prodigy: boolean;
+    manualMode?: boolean;
+    masterUsed: boolean;
+    prodigyUsed: boolean;
+    totalValue: number;
+}
+
 export interface CharacterModifierInfo {
     isPermanent: boolean;
-    stat: 'protection' | 'cha' | 'int' | 'per' | 'phy' | 'dex' | 'health' | 'mana';
+    stat: ActorStatNames;
     value: number;
     name: string;
 }
@@ -59,6 +103,7 @@ export interface JobData {
 
 export interface RaceData {
     id: string;
+    type?: string;
 }
 
 export interface StaticInventoryData {
@@ -70,9 +115,7 @@ export interface StaticInventoryData {
     money1000: number;
 }
 
-export interface LevelUpData {
-    levels: { [key: number]: LevelData };
-}
+export type LevelUpData = { [key: number]: LevelData }
 
 export interface ComputedCharacterData {
     bases: ComputedCharacterBaseData;
@@ -93,7 +136,7 @@ export interface LevelData {
     health: number;
     mana: number;
     money: number;
-    additionalStat?: string;
+    additionalStat?: ActorBasicStatNames;
 }
 
 export interface ComputedCharacterSkillsData {

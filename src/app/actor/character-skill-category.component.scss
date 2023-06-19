@@ -1,0 +1,21 @@
+.category {
+  padding-inline: 16px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 80%;
+  margin: 16px auto;
+}
+h3 {
+  text-align: center;
+  font-weight: bold;
+  margin-block: 8px;
+}

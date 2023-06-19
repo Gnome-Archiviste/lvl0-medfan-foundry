@@ -1,5 +1,5 @@
 import {singleton} from 'tsyringe';
-import jobs, {ExtensionJobDefinition, JobDefinition} from './data/jobs';
+import jobs, {JobDefinition} from './data/jobs';
 import {Injectable} from '@angular/core';
 
 @singleton()
@@ -9,22 +9,47 @@ import {Injectable} from '@angular/core';
 export class JobRepository {
     private jobsNamesByIdsCache?: Record<string, string>;
     private jobsByIds?: Record<string, JobDefinition>;
+    private jobDefinitionCache?: Record<string, Record<string, JobDefinition>>;
 
-    getJobsByCategories(): { base: Record<string, JobDefinition>, advance: Record<string, ExtensionJobDefinition> } {
-        return jobs;
+    getJobCategoryIds(): string[] {
+        return ['base', 'advance'];
+    }
+
+    getJobsByCategories(): Record<string, Record<string, JobDefinition>> {
+        if (this.jobDefinitionCache)
+            return this.jobDefinitionCache;
+
+        let jobsByIds: Record<string, JobDefinition> = {};
+        let jobDefinitionCache: Record<string, Record<string, JobDefinition>> = {
+            base: {},
+            advance: {}
+        };
+        for (let [jobId, job] of Object.entries(jobs.base)) {
+            let jobDefinition = {...job, id: jobId, skillCategoryId: jobId};
+            jobsByIds[jobId] = jobDefinition;
+            jobDefinitionCache['base'][jobId] = jobDefinition;
+        }
+        for (let [jobId, job] of Object.entries(jobs.advance)) {
+            let jobDefinition = {...jobsByIds[job.baseJob], ...job, id: jobId};
+            jobsByIds[jobId] = jobDefinition;
+            jobDefinitionCache['advance'][jobId] = jobDefinition;
+        }
+
+        this.jobDefinitionCache = jobDefinitionCache;
+        this.jobsByIds = jobsByIds;
+        return jobDefinitionCache;
     }
 
     getJobNamesByIds(): Record<string, string> {
         if (this.jobsNamesByIdsCache)
             return this.jobsNamesByIdsCache;
 
-        let jobsByCategories = this.getJobsByCategories();
-        this.jobsNamesByIdsCache = (Object.entries(jobsByCategories.base) as [string, { name: string }][])
-            .concat(Object.entries(jobsByCategories.advance))
-            .reduce(((previousValue, currentValue: [jobId: string, job: JobDefinition]) => {
-                previousValue[currentValue[0]] = currentValue[1].name;
+        let jobDefinitions = this.getJobsByIds();
+        this.jobsNamesByIdsCache = Object.values(jobDefinitions)
+            .reduce(((previousValue, currentValue: JobDefinition) => {
+                previousValue[currentValue.id] = currentValue.name;
                 return previousValue;
-            }), {})
+            }), {});
 
         return this.jobsNamesByIdsCache;
     }
@@ -33,20 +58,12 @@ export class JobRepository {
         if (this.jobsByIds)
             return this.jobsByIds;
 
-        let jobsByIds: Record<string, JobDefinition> = {};
-        for (let jobCategory of Object.values(this.getJobsByCategories())) {
-            for (let [jobId, job] of Object.entries(jobCategory as { [jobId: string]: JobDefinition | ExtensionJobDefinition })) {
-                if ('baseJob' in job) {
-                    jobsByIds[jobId] = {...jobsByIds[job.baseJob], ...job};
-                } else {
-                    jobsByIds[jobId] = job;
-                }
-            }
-        }
+        this.getJobsByCategories();
 
-        this.jobsByIds = jobsByIds;
+        if (this.jobsByIds)
+            return this.jobsByIds;
 
-        return jobsByIds;
+        throw new Error('Failed to get jobsByIds');
     }
 
     getJob(jobId: string): JobDefinition | undefined {

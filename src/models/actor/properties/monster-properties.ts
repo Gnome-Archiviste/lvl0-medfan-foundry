@@ -1,5 +1,5 @@
 import {Lvl0ActorMonsterData} from '../properties-data';
-import {Lvl0Actor} from '../lvl0-actor';
+import {Lvl0FoundryActor} from '../lvl0-foundry-actor';
 import {Lvl0ActorMonster} from '../lvl0-actor-types';
 
 export interface MonsterProperties {
@@ -8,7 +8,7 @@ export interface MonsterProperties {
 }
 
 
-export function assertIsMonster(actor?: Lvl0Actor | null): asserts actor is Lvl0ActorMonster {
+export function assertIsMonster(actor?: Lvl0FoundryActor | null): asserts actor is Lvl0ActorMonster {
     if (!actor) {
         throw new Error('Actor is not defined');
     }

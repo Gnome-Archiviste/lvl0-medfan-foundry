@@ -1,103 +1,106 @@
+import {UnionKeys} from '../../utils/util';
+import {Lvl0Item} from '../../app/data-accessor/models/lvl0-item';
+
 export interface ItemTypeConfig {
     readonly canBeEquiped: boolean
     readonly canHaveModifiers: boolean
     readonly canHaveExtraSkills: boolean
 }
 
-export default {
-    'ammunition': {
+export default <Record<UnionKeys<Lvl0Item, 'type'>, ItemTypeConfig>>{
+    ammunition: {
         canBeEquiped: true,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'armor': {
+    armor: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'bag': {
+    bag: {
         canBeEquiped: true,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'belt': {
+    belt: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'cloak': {
+    cloak: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'foot': {
+    foot: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'hand': {
+    hand: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'head': {
+    head: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'handWeapon': {
+    handWeapon: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'magical': {
+    magical: {
         canBeEquiped: true,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'misc': {
+    misc: {
         canBeEquiped: false,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'necklace': {
+    necklace: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'potions': {
+    potions: {
         canBeEquiped: false,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'purse': {
+    purse: {
         canBeEquiped: true,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'ring': {
+    ring: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'shield': {
+    shield: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: true,
     },
-    'scroll': {
+    scroll: {
         canBeEquiped: false,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'wand': {
+    wand: {
         canBeEquiped: false,
         canHaveModifiers: false,
         canHaveExtraSkills: false,
     },
-    'weapon': {
+    weapon: {
         canBeEquiped: true,
         canHaveModifiers: true,
         canHaveExtraSkills: false,
-    }
-} as Record<string, ItemTypeConfig>
+    },
+}

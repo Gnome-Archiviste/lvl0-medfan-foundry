@@ -1,5 +1,5 @@
 import {inject, singleton} from 'tsyringe';
-import {Lvl0Actor, Lvl0ActorCharacter} from 'models/actor';
+import {Lvl0FoundryActor, Lvl0ActorCharacter} from 'models/actor';
 import {WandConfigRepository} from 'repositories';
 import {Lvl0FoundryItemWand, WandItemPropertiesData} from 'models/item';
 import {RollResult, RollUtil} from 'utils/roll-util';
@@ -19,7 +19,7 @@ export class WandUtil {
     ) {
     }
 
-    getNonFullWands(actor: Lvl0Actor): [spellInNonFullWand: {}, emptyWandAvailable: boolean] {
+    getNonFullWands(actor: Lvl0FoundryActor): [spellInNonFullWand: {}, emptyWandAvailable: boolean] {
         let spellInNonFullWand = {};
         let emptyWandAvailable = false;
         let wands = actor.itemTypes['wand'];
@@ -44,7 +44,7 @@ export class WandUtil {
         return [spellInNonFullWand, emptyWandAvailable];
     }
 
-    getAvailableWandsForSpell(actor: Lvl0Actor, spellId: string, arcaneLevel: number): Lvl0FoundryItemWand[] {
+    getAvailableWandsForSpell(actor: Lvl0FoundryActor, spellId: string, arcaneLevel: number): Lvl0FoundryItemWand[] {
         let wandConfig = this.wandConfigRepository.getWandConfig(arcaneLevel);
 
         if (!wandConfig)

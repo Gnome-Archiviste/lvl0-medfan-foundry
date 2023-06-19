@@ -1,0 +1,73 @@
+h3 {
+  text-align: center;
+  font-weight: bold;
+  margin-block: 8px;
+}
+.specialities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.speciality {
+  display: grid;
+  grid-template-columns: 48px 1fr 120px;
+  grid-template-areas: "icon label action" "icon cost action";
+  column-gap: 8px;
+  row-gap: 4px;
+  align-items: center;
+  .icon {
+    grid-area: icon;
+    width: 48px;
+    height: 48px;
+  }
+  .cost {
+    grid-area: cost;
+    align-self: flex-start;
+  }
+  .label {
+    grid-area: label;
+    align-self: flex-end;
+    .open-menu {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  .action {
+    grid-area: action;
+    display: flex;
+    flex-direction: column;
+    > button {
+      height: 32px;
+    }
+  }
+  * + * {
+    margin-bottom: 8px;
+  }
+}
+
+.speciality-info {
+  display: grid;
+  grid-template-columns: 64px minmax(auto, 280px);
+  grid-template-areas: "icon title" "icon description" "actions actions";
+  gap: 8px;
+
+  .speciality-info__title {
+    grid-area: title;
+    font-size: 1.5rem;
+  }
+
+  .speciality-info__description {
+    grid-area: description;
+  }
+
+  .speciality-info__icon {
+    grid-area: icon;
+  }
+
+  .speciality-info__actions {
+    grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

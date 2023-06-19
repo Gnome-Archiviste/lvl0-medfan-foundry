@@ -1,0 +1,11 @@
+.skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: 16px;
+
+  .job-categories,
+  .common-categories {
+    flex: 1 auto;
+  }
+}

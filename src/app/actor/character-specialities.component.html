@@ -1,0 +1,39 @@
+<h3>{{ 'Sheet.Specialities.Title' | translate }}</h3>
+<div class="specialities">
+    <ng-container *ngFor="let characterSpeciality of knownSpecialities$ | async">
+        <div class="speciality">
+            <img class="icon" src="{{characterSpeciality.speciality.icon}}"/>
+            <div class="label label-with-tooltip-description">
+                <!-- Cannot use cdkMenuTriggerData, seems buggy https://github.com/angular/components/issues/26256 -->
+                <span class="open-menu" [cdkMenuTriggerFor]="menu">{{ characterSpeciality.speciality.name }}</span>
+            </div>
+            <div class="cost">Coût: 1 point de mana</div>
+            <div class="action">
+                <button (click)="useSpeciality(characterSpeciality.speciality)">Utiliser</button>
+            </div>
+        </div>
+        <ng-template #menu>
+            <div class="app window-app" cdkMenu #menuContent=cdkMenu>
+                <div class="window-content">
+                    <div class="speciality-info">
+                        <div class="speciality-info__title">{{ characterSpeciality.speciality.name }}</div>
+                        <div class="speciality-info__description">{{ characterSpeciality.speciality.description }}</div>
+                        <div class="speciality-info__icon"><img src="{{characterSpeciality.speciality.icon}}" alt=""></div>
+                        <div class="speciality-info__actions">
+                            <button (click)="createMacro(menuContent, characterSpeciality.speciality)">
+                                <i class="fas fa-scroll"></i> Créer une macro
+                            </button>
+                            <button (click)="deleteSpeciality(menuContent, characterSpeciality)">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+    <button *ngIf="canSelectNewSpeciality$ | async" data-action="selectSpeciality">Choisir une spécialité</button>
+</div>
+
+
+
