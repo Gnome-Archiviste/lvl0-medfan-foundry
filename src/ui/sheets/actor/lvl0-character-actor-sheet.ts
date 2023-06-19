@@ -124,6 +124,7 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
 
         return {
             ...context,
+            lvl0CharacterId: this.actor.lvl0Id,
             actorData: this.actor.data.data,
             skillsByCategories: this.skillRepository.getSkillsByCategories(),
             canLevelUp,

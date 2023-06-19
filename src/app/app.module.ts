@@ -7,9 +7,12 @@ import {FoundryModule} from './foundry/foundry.module';
 import {SpellDefinitionSelectorComponent} from './item/spell-definition-selector.component';
 import {ItemEditorComponent} from './item/item-editor.component';
 import {ItemModule} from './item/item.module';
+import { CharacterSheetComponent } from './actor/character-sheet.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [
+    CharacterSheetComponent
+  ],
     imports: [
         BrowserModule,
         SpellModule,
@@ -27,6 +30,7 @@ export class AppModule {
             [SpellSelectorComponent, 'lvl0-spell-selector'],
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
             [ItemEditorComponent, 'lvl0-item-editor'],
+            [CharacterSheetComponent, 'lvl0-character-sheet'],
         ];
 
         for (const [component, name] of elements) {
