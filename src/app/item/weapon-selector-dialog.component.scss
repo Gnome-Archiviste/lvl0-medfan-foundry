@@ -1,0 +1,134 @@
+.selectable-line {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.weapons {
+  .weapon-line {
+    &.header {
+      font-weight: bold;
+    }
+
+    display: grid;
+    grid-template-columns: 32px 1fr 150px 50px;
+    grid-column-gap: 8px;
+    grid-template-areas: "icon name damage handCount";
+    align-items: center;
+
+    .icon {
+      > img {
+        border: 0;
+      }
+    }
+
+    .name {
+      grid-area: name;
+      position: relative;
+
+      .title {
+        font-weight: bold;
+      }
+
+      .description {
+        background: #23221d;
+        top: 28px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        color: #EEE;
+        z-index: 1;
+        visibility: hidden;
+        position: absolute;
+      }
+
+      &:hover {
+        .description {
+          visibility: visible;
+        }
+      }
+    }
+
+    .handCount {
+      grid-area: handCount;
+      justify-self: center;
+    }
+
+    .damage {
+      grid-area: damage;
+    }
+  }
+}
+
+.ammunition {
+  .ammunition-line {
+    &.header {
+      font-weight: bold;
+    }
+
+    display: grid;
+    grid-template-columns: 32px 1fr 150px 50px;
+    grid-column-gap: 8px;
+    grid-template-areas: "icon name damage quantity";
+    align-items: center;
+
+    .icon {
+      > img {
+        border: 0;
+      }
+    }
+
+    .name {
+      grid-area: name;
+      position: relative;
+
+      .title {
+        font-weight: bold;
+      }
+
+      .description {
+        background: #23221d;
+        top: 28px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        color: #EEE;
+        z-index: 1;
+        visibility: hidden;
+        position: absolute;
+      }
+
+      &:hover {
+        .description {
+          visibility: visible;
+        }
+      }
+    }
+
+    .quantity {
+      grid-area: quantity;
+      justify-self: center;
+    }
+
+    .damage {
+      grid-area: damage;
+    }
+  }
+}
+
+.separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actions {
+  display: grid;
+  column-gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.selected {
+  background-color: #c0d7b6;
+  outline: 1px solid #4a9b26;
+}

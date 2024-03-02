@@ -32,7 +32,7 @@
             </div>
         </ng-template>
     </ng-container>
-    <button *ngIf="canSelectNewSpeciality$ | async" data-action="selectSpeciality">Choisir une spécialité</button>
+    <button *ngIf="canSelectNewSpeciality$ | async" (click)="selectSpeciality()">Choisir une spécialité</button>
 </div>
 
 

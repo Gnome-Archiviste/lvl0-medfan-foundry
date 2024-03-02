@@ -85,7 +85,7 @@ export interface ActiveSkillValue {
     manualMode?: boolean;
     masterUsed: boolean;
     prodigyUsed: boolean;
-    totalValue: number;
+    successValue: number;
 }
 
 export interface CharacterModifierInfo {

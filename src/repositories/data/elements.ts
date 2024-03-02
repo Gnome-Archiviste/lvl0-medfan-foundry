@@ -4,6 +4,7 @@ export interface ElementDefinition {
     readonly elementalistSpeciality: boolean;
 }
 
+// FIXME: Use translation instead
 export default {
     'physic': {
         name: 'Physique',

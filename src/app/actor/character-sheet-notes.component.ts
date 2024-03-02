@@ -37,7 +37,6 @@ export class CharacterSheetNotesComponent implements OnInit {
     }
 
     updateNoteContent(content: string | null) {
-        console.warn(content);
         this.actorUpdaterService.updateActor(this.characterId, {data: {notes: {content: content ?? ''}}})
     }
 }

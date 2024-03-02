@@ -1,14 +1,18 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {map, Observable} from 'rxjs';
+import {map, Observable, take} from 'rxjs';
 import {SpecialityDefinition} from '../../repositories';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {selectCharacterSpecialityInfo} from '../data-accessor/selectors/character-specialities-selector';
 import {CharacterSpecialitiesInfo, CharacterSpeciality, Lvl0Character} from '../data-accessor/models/lvl0-character';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
-import {FoundryLvl0IdResolver} from '../foundry/foundry-lvl0-id-resolver';
 import {CdkMenu} from '@angular/cdk/menu';
 import {MacroService} from '../shared/macro.service';
-import {SpecialityService} from '../shared/speciality.service';
+import {SpecialityService} from '../speciality/speciality.service';
+import {DialogService} from '../data-accessor/dialog-service';
+import {
+    SelectSpecialityDialogData,
+    SelectSpecialityDialogResult
+} from '../speciality/select-speciality-dialog.component';
 
 @Component({
     selector: 'lvl0-character-specialities',
@@ -26,9 +30,9 @@ export class CharacterSpecialitiesComponent implements OnInit {
     constructor(
         private readonly characterAccessorService: CharacterAccessorService,
         private readonly systemDataDatabaseService: SystemDataDatabaseService,
+        private readonly dialogService: DialogService,
         private readonly macroService: MacroService,
         private readonly specialityService: SpecialityService,
-        private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver, // FIXME: Temporary, will rework later to do not depend directly on foundry here
     ) {
     }
 
@@ -40,7 +44,7 @@ export class CharacterSpecialitiesComponent implements OnInit {
     }
 
     useSpeciality(speciality: SpecialityDefinition) {
-        this.foundryLvl0IdResolver.getActorFromLvl0Id(this.characterId)?.useSpeciality(speciality.id)
+        this.specialityService.useSpeciality(this.characterId, speciality.id);
     }
 
     createMacro(menuContent: CdkMenu, specialityDefinition: SpecialityDefinition) {
@@ -51,5 +55,16 @@ export class CharacterSpecialitiesComponent implements OnInit {
     deleteSpeciality(menuContent: CdkMenu, characterSpeciality: CharacterSpeciality) {
         menuContent.menuStack.closeAll();
         this.specialityService.removeSpeciality(this.characterId, characterSpeciality.entityId);
+    }
+
+    selectSpeciality() {
+        this.knownSpecialities$.pipe(take(1)).subscribe(knownSpecialities => {
+            let dialogData: SelectSpecialityDialogData = {
+                knownSpecialityIds: knownSpecialities.map(x => x.speciality.id)
+            };
+            this.dialogService.openDialog<SelectSpecialityDialogData, SelectSpecialityDialogResult>('lvl0-select-speciality-dialog', dialogData, {title: 'Select speciality'}).subscribe((result) => {
+                this.specialityService.addSpeciality(this.characterId, result.specialityId);
+            });
+        })
     }
 }

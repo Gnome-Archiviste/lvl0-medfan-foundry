@@ -29,12 +29,14 @@ export class CharacterActiveSkillValueSelector {
             ...skillValue,
             masterUsed: usedSkillMastery,
             prodigyUsed: usedSkillProdigy,
-            totalValue: totalValue
+            successValue: totalValue
         };
         if (pendingSkillValue) {
+            let pendingSkillLevel = +pendingSkillValue.value ?? 0;
             activeSkillValue = {
                 ...activeSkillValue,
-                value: +activeSkillValue.value + (+pendingSkillValue.value ?? 0),
+                value: +activeSkillValue.value + pendingSkillLevel,
+                successValue: activeSkillValue.successValue + pendingSkillLevel,
                 master: activeSkillValue.master || pendingSkillValue.master,
                 prodigy: activeSkillValue.prodigy || pendingSkillValue.prodigy,
             } as ActiveSkillValue;
@@ -43,7 +45,7 @@ export class CharacterActiveSkillValueSelector {
         for (let characterEffect of characterEffects) {
             for (let modifier of characterEffect.modifiers) {
                 if (modifier.skill?.skillId == skillId) {
-                    activeSkillValue.totalValue += +modifier.value;
+                    activeSkillValue.successValue += +modifier.value;
                 }
             }
         }

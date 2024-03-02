@@ -5,25 +5,6 @@ import {container, singleton} from 'tsyringe';
 
 @singleton()
 export class WeaponDamageRollUtil {
-    getWeaponDamageRoll(weaponType: "range" | "melee", weapon: Lvl0FoundryItemWeapon, ammunition?: Lvl0FoundryItemAmmunition)
-        : [damageRollFormula: string, damageRollWithAmmunition: string] {
-        foundryAssert(weapon.data.data.damage, `Weapon '${weapon.name}' does not have any damage configured`);
-
-        let damageRollFormula = weapon.data.data.damage.split(' ').join();
-        if (weapon.data.data.weaponType === 'melee-range') {
-            if (weaponType === 'range') {
-                foundryAssert(weapon.data.data.rangeDamage, `Weapon '${weapon.name}' does not have any rangeDamage configured`);
-                damageRollFormula = weapon.data.data.rangeDamage.split(' ').join();
-            }
-        }
-
-        let damageRollWithAmmunition = '';
-        if (ammunition) {
-            damageRollWithAmmunition = '(' + damageRollFormula + '+' + ammunition.data.data.extraDamage.split(' ').join() + ')';
-        }
-        return [damageRollFormula, damageRollWithAmmunition];
-    }
-
     getWeaponAndAmmunitionDamageRolls(
         weaponType: 'range' | 'melee',
         weapon: Lvl0FoundryItemWeapon,

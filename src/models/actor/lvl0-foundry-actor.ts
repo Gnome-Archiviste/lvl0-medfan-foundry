@@ -17,7 +17,6 @@ import {
     LevelUpDialogData,
     SelectSpecialityDialog
 } from "ui/dialog";
-import { RollSpecialityManager } from "../../managers/speciality";
 import { ActorDataComputer } from './actor-data-computers';
 import { SpecialityRepository } from '../../repositories';
 import { Lvl0FoundryItem } from '../item';
@@ -30,6 +29,7 @@ import { SpecialityUtil } from '../../managers/speciality/speciality-util';
 import { assertIsCharacter } from './properties';
 import { RollStatDialog } from '../../ui/dialog/roll-stats-dialog';
 import {LevelData, Lvl0CharacterData} from '../../app/data-accessor/models/lvl0-character';
+import {SpecialityService} from '../../app/speciality/speciality.service';
 
 container.register("ActorDataComputer", { useClass: BaseCharacterDataComputer });
 container.register("ActorDataComputer", { useClass: LevelingCharacterDataComputer });
@@ -43,7 +43,6 @@ container.register("ActorDataComputer", { useClass: MagicalArmorDataComputer });
 
 
 export class Lvl0FoundryActor extends Actor {
-    private readonly rollSpecialityManager: RollSpecialityManager;
     private readonly specialityRepository: SpecialityRepository;
     private readonly dialogAwaiter: DialogAwaiter;
     private readonly game: InitializedGame;
@@ -54,7 +53,6 @@ export class Lvl0FoundryActor extends Actor {
         context?: object
     ) {
         super(data, context);
-        this.rollSpecialityManager = container.resolve(RollSpecialityManager);
         this.specialityRepository = container.resolve(SpecialityRepository);
         this.dialogAwaiter = container.resolve(DialogAwaiter);
         this.game = container.resolve(InitializedGame);
@@ -78,30 +76,9 @@ export class Lvl0FoundryActor extends Actor {
     }
 
     async useSpeciality(specialityName: string): Promise<void> {
-        if (this.data.data.mana.value <= 0) {
-            ui.notifications?.error("Vous n'avez pas assez de point de mana pour lancer cette spécialité", { permanent: true });
-            return;
-        }
-        if (this.rollSpecialityManager.needRoll(specialityName)) {
-            let activeToken = this.getActiveTokens()[0];
-            if (await rollSpecialityManager.rollSpeciality(activeToken || this.token, specialityName)) {
-                await this.useMana(1);
-            }
-        } else {
-            await this.useMana(1);
-            let specialityDefinition = this.specialityRepository.getSpecialityFromId(specialityName);
-            await ChatMessage.create({
-                type: CONST.CHAT_MESSAGE_TYPES.IC,
-                speaker: ChatMessage.getSpeaker({ actor: this }),
-                content: `<div class="speciality-chat">
-                    <div class="title">
-                        <span class="name">${specialityDefinition.name}</span>
-                        <img class="img" src="${specialityDefinition.icon}">
-                    </div>
-                    <p class="description">${specialityDefinition.description}</p>
-                </div>`
-            })
-        }
+        let lvl0Id = this.lvl0Id;
+        if (lvl0Id)
+            await rollSpecialityManager.useSpeciality(lvl0Id, specialityName)
     }
 
     async useMana(amount: number): Promise<void> {

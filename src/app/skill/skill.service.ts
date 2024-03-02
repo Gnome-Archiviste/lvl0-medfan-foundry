@@ -3,7 +3,7 @@ import {SkillRepository} from '../../repositories';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {RollFactory} from '../shared/roll-factory';
 import {take} from 'rxjs';
-import {ChatService} from '../shared/chat.service';
+import {ChatService} from '../chat/chat.service';
 import {SkillRollResultData} from './skill-roll-result.component';
 import {selectCharacterActiveSkillValue} from '../data-accessor/selectors/character-active-skill-value-selector';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';

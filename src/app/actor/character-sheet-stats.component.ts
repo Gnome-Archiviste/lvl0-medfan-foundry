@@ -183,8 +183,8 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     }
 
     openLevelUpDialog(character: Lvl0Character, characterJob: JobDefinition, characterRace: RaceDefinition, nextLevelExperience: number) {
-        let fromLevel = character.data.level.value;
-        let toLevel = fromLevel + 1;
+        let fromLevel = character.data.level.value || 0;
+        let toLevel = +fromLevel + 1;
         if (toLevel > 70) {
             return;
         }

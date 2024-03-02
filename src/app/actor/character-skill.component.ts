@@ -77,7 +77,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
         this.prodigy$ = this.skillValue$.pipe(map(x => x.prodigy));
         this.masterUsed$ = this.skillValue$.pipe(map(x => x.masterUsed));
         this.prodigyUsed$ = this.skillValue$.pipe(map(x => x.prodigyUsed));
-        this.totalValue$ = this.skillValue$.pipe(map(x => x.totalValue));
+        this.totalValue$ = this.skillValue$.pipe(map(x => x.successValue));
         this.characterPendingSkills$ = this.character$.pipe(selectCharacterPendingSkills());
         this.haveAvailableSkillPoints$ = this.characterAvailableSkillPoints$.pipe(map(x => x.total > 0))
         this.havePendingSkillPoints = this.character$.pipe(selectHavePendingSkillPoints())

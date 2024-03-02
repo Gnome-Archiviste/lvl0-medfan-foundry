@@ -1,29 +1,45 @@
 @import '@angular/cdk/overlay-prebuilt.css';
 
 :root {
-    --color-stat-phy: #cf2541;
-    --color-stat-dex: #3da610;
-    --color-stat-int: #0633ff;
-    --color-stat-cha: #ff9500;
-    --color-stat-per: #ab31d8;
+  --color-stat-phy: #cf2541;
+  --color-stat-dex: #3da610;
+  --color-stat-int: #0633ff;
+  --color-stat-cha: #ff9500;
+  --color-stat-per: #ab31d8;
+  --color-critical-success: green;
+  --color-success: green;
+  --color-fail: darkred;
+  --color-epic-fail: darkred;
 }
 
 .stat-phy {
-    color: var(--color-stat-phy);
+  color: var(--color-stat-phy);
 }
 
 .stat-dex {
-    color: var(--color-stat-dex);
+  color: var(--color-stat-dex);
 }
 
 .stat-int {
-    color: var(--color-stat-int);
+  color: var(--color-stat-int);
 }
 
 .stat-cha {
-    color: var(--color-stat-cha);
+  color: var(--color-stat-cha);
 }
 
 .stat-per {
-    color: var(--color-stat-per);
+  color: var(--color-stat-per);
+}
+.roll-result-criticalSuccess {
+  color: var(--color-critical-success)
+}
+.roll-result-success {
+  color: var(--color-success)
+}
+.roll-result-fail {
+  color: var(--color-fail)
+};
+.roll-result-epicFail {
+  color: var(--color-epic-fail)
 }

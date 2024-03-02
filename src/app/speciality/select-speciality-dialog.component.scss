@@ -1,0 +1,36 @@
+
+.speciality {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  column-gap: 8px;
+  grid-template-areas: "icon header action" "icon description action";
+
+  .header {
+    grid-area: header;
+  }
+
+  .icon {
+    grid-area: icon;
+    width: 48px;
+    height: 48px;
+  }
+
+  .description {
+    grid-area: description;
+  }
+
+  .action {
+    grid-area: action;
+  }
+}
+
+.separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;
+}

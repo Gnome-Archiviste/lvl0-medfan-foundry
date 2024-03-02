@@ -129,7 +129,7 @@ export default {
     },
     bivalente_attack: {
         name: "Attaque bivalente",
-        description: "Le personnage peut faire une attaque physique et lancer un sort.",
+        description: "Le personnage peut faire 2 attaques dans le même tour; la première devant être une attaque à mains nues ou de mêlée, la deuxième étant obligatoirement un sort.",
         icon: 'icons/skills/ranged/arrows-flying-salvo-yellow.webp',
     }
 } as { [specialityId: string]: SpecialityData }

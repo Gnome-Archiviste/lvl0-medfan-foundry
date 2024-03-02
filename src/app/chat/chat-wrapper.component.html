@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="messageData.type">
+    <ng-container *ngSwitchCase="'speciality-roll'">
+        <lvl0-speciality-roll-chat-message [data]="messageData.data" />
+    </ng-container>
+    <ng-container *ngSwitchDefault>Unsupported {{ messageData.type }}</ng-container>
+</ng-container>

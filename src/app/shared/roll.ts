@@ -12,3 +12,10 @@ export interface IRoll {
     total: number;
     terms: DiceTerm[];
 }
+
+export type SavedRoll = {
+    formula: string;
+    total: number;
+    terms: DiceTerm[];
+}
+

@@ -79,6 +79,10 @@ export class CharacterSheetSkillsComponent implements OnInit, OnDestroy {
             let updatedSkills: CharacterSkillPoints = {...characterSkills};
             for (let [categoryId, skillByIds] of Object.entries(pendingSkills)) {
                 for (let [id, pendingSkillValue] of Object.entries(skillByIds)) {
+                    if (!(categoryId in updatedSkills))
+                        updatedSkills = {...updatedSkills, [categoryId]: {}};
+                    if (!(id in updatedSkills[categoryId]))
+                        updatedSkills[categoryId][id] = {value: 0, prodigy: false, master: false};
                     updatedSkills[categoryId][id].value = +updatedSkills[categoryId][id].value + +pendingSkillValue.value;
                     if (updatedSkills[categoryId][id].value > 3)
                         updatedSkills[categoryId][id].value = 3;

@@ -12,6 +12,14 @@ import {ActorModule} from './actor/actor.module';
 import {LevelUpDialogComponent} from './actor/level-up-dialog.component';
 import {CharacterInitialStatRollDialogComponent} from './actor/character-initial-stat-roll-dialog.component';
 import {SkillRollResultComponent} from './skill/skill-roll-result.component';
+import {ItemService} from './data-accessor/item.service';
+import {FileSelectorService} from './data-accessor/file-selector.service';
+import {ChatWrapperComponent} from './chat/chat-wrapper.component';
+import {ChatModule} from './chat/chat.module';
+import {SelectSpecialityDialog} from '../ui/dialog';
+import {SelectSpecialityDialogComponent} from './speciality/select-speciality-dialog.component';
+import {SpecialityService} from './speciality/speciality.service';
+import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.component';
 
 @NgModule({
     declarations: [],
@@ -21,22 +29,29 @@ import {SkillRollResultComponent} from './skill/skill-roll-result.component';
         ItemModule,
         ActorModule,
         FoundryModule,
+        ChatModule
     ],
     providers: [],
     bootstrap: []
 })
 export class AppModule {
 
-    constructor(private injector: Injector) {
+    constructor(
+        private readonly injector: Injector,
+        readonly specialityService: SpecialityService
+    ) {
 
         const elements: any[] = [
             [SpellSelectorComponent, 'lvl0-spell-selector'],
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
             [CharacterInitialStatRollDialogComponent, 'lvl0-character-initial-stat-roll-dialog'],
+            [SelectSpecialityDialogComponent, 'lvl0-select-speciality-dialog'],
             [LevelUpDialogComponent, 'lvl0-level-up-dialog'],
+            [WeaponSelectorDialogComponent, 'lvl0-weapon-selector-dialog'],
             [ItemEditorComponent, 'lvl0-item-editor'],
             [CharacterSheetComponent, 'lvl0-character-sheet'],
             [SkillRollResultComponent, 'lvl0-skill-roll-result'],
+            [ChatWrapperComponent, 'lvl0-chat-message'],
         ];
 
         for (const [component, name] of elements) {

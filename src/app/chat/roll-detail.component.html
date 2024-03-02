@@ -1,0 +1,15 @@
+<div (click)="toggleDetails()" class="roll-with-details">
+    <ng-content></ng-content>
+</div>
+<div *ngIf="showDetails" class="roll-details">
+    <div class="formula">
+        {{roll.formula}}
+    </div>
+    <div class="terms">
+        <ng-container *ngFor="let term of roll.terms">
+            <ng-container *ngFor="let termResult of term.results">
+                <div [class]="'roll-dice ' + 'dice-d' + term.faces">{{termResult.result}}</div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

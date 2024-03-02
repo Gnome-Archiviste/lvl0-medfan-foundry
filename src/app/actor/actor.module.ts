@@ -23,6 +23,7 @@ import { CharacterSheetEquipmentComponent } from './character-sheet-equipment.co
 import { CharacterSheetInventoryComponent } from './character-sheet-inventory.component';
 import { CharacterSheetNotesComponent } from './character-sheet-notes.component';
 import { CharacterSheetModifiersComponent } from './character-sheet-modifiers.component';
+import { WeaponSelectorDialogComponent } from '../item/weapon-selector-dialog.component';
 
 @NgModule({
     declarations: [

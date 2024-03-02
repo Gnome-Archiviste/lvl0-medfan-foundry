@@ -1,8 +1,6 @@
 import {RollFactory} from '../shared/roll-factory';
-import {DiceTerm, IRoll} from '../shared/roll';
-import {Evaluated, MessageData} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
-import {Lvl0Actor} from '../data-accessor/models/lvl0-actor';
-import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
+import {DiceTerm, IRoll, SavedRoll} from '../shared/roll';
+import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 import {Injectable} from '@angular/core';
 
@@ -30,7 +28,10 @@ export class FoundryRollFactory extends RollFactory {
         super();
     }
 
-    async createRoll(formula: string, format?: ((roll: IRoll) => { message: string, actorId: string })): Promise<IRoll> {
+    async createRoll(formula: string, format?: ((roll: IRoll) => {
+        message: string,
+        actorId: string
+    })): Promise<IRoll> {
         let roll = new Roll(formula);
 
         let foundryRoll = new FoundryRoll(await roll.roll({async: true}));
@@ -43,5 +44,20 @@ export class FoundryRollFactory extends RollFactory {
         }
 
         return foundryRoll;
+    }
+
+    async createSavedRoll(formula: string): Promise<SavedRoll> {
+        let roll = new Roll(formula);
+        let foundryRoll = await roll.roll({async: true});
+
+        return {
+            total: roll.total!,
+            formula: formula,
+            terms: foundryRoll.dice.map((t: Die) => ({
+                number: t.total!,
+                faces: t.faces,
+                results: t.results.map(x => ({result: x.result})),
+            }))
+        }
     }
 }

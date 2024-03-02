@@ -200,6 +200,10 @@
   "LVL0MF.Misc.Stat.mana": "Magie",
   "LVL0MF.Misc.Stat.experience": "Experience",
   "LVL0MF.Misc.Stat.movement": "Mouvement",
+  "LVL0MF.Misc.RollResult.criticalSuccess": "Succès critique",
+  "LVL0MF.Misc.RollResult.success": "Succès",
+  "LVL0MF.Misc.RollResult.fail": "Échec",
+  "LVL0MF.Misc.RollResult.epicFail": "Échec critique",
   "LVL0MF.Misc.ShortStat.phy": "Phy",
   "LVL0MF.Misc.ShortStat.dex": "Dex",
   "LVL0MF.Misc.ShortStat.int": "Int",
@@ -235,5 +239,7 @@
   "LVL0MF.Job.Speciality.acid": "Acide",
   "LVL0MF.Job.Speciality.earth": "Minéraux",
 
+  "LVL0MF.Notification.Error.speciality_not_found": "Spécialité inconnu par le personnage",
+  "LVL0MF.Notification.Error.not_enough_mana": "Pas assez de mana disponible",
   "LVL0MF.End" : "Fin de la traduction"
 }

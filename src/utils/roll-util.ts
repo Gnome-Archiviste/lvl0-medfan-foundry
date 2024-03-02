@@ -5,6 +5,7 @@ export type RollResult = 'epicFail' | 'fail' | 'success' | 'criticalSuccess';
 export type SuccessRollResult = 'success' | 'criticalSuccess';
 export type FailedRollResult = 'fail' | 'epicFail';
 
+// Deprecated
 @singleton()
 export class RollUtil {
     getRollResult(value, expectedValue): RollResult {

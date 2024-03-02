@@ -1,0 +1,15 @@
+<h2>Choisir une spécialité</h2>
+<ng-container *ngFor="let speciality of availableSpecialityDefinitions">
+    <div class="speciality">
+        <img class="icon" src="{{speciality.icon}}">
+        <h3 class="header">{{ speciality.name }}</h3>
+        <p class="description">
+            {{ speciality.description }}
+        </p>
+        <button class="action" (click)="selectSpeciality(speciality)">Choisir</button>
+    </div>
+    <div class="separator"></div>
+</ng-container>
+<div>
+    <button data-dialog-action="cancel">Fermer</button>
+</div>

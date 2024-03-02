@@ -18,14 +18,16 @@ import {FoundryActorUpdaterService} from './foundry-actor-udpater.service';
 import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
 import {ActorEffectService} from '../data-accessor/actor-effect.service';
 import {FoundryActorEffectService} from './foundry-actor-effect.service';
-import {ChatService} from '../shared/chat.service';
+import {ChatService} from '../chat/chat.service';
 import {FoundryChatService} from './foundry-chat.service';
 import {MacroService} from '../shared/macro.service';
 import {FoundryMacroService} from './foundry-macro.service';
 import {FoundrySpecialityService} from './foundry-speciality.service';
-import {SpecialityService} from '../shared/speciality.service';
+import {SpecialityService} from '../speciality/speciality.service';
 import {ItemService} from '../data-accessor/item.service';
 import {FoundryItemService} from './foundry-item.service';
+import {PlayerNotificationService} from '../shared/player-notification.service';
+import {FoundryPlayerNotificationService} from './foundry-player-notification.service';
 
 @NgModule({
     declarations: [],
@@ -60,6 +62,10 @@ import {FoundryItemService} from './foundry-item.service';
         {
             provide: ItemAccessorService,
             useClass: FoundryItemAccessorService
+        },
+        {
+            provide: PlayerNotificationService,
+            useClass: FoundryPlayerNotificationService
         },
         {
             provide: ItemUpdaterService,
