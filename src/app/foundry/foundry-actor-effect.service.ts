@@ -1,5 +1,4 @@
-import {ActorEffectService} from '../data-accessor/actor-effect.service';
-import {Lvl0ActorEffect} from '../../managers/effects';
+import {ActorEffectService, Lvl0ActorEffect} from '../data-accessor/actor-effect.service';
 import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
 import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 import {Lvl0FoundryActor} from '../../models/actor';
@@ -13,6 +12,15 @@ export class FoundryActorEffectService extends ActorEffectService {
         private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver
     ) {
         super();
+    }
+
+    async applyEffect(actorId: string, effect: Lvl0ActorEffect): Promise<void> {
+        let foundryActor = this.foundryLvl0IdResolver.getRequiredActorFromLvl0Id(actorId);
+        let actorData = foundryActor.data.data;
+        let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        await foundryActor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
+        await this.replaceActiveEffect(foundryActor, 'effect', nextId, {icon: effect.icon, label: effect.effectName});
+        ui.notifications?.info('Effet ' + effect.effectName + ' ajouté');
     }
 
     removeEffect(actorId: string, effectId: string) {

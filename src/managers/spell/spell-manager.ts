@@ -1,6 +1,5 @@
 import {inject, singleton} from 'tsyringe';
 import {ActorSpell, ActorSpellAction,} from './actor-spell.model';
-import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../effects';
 import {assertIsCharacter, Lvl0FoundryActor} from 'models/actor';
 import {
     ElementRepository,
@@ -18,6 +17,7 @@ import {
 } from 'repositories/data';
 import {RollFactory} from 'utils/roll-factory';
 import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
+import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../../app/data-accessor/actor-effect.service';
 
 /**
  * @deprecated

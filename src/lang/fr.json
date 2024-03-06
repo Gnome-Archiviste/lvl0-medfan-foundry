@@ -231,9 +231,7 @@
   "LVL0MF.Misc.ItemType.handWeapon" : "Gantelet de combat",
   "LVL0MF.Misc.ItemType.weapon" : "Arme",
 
-
-
-    "LVL0MF.Job.Speciality.water": "Glace/Eau",
+  "LVL0MF.Job.Speciality.water": "Glace/Eau",
   "LVL0MF.Job.Speciality.electric": "Air/Électricité",
   "LVL0MF.Job.Speciality.fire": "Feu",
   "LVL0MF.Job.Speciality.acid": "Acide",

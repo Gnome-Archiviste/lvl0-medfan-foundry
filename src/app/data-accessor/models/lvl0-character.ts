@@ -1,9 +1,9 @@
-import {JobDefinition, RaceDefinition, SkillDefinition, SpecialityDefinition} from '../../../repositories';
+import {JobDefinition, RaceDefinition, SpecialityDefinition} from '../../../repositories';
 import {Statistics} from '../../shared/statistic-model';
-import {Lvl0ActorEffect} from '../../../managers/effects';
 import {Lvl0Item} from './lvl0-item';
 import {GroupBy} from '../../shared/group-by';
 import {ActorBasicStatNames, ActorStatNames} from '../../../models/shared';
+import {Lvl0ActorEffect} from '../actor-effect.service';
 
 export interface Lvl0Character {
     readonly id: string

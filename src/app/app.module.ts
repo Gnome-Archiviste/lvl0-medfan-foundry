@@ -20,6 +20,7 @@ import {SelectSpecialityDialog} from '../ui/dialog';
 import {SelectSpecialityDialogComponent} from './speciality/select-speciality-dialog.component';
 import {SpecialityService} from './speciality/speciality.service';
 import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.component';
+import {ActorEffectService} from './data-accessor/actor-effect.service';
 
 @NgModule({
     declarations: [],
@@ -38,7 +39,8 @@ export class AppModule {
 
     constructor(
         private readonly injector: Injector,
-        readonly specialityService: SpecialityService
+        readonly specialityService: SpecialityService,
+        readonly actorEffectService: ActorEffectService
     ) {
 
         const elements: any[] = [

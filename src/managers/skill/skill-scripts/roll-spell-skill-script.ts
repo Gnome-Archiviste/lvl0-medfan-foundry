@@ -163,7 +163,7 @@ Hooks.on('init', () => {
             case 'addEffect':
                 if (!token.actor)
                     throw new Error('no actor available on the token')
-                await container.resolve(EffectManager).applyEffect(token.actor, action.data)
+                await actorEffectService.applyEffect(token.actor.lvl0Id!, action.data);
                 break;
         }
 

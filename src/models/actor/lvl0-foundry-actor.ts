@@ -25,11 +25,9 @@ import {
     ActorDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
 import { InitializedGame } from '../misc/game';
-import { SpecialityUtil } from '../../managers/speciality/speciality-util';
 import { assertIsCharacter } from './properties';
 import { RollStatDialog } from '../../ui/dialog/roll-stats-dialog';
 import {LevelData, Lvl0CharacterData} from '../../app/data-accessor/models/lvl0-character';
-import {SpecialityService} from '../../app/speciality/speciality.service';
 
 container.register("ActorDataComputer", { useClass: BaseCharacterDataComputer });
 container.register("ActorDataComputer", { useClass: LevelingCharacterDataComputer });
@@ -46,7 +44,6 @@ export class Lvl0FoundryActor extends Actor {
     private readonly specialityRepository: SpecialityRepository;
     private readonly dialogAwaiter: DialogAwaiter;
     private readonly game: InitializedGame;
-    private readonly specialityUtil: SpecialityUtil;
 
     constructor(
         data: ActorDataConstructorData,
@@ -56,7 +53,6 @@ export class Lvl0FoundryActor extends Actor {
         this.specialityRepository = container.resolve(SpecialityRepository);
         this.dialogAwaiter = container.resolve(DialogAwaiter);
         this.game = container.resolve(InitializedGame);
-        this.specialityUtil = container.resolve(SpecialityUtil);
     }
 
     get lvl0Id() {
@@ -235,16 +231,6 @@ export class Lvl0FoundryActor extends Actor {
                 await this.addInitialInventory();
             }
         }
-    }
-
-    async openSelectSpecialityDialog() {
-        assertIsCharacter(this);
-
-        let selectedSpecialityId = await this.dialogAwaiter.openAndWaitResult(SelectSpecialityDialog, {});
-        if (!selectedSpecialityId)
-            return;
-
-        await this.specialityUtil.addSpeciality(this, selectedSpecialityId);
     }
 
     async doLevelUp(level: number, actorData: Lvl0CharacterData, levelUpResultData: LevelData): Promise<void> {

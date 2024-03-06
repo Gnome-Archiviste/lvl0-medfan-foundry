@@ -1,8 +1,8 @@
 import {Lvl0Character} from '../models/lvl0-character';
 import {combineLatest, distinctUntilChanged, Observable, shareReplay} from 'rxjs';
-import {Lvl0ActorEffectArmor} from '../../../managers/effects';
 import {CharacterEffect, selectCharacterEffects} from './character-effects-selector';
 import {SystemDataDatabaseService} from '../../system-data/system-data-database.service';
+import {Lvl0ActorEffectArmor} from '../actor-effect.service';
 
 export type Lvl0ActorEffectArmorWithEffectId = Lvl0ActorEffectArmor & {
     effectId: string;

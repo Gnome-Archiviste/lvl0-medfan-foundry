@@ -1,36 +1,13 @@
-import {container, inject, singleton} from 'tsyringe';
-import {Lvl0ActorEffect, Lvl0ActorEffectModifier} from './lvl0-actor-effect';
-import {CharacterProperties, Lvl0FoundryActor} from 'models/actor';
+import {container, singleton} from 'tsyringe';
+import {Lvl0FoundryActor} from 'models/actor';
 import {StatsRepository} from 'repositories/stats-repository';
 import {SkillRepository} from 'repositories/skill-repository';
-import {ActiveEffectUtil} from '../../repositories/active-effect-util';
+import {Lvl0ActorEffectModifier} from '../../app/data-accessor/actor-effect.service';
 
 @singleton()
 export class EffectManager {
     constructor(
-        @inject(ActiveEffectUtil) private readonly activeEffectUtil: ActiveEffectUtil
     ) {
-    }
-
-    async applyEffect(actor: Lvl0FoundryActor, effect: Lvl0ActorEffect): Promise<void> {
-        let actorData = actor.data.data;
-        let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-        await actor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
-        for (let activeToken of actor.getActiveTokens(true)) {
-            await this.activeEffectUtil.replaceActiveEffect(actor, 'effect', nextId, {icon: effect.icon, label: effect.effectName});
-        }
-        ui.notifications?.info('Effet ' + effect.effectName + ' ajouté');
-    }
-
-    async removeEffect(actor: Lvl0FoundryActor, effectId: number) {
-        await this.activeEffectUtil.removeActiveEffect(actor, 'effect', effectId);
-        await actor.update({data: {effects: {['-=' + effectId]: null}}}, {diff: true});
-    }
-
-    async updateEffect(actor: Lvl0FoundryActor, effectId: number, partialEffect: RecursivePartial<Lvl0ActorEffect>) {
-        await actor.update({
-            data: {effects: {[effectId]: partialEffect}}
-        } as CharacterProperties, {diff: true});
     }
 
     getEffectsWithBonusDamage(actor: Lvl0FoundryActor): { name: string, value: number }[] {

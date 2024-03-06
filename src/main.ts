@@ -16,6 +16,7 @@ import 'zone.js';
 import './components'
 import {environment} from './environments/environment';
 import {FoundrySpecialityService} from './app/foundry/foundry-speciality.service';
+import {ActorEffectService} from './app/data-accessor/actor-effect.service';
 
 
 Hooks.once("init", async function () {
@@ -60,6 +61,7 @@ Hooks.once("ready", async () => {
         // FIXME: replace with
         (window as any).rollSkillManager = container.resolve(RollSkillManager);
         (window as any).rollSpecialityManager = bootstrapAppModule.instance.specialityService;
+        (window as any).actorEffectService = bootstrapAppModule.instance.actorEffectService;
 
         // DEBUG do not commit
         // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)

@@ -75,7 +75,6 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     characterLevel$: Observable<LevelValue>;
 
     constructor(
-        private readonly ngZone: NgZone,
         private readonly characterAccessorService: CharacterAccessorService,
         private readonly systemDataDatabaseService: SystemDataDatabaseService,
         private readonly actorUpdaterService: ActorUpdaterService,

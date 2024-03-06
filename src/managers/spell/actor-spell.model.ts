@@ -1,6 +1,6 @@
 import { RolledSpellStat } from './spell-manager';
-import { Lvl0ActorEffect } from 'managers/effects';
 import { SpellDefinition } from '../../repositories';
+import {Lvl0ActorEffect} from '../../app/data-accessor/actor-effect.service';
 
 export interface ActorSpell {
     definition: SpellDefinition;

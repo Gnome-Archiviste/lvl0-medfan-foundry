@@ -1,8 +1,8 @@
 import {singleton} from 'tsyringe';
 import {CharacterDataComputer} from "./character-data-computer";
 import {Lvl0FoundryActor} from '../../lvl0-foundry-actor';
-import {Lvl0ActorEffect} from '../../../../managers/effects';
 import {ComputedCharacterMagicArmorData, Lvl0CharacterData} from '../../../../app/data-accessor/models/lvl0-character';
+import {Lvl0ActorEffect} from '../../../../app/data-accessor/actor-effect.service';
 
 @singleton()
 export class MagicalArmorDataComputer extends CharacterDataComputer {
