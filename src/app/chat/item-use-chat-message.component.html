@@ -1,0 +1,15 @@
+<div *ngIf="data.itemSource" class="item-source">
+    <h3>Utilisation d'objet</h3>
+    <div class="item-detail">
+        <div class="icon"><img width="32" height="32" [src]="data.itemSource.icon"></div>
+        <div class="name">{{ data.itemSource.name }}</div>
+    </div>
+</div>
+<div *ngIf="data.effect">
+    <hr>
+    <ng-container [ngSwitch]="data.effect.type">
+        <ng-container *ngSwitchCase="'cast-spell'">
+            <lvl0-spell-roll-chat-message [data]="data.effect.data" />
+        </ng-container>
+    </ng-container>
+</div>

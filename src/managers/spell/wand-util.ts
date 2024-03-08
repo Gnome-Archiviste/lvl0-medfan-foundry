@@ -1,47 +1,20 @@
 import {inject, singleton} from 'tsyringe';
-import {Lvl0FoundryActor, Lvl0ActorCharacter} from 'models/actor';
-import {WandConfigRepository} from 'repositories';
+import {Lvl0ActorCharacter, Lvl0FoundryActor} from 'models/actor';
+import {SpellRepository, WandConfigRepository} from 'repositories';
 import {Lvl0FoundryItemWand, WandItemPropertiesData} from 'models/item';
-import {RollResult, RollUtil} from 'utils/roll-util';
-import {ActorSpell} from './actor-spell.model';
+import {RollResult} from 'utils/roll-util';
 import {ItemUtil} from 'utils/item-util';
-import {SpellManager} from './spell-manager';
 import {SpellChat} from './spell-chat';
+import {RolledSpell} from '../../app/spell/spell';
 
 @singleton()
 export class WandUtil {
     constructor(
         @inject(WandConfigRepository) private readonly wandConfigRepository: WandConfigRepository,
-        @inject(RollUtil) private readonly rollUtil: RollUtil,
         @inject(ItemUtil) private readonly itemUtil: ItemUtil,
-        @inject(SpellManager) private readonly spellManager: SpellManager,
+        @inject(SpellRepository) private readonly spellRepository: SpellRepository,
         @inject(SpellChat) private readonly spellChat: SpellChat,
     ) {
-    }
-
-    getNonFullWands(actor: Lvl0FoundryActor): [spellInNonFullWand: {}, emptyWandAvailable: boolean] {
-        let spellInNonFullWand = {};
-        let emptyWandAvailable = false;
-        let wands = actor.itemTypes['wand'];
-        if (wands) {
-            for (let wand of wands) {
-                if (!wand.data.data.spell && wand.data.data.quantity) {
-                    emptyWandAvailable = true;
-                    break;
-                }
-                if (wand.data.data.blocked) {
-                    continue;
-                }
-                let wandConfig = this.wandConfigRepository.getWandConfig(wand.data.data.arcane);
-                if (!wandConfig) {
-                    continue;
-                }
-                if (wand.data.data.charge < wandConfig.maxChargesPerWand) {
-                    spellInNonFullWand[wand.data.data.spell] = true;
-                }
-            }
-        }
-        return [spellInNonFullWand, emptyWandAvailable];
     }
 
     getAvailableWandsForSpell(actor: Lvl0FoundryActor, spellId: string, arcaneLevel: number): Lvl0FoundryItemWand[] {
@@ -58,31 +31,31 @@ export class WandUtil {
             )
     }
 
-    async fillWandWithSpell(testResult: RollResult, wand: Lvl0FoundryItemWand, spell: ActorSpell, actor: Lvl0ActorCharacter): Promise<void> {
+    async fillWandWithSpell(testResult: RollResult, wand: Lvl0FoundryItemWand, spell: RolledSpell, actor: Lvl0ActorCharacter): Promise<void> {
         if (testResult === 'fail') {
             return;
         }
-        if (wand.data.data.spell === spell.id) {
+        if (wand.data.data.spell === spell.definition.id) {
             if (testResult === 'epicFail') {
                 await wand.update({data: {blocked: true} as WandItemPropertiesData})
             } else {
                 await wand.update({data: {charge: wand.data.data.charge + 1} as WandItemPropertiesData});
             }
         } else {
-            let itemName = 'Baguette: ' + spell.name;
-            if (spell.dependsOnArcaneLevel) {
+            let itemName = 'Baguette: ' + spell.definition.name;
+            if (spell.definition.dependsOnArcaneLevel) {
                 itemName += ' (Arcane: ' + actor.data.data.computedData.magic.arcaneLevel + ')';
             }
             let wandData = {
                 ...wand.toObject(),
                 name: itemName,
-                img: spell.icon,
+                img: spell.definition.icon,
                 data: {
-                    description: spell.description,
+                    description: spell.data.description,
                     quantifiable: false,
                     quantity: 0,
-                    spell: spell.id,
-                    arcane: spell.dependsOnArcaneLevel ? actor.data.data.computedData.magic.arcaneLevel : 0,
+                    spell: spell.definition.id,
+                    arcane: spell.definition.dependsOnArcaneLevel ? actor.data.data.computedData.magic.arcaneLevel : 0,
                     charge: testResult === 'epicFail' ? 0 : 1,
                     blocked: testResult === 'epicFail'
                 } as WandItemPropertiesData
@@ -90,29 +63,5 @@ export class WandUtil {
             await actor.createEmbeddedDocuments('Item', [wandData]);
             await this.itemUtil.updateQuantity(wand, -1);
         }
-    }
-
-    async useWand(wand: Lvl0FoundryItemWand) {
-        if (wand.data.data.charge <= 0) {
-            ui.notifications?.warn('La baguette est vide');
-            return;
-        }
-
-        let spell = await this.spellManager.getComputedSpellForActorById(wand.data.data.spell, {arcaneLevel: wand.data.data.arcane});
-        if (!spell) {
-            ui.notifications?.error('Sort inconnu: ' + wand.data.data.spell);
-            return;
-        }
-
-        let speaker = wand.actor ? ChatMessage.getSpeaker({actor: wand.actor}) : undefined;
-        let message = `<div class="skill-roll-spell-chat">
-            <div class="title">Utilisation d'une baguette</div>
-            ${await this.spellChat.renderSpellChat(spell, 'success')}
-        </div>`;
-        await ChatMessage.create({
-            speaker: speaker,
-            content: message
-        })
-        await wand.update({data: {charge: wand.data.data.charge - 1}});
     }
 }

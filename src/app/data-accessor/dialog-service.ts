@@ -5,6 +5,7 @@ type DialogIds = 'lvl0-spell-definition-selector'
     | 'lvl0-level-up-dialog'
     | 'lvl0-character-initial-stat-roll-dialog'
     | 'lvl0-select-speciality-dialog'
+    | 'lvl0-spell-selector-dialog'
     | 'lvl0-weapon-selector-dialog';
 
 export abstract class DialogService {

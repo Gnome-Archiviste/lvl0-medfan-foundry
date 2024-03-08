@@ -7,6 +7,7 @@ import {SystemDataDatabaseService} from '../system-data/system-data-database.ser
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {SpecialityArrowVolleyUtil} from '../speciality/speciality-arrow-volley-util';
 import {PlayerNotificationService} from '../shared/player-notification.service';
+import {SpecialityChatService} from '../speciality/speciality-chat.service';
 
 @Injectable()
 export class FoundrySpecialityService extends SpecialityService {
@@ -17,9 +18,18 @@ export class FoundrySpecialityService extends SpecialityService {
         chatService: ChatService,
         specialityArrowVolleyUtil: SpecialityArrowVolleyUtil,
         playerNotificationService: PlayerNotificationService,
+        specialityChatService: SpecialityChatService,
         private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver,
     ) {
-        super(systemDataDatabaseService, characterAccessorService, actorUpdaterService, chatService, specialityArrowVolleyUtil, playerNotificationService);
+        super(
+            systemDataDatabaseService,
+            characterAccessorService,
+            actorUpdaterService,
+            chatService,
+            specialityArrowVolleyUtil,
+            playerNotificationService,
+            specialityChatService
+        );
     }
 
     async removeSpeciality(characterId: string, specialityEntityId: string): Promise<void> {

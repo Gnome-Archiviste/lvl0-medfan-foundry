@@ -1,7 +1,7 @@
 import {Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {createCustomElement} from '@angular/elements';
-import {SpellSelectorComponent} from './spell/spell-selector.component';
+import {SpellSelectorDialogComponent} from './spell/spell-selector-dialog.component';
 import {SpellModule} from './spell/spell.module';
 import {FoundryModule} from './foundry/foundry.module';
 import {SpellDefinitionSelectorComponent} from './item/spell-definition-selector.component';
@@ -12,15 +12,16 @@ import {ActorModule} from './actor/actor.module';
 import {LevelUpDialogComponent} from './actor/level-up-dialog.component';
 import {CharacterInitialStatRollDialogComponent} from './actor/character-initial-stat-roll-dialog.component';
 import {SkillRollResultComponent} from './skill/skill-roll-result.component';
-import {ItemService} from './data-accessor/item.service';
-import {FileSelectorService} from './data-accessor/file-selector.service';
 import {ChatWrapperComponent} from './chat/chat-wrapper.component';
 import {ChatModule} from './chat/chat.module';
-import {SelectSpecialityDialog} from '../ui/dialog';
 import {SelectSpecialityDialogComponent} from './speciality/select-speciality-dialog.component';
 import {SpecialityService} from './speciality/speciality.service';
 import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.component';
 import {ActorEffectService} from './data-accessor/actor-effect.service';
+import {DialogService} from './data-accessor/dialog-service';
+import {SpellUtil} from './spell/spell-util';
+import {ChatService} from './chat/chat.service';
+import {SpellChatService} from './spell/spell-chat.service';
 
 @NgModule({
     declarations: [],
@@ -40,11 +41,14 @@ export class AppModule {
     constructor(
         private readonly injector: Injector,
         readonly specialityService: SpecialityService,
-        readonly actorEffectService: ActorEffectService
+        readonly actorEffectService: ActorEffectService,
+        readonly dialogService: DialogService,
+        readonly spellUtil: SpellUtil,
+        readonly spellChatService: SpellChatService,
+        readonly chatService: ChatService,
     ) {
-
         const elements: any[] = [
-            [SpellSelectorComponent, 'lvl0-spell-selector'],
+            [SpellSelectorDialogComponent, 'lvl0-spell-selector-dialog'],
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
             [CharacterInitialStatRollDialogComponent, 'lvl0-character-initial-stat-roll-dialog'],
             [SelectSpecialityDialogComponent, 'lvl0-select-speciality-dialog'],

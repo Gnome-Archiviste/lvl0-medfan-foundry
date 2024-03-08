@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {SavedRoll} from '../shared/roll';
+import {ChatRoll} from '../shared/roll';
 
 @Component({
     selector: 'lvl0-roll-detail',
@@ -8,7 +8,7 @@ import {SavedRoll} from '../shared/roll';
 })
 export class RollDetailComponent {
     @Input('roll')
-    roll: SavedRoll;
+    roll: ChatRoll;
     showDetails: boolean
 
     toggleDetails() {

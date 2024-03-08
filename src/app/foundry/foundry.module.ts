@@ -28,6 +28,8 @@ import {ItemService} from '../data-accessor/item.service';
 import {FoundryItemService} from './foundry-item.service';
 import {PlayerNotificationService} from '../shared/player-notification.service';
 import {FoundryPlayerNotificationService} from './foundry-player-notification.service';
+import {FoundrySpellActionService} from './foundry-spell-action-service';
+import {SpellActionService} from '../spell/spell-action.service';
 
 @NgModule({
     declarations: [],
@@ -86,6 +88,10 @@ import {FoundryPlayerNotificationService} from './foundry-player-notification.se
         {
             provide: RollFactory,
             useClass: FoundryRollFactory
+        },
+        {
+            provide: SpellActionService,
+            useClass: FoundrySpellActionService
         },
         {
             provide: TranslateService,

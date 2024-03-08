@@ -13,9 +13,8 @@ export interface IRoll {
     terms: DiceTerm[];
 }
 
-export type SavedRoll = {
+export type ChatRoll = {
     formula: string;
     total: number;
     terms: DiceTerm[];
 }
-

@@ -29,15 +29,6 @@ export class Lvl0FoundryItem extends Item {
         return false;
     }
 
-    async use(): Promise<void> {
-        if (this.data.type === 'scroll') {
-            await this.scrollUtil.useScroll(this as Lvl0FoundryItemScroll);
-        }
-        if (this.data.type === 'wand') {
-            await this.wandUtil.useWand(this as Lvl0FoundryItemWand);
-        }
-    }
-
     get lvl0Id() {
         if (this.isEmbedded && this.parent) {
             if (this.parent instanceof  Lvl0FoundryActor) {

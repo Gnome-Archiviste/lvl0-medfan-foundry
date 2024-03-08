@@ -1,18 +1,23 @@
 import {container, singleton} from 'tsyringe';
 import {SkillScript, SkillTestRollResult} from "./skill-script";
-import {SpellSelector} from "utils/spell-selector";
-import {ActorSpell, RollMagicEpicFailManager, ScrollUtil, SpellChat, SpellManager, WandUtil} from "managers/spell";
-import {EffectManager} from "managers/effects";
-import {SpellCastAction} from 'ui/dialog';
+import {RollMagicEpicFailManager, ScrollUtil, SpellChat, WandUtil} from "managers/spell";
 import {RollUtil} from 'utils/roll-util';
 import {assertIsCharacter} from 'models/actor';
 import {CastSpellSkillScriptData, CastSpellSkillScriptDefinition, SkillDefinition} from 'repositories/data';
 import {ItemSelector} from 'utils/item-selector';
+import {
+    SpellCastAction,
+    SpellSelectorDialogData,
+    SpellSelectorDialogResult
+} from '../../../app/spell/spell-selector-dialog.component';
+import {Spell} from '../../../app/spell/spell';
+import {SpellRepository} from '../../../repositories';
+import {FoundryRoll} from '../../../app/foundry/foundry-roll-factory';
 
 @singleton()
 export class RollSpellSkillScript extends SkillScript {
     data: CastSpellSkillScriptData;
-    spell: ActorSpell;
+    spell: Spell;
     action: SpellCastAction = 'cast';
 
     constructor(
@@ -22,8 +27,7 @@ export class RollSpellSkillScript extends SkillScript {
         private readonly options: { spellId?: string } | undefined,
         private readonly spellChat: SpellChat,
         private readonly scrollUtil: ScrollUtil,
-        private readonly spellManager: SpellManager,
-        private readonly spellSelector: SpellSelector,
+        private readonly spellRepository: SpellRepository,
         private readonly wandUtil: WandUtil,
         private readonly itemSelector: ItemSelector,
     ) {
@@ -32,7 +36,7 @@ export class RollSpellSkillScript extends SkillScript {
     }
 
     override async prepare(): Promise<boolean> {
-        let spell: ActorSpell | undefined;
+        let spell: Spell | undefined;
         let action: SpellCastAction = 'cast';
         let actor = this.token.actor;
         if (!actor) {
@@ -42,10 +46,16 @@ export class RollSpellSkillScript extends SkillScript {
         assertIsCharacter(actor);
 
         if (this.options?.spellId) {
-            spell = await this.spellManager.getComputedSpellForActorById(this.options.spellId, {arcaneLevel: actor.data.data.computedData.magic.arcaneLevel});
+            let spellDefinition = this.spellRepository.getSpellById(this.options.spellId);
+            spell = spellUtil.computeSpellValuesBeforeRoll(spellDefinition!, {arcaneLevel: actor.data.data.computedData.magic.arcaneLevel});
         }
         if (!spell) {
-            const result = await this.spellSelector.selectSpell(this.token, this.data.spellClass);
+            const result = await new Promise<SpellSelectorDialogResult>(resolve => {
+                dialogService.openDialog<SpellSelectorDialogData, SpellSelectorDialogResult>('lvl0-spell-selector-dialog', {characterId: actor!.lvl0Id!}, {title: 'Select spell'}).subscribe((result) => {
+                    resolve(result)
+                })
+            })
+
             if (result) {
                 spell = result.spell;
                 action = result.action;
@@ -54,7 +64,7 @@ export class RollSpellSkillScript extends SkillScript {
         if (!spell) {
             return false;
         }
-        if (spell.cost > actor.data.data.mana.value) {
+        if (spell.computedData.effectiveCost > actor.data.data.mana.value) {
             ui.notifications?.error('Pas assez de point de mana.');
             return false;
         }
@@ -69,11 +79,10 @@ export class RollSpellSkillScript extends SkillScript {
         assertIsCharacter(actor);
 
         let context = {
-            arcaneLevel: actor.data.data.computedData.magic.arcaneLevel,
             criticalSuccess: testRoll.result === 'criticalSuccess',
             epicFail: testRoll.result === 'epicFail',
         };
-        let spell = await this.spellManager.reComputeSpellAfterRoll(this.spell, context);
+        let spell = await spellUtil.rollSpell(this.spell, context);
 
         let message: string;
         if (this.action === 'cast') {
@@ -85,7 +94,7 @@ export class RollSpellSkillScript extends SkillScript {
             </div>
             `;
         } else if (this.action === 'fillWand') {
-            let wands = this.wandUtil.getAvailableWandsForSpell(actor, spell.id, spell.dependsOnArcaneLevel ? actor.data.data.computedData.magic.arcaneLevel : 0);
+            let wands = this.wandUtil.getAvailableWandsForSpell(actor, spell.definition.id, spell.definition.dependsOnArcaneLevel ? spell.context.arcaneLevel : 0);
             if (!wands) {
                 ui.notifications?.warn('Aucune baguette disponible');
                 return;
@@ -97,7 +106,7 @@ export class RollSpellSkillScript extends SkillScript {
             await this.wandUtil.fillWandWithSpell(testRoll.result, wand, spell, actor);
             message = `<div class="skill-roll-spell-chat">
                 <div class="title"><i class="fa fa-scroll"></i>Remplissage d'une baguette</div>
-                <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
+                <div class="subtitle"><img src="${spell.definition.icon}"> ${spell.definition.name}</div>
                 <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
                 <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>`;
             if (testRoll.result == 'epicFail') {
@@ -107,7 +116,7 @@ export class RollSpellSkillScript extends SkillScript {
         } else if (this.action === 'createScroll') {
             message = `<div class="skill-roll-spell-chat">
                 <div class="title"><i class="fa fa-scroll"></i>Création d'un parchemin</div>
-                <div class="subtitle"><img src="${spell.icon}"> ${spell.name}</div>
+                <div class="subtitle"><img src="${spell.definition.icon}"> ${spell.definition.name}</div>
                 <div class="test"><i class="fas fa-dice"></i> ${testRoll.total} / ${testRoll.successValue} (${this.rollUtil.getTestResultMessage(testRoll.result)})</div>
                 <div class="roll">${await this.rollUtil.renderRollSmall(testRoll.roll)}</div>`;
 
@@ -120,7 +129,7 @@ export class RollSpellSkillScript extends SkillScript {
         }
 
         if (testRoll.result !== 'fail') {
-            actor.useMana(spell.cost).then();
+            actor.useMana(spell.data.effectiveCost).then();
         }
 
         let content = message;
@@ -129,9 +138,9 @@ export class RollSpellSkillScript extends SkillScript {
             ...messageData,
             content,
             speaker,
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            // type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             // FIXME: Remove stringify: https://github.com/League-of-Foundry-Developers/foundry-vtt-types/issues/1552
-            roll: JSON.stringify(this.rollUtil.mergeRolls([testRoll.roll, ...this.spellManager.getRollsInSpell(spell)]).toJSON())
+            roll: JSON.stringify(this.rollUtil.mergeRolls([testRoll.roll, ...(spellUtil.getRollsInSpell(spell).map(x => (x as FoundryRoll).foundryRoll))] as any).toJSON())
         });
     }
 }

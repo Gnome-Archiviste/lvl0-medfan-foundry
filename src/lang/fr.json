@@ -177,6 +177,7 @@
   "LVL0MF.JobCategory.base": "Base",
   "LVL0MF.JobCategory.advance": "Avancé",
 
+  "LVL0MF.Spell.Label.cost" : "Coût",
   "LVL0MF.Spell.Label.distance" : "Distance",
   "LVL0MF.Spell.Label.duration" : "Durée",
   "LVL0MF.Spell.Label.area" : "Zone",
@@ -238,6 +239,9 @@
   "LVL0MF.Job.Speciality.earth": "Minéraux",
 
   "LVL0MF.Notification.Error.speciality_not_found": "Spécialité inconnu par le personnage",
+  "LVL0MF.Notification.Error.wand_is_empty": "La baguette est vide",
+  "LVL0MF.Notification.Error.unknown_spell": "Sort inconnu",
+  "LVL0MF.Notification.Error.select_token_first": "Sélectionné un token avant d'effectuer cette action",
   "LVL0MF.Notification.Error.not_enough_mana": "Pas assez de mana disponible",
   "LVL0MF.End" : "Fin de la traduction"
 }

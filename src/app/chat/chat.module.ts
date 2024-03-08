@@ -5,17 +5,25 @@ import {SpecialityModule} from '../speciality/speciality.module';
 import {SpecialityRollChatMessageComponent} from './speciality-roll-chat-message.component';
 import {SharedModule} from '../shared/shared.module';
 import { RollDetailComponent } from './roll-detail.component';
+import { SpellRollChatMessageComponent } from './spell-roll-chat-message.component';
+import { SpellRollChatValueComponent } from './spell-roll-chat-value.component';
+import {MarkdownModule} from '../markdown/markdown.module';
+import { ItemUseChatMessageComponent } from './item-use-chat-message.component';
 
 @NgModule({
     declarations: [
         ChatWrapperComponent,
         SpecialityRollChatMessageComponent,
         RollDetailComponent,
+        SpellRollChatMessageComponent,
+        SpellRollChatValueComponent,
+        ItemUseChatMessageComponent,
     ],
     imports: [
         CommonModule,
         SpecialityModule,
-        SharedModule
+        SharedModule,
+        MarkdownModule
     ]
 })
 export class ChatModule {

@@ -42,6 +42,7 @@ export class FoundryToLvl0Mapper {
             id: item.lvl0Id!,
             img: item.img,
             isOwned: item.isOwned,
+            ownerId: item.isOwned ? item.actor?.lvl0Id ?? undefined : undefined,
             name: item.name || '',
         };
     }

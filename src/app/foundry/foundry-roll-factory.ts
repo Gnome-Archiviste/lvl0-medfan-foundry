@@ -1,11 +1,15 @@
 import {RollFactory} from '../shared/roll-factory';
-import {DiceTerm, IRoll, SavedRoll} from '../shared/roll';
+import {ChatRoll, DiceTerm, IRoll} from '../shared/roll';
 import {Evaluated} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/dice/roll';
 import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 import {Injectable} from '@angular/core';
 
 export class FoundryRoll implements IRoll {
     readonly foundryRoll: Roll;
+
+    get formula(): string {
+        return this.foundryRoll.formula!;
+    }
 
     get total(): number {
         return this.foundryRoll.total!;
@@ -46,18 +50,18 @@ export class FoundryRollFactory extends RollFactory {
         return foundryRoll;
     }
 
-    async createSavedRoll(formula: string): Promise<SavedRoll> {
-        let roll = new Roll(formula);
-        let foundryRoll = await roll.roll({async: true});
-
+    convertToRollChat(roll: IRoll): ChatRoll {
+        if (!(roll instanceof FoundryRoll))
+            throw new Error('Roll was not a foundry roll');
         return {
-            total: roll.total!,
-            formula: formula,
-            terms: foundryRoll.dice.map((t: Die) => ({
+            total: roll.total,
+            formula: roll.formula,
+            terms: roll.foundryRoll.dice.map((t: Die) => ({
                 number: t.total!,
                 faces: t.faces,
                 results: t.results.map(x => ({result: x.result})),
             }))
         }
     }
+
 }

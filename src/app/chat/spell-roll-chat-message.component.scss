@@ -1,0 +1,20 @@
+.spell {
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row;
+  }
+}
+.spell-value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1ch;
+  .label {
+    font-weight: bold;
+  }
+}
+.packed-values {
+  columns: 2;
+}

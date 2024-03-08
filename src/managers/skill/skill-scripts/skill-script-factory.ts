@@ -6,12 +6,11 @@ import {RollShieldDamageSkillScript} from "./roll-shield-damage-skill-script";
 import {SkillDefinition} from 'repositories/data';
 import {RollUtil} from 'utils/roll-util';
 import {RollFactory} from 'utils/roll-factory';
-import {ScrollUtil, SpellChat, SpellManager, WandUtil} from 'managers/spell';
+import {ScrollUtil, SpellChat, WandUtil} from 'managers/spell';
 import {EffectManager} from 'managers/effects';
 import {WeaponDamageRollUtil} from 'utils/weapon-damage-roll-util';
-import {SpellSelector} from 'utils/spell-selector';
 import {WeaponSelector} from 'utils/weapon-selector';
-import {ElementRepository} from 'repositories';
+import {ElementRepository, SpellRepository} from 'repositories';
 import {ItemSelector} from '../../../utils/item-selector';
 
 @singleton()
@@ -22,8 +21,7 @@ export class SkillScriptFactory {
         @inject(RollFactory) private readonly rollFactory: RollFactory,
         @inject(SpellChat) private readonly spellChat: SpellChat,
         @inject(ScrollUtil) private readonly scrollUtil: ScrollUtil,
-        @inject(SpellManager) private readonly spellManager: SpellManager,
-        @inject(SpellSelector) private readonly spellSelector: SpellSelector,
+        @inject(SpellRepository) private readonly spellRepository: SpellRepository,
         @inject(WeaponDamageRollUtil) private readonly weaponDamageRollUtil: WeaponDamageRollUtil,
         @inject(WeaponSelector) private readonly weaponSelector: WeaponSelector,
         @inject(EffectManager) private readonly effectManager: EffectManager,
@@ -57,8 +55,7 @@ export class SkillScriptFactory {
                     options,
                     this.spellChat,
                     this.scrollUtil,
-                    this.spellManager,
-                    this.spellSelector,
+                    this.spellRepository,
                     this.wandUtil,
                     this.itemSelector
                 );

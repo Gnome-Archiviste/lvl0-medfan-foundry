@@ -45,13 +45,13 @@
     <div class="spell">
         <lvl0-spell [spell]="spellResult.obj" [overrideSpellName]="highlightSpellName(spellResult)" [overrideDescription]="highlightDescription(spellResult)"></lvl0-spell>
         <div class="actions">
-            <button class="action" (click)="addMacro.emit(spellResult.obj.definition.id)"><i class="fas fa-cogs"></i> Créer une macro</button>
-            <button class="action" (click)="castSpell.emit(spellResult.obj.definition.id)"><i class="fas fa-dice"></i> Lancer</button>
+            <button class="action" (click)="addMacro(spellResult.obj)"><i class="fas fa-cogs"></i> Créer une macro</button>
+            <button class="action" (click)="castSpell(spellResult.obj)"><i class="fas fa-dice"></i> Lancer</button>
             <ng-container *ngIf="emptyScrollAvailable$ | async">
-                <button class="action" (click)="createScroll.emit(spellResult.obj.definition.id)"><i class="fas fa-scroll"></i> Créer une parchemin</button>
+                <button class="action" (click)="createScroll(spellResult.obj)"><i class="fas fa-scroll"></i> Créer une parchemin</button>
             </ng-container>
             <ng-container *ngIf="(emptyWandAvailable$ | async) || (canFillAWandWith(spellResult.obj.definition.id) | async)">
-                <button class="action" (click)="fillWand.emit(spellResult.obj.definition.id)"><i class="fas fa-magic"></i> Remplir une baguette</button>
+                <button class="action" (click)="fillWand(spellResult.obj)"><i class="fas fa-magic"></i> Remplir une baguette</button>
             </ng-container>
         </div>
     </div>

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Lvl0MessageTypes, SpecialityRollChatMessageType} from './lvl0-chat-message.types';
-import {SpecialityRollChatMessageData} from './speciality-roll-chat-message.component';
+import {Lvl0ChatMessage, Lvl0MessageTypes} from './lvl0-chat-message.types';
 
 @Component({
     templateUrl: './chat-wrapper.component.html',
@@ -13,10 +12,7 @@ export class ChatWrapperComponent implements OnInit {
     @Input('rawData')
     rawData: string;
 
-    messageData: {
-        type: SpecialityRollChatMessageType
-        data: SpecialityRollChatMessageData
-    };
+    messageData: Lvl0ChatMessage;
 
     ngOnInit(): void {
         this.messageData = {

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SpellSelectorComponent} from './spell-selector.component';
+import {SpellSelectorDialogComponent} from './spell-selector-dialog.component';
 import {MarkdownModule} from '../markdown/markdown.module';
 import {SpellStatValueComponent} from './spell-stat-value.component';
 import {SharedModule} from '../shared/shared.module';
@@ -11,7 +11,7 @@ import { SpellComponent } from './spell.component';
 
 @NgModule({
     declarations: [
-        SpellSelectorComponent,
+        SpellSelectorDialogComponent,
         SpellStatValueComponent,
         SpellComponent
     ],

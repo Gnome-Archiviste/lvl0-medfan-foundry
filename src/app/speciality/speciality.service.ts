@@ -8,6 +8,9 @@ import {CharacterSpecialitiesInfo} from '../data-accessor/models/lvl0-character'
 import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
 import {ArrowVolleyResult, SpecialityArrowVolleyUtil} from './speciality-arrow-volley-util';
 import {PlayerNotificationService} from '../shared/player-notification.service';
+import {ArrowVolleyResultMessageData} from '../chat/speciality-roll-chat-message.component';
+import {SpecialityChatService} from './speciality-chat.service';
+import {IRoll} from '../shared/roll';
 
 export abstract class SpecialityService {
     protected constructor(
@@ -17,6 +20,7 @@ export abstract class SpecialityService {
         protected readonly chatService: ChatService,
         protected readonly specialityArrowVolleyUtil: SpecialityArrowVolleyUtil,
         protected readonly playerNotificationService: PlayerNotificationService,
+        protected readonly specialityChatService: SpecialityChatService,
     ) {
     }
 
@@ -43,12 +47,14 @@ export abstract class SpecialityService {
                     return;
                 }
 
-                let specificExtraData: ArrowVolleyResult | undefined = undefined;
+                let rolls: IRoll[] | undefined = undefined;
+                let specificExtraData: ArrowVolleyResultMessageData | undefined = undefined;
                 if (characterSpeciality.speciality.id === 'arrow_volley') {
                     let arrowVolleyResult = await this.specialityArrowVolleyUtil.rollArrowVolley(characterId);
                     if (!arrowVolleyResult)
                         return;
-                    specificExtraData = arrowVolleyResult;
+                    rolls = this.specialityArrowVolleyUtil.getAllRolls(arrowVolleyResult);
+                    specificExtraData = this.specialityChatService.mapArrowVolleyResultToMessageData(arrowVolleyResult);
                 }
 
                 await this.actorUpdaterService.updateActor(characterId, {
@@ -61,7 +67,7 @@ export abstract class SpecialityService {
                         manaUsed: 1,
                         specificExtraData: specificExtraData
                     }
-                });
+                }, rolls);
             });
     }
 

@@ -27,6 +27,7 @@ export type BaseLvl0Item = {
     name: string;
     img?: string;
     isOwned: boolean;
+    ownerId?: string;
 }
 
 export type Lvl0ItemAmmunition = BaseLvl0Item & AmmunitionItemProperties;

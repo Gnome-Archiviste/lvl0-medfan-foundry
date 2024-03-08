@@ -15,9 +15,6 @@ import {AppModule} from './app/app.module';
 import 'zone.js';
 import './components'
 import {environment} from './environments/environment';
-import {FoundrySpecialityService} from './app/foundry/foundry-speciality.service';
-import {ActorEffectService} from './app/data-accessor/actor-effect.service';
-
 
 Hooks.once("init", async function () {
     CONFIG.Actor.documentClass = Lvl0FoundryActor;
@@ -59,9 +56,13 @@ Hooks.once("ready", async () => {
 
         // bootstrapAppModule.instance...
         // FIXME: replace with
-        (window as any).rollSkillManager = container.resolve(RollSkillManager);
-        (window as any).rollSpecialityManager = bootstrapAppModule.instance.specialityService;
-        (window as any).actorEffectService = bootstrapAppModule.instance.actorEffectService;
+        (window as any).rollSkillManager = container.resolve(RollSkillManager); // Keep it (used in macro)
+        (window as any).rollSpecialityManager = bootstrapAppModule.instance.specialityService; // Keep it (used in macro)
+        (window as any).actorEffectService = bootstrapAppModule.instance.actorEffectService; // tmp
+        (window as any).dialogService = bootstrapAppModule.instance.dialogService; // tmp
+        (window as any).spellUtil = bootstrapAppModule.instance.spellUtil; // tmp
+        (window as any).spellChatService = bootstrapAppModule.instance.spellChatService; // tmp
+        (window as any).chatService = bootstrapAppModule.instance.chatService; // tmp
 
         // DEBUG do not commit
         // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)

@@ -1,8 +1,7 @@
 import {inject, singleton} from 'tsyringe';
 import * as marked from 'marked';
-import {ActorSpell} from './actor-spell.model';
 import {RollResult, RollUtil} from '../../utils/roll-util';
-import {RolledSpellStat} from './spell-manager';
+import {RolledSpell, RolledSpellValue} from '../../app/spell/spell';
 
 @singleton()
 export class SpellChat {
@@ -12,27 +11,27 @@ export class SpellChat {
     ) {
     }
 
-    async renderSpellChat(spell: ActorSpell, result: RollResult): Promise<string> {
+    async renderSpellChat(spell: RolledSpell, result: RollResult): Promise<string> {
         let message = `<div class="spell">
         <div class="header">
-            <img class="icon" src="${spell.icon}">
-            <div class="name">${spell.name}</div>
+            <img class="icon" src="${spell.definition.icon}">
+            <div class="name">${spell.definition.name}</div>
         </div>
-        <div class="description">${marked.parse(spell.description)}</div>
+        <div class="description">${marked.parse(spell.data.description)}</div>
         <div class="stats">
-        <div class="cost"><span class="label">Coût</span> ${spell.cost} point de mana</div>
-        <div class="distance"><span class="label">Distance</span> ${spell.distance}</div>`;
-        message += await this.renderSpellStat('duration', spell.duration)
-        message += await this.renderSpellStat('area', spell.area)
+        <div class="cost"><span class="label">Coût</span> ${spell.data.effectiveCost} point de mana</div>
+        <div class="distance"><span class="label">Distance</span> ${spell.data.distance}</div>`;
+        message += await this.renderSpellStat('duration', spell.data.duration)
+        message += await this.renderSpellStat('area', spell.data.area)
         message += `
         </div>`;
 
-        message += await this.renderSpellStat('bonus', spell.bonus)
-        message += await this.renderSpellStat('resilience', spell.resilience)
-        message += await this.renderSpellStat('damage', spell.damage)
-        message += await this.renderSpellStat('heal', spell.heal)
+        message += await this.renderSpellStat('bonus', spell.data.bonus)
+        message += await this.renderSpellStat('resilience', spell.data.resilience)
+        message += await this.renderSpellStat('damage', spell.data.damage)
+        message += await this.renderSpellStat('heal', spell.data.heal)
         if (result === 'criticalSuccess')
-            message += await this.renderSpellStat('criticalSuccess', spell.criticalSuccess)
+            message += await this.renderSpellStat('criticalSuccess', spell.data.criticalSuccess)
         if (this.rollUtil.isSuccess(result))
             message += await this.renderActions(spell);
 
@@ -43,30 +42,41 @@ export class SpellChat {
         return message;
     }
 
-    private async renderSpellStat(name, value) {
+    private async renderSpellStat(name, value?: RolledSpellValue) {
         if (!value)
             return '';
-        if (typeof value === 'string')
-            return `<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value}</div>`;
-        if (typeof value === 'object' && value instanceof RolledSpellStat)
+        if ('text' in value)
+            return `<div class="${name}"><span class="label">${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value.text}</div>`;
+        if ('roll' in value)
             return `<div>
                 <div class="${name}">
-                    <span class="label"><i class="fas fa-dice"></i> ${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${value.toDisplayString()}
+                    <span class="label"><i class="fas fa-dice"></i> ${game.i18n.localize('LVL0MF.Spell.Label.' + name)}</span>&nbsp;${this.formatRoll(value)}
                 </div>
-                <div class="roll">${await value.roll.render()}</div>
+                <div class="roll">FIXME</div>
             </div>`;
         return '';
     }
 
-    private async renderActions(spell: ActorSpell): Promise<string> {
-        if (!spell.actions)
+
+    private formatRoll(value: any) {
+        let result = value.roll.total.toString();
+        if (value.unit)
+            result += ' ' + value.unit
+        if (value.suffix)
+            result += ' (' + value.suffix + ')'
+        return result;
+    }
+
+    private async renderActions(spell: RolledSpell): Promise<string> {
+        if (!spell.data.actions)
             return "";
 
-        let actionsContent = '';
+/*        let actionsContent = '';
         for (let action of Object.values(spell.actions)) {
             actionsContent += `<button data-lvl0-global-action-execute-spell-action="${btoa(JSON.stringify(action))}">${action.name}</button>`;
         }
 
-        return actionsContent;
+        return actionsContent;*/
+        return "";
     }
 }
