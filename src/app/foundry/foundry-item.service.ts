@@ -5,6 +5,8 @@ import {Lvl0Item} from '../data-accessor/models/lvl0-item';
 import {SpellRepository} from '../../repositories';
 import {PlayerNotificationService} from '../shared/player-notification.service';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
+import {SpellUtil} from '../spell/spell-util';
+import {SpellChatService} from '../spell/spell-chat.service';
 
 @Injectable()
 export class FoundryItemService extends ItemService {
@@ -12,9 +14,11 @@ export class FoundryItemService extends ItemService {
         spellRepository: SpellRepository,
         playerNotificationService: PlayerNotificationService,
         itemUpdaterService: ItemUpdaterService,
+        spellUtil: SpellUtil,
+        spellChatService: SpellChatService,
         private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver
     ) {
-        super(spellRepository, playerNotificationService, itemUpdaterService);
+        super(spellRepository, playerNotificationService, itemUpdaterService, spellUtil, spellChatService);
     }
 
     async shareItem(lvl0Item: Lvl0Item) {
@@ -42,5 +46,14 @@ export class FoundryItemService extends ItemService {
         if (item) {
             await item.delete();
         }
+    }
+
+    async createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<void> {
+        let item = this.foundryLvl0IdResolver.getItemFromLvl0Id(baseItem.id);
+        let itemData = {
+            ...item.toObject(),
+            ...data
+        }
+        await item.createEmbeddedDocuments('Item', [itemData])
     }
 }

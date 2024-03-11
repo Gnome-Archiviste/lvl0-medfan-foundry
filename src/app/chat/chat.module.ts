@@ -9,6 +9,7 @@ import { SpellRollChatMessageComponent } from './spell-roll-chat-message.compone
 import { SpellRollChatValueComponent } from './spell-roll-chat-value.component';
 import {MarkdownModule} from '../markdown/markdown.module';
 import { ItemUseChatMessageComponent } from './item-use-chat-message.component';
+import { SkillRollChatMessageComponent } from './skill-roll-chat-message.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { ItemUseChatMessageComponent } from './item-use-chat-message.component';
         SpellRollChatMessageComponent,
         SpellRollChatValueComponent,
         ItemUseChatMessageComponent,
+        SkillRollChatMessageComponent,
     ],
     imports: [
         CommonModule,

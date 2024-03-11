@@ -65,7 +65,7 @@ export class CharacterSheetEquipmentComponent implements OnInit {
         this.dartMarbleItems$ = this.ammunitionItems$.pipe(map(x => x.filter(i => i.data.ammunitionType === AmmunitionType.Marble || i.data.ammunitionType === AmmunitionType.Dart)));
         this.armorItems = {} as any;
         for (let armorSlot of armorSlots) {
-            this.armorItems[armorSlot] = this.character$.pipe(selectCharacterItemsOfType(armorSlot))
+            this.armorItems[armorSlot] = this.character$.pipe(selectCharacterItemsOfType(armorSlot), map(x => x.filter(i => i.data.equiped)))
         }
         this.staticInventory$ = this.character$.pipe(selectStaticInventory());
         this.torchCount$ = this.character$.pipe(selectTorchCount());

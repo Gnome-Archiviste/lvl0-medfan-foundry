@@ -5,13 +5,13 @@ import {SkillDefinition, SpecialityDefinition} from '../../repositories';
 
 @Injectable()
 export class FoundryMacroService extends MacroService {
-    async createRollSkillMacro(skillDefinition: SkillDefinition) {
+    async createRollSkillMacro(skillDefinition: SkillDefinition, options: {}) {
         await this.createAndAssignMacroToFirstAvailableSlot({
             name: skillDefinition.name,
             type: "script",
             img: skillDefinition.icon,
             scope: "actor",
-            command: this.guardScriptExecutionWithTokenCheck(`rollSkillManager.rollSkill(token, '${skillDefinition.skillId}')`)
+            command: this.guardScriptExecutionWithTokenCheck(`rollSkillManager.rollSkill(token, '${skillDefinition.skillId}', ${JSON.stringify(options)})`)
         })
     }
 

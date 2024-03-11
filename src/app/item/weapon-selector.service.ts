@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {combineLatest, take} from 'rxjs';
+import {combineLatest, firstValueFrom} from 'rxjs';
 import {Lvl0ItemAmmunition, Lvl0ItemWeapon} from '../data-accessor/models/lvl0-item';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {DialogService} from '../data-accessor/dialog-service';
 import {selectCharacterItemsOfType} from '../data-accessor/selectors/character-selectors';
 import {WeaponSelectorDialogData, WeaponSelectorDialogResult} from './weapon-selector-dialog.component';
 import {WeaponType} from '../../models/item';
+import {PlayerNotificationService} from '../shared/player-notification.service';
 
 type WeaponSelectionResult = {
     selectedWeapon: Lvl0ItemWeapon;
@@ -20,44 +21,37 @@ export class WeaponSelectorService {
     constructor(
         protected readonly characterAccessorService: CharacterAccessorService,
         protected readonly dialogService: DialogService,
+        private readonly playerNotificationService: PlayerNotificationService,
     ) {
     }
 
-    public selectWeapon(characterId: string, weaponType: 'range' | 'melee'): Promise<WeaponSelectionResult | undefined> {
-        return new Promise<WeaponSelectionResult | undefined>(resolve => {
-            let character$ = this.characterAccessorService.selectCharacter(characterId);
-            combineLatest([
-                character$.pipe(selectCharacterItemsOfType('weapon')),
-                character$.pipe(selectCharacterItemsOfType('ammunition')),
-            ]).pipe(take(1)).subscribe(async ([availableWeapons, availableAmmunition]: [Lvl0ItemWeapon[], Lvl0ItemAmmunition[]]) => {
-                availableWeapons = availableWeapons
-                    .filter(x => x.data.equiped)
-                    .filter(w => w.data.weaponType == weaponType || w.data.weaponType === WeaponType.MeleeRange);
+    public async selectWeapon(characterId: string, weaponType: 'range' | 'melee'): Promise<WeaponSelectionResult | undefined> {
+        let character$ = this.characterAccessorService.selectCharacter(characterId);
+        let [availableWeapons, availableAmmunition] = await firstValueFrom(combineLatest([
+            character$.pipe(selectCharacterItemsOfType<Lvl0ItemWeapon>('weapon')),
+            character$.pipe(selectCharacterItemsOfType<Lvl0ItemAmmunition>('ammunition')),
+        ]))
+        availableWeapons = availableWeapons
+            .filter(x => x.data.equiped)
+            .filter(w => w.data.weaponType == weaponType || w.data.weaponType === WeaponType.MeleeRange);
 
-                if (availableWeapons.length == 0) {
-                    resolve(undefined);
-                    // FIXME: Show warning no weapon available
-                    return;
-                }
+        if (availableWeapons.length == 0) {
+            this.playerNotificationService.showWarning('no_weapon_available')
+            return;
+        }
 
-                if (weaponType == 'melee' && availableWeapons.length) {
-                    resolve({selectedWeapon: availableWeapons[0]});
-                    return;
-                }
+        if (weaponType == 'melee' && availableWeapons.length) {
+            return {selectedWeapon: availableWeapons[0]};
+        }
 
-                this.dialogService.openDialog<WeaponSelectorDialogData, WeaponSelectorDialogResult>(
-                    'lvl0-weapon-selector-dialog',
-                    {weapons: availableWeapons, weaponType: weaponType, ammunition: availableAmmunition},
-                    {title: 'Select weapon'}
-                ).subscribe({
-                    next: (result) => {
-                        resolve(result);
-                    },
-                    complete: () => {
-                        resolve(undefined);
-                    }
-                });
-            });
-        })
+        if (weaponType == 'range' && availableWeapons.length && availableAmmunition.length === 0) {
+            return {selectedWeapon: availableWeapons[0]};
+        }
+
+        return await firstValueFrom(this.dialogService.openDialog<WeaponSelectorDialogData, WeaponSelectorDialogResult>(
+            'lvl0-weapon-selector-dialog',
+            {weapons: availableWeapons, weaponType: weaponType, ammunition: availableAmmunition},
+            {title: 'Select weapon'}
+        ), {defaultValue: undefined})
     }
 }

@@ -5,7 +5,9 @@
         </div>
         <div class="name">
             <h3>{{spellDefinition.name}} - Arcane {{spellDefinition.level}}</h3>
-            <div *ngIf="spellDefinition.level != data.spell.context.arcaneLevel">(Calculé au niveau d'arcane {{data.spell.context.arcaneLevel}})</div>
+            <div *ngIf="data.spell.context.arcaneLevel && spellDefinition.level != data.spell.context.arcaneLevel">
+                (Calculé au niveau d'arcane {{data.spell.context.arcaneLevel}})
+            </div>
         </div>
     </div>
     <div class="description" [innerHTML]="data.spell.data.description | markdown"></div>
@@ -25,6 +27,11 @@
         <lvl0-spell-roll-chat-value *ngIf="data.spell.data.resilience" [name]="'resilience'" [value]="data.spell.data.resilience"/>
         <lvl0-spell-roll-chat-value *ngIf="data.spell.context.criticalSuccess && data.spell.data.criticalSuccess" [name]="'criticalSuccess'" [value]="data.spell.data.criticalSuccess"/>
     </div>
+    <div *ngIf="data.spell.context.epicFail" class="epic-fail">
+        <!-- FIXME Only show for the user who rolled it -->
+        <button (click)="rollEpicFail()"><i class="fas fa-dice"></i> Échec critique</button>
+    </div>
+
     <ng-container *ngIf="data.spell.data.actions">
         <div *ngFor="let action of data.spell.data.actions">
             <button (click)="executeAction(action)">{{action.name}}</button>

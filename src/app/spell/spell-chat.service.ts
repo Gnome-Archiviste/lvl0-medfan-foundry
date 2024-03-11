@@ -28,23 +28,7 @@ export class SpellChatService {
         }
     }) {
         let rolledSpell = await this.spellUtil.rollSpell(spell, options?.rollContext);
-        let chatSpell: ChatSpell = {
-            spellId: rolledSpell.definition.id,
-            context: rolledSpell.context,
-            data: {
-                actions: rolledSpell.data.actions,
-                effectiveCost: rolledSpell.data.effectiveCost,
-                description: rolledSpell.data.description,
-                distance: this.mapToChatSpellValue(rolledSpell.data.distance),
-                damage: this.mapToChatSpellValue(rolledSpell.data.damage),
-                bonus: this.mapToChatSpellValue(rolledSpell.data.bonus),
-                duration: this.mapToChatSpellValue(rolledSpell.data.duration),
-                heal: this.mapToChatSpellValue(rolledSpell.data.heal),
-                area: this.mapToChatSpellValue(rolledSpell.data.area),
-                resilience: this.mapToChatSpellValue(rolledSpell.data.resilience),
-                criticalSuccess: this.mapToChatSpellValue(rolledSpell.data.criticalSuccess),
-            }
-        };
+        let chatSpell = this.mapToChatSpell(rolledSpell);
 
         let rolls = this.getRolls(rolledSpell);
 
@@ -66,6 +50,27 @@ export class SpellChatService {
         } else {
             await this.chatService.sendLvl0MessageFrom(actorId, {type: 'spell-roll', data: spellRollChatMessageData}, rolls)
         }
+    }
+
+    public mapToChatSpell(rolledSpell: RolledSpell) {
+        let chatSpell: ChatSpell = {
+            spellId: rolledSpell.definition.id,
+            context: rolledSpell.context,
+            data: {
+                actions: rolledSpell.data.actions,
+                effectiveCost: rolledSpell.data.effectiveCost,
+                description: rolledSpell.data.description,
+                distance: this.mapToChatSpellValue(rolledSpell.data.distance),
+                damage: this.mapToChatSpellValue(rolledSpell.data.damage),
+                bonus: this.mapToChatSpellValue(rolledSpell.data.bonus),
+                duration: this.mapToChatSpellValue(rolledSpell.data.duration),
+                heal: this.mapToChatSpellValue(rolledSpell.data.heal),
+                area: this.mapToChatSpellValue(rolledSpell.data.area),
+                resilience: this.mapToChatSpellValue(rolledSpell.data.resilience),
+                criticalSuccess: this.mapToChatSpellValue(rolledSpell.data.criticalSuccess),
+            }
+        };
+        return chatSpell;
     }
 
     private mapToChatSpellValue(value?: RolledSpellValue): ChatSpellValue | undefined {

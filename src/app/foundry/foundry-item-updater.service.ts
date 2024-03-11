@@ -11,11 +11,20 @@ export class FoundryItemUpdaterService extends ItemUpdaterService {
         super();
     }
 
-    updateItem(itemId: string, diffObject: Partial<Lvl0Item>) {
+    async updateItem(itemId: string, diffObject: Partial<Lvl0Item>) {
         let foundryItem = this.foundryLvl0IdResolver.getItemFromLvl0Id(itemId);
         if (!foundryItem) {
             throw new Error('Foundry item not found: ' + itemId);
         }
-        foundryItem.update(diffObject, {diff: true});
+        await foundryItem.update(diffObject, {diff: true});
+    }
+
+    async changeQuantity<T extends Lvl0Item>(item: T, relativeQuantityChange: number): Promise<void> {
+        let foundryItem = this.foundryLvl0IdResolver.getItemFromLvl0Id(item.id);
+        if (item.data.quantity + relativeQuantityChange <= 0) {
+            await foundryItem.delete();
+        } else {
+            await foundryItem.update({data: {quantity: item.data.quantity + relativeQuantityChange}})
+        }
     }
 }

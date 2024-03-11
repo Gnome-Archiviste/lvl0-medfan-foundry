@@ -244,7 +244,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
 
     rollDice(menu: CdkMenu) {
         menu.menuStack.closeAll();
-        this.skillService.rollSkill(this.characterId, this.skillDefinition.skillId);
+        this.skillService.rollActorSkill(this.characterId, this.skillDefinition.skillId);
     }
 
     createMacro(menu: CdkMenu) {

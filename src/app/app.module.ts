@@ -17,11 +17,8 @@ import {ChatModule} from './chat/chat.module';
 import {SelectSpecialityDialogComponent} from './speciality/select-speciality-dialog.component';
 import {SpecialityService} from './speciality/speciality.service';
 import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.component';
-import {ActorEffectService} from './data-accessor/actor-effect.service';
-import {DialogService} from './data-accessor/dialog-service';
-import {SpellUtil} from './spell/spell-util';
-import {ChatService} from './chat/chat.service';
-import {SpellChatService} from './spell/spell-chat.service';
+import {WandSelectorDialogComponent} from './skill/wand-selector-dialog.component';
+import {SkillService} from './skill/skill.service';
 
 @NgModule({
     declarations: [],
@@ -41,16 +38,13 @@ export class AppModule {
     constructor(
         private readonly injector: Injector,
         readonly specialityService: SpecialityService,
-        readonly actorEffectService: ActorEffectService,
-        readonly dialogService: DialogService,
-        readonly spellUtil: SpellUtil,
-        readonly spellChatService: SpellChatService,
-        readonly chatService: ChatService,
+        readonly skillService: SkillService,
     ) {
         const elements: any[] = [
             [SpellSelectorDialogComponent, 'lvl0-spell-selector-dialog'],
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
             [CharacterInitialStatRollDialogComponent, 'lvl0-character-initial-stat-roll-dialog'],
+            [WandSelectorDialogComponent, 'lvl0-wand-selector-dialog'],
             [SelectSpecialityDialogComponent, 'lvl0-select-speciality-dialog'],
             [LevelUpDialogComponent, 'lvl0-level-up-dialog'],
             [WeaponSelectorDialogComponent, 'lvl0-weapon-selector-dialog'],

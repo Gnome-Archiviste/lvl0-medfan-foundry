@@ -240,7 +240,12 @@
 
   "LVL0MF.Notification.Error.speciality_not_found": "Spécialité inconnu par le personnage",
   "LVL0MF.Notification.Error.wand_is_empty": "La baguette est vide",
+  "LVL0MF.Notification.Error.'no_wand_available'": "Aucune baguette disponible",
+  "LVL0MF.Notification.Error.'no_scroll_available'": "Aucun parchemin disponible",
+  "LVL0MF.Notification.Error.'no_shield_equiped'": "Vous devez équiper un bouclier pour effectuer action",
+  "LVL0MF.Notification.Error.'no_shield_damage'": "Le bouclier n'a pas de dégât configuré",
   "LVL0MF.Notification.Error.unknown_spell": "Sort inconnu",
+  "LVL0MF.Notification.Error.no_weapon_available": "Aucune arme disponible",
   "LVL0MF.Notification.Error.select_token_first": "Sélectionné un token avant d'effectuer cette action",
   "LVL0MF.Notification.Error.not_enough_mana": "Pas assez de mana disponible",
   "LVL0MF.End" : "Fin de la traduction"

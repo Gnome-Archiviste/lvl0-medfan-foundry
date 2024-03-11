@@ -8,12 +8,10 @@ import {Lvl0FoundryActor} from './models/actor';
 import {Lvl0FoundryItem} from './models/item';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
 import {Lvl0ItemSheet} from './ui/sheets/item/lvl0-item-sheet';
-import {RollSkillManager} from './managers/skill';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from './app/app.module';
 import 'zone.js';
-import './components'
 import {environment} from './environments/environment';
 
 Hooks.once("init", async function () {
@@ -54,15 +52,21 @@ Hooks.once("ready", async () => {
     try {
         const bootstrapAppModule = await bootstrapAppModulePromise;
 
-        // bootstrapAppModule.instance...
-        // FIXME: replace with
-        (window as any).rollSkillManager = container.resolve(RollSkillManager); // Keep it (used in macro)
+        (window as any).rollSkillManager = {
+            rollSkill: async (token: Token | undefined, skillId: string, options = {}): Promise<void> => {
+                if (!token?.actor) {
+                    ui.notifications?.warn('Sélectionnez un token pour effectuer cette action');
+                    return;
+                }
+                let actorId = token?.actor!.lvl0Id;
+                if (!actorId) {
+                    ui.notifications?.error('Error: Invalid lvl0Id');
+                    return;
+                }
+                await bootstrapAppModule.instance.skillService.rollActorSkill(actorId, skillId, options);
+            }
+        };
         (window as any).rollSpecialityManager = bootstrapAppModule.instance.specialityService; // Keep it (used in macro)
-        (window as any).actorEffectService = bootstrapAppModule.instance.actorEffectService; // tmp
-        (window as any).dialogService = bootstrapAppModule.instance.dialogService; // tmp
-        (window as any).spellUtil = bootstrapAppModule.instance.spellUtil; // tmp
-        (window as any).spellChatService = bootstrapAppModule.instance.spellChatService; // tmp
-        (window as any).chatService = bootstrapAppModule.instance.chatService; // tmp
 
         // DEBUG do not commit
         // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)

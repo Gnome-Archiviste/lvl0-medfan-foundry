@@ -19,6 +19,9 @@ import { WeaponDamageComponent } from './weapon-damage.component';
         WeaponSelectorDialogComponent,
         WeaponDamageComponent,
     ],
+    exports: [
+        WeaponDamageComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,

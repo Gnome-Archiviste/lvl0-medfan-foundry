@@ -100,17 +100,4 @@ export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]:
     return undefined;
 }
 
-export function getItemExtraSkillsIfAvailable(data: Lvl0ItemData): { [id: string]: {id: string} } | undefined {
-    if (data.type == "armor"
-        || data.type == "belt"
-        || data.type == "cloak"
-        || data.type == "hand"
-        || data.type == "head"
-        || data.type == "necklace"
-        || data.type == "foot"
-        || data.type == "ring"
-        || data.type == "shield")
-        return data.data.extraSkills;
-    return undefined;
-}
 

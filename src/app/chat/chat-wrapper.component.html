@@ -8,5 +8,8 @@
     <ng-container *ngSwitchCase="'item-use'">
         <lvl0-item-use-chat-message [data]="$any(messageData.data)" />
     </ng-container>
+    <ng-container *ngSwitchCase="'skill-roll'">
+        <lvl0-skill-roll-chat-message [data]="$any(messageData.data)" />
+    </ng-container>
     <ng-container *ngSwitchDefault>Unsupported {{ messageData.type }}</ng-container>
 </ng-container>

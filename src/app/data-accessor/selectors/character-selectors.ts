@@ -31,8 +31,8 @@ export function selectNextLevelExperience() {
     })
 }
 
-export function selectCharacterItemsOfType(itemType: UnionKeys<Lvl0Item, 'type'>) {
-    return createSimpleSelector(c => c.itemsByType[itemType], _.isEqual)
+export function selectCharacterItemsOfType<T extends Lvl0Item = Lvl0Item>(itemType: UnionKeys<T, 'type'>) {
+    return createSimpleSelector<T[]>(c => c.itemsByType[itemType] as T[], _.isEqual)
 }
 
 export function selectCharacterItemsByType() {
