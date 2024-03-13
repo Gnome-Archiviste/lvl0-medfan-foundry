@@ -63,15 +63,7 @@ export class SkillRollChatMessageComponent implements OnInit {
         this.skillDefinition = this.skillRepository.getSkillFromId(this.data.skillId);
     }
 
-    $asSkillRollExtraDataDamageMessageData(value: any): SkillRollExtraDataDamageMessageData {
-        return value;
-    }
-
-    $asSkillRollExtraDataShieldDamageMessageData(value: any): SkillRollExtraDataShieldDamageMessageData {
-        return value;
-    }
-
-    roundDamageUp(total?: number): number {
+    roundDamageUp(total?: number | undefined): number {
         return Math.ceil(total ?? 0);
     }
 }

@@ -1,15 +1,17 @@
-<ng-container [ngSwitch]="messageData.type">
-    <ng-container *ngSwitchCase="'speciality-roll'">
-        <lvl0-speciality-roll-chat-message [data]="$any(messageData.data)" />
-    </ng-container>
-    <ng-container *ngSwitchCase="'spell-roll'">
-        <lvl0-spell-roll-chat-message [data]="$any(messageData.data)" />
-    </ng-container>
-    <ng-container *ngSwitchCase="'item-use'">
-        <lvl0-item-use-chat-message [data]="$any(messageData.data)" />
-    </ng-container>
-    <ng-container *ngSwitchCase="'skill-roll'">
-        <lvl0-skill-roll-chat-message [data]="$any(messageData.data)" />
-    </ng-container>
-    <ng-container *ngSwitchDefault>Unsupported {{ messageData.type }}</ng-container>
-</ng-container>
+@switch (messageData.type) {
+    @case ('speciality-roll') {
+        <lvl0-speciality-roll-chat-message [data]="messageData.data" />
+    }
+    @case ('spell-roll') {
+        <lvl0-spell-roll-chat-message [data]="messageData.data" />
+    }
+    @case ('item-use') {
+        <lvl0-item-use-chat-message [data]="messageData.data" />
+    }
+    @case ('skill-roll') {
+        <lvl0-skill-roll-chat-message [data]="messageData.data" />
+    }
+    @default {
+        Unsupported chat message {{ $any(messageData).type }}
+    }
+}

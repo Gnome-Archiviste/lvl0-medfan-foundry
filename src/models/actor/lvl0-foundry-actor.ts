@@ -20,6 +20,11 @@ export class Lvl0FoundryActor extends Actor {
         return this.id;
     }
 
+    // Used by old macro
+    async useSpeciality(specialityName: string): Promise<void> {
+        rollSpecialityManager.useSpeciality(this.lvl0Id!, specialityName);
+    }
+
     // FIXME: Not call anymore
     async addInitialInventory(): Promise<void> {
         await this.update({

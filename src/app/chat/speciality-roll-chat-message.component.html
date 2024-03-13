@@ -9,8 +9,8 @@
     </div>
 </div>
 
-<ng-container [ngSwitch]="data.specialityId">
-    <ng-container *ngSwitchCase="'arrow_volley'">
+@switch (data.specialityId) {
+    @case ('arrow_volley') {
         <div class="extra-data__arrow-volley" *ngIf="arrowVolleyData(data) as arrowVolleyData">
             <div class="weapon">
                 <span class="icon"><img width="32" height="32" [src]="arrowVolleyData.weapon.icon"></span>
@@ -36,5 +36,5 @@
                 </div>
             </div>
         </div>
-    </ng-container>
-</ng-container>
+    }
+}

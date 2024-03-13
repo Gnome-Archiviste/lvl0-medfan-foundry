@@ -7,9 +7,9 @@
 </div>
 <div *ngIf="data.effect">
     <hr>
-    <ng-container [ngSwitch]="data.effect.type">
-        <ng-container *ngSwitchCase="'cast-spell'">
+    @switch (data.effect.type) {
+        @case ('cast-spell') {
             <lvl0-spell-roll-chat-message [data]="data.effect.data" />
-        </ng-container>
-    </ng-container>
+        }
+    }
 </div>

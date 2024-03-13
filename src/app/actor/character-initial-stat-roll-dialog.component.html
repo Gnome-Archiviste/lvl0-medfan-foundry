@@ -1,7 +1,7 @@
 <div class="roll-stats-dialog">
     <h2>Rouler les stats du personnage</h2>
-    <ng-container [ngSwitch]="state">
-        <ng-container *ngSwitchCase="'modeSelection'">
+    @switch (state) {
+        @case ('modeSelection') {
             <p>Vous pouvez choisir le mode utiliser pour rouler les stats:</p>
             <ul>
                 <li>
@@ -13,8 +13,8 @@
                     <button (click)="selectMode('random-3')">Choisir</button>
                 </li>
             </ul>
-        </ng-container>
-        <ng-container *ngSwitchCase="'selectColumn'">
+        }
+        @case ('selectColumn') {
             <p>
                 Choisir une colonne parmi les 3 suivantes. Vous pouvez choisir dans quel stat mettre chaque valeur ensuite.
             </p>
@@ -30,8 +30,8 @@
                     </div>
                 </div>
             </div>
-        </ng-container>
-        <ng-container *ngSwitchCase="'selectValues'">
+        }
+        @case ('selectValues') {
             <p>
                 Associer chaque statistique avec les valeurs roulés
             </p>
@@ -48,6 +48,6 @@
             <div>
                 <button (click)="valid()">Valider</button>
             </div>
-        </ng-container>
-    </ng-container>
+        }
+    }
 </div>
