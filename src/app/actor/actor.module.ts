@@ -24,6 +24,7 @@ import { CharacterSheetInventoryComponent } from './character-sheet-inventory.co
 import { CharacterSheetNotesComponent } from './character-sheet-notes.component';
 import { CharacterSheetModifiersComponent } from './character-sheet-modifiers.component';
 import { WeaponSelectorDialogComponent } from '../item/weapon-selector-dialog.component';
+import { GenerateMissingLevelUpDataDialogComponent } from './generate-missing-level-up-data-dialog.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { WeaponSelectorDialogComponent } from '../item/weapon-selector-dialog.co
         CharacterSheetInventoryComponent,
         CharacterSheetNotesComponent,
         CharacterSheetModifiersComponent,
+        GenerateMissingLevelUpDataDialogComponent,
     ],
     imports: [
         CommonModule,

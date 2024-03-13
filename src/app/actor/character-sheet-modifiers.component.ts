@@ -1,20 +1,35 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {map, Observable, of, take} from 'rxjs';
-import {CharacterModifierInfo, LevelUpData, LevelValue, Lvl0Character} from '../data-accessor/models/lvl0-character';
+import {combineLatest, firstValueFrom, map, Observable, of, take} from 'rxjs';
+import {CharacterModifierInfo, LevelValue, Lvl0Character} from '../data-accessor/models/lvl0-character';
 import {selectCharacterLevel} from '../data-accessor/selectors/character-selectors';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
-import {FoundryLvl0IdResolver} from '../foundry/foundry-lvl0-id-resolver';
 import {
     ActiveCharacterModifier,
     selectCharacterModifiers
 } from '../data-accessor/selectors/character-modifiers-selector';
 import {StatsRepository} from '../../repositories';
-import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
 import {ActorStatNames} from '../../models/shared';
 import {
     CharacterLevelData,
     selectCharacterLevelUpData
 } from '../data-accessor/selectors/character-level-up-data-selector';
+import {
+    GenerateMissingLevelUpDataDialogData,
+    GenerateMissingLevelUpDataDialogResult
+} from './generate-missing-level-up-data-dialog.component';
+import {
+    MissingLevelData,
+    selectCharacterMissingLevelData
+} from '../data-accessor/selectors/character-missing-level-data-selector';
+import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
+import {DialogService} from '../data-accessor/dialog-service';
+import {selectCharacterMaxHealth} from '../data-accessor/selectors/character-max-health-selector';
+import {selectCharacterMaxMana} from '../data-accessor/selectors/character-max-mana-selector';
+import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
+import {
+    ActorBasicStatValues,
+    selectCharacterBasicStats
+} from '../data-accessor/selectors/character-basic-stats-selector';
 
 @Component({
     selector: 'lvl0-character-sheet-modifiers',
@@ -31,14 +46,16 @@ export class CharacterSheetModifiersComponent implements OnInit {
     level$: Observable<LevelValue>
     levelUpData$: Observable<CharacterLevelData[]>
     stats: string[];
+    characterMissingLevelData$: Observable<MissingLevelData | undefined>;
+    characterBasicStats$: Observable<ActorBasicStatValues>;
 
     constructor(
         private readonly characterAccessorService: CharacterAccessorService,
-        private readonly actorUpdaterService: ActorUpdaterService,
-        private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver, // FIXME: Remove foundry dependency
         private readonly statsRepository: StatsRepository,
+        private readonly systemDataDatabaseService: SystemDataDatabaseService,
+        private readonly actorUpdaterService: ActorUpdaterService,
+        private readonly dialogService: DialogService,
     ) {
-
     }
 
     ngOnInit() {
@@ -47,12 +64,48 @@ export class CharacterSheetModifiersComponent implements OnInit {
         this.modifiers$ = this.character$.pipe(selectCharacterModifiers());
         this.level$ = this.character$.pipe(selectCharacterLevel());
         this.levelUpData$ = this.character$.pipe(selectCharacterLevelUpData());
+        this.characterBasicStats$ = this.character$.pipe(selectCharacterBasicStats());
+        this.characterMissingLevelData$ = this.character$.pipe(selectCharacterMissingLevelData(this.systemDataDatabaseService));
         this.canEditLevel$ = this.level$.pipe(map(x => x.value > 0)) // FIXME && isGM;
         this.canEditModifiers$ = of(true);
     }
 
-    generateMissingLevelUpData() {
-        this.foundryLvl0IdResolver.getActorFromLvl0Id(this.characterId)?.openGenerateMissingLevelUpDataPopup();
+    async generateMissingLevelUpData() {
+        let missingLevelData = await firstValueFrom(this.characterMissingLevelData$, {defaultValue: undefined});
+        if (!missingLevelData) {
+            return;
+        }
+
+        let basicStats = await firstValueFrom(this.characterBasicStats$);
+
+        let dialogData = {
+            ...missingLevelData,
+            basicStats: basicStats
+        };
+
+        let result = await firstValueFrom(this.dialogService.openDialog<GenerateMissingLevelUpDataDialogData, GenerateMissingLevelUpDataDialogResult>('lvl0-generate-missing-level-up', dialogData, {title: 'Generate missing level up'}), {defaultValue: undefined})
+        if (!result)
+            return;
+
+        let totalNewHealth = 0;
+        let totalNewMana = 0;
+        for (let data of Object.values(result.levelUpData)) {
+            totalNewHealth += data.health;
+            totalNewMana += data.mana;
+        }
+
+        let [currentMaxHealth, currentMaxMana] = await firstValueFrom(combineLatest([
+            this.character$.pipe(selectCharacterMaxHealth()),
+            this.character$.pipe(selectCharacterMaxMana())
+        ]))
+
+        this.actorUpdaterService.updateActor(this.characterId, {
+            data: {
+                health: {value: currentMaxHealth + totalNewHealth},
+                mana: {value: currentMaxMana + totalNewMana},
+                levelUpData: result.levelUpData
+            }
+        });
     }
 
     addActorModifier() {
@@ -64,7 +117,7 @@ export class CharacterSheetModifiersComponent implements OnInit {
     }
 
     deleteActorModifier(modifierEntityId: string) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {['-='+modifierEntityId]: null as any}}});
+        this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {['-=' + modifierEntityId]: null as any}}});
     }
 
     updateModifierValue(modifierEntityId: string, event: Event) {

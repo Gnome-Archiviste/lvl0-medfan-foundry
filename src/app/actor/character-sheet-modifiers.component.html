@@ -1,7 +1,7 @@
 <ng-container *ngIf="canEditLevel$ | async">
     <h2>Level</h2>
     <input type="text" name="data.level.value" value="{{(level$ | async)?.value}}" data-dtype="Number"/>
-    <button (click)="generateMissingLevelUpData()">Faire les level up pour mettre à jour les point de vie et de mana
+    <button (click)="generateMissingLevelUpData()" *ngIf="characterMissingLevelData$ | async">Faire les level up pour mettre à jour les point de vie et de mana
     </button>
 </ng-container>
 

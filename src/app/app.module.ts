@@ -19,6 +19,7 @@ import {SpecialityService} from './speciality/speciality.service';
 import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.component';
 import {WandSelectorDialogComponent} from './skill/wand-selector-dialog.component';
 import {SkillService} from './skill/skill.service';
+import {GenerateMissingLevelUpDataDialogComponent} from './actor/generate-missing-level-up-data-dialog.component';
 
 @NgModule({
     declarations: [],
@@ -45,6 +46,7 @@ export class AppModule {
             [SpellDefinitionSelectorComponent, 'lvl0-spell-definition-selector'],
             [CharacterInitialStatRollDialogComponent, 'lvl0-character-initial-stat-roll-dialog'],
             [WandSelectorDialogComponent, 'lvl0-wand-selector-dialog'],
+            [GenerateMissingLevelUpDataDialogComponent, 'lvl0-generate-missing-level-up'],
             [SelectSpecialityDialogComponent, 'lvl0-select-speciality-dialog'],
             [LevelUpDialogComponent, 'lvl0-level-up-dialog'],
             [WeaponSelectorDialogComponent, 'lvl0-weapon-selector-dialog'],

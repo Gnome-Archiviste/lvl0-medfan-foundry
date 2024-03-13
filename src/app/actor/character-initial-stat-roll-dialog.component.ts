@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DialogDataService} from '../data-accessor/dialog-data-service';
-import {LevelUpDialogData} from './level-up-dialog.component';
 import {RollFactory} from '../shared/roll-factory';
 import {ActorBasicStatNames, ActorBasicStatNamesList} from '../../models/shared';
 import {ActorBasicStatValues} from '../data-accessor/selectors/character-basic-stats-selector';
@@ -30,7 +29,7 @@ export class CharacterInitialStatRollDialogComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.dialogDataId)
-            this.dialogDataService.consumeData<LevelUpDialogData>(this.dialogDataId);
+            this.dialogDataService.consumeData<any>(this.dialogDataId);
     }
 
     async selectMode(mode: 'random-1' | 'random-3') {

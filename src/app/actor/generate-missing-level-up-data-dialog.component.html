@@ -9,19 +9,24 @@
         </div>
     </div>
     <div>
-        {{#each levelWithAdditionalPointInStat as |level|}}
+        <ng-container *ngFor="let level of data.levelWithAdditionalPointInStat">
             <div>
                 <div class="form-group">
                     <label>Gain d'un point dans une caractéristique : Niveau {{level}}</label>
                     <div class="form-fields">
-                          {{radioBoxes (concat2 "additionalStat" level) ../stats checked=(lookup (lookup ../levelsData level) 'additionalStat') localize=false}}
+                        <ng-container *ngFor="let stat of stats">
+                            <label>
+                                <input type="radio" [value]="stat" [(ngModel)]="levelsData[level].additionalStat">
+                                {{ stat | translate: 'Misc.Stat' }}
+                           </label>
+                        </ng-container>
                     </div>
                 </div>
             </div>
-        {{/each}}
+        </ng-container>
     </div>
     <div class="actions">
-        <button data-dialog-action="cancel">Annuler</button>
-        <button data-dialog-action="confirm" {{#if (not ready)}}disabled{{/if}}>Valider</button>
+        <button (click)="cancel()" >Annuler</button>
+        <button (click)="confirm()" [disabled]="!ready">Valider</button>
     </div>
 </div>
