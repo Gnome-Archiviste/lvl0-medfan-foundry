@@ -1,9 +1,5 @@
-import "reflect-metadata";
-
 import './error-monitoring';
-import {container} from "tsyringe";
 import './handlebars_helpers';
-import {InitializedGame} from './models/misc/game';
 import {Lvl0FoundryActor} from './models/actor';
 import {Lvl0FoundryItem} from './models/item';
 import {Lvl0CharacterActorSheet} from './ui/sheets/actor/lvl0-character-actor-sheet';
@@ -22,8 +18,6 @@ Hooks.once("init", async function () {
     Actors.registerSheet("lvl0mf", Lvl0CharacterActorSheet, {types: ['character'], label: 'Character'});
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("lvl0mf", Lvl0ItemSheet, {makeDefault: true, label: 'Objet'});
-
-    container.register<InitializedGame>(InitializedGame, {useValue: game as InitializedGame});
 });
 
 declare global {

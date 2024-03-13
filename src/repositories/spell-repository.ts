@@ -1,4 +1,3 @@
-import {inject, singleton} from 'tsyringe';
 import spellsDefinitions, {SpellData} from './data/spells'
 import {SpellClass} from './data';
 import {JobRepository} from './job-repository';
@@ -9,13 +8,12 @@ export interface SpellDefinition extends SpellData {
     readonly specializationName: string;
 }
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })
 export class SpellRepository {
     constructor(
-        @inject(JobRepository) private readonly jobRepository: JobRepository
+        private readonly jobRepository: JobRepository
     ) {
     }
 

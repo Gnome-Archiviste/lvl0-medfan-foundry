@@ -1,8 +1,6 @@
-import {singleton} from 'tsyringe';
 import wandConfig, {WandConfig} from './data/wand-config';
 import {Injectable} from '@angular/core';
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })

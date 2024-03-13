@@ -1,4 +1,3 @@
-export * from './actor-data-computers';
 export * from './properties-data';
 export * from './properties';
 export * from './lvl0-foundry-actor';

@@ -1,5 +1,4 @@
 import {ElementRepository} from './repositories';
-import {container} from 'tsyringe';
 import * as marked from 'marked';
 
 Handlebars.registerHelper('math', function (lvalue, operator, rvalue) {
@@ -95,12 +94,6 @@ Handlebars.registerHelper("inc", function(value) {
 });
 Handlebars.registerHelper("nth", function(array, index) {
     return array[parseInt(index)];
-});
-Handlebars.registerHelper('weaponEffectName', (v) => {
-    return container.resolve(ElementRepository).getElementWeaponName(v);
-});
-Handlebars.registerHelper('elementName', (v) => {
-    return container.resolve(ElementRepository).getElementName(v);
 });
 Handlebars.registerHelper('markdown', (v) => {
     return new Handlebars.SafeString(marked.parse(v));

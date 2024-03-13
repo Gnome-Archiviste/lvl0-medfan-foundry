@@ -1,9 +1,7 @@
-import {singleton} from 'tsyringe';
 import skills, {SkillDefinition} from './data/skills';
 import skillsLevel from './data/skills-level';
 import {Injectable} from '@angular/core';
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })

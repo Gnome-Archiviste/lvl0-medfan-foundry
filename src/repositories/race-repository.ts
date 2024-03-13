@@ -1,8 +1,6 @@
-import {singleton} from 'tsyringe';
 import races, {RaceDefinition, RaceDefinitionBase} from './data/races';
 import {Injectable} from '@angular/core';
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })

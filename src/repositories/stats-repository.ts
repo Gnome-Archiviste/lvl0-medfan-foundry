@@ -1,8 +1,6 @@
-import {singleton} from 'tsyringe';
 import stats from './data/stats';
 import {Injectable} from '@angular/core';
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })

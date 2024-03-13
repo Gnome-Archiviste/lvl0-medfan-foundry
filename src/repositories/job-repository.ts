@@ -1,8 +1,6 @@
-import {singleton} from 'tsyringe';
 import jobs, {JobDefinition} from './data/jobs';
 import {Injectable} from '@angular/core';
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })

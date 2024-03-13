@@ -1,8 +1,7 @@
-import {singleton} from 'tsyringe';
 import elements from './data/elements';
 import {Injectable} from '@angular/core';
 
-@singleton()
+// FIXME: Use translation instead
 @Injectable({
     providedIn: 'root'
 })

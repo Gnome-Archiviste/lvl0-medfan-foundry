@@ -10,7 +10,6 @@ import {selectCharacterItemsByType} from '../data-accessor/selectors/character-s
 import {ItemTypeConfig, ItemTypesConfigRepository} from '../../repositories';
 import {ItemService} from '../data-accessor/item.service';
 import {CharacterClutterData, selectCharacterClutter} from '../data-accessor/selectors/character-clutter-selector';
-import {Lvl0FoundryItemScroll, Lvl0FoundryItemWand} from '../../models/item';
 
 @Component({
     selector: 'lvl0-character-sheet-inventory',

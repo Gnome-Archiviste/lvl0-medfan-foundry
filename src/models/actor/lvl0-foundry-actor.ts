@@ -1,31 +1,7 @@
 import {
-    BaseCharacterDataComputer,
-    ClutterCharacterDataComputer,
-    HealthManaDataComputer,
-    LevelingCharacterDataComputer,
-    MagicalArmorDataComputer,
-    MagicCharacterDataComputer,
-    SkillsCharacterDataComputer,
-    SpecialityCharacterDataComputer,
-    StatsCharacterDataComputer
-} from "./actor-data-computers/character";
-import { ActorDataComputer } from './actor-data-computers';
-import { container } from 'tsyringe';
-import {
     ActorDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
 import { InitializedGame } from '../misc/game';
-
-container.register("ActorDataComputer", { useClass: BaseCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: LevelingCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: SpecialityCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: SkillsCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: StatsCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: MagicCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: HealthManaDataComputer });
-container.register("ActorDataComputer", { useClass: ClutterCharacterDataComputer });
-container.register("ActorDataComputer", { useClass: MagicalArmorDataComputer });
-
 
 export class Lvl0FoundryActor extends Actor {
     private readonly game: InitializedGame;
@@ -35,23 +11,13 @@ export class Lvl0FoundryActor extends Actor {
         context?: object
     ) {
         super(data, context);
-        this.game = container.resolve(InitializedGame);
+        this.game = game as any;
     }
 
     get lvl0Id() {
         if (this.isToken)
             return this.id + "@" + this.token?.id;
         return this.id;
-    }
-
-    override prepareDerivedData(): void {
-        super.prepareDerivedData();
-
-        for (let actorDataComputer of container.resolveAll<ActorDataComputer>("ActorDataComputer")) {
-            if (actorDataComputer.isAvailableFor(this.data.type)) {
-                actorDataComputer.compute(this);
-            }
-        }
     }
 
     // FIXME: Not call anymore

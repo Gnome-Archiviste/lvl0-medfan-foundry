@@ -1,4 +1,3 @@
-import {singleton} from 'tsyringe';
 import magicEpicFailEffects from './data/magic-epic-fail-effects';
 import {Injectable} from '@angular/core';
 
@@ -7,7 +6,6 @@ export interface MagicEpicFailDefinition {
     description: string;
 }
 
-@singleton()
 @Injectable({
     providedIn: 'root'
 })
