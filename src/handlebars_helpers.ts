@@ -95,6 +95,3 @@ Handlebars.registerHelper("inc", function(value) {
 Handlebars.registerHelper("nth", function(array, index) {
     return array[parseInt(index)];
 });
-Handlebars.registerHelper('markdown', (v) => {
-    return new Handlebars.SafeString(marked.parse(v));
-});

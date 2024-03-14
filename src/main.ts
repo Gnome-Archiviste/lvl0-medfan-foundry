@@ -87,7 +87,6 @@ if (environment.liveServer) {
         console.log(event);
         if (event.data === 'reload') {
             window.location.reload();
-
         }
     }
 }
