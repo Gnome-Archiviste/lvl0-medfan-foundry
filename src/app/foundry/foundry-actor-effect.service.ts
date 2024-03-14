@@ -16,7 +16,7 @@ export class FoundryActorEffectService extends ActorEffectService {
 
     async applyEffect(actorId: string, effect: Lvl0ActorEffect): Promise<void> {
         let foundryActor = this.foundryLvl0IdResolver.getRequiredActorFromLvl0Id(actorId);
-        let actorData = foundryActor.data.data;
+        let actorData = (foundryActor as any).system;
         let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         await foundryActor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
         await this.replaceActiveEffect(foundryActor, 'effect', nextId, {icon: effect.icon, label: effect.effectName});
@@ -50,8 +50,9 @@ export class FoundryActorEffectService extends ActorEffectService {
 
         const effectData = {
             ...data,
+            statuses: [`lvl0-${type}-${id.toString()}`],
             flags: {
-                ['core.statusId']: `lvl0-${type}-${id.toString()}`,
+                ['lvl0mf-sheet.statusId']: `lvl0-${type}-${id.toString()}`,
             }
         } as Partial<ActiveEffectData>;
         await ActiveEffect.create(effectData, {parent: actor})
@@ -61,6 +62,11 @@ export class FoundryActorEffectService extends ActorEffectService {
         let existingEffect = actor.effects.find(e => e.getFlag('core', 'statusId') === `lvl0-${type}-${id}`);
         if (existingEffect) {
             await existingEffect.delete();
+        } else {
+            let legacyExistingEffect = actor.effects.find(e => e.getFlag('lvl0mf-sheet', 'statusId') === `lvl0-${type}-${id}`);
+            if (legacyExistingEffect) {
+                await legacyExistingEffect.delete();
+            }
         }
     }
 }
