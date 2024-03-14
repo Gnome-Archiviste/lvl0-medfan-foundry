@@ -37,13 +37,13 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
 
     override async prepare(actorId: string) {
         let shields = await firstValueFrom(this.characterAccessorService.selectCharacter(actorId).pipe(selectCharacterItemsOfType<Lvl0ItemShield>('shield')), {defaultValue: [] as Lvl0ItemShield[]});
-        let equipedShields = shields.filter(x => x.data.equiped);
+        let equipedShields = shields.filter(x => x.system.equiped);
         if (equipedShields.length === 0) {
             this.playerNotificationService.showWarning('no_shield_equiped')
             return false;
         }
         let shield = equipedShields[0];
-        if (!shield.data.damage) {
+        if (!shield.system.damage) {
             this.playerNotificationService.showWarning('no_shield_damage')
             ui.notifications?.error("Aucun dégâts configuré sur ce bouclier", {permanent: true});
             return false;
@@ -59,7 +59,7 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
             throw new Error('Missing shield during postRoll');
 
         let actorBasicStatValues = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterBasicStats()));
-        let shieldDamageRollFormula = this.shield.data.damage.replace('phy', actorBasicStatValues.phy.toString());
+        let shieldDamageRollFormula = this.shield.system.damage.replace('phy', actorBasicStatValues.phy.toString());
 
         let characterEffects = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterEffects(this.systemDataDatabaseService)));
         let damageBonus = 0;

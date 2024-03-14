@@ -61,11 +61,11 @@ export class CharacterSheetEquipmentComponent implements OnInit {
         this.weaponsItems$ = this.character$.pipe(selectCharacterItemsOfType('weapon'));
         this.ammunitionItems$ = this.character$.pipe(selectCharacterItemsOfType('ammunition'));
         this.potionItems$ = this.character$.pipe(selectCharacterItemsOfType('potions'));
-        this.arrowsItems$ = this.ammunitionItems$.pipe(map(x => x.filter(i => i.data.ammunitionType === AmmunitionType.Arrow || i.data.ammunitionType === AmmunitionType.Bolt)));
-        this.dartMarbleItems$ = this.ammunitionItems$.pipe(map(x => x.filter(i => i.data.ammunitionType === AmmunitionType.Marble || i.data.ammunitionType === AmmunitionType.Dart)));
+        this.arrowsItems$ = this.ammunitionItems$.pipe(map(x => x.filter(i => i.system.ammunitionType === AmmunitionType.Arrow || i.system.ammunitionType === AmmunitionType.Bolt)));
+        this.dartMarbleItems$ = this.ammunitionItems$.pipe(map(x => x.filter(i => i.system.ammunitionType === AmmunitionType.Marble || i.system.ammunitionType === AmmunitionType.Dart)));
         this.armorItems = {} as any;
         for (let armorSlot of armorSlots) {
-            this.armorItems[armorSlot] = this.character$.pipe(selectCharacterItemsOfType(armorSlot), map(x => x.filter(i => i.data.equiped)))
+            this.armorItems[armorSlot] = this.character$.pipe(selectCharacterItemsOfType(armorSlot), map(x => x.filter(i => i.system.equiped)))
         }
         this.staticInventory$ = this.character$.pipe(selectStaticInventory());
         this.torchCount$ = this.character$.pipe(selectTorchCount());
@@ -88,20 +88,20 @@ export class CharacterSheetEquipmentComponent implements OnInit {
     }
 
     itemModifiers(item: Lvl0Item): ItemModifierInfo[] {
-        if ('modifiers' in item.data)
-            return Object.values(item.data.modifiers);
+        if ('modifiers' in item.system)
+            return Object.values(item.system.modifiers);
         return [];
     }
 
     itemExtraSkills(item: Lvl0Item): string[] {
-        if ('extraSkills' in item.data)
-            return Object.values(item.data.extraSkills).map(x => x.id);
+        if ('extraSkills' in item.system)
+            return Object.values(item.system.extraSkills).map(x => x.id);
         return [];
     }
 
     updateItemQuantity(item: Lvl0Item, newQuantity: number) {
         this.itemUpdaterService.updateItem(item.id, {
-            data: {
+            system: {
                 quantity: newQuantity
             }
         })
@@ -109,7 +109,7 @@ export class CharacterSheetEquipmentComponent implements OnInit {
 
     updateTorchCount(newCount: number) {
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 staticInventory: {
                     torchCount: newCount
                 }
@@ -118,23 +118,23 @@ export class CharacterSheetEquipmentComponent implements OnInit {
     }
 
     updateRationCount(newCount: number) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {staticInventory: {rationCount: newCount}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {staticInventory: {rationCount: newCount}}});
     }
 
     updateMoney(newCount: number) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {staticInventory: {money: newCount}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {staticInventory: {money: newCount}}});
     }
 
     updateMoney100(newCount: number) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {staticInventory: {money100: newCount}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {staticInventory: {money100: newCount}}});
     }
 
     updateMoney500(newCount: number) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {staticInventory: {money500: newCount}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {staticInventory: {money500: newCount}}});
     }
 
     updateMoney1000(newCount: number) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {staticInventory: {money1000: newCount}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {staticInventory: {money1000: newCount}}});
     }
 
     shareItem(item: Lvl0Item) {
@@ -151,7 +151,7 @@ export class CharacterSheetEquipmentComponent implements OnInit {
 
     equipItem(item: Lvl0Item, event: Event) {
         if (event.target instanceof HTMLInputElement) {
-            this.itemUpdaterService.updateItem(item.id, {data: {equiped: event.target.checked}})
+            this.itemUpdaterService.updateItem(item.id, {system: {equiped: event.target.checked}})
         }
     }
 }

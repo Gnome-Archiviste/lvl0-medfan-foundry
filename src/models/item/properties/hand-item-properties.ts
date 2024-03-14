@@ -8,5 +8,5 @@ export interface HandItemPropertiesData extends ItemPropertiesTemplateBase, Item
 
 export interface HandItemProperties {
     type: 'hand';
-    data: HandItemPropertiesData;
+    system: HandItemPropertiesData;
 }

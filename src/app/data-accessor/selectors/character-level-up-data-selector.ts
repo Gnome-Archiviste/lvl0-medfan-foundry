@@ -13,7 +13,7 @@ export type CharacterLevelData = {
 
 export function selectCharacterLevelUpData() {
     return createSelector<Lvl0Character, CharacterLevelData[]>(c => {
-        return Object.entries(c.data.levelUpData).filter(x => !isNaN(+x[0])).map(x => ({
+        return Object.entries(c.system.levelUpData).filter(x => !isNaN(+x[0])).map(x => ({
             ...x[1],
             level: +x[0],
         } as CharacterLevelData)).sort((a, b) => a.level - b.level)

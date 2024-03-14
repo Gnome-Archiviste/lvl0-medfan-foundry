@@ -61,7 +61,7 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
 
 
         if (this.ammunition) {
-            if (this.ammunition.data.quantity <= 0) {
+            if (this.ammunition.system.quantity <= 0) {
                 ui.notifications?.warn(`Vous n'avez plus assez de ${this.ammunition.name}.`)
                 this.ammunition = undefined;
             } else {
@@ -76,13 +76,13 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
         );
 
         let ammunitionElement: string | undefined;
-        let weaponElement = this.weapon.data.element;
+        let weaponElement = this.weapon.system.element;
         let damageElement = weaponElement;
         let damageRollFormula = weaponRollFormula;
         if (this.ammunition) {
-            ammunitionElement = this.ammunition.data.extraDamageEffect;
+            ammunitionElement = this.ammunition.system.extraDamageEffect;
             damageElement = ammunitionElement || weaponElement;
-            damageRollFormula = '(' + damageRollFormula + '+' + this.ammunition.data.extraDamage.split(' ').join() + ')'
+            damageRollFormula = '(' + damageRollFormula + '+' + this.ammunition.system.extraDamage.split(' ').join() + ')'
         }
 
         if (this.data.charge) {

@@ -161,7 +161,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
 
     setPoint(newValue: number) {
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 skills: {
                     [this.skillDefinition.categoryId]: {
                         [this.skillDefinition.id]: {
@@ -187,7 +187,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
                     newValue.prodigy = true;
                 }
                 this.actorUpdaterService.updateActor(this.characterId, {
-                    data: {
+                    system: {
                         pendingSkills: {
                             [this.skillDefinition.categoryId]: {
                                 [this.skillDefinition.id]: newValue
@@ -208,7 +208,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
             else if (newValue.value > 0)
                 newValue.value--;
             this.actorUpdaterService.updateActor(this.characterId, {
-                data: {
+                system: {
                     pendingSkills: {
                         [this.skillDefinition.categoryId]: {
                             [this.skillDefinition.id]: newValue
@@ -226,7 +226,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
     toggleMasterUse($event: Event) {
         if ($event.target instanceof HTMLInputElement)
             this.actorUpdaterService.updateActor(this.characterId, {
-                data: {
+                system: {
                     usedSkillMastery: {[this.skillDefinition.categoryId]: {[this.skillDefinition.id]: $event.target.checked}}
                 }
             });
@@ -235,7 +235,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
     toggleProdigyUse($event: Event) {
         if ($event.target instanceof HTMLInputElement) {
             this.actorUpdaterService.updateActor(this.characterId, {
-                data: {
+                system: {
                     usedSkillProdigy: {[this.skillDefinition.categoryId]: {[this.skillDefinition.id]: $event.target.checked}}
                 }
             });
@@ -256,7 +256,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
         menu.menuStack.closeAll();
         this.skillValue$.pipe(take(1)).subscribe((activeSkillValue) => {
             this.actorUpdaterService.updateActor(this.characterId, {
-                data: {
+                system: {
                     skills: {
                         [this.skillDefinition.categoryId] : {
                             [this.skillDefinition.id] : {

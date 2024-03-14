@@ -33,10 +33,10 @@ export class CharacterSheetNotesComponent implements OnInit {
     }
 
     updateNodeMode(mode: 'html' | 'markdown') {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {notes: {mode: mode}}})
+        this.actorUpdaterService.updateActor(this.characterId, {system: {notes: {mode: mode}}})
     }
 
     updateNoteContent(content: string | null) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {notes: {content: content ?? ''}}})
+        this.actorUpdaterService.updateActor(this.characterId, {system: {notes: {content: content ?? ''}}})
     }
 }

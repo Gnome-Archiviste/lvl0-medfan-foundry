@@ -8,5 +8,5 @@ export interface RingItemPropertiesData extends ItemPropertiesTemplateBase, Item
 
 export interface RingItemProperties {
     type: 'ring';
-    data: RingItemPropertiesData;
+    system: RingItemPropertiesData;
 }

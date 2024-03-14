@@ -16,6 +16,6 @@ export interface AmmunitionItemPropertiesData extends ItemPropertiesTemplateBase
 
 export interface AmmunitionItemProperties {
     type: 'ammunition';
-    data: AmmunitionItemPropertiesData;
+    system: AmmunitionItemPropertiesData;
 }
 

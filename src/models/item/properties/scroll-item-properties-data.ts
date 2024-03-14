@@ -7,5 +7,5 @@ export interface ScrollItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface ScrollItemProperties {
     type: 'scroll';
-    data: ScrollItemPropertiesData;
+    system: ScrollItemPropertiesData;
 }

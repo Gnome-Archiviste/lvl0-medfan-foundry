@@ -8,7 +8,7 @@ import {Lvl0ActorEffect} from '../actor-effect.service';
 export interface Lvl0Character {
     readonly id: string
     readonly name: string;
-    readonly data: Lvl0CharacterData;
+    readonly system: Lvl0CharacterData;
     readonly items: Lvl0Item[];
     readonly itemsByType: GroupBy<Lvl0Item, 'type'>;
     readonly img: string | null;

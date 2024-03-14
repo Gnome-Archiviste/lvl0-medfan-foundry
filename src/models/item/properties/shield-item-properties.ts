@@ -9,5 +9,5 @@ export interface ShieldItemPropertiesData extends ItemPropertiesTemplateBase, It
 
 export interface ShieldItemProperties {
     type: 'shield';
-    data: ShieldItemPropertiesData;
+    system: ShieldItemPropertiesData;
 }

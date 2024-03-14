@@ -96,8 +96,8 @@ export class ItemEditorComponent implements OnInit {
         this.canHaveModifier$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canHaveModifiers));
         this.canBeEquiped$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canBeEquiped && item.isOwned));
         this.canHaveExtraSkills$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canHaveExtraSkills));
-        this.modifiers$ = this.item$.pipe(map(item => this.itemWithModifier$(item).data.modifiers || {}));
-        this.extraSkills$ = this.item$.pipe(map(item => this.itemWithExtraSkills$(item).data.extraSkills || {}));
+        this.modifiers$ = this.item$.pipe(map(item => this.itemWithModifier$(item).system.modifiers || {}));
+        this.extraSkills$ = this.item$.pipe(map(item => this.itemWithExtraSkills$(item).system.extraSkills || {}));
         this.relatedSpell$ = this.item$.pipe(map(item => this.getRelatedSpell(item) ));
     }
 
@@ -108,38 +108,38 @@ export class ItemEditorComponent implements OnInit {
     }
 
     removeModifier(item: Lvl0Item, modifierId: string) {
-        this.itemUpdaterService.updateItem(item.id, {data: {modifiers: {['-=' + modifierId]: null as any}}});
+        this.itemUpdaterService.updateItem(item.id, {system: {modifiers: {['-=' + modifierId]: null as any}}});
     }
 
     addModifier(item: Lvl0ItemWithModifiers) {
         let nextId: number;
-        if (item.data.modifiers) {
-            nextId = (Object.keys(item.data.modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        if (item.system.modifiers) {
+            nextId = (Object.keys(item.system.modifiers).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         } else {
             nextId = 1;
         }
-        this.itemUpdaterService.updateItem(item.id, {data: {modifiers: {[nextId]: {stat: 'phy', value: 1}}}});
+        this.itemUpdaterService.updateItem(item.id, {system: {modifiers: {[nextId]: {stat: 'phy', value: 1}}}});
     }
 
     removeExtraSkill(item: Lvl0Item, extraSkillId: string) {
-        this.itemUpdaterService.updateItem(item.id, {data: {extraSkills: {['-=' + extraSkillId]: null as any}}});
+        this.itemUpdaterService.updateItem(item.id, {system: {extraSkills: {['-=' + extraSkillId]: null as any}}});
     }
 
     addExtraSkill(item: Lvl0ItemWitExtraSkills) {
         let nextId: number;
-        if (item.data.extraSkills) {
-            nextId = (Object.keys(item.data.extraSkills).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
+        if (item.system.extraSkills) {
+            nextId = (Object.keys(item.system.extraSkills).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         } else {
             nextId = 1;
         }
 
         let skillId = Object.keys(this.skillRepository.getSkillsByIds())[0];
-        this.itemUpdaterService.updateItem(item.id, {data: {extraSkills: {[nextId]: {id: skillId}}}});
+        this.itemUpdaterService.updateItem(item.id, {system: {extraSkills: {[nextId]: {id: skillId}}}});
     }
 
     openSpellSelector(item: Lvl0Item) {
         this.dialogService.openDialog<void, SpellDefinitionSelectorResult>('lvl0-spell-definition-selector', undefined, {title: 'Sélection du sort' }).subscribe((result) => {
-            this.itemUpdaterService.updateItem(item.id, {data: {spell: result.spellId, arcane: result.spellContext?.arcaneLevel}});
+            this.itemUpdaterService.updateItem(item.id, {system: {spell: result.spellId, arcane: result.spellContext?.arcaneLevel}});
         });
     }
 
@@ -167,11 +167,11 @@ export class ItemEditorComponent implements OnInit {
     private getRelatedSpell(item: Lvl0Item) {
         if (item.type === 'wand'
             || item.type === 'scroll') {
-            let spellDefinition = this.spellRepository.getSpellById(item.data.spell);
+            let spellDefinition = this.spellRepository.getSpellById(item.system.spell);
             if (!spellDefinition) {
                 return undefined;
             }
-            return this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.data.arcane || 1});
+            return this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.system.arcane || 1});
         }
         throw new Error(`Item type ${item.type} does not support extra skills`);
     }

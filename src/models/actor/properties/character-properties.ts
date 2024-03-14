@@ -11,7 +11,7 @@ export function assertIsCharacter(actor?: Lvl0FoundryActor | null): asserts acto
     if (!actor) {
         throw new Error('Actor is not defined');
     }
-    if (actor.data.type !== 'character') {
-        throw new Error('Not supported for actor of type: ' + this.actor.data.type);
+    if (actor.type !== 'character') {
+        throw new Error('Not supported for actor of type: ' + this.actor.type);
     }
 }

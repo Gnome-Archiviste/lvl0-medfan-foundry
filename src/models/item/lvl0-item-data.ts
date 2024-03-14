@@ -96,7 +96,7 @@ export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]:
         || data.type == 'foot'
         || data.type == 'ring'
         || data.type == 'weapon')
-        return data.data.modifiers;
+        return data.system.modifiers;
     return undefined;
 }
 

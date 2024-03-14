@@ -9,7 +9,7 @@ export class CharacterJobDefinitionSelector {
         systemDataDatabaseService: SystemDataDatabaseService,
         character: Lvl0Character,
     ): JobDefinition | undefined {
-        return systemDataDatabaseService.jobRepository.getJob(character.data.job.id);
+        return systemDataDatabaseService.jobRepository.getJob(character.system.job.id);
     }
 }
 

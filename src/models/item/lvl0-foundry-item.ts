@@ -1,7 +1,7 @@
+import {Lvl0FoundryActor} from '../actor';
 import {
     ItemDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';
-import {Lvl0FoundryActor} from '../actor';
 
 export class Lvl0FoundryItem extends Item {
     constructor(

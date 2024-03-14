@@ -34,7 +34,7 @@ export class FoundrySpecialityService extends SpecialityService {
 
     async removeSpeciality(characterId: string, specialityEntityId: string): Promise<void> {
         await this.actorUpdaterService.updateActor(characterId, {
-            data: {
+            system: {
                 specialities: {
                     ['-=' + specialityEntityId]: null as any
                 }

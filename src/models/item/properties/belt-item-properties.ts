@@ -8,5 +8,5 @@ export interface BeltItemPropertiesData extends ItemPropertiesTemplateBase, Item
 
 export interface BeltItemProperties {
     type: 'belt';
-    data: BeltItemPropertiesData;
+    system: BeltItemPropertiesData;
 }

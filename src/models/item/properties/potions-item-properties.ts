@@ -5,5 +5,5 @@ export interface PotionsItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface PotionsItemProperties {
     type: 'potions';
-    data: PotionsItemPropertiesData;
+    system: PotionsItemPropertiesData;
 }

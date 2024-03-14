@@ -11,19 +11,19 @@ class CharacterFillableWandSelector {
     ): (Lvl0Item & WandItemProperties)[] {
         let fillableWands: (Lvl0Item & WandItemProperties)[] = [];
         for (let wand of character.itemsByType['wand']) {
-            if (wand.data.blocked)
+            if (wand.system.blocked)
                 continue;
 
-            if (!wand.data.spell) {
+            if (!wand.system.spell) {
                 continue;
             }
 
-            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.data.arcane);
+            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.system.arcane);
             if (!wandConfig) {
                 continue;
             }
 
-            if (wand.data.charge < wandConfig.maxChargesPerWand) {
+            if (wand.system.charge < wandConfig.maxChargesPerWand) {
                 fillableWands.push(wand)
             }
         }

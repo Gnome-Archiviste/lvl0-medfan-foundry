@@ -21,10 +21,10 @@ export class FoundryItemUpdaterService extends ItemUpdaterService {
 
     async changeQuantity<T extends Lvl0Item>(item: T, relativeQuantityChange: number): Promise<void> {
         let foundryItem = this.foundryLvl0IdResolver.getItemFromLvl0Id(item.id);
-        if (item.data.quantity + relativeQuantityChange <= 0) {
+        if (item.system.quantity + relativeQuantityChange <= 0) {
             await foundryItem.delete();
         } else {
-            await foundryItem.update({data: {quantity: item.data.quantity + relativeQuantityChange}})
+            await foundryItem.update({data: {quantity: item.system.quantity + relativeQuantityChange}})
         }
     }
 }

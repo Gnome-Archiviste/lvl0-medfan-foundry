@@ -8,5 +8,5 @@ export interface CloakItemPropertiesData extends ItemPropertiesTemplateBase, Ite
 
 export interface CloakItemProperties {
     type: 'cloak';
-    data: CloakItemPropertiesData;
+    system: CloakItemPropertiesData;
 }

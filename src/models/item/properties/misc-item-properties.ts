@@ -5,5 +5,5 @@ export interface MiscItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface MiscItemProperties {
     type: 'misc';
-    data: MiscItemPropertiesData;
+    system: MiscItemPropertiesData;
 }

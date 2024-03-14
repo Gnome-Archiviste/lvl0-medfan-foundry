@@ -6,7 +6,7 @@ class CharacterEmptyWandSelector {
     static selectEmptyWands(
         character: Lvl0Character
     ): Lvl0Item[] {
-        return character.itemsByType['wand'].filter(w => !w.data.spell && w.data.quantity)
+        return character.itemsByType['wand'].filter(w => !w.system.spell && w.system.quantity)
     }
 }
 

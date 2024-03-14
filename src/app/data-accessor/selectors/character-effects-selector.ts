@@ -29,7 +29,7 @@ class CharacterEffectsSelector {
         systemDataDatabaseService: SystemDataDatabaseService
     ): CharacterEffect[] {
         let characterEffects: CharacterEffect[] = [];
-        for (let [effectId, effect] of Object.entries(character.data.effects ?? {})) {
+        for (let [effectId, effect] of Object.entries(character.system.effects ?? {})) {
             let characterEffect: CharacterEffect = {
                 ...effect,
                 effectId: effectId,

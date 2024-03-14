@@ -4,12 +4,11 @@
   "description": "A Character Sheet for LVL0: Medieval-Fantasy (French & English)",
   "version": "0.6.31",
   "author": "Gnome Archiviste",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
+  "minimumCoreVersion": "11",
+  "compatibleCoreVersion": "11",
   "esmodules": [
     "vendor.js",
     "runtime.js",
-    "polyfill.js",
     "main.js"
   ],
   "scripts": [],

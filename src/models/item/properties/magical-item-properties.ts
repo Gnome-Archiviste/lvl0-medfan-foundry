@@ -5,5 +5,5 @@ export interface MagicalItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface MagicalItemProperties {
     type: 'magical';
-    data: MagicalItemPropertiesData;
+    system: MagicalItemPropertiesData;
 }

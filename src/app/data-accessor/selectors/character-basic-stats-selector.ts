@@ -36,8 +36,8 @@ export class CharacterBasicStatsSelector {
                     }
                 }
             }
-            if (item.type == 'armor' && item.data.dexMalus) {
-                basicStats.dex -= item.data.dexMalus;
+            if (item.type == 'armor' && item.system.dexMalus) {
+                basicStats.dex -= item.system.dexMalus;
             }
         }
 

@@ -1,7 +1,7 @@
+import { InitializedGame } from '../misc/game';
 import {
     ActorDataConstructorData
 } from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData';
-import { InitializedGame } from '../misc/game';
 
 export class Lvl0FoundryActor extends Actor {
     private readonly game: InitializedGame;

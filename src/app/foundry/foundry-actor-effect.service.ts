@@ -25,7 +25,7 @@ export class FoundryActorEffectService extends ActorEffectService {
 
     removeEffect(actorId: string, effectId: string) {
         this.actorUpdaterService.updateActor(actorId, {
-            data: {
+            system: {
                 effects: {
                     ['-=' + effectId]: null as any
                 }
@@ -37,7 +37,7 @@ export class FoundryActorEffectService extends ActorEffectService {
 
     updateEffect(actorId: string, effectId: string, diffObject: RecursivePartial<Lvl0ActorEffect>): void {
         this.actorUpdaterService.updateActor(actorId, {
-            data: {
+            system: {
                 effects: {
                     [effectId]: diffObject
                 }

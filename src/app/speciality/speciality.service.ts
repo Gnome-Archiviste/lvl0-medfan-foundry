@@ -58,7 +58,7 @@ export abstract class SpecialityService {
                 }
 
                 await this.actorUpdaterService.updateActor(characterId, {
-                    data: {mana: {value: mana - manaCost}}
+                    system: {mana: {value: mana - manaCost}}
                 });
                 await this.chatService.sendLvl0MessageFrom(characterId, {
                     type: 'speciality-roll',

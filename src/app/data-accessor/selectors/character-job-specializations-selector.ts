@@ -15,8 +15,8 @@ export class CharacterJobSpecializationsSelector {
 
         if (jobDefinition.spellSpecialization === 'useSpecializations') {
             if (jobDefinition.specializations && jobDefinition.maxSpecializations) {
-                if (character.data.job.specializations.length == jobDefinition.maxSpecializations) {
-                    return character.data.job.specializations;
+                if (character.system.job.specializations.length == jobDefinition.maxSpecializations) {
+                    return character.system.job.specializations;
                 }
                 return jobDefinition.specializations.slice(0, jobDefinition.maxSpecializations);
             }

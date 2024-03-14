@@ -8,7 +8,7 @@ export class CharacterRaceDefinitionSelector {
         systemDataDatabaseService: SystemDataDatabaseService,
         character: Lvl0Character,
     ): RaceDefinition | undefined {
-        return systemDataDatabaseService.raceRepository.getRace(character.data.race.id);
+        return systemDataDatabaseService.raceRepository.getRace(character.system.race.id);
     }
 }
 

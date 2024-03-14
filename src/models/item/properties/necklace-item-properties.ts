@@ -8,5 +8,5 @@ export interface NecklaceItemPropertiesData extends ItemPropertiesTemplateBase, 
 
 export interface NecklaceItemProperties {
     type: 'necklace';
-    data: NecklaceItemPropertiesData;
+    system: NecklaceItemPropertiesData;
 }

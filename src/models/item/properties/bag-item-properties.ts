@@ -8,5 +8,5 @@ export interface BagItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface BagItemProperties {
     type: 'bag';
-    data: BagItemPropertiesData;
+    system: BagItemPropertiesData;
 }

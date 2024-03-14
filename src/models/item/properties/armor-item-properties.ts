@@ -10,5 +10,5 @@ export interface ArmorItemPropertiesData extends ItemPropertiesTemplateBase, Ite
 
 export interface ArmorItemProperties {
     type: 'armor';
-    data: ArmorItemPropertiesData;
+    system: ArmorItemPropertiesData;
 }

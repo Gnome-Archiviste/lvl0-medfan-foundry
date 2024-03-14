@@ -11,5 +11,5 @@ export interface WandItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface WandItemProperties {
     type: 'wand';
-    data: WandItemPropertiesData;
+    system: WandItemPropertiesData;
 }

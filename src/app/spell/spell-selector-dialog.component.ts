@@ -84,7 +84,7 @@ export class SpellSelectorDialogComponent implements OnInit, OnDestroy {
             this.character$ = this.characterAccessorService.selectCharacter(this.data.characterId);
             this.emptyScrollAvailable$ = this.character$
                 .pipe(
-                    map(character => !!character.itemsByType['wand'].find(x => !x.data.spell))
+                    map(character => !!character.itemsByType['wand'].find(x => !x.system.spell))
                 );
             this.emptyWandAvailable$ = this.character$
                 .pipe(
@@ -161,7 +161,7 @@ export class SpellSelectorDialogComponent implements OnInit, OnDestroy {
             this.character$.pipe(selectCharacterArcaneLevel(this.systemDataDatabaseService)),
             this.character$.pipe(selectCharacterFillableWands(this.systemDataDatabaseService))
         ]).pipe(
-            map(([arcaneLevel, fillableWands]) => !!fillableWands.find(x => x.data.spell === spellId && x.data.arcane === arcaneLevel))
+            map(([arcaneLevel, fillableWands]) => !!fillableWands.find(x => x.system.spell === spellId && x.system.arcane === arcaneLevel))
         );
     }
 

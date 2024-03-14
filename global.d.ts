@@ -22,4 +22,5 @@ declare global {
     interface Dice3d {
         addColorset: (colorSet: ColorSet, mode: 'default' | 'preferred') => void
     }
+
 }

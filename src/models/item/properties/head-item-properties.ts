@@ -8,5 +8,5 @@ export interface HeadItemPropertiesData extends ItemPropertiesTemplateBase, Item
 
 export interface HeadItemProperties {
     type: 'head';
-    data: HeadItemPropertiesData;
+    system: HeadItemPropertiesData;
 }

@@ -71,6 +71,6 @@ export type Lvl0Item =
     | Lvl0ItemHandWeapon
     | Lvl0ItemWeapon;
 
-export type Lvl0ItemWithModifiers = Lvl0Item & { data: ItemPropertiesTemplateStatModifiers };
-export type Lvl0ItemWitExtraSkills = Lvl0Item & { data: ItemPropertiesTemplateExtraSkills };
+export type Lvl0ItemWithModifiers = Lvl0Item & { system: ItemPropertiesTemplateStatModifiers };
+export type Lvl0ItemWitExtraSkills = Lvl0Item & { system: ItemPropertiesTemplateExtraSkills };
 

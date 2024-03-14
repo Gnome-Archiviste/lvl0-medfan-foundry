@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 
 class CharacterEquipedItemsSelector {
     static computeEquipedItems(character: Lvl0Character): Lvl0Item[] {
-        return character.items.filter(i => i.data.equiped);
+        return character.items.filter(i => i.system.equiped);
     }
 }
 

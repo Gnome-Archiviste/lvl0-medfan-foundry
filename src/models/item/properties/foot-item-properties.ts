@@ -8,5 +8,5 @@ export interface FootItemPropertiesData extends ItemPropertiesTemplateBase, Item
 
 export interface FootItemProperties {
     type: 'foot';
-    data: FootItemPropertiesData;
+    system: FootItemPropertiesData;
 }

@@ -93,7 +93,7 @@ export class CharacterSheetSkillsComponent implements OnInit, OnDestroy {
             this.actorUpdaterService.updateActor(
                 this.characterId,
                 {
-                    data: {
+                    system: {
                         skills: updatedSkills,
                         ['-=pendingSkills']: null
                     } as any

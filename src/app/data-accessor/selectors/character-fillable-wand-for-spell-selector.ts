@@ -13,24 +13,24 @@ class CharacterFillableWandForSpellSelector {
     ): Lvl0ItemWand[] {
         let fillableWands: Lvl0ItemWand[] = [];
         for (let wand of wands) {
-            if (wand.data.blocked)
+            if (wand.system.blocked)
                 continue;
 
-            if (!wand.data.spell) {
+            if (!wand.system.spell) {
                 fillableWands.push(wand)
                 continue;
             }
 
-            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.data.arcane);
+            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.system.arcane);
             if (!wandConfig) {
                 continue;
             }
 
-            if (wand.data.spell !== spellId) {
+            if (wand.system.spell !== spellId) {
                 continue;
             }
 
-            if (wand.data.charge < wandConfig.maxChargesPerWand) {
+            if (wand.system.charge < wandConfig.maxChargesPerWand) {
                 fillableWands.push(wand)
             }
         }

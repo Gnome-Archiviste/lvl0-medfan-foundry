@@ -100,7 +100,7 @@ export class CharacterSheetModifiersComponent implements OnInit {
         ]))
 
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 health: {value: currentMaxHealth + totalNewHealth},
                 mana: {value: currentMaxMana + totalNewMana},
                 levelUpData: result.levelUpData
@@ -112,31 +112,31 @@ export class CharacterSheetModifiersComponent implements OnInit {
         this.modifiers$.pipe(take(1)).subscribe(modifiers => {
             let nextId = (modifiers.reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) ?? 1;
             let modifier: CharacterModifierInfo = {name: '', isPermanent: false, stat: 'phy', value: 0};
-            this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {[nextId]: modifier}}});
+            this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[nextId]: modifier}}});
         })
     }
 
     deleteActorModifier(modifierEntityId: string) {
-        this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {['-=' + modifierEntityId]: null as any}}});
+        this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {['-=' + modifierEntityId]: null as any}}});
     }
 
     updateModifierValue(modifierEntityId: string, event: Event) {
         if (event.target instanceof HTMLInputElement)
-            this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {[modifierEntityId]: {value: +event.target.value}}}});
+            this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[modifierEntityId]: {value: +event.target.value}}}});
     }
 
     updateModifierStat(modifierEntityId: string, event: Event) {
         if (event.target instanceof HTMLSelectElement)
-            this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {[modifierEntityId]: {stat: event.target.value as ActorStatNames}}}});
+            this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[modifierEntityId]: {stat: event.target.value as ActorStatNames}}}});
     }
 
     updateModifierName(modifierEntityId: string, event: Event) {
         if (event.target instanceof HTMLInputElement)
-            this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {[modifierEntityId]: {name: event.target.value}}}});
+            this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[modifierEntityId]: {name: event.target.value}}}});
     }
 
     updateModifierIsPermanent(modifierEntityId: string, event: Event) {
         if (event.target instanceof HTMLInputElement)
-            this.actorUpdaterService.updateActor(this.characterId, {data: {modifiers: {[modifierEntityId]: {isPermanent: event.target.checked}}}});
+            this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[modifierEntityId]: {isPermanent: event.target.checked}}}});
     }
 }

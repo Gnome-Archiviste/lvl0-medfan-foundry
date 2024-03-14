@@ -66,10 +66,9 @@ Hooks.once("ready", async () => {
         // game.items!.get("IaD00I10zZJL4c9S").sheet?.render(true)
         // game.items!.find(i => i.type === 'weapon').sheet?.render(true)
         //game.actors!.get('29muKc1C0kokkhGw')!.sheet?.render(true)
-        game.actors!.find(i => i.data.name.endsWith('Active'))?.sheet?.render(true)
+        // game.actors!.find((i: any) => i.name.endsWith('Active'))?.sheet?.render(true)
         // canvas?.tokens?.get('ksI0ie2fQHaZADrN')?.actor?.items!.get('IEmnMakdAf4UNxGm').sheet?.render(true)
         // CONFIG.debug.hooks = true;
-
 
     } catch (e) {
         console.error(e);

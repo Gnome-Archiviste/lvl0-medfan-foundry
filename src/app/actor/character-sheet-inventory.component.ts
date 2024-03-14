@@ -58,17 +58,17 @@ export class CharacterSheetInventoryComponent implements OnInit {
 
     updateItemQuantity(item: Lvl0Item, newQuantity: number) {
         this.itemUpdaterService.updateItem(item.id, {
-            data: {
+            system: {
                 quantity: newQuantity
             }
         })
     }
 
     isItemActionnable(item: Lvl0Item) {
-        if (item.type === 'wand' && item.data.charge > 0 && item.data.spell) {
+        if (item.type === 'wand' && item.system.charge > 0 && item.system.spell) {
             return true;
         }
-        if (item.type === 'scroll' && item.data.spell) {
+        if (item.type === 'scroll' && item.system.spell) {
             return true;
         }
         return false;
@@ -92,7 +92,7 @@ export class CharacterSheetInventoryComponent implements OnInit {
 
     equipItem(item: Lvl0Item, event: Event) {
         if (event.target instanceof HTMLInputElement) {
-            this.itemUpdaterService.updateItem(item.id, {data: {equiped: event.target.checked}})
+            this.itemUpdaterService.updateItem(item.id, {system: {equiped: event.target.checked}})
         }
     }
 

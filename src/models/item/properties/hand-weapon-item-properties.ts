@@ -12,5 +12,5 @@ export interface HandWeaponItemPropertiesData extends ItemPropertiesTemplateBase
 
 export interface HandWeaponItemProperties {
     type: 'handWeapon';
-    data: HandWeaponItemPropertiesData;
+    system: HandWeaponItemPropertiesData;
 }

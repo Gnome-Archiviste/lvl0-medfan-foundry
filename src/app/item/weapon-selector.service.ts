@@ -32,8 +32,8 @@ export class WeaponSelectorService {
             character$.pipe(selectCharacterItemsOfType<Lvl0ItemAmmunition>('ammunition')),
         ]))
         availableWeapons = availableWeapons
-            .filter(x => x.data.equiped)
-            .filter(w => w.data.weaponType == weaponType || w.data.weaponType === WeaponType.MeleeRange);
+            .filter(x => x.system.equiped)
+            .filter(w => w.system.weaponType == weaponType || w.system.weaponType === WeaponType.MeleeRange);
 
         if (availableWeapons.length == 0) {
             this.playerNotificationService.showWarning('no_weapon_available')

@@ -29,7 +29,7 @@
                     <label>
                         <input lvl0ActorPropertyField="data.race.type"
                                [lvl0Actor]="character"
-                               [ngModel]="character.data.race.type"
+                               [ngModel]="character.system.race.type"
                                type="text">
                     </label>
                 </div>
@@ -58,7 +58,7 @@
                     <label>
                         <input lvl0ActorPropertyField="data.job.specialization"
                                [lvl0Actor]="character"
-                               [ngModel]="character.data.job.specialization"
+                               [ngModel]="character.system.job.specialization"
                                type="text">
                     </label>
                 </div>
@@ -85,14 +85,14 @@
 
     <div class="level info">
         <span class="label">Niveau</span>
-        <span class="value">{{character.data.level.value}}</span>
+        <span class="value">{{character.system.level.value}}</span>
     </div>
 
     <div class="age info">
         <span class="label">Age</span>
         <input lvl0ActorPropertyField="data.age.value"
                [lvl0Actor]="character"
-               [ngModel]="character.data.age.value"
+               [ngModel]="character.system.age.value"
                type="number">
     </div>
 
@@ -100,7 +100,7 @@
         <span class="label">Taille</span>
         <input lvl0ActorPropertyField="data.size.value"
                [lvl0Actor]="character"
-               [ngModel]="character.data.size.value"
+               [ngModel]="character.system.size.value"
                type="number">
     </div>
 

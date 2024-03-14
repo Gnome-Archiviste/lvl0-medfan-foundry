@@ -116,7 +116,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
 
         this.subscriptions.add(this.characterMaxHealth$.subscribe(maxHealth => {
             this.actorUpdaterService.updateActor(this.characterId, {
-                data: {
+                system: {
                     health: {
                         max: maxHealth
                     }
@@ -126,7 +126,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
             this.characterMaxMana$.subscribe(maxMana => {
                 this.actorUpdaterService.updateActor(this.characterId, {
-                    data: {
+                    system: {
                         mana: {
                             max: maxMana
                         }
@@ -141,7 +141,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
 
     updateHealth(newHealth: number) {
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 health: {
                     value: newHealth
                 }
@@ -151,7 +151,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
 
     updateMana(newMana: number) {
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 mana: {
                     value: newMana
                 }
@@ -161,7 +161,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
 
     updateExperience(newExperience: number) {
         this.actorUpdaterService.updateActor(this.characterId, {
-            data: {
+            system: {
                 experience: {
                     value: newExperience
                 }
@@ -182,7 +182,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     }
 
     openLevelUpDialog(character: Lvl0Character, characterJob: JobDefinition, characterRace: RaceDefinition, nextLevelExperience: number) {
-        let fromLevel = character.data.level.value || 0;
+        let fromLevel = character.system.level.value || 0;
         let toLevel = +fromLevel + 1;
         if (toLevel > 70) {
             return;
@@ -194,7 +194,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
                     continue;
                 if (requirement.notRaces && requirement.notRaces.indexOf(characterRace.id) !== -1)
                     continue;
-                if (character.data.baseStats[requirement.stat].value < requirement.min) {
+                if (character.system.baseStats[requirement.stat].value < requirement.min) {
                     ui.notifications?.error('Impossible de choisir cette classe. ' + requirement.stat.toUpperCase() + ' doit être au minimum de ' + requirement.min);
                     return;
                 }
@@ -223,11 +223,11 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
                 additionalStat: result.additionalPointInStat,
             };
             let diff: RecursivePartial<Lvl0Character> = {
-                data: {
-                    health: { value: character.data.health.value + (result.additionalHealth || 0) },
-                    mana: { value: character.data.mana.value + (result.additionalMana || 0) },
+                system: {
+                    health: { value: character.system.health.value + (result.additionalHealth || 0) },
+                    mana: { value: character.system.mana.value + (result.additionalMana || 0) },
                     level: {value: toLevel},
-                    experience: {value: character.data.experience.value - nextLevelExperience},
+                    experience: {value: character.system.experience.value - nextLevelExperience},
                     levelUpData: {
                         [toLevel]: levelData as any
                     }
@@ -236,9 +236,9 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
             if (result.money) {
                 diff = {
                     ...diff,
-                    data: {
-                        ...diff.data,
-                        staticInventory: {money: (character.data.staticInventory.money ?? 0) + result.money}
+                    system: {
+                        ...diff.system,
+                        staticInventory: {money: (character.system.staticInventory.money ?? 0) + result.money}
                     }
                 };
             }
@@ -250,7 +250,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     updateInitialStat(newValue: number, statName: ActorBasicStatNames) {
         this.actorUpdaterService.updateActor(this.characterId,
             {
-                data: {
+                system: {
                     baseStats: {
                         [statName]: {value: newValue}
                     }
@@ -262,7 +262,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
         this.dialogService.openDialog<void, ActorBasicStatValues>('lvl0-character-initial-stat-roll-dialog', undefined, {title: 'Roll Stats'}).subscribe((result) => {
             this.actorUpdaterService.updateActor(this.characterId,
                 {
-                    data: {
+                    system: {
                         baseStats: {
                             ['phy']: {value: result.phy},
                             ['dex']: {value: result.dex},

@@ -12,11 +12,11 @@
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
                     <div class="title">{{ item.name }}</div>
-                    <ng-container *ngIf="item.data.description">
-                        <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                    <ng-container *ngIf="item.system.description">
+                        <div class="description" [innerHTML]="item.system.description | markdown"></div>
                     </ng-container>
                 </div>
-                <div class="handCount">{{ item.data.handCount }}</div>
+                <div class="handCount">{{ item.system.handCount }}</div>
                 <div class="damage"><lvl0-weapon-damage [weapon]="item" [mode]="data.weaponType"/></div>
             </div>
             <div *ngIf="!last" class="separator"></div>
@@ -43,14 +43,14 @@
                 <div class="icon"><img src="{{item.img}}"/></div>
                 <div class="name">
                     <div class="title">{{ item.name }}</div>
-                    <ng-container *ngIf="item.data.description">
-                        <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                    <ng-container *ngIf="item.system.description">
+                        <div class="description" [innerHTML]="item.system.description | markdown"></div>
                     </ng-container>
                 </div>
-                <div class="damage">{{ item.data.extraDamage }}
-                    <span>({{item.data.extraDamageEffect}})</span>
+                <div class="damage">{{ item.system.extraDamage }}
+                    <span>({{item.system.extraDamageEffect}})</span>
                 </div>
-                <div class="quantity">{{ item.data.quantity }}</div>
+                <div class="quantity">{{ item.system.quantity }}</div>
             </div>
             <div *ngIf="!last" class="separator"></div>
         </ng-container>

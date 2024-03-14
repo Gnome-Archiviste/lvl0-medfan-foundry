@@ -1,11 +1,11 @@
 import {Lvl0FoundryItem} from 'models/item';
 
 export class Lvl0ItemSheet extends ItemSheet {
-    constructor(item: Lvl0FoundryItem, options: Partial<ItemSheet.Options>) {
+    constructor(item: Lvl0FoundryItem, options: Partial<DocumentSheetOptions<Item>>) {
         super(item, options);
     }
 
-    override getData(options?: Partial<ItemSheet.Options>) {
+    override getData(options?: Partial<DocumentSheetOptions<Item>>) {
         return {
             ...super.getData(options),
             lvl0ItemId: this.item.lvl0Id,
@@ -16,13 +16,13 @@ export class Lvl0ItemSheet extends ItemSheet {
         super.activateListeners(html);
     }
 
-    override render(force?: boolean, options?: Application.RenderOptions<ItemSheet.Options>): this {
+    override render(force?: boolean, options?: Application.RenderOptions<DocumentSheetOptions<Item>>): this {
         if (this.rendered)
             return this;
         return super.render(force, options);
     }
 
-    static get defaultOptions(): ItemSheet.Options {
+    static get defaultOptions(): DocumentSheetOptions<Item> {
         return {
             ...super.defaultOptions,
             classes: ["lvl0mf", "sheet", "item"],

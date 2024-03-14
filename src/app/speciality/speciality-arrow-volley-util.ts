@@ -69,8 +69,8 @@ export class SpecialityArrowVolleyUtil {
             let ammunitionElement: string | undefined;
             let availableAmmunitionQuantity = 0;
             if (ammunition) {
-                availableAmmunitionQuantity = ammunition.data.quantity;
-                ammunitionElement = ammunition.data.extraDamageEffect;
+                availableAmmunitionQuantity = ammunition.system.quantity;
+                ammunitionElement = ammunition.system.extraDamageEffect;
             }
 
             let [weaponDamageRollFormula, weaponDamageWithAmmunitionRollFormula] = this.weaponDamageRollUtil.getWeaponDamageRoll('range', weapon, ammunition);
@@ -103,7 +103,7 @@ export class SpecialityArrowVolleyUtil {
                         continue;
                     }
 
-                    let weaponElement = weapon.data.element;
+                    let weaponElement = weapon.system.element;
                     let arrowElement = weaponElement;
                     let damageRollFormula = weaponDamageRollFormula;
                     let isAmmunitionUsedForArrow = false;
@@ -139,7 +139,7 @@ export class SpecialityArrowVolleyUtil {
                             ? {
                                 name: ammunition!.name,
                                 icon: ammunition!.img,
-                                extraDamage: ammunition!.data.extraDamage
+                                extraDamage: ammunition!.system.extraDamage
                             } : undefined
                     })
                 }

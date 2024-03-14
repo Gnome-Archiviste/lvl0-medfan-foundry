@@ -28,7 +28,7 @@ export class FoundrySpellActionService extends SpellActionService {
 
         if (action.type === 'heal') {
             this.characterAccessorService.selectCharacter(actorId).pipe(take(1)).subscribe(c => {
-                this.actorUpdaterService.updateActor(c.id, {data: {health: {value: c.data.health.value + action.data.value}}})
+                this.actorUpdaterService.updateActor(c.id, {system: {health: {value: c.system.health.value + action.data.value}}})
             })
         } else if (action.type === 'addEffect') {
             this.actorEffectService.applyEffect(actorId, action.data);

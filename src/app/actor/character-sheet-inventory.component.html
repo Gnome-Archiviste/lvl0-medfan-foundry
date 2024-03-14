@@ -1,5 +1,5 @@
 <ng-container *ngIf="itemsByType$ | async let itemsByType">
-    <ng-container *ngFor="let category of itemsByType | keyvalue">
+    @for (category of itemsByType | keyvalue; track category.key) {
         <h2>{{ category.key | translate: 'Misc.ItemType' }}</h2>
         <div class="item-line">
             <div class="equiped">
@@ -14,11 +14,11 @@
             <div class="clutter"><b>Encombrement</b></div>
             <div class="quantity"><b>Qtt</b></div>
         </div>
-        <ng-container *ngFor="let item of $items(category.value)">
+        @for (item of category.value; track item.id) {
             <div class="item-line">
                 <div class="equiped">
                     <ng-container *ngIf="itemTypesConfigs[category.key].canBeEquiped">
-                        <input type="checkbox" [checked]="item.data.equiped" (change)="equipItem(item, $event)">
+                        <input type="checkbox" [checked]="item.system.equiped" (change)="equipItem(item, $event)">
                     </ng-container>
                     <ng-container *ngIf="isItemActionnable(item)">
                         <a title="Utiliser" (click)="useItem(item)"><i class="fa fa-play"></i></a>
@@ -29,9 +29,9 @@
                     <img src="{{item.img}}"/>
                 </div>
                 <div class="quantity">
-                    <ng-container *ngIf="item.data.quantifiable">
-                        <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
-                            {{item.data.quantity}}
+                    <ng-container *ngIf="item.system.quantifiable">
+                        <lvl0-relative-value-editor [value]="item.system.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                            {{item.system.quantity}}
                         </lvl0-relative-value-editor>
                     </ng-container>
                 </div>
@@ -39,26 +39,26 @@
                     <div>
                         <span class="title">
                             {{item.name}}
-                            <ng-container *ngIf="item.type === 'wand' && item.data.charge > 0"> - {{item.data.charge}} charge(s)</ng-container>
+                            <ng-container *ngIf="item.type === 'wand' && item.system.charge > 0"> - {{item.system.charge}} charge(s)</ng-container>
                         </span>
                     </div>
-                    <div *ngIf="item.data.description">
-                        <span class="description" [innerHTML]="item.data.description | markdown"></span>
+                    <div *ngIf="item.system.description">
+                        <span class="description" [innerHTML]="item.system.description | markdown"></span>
                     </div>
                     <ng-container *ngIf="item.type === 'shield'">
                         <div class="description">
-                            <strong>Dégât: </strong> {{item.data.damage}}
-                            <strong>Blocage: </strong> {{item.data.blockValue}}
+                            <strong>Dégât: </strong> {{item.system.damage}}
+                            <strong>Blocage: </strong> {{item.system.blockValue}}
                         </div>
                     </ng-container>
-                    <ng-container *ngIf="item.data.restriction">
+                    <ng-container *ngIf="item.system.restriction">
                         <div class="restriction">
-                            <strong>Limitation: </strong> {{item.data.restriction}}
+                            <strong>Limitation: </strong> {{item.system.restriction}}
                         </div>
                     </ng-container>
                 </div>
                 <div class="clutter">
-                    {{item.data.clutter}}
+                    {{item.system.clutter}}
                 </div>
                 <div class="actions item-controls">
                     <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i class="fa fa-share"></i></a>
@@ -66,8 +66,8 @@
                     <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
-        </ng-container>
-    </ng-container>
+        }
+    }
 </ng-container>
 <section>
     <h2 [class.bag-full]="isBagFull$">

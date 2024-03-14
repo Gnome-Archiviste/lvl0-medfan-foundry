@@ -11,7 +11,7 @@ export type ActiveCharacterModifier = {
 }
 
 export function selectCharacterModifiers() {
-    return createSelector<Lvl0Character, ActiveCharacterModifier[]>(c => Object.entries(c.data.modifiers).map(([key, value]) => ({
+    return createSelector<Lvl0Character, ActiveCharacterModifier[]>(c => Object.entries(c.system.modifiers).map(([key, value]) => ({
         entityId: key,
         ...value
     })))

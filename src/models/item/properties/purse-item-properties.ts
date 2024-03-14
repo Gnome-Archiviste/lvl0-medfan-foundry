@@ -6,5 +6,5 @@ export interface PurseItemPropertiesData extends ItemPropertiesTemplateBase {
 
 export interface PurseItemProperties {
     type: 'purse';
-    data: PurseItemPropertiesData;
+    system: PurseItemPropertiesData;
 }

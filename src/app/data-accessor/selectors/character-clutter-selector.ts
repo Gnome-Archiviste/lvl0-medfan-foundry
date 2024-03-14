@@ -39,11 +39,11 @@ export class CharacterClutterSelector {
         let usedSpacesByItemType: { [itemType: string]: number } = {};
 
         for (let item of items) {
-            if (item.data.equiped) {
+            if (item.system.equiped) {
                 if (item.type === 'bag') {
-                    rowCount += +item.data.extraRows;
-                    columnCount += +item.data.extraColumns;
-                    if (item.data.noLimit) {
+                    rowCount += +item.system.extraRows;
+                    columnCount += +item.system.extraColumns;
+                    if (item.system.noLimit) {
                         noLimit = true;
                     }
                 }
@@ -51,10 +51,10 @@ export class CharacterClutterSelector {
             }
 
             let quantity = 1;
-            if (item.data.quantifiable) {
-                quantity = item.data.quantity;
+            if (item.system.quantifiable) {
+                quantity = item.system.quantity;
             }
-            usedSpacesByItemType[item.type] = (usedSpacesByItemType[item.type] || 0) + item.data.clutter * quantity
+            usedSpacesByItemType[item.type] = (usedSpacesByItemType[item.type] || 0) + item.system.clutter * quantity
         }
 
         usedSpacesByItemType['money'] =

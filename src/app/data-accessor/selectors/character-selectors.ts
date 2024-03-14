@@ -5,26 +5,26 @@ import {Lvl0Item} from '../models/lvl0-item';
 import {UnionKeys} from '../../../utils/util';
 
 export function selectCharacterLevel() {
-    return createSimpleSelector(c => c.data.level, (a, b) => a.value === b.value)
+    return createSimpleSelector(c => c.system.level, (a, b) => a.value === b.value)
 }
 
 export function selectCharacterInitialBasicStatValues() {
     return createSimpleSelector(c => ({
-        cha: +c.data.baseStats.cha.value || 0,
-        per: +c.data.baseStats.per.value || 0,
-        phy: +c.data.baseStats.phy.value || 0,
-        dex: +c.data.baseStats.dex.value || 0,
-        int: +c.data.baseStats.int.value || 0
+        cha: +c.system.baseStats.cha.value || 0,
+        per: +c.system.baseStats.per.value || 0,
+        phy: +c.system.baseStats.phy.value || 0,
+        dex: +c.system.baseStats.dex.value || 0,
+        int: +c.system.baseStats.int.value || 0
     }), _.isEqual)
 }
 
 export function selectNextLevelExperience() {
     return createSimpleSelector(c => {
-        if (c.data.level.value < 1)
+        if (c.system.level.value < 1)
             return 0;
-        else if (c.data.level.value < 25)
+        else if (c.system.level.value < 25)
             return 10;
-        else if (c.data.level.value < 50)
+        else if (c.system.level.value < 50)
             return 15;
         else
             return 20;
@@ -44,15 +44,15 @@ export function selectCharacterItems() {
 }
 
 export function selectCharacterMana() {
-    return createSimpleSelector(c => c.data.mana.value, (a, b) => a === b)
+    return createSimpleSelector(c => c.system.mana.value, (a, b) => a === b)
 }
 
 export function selectRationCount() {
-    return createSimpleSelector(c => c.data.staticInventory.rationCount ?? 0, (a, b) => a === b)
+    return createSimpleSelector(c => c.system.staticInventory.rationCount ?? 0, (a, b) => a === b)
 }
 
 export function selectTorchCount() {
-    return createSimpleSelector(c => c.data.staticInventory.torchCount ?? 0, (a, b) => a === b)
+    return createSimpleSelector(c => c.system.staticInventory.torchCount ?? 0, (a, b) => a === b)
 }
 
 export function selectStaticInventory() {
@@ -63,55 +63,55 @@ export function selectStaticInventory() {
         money1000: 0,
         torchCount: 0,
         rationCount: 0,
-        ...c.data.staticInventory as any
+        ...c.system.staticInventory as any
     } as StaticInventoryData));
 }
 
 export function selectCharacterHealth() {
-    return createSimpleSelector(c => c.data.health.value, (a, b) => a === b)
+    return createSimpleSelector(c => c.system.health.value, (a, b) => a === b)
 }
 
 export function selectCharacterExperience() {
-    return createSimpleSelector(c => c.data.experience.value, (a, b) => a === b)
+    return createSimpleSelector(c => c.system.experience.value, (a, b) => a === b)
 }
 
 export function selectIsSkillMasterUsed(skillCategoryId: string, id: string) {
-    return createSimpleSelector(c => c.data.usedSkillMastery?.[skillCategoryId]?.[id] ?? false);
+    return createSimpleSelector(c => c.system.usedSkillMastery?.[skillCategoryId]?.[id] ?? false);
 }
 
 export function selectIsSkillProdigyUsed(skillCategoryId: string, id: string) {
-    return createSimpleSelector(c => c.data.usedSkillProdigy?.[skillCategoryId]?.[id] ?? false);
+    return createSimpleSelector(c => c.system.usedSkillProdigy?.[skillCategoryId]?.[id] ?? false);
 }
 
 export function selectCharacterSpecialities() {
-    return createSimpleSelector(c => c.data.specialities ?? {});
+    return createSimpleSelector(c => c.system.specialities ?? {});
 }
 
 export function selectNotes() {
     return createSimpleSelector<CharacterNote>(c => {
-        if (!c.data.notes) {
+        if (!c.system.notes) {
             return {
                 mode: 'markdown',
                 content: ''
             };
         }
-        if (c.data.notes.content && !c.data.notes.mode) {
+        if (c.system.notes.content && !c.system.notes.mode) {
             return  {
-                ...c.data.notes,
+                ...c.system.notes,
                 mode: 'html'
             }
         }
-        return {...c.data.notes};
+        return {...c.system.notes};
     });
 }
 
 
 export function selectHavePendingSkillPoints() {
     return createSimpleSelector(c => {
-        if (!c.data.pendingSkills)
+        if (!c.system.pendingSkills)
             return false;
 
-        for (let skills of Object.values(c.data.pendingSkills)) {
+        for (let skills of Object.values(c.system.pendingSkills)) {
             for (let pendingSkillValue of Object.values(skills)) {
                 if (pendingSkillValue.prodigy || pendingSkillValue.master || pendingSkillValue.value > 0) {
                     return true;
@@ -125,17 +125,17 @@ export function selectHavePendingSkillPoints() {
 
 export function selectCharacterPendingSkillValue(skillCategoryId: string, id: string) {
     return createSimpleSelector(c => {
-        let pendingSkillValue = c.data.pendingSkills?.[skillCategoryId]?.[id];
+        let pendingSkillValue = c.system.pendingSkills?.[skillCategoryId]?.[id];
         return {value: 0, prodigy: false, master: false, ...pendingSkillValue};
     })
 }
 
 export function selectCharacterSkills() {
-    return createSimpleSelector(c => c.data.skills)
+    return createSimpleSelector(c => c.system.skills)
 }
 
 export function selectCharacterSkillValue(skillCategoryId: string, id: string) {
-    return createSimpleSelector(c => c.data.skills?.[skillCategoryId]?.[id] ?? {
+    return createSimpleSelector(c => c.system.skills?.[skillCategoryId]?.[id] ?? {
         value: 0,
         prodigy: false,
         master: false,
@@ -144,7 +144,7 @@ export function selectCharacterSkillValue(skillCategoryId: string, id: string) {
 }
 
 export function selectCharacterPendingSkills() {
-    return createSimpleSelector(c => c.data.pendingSkills ?? {} as CharacterSkillPoints)
+    return createSimpleSelector(c => c.system.pendingSkills ?? {} as CharacterSkillPoints)
 }
 
 function createSimpleSelector<T>(

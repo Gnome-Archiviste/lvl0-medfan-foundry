@@ -20,7 +20,7 @@ export class CharacterProtectionSelector {
 
         for (let item of equipedItems) {
             if (item.type == 'armor') {
-                protection += item.data.protection
+                protection += item.system.protection
             }
             let itemModifiers = getItemModifiersIfAvailable(item);
             if (itemModifiers) {

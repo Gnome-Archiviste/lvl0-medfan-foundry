@@ -9,13 +9,11 @@ import {GroupBy, groupBy} from '../shared/group-by';
     providedIn: 'root'
 })
 export class FoundryToLvl0Mapper {
-    public createLvl0CharacterFromFoundryActor(actor: Lvl0FoundryActor): Lvl0Character {
-        let actorData = actor.data;
-        if (actorData.type !== 'character') {
-            throw new Error(`Actor '${actor.id}' is not a character. It was a '${actorData.type}'`)
+    public createLvl0CharacterFromFoundryActor(actor: any): Lvl0Character {
+        if (actor.type !== 'character') {
+            throw new Error(`Actor '${actor.id}' is not a character. It was a '${actor.type}'`)
         }
 
-        let characterActor = actorData as CharacterProperties
         let items = actor.items.map(i => this.createLvl0ItemFromFoundryItem(i));
         let itemsByType: GroupBy<Lvl0Item, 'type'> = groupBy(items, it => it.type);
 
@@ -27,19 +25,18 @@ export class FoundryToLvl0Mapper {
         return {
             id: actor.id || '',
             name: actor.name || '',
-            data: characterActor.data,
+            system: actor.system,
             items: items,
             itemsByType: itemsByType,
             img: actor.img
         };
     }
 
-    public createLvl0ItemFromFoundryItem(item: Lvl0FoundryItem): Lvl0Item {
-        let itemData = item.data;
-        let lvl0ItemData = itemData as Lvl0ItemData
+    public createLvl0ItemFromFoundryItem(item: any): Lvl0Item {
         return {
-            ...lvl0ItemData,
-            id: item.lvl0Id!,
+            type: item.type,
+            system: item.system as any,
+            id: item.lvl0Id,
             img: item.img,
             isOwned: item.isOwned,
             ownerId: item.isOwned ? item.actor?.lvl0Id ?? undefined : undefined,

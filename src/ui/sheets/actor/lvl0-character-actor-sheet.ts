@@ -1,10 +1,10 @@
 import {assertIsCharacter, Lvl0FoundryActor} from 'models/actor';
 
-export interface Lvl0mfActorSheetData extends ActorSheet.Data {
+export interface Lvl0mfActorSheetData {
     lvl0CharacterId: string,
 }
 
-export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<Options, Lvl0mfActorSheetData> {
+export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<ActorSheet.Options> {
     constructor(actor: Lvl0FoundryActor, options: Partial<Options>) {
         super(actor, options);
     }
@@ -21,8 +21,9 @@ export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorS
 
 
     override render(force?: boolean, options?: Application.RenderOptions<Options>): this {
-        if (this.rendered)
+        if (this.rendered) {
             return this;
+        }
         return super.render(force, options);
     }
 

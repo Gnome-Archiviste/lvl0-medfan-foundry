@@ -17,29 +17,29 @@ export abstract class ItemService {
 
     async useItem(item: Lvl0Item): Promise<void> {
         if (item.type === 'scroll') {
-            let spellDefinition = this.spellRepository.getSpellById(item.data.spell)
+            let spellDefinition = this.spellRepository.getSpellById(item.system.spell)
             if (!spellDefinition)
                 return;
-            let spell = this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.data.arcane});
+            let spell = this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.system.arcane});
             await this.spellChatService.rollSpellAndSendToChat(item.ownerId, spell, {itemSource: item});
             await this.deleteItem(item);
         }
 
         if (item.type === 'wand') {
-            if (item.data.charge <= 0) {
+            if (item.system.charge <= 0) {
                 this.playerNotificationService.showWarning('wand_is_empty');
                 return;
             }
 
-            let spellDefinition = this.spellRepository.getSpellById(item.data.spell)
+            let spellDefinition = this.spellRepository.getSpellById(item.system.spell)
             if (!spellDefinition) {
                 this.playerNotificationService.showError('unknown_spell');
-                ui.notifications?.error('Sort inconnu: ' + item.data.spell);
+                ui.notifications?.error('Sort inconnu: ' + item.system.spell);
                 return;
             }
-            let spell = this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.data.arcane});
+            let spell = this.spellUtil.computeSpellValuesBeforeRoll(spellDefinition, {arcaneLevel: item.system.arcane});
             await this.spellChatService.rollSpellAndSendToChat(item.ownerId, spell, {itemSource: item});
-            this.itemUpdaterService.updateItem(item.id, {data: {charge: item.data.charge - 1}});
+            this.itemUpdaterService.updateItem(item.id, {system: {charge: item.system.charge - 1}});
         }
     }
 

@@ -7,39 +7,39 @@
         <div class="damage">Dégâts</div>
         <div class="clutter">Encombrement</div>
     </div>
-    <ng-container *ngFor="let item of weaponsItems$ | async">
+    @for (item of weaponsItems$ | async; track item.id) {
         <div class="weapon-line">
             <div class="equiped">
-                <input type="checkbox" [checked]="item.data.equiped" (change)="equipItem(item, $event)">
+                <input type="checkbox" [checked]="item.system.equiped" (change)="equipItem(item, $event)">
             </div>
             <div class="icon"><img src="{{item.img}}"/></div>
             <div class="name">
                 <div class="title">{{ item.name }}</div>
-                <ng-container *ngIf="item.data.description || item.data.restriction">
+                <ng-container *ngIf="item.system.description || item.system.restriction">
                     <div class="description">
                         <div class="content">
-                            <div *ngIf="item.data.description" [innerHTML]="item.data.description | markdown">
+                            <div *ngIf="item.system.description" [innerHTML]="item.system.description | markdown">
                             </div>
-                            <div *ngIf="item.data.restriction">
-                                <strong>Limitation: </strong> {{ item.data.restriction }}
+                            <div *ngIf="item.system.restriction">
+                                <strong>Limitation: </strong> {{ item.system.restriction }}
                             </div>
                         </div>
                     </div>
                 </ng-container>
             </div>
-            <div class="handCount">{{ item.data.handCount }}</div>
+            <div class="handCount">{{ item.system.handCount }}</div>
 
-            <ng-container *ngIf="item.data.weaponType === 'melee-range'; else singleDamage">
+            <ng-container *ngIf="item.system.weaponType === 'melee-range'; else singleDamage">
                 <div class="damage">
-                    <div>Mêlée: {{ item.data.damage }}</div>
-                    <div>Lancer/Tir: {{ item.data.rangeDamage }}</div>
+                    <div>Mêlée: {{ item.system.damage }}</div>
+                    <div>Lancer/Tir: {{ item.system.rangeDamage }}</div>
                 </div>
             </ng-container>
             <ng-template #singleDamage>
-                <div class="damage">{{ item.data.damage }}</div>
+                <div class="damage">{{ item.system.damage }}</div>
             </ng-template>
 
-            <div class="clutter">{{ item.data.clutter }}</div>
+            <div class="clutter">{{ item.system.clutter }}</div>
             <div class="actions">
                 <a class="item-control" (click)="shareItem(item)" title="Partager l'objet"><i
                     class="fa fa-share"></i></a>
@@ -47,14 +47,14 @@
                 <a class="item-control" (click)="deleteItem(item)" title="Delete Item"><i class="fas fa-trash"></i></a>
             </div>
         </div>
-    </ng-container>
+    }
 </section>
 <section class="equipment">
     <ng-container *ngFor="let slot of armorItems | keyvalue; let last = last">
 
         <div [class]="['slot', slot.key]">
             <h3>{{ slot.key | translate: 'Misc.ItemType' }}</h3>
-            <ng-container *ngFor="let item of slot.value | async">
+            @for (item of slot.value | async; track item.id) {
                 <div class="slot-line">
                     <div class="icon"><img [src]="item.img"/></div>
                     <div class="info">
@@ -68,17 +68,17 @@
                         <ng-container *ngFor="let extraSkill of itemExtraSkills(item)">
                             <div class="extra-skill">{{ skillsById[extraSkill].name }}</div>
                         </ng-container>
-                        <ng-container *ngIf="item.type === 'shield'">
+                        @if (item.type === 'shield') {
                             <div class="description">
-                                <strong>Dégât: </strong> {{ item.data.damage }}
+                                <strong>Dégât: </strong> {{ item.system.damage }}
                             </div>
                             <div class="description">
-                                <strong>Blocage: </strong> {{ item.data.blockValue }}
+                                <strong>Blocage: </strong> {{ item.system.blockValue }}
                             </div>
-                        </ng-container>
+                        }
                     </div>
                 </div>
-            </ng-container>
+            }
         </div>
         <div *ngIf="!last" class="separator"></div>
     </ng-container>
@@ -90,15 +90,15 @@
         <ng-container *ngFor="let item of arrowsItems$ | async">
             <div class="ammunition-line">
                 <div class="quantity">
-                    <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
-                        {{item.data.quantity}}
+                    <lvl0-relative-value-editor [value]="item.system.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                        {{item.system.quantity}}
                     </lvl0-relative-value-editor>
                 </div>
                 <div class="icon"><img [src]="item.img"/></div>
                 <div class="name">
                     <div class="title">{{item.name}}</div>
-                    <ng-container *ngIf="item.data.description">
-                        <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                    <ng-container *ngIf="item.system.description">
+                        <div class="description" [innerHTML]="item.system.description | markdown"></div>
                     </ng-container>
                 </div>
                 <div class="actions">
@@ -117,15 +117,15 @@
         <ng-container *ngFor="let item of dartMarbleItems$ | async">
         <div class="ammunition-line">
             <div class="quantity">
-                <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
-                    {{item.data.quantity}}
+                <lvl0-relative-value-editor [value]="item.system.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                    {{item.system.quantity}}
                 </lvl0-relative-value-editor>
             </div>
             <div class="icon"><img src="{{item.img}}"/></div>
             <div class="name">
                 <div class="title">{{item.name}}</div>
-                <ng-container *ngIf="item.data.description">
-                    <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                <ng-container *ngIf="item.system.description">
+                    <div class="description" [innerHTML]="item.system.description | markdown"></div>
                 </ng-container>
             </div>
             <div class="actions">
@@ -162,15 +162,15 @@
         <ng-container *ngFor="let item of potionItems$ | async">
         <div class="ammunition-line">
             <div class="quantity">
-                <lvl0-relative-value-editor [value]="item.data.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
-                    {{item.data.quantity}}
+                <lvl0-relative-value-editor [value]="item.system.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
+                    {{item.system.quantity}}
                 </lvl0-relative-value-editor>
             </div>
             <div class="icon"><img src="{{item.img}}"/></div>
             <div class="name">
                 <div class="title">{{item.name}}</div>
-                <ng-container *ngIf="item.data.description">
-                    <div class="description" [innerHTML]="item.data.description | markdown"></div>
+                <ng-container *ngIf="item.system.description">
+                    <div class="description" [innerHTML]="item.system.description | markdown"></div>
                 </ng-container>
             </div>
             <div class="actions">

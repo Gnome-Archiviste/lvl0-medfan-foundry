@@ -101,8 +101,8 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             }
             case "createScroll": {
                 const scrolls = await firstValueFrom(this.characterAccessorService.selectCharacter(actorId).pipe(selectCharacterItemsOfType<Lvl0ItemScroll>('scroll')), {defaultValue: [] as Lvl0ItemScroll[]});
-                let emptyScrolls = scrolls.filter((scroll: Lvl0ItemScroll) => scroll.data.quantity > 0 && !scroll.data.spell)
-                let existingScrolls = scrolls.filter((scroll: Lvl0ItemScroll) => scroll.data.spell == spell!.definition.id)
+                let emptyScrolls = scrolls.filter((scroll: Lvl0ItemScroll) => scroll.system.quantity > 0 && !scroll.system.spell)
+                let existingScrolls = scrolls.filter((scroll: Lvl0ItemScroll) => scroll.system.spell == spell!.definition.id)
                 if (emptyScrolls.length === 0) {
                     this.playerNotificationService.showWarning('no_scroll_available');
                     return false;
@@ -133,17 +133,17 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
         let rolledSpell = await this.spellUtil.rollSpell(this.spell, context);
 
         if (this.emptyScroll) {
-            if (this.emptyScroll.data.quantity === 1) {
+            if (this.emptyScroll.system.quantity === 1) {
                 await this.itemService.deleteItem(this.emptyScroll);
             } else {
-                await this.itemUpdaterService.updateItem(this.emptyScroll.id, {data: {quantity: this.emptyScroll.data.quantity - 1}});
+                await this.itemUpdaterService.updateItem(this.emptyScroll.id, {system: {quantity: this.emptyScroll.system.quantity - 1}});
             }
             if (this.existingScroll) {
-                await this.itemUpdaterService.updateItem(this.existingScroll.id, {data: {quantity: this.existingScroll.data.quantity + 1}});
+                await this.itemUpdaterService.updateItem(this.existingScroll.id, {system: {quantity: this.existingScroll.system.quantity + 1}});
             } else {
                 await this.itemService.createItemFrom(this.emptyScroll, {
                     name: rolledSpell.definition.name,
-                    data: {
+                    system: {
                         quantifiable: true,
                         quantity: 1,
                         spell: rolledSpell.definition.id,
@@ -153,31 +153,31 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             }
         }
         if (this.wand) {
-            if (this.wand.data.spell === rolledSpell.definition.id) {
+            if (this.wand.system.spell === rolledSpell.definition.id) {
                 if (rollResult === 'epicFail') {
                     this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
-                        data: {
+                        system: {
                             blocked: true
                         }
                     })
                 } else {
                     this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
-                        data: {
-                            charge: this.wand.data.charge + 1
+                        system: {
+                            charge: this.wand.system.charge + 1
                         }
                     })
                 }
-            } else if (!this.wand.data.spell) {
+            } else if (!this.wand.system.spell) {
                 this.itemUpdaterService.changeQuantity(this.wand, -1);
                 this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
-                    data: {
+                    system: {
                         spell: rolledSpell.definition.id,
                         charge: 1
                     }
                 })
                 await this.itemService.createItemFrom(this.wand, {
                     name: rolledSpell.definition.name,
-                    data: {
+                    system: {
                         quantifiable: false,
                         quantity: 0,
                         spell: rolledSpell.definition.id,

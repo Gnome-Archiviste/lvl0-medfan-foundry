@@ -18,7 +18,7 @@
                 <span>Encombrement</span>
                 <input lvl0ItemPropertyField="data.clutter"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.clutter"
+                       [ngModel]="item.system.clutter"
                        min="0"
                        type="number">
             </label>
@@ -26,23 +26,23 @@
                 <span>Prix</span>
                 <input lvl0ItemPropertyField="data.price"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.price"
+                       [ngModel]="item.system.price"
                        min="0"
                        type="number">
             </label>
             <label class="one-line">
                 <input lvl0ItemPropertyField="data.quantifiable"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.quantifiable"
+                       [ngModel]="item.system.quantifiable"
                        type="checkbox">
                 <span>Quantifiable</span>
             </label>
             <label class="one-line" *ngIf="item.isOwned">
                 <span>Quantity</span>
                 <input lvl0ItemPropertyField="data.quantity"
-                       [disabled]="!item.data.quantifiable"
+                       [disabled]="!item.system.quantifiable"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.quantity"
+                       [ngModel]="item.system.quantity"
                        min="0"
                        type="number">
             </label>
@@ -52,7 +52,7 @@
             <label class="one-line">
                 <input lvl0ItemPropertyField="data.equiped"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.equiped"
+                       [ngModel]="item.system.equiped"
                        type="checkbox">
                 Équipé
             </label>
@@ -66,7 +66,7 @@
                           cdkAutosizeMinRows="1"
                           cdkAutosizeMaxRows="10"
                           [lvl0Item]="item"
-                          [ngModel]="item.data.description"></textarea>
+                          [ngModel]="item.system.description"></textarea>
             </label>
         </div>
 
@@ -78,7 +78,7 @@
                           cdkAutosizeMinRows="1"
                           cdkAutosizeMaxRows="10"
                           [lvl0Item]="item"
-                          [ngModel]="item.data.details"></textarea>
+                          [ngModel]="item.system.details"></textarea>
             </label>
         </div>
 
@@ -88,7 +88,7 @@
                 <input lvl0ItemPropertyField="data.restriction"
                        type="text"
                        [lvl0Item]="item"
-                       [ngModel]="item.data.restriction">
+                       [ngModel]="item.system.restriction">
             </label>
         </div>
 
@@ -103,7 +103,7 @@
                         Type
                         <select lvl0ItemPropertyField="data.ammunitionType"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.ammunitionType">
+                                [ngModel]="item.system.ammunitionType">
                             <option *ngFor="let ammunitionType of ammunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
                         </select>
                     </label>
@@ -114,10 +114,10 @@
                         <input lvl0ItemPropertyField="data.extraDamage"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.extraDamage">
+                               [ngModel]="item.system.extraDamage">
                         <select lvl0ItemPropertyField="data.extraDamageEffect"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.extraDamageEffect">
+                                [ngModel]="item.system.extraDamageEffect">
                             <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
                         </select>
                     </label>
@@ -128,7 +128,7 @@
                         <input lvl0ItemPropertyField="data.bonus"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.bonus">
+                               [ngModel]="item.system.bonus">
                     </label>
                 </div>
             }
@@ -140,14 +140,14 @@
                         <input lvl0ItemPropertyField="data.protection"
                                type="number"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.protection">
+                               [ngModel]="item.system.protection">
                     </label>
                     <label class="one-line">
                         Malus dextérité
                         <input lvl0ItemPropertyField="data.dexMalus"
                                type="number"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.dexMalus">
+                               [ngModel]="item.system.dexMalus">
                     </label>
                 </div>
                 <div class="editor-line">
@@ -156,7 +156,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -168,23 +168,23 @@
                         <input lvl0ItemPropertyField="data.extraRows"
                                type="number"
                                [lvl0Item]="item"
-                               [disabled]="item.data.noLimit"
-                               [ngModel]="item.data.extraRows">
+                               [disabled]="item.system.noLimit"
+                               [ngModel]="item.system.extraRows">
                     </label>
                     <label class="one-line">
                         Colones supplémentaires
                         <input lvl0ItemPropertyField="data.extraColumns"
                                type="number"
                                [lvl0Item]="item"
-                               [disabled]="item.data.noLimit"
-                               [ngModel]="item.data.extraColumns">
+                               [disabled]="item.system.noLimit"
+                               [ngModel]="item.system.extraColumns">
                     </label>
                 </div>
                 <div class="editor-line">
                     <label class="one-line">
                         <input lvl0ItemPropertyField="data.noLimit"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.noLimit"
+                               [ngModel]="item.system.noLimit"
                                type="checkbox">
                         Taille infini
                     </label>
@@ -198,7 +198,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -210,7 +210,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -222,7 +222,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -234,10 +234,10 @@
                         <input lvl0ItemPropertyField="data.damage"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.damage">
+                               [ngModel]="item.system.damage">
                         <select lvl0ItemPropertyField="data.element"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.element">
+                                [ngModel]="item.system.element">
                             <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
                         </select>
                     </label>
@@ -248,7 +248,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
                 <div class="editor-line">
@@ -257,14 +257,14 @@
                         <input lvl0ItemPropertyField="data.bonus"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.bonus">
+                               [ngModel]="item.system.bonus">
                     </label>
                 </div>
                 <div class="editor-line">
                     <label class="one-line">
                         <input lvl0ItemPropertyField="data.canUseWeapon"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.canUseWeapon"
+                               [ngModel]="item.system.canUseWeapon"
                                type="checkbox">
                         Peux utiliser une arme
                     </label>
@@ -278,7 +278,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -293,7 +293,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -308,7 +308,7 @@
                         <input lvl0ItemPropertyField="data.immunity"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.immunity">
+                               [ngModel]="item.system.immunity">
                     </label>
                 </div>
             }
@@ -320,14 +320,14 @@
                         <input lvl0ItemPropertyField="data.damage"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.damage">
+                               [ngModel]="item.system.damage">
                     </label>
                     <label class="one-line">
                         Blocage
                         <input lvl0ItemPropertyField="data.blockValue"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.blockValue">
+                               [ngModel]="item.system.blockValue">
                     </label>
                 </div>
             }
@@ -356,7 +356,7 @@
                     <label class="one-line">
                         <input lvl0ItemPropertyField="data.blocked"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.blocked"
+                               [ngModel]="item.system.blocked"
                                type="checkbox">
                         Bloqué ? (Échec critique lors du remplissage)
                     </label>
@@ -366,7 +366,7 @@
                         <span>Charge</span>
                         <input lvl0ItemPropertyField="data.charge"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.charge"
+                               [ngModel]="item.system.charge"
                                min="0"
                                type="number">
                     </label>
@@ -397,10 +397,10 @@
                         <input lvl0ItemPropertyField="data.damage"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.damage">
+                               [ngModel]="item.system.damage">
                         <select lvl0ItemPropertyField="data.element"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.element">
+                                [ngModel]="item.system.element">
                             <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
                         </select>
                     </label>
@@ -411,15 +411,15 @@
                         Type
                         <select lvl0ItemPropertyField="data.weaponType"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.weaponType">
+                                [ngModel]="item.system.weaponType">
                             <option *ngFor="let weaponType of weaponTypes | keyvalue" [value]="weaponType.key">{{weaponType.value}}</option>
                         </select>
                     </label>
-                    <label class="one-line" *ngIf="item.data.weaponType !== 'melee'">
+                    <label class="one-line" *ngIf="item.system.weaponType !== 'melee'">
                         Type de munition
                         <select lvl0ItemPropertyField="data.usedAmmunitionType"
                                 [lvl0Item]="item"
-                                [ngModel]="item.data.usedAmmunitionType">
+                                [ngModel]="item.system.usedAmmunitionType">
                             <option *ngFor="let ammunitionType of usedAmmunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
                         </select>
                     </label>
@@ -430,7 +430,7 @@
                         <input lvl0ItemPropertyField="data.handCount"
                                type="number"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.handCount">
+                               [ngModel]="item.system.handCount">
                     </label>
                 </div>
 
@@ -440,7 +440,7 @@
                         <input lvl0ItemPropertyField="data.bonus"
                                type="text"
                                [lvl0Item]="item"
-                               [ngModel]="item.data.bonus">
+                               [ngModel]="item.system.bonus">
                     </label>
                 </div>
             }
