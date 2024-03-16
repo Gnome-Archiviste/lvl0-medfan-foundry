@@ -5,10 +5,12 @@ import {selectCharacterJobDefinition} from '../data-accessor/selectors/character
 import {selectCharacterJobSpecializations} from '../data-accessor/selectors/character-job-specializations-selector';
 import {CharacterAccessorService} from '../data-accessor/character-accessor.service';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {JobDefinition, RaceDefinition} from '../../repositories';
 import {FileSelectorService} from '../data-accessor/file-selector.service';
 import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
+import {UserService} from '../shared/user-service';
+import {selectCharacterLevel} from '../data-accessor/selectors/character-selectors';
 
 @Component({
     selector: 'lvl0-character-basic-information',
@@ -26,12 +28,16 @@ export class CharacterBasicInformationComponent implements OnInit {
     raceDefinitionsByCategories: Record<string, Record<string, RaceDefinition>>;
     jobDefinitionsByCategories: Record<string, Record<string, JobDefinition>>;
     jobCategoryIds: string[];
+    canChangeName$: Observable<boolean>;
+    canChangeJob$: Observable<boolean>;
+    canChangeRace$: Observable<boolean>;
 
     constructor(
         private readonly characterAccessorService: CharacterAccessorService,
         private readonly systemDataDatabaseService: SystemDataDatabaseService,
         private readonly fileSelectorService: FileSelectorService,
-        private readonly actorUpdaterService: ActorUpdaterService
+        private readonly actorUpdaterService: ActorUpdaterService,
+        private readonly userService: UserService,
     ) {
     }
 
@@ -43,6 +49,15 @@ export class CharacterBasicInformationComponent implements OnInit {
         this.raceDefinitionsByCategories = this.systemDataDatabaseService.raceRepository.getRacesByCategories();
         this.jobDefinitionsByCategories = this.systemDataDatabaseService.jobRepository.getJobsByCategories();
         this.jobCategoryIds = this.systemDataDatabaseService.jobRepository.getJobCategoryIds();
+
+        let characterLevel$ = this.character$.pipe(selectCharacterLevel());
+        this.canChangeName$ = characterLevel$.pipe(map(level => level.value === 0 || this.userService.isGm()))
+        this.canChangeJob$ = characterLevel$.pipe(map(level => level.value === 0 || this.userService.isGm()))
+        this.canChangeRace$ = characterLevel$.pipe(map(level => level.value === 0 || this.userService.isGm()))
+    }
+
+    canSelectImage() {
+        return this.fileSelectorService.canSelectImage();
     }
 
     openSelectAvatarDialog() {

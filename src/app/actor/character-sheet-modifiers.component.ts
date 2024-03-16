@@ -30,6 +30,7 @@ import {
     ActorBasicStatValues,
     selectCharacterBasicStats
 } from '../data-accessor/selectors/character-basic-stats-selector';
+import {UserService} from '../shared/user-service';
 
 @Component({
     selector: 'lvl0-character-sheet-modifiers',
@@ -55,6 +56,7 @@ export class CharacterSheetModifiersComponent implements OnInit {
         private readonly systemDataDatabaseService: SystemDataDatabaseService,
         private readonly actorUpdaterService: ActorUpdaterService,
         private readonly dialogService: DialogService,
+        private readonly userService: UserService,
     ) {
     }
 
@@ -66,8 +68,8 @@ export class CharacterSheetModifiersComponent implements OnInit {
         this.levelUpData$ = this.character$.pipe(selectCharacterLevelUpData());
         this.characterBasicStats$ = this.character$.pipe(selectCharacterBasicStats());
         this.characterMissingLevelData$ = this.character$.pipe(selectCharacterMissingLevelData(this.systemDataDatabaseService));
-        this.canEditLevel$ = this.level$.pipe(map(x => x.value > 0)) // FIXME && isGM;
-        this.canEditModifiers$ = of(true);
+        this.canEditLevel$ = this.level$.pipe(map(x => x.value > 0 && this.userService.isGm()))
+        this.canEditModifiers$ = of(this.userService.isGm());
     }
 
     async generateMissingLevelUpData() {

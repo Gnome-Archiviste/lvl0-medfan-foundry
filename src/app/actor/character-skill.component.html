@@ -50,10 +50,11 @@
                    <button (click)="createMacro(menuContent)">
                        <i class="fas fa-scroll"></i> Créer une macro
                    </button>
-                   <!-- FIXME: is GM -->
-                   <button (click)="toggleManualMode(menuContent)">
-                       <i class="fas fa-cog"></i> Changer la valeur sans limitation
-                   </button>
+                   @if (isGm()) {
+                       <button (click)="toggleManualMode(menuContent)">
+                           <i class="fas fa-cog"></i> Changer la valeur sans limitation
+                       </button>
+                   }
                </div>
             </div>
         </div>

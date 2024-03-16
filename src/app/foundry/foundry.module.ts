@@ -30,6 +30,8 @@ import {PlayerNotificationService} from '../shared/player-notification.service';
 import {FoundryPlayerNotificationService} from './foundry-player-notification.service';
 import {FoundrySpellActionService} from './foundry-spell-action-service';
 import {SpellActionService} from '../spell/spell-action.service';
+import {FoundryUserService} from './foundry-user-service';
+import {UserService} from '../shared/user-service';
 
 @NgModule({
     declarations: [],
@@ -84,6 +86,10 @@ import {SpellActionService} from '../spell/spell-action.service';
         {
             provide: ItemService,
             useClass: FoundryItemService
+        },
+        {
+            provide: UserService,
+            useClass: FoundryUserService
         },
         {
             provide: RollFactory,

@@ -34,6 +34,7 @@ import {selectCharacterJobDefinition} from '../data-accessor/selectors/character
 import {JobDefinition, RaceDefinition} from '../../repositories';
 import {Lvl0Actor} from '../data-accessor/models/lvl0-actor';
 import {result} from 'lodash';
+import {UserService} from '../shared/user-service';
 
 @Component({
     selector: 'lvl0-character-sheet-stats',
@@ -55,6 +56,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     characterMagicArmor$: Observable<Lvl0ActorEffectArmorWithEffectId | undefined>;
     characterMagicArmorRemaining$: Observable<number>;
     characterBasicStatsValues$: Observable<ActorBasicStatValues>;
+    canEditStat$: Observable<boolean>;
     characterCha$: Observable<number>;
     characterInt$: Observable<number>;
     characterPer$: Observable<number>;
@@ -80,6 +82,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
         private readonly actorUpdaterService: ActorUpdaterService,
         private readonly actorEffectService: ActorEffectService,
         private readonly dialogService: DialogService,
+        private readonly userService: UserService,
     ) {
     }
 
@@ -113,6 +116,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
         this.characterInitialDex$ = this.characterInitialStats$.pipe(map(x => x.dex), distinctUntilChanged());
         this.characterInitialPhy$ = this.characterInitialStats$.pipe(map(x => x.phy), distinctUntilChanged());
         this.characterLevel$ = this.character$.pipe(selectCharacterLevel());
+        this.canEditStat$ = this.characterLevel$.pipe(map(x => x.value === 0 || this.userService.isGm()), distinctUntilChanged());
 
         this.subscriptions.add(this.characterMaxHealth$.subscribe(maxHealth => {
             this.actorUpdaterService.updateActor(this.characterId, {

@@ -19,6 +19,10 @@ export class FoundryFileSelectorService extends FileSelectorService {
         })
     }
 
+    canSelectImage(): boolean {
+        return (game.user as User).can("FILES_BROWSE")
+    }
+
     selectImage(currentPath?: string): Observable<string> {
         return new Observable((subscriber) => {
             let fp = new FilePicker({

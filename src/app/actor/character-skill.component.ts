@@ -20,6 +20,7 @@ import {CdkMenu} from '@angular/cdk/menu';
 import {SkillService} from '../skill/skill.service';
 import {selectCharacterActiveSkillValue} from '../data-accessor/selectors/character-active-skill-value-selector';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
+import {UserService} from '../shared/user-service';
 
 @Component({
     selector: 'lvl0-character-skill',
@@ -63,6 +64,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
         private readonly actorUpdaterService: ActorUpdaterService,
         private readonly skillService: SkillService,
         private readonly systemDataDatabaseService: SystemDataDatabaseService,
+        private readonly userService: UserService,
     ) {
     }
 
@@ -267,5 +269,9 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
                 }
             })
         })
+    }
+
+    isGm() {
+        return this.userService.isGm();
     }
 }

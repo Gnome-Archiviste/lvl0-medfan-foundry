@@ -39,41 +39,61 @@
     <fieldset class="stat phy">
         <legend>{{'Misc.Stat.phy' | translate}}</legend>
         <span class="value stat-phy">
-            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPhy$" (onChange)="updateInitialStat($event, 'phy')">
+            @if (canEditStat$ | async) {
+                <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPhy$" (onChange)="updateInitialStat($event, 'phy')">
+                    {{characterPhy$ | async}}
+                </lvl0-relative-value-editor>
+            } @else {
                 {{characterPhy$ | async}}
-            </lvl0-relative-value-editor>
+            }
         </span>
     </fieldset>
     <fieldset class="stat dex">
         <legend>{{'Misc.Stat.dex' | translate}}</legend>
         <span class="value stat-dex">
-            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialDex$" (onChange)="updateInitialStat($event, 'dex')">
+            @if (canEditStat$ | async) {
+                <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialDex$" (onChange)="updateInitialStat($event, 'dex')">
+                    {{characterDex$ | async}}
+                </lvl0-relative-value-editor>
+            } @else {
                 {{characterDex$ | async}}
-            </lvl0-relative-value-editor>
+            }
         </span>
     </fieldset>
     <fieldset class="stat int">
         <legend>{{'Misc.Stat.int' | translate}}</legend>
         <span class="value stat-int">
-            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialInt$" (onChange)="updateInitialStat($event, 'int')">
+            @if (canEditStat$ | async) {
+                <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialInt$" (onChange)="updateInitialStat($event, 'int')">
+                    {{characterInt$ | async}}
+                </lvl0-relative-value-editor>
+            } @else {
                 {{characterInt$ | async}}
-            </lvl0-relative-value-editor>
+            }
         </span>
     </fieldset>
     <fieldset class="stat cha">
         <legend>{{'Misc.Stat.cha' | translate}}</legend>
         <span class="value stat-cha">
-            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialCha$" (onChange)="updateInitialStat($event, 'cha')">
+            @if (canEditStat$ | async) {
+                <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialCha$" (onChange)="updateInitialStat($event, 'cha')">
+                    {{characterCha$ | async}}
+                </lvl0-relative-value-editor>
+            } @else {
                 {{characterCha$ | async}}
-            </lvl0-relative-value-editor>
+            }
         </span>
     </fieldset>
     <fieldset class="stat per">
         <legend>{{'Misc.Stat.per' | translate}}</legend>
         <span class="value stat-per">
-            <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPer$" (onChange)="updateInitialStat($event, 'per')">
+            @if (canEditStat$ | async) {
+                <lvl0-relative-value-editor [editable]="true" [value$]="characterInitialPer$" (onChange)="updateInitialStat($event, 'per')">
+                    {{characterPer$ | async}}
+                </lvl0-relative-value-editor>
+            } @else {
                 {{characterPer$ | async}}
-            </lvl0-relative-value-editor>
+            }
         </span>
     </fieldset>
     <fieldset class="stat roll-dice-initial-stat" *ngIf="!(characterLevel$ | async)?.value">

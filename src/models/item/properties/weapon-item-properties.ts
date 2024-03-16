@@ -12,7 +12,7 @@ export interface WeaponItemPropertiesData extends ItemPropertiesTemplateBase, It
     damage?: string
     rangeDamage?: string
     handCount: number;
-    element: string; // FIXME: enum
+    element: string;
     bonus: string;
     usedAmmunitionType: AmmunitionType;
     weaponType: WeaponType;
