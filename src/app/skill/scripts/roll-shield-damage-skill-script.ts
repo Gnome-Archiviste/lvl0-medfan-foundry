@@ -45,7 +45,6 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
         let shield = equipedShields[0];
         if (!shield.system.damage) {
             this.playerNotificationService.showWarning('no_shield_damage')
-            ui.notifications?.error("Aucun dégâts configuré sur ce bouclier", {permanent: true});
             return false;
         }
         this.shield = shield;
