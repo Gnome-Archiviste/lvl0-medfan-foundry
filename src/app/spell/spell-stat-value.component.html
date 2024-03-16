@@ -1,19 +1,12 @@
-@switch (valueType()) {
-    @case ('string') {
-        <div [class]="label">
-            <span class="label">{{ label | translate:'Spell.Label' }}&nbsp;</span>
-            <span class="value">{{ value }}</span>
-        </div>
-    }
-    @case ('rollable') {
-        <div [class]="label">
-            <span class="label">{{ label | translate:'Spell.Label' }}&nbsp;</span>
-            <span class="value">{{ valueAsRollable().toDisplayString() }}</span>
-        </div>
-    }
-    @default {
-        <div>
-            UNK: {{ label }}:{{ value|json }}
-        </div>
-    }
+@if (valueAsRollable(); as spellValue) {
+    <div [class]="label">
+        <span class="label">{{ label | translate:'Spell.Label' }}&nbsp;</span>
+        <span class="value">{{ spellValue.formula }}<span *ngIf="spellValue.unit"> {{ spellValue.unit }}</span> <span
+            *ngIf="spellValue.element"> {{ spellValue.element | translate: 'Element.Name' }}</span></span>
+    </div>
+} @else {
+    <div [class]="label">
+        <span class="label">{{ label | translate:'Spell.Label' }}&nbsp;</span>
+        <span class="value">{{ value }}</span>
+    </div>
 }

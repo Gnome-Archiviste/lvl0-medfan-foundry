@@ -5,19 +5,35 @@ import {combineLatest, distinctUntilChanged, Observable, shareReplay} from 'rxjs
 import {selectCharacterEquipedItems} from './character-equiped-items-selector';
 import {ActorBasicStatValues, selectCharacterBasicStats} from './character-basic-stats-selector';
 import {ActiveCharacterModifier, selectCharacterModifiers} from './character-modifiers-selector';
+import {CharacterEffect, selectCharacterEffects} from './character-effects-selector';
+import {SystemDataDatabaseService} from '../../system-data/system-data-database.service';
 
 export class CharacterMovementSelector {
     static computeMovement(
         basicStats: ActorBasicStatValues,
         equipedItems: Lvl0Item[],
-        modifiers: ActiveCharacterModifier[]
+        modifiers: ActiveCharacterModifier[],
+        effects: CharacterEffect[]
     ): number {
         let movement = basicStats.phy + basicStats.dex;
 
-        // FIXME: For movement we would need a % system
         for (let modifier of modifiers) {
             if (modifier.stat === 'movement') {
-                movement += modifier.value;
+                if (modifier.operation == 'MULTIPLY')
+                    movement *= modifier.value;
+                else
+                    movement += modifier.value;
+            }
+        }
+
+        for (let effect of effects) {
+            for (let modifier of effect.modifiers) {
+                if (modifier.stat === 'movement') {
+                    if (modifier.operation == 'MULTIPLY')
+                        movement *= modifier.value;
+                    else
+                        movement += modifier.value;
+                }
             }
         }
 
@@ -26,7 +42,10 @@ export class CharacterMovementSelector {
             if (itemModifiers) {
                 for (let modifier of Object.values(itemModifiers)) {
                     if (modifier.stat === 'movement') {
-                        movement += modifier.value;
+                        if (modifier.operation == 'MULTIPLY')
+                            movement *= modifier.value;
+                        else
+                            movement += modifier.value;
                     }
                 }
             }
@@ -37,16 +56,17 @@ export class CharacterMovementSelector {
 }
 
 
-export function selectCharacterMovement() {
+export function selectCharacterMovement(systemDataDatabaseService: SystemDataDatabaseService) {
     return function (source: Observable<Lvl0Character>): Observable<number> {
         return new Observable<number>(subscriber => {
             return combineLatest([
                 source.pipe(selectCharacterBasicStats()),
                 source.pipe(selectCharacterEquipedItems()),
                 source.pipe(selectCharacterModifiers()),
+                source.pipe(selectCharacterEffects(systemDataDatabaseService)),
             ]).subscribe({
-                next([basicStats, equipedUItems, modifiers]: [ActorBasicStatValues, Lvl0Item[], ActiveCharacterModifier[]]) {
-                    subscriber.next(CharacterMovementSelector.computeMovement(basicStats, equipedUItems, modifiers));
+                next([basicStats, equipedUItems, modifiers, effects]: [ActorBasicStatValues, Lvl0Item[], ActiveCharacterModifier[], CharacterEffect[]]) {
+                    subscriber.next(CharacterMovementSelector.computeMovement(basicStats, equipedUItems, modifiers, effects));
                 },
                 error(error) {
                     subscriber.error(error);

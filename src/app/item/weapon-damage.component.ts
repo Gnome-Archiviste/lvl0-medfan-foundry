@@ -13,13 +13,10 @@ export class WeaponDamageComponent {
     weapon: Lvl0ItemWeapon;
     @Input('mode')
     mode: 'melee' | 'range';
-    elements: Record<string, string>;
 
     constructor(
         private readonly weaponDamageRollUtil: WeaponDamageRollUtil,
-        private readonly elementRepository: ElementRepository,
     ) {
-        this.elements = this.elementRepository.getElementWeaponNameByElementsIds()
     }
 
     getWeaponDamage(weapon: Lvl0ItemWeapon): string {

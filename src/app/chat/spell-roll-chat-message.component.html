@@ -11,30 +11,34 @@
         </div>
     </div>
     <div class="description" [innerHTML]="data.spell.data.description | markdown"></div>
-    <div class="packed-values">
-        <div class="spell-value">
-            <span class="label">{{ 'cost' | translate:'Spell.Label' }}:</span>
-            <span class="value">{{data.spell.data.effectiveCost}} mana</span>
+    <div class="stats">
+        <div class="packed-values">
+            <div class="spell-value">
+                <span class="label">{{ 'cost' | translate:'Spell.Label' }}:</span>
+                <span class="value">{{data.spell.data.effectiveCost}} mana</span>
+            </div>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.area" [name]="'area'" [value]="data.spell.data.area"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.duration" [name]="'duration'" [value]="data.spell.data.duration"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.distance" [name]="'distance'" [value]="data.spell.data.distance"/>
         </div>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.area" [name]="'area'" [value]="data.spell.data.area"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.duration" [name]="'duration'" [value]="data.spell.data.duration"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.distance" [name]="'distance'" [value]="data.spell.data.distance"/>
+        <div class="values">
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.damage" [name]="'damage'" [value]="data.spell.data.damage"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.bonus" [name]="'bonus'" [value]="data.spell.data.bonus"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.heal" [name]="'heal'" [value]="data.spell.data.heal"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.data.resilience" [name]="'resilience'" [value]="data.spell.data.resilience"/>
+            <lvl0-spell-roll-chat-value *ngIf="data.spell.context.criticalSuccess && data.spell.data.criticalSuccess" [name]="'criticalSuccess'" [value]="data.spell.data.criticalSuccess"/>
+        </div>
     </div>
-    <div class="values">
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.damage" [name]="'damage'" [value]="data.spell.data.damage"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.bonus" [name]="'bonus'" [value]="data.spell.data.bonus"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.heal" [name]="'heal'" [value]="data.spell.data.heal"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.data.resilience" [name]="'resilience'" [value]="data.spell.data.resilience"/>
-        <lvl0-spell-roll-chat-value *ngIf="data.spell.context.criticalSuccess && data.spell.data.criticalSuccess" [name]="'criticalSuccess'" [value]="data.spell.data.criticalSuccess"/>
-    </div>
-    <div *ngIf="data.spell.context.epicFail" class="epic-fail">
-        <!-- FIXME Only show for the user who rolled it -->
-        <button (click)="rollEpicFail()"><i class="fas fa-dice"></i> Échec critique</button>
-    </div>
+    <div class="actions">
+        <div *ngIf="data.spell.context.epicFail" class="epic-fail">
+            <!-- FIXME Only show for the user who rolled it -->
+            <button lvl0Ripple (click)="rollEpicFail()"><i class="fas fa-dice"></i> Échec critique</button>
+        </div>
 
-    <ng-container *ngIf="data.spell.data.actions">
-        <div *ngFor="let action of data.spell.data.actions">
-            <button (click)="executeAction(action)">{{action.name}}</button>
-        </div>
-    </ng-container>
+        <ng-container *ngIf="data.spell.data.actions">
+            <div *ngFor="let action of data.spell.data.actions">
+                <button lvl0Ripple (click)="executeAction(action)">{{action.name}}</button>
+            </div>
+        </ng-container>
+    </div>
 </div>

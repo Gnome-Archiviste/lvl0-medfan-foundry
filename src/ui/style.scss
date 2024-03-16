@@ -16,3 +16,20 @@ input[type=number] {
   padding: 0;
   width: 100%;
 }
+
+/* ripple.directive.css or in your global styles.css */
+.lvl0-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: lvl0-ripple-animation 0.6s linear;
+  background: rgba(162, 162, 162, 0.7);
+  pointer-events: none;
+}
+
+@keyframes lvl0-ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

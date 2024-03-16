@@ -1,27 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ItemAccessorService} from '../data-accessor/item-accessor-service';
-import {
-    Lvl0Item,
-    Lvl0ItemAmmunition,
-    Lvl0ItemArmor,
-    Lvl0ItemBag,
-    Lvl0ItemBelt,
-    Lvl0ItemCloak,
-    Lvl0ItemFoot,
-    Lvl0ItemHand,
-    Lvl0ItemHandWeapon,
-    Lvl0ItemHead,
-    Lvl0ItemMagical,
-    Lvl0ItemMisc,
-    Lvl0ItemNecklace,
-    Lvl0ItemRing,
-    Lvl0ItemScroll,
-    Lvl0ItemShield,
-    Lvl0ItemWand,
-    Lvl0ItemWeapon,
-    Lvl0ItemWitExtraSkills,
-    Lvl0ItemWithModifiers
-} from '../data-accessor/models/lvl0-item';
+import {Lvl0Item, Lvl0ItemWitExtraSkills, Lvl0ItemWithModifiers} from '../data-accessor/models/lvl0-item';
 import {map, Observable} from 'rxjs';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 import {FileSelectorService} from '../data-accessor/file-selector.service';
@@ -50,7 +29,7 @@ export class ItemEditorComponent implements OnInit {
 
     stats: readonly string[] = [];
     skillsByCategories: Record<string, Record<string, SkillDefinition>> = {};
-    elements: Record<string, string> = {};
+    elementIds: string[] = [];
     ammunitionTypes = {
         'arrow': 'Flèche',
         'bolt': 'Carreau',
@@ -92,7 +71,7 @@ export class ItemEditorComponent implements OnInit {
         this.stats = Object.keys(this.statsRepository.getStats().stats);
         this.skillsByCategories = this.skillRepository.getSkillsByCategories()
         this.item$ = this.itemAccessorService.selectItem(this.itemId);
-        this.elements = this.elementRepository.getElementWeaponNameByElementsIds()
+        this.elementIds = this.elementRepository.getElementIds()
         this.canHaveModifier$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canHaveModifiers));
         this.canBeEquiped$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canBeEquiped && item.isOwned));
         this.canHaveExtraSkills$ = this.item$.pipe(map(item => this.itemTypesConfigRepository.getItemTypeConfig(item.type).canHaveExtraSkills));

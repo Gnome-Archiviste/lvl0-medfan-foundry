@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ChatSpell, SpellAction} from '../spell/spell';
 import {SpellDefinition, SpellRepository} from '../../repositories';
 import {SpellActionService} from '../spell/spell-action.service';
+import {SpellChatService} from '../spell/spell-chat.service';
 
 export type SpellRollChatMessageData = {
     spell: ChatSpell;
@@ -14,12 +15,14 @@ export type SpellRollChatMessageData = {
 })
 export class SpellRollChatMessageComponent implements OnInit {
     @Input() data!: SpellRollChatMessageData;
+    @Input() chatMessageId!: string;
 
     spellDefinition?: SpellDefinition;
 
     constructor(
         private readonly spellRepository: SpellRepository,
-        private readonly spellActionService: SpellActionService
+        private readonly spellActionService: SpellActionService,
+        private readonly spellChatService: SpellChatService,
     ) {
     }
 
@@ -32,29 +35,6 @@ export class SpellRollChatMessageComponent implements OnInit {
     }
 
     rollEpicFail() {
-        // FIXME: Update this message with the roll
-        //
-        // let epiFailRoll = await this.rollFactory.createRoll('2d6');
-        // const messageData = epiFailRoll.toMessage({}, {create: false});
-
-        // let effect = this.magicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
-        // private readonly magicEpicFailRepository: MagicEpicFailRepository
-
-        /*
-        *
-    async roll(): Promise<void> {
-        let epiFailRoll = await this.rollFactory.createRoll('2d6');
-        const messageData = epiFailRoll.toMessage({}, {create: false});
-
-        let effect = this.magicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
-
-        let content = `<div class="critical-failure-chat">
-    <div class="title">Echec critique</div>
-    <div class="result"><i class="fas fa-dice"></i> ${epiFailRoll.total}</div>
-    <div class="description"><span class="label">${effect.name}</span> ${effect.description}</div>
-    <div class="roll">${await epiFailRoll.render()}</div>
-</div>`;
-        await ChatMessage.create({...messageData, content});
-    }*/
+        this.spellChatService.rollSpellCriticalFailureAndSendToChat(this.data.spell);
     }
 }

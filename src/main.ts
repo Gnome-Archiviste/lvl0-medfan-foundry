@@ -35,6 +35,7 @@ Hooks.on("renderChatMessage", (message: ChatMessage, html: JQuery, _data: any) =
     if (customElement?.type) {
         let element = document.createElement('lvl0-chat-message');
         element.setAttribute('type', customElement.type);
+        element.setAttribute('chat-message-id', message.id!);
         element.setAttribute('raw-data', JSON.stringify(customElement?.data))
         html.find('.message-content').html(element)
     }

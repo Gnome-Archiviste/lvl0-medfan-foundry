@@ -1,16 +1,19 @@
 import {NgModule} from '@angular/core';
 import {FoundryModule} from '../foundry/foundry.module';
 import {TranslatePipe} from './translate.pipe';
+import {RippleDirective} from './ripple.directive';
 
 @NgModule({
     imports: [
         FoundryModule
     ],
     exports: [
-        TranslatePipe
+        TranslatePipe,
+        RippleDirective
     ],
     declarations: [
-        TranslatePipe
+        TranslatePipe,
+        RippleDirective
     ]
 })
 export class SharedModule {

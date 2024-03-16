@@ -29,7 +29,7 @@
                     <div class="damage">
                         <ng-container *ngIf="arrow.result == 'success' || arrow.result == 'criticalSuccess'">
                             <lvl0-roll-detail [roll]="arrow.damageRoll">
-                                Dégâts: {{ arrow.damage }} ({{ arrow.element }})
+                                Dégâts: {{ arrow.damage }} ({{ arrow.element | translate: 'Element.Name' }})
                             </lvl0-roll-detail>
                         </ng-container>
                     </div>

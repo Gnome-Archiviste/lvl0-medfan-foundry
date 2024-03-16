@@ -3,13 +3,16 @@
         <lvl0-speciality-roll-chat-message [data]="messageData.data" />
     }
     @case ('spell-roll') {
-        <lvl0-spell-roll-chat-message [data]="messageData.data" />
+        <lvl0-spell-roll-chat-message [chatMessageId]="chatMessageId" [data]="messageData.data" />
     }
     @case ('item-use') {
         <lvl0-item-use-chat-message [data]="messageData.data" />
     }
     @case ('skill-roll') {
-        <lvl0-skill-roll-chat-message [data]="messageData.data" />
+        <lvl0-skill-roll-chat-message [chatMessageId]=chatMessageId [data]="messageData.data" />
+    }
+    @case ('spell-epic-fail') {
+        <lvl0-spell-epic-fail-chat-message [data]="messageData.data" />
     }
     @default {
         Unsupported chat message {{ $any(messageData).type }}

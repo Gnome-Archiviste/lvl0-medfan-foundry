@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {
     AddEffectActionModifierDefinition,
     ComputableSpellValue,
-    ElementRepository,
     SpellActionDefinition,
     SpellActionMagicArmorDefinition,
     SpellDefinition,
@@ -10,19 +9,11 @@ import {
     SpellDefinitionCritical,
     SpellHealDefinition
 } from '../../repositories';
-import {
-    ChatSpell,
-    RollableSpellValue,
-    RolledSpell,
-    RolledSpellValue,
-    RollSpellContext,
-    Spell,
-    SpellAction,
-    SpellContext
-} from './spell';
+import {RollableSpellValue, RolledSpell, RolledSpellValue, Spell, SpellAction, SpellContext} from './spell';
 import {RollFactory} from '../shared/roll-factory';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../data-accessor/actor-effect.service';
 import {IRoll} from '../shared/roll';
+import {TranslateService} from '../shared/translate.service';
 
 @Injectable({
     providedIn: 'root'
@@ -30,7 +21,7 @@ import {IRoll} from '../shared/roll';
 export class SpellUtil {
     constructor(
         private readonly rollFactory: RollFactory,
-        private readonly elementRepository: ElementRepository,
+        private readonly translateService: TranslateService,
     ) {
     }
 
@@ -229,12 +220,12 @@ export class SpellUtil {
         }
         if (damageData.rollFormula) {
             let rollFormula = this.computeFormula(damageData.rollFormula, context);
-            return new RollableSpellValue(rollFormula, this.elementRepository.getElementName(damageData.element));
+            return new RollableSpellValue(rollFormula, damageData.element);
         }
         if (damageData.formula) {
             let value = this.computeFormula(damageData.formula, context);
             if (damageData.element)
-                value += '(' + this.elementRepository.getElementName(damageData.element) + ')';
+                value += '(' + this.translateService.translate(`Element.Name.${damageData.element}`) + ')';
             return value;
         }
         if (damageData.text) {
@@ -362,7 +353,7 @@ export class SpellUtil {
             let roll = await this.rollFactory.createRoll(value.formula);
             return {
                 roll: roll,
-                suffix: value.suffix,
+                element: value.element,
                 unit: value.unit,
             };
         }

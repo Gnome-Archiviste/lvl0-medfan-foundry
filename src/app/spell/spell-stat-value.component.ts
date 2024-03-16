@@ -13,15 +13,9 @@ export class SpellStatValueComponent {
     @Input('label')
     label: string;
 
-    valueType() {
+    valueAsRollable(): RollableSpellValue | undefined {
         if (typeof this.value === 'string')
-            return 'string';
-        if (this.value instanceof RollableSpellValue)
-            return 'rollable'
-        return 'unk';
-    }
-
-    valueAsRollable(): RollableSpellValue {
-        return <RollableSpellValue>this.value;
+            return undefined;
+        return this.value;
     }
 }

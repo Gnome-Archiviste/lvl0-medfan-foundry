@@ -30,7 +30,6 @@ export type ChatSpell =  {
     readonly data: ChatSpellData;
 }
 
-
 export type SpellAction = AddEffectSpellAction | HealSpellAction;
 
 export interface AddEffectSpellAction {
@@ -65,7 +64,7 @@ export class ComputedSpellDataBeforeRoll {
 export type RolledSpellValue = {
     roll: IRoll;
     unit?: string;
-    suffix?: string;
+    element?: string;
 } | {text: string}
 
 export type ChatSpellData = {
@@ -85,7 +84,7 @@ export type ChatSpellData = {
 export type ChatSpellValue = {
     roll: ChatRoll;
     unit?: string;
-    suffix?: string;
+    element?: string;
 } | {text: string}
 
 
@@ -106,17 +105,8 @@ export type RolledSpellData = {
 export class RollableSpellValue {
     constructor(
         public readonly formula: string,
-        public readonly suffix?: string,
+        public readonly element?: string,
         public readonly unit?: string,
     ) {
-    }
-
-    toDisplayString() {
-        let result = this.formula;
-        if (this.unit)
-            result += ' ' + this.unit
-        if (this.suffix)
-            result += ' (' + this.suffix + ')'
-        return result;
     }
 }

@@ -1,5 +1,5 @@
 <ng-container *ngIf="skillDefinition">
-    <h3>{{ skillDefinition.name }}</h3>
+    <div class="skill-name">{{ skillDefinition.name }}</div>
     <div class="roll-result">
         <lvl0-roll-detail [roll]="data.testRoll">
             <i class="fa fa-dice"></i>
@@ -8,28 +8,28 @@
         </lvl0-roll-detail>
     </div>
 </ng-container>
-@if(data.extraData; as extraData) {
-    @switch (extraData.kind) {
+@if(data.extraData) {
+    @switch (data.extraData.kind) {
         @case ('cast-spell') {
-            <lvl0-spell-roll-chat-message [data]="extraData.data"></lvl0-spell-roll-chat-message>
+            <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="data.extraData.data"></lvl0-spell-roll-chat-message>
         }
         @case ('damage') {
             <hr>
             <div class="weapon">
-                <span class="icon"><img width="48" height="48" [src]="extraData.data.weapon.icon"></span>
-                <span class="name">{{extraData.data.weapon.name}}</span>
-                <span class="details">{{extraData.data.weapon.damageRollFormula}}<span *ngIf="extraData.data.weapon.element"> ({{extraData.data.weapon.element}})</span></span>
+                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
+                <span class="name">{{data.extraData.data.weapon.name}}</span>
+                <span class="details">{{data.extraData.data.weapon.damageRollFormula}}<span *ngIf="data.extraData.data.weapon.element"> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
             </div>
-            <div class="weapon" *ngIf="extraData.data.ammunition">
-                <span class="icon"><img width="48" height="48" [src]="extraData.data.ammunition.icon"></span>
-                <span class="name">{{extraData.data.ammunition.name}}</span>
-                <span class="details">{{extraData.data.ammunition.damageRollFormula}}<span *ngIf="extraData.data.ammunition.element"> ({{extraData.data.ammunition.element}})</span></span>
+            <div class="weapon" *ngIf="data.extraData.data.ammunition">
+                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.ammunition.icon"></span>
+                <span class="name">{{data.extraData.data.ammunition.name}}</span>
+                <span class="details">{{data.extraData.data.ammunition.damageRollFormula}}<span *ngIf="data.extraData.data.ammunition.element"> ({{data.extraData.data.ammunition.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
             </div>
             <hr>
             <div class="damage">
                 <ng-container *ngIf="data.result == 'success' || data.result == 'criticalSuccess'">
-                    <lvl0-roll-detail [roll]="extraData.data.damageRoll!">
-                        Dégâts: {{ extraData.data.damageRoll?.total }} ({{ extraData.data.damageElement }})
+                    <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
+                        Dégâts: <i class="fa fa-dice"></i> {{ data.extraData.data.damageRoll?.total }} @if(data.extraData.data.damageElement) {({{ data.extraData.data.damageElement | translate: 'Element.NameForWeaponDamage'}})}
                     </lvl0-roll-detail>
                 </ng-container>
             </div>
@@ -37,15 +37,15 @@
         @case ('shield-damage') {
             <hr>
             <div class="weapon">
-                <span class="icon"><img width="48" height="48" [src]="extraData.data.shield.icon"></span>
-                <span class="name">{{extraData.data.shield.name}}</span>
-                <span class="details">Dégâts: {{extraData.data.shield.damageRollFormula}}<span *ngIf="extraData.data.shield.element"> ({{extraData.data.shield.element}})</span></span>
+                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.shield.icon"></span>
+                <span class="name">{{data.extraData.data.shield.name}}</span>
+                <span class="details">Dégâts: {{data.extraData.data.shield.damageRollFormula}}<span *ngIf="data.extraData.data.shield.element"> ({{data.extraData.data.shield.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
             </div>
             <hr>
             <div class="damage">
                 <ng-container *ngIf="data.result == 'success' || data.result == 'criticalSuccess'">
-                    <lvl0-roll-detail [roll]="extraData.data.damageRoll!">
-                        Dégâts: {{ roundDamageUp(extraData.data.damageRoll?.total) }}
+                    <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
+                        Dégâts: <i class="fa fa-dice"></i> {{ roundDamageUp(data.extraData.data.damageRoll?.total) }}
                     </lvl0-roll-detail>
                 </ng-container>
             </div>

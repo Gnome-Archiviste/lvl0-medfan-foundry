@@ -94,7 +94,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
         this.characterMaxHealth$ = this.character$.pipe(selectCharacterMaxHealth());
         this.characterBasicStatsValues$ = this.character$.pipe(selectCharacterBasicStats());
         this.characterMagicArmor$ = this.character$.pipe(selectCharacterMagicArmor(this.systemDataDatabaseService));
-        this.characterMovement$ = this.character$.pipe(selectCharacterMovement());
+        this.characterMovement$ = this.character$.pipe(selectCharacterMovement(this.systemDataDatabaseService));
         this.characterRace$ = this.character$.pipe(selectCharacterRaceDefinition(this.systemDataDatabaseService));
         this.characterJob$ = this.character$.pipe(selectCharacterJobDefinition(this.systemDataDatabaseService));
         this.characterMagicArmorRemaining$ = this.characterMagicArmor$.pipe(map(x => x?.remainingArmorPoint || 0));

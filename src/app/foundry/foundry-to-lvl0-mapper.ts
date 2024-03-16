@@ -23,7 +23,7 @@ export class FoundryToLvl0Mapper {
             }
         })
         return {
-            id: actor.id || '',
+            id: actor.lvl0Id || '',
             name: actor.name || '',
             system: actor.system,
             items: items,

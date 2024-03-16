@@ -7,6 +7,8 @@ import {IRoll} from '../shared/roll';
 import {Lvl0Item} from '../data-accessor/models/lvl0-item';
 import {SpellRollChatMessageData} from '../chat/spell-roll-chat-message.component';
 import {ItemUseChatMessageData} from '../chat/item-use-chat-message.component';
+import {MagicEpicFailRepository} from '../../repositories';
+import {Lvl0ChatMessage} from '../chat/lvl0-chat-message.types';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +19,21 @@ export class SpellChatService {
         private readonly chatService: ChatService,
         private readonly rollFactory: RollFactory,
         private readonly spellUtil: SpellUtil,
+        private readonly magicEpicFailRepository: MagicEpicFailRepository,
     ) {
+    }
+
+    async rollSpellCriticalFailureAndSendToChat(spell: ChatSpell) {
+        let epiFailRoll = await this.rollFactory.createRoll('2d6');
+        let effect = this.magicEpicFailRepository.getMagicEpicFailEffect(epiFailRoll.total!);
+        let messageData: Lvl0ChatMessage = {
+            type: 'spell-epic-fail',
+            data: {
+                epicFailEffectId: effect.id,
+                roll: this.rollFactory.convertToRollChat(epiFailRoll)
+            }
+        };
+        this.chatService.sendLvl0MessageFrom(undefined, messageData, [epiFailRoll]);
     }
 
     async rollSpellAndSendToChat(actorId: string | undefined, spell: Spell, options?: {
@@ -48,7 +64,10 @@ export class SpellChatService {
             }
             await this.chatService.sendLvl0MessageFrom(actorId, {type: 'item-use', data: messageData}, rolls)
         } else {
-            await this.chatService.sendLvl0MessageFrom(actorId, {type: 'spell-roll', data: spellRollChatMessageData}, rolls)
+            await this.chatService.sendLvl0MessageFrom(actorId, {
+                type: 'spell-roll',
+                data: spellRollChatMessageData
+            }, rolls)
         }
     }
 
@@ -80,7 +99,7 @@ export class SpellChatService {
         if ('roll' in value) {
             return {
                 roll: this.rollFactory.convertToRollChat(value.roll),
-                suffix: value.suffix,
+                element: value.element,
                 unit: value.unit,
             };
         }

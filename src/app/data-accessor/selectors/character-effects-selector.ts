@@ -16,6 +16,7 @@ export interface CharacterEffectModifier {
     skill?: SkillDefinition;
     stat?: string;
     value: number;
+    operation?: 'ADD' | 'MULTIPLY';
 }
 
 export interface CharacterEffectArmor {

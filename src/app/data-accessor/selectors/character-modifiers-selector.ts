@@ -8,6 +8,7 @@ export type ActiveCharacterModifier = {
     stat: ActorStatNames;
     value: number;
     name: string;
+    operation?: 'ADD' | 'MULTIPLY';
 }
 
 export function selectCharacterModifiers() {

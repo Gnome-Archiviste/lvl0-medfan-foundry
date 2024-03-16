@@ -1,1 +1,1 @@
-{{getWeaponDamage(weapon)}}<ng-container *ngIf="weapon.system.element"> ({{elements[weapon.system.element]}})</ng-container>
+{{getWeaponDamage(weapon)}}<ng-container *ngIf="weapon.system.element"> ({{weapon.system.element | translate: 'Element.NameForWeaponDamage'}})</ng-container>

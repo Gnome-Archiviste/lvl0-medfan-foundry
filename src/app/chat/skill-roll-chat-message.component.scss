@@ -1,5 +1,5 @@
 :host {
-  h3 {
+  .skill-name {
     text-align: center;
     font-size: 1.5em;
   }
@@ -13,7 +13,7 @@
     display: grid;
     grid-template-areas: "icon name" "icon details";
     grid-template-columns: auto 1fr;
-    gap: 8px;
+    column-gap: 8px;
 
     .icon {
       grid-area: icon;
@@ -21,7 +21,6 @@
 
     .name {
       grid-area: name;
-      font-size: 1.25em;
     }
 
     .details {

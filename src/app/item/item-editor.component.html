@@ -118,7 +118,7 @@
                         <select lvl0ItemPropertyField="data.extraDamageEffect"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.extraDamageEffect">
-                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
                         </select>
                     </label>
                 </div>
@@ -238,7 +238,7 @@
                         <select lvl0ItemPropertyField="data.element"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.element">
-                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
                         </select>
                     </label>
                 </div>
@@ -401,7 +401,7 @@
                         <select lvl0ItemPropertyField="data.element"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.element">
-                            <option *ngFor="let element of elements | keyvalue" [value]="element.key">{{element.value}}</option>
+                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
                         </select>
                     </label>
                 </div>

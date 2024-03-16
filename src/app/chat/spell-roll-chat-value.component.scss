@@ -4,6 +4,7 @@
   align-items: center;
   gap: 1ch;
   .label {
+    flex-shrink: 0;
     font-weight: bold;
     align-self: start;
   }

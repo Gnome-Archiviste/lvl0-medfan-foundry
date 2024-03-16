@@ -51,6 +51,7 @@ export type SkillRollExtraDataItemInfoMessageData = {
 })
 export class SkillRollChatMessageComponent implements OnInit {
     @Input() data!: SkillRollChatMessageData;
+    @Input() chatMessageId!: string;
 
     skillDefinition: SkillDefinition;
 

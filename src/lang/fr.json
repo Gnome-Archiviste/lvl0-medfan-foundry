@@ -238,6 +238,22 @@
   "LVL0MF.Job.Speciality.acid": "Acide",
   "LVL0MF.Job.Speciality.earth": "Minéraux",
 
+  "LVL0MF.Element.Name.physic": "Physique",
+  "LVL0MF.Element.Name.water": "Glace/Eau",
+  "LVL0MF.Element.Name.electric": "Air/Électricité",
+  "LVL0MF.Element.Name.fire": "Feu",
+  "LVL0MF.Element.Name.acid": "Acide",
+  "LVL0MF.Element.Name.earth": "Mineraux",
+  "LVL0MF.Element.Name.magic": "Magie",
+
+  "LVL0MF.Element.NameForWeaponDamage.physic": "Physique",
+  "LVL0MF.Element.NameForWeaponDamage.water": "Glace",
+  "LVL0MF.Element.NameForWeaponDamage.electric": "Électricité",
+  "LVL0MF.Element.NameForWeaponDamage.fire": "Feu",
+  "LVL0MF.Element.NameForWeaponDamage.acid": "Acide",
+  "LVL0MF.Element.NameForWeaponDamage.earth": "Mineraux",
+  "LVL0MF.Element.NameForWeaponDamage.magic": "Magique",
+
   "LVL0MF.Notification.Error.speciality_not_found": "Spécialité inconnu par le personnage",
   "LVL0MF.Notification.Error.wand_is_empty": "La baguette est vide",
   "LVL0MF.Notification.Error.'no_wand_available'": "Aucune baguette disponible",
