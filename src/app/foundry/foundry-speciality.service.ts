@@ -45,10 +45,10 @@ export class FoundrySpecialityService extends SpecialityService {
     async addSpeciality(characterId: string, specialityId: string): Promise<void> {
         let actor = this.foundryLvl0IdResolver.getActorFromLvl0Id(characterId);
         if (actor) {
-            if (actor.data.type === 'character') {
-                let specialities = actor.data.data.specialities || {};
+            if (actor.type === 'character') {
+                let specialities = actor.system.specialities || {};
                 let nextId = (Object.keys(specialities).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
-                await actor.update({data: {specialities: {[nextId]: specialityId}}}, {diff: true});
+                await actor.update({system: {specialities: {[nextId]: specialityId}}}, {diff: true});
             }
         }
     }

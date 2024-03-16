@@ -15,22 +15,32 @@ export class FoundryChatService extends ChatService {
     }
 
     async sendLvl0MessageFrom(actorId: string | undefined, lvl0ChatMessage: Lvl0ChatMessage, rolls?: IRoll[]): Promise<void> {
-        let messageData: MessageData<any> = {};
+        let messageData: MessageData<any> = {
+            user: game.user,
+            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        };
         const speaker = actorId ? ChatMessage.getSpeaker({actor: this.foundryLvl0IdResolver.getActorFromLvl0Id(actorId)}) : undefined;
+        let roll = this.mergeRolls(rolls);
+        if (roll) {
+            messageData.type = CONST.CHAT_MESSAGE_TYPES.ROLL
+            messageData.roll = roll;
+            messageData.sound = CONFIG.sounds.dice;
+        }
         await ChatMessage.create({
-            ...messageData,
-            type: rolls ? CONST.CHAT_MESSAGE_TYPES.ROLL : CONST.CHAT_MESSAGE_TYPES.OTHER,
-            speaker, content: '', flags: {
+            speaker,
+            content: '',
+            flags: {
                 'lvl0mf-sheet': {
                     lvl0ChatMessage: lvl0ChatMessage
                 }
             },
-            roll: this.mergeRolls(rolls)
-        });
+        } as MessageData<any>);
     }
 
     mergeRolls(rolls?: IRoll[]): Roll | undefined {
         if (!rolls)
+            return undefined;
+        if (rolls.length === 0)
             return undefined;
 
         let foundryRolls = rolls.filter(x => x instanceof FoundryRoll).map(x => (<FoundryRoll>x).foundryRoll)
