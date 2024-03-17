@@ -1,4 +1,7 @@
 <div class="spell" *ngIf="spellDefinition">
+    <div *ngIf="data.additionalAction" class="additiona-action">
+        {{ data.additionalAction | translate: 'Chat.RollSkill.SpellAdditionalAction' }}
+    </div>
     <div class="header">
         <div class="icon">
             <img width="48" height="48" [src]="spellDefinition.icon">

@@ -3,7 +3,10 @@
     @if (spellDefinition) {
         <div class="spell">
             <div class="spell-icon"><img [src]="spellDefinition.icon" width="48" height="48"></div>
-            <div class="spell-name">{{ spellDefinition.name }}</div>
+            <div>
+                <div class="spell-name">{{ spellDefinition.name }}</div>
+                <div *ngIf="spellAdditionalAction" class="spell-action">{{ spellAdditionalAction | translate: 'Chat.RollSkill.SpellAdditionalAction' }}</div>
+            </div>
         </div>
     }
     @for (rollResult of data.results; track $index) {

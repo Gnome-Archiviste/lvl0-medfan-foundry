@@ -34,6 +34,7 @@ export type SpellScriptOptions = {
 }
 export type SpellScriptResult = {
     spell: RolledSpell
+    additionalAction?: 'fill-wand' | 'create-scroll';
 }
 
 export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellScriptOptions> {
@@ -145,8 +146,10 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             epicFail: rollResult === 'epicFail',
         };
         let rolledSpell = await this.spellUtil.rollSpell(this.spell, context);
+        let additionalAction: 'fill-wand' | 'create-scroll' | undefined = undefined;
 
         if (this.emptyScroll) {
+            additionalAction = 'create-scroll';
             if (this.emptyScroll.system.quantity === 1) {
                 await this.itemService.deleteItem(this.emptyScroll);
             } else {
@@ -167,6 +170,7 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             }
         }
         if (this.wandInfo) {
+            additionalAction = 'fill-wand';
             await this.fillWand(rolledSpell, rollResult);
         }
 
@@ -181,7 +185,7 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                 }))
         }
 
-        return {spell: rolledSpell};
+        return {spell: rolledSpell, additionalAction: additionalAction};
     }
 
     override stopAfterEpicFail(): boolean {
@@ -234,7 +238,8 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
         return {
             kind: 'cast-spell',
             data: {
-                spell: this.spellChatService.mapToChatSpell(data.spell)
+                spell: this.spellChatService.mapToChatSpell(data.spell),
+                additionalAction: data.additionalAction
             }
         }
     }

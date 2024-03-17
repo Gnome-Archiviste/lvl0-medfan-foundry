@@ -6,6 +6,7 @@ import {SpellChatService} from '../spell/spell-chat.service';
 
 export type SpellRollChatMessageData = {
     spell: ChatSpell;
+    additionalAction?: 'fill-wand' | 'create-scroll';
 }
 
 @Component({

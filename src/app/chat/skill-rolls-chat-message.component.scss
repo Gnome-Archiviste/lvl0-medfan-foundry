@@ -9,10 +9,17 @@
     flex-direction: row;
     gap: 8px;
     align-items: center;
+
     .spell-name {
       font-size: 1.25em;
+      text-align: center;
+    }
+
+    .spell-action {
+      text-align: center;
     }
   }
+
   .roll-result {
     text-align: center;
     font-size: 1.125em;

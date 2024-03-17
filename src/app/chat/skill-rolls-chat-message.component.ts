@@ -27,6 +27,7 @@ export class SkillRollsChatMessageComponent {
     skillDefinition: SkillDefinition;
     detailShown = {};
     spellDefinition?: SpellDefinition;
+    spellAdditionalAction?: string;
 
     constructor(
         private readonly skillRepository: SkillRepository,
@@ -39,6 +40,7 @@ export class SkillRollsChatMessageComponent {
         let firstExtraData = this.data.extraData[0];
         if (firstExtraData?.kind === 'cast-spell') {
             this.spellDefinition = this.spellRepository.getSpellById(firstExtraData.data.spell.spellId);
+            this.spellAdditionalAction = firstExtraData.data.additionalAction;
         }
     }
 

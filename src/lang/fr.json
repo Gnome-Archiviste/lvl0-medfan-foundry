@@ -254,6 +254,9 @@
   "LVL0MF.Element.NameForWeaponDamage.earth": "Mineraux",
   "LVL0MF.Element.NameForWeaponDamage.magic": "Magique",
 
+  "LVL0MF.Chat.RollSkill.SpellAdditionalAction.fill-wand": "Remplissage d'une bagette",
+  "LVL0MF.Chat.RollSkill.SpellAdditionalAction.create-scroll": "Création d'un parchemin",
+
   "LVL0MF.Notification.Error.speciality_not_found": "Spécialité inconnu par le personnage",
   "LVL0MF.Notification.Error.wand_is_empty": "La baguette est vide",
   "LVL0MF.Notification.Error.no_wand_available": "Aucune baguette disponible",
