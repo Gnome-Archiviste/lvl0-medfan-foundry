@@ -32,15 +32,15 @@ export class FoundryToLvl0Mapper {
         };
     }
 
-    public createLvl0ItemFromFoundryItem(item: any): Lvl0Item {
+    public createLvl0ItemFromFoundryItem(item: Lvl0FoundryItem): Lvl0Item {
         return {
             type: item.type,
-            system: item.system as any,
-            id: item.lvl0Id,
+            system: item.system,
+            id: item.lvl0Id!,
             img: item.img,
             isOwned: item.isOwned,
             ownerId: item.isOwned ? item.actor?.lvl0Id ?? undefined : undefined,
             name: item.name || '',
-        };
+        } as Lvl0Item;
     }
 }

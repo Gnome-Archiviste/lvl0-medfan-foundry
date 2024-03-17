@@ -27,6 +27,7 @@ import { IRoll } from "app/shared/roll";
 import {SpellChatService} from '../../spell/spell-chat.service';
 import {MacroService} from '../../shared/macro.service';
 import {SkillRollOutcome} from '../skill-roll-util';
+import {ActorUpdaterService} from '../../data-accessor/actor-updater.service';
 
 export type SpellScriptOptions = {
     spellId?: string
@@ -39,9 +40,13 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
     data: CastSpellSkillScriptData;
     spell: Spell;
     action: SpellCastAction = 'cast';
-    wand?: Lvl0ItemWand;
+    wandInfo?: {
+        wand: Lvl0ItemWand;
+        chargeCount: number;
+    }
     emptyScroll?: Lvl0ItemScroll;
     existingScroll?: Lvl0ItemScroll;
+    casterId?: string;
 
     constructor(
         private readonly skillDefinition: SkillDefinition,
@@ -55,13 +60,15 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
         private readonly dialogService: DialogService,
         private readonly spellChatService: SpellChatService,
         private readonly macroService: MacroService,
+        private readonly actorUpdaterService: ActorUpdaterService,
     ) {
         super();
     }
 
-    override async prepare(actorId: string, options?: SpellScriptOptions): Promise<boolean> {
+    override async prepare(actorId: string, options?: SpellScriptOptions): Promise<number> {
         let spell: Spell | undefined;
         let action: SpellCastAction = 'cast';
+        this.casterId = actorId;
 
         let arcaneLevel = await firstValueFrom(this.characterAccessorService.selectCharacter(actorId).pipe(selectCharacterArcaneLevel(this.systemDataDatabaseService)));
         if (options?.spellId) {
@@ -77,12 +84,12 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             }
         }
         if (!spell) {
-            return false;
+            return 0;
         }
         let mana = await firstValueFrom(this.characterAccessorService.selectCharacter(actorId).pipe(selectCharacterMana()));
         if (spell.computedData.effectiveCost > mana) {
             this.playerNotificationService.showError('not_enough_mana');
-            return false;
+            return 0;
         }
 
         switch (action) {
@@ -90,13 +97,20 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                 const fillableWands = await firstValueFrom(this.characterAccessorService.selectCharacter(actorId).pipe(selectCharacterFillableWandsForSpell(spell.definition.id, this.systemDataDatabaseService)), {defaultValue: [] as Lvl0ItemWand[]});
                 if (fillableWands.length === 0) {
                     this.playerNotificationService.showWarning('no_wand_available');
-                    return false;
+                    return 0;
                 }
-                const wand = await firstValueFrom(this.dialogService.openDialog<WandSelectorDialogData, WandSelectorDialogResult>('lvl0-wand-selector-dialog', {wands: fillableWands}, {title: 'Select wand'}), {defaultValue: undefined})
-                if (!wand) {
-                    return false;
+                const result = await firstValueFrom(this.dialogService.openDialog<WandSelectorDialogData, WandSelectorDialogResult>('lvl0-wand-selector-dialog', {
+                    wands: fillableWands,
+                    spell: spell,
+                    availableMana: mana
+                }, {title: 'Select wand'}), {defaultValue: undefined})
+                if (!result) {
+                    return 0;
                 }
-                this.wand = wand.wand;
+                this.wandInfo = {
+                    wand: result.wand,
+                    chargeCount: result.chargeCount
+                };
                 break;
             }
             case "createScroll": {
@@ -105,7 +119,7 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                 let existingScrolls = scrolls.filter((scroll: Lvl0ItemScroll) => scroll.system.spell == spell!.definition.id)
                 if (emptyScrolls.length === 0) {
                     this.playerNotificationService.showWarning('no_scroll_available');
-                    return false;
+                    return 0;
                 }
                 this.emptyScroll = emptyScrolls[0];
                 this.existingScroll = existingScrolls[0];
@@ -116,13 +130,13 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             }
             case "createMacro": {
                 await this.macroService.createRollSkillMacro(this.skillDefinition, {spellId: spell.definition.id} as SpellScriptOptions);
-                return false;
+                return 0;
             }
         }
 
         this.spell = spell;
         this.action = action;
-        return true;
+        return this.wandInfo?.chargeCount ?? 1;
     }
 
     override async postRoll(rollResult: SkillRollOutcome): Promise<SpellScriptResult> {
@@ -152,44 +166,64 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                 });
             }
         }
-        if (this.wand) {
-            if (this.wand.system.spell === rolledSpell.definition.id) {
-                if (rollResult === 'epicFail') {
-                    this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
-                        system: {
-                            blocked: true
-                        }
-                    })
-                } else {
-                    this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
-                        system: {
-                            charge: this.wand.system.charge + 1
-                        }
-                    })
-                }
-            } else if (!this.wand.system.spell) {
-                this.itemUpdaterService.changeQuantity(this.wand, -1);
-                this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wand.id, {
+        if (this.wandInfo) {
+            await this.fillWand(rolledSpell, rollResult);
+        }
+
+        if (rollResult !== 'fail') {
+            if (this.casterId)
+                await this.actorUpdaterService.updateActorFromCurrent(this.casterId, actor => ({
                     system: {
-                        spell: rolledSpell.definition.id,
-                        charge: 1
+                        mana: {
+                            value: actor.system.mana.value - rolledSpell.data.effectiveCost
+                        }
                     }
-                })
-                await this.itemService.createItemFrom(this.wand, {
-                    name: rolledSpell.definition.name,
-                    system: {
-                        quantifiable: false,
-                        quantity: 0,
-                        spell: rolledSpell.definition.id,
-                        description: rolledSpell.definition.description,
-                        charge: rollResult === 'epicFail' ? 0 : 1,
-                        blocked: rollResult === 'epicFail'
-                    },
-                });
-            }
+                }))
         }
 
         return {spell: rolledSpell};
+    }
+
+    override stopAfterEpicFail(): boolean {
+        if (this.wandInfo)
+            return true;
+        return false;
+    }
+
+    private async fillWand(rolledSpell: RolledSpell, rollResult: "epicFail" | "criticalSuccess" | "success" | "fail") {
+        if (!this.wandInfo) {
+            return;
+        }
+        if (this.wandInfo.wand.system.spell === rolledSpell.definition.id) {
+            if (rollResult === 'epicFail') {
+                await this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wandInfo.wand.id, {
+                    system: {
+                        blocked: true
+                    }
+                })
+            } else {
+                await this.itemUpdaterService.updateItemFromLastVersion<Lvl0ItemWand>(this.wandInfo.wand, w => ({
+                    system: {
+                        charge: w.system.charge + 1
+                    }
+                }))
+            }
+        } else if (!this.wandInfo.wand.system.spell) {
+            await this.itemUpdaterService.changeQuantity(this.wandInfo.wand, -1);
+            this.wandInfo.wand = await this.itemService.createItemFrom(this.wandInfo.wand, {
+                name: rolledSpell.definition.name,
+                img: rolledSpell.definition.icon,
+                system: {
+                    arcane: this.spell.context.arcaneLevel,
+                    quantifiable: false,
+                    quantity: undefined,
+                    spell: rolledSpell.definition.id,
+                    description: rolledSpell.definition.description,
+                    charge: rollResult === 'epicFail' ? 0 : 1,
+                    blocked: rollResult === 'epicFail'
+                },
+            });
+        }
     }
 
     getRolls(data: SpellScriptResult): IRoll[] {

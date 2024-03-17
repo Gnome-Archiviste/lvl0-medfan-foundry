@@ -8,6 +8,7 @@ import {ItemUpdaterService} from '../../data-accessor/item-updater.service';
 import {RollFactory} from '../../shared/roll-factory';
 import {SkillRollChatExtraDataMessageData} from "app/chat/skill-roll-chat-message.component";
 import {SkillRollOutcome} from '../skill-roll-util';
+import {RollShieldDamageScriptResult} from './roll-shield-damage-skill-script';
 
 export type RollDamageSkillResult = {
     damageRollFormula: string;
@@ -38,21 +39,21 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
         super();
     }
 
-    override async prepare(actorId: string): Promise<boolean> {
+    override async prepare(actorId: string): Promise<number> {
         let weaponSelectionResult = await this.weaponSelectorService.selectWeapon(actorId, this.data.weaponType)
         if (!weaponSelectionResult) {
-            return false;
+            return 0;
         }
 
         if (!weaponSelectionResult.selectedWeapon) {
-            return false;
+            return 0;
         }
         let weapon = weaponSelectionResult.selectedWeapon;
         let ammunition = weaponSelectionResult.selectedAmmo;
 
         this.weapon = weapon;
         this.ammunition = ammunition;
-        return true;
+        return 1;
     }
 
     async postRoll(rollResult: SkillRollOutcome): Promise<RollDamageSkillResult> {
@@ -123,6 +124,10 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
             ammunition: ammunitionInfo,
             weapon: weaponInfo
         }
+    }
+
+    postRolls(skillRollOutcomes: SkillRollOutcome[]): Promise<RollDamageSkillResult[]> {
+        throw new Error("Not supported.");
     }
 
     getRolls(data: RollDamageSkillResult): IRoll[] {

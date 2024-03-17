@@ -1,0 +1,35 @@
+.header {
+  font-weight: bold;
+}
+
+.wands {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wand {
+  padding: 8px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 48px 1fr 60px 60px;
+  gap: 8px;
+  cursor: pointer;
+
+  .icon {
+    max-height: 48px;
+  }
+
+  &.selected {
+    background-color: #42d9001f;
+    outline: 1px solid #4a9b26;
+  }
+  .charge,
+  .quantity {
+    text-align: center;
+  }
+}
+
+.actions {
+  margin-top: 16px;
+}

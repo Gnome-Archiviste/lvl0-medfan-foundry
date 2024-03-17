@@ -1,2 +1,32 @@
-<p>wand-selector-dialog works!</p>
-FIXME
+<h2>Choisir une baguette a remplir</h2>
+@if (data) {
+    <div class="header wand">
+        <div class="icon"></div>
+        <div class="name">Nom</div>
+        <div class="charge">Charge</div>
+        <div class="quantity">Quantité</div>
+    </div>
+    <div class="wands">
+        @for (wand of data.wands; track wand.id) {
+            <div class="wand" [class.selected]="selectedWand === wand" (click)="selectWand(wand)">
+                <div class="icon"><img [src]="wand.img" width="48" height="48" /></div>
+                <div class="name">{{ wand.name }}</div>
+                <div class="charge">@if(!!wand.system.spell) { {{ wand.system.charge }} / {{ maxCharge }} }</div>
+                <div class="quantity">@if(!wand.system.spell) { {{ wand.system.quantity }} }</div>
+            </div>
+        }
+    </div>
+    <div class="chargeCount">
+        <label>
+            Nombre de charge:
+            <select [(ngModel)]="chargeCount">
+                @for(i of createRange(maxChargeCount); track $index) {
+                    <option [value]="i">{{i}}</option>
+                }
+            </select>
+        </label>
+    </div>
+    <div class="actions">
+        <button (click)="confirm()" [disabled]="!selectedWand">Sélectionner</button>
+    </div>
+}

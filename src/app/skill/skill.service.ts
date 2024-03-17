@@ -7,9 +7,10 @@ import {ChatService} from '../chat/chat.service';
 import {selectCharacterActiveSkillValue} from '../data-accessor/selectors/character-active-skill-value-selector';
 import {SystemDataDatabaseService} from '../system-data/system-data-database.service';
 import {MacroService} from '../shared/macro.service';
-import {SkillRollUtil} from './skill-roll-util';
+import {SkillRollOutcome, SkillRollUtil} from './skill-roll-util';
 import {SkillScriptFactory} from './scripts/skill-script-factory';
 import {SkillRollChatExtraDataMessageData} from '../chat/skill-roll-chat-message.component';
+import {IRoll} from '../shared/roll';
 
 @Injectable({
     providedIn: 'root'
@@ -36,35 +37,75 @@ export class SkillService {
 
         let skillDefinition = this.skillRepository.getSkill(categoryId, id);
         let skillScript = this.skillScriptFactory.createScript(skillDefinition);
+        let rollCount = 1;
         if (skillScript) {
-            if (!await skillScript.prepare(actorId, options))
-                return;
+            rollCount = await skillScript.prepare(actorId, options);
         }
+        if (!rollCount)
+            return;
 
-        let skillRoll = await this.rollFactory.createRoll('2d6');
-        let rolls = [skillRoll];
-        let skillRollOutcome = this.skillRollUtil.getRollResult(skillRoll, activeSkillValue);
-        let extraData: SkillRollChatExtraDataMessageData | undefined = undefined;
-        if (skillScript) {
-            let scriptResult = await skillScript.postRoll(skillRollOutcome);
-            extraData = skillScript.getChatData(scriptResult);
-            rolls.push(...skillScript.getRolls(scriptResult));
-        }
+        if (rollCount === 1) {
+            let skillRoll = await this.rollFactory.createRoll('2d6');
+            let rolls = [skillRoll];
+            let skillRollOutcome = this.skillRollUtil.getRollResult(skillRoll, activeSkillValue);
+            let extraData: SkillRollChatExtraDataMessageData | undefined = undefined;
+            if (skillScript) {
+                let scriptResult = await skillScript.postRoll(skillRollOutcome);
+                extraData = skillScript.getChatData(scriptResult);
+                rolls.push(...skillScript.getRolls(scriptResult));
+            }
 
-        await this.chatService.sendLvl0MessageFrom(
-            actorId,
-            {
-                type: 'skill-roll',
-                data: {
-                    skillId: skillDefinition.skillId,
-                    testRoll: this.rollFactory.convertToRollChat(skillRoll),
-                    result: skillRollOutcome,
-                    successValue: activeSkillValue.successValue,
-                    extraData: extraData
+            await this.chatService.sendLvl0MessageFrom(
+                actorId,
+                {
+                    type: 'skill-roll',
+                    data: {
+                        skillId: skillDefinition.skillId,
+                        testRoll: this.rollFactory.convertToRollChat(skillRoll),
+                        result: skillRollOutcome,
+                        successValue: activeSkillValue.successValue,
+                        extraData: extraData
+                    }
+                },
+                rolls
+            )
+        } else {
+            let rolls: IRoll[] = [];
+            let rollResults: {result: SkillRollOutcome, testRoll: IRoll}[] = []
+            let extraData: Array<SkillRollChatExtraDataMessageData | undefined > = [];
+            for (let i = 0; i < rollCount; i++) {
+                let skillRoll = await this.rollFactory.createRoll('2d6');
+                rolls.push(skillRoll);
+                let skillRollOutcome = this.skillRollUtil.getRollResult(skillRoll, activeSkillValue);
+                rollResults.push({testRoll: skillRoll, result: skillRollOutcome});
+                if (skillScript) {
+                    let scriptResult = await skillScript.postRoll(skillRollOutcome);
+                    rolls.push(...skillScript.getRolls(scriptResult));
+                    extraData.push(skillScript.getChatData(scriptResult));
+                    if (skillRollOutcome == 'epicFail' && skillScript.stopAfterEpicFail())
+                        break;
+                } else {
+                    extraData.push(undefined);
                 }
-            },
-            rolls
-        )
+            }
+
+            await this.chatService.sendLvl0MessageFrom(
+                actorId,
+                {
+                    type: 'skill-rolls',
+                    data: {
+                        skillId: skillDefinition.skillId,
+                        results: rollResults.map(r => ({
+                            testRoll: this.rollFactory.convertToRollChat(r.testRoll),
+                            result: r.result,
+                        })),
+                        successValue: activeSkillValue.successValue,
+                        extraData: extraData
+                    }
+                },
+                rolls
+            )
+        }
     }
 
     createSkillMacro(skillId: string) {

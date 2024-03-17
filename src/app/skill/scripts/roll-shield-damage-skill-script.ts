@@ -40,17 +40,17 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
         let equipedShields = shields.filter(x => x.system.equiped);
         if (equipedShields.length === 0) {
             this.playerNotificationService.showWarning('no_shield_equiped')
-            return false;
+            return 0;
         }
         let shield = equipedShields[0];
         if (!shield.system.damage) {
             this.playerNotificationService.showWarning('no_shield_damage')
-            return false;
+            return 0;
         }
         this.shield = shield;
         this.actorId = actorId;
 
-        return true;
+        return 1;
     }
 
     override async postRoll(rollResult: SkillRollOutcome): Promise<RollShieldDamageScriptResult> {
@@ -94,6 +94,10 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
                 damageRollFormula: damageRollFormula,
             }
         }
+    }
+
+    postRolls(skillRollOutcomes: SkillRollOutcome[]): Promise<RollShieldDamageScriptResult[]> {
+        throw new Error("Not supported.");
     }
 
     getRolls(data: RollShieldDamageScriptResult): IRoll[] {

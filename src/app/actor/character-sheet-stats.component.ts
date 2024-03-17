@@ -233,7 +233,7 @@ export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
                     level: {value: toLevel},
                     experience: {value: character.system.experience.value - nextLevelExperience},
                     levelUpData: {
-                        [toLevel]: levelData as any
+                        [toLevel]: levelData
                     }
                 }
             };

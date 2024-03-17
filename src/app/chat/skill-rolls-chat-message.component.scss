@@ -1,0 +1,26 @@
+:host {
+  .skill-name {
+    text-align: center;
+    font-size: 1.5em;
+  }
+
+  .spell {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    .spell-name {
+      font-size: 1.25em;
+    }
+  }
+  .roll-result {
+    text-align: center;
+    font-size: 1.125em;
+  }
+
+  .show-details {
+    cursor: pointer;
+    text-align: center;
+    margin-block: 8px;
+  }
+}

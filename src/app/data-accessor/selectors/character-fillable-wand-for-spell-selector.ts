@@ -21,12 +21,17 @@ class CharacterFillableWandForSpellSelector {
                 continue;
             }
 
-            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.system.arcane);
-            if (!wandConfig) {
+            if (wand.system.spell !== spellId) {
                 continue;
             }
 
-            if (wand.system.spell !== spellId) {
+            let spellDefinition = systemDataDatabaseService.spellRepository.getSpellById(wand.system.spell)
+            if (!spellDefinition) {
+                continue;
+            }
+
+            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(spellDefinition.level);
+            if (!wandConfig) {
                 continue;
             }
 

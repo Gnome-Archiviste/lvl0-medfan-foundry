@@ -20,6 +20,7 @@ import {WeaponSelectorDialogComponent} from './item/weapon-selector-dialog.compo
 import {WandSelectorDialogComponent} from './skill/wand-selector-dialog.component';
 import {SkillService} from './skill/skill.service';
 import {GenerateMissingLevelUpDataDialogComponent} from './actor/generate-missing-level-up-data-dialog.component';
+import {SkillModule} from './skill/skill.module';
 
 @NgModule({
     declarations: [],
@@ -29,6 +30,7 @@ import {GenerateMissingLevelUpDataDialogComponent} from './actor/generate-missin
         ItemModule,
         ActorModule,
         FoundryModule,
+        SkillModule,
         ChatModule
     ],
     providers: [],

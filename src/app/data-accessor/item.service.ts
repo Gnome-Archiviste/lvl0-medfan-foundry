@@ -49,5 +49,5 @@ export abstract class ItemService {
 
     abstract deleteItem(lvl0Item: Lvl0Item): Promise<void>;
 
-    abstract createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<void>;
+    abstract createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<T>;
 }

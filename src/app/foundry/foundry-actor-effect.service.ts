@@ -16,7 +16,7 @@ export class FoundryActorEffectService extends ActorEffectService {
 
     async applyEffect(actorId: string, effect: Lvl0ActorEffect): Promise<void> {
         let foundryActor = this.foundryLvl0IdResolver.getRequiredActorFromLvl0Id(actorId);
-        let actorData = (foundryActor as any).system;
+        let actorData = foundryActor.system;
         let nextId = (Object.keys(actorData.effects || {}).reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) || 1;
         await foundryActor.update({data: {effects: {[nextId]: effect}}}, {diff: true});
         await this.replaceActiveEffect(foundryActor, 'effect', nextId, {icon: effect.icon, label: effect.effectName});

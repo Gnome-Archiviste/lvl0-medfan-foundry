@@ -3,11 +3,13 @@ import {SpellRollChatMessageData} from './spell-roll-chat-message.component';
 import {ItemUseChatMessageData} from './item-use-chat-message.component';
 import {SkillRollChatMessageData} from './skill-roll-chat-message.component';
 import {SpellEpicFailChatMessageData} from './spell-epic-fail-chat-message.component';
+import {SkillRollsChatMessageData} from './skill-rolls-chat-message.component';
 
 export type SpecialityRollChatMessageType = 'speciality-roll';
 export type SpellRollChatMessageType = 'spell-roll';
 export type SpellEpicFailChatMessageType = 'spell-epic-fail';
 export type SkillRollChatMessageType = 'skill-roll';
+export type SkillRollsChatMessageType = 'skill-rolls';
 export type ItemUseChatMessageType = 'item-use';
 export type Lvl0MessageTypes = SpecialityRollChatMessageType
     | SpellRollChatMessageType
@@ -27,6 +29,9 @@ export type Lvl0ChatMessage = {
 } | {
     type: SkillRollChatMessageType,
     data: SkillRollChatMessageData
+} | {
+    type: SkillRollsChatMessageType,
+    data: SkillRollsChatMessageData
 } | {
     type: SpellEpicFailChatMessageType,
     data: SpellEpicFailChatMessageData

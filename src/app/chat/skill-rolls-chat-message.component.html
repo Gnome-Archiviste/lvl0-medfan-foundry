@@ -1,0 +1,34 @@
+<ng-container *ngIf="skillDefinition">
+    <div class="skill-name">{{ skillDefinition.name }}</div>
+    @if (spellDefinition) {
+        <div class="spell">
+            <div class="spell-icon"><img [src]="spellDefinition.icon" width="48" height="48"></div>
+            <div class="spell-name">{{ spellDefinition.name }}</div>
+        </div>
+    }
+    @for (rollResult of data.results; track $index) {
+        <div class="roll-result">
+            <lvl0-roll-detail [roll]="rollResult.testRoll">
+                <i class="fa fa-dice"></i>
+                {{ rollResult.testRoll.total }} / {{ data.successValue }}
+                (<span [class]="'roll-result-' + rollResult.result">{{ rollResult.result | translate: 'Misc.RollResult' }}</span>)
+            </lvl0-roll-detail>
+        </div>
+        @if(data.extraData[$index]; as extraData) {
+            @switch (extraData.kind) {
+                @case ('cast-spell') {
+                    @if(detailShown[$index]) {
+                        <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="$asSpellRollChatMessageData(extraData.data)"></lvl0-spell-roll-chat-message>
+                        <div class="show-details" (click)="hideDetails($index)">
+                            Cacher détails
+                        </div>
+                    } @else {
+                        <div class="show-details" (click)="showDetail($index)">
+                            Voir détails
+                        </div>
+                    }
+                }
+            }
+        }
+    }
+</ng-container>

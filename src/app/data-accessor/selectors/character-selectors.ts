@@ -63,7 +63,7 @@ export function selectStaticInventory() {
         money1000: 0,
         torchCount: 0,
         rationCount: 0,
-        ...c.system.staticInventory as any
+        ...c.system.staticInventory
     } as StaticInventoryData));
 }
 

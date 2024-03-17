@@ -24,8 +24,8 @@ export class Lvl0FoundryItem extends Item {
 }
 
 Hooks.on("createItem", async (document: Lvl0FoundryItem, options: object, userId: string) => {
-    if (document.data.data.quantifiable) {
-        await document.update({data: {quantity: 1}});
+    if (document.system.quantifiable) {
+        await document.update({system: {quantity: 1}});
     }
 });
 

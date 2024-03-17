@@ -17,6 +17,7 @@ import {RollFactory} from '../../shared/roll-factory';
 import {WeaponDamageRollUtil} from '../../item/weapon-damage-roll-util.service';
 import {SpellChatService} from '../../spell/spell-chat.service';
 import {MacroService} from '../../shared/macro.service';
+import {ActorUpdaterService} from '../../data-accessor/actor-updater.service';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,7 @@ import {MacroService} from '../../shared/macro.service';
 export class SkillScriptFactory {
 
     constructor(
+        private readonly actorUpdaterService: ActorUpdaterService,
         private readonly characterAccessorService: CharacterAccessorService,
         private readonly dialogService: DialogService,
         private readonly itemService: ItemService,
@@ -67,7 +69,8 @@ export class SkillScriptFactory {
                     this.spellUtil,
                     this.dialogService,
                     this.spellChatService,
-                    this.macroService
+                    this.macroService,
+                    this.actorUpdaterService
                 );
             case 'shieldDamageRoll':
                 return new RollShieldDamageSkillScript(

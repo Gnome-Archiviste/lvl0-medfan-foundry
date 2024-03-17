@@ -33,20 +33,4 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="selectedSpell">
-    <div class="selected-spell">
-        <h2>Choisir le niveau d'arcane</h2>
-
-        <div class="arcane-levels">
-            <ng-container *ngFor="let arcaneLevel of arcanesLevels">
-                <a (click)="selectArcaneLevelForSpell(arcaneLevel)" class="level" [class.active]="arcaneLevel === selectedSpellContext.arcaneLevel">
-                    {{arcaneLevel}}
-                </a>
-            </ng-container>
-        </div>
-        <h2>Sort</h2>
-        <lvl0-spell [spell]="selectedSpell"></lvl0-spell>
-        <button type="button" (click)="selectSpell()">Choisir</button>
-    </div>
-</ng-container>
 

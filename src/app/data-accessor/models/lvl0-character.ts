@@ -23,7 +23,7 @@ export interface Lvl0CharacterData {
      */
     readonly computedData: ComputedCharacterData;
     readonly levelUpData: LevelUpData;
-    readonly staticInventory: StaticInventoryData;
+    readonly staticInventory: Partial<StaticInventoryData>;
     readonly skills: CharacterSkillPoints;
     readonly usedSkillMastery?: Record<string, Record<string, boolean>>;
     readonly usedSkillProdigy?: Record<string, Record<string, boolean>>;

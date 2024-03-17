@@ -7,6 +7,8 @@ import {PlayerNotificationService} from '../shared/player-notification.service';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 import {SpellUtil} from '../spell/spell-util';
 import {SpellChatService} from '../spell/spell-chat.service';
+import {FoundryToLvl0Mapper} from './foundry-to-lvl0-mapper';
+import {Lvl0FoundryItem} from '../../models/item';
 
 @Injectable()
 export class FoundryItemService extends ItemService {
@@ -16,7 +18,8 @@ export class FoundryItemService extends ItemService {
         itemUpdaterService: ItemUpdaterService,
         spellUtil: SpellUtil,
         spellChatService: SpellChatService,
-        private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver
+        private readonly foundryLvl0IdResolver: FoundryLvl0IdResolver,
+        private readonly foundryToLvl0Mapper: FoundryToLvl0Mapper
     ) {
         super(spellRepository, playerNotificationService, itemUpdaterService, spellUtil, spellChatService);
     }
@@ -48,12 +51,17 @@ export class FoundryItemService extends ItemService {
         }
     }
 
-    async createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<void> {
+    async createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<T> {
         let item = this.foundryLvl0IdResolver.getItemFromLvl0Id(baseItem.id);
         let itemData = {
             ...item.toObject(),
             ...data
         }
-        await item.createEmbeddedDocuments('Item', [itemData])
+
+        if (item.actor) {
+            let items = await item.actor.createEmbeddedDocuments('Item', [itemData]) as Lvl0FoundryItem[]
+            return this.foundryToLvl0Mapper.createLvl0ItemFromFoundryItem(items[0]) as T;
+        }
+        throw new Error('Ereating item without actor is not supported yet')
     }
 }

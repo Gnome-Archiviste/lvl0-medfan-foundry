@@ -18,7 +18,12 @@ class CharacterFillableWandSelector {
                 continue;
             }
 
-            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(wand.system.arcane);
+            let spellDefinition = systemDataDatabaseService.spellRepository.getSpellById(wand.system.spell)
+            if (!spellDefinition) {
+                continue;
+            }
+
+            let wandConfig = systemDataDatabaseService.wandConfigRepository.getWandConfig(spellDefinition.level);
             if (!wandConfig) {
                 continue;
             }
