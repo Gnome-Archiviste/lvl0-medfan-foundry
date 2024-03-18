@@ -9,6 +9,7 @@
     "verified": "11.315"
   },
   "esmodules": [
+    "vendor.js",
     "polyfills.js",
     "runtime.js",
     "main.js"

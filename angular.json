@@ -73,7 +73,8 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ],
-                            "outputHashing": "none"
+                            "outputHashing": "none",
+                            "vendorChunk": true
                         },
                         "development": {
                             "buildOptimizer": false,
