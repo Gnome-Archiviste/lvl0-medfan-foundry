@@ -9,6 +9,8 @@ import {
 } from './character-selectors';
 import {SystemDataDatabaseService} from '../../system-data/system-data-database.service';
 import {CharacterEffect, selectCharacterEffects} from './character-effects-selector';
+import {selectCharacterEquipedItems} from './character-equiped-items-selector';
+import {Lvl0Item} from '../models/lvl0-item';
 
 export class CharacterActiveSkillValueSelector {
     static selectCharacterActiveSkillValue(
@@ -20,7 +22,8 @@ export class CharacterActiveSkillValueSelector {
         usedSkillMastery: boolean,
         usedSkillProdigy: boolean,
         characterEffects: CharacterEffect[],
-        systemDataDatabaseService: SystemDataDatabaseService
+        systemDataDatabaseService: SystemDataDatabaseService,
+        equipedItems: Lvl0Item[]
     ): ActiveSkillValue {
         let skillDefinition = systemDataDatabaseService.skillRepository.getSkill(skillCategoryId, id);
         let totalValue = +skillValue.value + +basicStats[skillDefinition.stat];
@@ -49,6 +52,22 @@ export class CharacterActiveSkillValueSelector {
                 }
             }
         }
+        if (activeSkillValue.value === 0) {
+            outerBlock: {
+                for (let equipedItem of equipedItems) {
+                    if ('extraSkills' in equipedItem.system) {
+                        for (let extraSkill of Object.values(equipedItem.system.extraSkills)) {
+                            if (extraSkill.id === skillId) {
+                                activeSkillValue.successValue += 1;
+                                activeSkillValue.value += 1;
+                                break outerBlock;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         return activeSkillValue;
     }
 }
@@ -63,9 +82,10 @@ export function selectCharacterActiveSkillValue(skillCategoryId: string, id: str
                 source.pipe(selectIsSkillMasterUsed(skillCategoryId, id)),
                 source.pipe(selectIsSkillProdigyUsed(skillCategoryId, id)),
                 source.pipe(selectCharacterEffects(systemDataDatabaseService)),
+                source.pipe(selectCharacterEquipedItems()),
             ]).subscribe({
-                next([basicStats, skillValue, pendingSkillValue, isMasterUsed, isProdigyUsed, characterEffects]:
-                         [ActorBasicStatValues, SkillValue, PendingSkillValue, boolean, boolean, CharacterEffect[]]) {
+                next([basicStats, skillValue, pendingSkillValue, isMasterUsed, isProdigyUsed, characterEffects, equipedItems]:
+                         [ActorBasicStatValues, SkillValue, PendingSkillValue, boolean, boolean, CharacterEffect[], Lvl0Item[]]) {
                     subscriber.next(CharacterActiveSkillValueSelector.selectCharacterActiveSkillValue(
                         basicStats,
                         skillCategoryId,
@@ -75,7 +95,8 @@ export function selectCharacterActiveSkillValue(skillCategoryId: string, id: str
                         isMasterUsed,
                         isProdigyUsed,
                         characterEffects,
-                        systemDataDatabaseService
+                        systemDataDatabaseService,
+                        equipedItems
                     ));
                 },
                 error(error) {
