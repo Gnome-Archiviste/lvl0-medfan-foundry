@@ -205,7 +205,7 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                         blocked: true
                     }
                 })
-            } else {
+            } else if (rollResult !== 'fail') {
                 await this.itemUpdaterService.updateItemFromLastVersion<Lvl0ItemWand>(this.wandInfo.wand, w => ({
                     system: {
                         charge: w.system.charge + 1
@@ -213,20 +213,22 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                 }))
             }
         } else if (!this.wandInfo.wand.system.spell) {
-            await this.itemUpdaterService.changeQuantity(this.wandInfo.wand, -1);
-            this.wandInfo.wand = await this.itemService.createItemFrom(this.wandInfo.wand, {
-                name: rolledSpell.definition.name,
-                img: rolledSpell.definition.icon,
-                system: {
-                    arcane: this.spell.context.arcaneLevel,
-                    quantifiable: false,
-                    quantity: undefined,
-                    spell: rolledSpell.definition.id,
-                    description: rolledSpell.definition.description,
-                    charge: rollResult === 'epicFail' ? 0 : 1,
-                    blocked: rollResult === 'epicFail'
-                },
-            });
+            if (rollResult !== 'fail') {
+                await this.itemUpdaterService.changeQuantity(this.wandInfo.wand, -1);
+                this.wandInfo.wand = await this.itemService.createItemFrom(this.wandInfo.wand, {
+                    name: rolledSpell.definition.name,
+                    img: rolledSpell.definition.icon,
+                    system: {
+                        arcane: this.spell.context.arcaneLevel,
+                        quantifiable: false,
+                        quantity: undefined,
+                        spell: rolledSpell.definition.id,
+                        description: rolledSpell.definition.description,
+                        charge: rollResult === 'epicFail' ? 0 : 1,
+                        blocked: rollResult === 'epicFail'
+                    },
+                });
+            }
         }
     }
 
