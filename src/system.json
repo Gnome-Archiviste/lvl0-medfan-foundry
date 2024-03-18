@@ -2,11 +2,11 @@
   "id": "lvl0mf-sheet",
   "title": "LVL0: Medfan Sheet",
   "description": "A Character Sheet for LVL0: Medieval-Fantasy (French & English)",
-  "version": "0.6.31",
+  "version": "0.6.32",
   "author": "Gnome Archiviste",
   "compatibility": {
-      "minimum": 11,
-      "verified": "11.315"
+    "minimum": 11,
+    "verified": "11.315"
   },
   "esmodules": [
     "vendor.js",
@@ -36,7 +36,7 @@
   "secondaryTokenAttribute": "mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
   "manifest": "https://raw.githubusercontent.com/Gnome-Archiviste/lvl0-medfan-foundry/main/system.json",
-  "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/download/v0.6.31/module.zip",
+  "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/download/v0.6.32/module.zip",
   "allowBugReporter": true,
   "bugs": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/issues"
 }
