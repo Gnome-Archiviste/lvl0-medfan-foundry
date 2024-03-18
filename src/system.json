@@ -35,7 +35,7 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
-  "manifest": "https://raw.githubusercontent.com/Gnome-Archiviste/lvl0-medfan-foundry/main/system.json",
+  "manifest": "https://raw.githubusercontent.com/Gnome-Archiviste/lvl0-medfan-foundry/main/src/system.json",
   "download": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/releases/download/v0.6.32/module.zip",
   "allowBugReporter": true,
   "bugs": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry/issues"
