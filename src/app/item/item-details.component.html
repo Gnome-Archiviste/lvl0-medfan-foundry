@@ -1,0 +1,55 @@
+<div class="item-details">
+    <div class="header">
+        <div class="icon"><img [src]="item.img" width="48" height="48"></div>
+        <div class="name">{{item.name}}</div>
+    </div>
+    <div *ngIf="item.system.description" [innerHTML]="item.system.description | markdown"></div>
+    <div *ngIf="item.system.details" [innerHTML]="item.system.details | markdown"></div>
+    <div *ngIf="item.system.restriction">
+        <strong>Limitation: </strong> {{ item.system.restriction }}
+    </div>
+
+    @if (item.type === 'weapon') {
+
+        @if(item.system.weaponType === 'melee-range') {
+            <div class="damage">
+                <div>Mêlée: {{ item.system.damage }} @if(item.system.element !== 'physic') {({{item.system.element | translate: 'Element.NameForWeaponDamage'}})}</div>
+                <div>Lancer/Tir: {{ item.system.rangeDamage }} @if(item.system.element !== 'physic') {({{item.system.element | translate: 'Element.NameForWeaponDamage'}})}</div>
+            </div>
+
+        } @else {
+            <div class="damage">{{ item.system.damage }}
+                @if(item.system.element !== 'physic') {({{item.system.element | translate: 'Element.NameForWeaponDamage'}})}
+            </div>
+        }
+
+        <div class="damage"><strong>Dégâts: </strong> {{ item.system.damage }}</div>
+        <div class="handCount"><strong>Nbre de main: </strong> {{ item.system.handCount }}</div>
+    }
+    <div class="clutter"><strong>Encombrement: </strong>{{ item.system.clutter }}</div>
+
+    @if (itemModifiers(item).length > 0) {
+        <div class="modifiers">
+            <strong>Modificateurs: </strong>
+            <div>
+            @for (modifier of itemModifiers(item); track $index) {
+                <div>
+                    <span class="stat-{{modifier.stat}}">{{ modifier.stat| uppercase }}</span> + {{ modifier.value }}
+                </div>
+            }
+            </div>
+        </div>
+    }
+
+    <ng-container *ngFor="let extraSkill of itemExtraSkills(item)">
+        <div class="extra-skill">{{ skillsById[extraSkill].name }}</div>
+    </ng-container>
+    @if (item.type === 'shield') {
+        <div class="description">
+            <strong>Dégât: </strong> {{ item.system.damage }}
+        </div>
+        <div class="description">
+            <strong>Blocage: </strong> {{ item.system.blockValue }}
+        </div>
+    }
+</div>

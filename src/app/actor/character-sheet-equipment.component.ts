@@ -87,18 +87,6 @@ export class CharacterSheetEquipmentComponent implements OnInit {
         }));
     }
 
-    itemModifiers(item: Lvl0Item): ItemModifierInfo[] {
-        if ('modifiers' in item.system)
-            return Object.values(item.system.modifiers);
-        return [];
-    }
-
-    itemExtraSkills(item: Lvl0Item): string[] {
-        if ('extraSkills' in item.system)
-            return Object.values(item.system.extraSkills).map(x => x.id);
-        return [];
-    }
-
     updateItemQuantity(item: Lvl0Item, newQuantity: number) {
         this.itemUpdaterService.updateItem(item.id, {
             system: {
@@ -153,5 +141,11 @@ export class CharacterSheetEquipmentComponent implements OnInit {
         if (event.target instanceof HTMLInputElement) {
             this.itemUpdaterService.updateItem(item.id, {system: {equiped: event.target.checked}})
         }
+    }
+
+    // We should be able to used cdkMenuTriggerData but it seems buggy for now
+    menuItem?: Lvl0Item
+    selectMenuItem(item: Lvl0Item) {
+        this.menuItem = item;
     }
 }

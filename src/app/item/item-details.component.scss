@@ -1,0 +1,25 @@
+.item-details {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 8px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    .name {
+      font-size: 1.25em;
+    }
+
+  }
+
+  .modifiers {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: start;
+  }
+}

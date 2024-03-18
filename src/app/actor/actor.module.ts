@@ -17,14 +17,14 @@ import {CharacterSheetSkillsComponent} from './character-sheet-skills.component'
 import {CharacterSkillCategoryComponent} from './character-skill-category.component';
 import {CharacterSkillComponent} from './character-skill.component';
 import {CdkMenuModule} from '@angular/cdk/menu';
-import { CharacterSpecialitiesComponent } from './character-specialities.component';
-import { CharacterSheetEffectsComponent } from './character-sheet-effects.component';
-import { CharacterSheetEquipmentComponent } from './character-sheet-equipment.component';
-import { CharacterSheetInventoryComponent } from './character-sheet-inventory.component';
-import { CharacterSheetNotesComponent } from './character-sheet-notes.component';
-import { CharacterSheetModifiersComponent } from './character-sheet-modifiers.component';
-import { WeaponSelectorDialogComponent } from '../item/weapon-selector-dialog.component';
-import { GenerateMissingLevelUpDataDialogComponent } from './generate-missing-level-up-data-dialog.component';
+import {CharacterSpecialitiesComponent} from './character-specialities.component';
+import {CharacterSheetEffectsComponent} from './character-sheet-effects.component';
+import {CharacterSheetEquipmentComponent} from './character-sheet-equipment.component';
+import {CharacterSheetInventoryComponent} from './character-sheet-inventory.component';
+import {CharacterSheetNotesComponent} from './character-sheet-notes.component';
+import {CharacterSheetModifiersComponent} from './character-sheet-modifiers.component';
+import {GenerateMissingLevelUpDataDialogComponent} from './generate-missing-level-up-data-dialog.component';
+import {ItemModule} from '../item/item.module';
 
 @NgModule({
     declarations: [
@@ -54,7 +54,8 @@ import { GenerateMissingLevelUpDataDialogComponent } from './generate-missing-le
         SharedModule,
         MarkdownModule,
         SpellModule,
-        CdkMenuModule
+        CdkMenuModule,
+        ItemModule,
     ]
 })
 export class ActorModule {

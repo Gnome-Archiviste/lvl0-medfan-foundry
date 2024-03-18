@@ -45,12 +45,12 @@
                     <div *ngIf="item.system.description">
                         <span class="description" [innerHTML]="item.system.description | markdown"></span>
                     </div>
-                    <ng-container *ngIf="item.type === 'shield'">
+                    @if (item.type === 'shield') {
                         <div class="description">
                             <strong>Dégât: </strong> {{item.system.damage}}
                             <strong>Blocage: </strong> {{item.system.blockValue}}
                         </div>
-                    </ng-container>
+                    }
                     <ng-container *ngIf="item.system.restriction">
                         <div class="restriction">
                             <strong>Limitation: </strong> {{item.system.restriction}}

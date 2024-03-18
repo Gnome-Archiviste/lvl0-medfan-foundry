@@ -10,6 +10,9 @@
 
   .actions {
     grid-area: actions;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
   }
 
   .equiped {

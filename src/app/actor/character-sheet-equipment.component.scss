@@ -2,12 +2,13 @@
 
   display: grid;
   grid-template-areas:
-          "weapons    weapons   weapons"
+          "money      weapons   weapons"
+          "equipment  weapons   weapons"
           "equipment  arrow     arrow"
           "equipment  dart      dart"
           "equipment  ration    ration"
           "equipment  torch     torch"
-          "equipment  potions   money";
+          "equipment  potions   potions";
   grid-gap: 8px;
   grid-template-columns: 200px 1fr 190px;
 
@@ -81,22 +82,13 @@
             border: 0;
           }
         }
+        .title {
+          cursor: pointer;
+        }
 
         .info {
           grid-area: info;
           margin: 8px 0;
-
-          .modifier {
-            margin-left: 16px;
-          }
-
-          .extra-skill {
-            margin-left: 16px;
-          }
-
-          .description {
-            margin-left: 16px;
-          }
         }
       }
     }
@@ -139,9 +131,9 @@
         }
 
         display: grid;
-        grid-template-columns: 48px 50px 1fr 50px;
+        grid-template-columns:  50px 32px 1fr 50px;
         grid-column-gap: 8px;
-        grid-template-areas: "icon quantity name actions";
+        grid-template-areas: "quantity icon name actions";
         align-items: center;
 
         .icon {
@@ -156,7 +148,7 @@
           grid-area: name;
 
           .title {
-            font-weight: bold;
+            cursor: pointer;
           }
 
           .description {
@@ -168,6 +160,12 @@
           grid-area: quantity;
           text-align: center;
         }
+
+        .actions {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
       }
     }
   }
@@ -176,12 +174,13 @@
     .weapon-line {
       &.header {
         font-weight: bold;
+        padding-block: 4px;
       }
 
       display: grid;
-      grid-template-columns: 50px 32px 1fr 120px 90px 100px 50px;
+      grid-template-columns: 50px 32px 1fr 120px 50px;
       grid-column-gap: 8px;
-      grid-template-areas: "equiped icon name damage handCount clutter actions";
+      grid-template-areas: "equiped icon name damage actions";
       align-items: center;
       border-bottom: 1px solid darkgrey;
 
@@ -191,6 +190,8 @@
       }
 
       .icon {
+        margin-block: 4px;
+        max-height: 32px;
         > img {
           border: 0;
         }
@@ -199,55 +200,18 @@
       .name {
         grid-area: name;
         position: relative;
-
-        .title {
-          font-weight: bold;
-        }
-
-        .description {
-          .content {
-            position: relative;
-
-            > * + * {
-              border-top: 1px solid white;
-              margin-top: 4px;
-              padding-top: 4px;
-            }
-          }
-
-          background: #23221d;
-          top: 28px;
-          border: 1px solid #000;
-          border-radius: 5px;
-          color: #EEE;
-          z-index: 1;
-          visibility: hidden;
-          position: absolute;
-        }
-
-        &:hover {
-          .description {
-            visibility: visible;
-          }
-        }
-      }
-
-      .handCount {
-        grid-area: handCount;
-        justify-self: center;
+        cursor: pointer;
       }
 
       .damage {
         grid-area: damage;
       }
 
-      .clutter {
-        grid-area: clutter;
-        justify-self: center;
-      }
-
       .actions {
         grid-area: actions;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
       }
     }
   }

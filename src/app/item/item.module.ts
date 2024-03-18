@@ -10,6 +10,7 @@ import {MarkdownModule} from '../markdown/markdown.module';
 import {SpellModule} from '../spell/spell.module';
 import {WeaponSelectorDialogComponent} from './weapon-selector-dialog.component';
 import { WeaponDamageComponent } from './weapon-damage.component';
+import {ItemDetailsComponent} from './item-details.component';
 
 @NgModule({
     declarations: [
@@ -18,9 +19,11 @@ import { WeaponDamageComponent } from './weapon-damage.component';
         SpellDefinitionSelectorComponent,
         WeaponSelectorDialogComponent,
         WeaponDamageComponent,
+        ItemDetailsComponent,
     ],
     exports: [
-        WeaponDamageComponent
+        WeaponDamageComponent,
+        ItemDetailsComponent,
     ],
     imports: [
         CommonModule,

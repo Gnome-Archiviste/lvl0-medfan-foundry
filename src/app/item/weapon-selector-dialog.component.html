@@ -32,7 +32,7 @@
         <div class="separator"></div>
         <div class="ammunition-line selectable-line" [class.selected]="selectedAmmo === undefined" (click)="selectAmmo(undefined)">
             <div class="name">
-                <div class="title">Default</div>
+                <div class="title">Munition de base</div>
             </div>
             <div class="damage">0</div>
             <div class="quantity">&infin;</div>
@@ -48,7 +48,7 @@
                     </ng-container>
                 </div>
                 <div class="damage">{{ item.system.extraDamage }}
-                    <span>({{item.system.extraDamageEffect}})</span>
+                    <span>({{item.system.extraDamageEffect | translate: 'Element.NameForWeaponDamage'}})</span>
                 </div>
                 <div class="quantity">{{ item.system.quantity }}</div>
             </div>
