@@ -13,6 +13,7 @@ import {
     SelectSpecialityDialogData,
     SelectSpecialityDialogResult
 } from '../speciality/select-speciality-dialog.component';
+import {UserService} from '../shared/user-service';
 
 @Component({
     selector: 'lvl0-character-specialities',
@@ -33,6 +34,7 @@ export class CharacterSpecialitiesComponent implements OnInit {
         private readonly dialogService: DialogService,
         private readonly macroService: MacroService,
         private readonly specialityService: SpecialityService,
+        private readonly userService: UserService,
     ) {
     }
 
@@ -66,5 +68,9 @@ export class CharacterSpecialitiesComponent implements OnInit {
                 this.specialityService.addSpeciality(this.characterId, result.specialityId);
             });
         })
+    }
+
+    canForgetSpeciality() {
+        return this.userService.isGm();
     }
 }

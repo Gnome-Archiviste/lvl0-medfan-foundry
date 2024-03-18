@@ -23,7 +23,7 @@
                             <button (click)="createMacro(menuContent, characterSpeciality.speciality)">
                                 <i class="fas fa-scroll"></i> Créer une macro
                             </button>
-                            <button (click)="deleteSpeciality(menuContent, characterSpeciality)">
+                            <button (click)="deleteSpeciality(menuContent, characterSpeciality)" *ngIf="canForgetSpeciality()">
                                 <i class="fas fa-trash"></i> Supprimer
                             </button>
                         </div>
