@@ -294,7 +294,8 @@ export class SpellUtil {
             if (computable.formula) {
                 value = this.computeFormula(computable.formula, context);
             } else if (computable.rollFormula) {
-                return new RollableSpellValue(computable.rollFormula, undefined, computable.unit);
+                let rollFormula = this.computeFormula(computable.rollFormula, context);
+                return new RollableSpellValue(rollFormula, undefined, computable.unit);
             } else if (computable.value) {
                 value = computable.value;
             } else if (computable.text) {
