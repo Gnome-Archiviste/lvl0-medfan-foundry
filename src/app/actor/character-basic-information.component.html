@@ -18,31 +18,31 @@
             Race
         </label>
         <div class="value">
-            @if(characterRace$ | async; as characterRace) {
-                @if(canChangeRace$ | async) {
-                    <select lvl0ActorPropertyField="data.race.id"
-                            [lvl0Actor]="character"
-                            [ngModel]="(characterRace$ | async)?.id">
-                        <optgroup *ngFor="let raceCategory of raceDefinitionsByCategories | keyvalue"
-                                  [label]="raceCategory.key | translate:'RaceCategory'">
-                            <option *ngFor="let race of raceCategory.value | keyvalue" [value]="race.key">
-                                {{race.value.name}}
-                            </option>
-                        </optgroup>
-                    </select>
+            @if (canChangeRace$ | async) {
+                <select lvl0ActorPropertyField="data.race.id"
+                        [lvl0Actor]="character"
+                        [ngModel]="(characterRace$ | async)?.id">
+                    <optgroup *ngFor="let raceCategory of raceDefinitionsByCategories | keyvalue"
+                              [label]="raceCategory.key | translate:'RaceCategory'">
+                        <option *ngFor="let race of raceCategory.value | keyvalue" [value]="race.key">
+                            {{ race.value.name }}
+                        </option>
+                    </optgroup>
+                </select>
 
-                    <ng-container *ngIf="(characterRace$ | async)?.hasRaceSpecifier">
-                        <div class="sub-race">
-                            <label>
-                                <input lvl0ActorPropertyField="data.race.type"
-                                       [lvl0Actor]="character"
-                                       [ngModel]="character.system.race.type"
-                                       type="text">
-                            </label>
-                        </div>
-                    </ng-container>
-                } @else {
-                    {{characterRace.name}} @if(characterRace.hasRaceSpecifier) { - {{character.system.race.type}} }
+                <ng-container *ngIf="(characterRace$ | async)?.hasRaceSpecifier">
+                    <div class="sub-race">
+                        <label>
+                            <input lvl0ActorPropertyField="data.race.type"
+                                   [lvl0Actor]="character"
+                                   [ngModel]="character.system.race.type"
+                                   type="text">
+                        </label>
+                    </div>
+                </ng-container>
+            } @else {
+                @if (characterRace$ | async; as characterRace) {
+                    {{ characterRace.name }} @if (characterRace.hasRaceSpecifier) { - {{ character.system.race.type }}}
                 }
             }
         </div>
@@ -53,47 +53,47 @@
             Classe
         </label>
         <div class="value">
-            @if(characterJob$ | async; as characterJob) {
-                @if(canChangeJob$ | async) {
-                    <select lvl0ActorPropertyField="data.job.id"
-                            class="job-selector"
-                            [lvl0Actor]="character"
-                            [ngModel]="(characterJob$ | async)?.id">
-                        <optgroup *ngFor="let jobCategoryId of jobCategoryIds"
-                                  [label]="jobCategoryId | translate:'JobCategory'">
-                            <option *ngFor="let job of jobDefinitionsByCategories[jobCategoryId] | keyvalue" [value]="job.key">
-                                {{job.value.name}}
-                            </option>
-                        </optgroup>
-                    </select>
-                    <ng-container *ngIf="(characterJob$ | async)?.hasJobSpecialization">
-                        <div class="job-specialization">
-                            <label>
-                                <input lvl0ActorPropertyField="data.job.specialization"
-                                       [lvl0Actor]="character"
-                                       [ngModel]="character.system.job.specialization"
-                                       type="text">
-                            </label>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="(characterJob$ | async)?.maxSpecializations">
-                        <div class="job-specializations">
-                            <ng-container
-                                    *ngFor="let characterSpecializationId of (characterJobSpecializations$ | async); let i = index">
-                                <select [lvl0ActorPropertyArrayField]="'data.job.specializations'"
-                                        [lvl0Actor]="character"
-                                        [ngModel]="characterSpecializationId"
-                                        [array]="characterJobSpecializations$ | async"
-                                        [index]="i">
-                                    <option *ngFor="let specializationId of (characterJob$ | async)?.specializations"
-                                            [value]="specializationId">
-                                        {{specializationId | translate:'Job.Speciality'}}
-                                    </option>
-                                </select>
-                            </ng-container>
-                        </div>
-                    </ng-container>
-                } @else {
+            @if(canChangeJob$ | async) {
+                <select lvl0ActorPropertyField="data.job.id"
+                        class="job-selector"
+                        [lvl0Actor]="character"
+                        [ngModel]="(characterJob$ | async)?.id">
+                    <optgroup *ngFor="let jobCategoryId of jobCategoryIds"
+                              [label]="jobCategoryId | translate:'JobCategory'">
+                        <option *ngFor="let job of jobDefinitionsByCategories[jobCategoryId] | keyvalue" [value]="job.key">
+                            {{job.value.name}}
+                        </option>
+                    </optgroup>
+                </select>
+                <ng-container *ngIf="(characterJob$ | async)?.hasJobSpecialization">
+                    <div class="job-specialization">
+                        <label>
+                            <input lvl0ActorPropertyField="data.job.specialization"
+                                   [lvl0Actor]="character"
+                                   [ngModel]="character.system.job.specialization"
+                                   type="text">
+                        </label>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="(characterJob$ | async)?.maxSpecializations">
+                    <div class="job-specializations">
+                        <ng-container
+                                *ngFor="let characterSpecializationId of (characterJobSpecializations$ | async); let i = index">
+                            <select [lvl0ActorPropertyArrayField]="'data.job.specializations'"
+                                    [lvl0Actor]="character"
+                                    [ngModel]="characterSpecializationId"
+                                    [array]="characterJobSpecializations$ | async"
+                                    [index]="i">
+                                <option *ngFor="let specializationId of (characterJob$ | async)?.specializations"
+                                        [value]="specializationId">
+                                    {{specializationId | translate:'Job.Speciality'}}
+                                </option>
+                            </select>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            } @else {
+                @if(characterJob$ | async; as characterJob) {
                     {{ characterJob.name }}
                 }
             }
