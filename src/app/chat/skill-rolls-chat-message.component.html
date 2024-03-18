@@ -21,7 +21,10 @@
             @switch (extraData.kind) {
                 @case ('cast-spell') {
                     @if(detailShown[$index]) {
-                        <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="$asSpellRollChatMessageData(extraData.data)"></lvl0-spell-roll-chat-message>
+                        <div class="details">
+                            <div class="close-button" (click)="hideDetails($index)"><i class="fa fa-close"></i></div>
+                            <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="$asSpellRollChatMessageData(extraData.data)"></lvl0-spell-roll-chat-message>
+                        </div>
                         <div class="show-details" (click)="hideDetails($index)">
                             Cacher détails
                         </div>

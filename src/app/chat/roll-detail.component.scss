@@ -2,10 +2,14 @@
   cursor: pointer;
 }
 .roll-details {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
+
+  border: 1px solid #a6a6a6;
+  box-shadow: #444444 1px 1px 1px 1px;
 
   .formula {
     opacity: 0.60;
@@ -24,5 +28,17 @@
     align-content: center;
     width: 24px;
     height: 24px;
+  }
+
+  .close-button {
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 0;
+    top: 0;
+    display: grid;
+    align-items: center;
+    justify-content: center;
   }
 }

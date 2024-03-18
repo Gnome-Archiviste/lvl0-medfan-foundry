@@ -1,7 +1,8 @@
 <div (click)="toggleDetails()" class="roll-with-details">
     <ng-content></ng-content>
 </div>
-<div *ngIf="showDetails" class="roll-details">
+<div *ngIf="showDetails" class="roll-details" (click)="toggleDetails()">
+    <div class="close-button" (click)="toggleDetails()"><i class="fa fa-close"></i></div>
     <div class="formula">
         {{roll.formula}}
     </div>
