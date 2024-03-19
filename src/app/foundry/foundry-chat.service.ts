@@ -16,17 +16,18 @@ export class FoundryChatService extends ChatService {
 
     async sendLvl0MessageFrom(actorId: string | undefined, lvl0ChatMessage: Lvl0ChatMessage, rolls?: IRoll[]): Promise<void> {
         let messageData: MessageData<any> = {
-            user: game.user,
+            user: game.user?.id,
             type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         };
         const speaker = actorId ? ChatMessage.getSpeaker({actor: this.foundryLvl0IdResolver.getActorFromLvl0Id(actorId)}) : undefined;
         let roll = this.mergeRolls(rolls);
         if (roll) {
             messageData.type = CONST.CHAT_MESSAGE_TYPES.ROLL
-            messageData.roll = roll;
+            messageData.rolls = [roll];
             messageData.sound = CONFIG.sounds.dice;
         }
         await ChatMessage.create({
+            ...messageData,
             speaker,
             content: '',
             flags: {
