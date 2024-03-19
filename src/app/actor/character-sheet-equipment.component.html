@@ -151,24 +151,24 @@
     <h3>Oricaux</h3>
     <div class="money-detail">
         <lvl0-relative-value-editor [value$]="money$" [editable]="true"
-                                    (onChange)="updateMoney($event)">{{money$ | async | number}}
-        </lvl0-relative-value-editor> Pièces
+                                    (onChange)="updateMoney($event)">{{money$ | async | number}} Pièces
+        </lvl0-relative-value-editor>
     </div>
     <div class="money-detail">
         <lvl0-relative-value-editor [value$]="money100$" [editable]="true"
                                     (onChange)="updateMoney100($event)">{{money100$ | async | number}}
+            Plaquette (100 oricaux)
         </lvl0-relative-value-editor>
-        Plaquette (100 oricaux)
     </div>
     <div class="money-detail">
         <lvl0-relative-value-editor [value$]="money500$" [editable]="true"
-                                    (onChange)="updateMoney500($event)">{{money500$ | async | number}}
-        </lvl0-relative-value-editor> Plaquette (500 oricaux)
+                                    (onChange)="updateMoney500($event)">{{money500$ | async | number}} Plaquette (500 oricaux)
+        </lvl0-relative-value-editor>
     </div>
     <div class="money-detail">
         <lvl0-relative-value-editor [value$]="money1000$" [editable]="true"
-                                    (onChange)="updateMoney1000($event)">{{money1000$ | async | number}}
-        </lvl0-relative-value-editor> Plaquette (1000 oricaux)
+                                    (onChange)="updateMoney1000($event)">{{money1000$ | async | number}} Plaquette (1000 oricaux)
+        </lvl0-relative-value-editor>
     </div>
     <div class="money-detail">
         Total: <strong>{{totalMoney$ | async | number}}</strong> Oricaux
