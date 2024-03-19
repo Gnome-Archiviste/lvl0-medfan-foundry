@@ -2,7 +2,6 @@
   display: grid;
   gap: 8px;
   grid-template-columns: minmax(165px, 1fr) 17px 40px 10px 60px;
-  grid-template-areas: ". . . . ." ". add-remove-point add-remove-point . .";
   align-items: center;
 
   .has-additional-point {
@@ -35,13 +34,19 @@
     font-size: 1.2rem;
   }
 
-  .add-remove-point {
-    grid-area: add-remove-point;
-    width: 52px;
+  .master-prodigy {
     display: flex;
-    gap: 8px;
-    justify-content: space-between;
   }
+}
+
+.add-remove-point {
+  margin-top: 8px;
+  width: 52px;
+  margin-left: auto;
+  margin-right: 100px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
 
   .add-point {
     display: grid;
@@ -75,10 +80,6 @@
     &:focus {
       box-shadow: 0 0 5px #5c0909;
     }
-  }
-
-  .master-prodigy {
-    display: flex;
   }
 }
 

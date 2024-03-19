@@ -22,17 +22,17 @@
         <input *ngIf="master$ | async" [checked]="masterUsed$ | async" (change)="toggleMasterUse($event)" type="checkbox" [disabled]="prodigyUsed$ | async">
         <input *ngIf="prodigy$ | async" [checked]="prodigyUsed$ | async" (change)="toggleProdigyUse($event)" type="checkbox" [disabled]="!(masterUsed$ | async)">
     </span>
-    <span class="add-remove-point" *ngIf="(haveAvailableSkillPoints$ | async) || (havePendingSkillPoints | async)">
-        <span>
-            <button class="remove-point" *ngIf="canRemovePoint$ | async" (click)="removePoint()">
-                -
-            </button>
-        </span>
-        <span>
-            <button class="add-point" *ngIf="canAddPoint$ | async" (click)="addPoint()">
-                +
-            </button>
-        </span>
+</div>
+<div class="add-remove-point" *ngIf="(haveAvailableSkillPoints$ | async) || (havePendingSkillPoints | async)">
+    <span>
+        <button class="remove-point" *ngIf="canRemovePoint$ | async" (click)="removePoint()">
+            -
+        </button>
+    </span>
+    <span>
+        <button class="add-point" *ngIf="canAddPoint$ | async" (click)="addPoint()">
+            +
+        </button>
     </span>
 </div>
 
