@@ -166,6 +166,7 @@ export class ItemEditorComponent implements OnInit {
             || item.type === 'head'
             || item.type === 'handWeapon'
             || item.type === 'necklace'
+            || item.type === 'magical'
             || item.type === 'ring'
             || item.type === 'shield'
             || item.type === 'weapon')
@@ -181,6 +182,7 @@ export class ItemEditorComponent implements OnInit {
             || item.type === 'hand'
             || item.type === 'head'
             || item.type === 'handWeapon'
+            || item.type === 'magical'
             || item.type === 'necklace'
             || item.type === 'ring'
             || item.type === 'shield')

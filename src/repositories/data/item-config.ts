@@ -55,8 +55,8 @@ export default <Record<UnionKeys<Lvl0Item, 'type'>, ItemTypeConfig>>{
     },
     magical: {
         canBeEquiped: true,
-        canHaveModifiers: false,
-        canHaveExtraSkills: false,
+        canHaveModifiers: true,
+        canHaveExtraSkills: true,
     },
     misc: {
         canBeEquiped: false,

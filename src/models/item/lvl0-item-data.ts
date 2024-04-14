@@ -93,6 +93,7 @@ export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]:
         || data.type == 'hand'
         || data.type == 'head'
         || data.type == 'necklace'
+        || data.type == 'magical'
         || data.type == 'foot'
         || data.type == 'ring'
         || data.type == 'weapon')
