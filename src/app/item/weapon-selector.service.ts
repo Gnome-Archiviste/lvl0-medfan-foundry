@@ -40,11 +40,7 @@ export class WeaponSelectorService {
             return;
         }
 
-        if (weaponType == 'melee' && availableWeapons.length) {
-            return {selectedWeapon: availableWeapons[0]};
-        }
-
-        if (weaponType == 'range' && availableWeapons.length && availableAmmunition.length === 0) {
+        if (weaponType == 'melee' && availableWeapons.length === 1) {
             return {selectedWeapon: availableWeapons[0]};
         }
 
