@@ -110,7 +110,7 @@
         <input lvl0ActorPropertyField="data.age.value"
                [lvl0Actor]="character"
                [ngModel]="character.system.age.value"
-               type="number">
+               type="text">
     </div>
 
     <div class="size info">
@@ -118,7 +118,7 @@
         <input lvl0ActorPropertyField="data.size.value"
                [lvl0Actor]="character"
                [ngModel]="character.system.size.value"
-               type="number">
+               type="text">
     </div>
 
     <div class="avatar" [class.clickable]="canSelectImage()" (click)="openSelectAvatarDialog()">

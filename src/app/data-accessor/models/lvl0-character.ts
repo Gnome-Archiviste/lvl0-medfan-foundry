@@ -35,8 +35,8 @@ export interface Lvl0CharacterData {
     readonly mana: { readonly min: number, max: number, readonly value: number };
     readonly level: LevelValue;
     readonly experience: { readonly value: number };
-    readonly size: { readonly value: number };
-    readonly age: { readonly value: number };
+    readonly size: { readonly value: string };
+    readonly age: { readonly value: string };
     readonly job: JobData;
     readonly race: RaceData;
     readonly effects: CharacterEffects;
