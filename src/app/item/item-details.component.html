@@ -52,4 +52,8 @@
             <strong>Blocage: </strong> {{ item.system.blockValue }}
         </div>
     }
+
+    @if (item.system.equiped) {
+        <button (click)="equipItem(item, false)">Déséquipé</button>
+    }
 </div>
