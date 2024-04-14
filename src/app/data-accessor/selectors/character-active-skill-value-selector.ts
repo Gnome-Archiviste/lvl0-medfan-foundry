@@ -52,7 +52,7 @@ export class CharacterActiveSkillValueSelector {
                 }
             }
         }
-        if (activeSkillValue.value === 0) {
+        if (activeSkillValue.value < 3) {
             outerBlock: {
                 for (let equipedItem of equipedItems) {
                     if ('extraSkills' in equipedItem.system) {
