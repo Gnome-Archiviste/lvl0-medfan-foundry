@@ -18,6 +18,7 @@ import {WeaponDamageRollUtil} from '../../item/weapon-damage-roll-util.service';
 import {SpellChatService} from '../../spell/spell-chat.service';
 import {MacroService} from '../../shared/macro.service';
 import {ActorUpdaterService} from '../../data-accessor/actor-updater.service';
+import {RollHandDamageSkillResult, RollHandDamageSkillScript} from './roll-hand-damage-skill-script';
 
 @Injectable({
     providedIn: 'root'
@@ -44,7 +45,7 @@ export class SkillScriptFactory {
 
     createScript(
         skillDefinition: SkillDefinition,
-    ): SkillScript<RollDamageSkillResult | SpellScriptResult | RollShieldDamageScriptResult, any> | undefined {
+    ): SkillScript<RollDamageSkillResult | SpellScriptResult | RollShieldDamageScriptResult | RollHandDamageSkillResult, any> | undefined {
         if (!skillDefinition.script?.name)
             return undefined;
 
@@ -56,6 +57,12 @@ export class SkillScriptFactory {
                     this.weaponSelectorService,
                     this.weaponDamageRollUtil,
                     this.itemUpdaterService
+                );
+            case 'handDamageRoll':
+                return new RollHandDamageSkillScript(
+                    this.rollFactory,
+                    this.characterAccessorService,
+                    this.systemDataDatabaseService
                 );
             case 'castSpell':
                 return new RollSpellSkillScript(

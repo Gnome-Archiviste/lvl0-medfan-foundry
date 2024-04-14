@@ -18,6 +18,7 @@ export type SkillScriptDefinition =
     RollDamageSkillScriptDefinition
     | CastSpellSkillScriptDefinition
     | ShieldRollDamageSkillScriptDefinition
+    | RollHandDamageSkillScriptDefinition
 
 export interface RollDamageSkillScriptDefinition {
     readonly name: 'damageRoll';
@@ -27,6 +28,10 @@ export interface RollDamageSkillScriptDefinition {
 export interface RollDamageSkillScriptData {
     readonly weaponType: 'range' | 'melee';
     readonly charge?: boolean;
+}
+
+export interface RollHandDamageSkillScriptDefinition {
+    readonly name: 'handDamageRoll';
 }
 
 export interface CastSpellSkillScriptDefinition {
@@ -220,7 +225,10 @@ export default {
             name: "Combat mains nues",
             icon: 'icons/skills/melee/unarmed-punch-fist-white.webp',
             stat: "phy",
-            description: "Le personnage a une certaine connaissance des techniques de combat sans arme. S’applique : le combat de rue (+PHY), la boxe (+PHY), etc.",
+            description: "Le personnage a une certaine connaissance des techniques de combat sans arme. S’applique : le combat de rue, la boxe, etc.",
+            script: {
+                name: 'handDamageRoll'
+            }
         }, {
             id: "melee_combat",
             name: "Combat mêlée",

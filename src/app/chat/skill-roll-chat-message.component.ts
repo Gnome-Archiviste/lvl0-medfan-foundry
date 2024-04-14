@@ -20,12 +20,21 @@ export type SkillRollChatExtraDataMessageData = {
 } | {
     kind: 'shield-damage',
     data: SkillRollExtraDataShieldDamageMessageData
+} | {
+    kind: 'hand-damage',
+    data: SkillRollExtraDataHandDamageMessageData
 }
 
 export type SkillRollExtraDataShieldDamageMessageData = {
     damageRollFormula: string;
     damageRoll?: ChatRoll;
     shield: SkillRollExtraDataItemInfoMessageData;
+}
+
+export type SkillRollExtraDataHandDamageMessageData = {
+    damageRollFormula: string;
+    damageRoll?: ChatRoll;
+    weapon?: SkillRollExtraDataItemInfoMessageData;
 }
 
 export type SkillRollExtraDataDamageMessageData = {
