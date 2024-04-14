@@ -9,6 +9,7 @@
   }
 
   .name {
+    position: relative;
     margin-block: 5px;
     .open-menu {
       text-decoration: underline;
@@ -43,21 +44,24 @@
   margin-top: 8px;
   width: 52px;
   margin-left: auto;
-  margin-right: 100px;
   display: flex;
   gap: 8px;
   justify-content: space-between;
 
-  .add-point {
+  .add-point,
+  .remove-point {
     display: grid;
     justify-items: center;
     align-content: center;
     padding: 0;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    border-radius: 0;
+  }
+
+  .add-point {
     background-color: #bbdfab;
     border: 1px solid #2fad44;
-    border-radius: 0;
 
     &:hover,
     &:focus {
@@ -66,15 +70,8 @@
   }
 
   .remove-point {
-    display: grid;
-    justify-items: center;
-    align-content: center;
-    padding: 0;
-    width: 20px;
-    height: 20px;
     background-color: #dfabab;
     border: 1px solid #ad2f2f;
-    border-radius: 0;
 
     &:hover,
     &:focus {
@@ -83,6 +80,26 @@
   }
 }
 
+.visual-points {
+  position: absolute;
+  bottom: -6px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  .active-point {
+    height: 4px;
+    width: 24px;
+  }
+  .basic-point {
+    background-color: #943636;
+  }
+  .master-point {
+    background-color: #5a6fd7;
+  }
+  .prodigy-point {
+    background-color: #369446;
+  }
+}
 :host {
   display: block;
 }

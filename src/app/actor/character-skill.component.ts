@@ -47,7 +47,7 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
     canAddBasePoint$: Observable<boolean>;
     canRemoveBasePoint$: Observable<boolean>;
     haveAvailableSkillPoints$: Observable<boolean>;
-    havePendingSkillPoints: Observable<boolean>;
+    havePendingSkillPoints$: Observable<boolean>;
     hadAdditionalBasePoint$: Observable<boolean>;
 
     canAddMasterPoint$: Observable<boolean>;
@@ -58,6 +58,8 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
 
     canAddPoint$: Observable<boolean>;
     canRemovePoint$: Observable<boolean>;
+    canEditPoint$: Observable<boolean>;
+    activePoints$: Observable<number[]>;
 
     constructor(
         private readonly characterAccessorService: CharacterAccessorService,
@@ -82,7 +84,9 @@ export class CharacterSkillComponent implements OnInit, OnDestroy {
         this.totalValue$ = this.skillValue$.pipe(map(x => x.successValue));
         this.characterPendingSkills$ = this.character$.pipe(selectCharacterPendingSkills());
         this.haveAvailableSkillPoints$ = this.characterAvailableSkillPoints$.pipe(map(x => x.total > 0))
-        this.havePendingSkillPoints = this.character$.pipe(selectHavePendingSkillPoints())
+        this.havePendingSkillPoints$ = this.character$.pipe(selectHavePendingSkillPoints())
+        this.activePoints$ = this.value$.pipe(map(x => new Array(x).fill(1)))
+        this.canEditPoint$ = combineLatest([this.haveAvailableSkillPoints$, this.havePendingSkillPoints$]).pipe(map(([haveAvailableSkillPoints, havePendingSkillPoints]) => haveAvailableSkillPoints || havePendingSkillPoints));
 
         this.hadAdditionalBasePoint$ = this.characterPendingSkills$.pipe(
             pendingSkillPoint => pendingSkillPoint[this.skillDefinition.categoryId]?.[this.skillDefinition.id]?.value

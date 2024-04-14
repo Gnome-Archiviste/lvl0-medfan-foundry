@@ -1,6 +1,13 @@
 <div class="skill" [class.has-additional-point]="hadAdditionalBasePoint$">
     <span class="name">
         <span class="open-menu" [cdkMenuTriggerFor]="menu">{{ skillDefinition.name }}</span>
+        <div class="visual-points" *ngIf="canEditPoint$ | async">
+            @for (point of activePoints$ | async; track $index) {
+                <span class="active-point basic-point"></span>
+            }
+            <span *ngIf="master$ | async" class="active-point master-point"></span>
+            <span *ngIf="prodigy$ | async" class="active-point prodigy-point"></span>
+        </div>
     </span>
     <span class="value" [class.manual-value]="manualMode$ | async">
         <ng-container *ngIf="manualMode$ | async; else static">
@@ -19,20 +26,23 @@
         {{ totalValue$ | async }}
     </span>
     <span class="master-prodigy">
-        <input *ngIf="master$ | async" [checked]="masterUsed$ | async" (change)="toggleMasterUse($event)" type="checkbox" [disabled]="prodigyUsed$ | async">
-        <input *ngIf="prodigy$ | async" [checked]="prodigyUsed$ | async" (change)="toggleProdigyUse($event)" type="checkbox" [disabled]="!(masterUsed$ | async)">
-    </span>
-</div>
-<div class="add-remove-point" *ngIf="(haveAvailableSkillPoints$ | async) || (havePendingSkillPoints | async)">
-    <span>
-        <button class="remove-point" *ngIf="canRemovePoint$ | async" (click)="removePoint()">
-            -
-        </button>
-    </span>
-    <span>
-        <button class="add-point" *ngIf="canAddPoint$ | async" (click)="addPoint()">
-            +
-        </button>
+        @if (canEditPoint$ | async) {
+            <div class="add-remove-point">
+                <span>
+                    <button class="remove-point" *ngIf="canRemovePoint$ | async" (click)="removePoint()">
+                        -
+                    </button>
+                </span>
+                <span>
+                    <button class="add-point" *ngIf="canAddPoint$ | async" (click)="addPoint()">
+                        +
+                    </button>
+                </span>
+            </div>
+        } @else {
+            <input *ngIf="master$ | async" [checked]="masterUsed$ | async" (change)="toggleMasterUse($event)" type="checkbox" [disabled]="prodigyUsed$ | async">
+            <input *ngIf="prodigy$ | async" [checked]="prodigyUsed$ | async" (change)="toggleProdigyUse($event)" type="checkbox" [disabled]="!(masterUsed$ | async)">
+        }
     </span>
 </div>
 
