@@ -25,7 +25,7 @@ export default {
             name: 'Vie',
         },
         mana: {
-            name: 'Magie',
+            name: 'Mana',
         },
     } as Record<string, { readonly name: string}>
 }
