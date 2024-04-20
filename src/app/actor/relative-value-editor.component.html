@@ -23,7 +23,10 @@
             </div>
             <div class="help-message">
                 <i class="fa fa-info-circle"></i>
-                <span>Vous pouvez utiliser des valeur relative tel que '+3' ou '-5' pour augmenter ou réduire la valeur, ou mettre une nouvelle valeur absolue.</span>
+                <div>
+                    <div>Vous pouvez utiliser des valeur relative tel que '+3' ou '-5' pour augmenter ou réduire la valeur, ou mettre une nouvelle valeur absolue.</div>
+                    <div *ngIf="max">Vous pouvez utiliser <code>min</code> ou <code>max</code> pour mettre la valeur maximum ou minimum.</div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
     <fieldset class="stat health">
         <legend>{{'Misc.Stat.health' | translate}}</legend>
         <div class="value">
-            <lvl0-relative-value-editor [value$]="characterHealth$" (onChange)="updateHealth($event)">
+            <lvl0-relative-value-editor [value$]="characterHealth$" [min]="0" [max]="characterMaxHealth$ | async" (onChange)="updateHealth($event)">
                 {{characterHealth$ | async}} / {{characterMaxHealth$ | async}}
             </lvl0-relative-value-editor>
         </div>
@@ -24,7 +24,7 @@
     <fieldset class="stat mana">
         <legend>{{'Misc.Stat.mana' | translate}}</legend>
         <div class="value">
-            <lvl0-relative-value-editor [value$]="characterMana$" (onChange)="updateMana($event)">
+            <lvl0-relative-value-editor [value$]="characterMana$" [min]="0" [max]="characterMaxMana$ | async"  (onChange)="updateMana($event)">
                 {{characterMana$ | async}} / {{characterMaxMana$ | async}}
             </lvl0-relative-value-editor>
         </div>

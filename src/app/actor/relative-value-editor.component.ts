@@ -1,4 +1,15 @@
-import {Component, ElementRef, EventEmitter, Input, NgZone, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    NgZone,
+    numberAttribute,
+    OnDestroy,
+    OnInit,
+    Output,
+    ViewChild
+} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {CdkMenu} from '@angular/cdk/menu';
 
@@ -14,6 +25,10 @@ export class RelativeValueEditorComponent implements OnInit, OnDestroy {
     value$?: Observable<number>;
     @Input('value')
     value?: number;
+    @Input({transform: numberAttribute, alias: 'max'})
+    max?: number;
+    @Input('min')
+    min?: number;
     @ViewChild('editField', {static: false})
     editField?: ElementRef<HTMLInputElement>
     @Input('editable')
@@ -58,13 +73,20 @@ export class RelativeValueEditorComponent implements OnInit, OnDestroy {
         menuContent.menuStack.closeAll();
         if (!this.fieldValue)
             return;
-        let newValue = this.valueSnapshot;
-        if (this.fieldValue.startsWith('+')) {
-            newValue += parseInt(this.fieldValue.substring(1));
-        } else if (this.fieldValue.startsWith('-')) {
-            newValue += parseInt(this.fieldValue);
+        let newValue = NaN;
+        if (this.fieldValue === 'max') {
+            newValue = this.max ?? NaN;
+        } else if (this.fieldValue === 'min') {
+            newValue = this.min ?? NaN;
         } else {
-            newValue = parseInt(this.fieldValue);
+            newValue = this.valueSnapshot;
+            if (this.fieldValue.startsWith('+')) {
+                newValue += parseInt(this.fieldValue.substring(1));
+            } else if (this.fieldValue.startsWith('-')) {
+                newValue += parseInt(this.fieldValue);
+            } else {
+                newValue = parseInt(this.fieldValue);
+            }
         }
         if (isNaN(newValue))
             return;
