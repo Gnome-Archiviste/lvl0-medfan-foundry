@@ -16,7 +16,7 @@
                     <div class="form-fields">
                         <ng-container *ngFor="let stat of stats">
                             <label>
-                                <input type="radio" [value]="stat" [(ngModel)]="levelsData[level].additionalStat">
+                                <input type="radio" [name]="'additionalStat' + level" [value]="stat" [(ngModel)]="levelsData[level].additionalStat">
                                 {{ stat | translate: 'Misc.Stat' }}
                            </label>
                         </ng-container>
