@@ -1,16 +1,3 @@
-<!--
-<ng-container *ngIf="fieldValue !== undefined; else readonly">
-    <div class="inline-form">
-        <input #editField type="text" [(ngModel)]="fieldValue" (keydown.enter)="validEditButton.click()">
-        <button (click)="validChange()" #validEditButton>OK</button>
-    </div>
-</ng-container>
-<ng-template #readonly>
-    <div (click)="startEdit()" [class.editable-value]="true">
-        <ng-content />
-    </div>
-</ng-template>
--->
 <div [cdkMenuTriggerFor]="editMenu" [class.editable-value]="true" (cdkMenuOpened)="startEdit()">
     <ng-content />
 </div>
