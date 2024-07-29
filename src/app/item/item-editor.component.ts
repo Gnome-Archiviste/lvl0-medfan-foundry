@@ -1,6 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ItemAccessorService} from '../data-accessor/item-accessor-service';
-import {Lvl0Item, Lvl0ItemWitExtraSkills, Lvl0ItemWithModifiers} from '../data-accessor/models/lvl0-item';
+import {
+    Lvl0Item,
+    Lvl0ItemWitExtraSkills,
+    Lvl0ItemWithModifiers,
+    Lvl0ItemWithUniqueCapabilities
+} from '../data-accessor/models/lvl0-item';
 import {map, Observable} from 'rxjs';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 import {FileSelectorService} from '../data-accessor/file-selector.service';
@@ -158,6 +163,23 @@ export class ItemEditorComponent implements OnInit {
     // region Type safe cast
 
     itemWithModifier$(item: Lvl0Item): Lvl0ItemWithModifiers {
+        if (item.type === 'armor'
+            || item.type === 'belt'
+            || item.type === 'cloak'
+            || item.type === 'foot'
+            || item.type === 'hand'
+            || item.type === 'head'
+            || item.type === 'handWeapon'
+            || item.type === 'necklace'
+            || item.type === 'magical'
+            || item.type === 'ring'
+            || item.type === 'shield'
+            || item.type === 'weapon')
+            return item;
+        throw new Error(`Item type ${item.type} does not support modifiers`);
+    }
+
+    itemWithUniqueCapabilities$(item: Lvl0Item): Lvl0ItemWithUniqueCapabilities {
         if (item.type === 'armor'
             || item.type === 'belt'
             || item.type === 'cloak'

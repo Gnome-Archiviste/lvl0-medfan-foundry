@@ -21,6 +21,7 @@ import {
     WandItemProperties,
     WeaponItemProperties
 } from '../../../models/item';
+import {ItemPropertiesUniqueCapabilities} from '../../../models/item/properties/item-properties-unique-capabilities';
 
 export type BaseLvl0Item = {
     id: string;
@@ -72,5 +73,6 @@ export type Lvl0Item =
     | Lvl0ItemWeapon;
 
 export type Lvl0ItemWithModifiers = Lvl0Item & { system: ItemPropertiesTemplateStatModifiers };
+export type Lvl0ItemWithUniqueCapabilities = BaseLvl0Item & { system: ItemPropertiesUniqueCapabilities };
 export type Lvl0ItemWitExtraSkills = Lvl0Item & { system: ItemPropertiesTemplateExtraSkills };
 

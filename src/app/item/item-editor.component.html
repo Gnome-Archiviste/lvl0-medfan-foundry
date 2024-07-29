@@ -16,7 +16,7 @@
         <div class="editor-line">
             <label class="one-line">
                 <span>Encombrement</span>
-                <input lvl0ItemPropertyField="data.clutter"
+                <input lvl0ItemPropertyField="system.clutter"
                        [lvl0Item]="item"
                        [ngModel]="item.system.clutter"
                        min="0"
@@ -24,14 +24,14 @@
             </label>
             <label class="one-line">
                 <span>Prix</span>
-                <input lvl0ItemPropertyField="data.price"
+                <input lvl0ItemPropertyField="system.price"
                        [lvl0Item]="item"
                        [ngModel]="item.system.price"
                        min="0"
                        type="number">
             </label>
             <label class="one-line">
-                <input lvl0ItemPropertyField="data.quantifiable"
+                <input lvl0ItemPropertyField="system.quantifiable"
                        [lvl0Item]="item"
                        [ngModel]="item.system.quantifiable"
                        type="checkbox">
@@ -39,7 +39,7 @@
             </label>
             <label class="one-line" *ngIf="item.isOwned">
                 <span>Quantity</span>
-                <input lvl0ItemPropertyField="data.quantity"
+                <input lvl0ItemPropertyField="system.quantity"
                        [disabled]="!item.system.quantifiable"
                        [lvl0Item]="item"
                        [ngModel]="item.system.quantity"
@@ -50,7 +50,7 @@
 
         <div *ngIf="canBeEquiped$ | async">
             <label class="one-line">
-                <input lvl0ItemPropertyField="data.equiped"
+                <input lvl0ItemPropertyField="system.equiped"
                        [lvl0Item]="item"
                        [ngModel]="item.system.equiped"
                        type="checkbox">
@@ -61,7 +61,7 @@
         <div class="editor-line">
             <label class="multi-line">
                 Description
-                <textarea lvl0ItemPropertyField="data.description"
+                <textarea lvl0ItemPropertyField="system.description"
                           cdkTextareaAutosize
                           cdkAutosizeMinRows="1"
                           cdkAutosizeMaxRows="10"
@@ -73,7 +73,7 @@
         <div class="editor-line">
             <label class="multi-line">
                 Details
-                <textarea lvl0ItemPropertyField="data.details"
+                <textarea lvl0ItemPropertyField="system.details"
                           cdkTextareaAutosize
                           cdkAutosizeMinRows="1"
                           cdkAutosizeMaxRows="10"
@@ -85,7 +85,7 @@
         <div class="editor-line">
             <label class="multi-line">
                 Limitation
-                <input lvl0ItemPropertyField="data.restriction"
+                <input lvl0ItemPropertyField="system.restriction"
                        type="text"
                        [lvl0Item]="item"
                        [ngModel]="item.system.restriction">
@@ -101,7 +101,7 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Type
-                        <select lvl0ItemPropertyField="data.ammunitionType"
+                        <select lvl0ItemPropertyField="system.ammunitionType"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.ammunitionType">
                             <option *ngFor="let ammunitionType of ammunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
@@ -111,11 +111,11 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Dégâts additionnel
-                        <input lvl0ItemPropertyField="data.extraDamage"
+                        <input lvl0ItemPropertyField="system.extraDamage"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.extraDamage">
-                        <select lvl0ItemPropertyField="data.extraDamageEffect"
+                        <select lvl0ItemPropertyField="system.extraDamageEffect"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.extraDamageEffect">
                             <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
@@ -125,7 +125,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Bonus
-                        <input lvl0ItemPropertyField="data.bonus"
+                        <input lvl0ItemPropertyField="system.bonus"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.bonus">
@@ -137,14 +137,14 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Protection
-                        <input lvl0ItemPropertyField="data.protection"
+                        <input lvl0ItemPropertyField="system.protection"
                                type="number"
                                [lvl0Item]="item"
                                [ngModel]="item.system.protection">
                     </label>
                     <label class="one-line">
                         Malus dextérité
-                        <input lvl0ItemPropertyField="data.dexMalus"
+                        <input lvl0ItemPropertyField="system.dexMalus"
                                type="number"
                                [lvl0Item]="item"
                                [ngModel]="item.system.dexMalus">
@@ -153,7 +153,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -165,7 +165,7 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Lignes supplémentaires
-                        <input lvl0ItemPropertyField="data.extraRows"
+                        <input lvl0ItemPropertyField="system.extraRows"
                                type="number"
                                [lvl0Item]="item"
                                [disabled]="item.system.noLimit"
@@ -173,7 +173,7 @@
                     </label>
                     <label class="one-line">
                         Colones supplémentaires
-                        <input lvl0ItemPropertyField="data.extraColumns"
+                        <input lvl0ItemPropertyField="system.extraColumns"
                                type="number"
                                [lvl0Item]="item"
                                [disabled]="item.system.noLimit"
@@ -182,7 +182,7 @@
                 </div>
                 <div class="editor-line">
                     <label class="one-line">
-                        <input lvl0ItemPropertyField="data.noLimit"
+                        <input lvl0ItemPropertyField="system.noLimit"
                                [lvl0Item]="item"
                                [ngModel]="item.system.noLimit"
                                type="checkbox">
@@ -195,7 +195,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -207,7 +207,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -219,7 +219,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -232,11 +232,11 @@
                     <label class="one-line">
                         Dégâts
                         <!-- FIXME: Add validation that the formula is valid -->
-                        <input lvl0ItemPropertyField="data.damage"
+                        <input lvl0ItemPropertyField="system.damage"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.damage">
-                        <select lvl0ItemPropertyField="data.element"
+                        <select lvl0ItemPropertyField="system.element"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.element">
                             <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
@@ -246,7 +246,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -255,7 +255,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Bonus
-                        <input lvl0ItemPropertyField="data.bonus"
+                        <input lvl0ItemPropertyField="system.bonus"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.bonus">
@@ -263,7 +263,7 @@
                 </div>
                 <div class="editor-line">
                     <label class="one-line">
-                        <input lvl0ItemPropertyField="data.canUseWeapon"
+                        <input lvl0ItemPropertyField="system.canUseWeapon"
                                [lvl0Item]="item"
                                [ngModel]="item.system.canUseWeapon"
                                type="checkbox">
@@ -276,7 +276,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -291,7 +291,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -306,7 +306,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="data.immunity"
+                        <input lvl0ItemPropertyField="system.immunity"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.immunity">
@@ -318,14 +318,14 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Dégâts
-                        <input lvl0ItemPropertyField="data.damage"
+                        <input lvl0ItemPropertyField="system.damage"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.damage">
                     </label>
                     <label class="one-line">
                         Blocage
-                        <input lvl0ItemPropertyField="data.blockValue"
+                        <input lvl0ItemPropertyField="system.blockValue"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.blockValue">
@@ -355,7 +355,7 @@
                 <h2>Baguette</h2>
                 <div class="editor-line" *ngIf="item.isOwned">
                     <label class="one-line">
-                        <input lvl0ItemPropertyField="data.blocked"
+                        <input lvl0ItemPropertyField="system.blocked"
                                [lvl0Item]="item"
                                [ngModel]="item.system.blocked"
                                type="checkbox">
@@ -365,7 +365,7 @@
                 <div class="editor-line">
                     <label class="one-line">
                         <span>Charge</span>
-                        <input lvl0ItemPropertyField="data.charge"
+                        <input lvl0ItemPropertyField="system.charge"
                                [lvl0Item]="item"
                                [ngModel]="item.system.charge"
                                min="0"
@@ -395,11 +395,11 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Dégâts
-                        <input lvl0ItemPropertyField="data.damage"
+                        <input lvl0ItemPropertyField="system.damage"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.damage">
-                        <select lvl0ItemPropertyField="data.element"
+                        <select lvl0ItemPropertyField="system.element"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.element">
                             <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
@@ -410,7 +410,7 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Type
-                        <select lvl0ItemPropertyField="data.weaponType"
+                        <select lvl0ItemPropertyField="system.weaponType"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.weaponType">
                             <option *ngFor="let weaponType of weaponTypes | keyvalue" [value]="weaponType.key">{{weaponType.value}}</option>
@@ -418,7 +418,7 @@
                     </label>
                     <label class="one-line" *ngIf="item.system.weaponType !== 'melee'">
                         Type de munition
-                        <select lvl0ItemPropertyField="data.usedAmmunitionType"
+                        <select lvl0ItemPropertyField="system.usedAmmunitionType"
                                 [lvl0Item]="item"
                                 [ngModel]="item.system.usedAmmunitionType">
                             <option *ngFor="let ammunitionType of usedAmmunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
@@ -428,7 +428,7 @@
                 <div class="editor-line">
                     <label class="one-line">
                         Nombre de main
-                        <input lvl0ItemPropertyField="data.handCount"
+                        <input lvl0ItemPropertyField="system.handCount"
                                type="number"
                                [lvl0Item]="item"
                                [ngModel]="item.system.handCount">
@@ -438,7 +438,7 @@
                 <div class="editor-line">
                     <label class="multi-line">
                         Bonus
-                        <input lvl0ItemPropertyField="data.bonus"
+                        <input lvl0ItemPropertyField="system.bonus"
                                type="text"
                                [lvl0Item]="item"
                                [ngModel]="item.system.bonus">
@@ -468,6 +468,7 @@
             </div>
         </ng-container>
         <button (click)="addModifier(itemWithModifier$(item))">Ajouter un modificateur</button>
+
     </section>
 
     <section *ngIf="canHaveExtraSkills$ | async" class="editor-section extra-skills">
@@ -489,6 +490,65 @@
             </div>
         </ng-container>
         <button (click)="addExtraSkill(itemWithExtraSkills$(item))">Ajouter une compétence</button>
+    </section>
+
+
+    <section *ngIf="canHaveModifier$ | async" class="editor-section modifiers">
+        <h2>Capacité unique</h2>
+        <ng-container *ngIf="itemWithUniqueCapabilities$(item); let itemWithUniqueCapabilities">
+            <label class="one-line">
+                <input lvl0ItemPropertyField="system.superiorArcane.active"
+                       [lvl0Item]="item"
+                       [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.active"
+                       type="checkbox">
+                Permet de lancer des sorts de niveau supérieur
+            </label>
+            @if (itemWithUniqueCapabilities.system.superiorArcane?.active) {
+                <div class="editor-line">
+                    <label class="one-line">
+                        <span>Multiplicateur du cout du mana par niveau de difference</span>
+                        <input lvl0ItemPropertyField="system.superiorArcane.manaMultiplierPerLevel"
+                               [lvl0Item]="item"
+                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.manaMultiplierPerLevel"
+                               min="0"
+                               type="number">
+                    </label>
+                </div>
+
+                <div class="editor-line">
+                    <label class="one-line">
+                        <span>Dégat par niveau de difference</span>
+                        <input lvl0ItemPropertyField="system.superiorArcane.damagePerLevel"
+                               [lvl0Item]="item"
+                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.damagePerLevel"
+                               min="0"
+                               type="number">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        <span>Nombre d'utilisation par session</span>
+                        <input lvl0ItemPropertyField="system.superiorArcane.usageCountPerSessions"
+                               [lvl0Item]="item"
+                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.usageCountPerSessions"
+                               min="0"
+                               type="number">
+                    </label>
+                </div>
+                <div class="editor-line">
+                    <label class="one-line">
+                        <span>Niveau d'arcane maximum</span>
+                        <input lvl0ItemPropertyField="system.superiorArcane.maximumArcaneLevel"
+                               [lvl0Item]="item"
+                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.maximumArcaneLevel"
+                               min="0"
+                               type="number">
+                    </label>
+                </div>
+
+            }
+        </ng-container>
+
     </section>
 
 </ng-container>

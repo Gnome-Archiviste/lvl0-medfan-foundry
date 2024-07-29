@@ -14,6 +14,8 @@ import {RollFactory} from '../shared/roll-factory';
 import {Lvl0ActorEffectArmor, Lvl0ActorEffectModifier} from '../data-accessor/actor-effect.service';
 import {IRoll} from '../shared/roll';
 import {TranslateService} from '../shared/translate.service';
+import {SuperiorArcaneCapability} from '../data-accessor/selectors/character-superior-arcane-capability-selector';
+import {CharacterSuperiorArcaneCapability} from '../data-accessor/selectors/character-available-spell-selector';
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +47,12 @@ export class SpellUtil {
                 duration: await this.rollSpellValue(this.computeComplex(spell.definition.duration, context)),
                 heal: await this.rollSpellValue(this.computeHealFormula(spell.definition.heal, context)),
                 resilience: await this.rollSpellValue(this.computeComplex(spell.definition.resilience, context)),
+                superiorArcaneCapability: spell.computedData.superiorArcaneCapability ? {
+                    sourceId: spell.computedData.superiorArcaneCapability.sourceId,
+                    sourceType: spell.computedData.superiorArcaneCapability.sourceType,
+                    label: spell.computedData.superiorArcaneCapability.label,
+                    damageOnCaster: spell.computedData.superiorArcaneCapability.damageOnCaster,
+                } : undefined,
             }
         };
         let actions = await this.computeActions(spell.definition.actions, context, spell.definition.icon);
@@ -134,15 +142,21 @@ export class SpellUtil {
 
     computeSpellValuesBeforeRoll(
         spellDefinition: SpellDefinition,
-        context: SpellContext
+        context: SpellContext,
+        superiorArcaneCapability?: CharacterSuperiorArcaneCapability
     ): Spell {
         try {
+            let effectiveCost = spellDefinition.level;
+            if (superiorArcaneCapability) {
+                effectiveCost = superiorArcaneCapability.cost;
+            }
             let area = this.computeArea(spellDefinition.area, context);
             return {
                 definition: spellDefinition,
                 context: {...context},
                 computedData: {
-                    effectiveCost: spellDefinition.level,
+                    effectiveCost: effectiveCost,
+                    damageOnCaster: superiorArcaneCapability?.damage,
                     area: area,
                     bonus: this.computeComplex(spellDefinition.bonus, context),
                     criticalSuccess: this.computeCritical(spellDefinition.criticalSuccess, context),
@@ -152,6 +166,12 @@ export class SpellUtil {
                     duration: this.computeComplex(spellDefinition.duration, context),
                     heal: this.computeHealFormula(spellDefinition.heal, context),
                     resilience: this.computeComplex(spellDefinition.resilience, context),
+                    superiorArcaneCapability: superiorArcaneCapability ? {
+                        damageOnCaster: superiorArcaneCapability.damage,
+                        sourceType: superiorArcaneCapability.sourceType,
+                        sourceId: superiorArcaneCapability.sourceId,
+                        label: superiorArcaneCapability.label,
+                    } : undefined
                 }
             } as Spell;
         } catch (e) {

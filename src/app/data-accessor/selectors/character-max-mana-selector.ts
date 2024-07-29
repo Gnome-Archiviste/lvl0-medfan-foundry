@@ -18,7 +18,7 @@ export class CharacterMaxManaSelector {
 
         for (let levelData of levelUpData) {
             if (levelData.level <= level.value) {
-                maxMana += levelData.mana;
+                maxMana += levelData.mana ?? 0;
             }
         }
 

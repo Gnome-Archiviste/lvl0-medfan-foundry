@@ -175,7 +175,7 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
         }
 
         if (rollResult !== 'fail') {
-            if (this.casterId)
+            if (this.casterId) {
                 await this.actorUpdaterService.updateActorFromCurrent(this.casterId, actor => ({
                     system: {
                         mana: {
@@ -183,6 +183,17 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                         }
                     }
                 }))
+                if (rolledSpell.data.superiorArcaneCapability && rolledSpell.data.superiorArcaneCapability.damageOnCaster > 0) {
+                    let damage = rolledSpell.data.superiorArcaneCapability.damageOnCaster;
+                    await this.actorUpdaterService.updateActorFromCurrent(this.casterId, actor => ({
+                        system: {
+                            health: {
+                                value: actor.system.health.value - damage
+                            }
+                        }
+                    }))
+                }
+            }
         }
 
         return {spell: rolledSpell, additionalAction: additionalAction};

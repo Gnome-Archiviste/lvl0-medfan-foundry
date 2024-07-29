@@ -59,6 +59,12 @@ export class ComputedSpellDataBeforeRoll {
     area?: string | RollableSpellValue;
     resilience?: string | RollableSpellValue;
     criticalSuccess?: string | RollableSpellValue;
+    superiorArcaneCapability?: {
+        damageOnCaster: number;
+        sourceType: 'item';
+        sourceId: string;
+        label: string;
+    }
 }
 
 export type RolledSpellValue = {
@@ -100,6 +106,12 @@ export type RolledSpellData = {
     area?: RolledSpellValue;
     resilience?: RolledSpellValue;
     criticalSuccess?: RolledSpellValue;
+    superiorArcaneCapability?: {
+        sourceId: string;
+        sourceType: 'item';
+        label: string;
+        damageOnCaster: number;
+    };
 }
 
 export class RollableSpellValue {

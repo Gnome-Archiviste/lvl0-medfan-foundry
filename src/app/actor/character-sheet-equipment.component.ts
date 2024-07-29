@@ -11,7 +11,7 @@ import {
 } from '../data-accessor/selectors/character-selectors';
 import {Lvl0Item, Lvl0ItemAmmunition, Lvl0ItemPotions, Lvl0ItemWeapon} from '../data-accessor/models/lvl0-item';
 import {UnionKeys} from '../../utils/util';
-import {AmmunitionType, ItemModifierInfo} from '../../models/item';
+import {AmmunitionType} from '../../models/item';
 import {SkillDefinition} from '../../repositories';
 import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 import {ActorUpdaterService} from '../data-accessor/actor-updater.service';

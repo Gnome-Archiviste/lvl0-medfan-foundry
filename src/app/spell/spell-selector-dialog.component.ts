@@ -99,12 +99,12 @@ export class SpellSelectorDialogComponent implements OnInit, OnDestroy {
                         const context: SpellContext = {
                             arcaneLevel
                         };
-                        return spellDefinitions.map(sd => this.spellUtil.computeSpellValuesBeforeRoll(sd, context));
+                        return spellDefinitions.map(sd => this.spellUtil.computeSpellValuesBeforeRoll(sd.spellDefinition, context, sd.superiorArcaneCapability));
                     }));
             this.arcanesLevels$ = availableSpells$.pipe(
                 map(spellDefinitions => {
                     let allLevels = spellDefinitions.reduce((acc, value) => {
-                        acc.push(value.level);
+                        acc.push(value.spellDefinition.level);
                         return acc
                     }, [] as number[]);
                     let levels = new Set(allLevels)
