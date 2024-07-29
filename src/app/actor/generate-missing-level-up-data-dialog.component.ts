@@ -27,7 +27,7 @@ export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
     @Output('close')
     close: EventEmitter<GenerateMissingLevelUpDataDialogResult> = new EventEmitter<GenerateMissingLevelUpDataDialogResult>();
 
-    data: GenerateMissingLevelUpDataDialogData;
+    data?: GenerateMissingLevelUpDataDialogData;
     levelsData: Record<number, LevelData> = {};
     totalNewHealth: number = 0;
     totalNewMana: number = 0;
@@ -44,10 +44,13 @@ export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
             return;
         this.data = this.dialogDataService.consumeData<GenerateMissingLevelUpDataDialogData>(this.dialogDataId);
         this.levelsData = {};
-        this.initLevelUpData()
+        this.initLevelUpData(this.data)
     }
 
     get ready() {
+        if (!this.data)
+            return false;
+
         for (let lvl of this.data.levelWithAdditionalPointInStat) {
             if (!this.levelsData![lvl].additionalStat) {
                 return false;
@@ -62,6 +65,8 @@ export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
         useStatValue?: string,
         diceCount?: number
     }): Promise<number> {
+        if (!this.data)
+            return 0;
         if (valueOrRoll.value)
             return valueOrRoll.value;
         if (valueOrRoll.useStatValue) {
@@ -74,9 +79,9 @@ export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
         return 0;
     }
 
-    private async initLevelUpData() {
+    private async initLevelUpData(data: GenerateMissingLevelUpDataDialogData) {
         let levelsData: Record<number, LevelData> = {};
-        for (let level of this.data.levelWithMissingData) {
+        for (let level of data.levelWithMissingData) {
             levelsData[level] = {
                 health: 0,
                 mana: 0,
@@ -86,9 +91,9 @@ export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
         }
         this.levelsData = levelsData;
 
-        for (let level of this.data.levelWithMissingData) {
-            this.levelsData[level].health = await this.getValueOrDoRoll(this.data.additionalHealth[level]);
-            this.levelsData[level].mana = await this.getValueOrDoRoll(this.data.additionalMana[level]);
+        for (let level of data.levelWithMissingData) {
+            this.levelsData[level].health = await this.getValueOrDoRoll(data.additionalHealth[level]);
+            this.levelsData[level].mana = await this.getValueOrDoRoll(data.additionalMana[level]);
         }
 
         let totalNewHealth = 0;
