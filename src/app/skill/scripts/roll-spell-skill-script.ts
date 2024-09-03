@@ -209,6 +209,12 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
         if (!this.wandInfo) {
             return;
         }
+
+        let charge = 1;
+        if (rollResult === 'epicFail')
+            charge = 0;
+        else if (rollResult === 'criticalSuccess')
+            charge = 2
         if (this.wandInfo.wand.system.spell === rolledSpell.definition.id) {
             if (rollResult === 'epicFail') {
                 await this.itemUpdaterService.updateItem<Lvl0ItemWand>(this.wandInfo.wand.id, {
@@ -219,14 +225,14 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
             } else if (rollResult !== 'fail') {
                 await this.itemUpdaterService.updateItemFromLastVersion<Lvl0ItemWand>(this.wandInfo.wand, w => ({
                     system: {
-                        charge: w.system.charge + 1
+                        charge: w.system.charge + charge
                     }
                 }))
             }
         } else if (!this.wandInfo.wand.system.spell) {
             if (rollResult !== 'fail') {
-                await this.itemUpdaterService.changeQuantity(this.wandInfo.wand, -1);
-                this.wandInfo.wand = await this.itemService.createItemFrom(this.wandInfo.wand, {
+                let emptyWand = this.wandInfo.wand;
+                this.wandInfo.wand = await this.itemService.createItemFrom(emptyWand, {
                     name: rolledSpell.definition.name,
                     img: rolledSpell.definition.icon,
                     system: {
@@ -235,10 +241,11 @@ export class RollSpellSkillScript extends SkillScript<SpellScriptResult, SpellSc
                         quantity: undefined,
                         spell: rolledSpell.definition.id,
                         description: rolledSpell.definition.description,
-                        charge: rollResult === 'epicFail' ? 0 : 1,
+                        charge: charge,
                         blocked: rollResult === 'epicFail'
                     },
                 });
+                await this.itemUpdaterService.changeQuantity(emptyWand, -1);
             }
         }
     }
