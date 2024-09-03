@@ -74,7 +74,9 @@ export default [
             "text": "Magicien"
         },
         "duration": {
-            "text": "1 tour par arcanne"
+            "formula": "return 1 * context.arcaneLevel;",
+            "unit": "tours",
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "width": 5,
@@ -92,12 +94,12 @@ export default [
             "rollFormula": "return '5d6';",
             "text": "5d6"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "tempeteDeFeu",
         "name": "Tempête de feu",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/fire/beam-jet-stream-spiral-yellow.webp",
         "description": "Une flamme élémentaire déchaînée remplit la zone d'effet de 7x7 mètres et tourbillonnant, causant 55 points de dégâts (sans armure) à tout ce qu’elle touche. \n\n\n\n",
         "distance": {
             "value": 10,
@@ -109,8 +111,17 @@ export default [
             "unit": "tours",
             "text": "15 tours"
         },
+        "area": {
+            "width": 7,
+            "height": 7,
+            "text": "7x7 mètres",
+            "comment": ""
+        },
         "resilience": {
-            "text": "Divise le dommage par deux. À faire à chaque tour qu’une personne est dans la tempête"
+            "text": "Divise le dommage par deux. À faire à chaque tour qu’une personne est dans la tempête de feu."
+        },
+        "criticalSuccess": {
+            "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
             "rollFormula": "return \"55\";",
@@ -119,15 +130,27 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
-        "id": "deFeu",
-        "name": "        de feu.",
-        "icon": "icons/magic/fire/beam-jet-stream-spiral-yellow.webp",
-        "description": "Succès remarquable : La cible ne peut pas faire de test de résilience",
+        "id": "immuniteAuFeu",
+        "name": "Immunité au feu",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
+        "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection complète contre le feu. Le sort annule le dommage produit par le feu, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
         "area": {
-            "width": 7,
-            "height": 7,
-            "text": "7x7 mètres",
-            "comment": ""
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Annule les dégâts causés par le feu"
+        },
+        "criticalSuccess": {
+            "text": "Retourne la moitié des dégâts à celui qui les inflige."
         },
         "dependsOnArcaneLevel": false
     }

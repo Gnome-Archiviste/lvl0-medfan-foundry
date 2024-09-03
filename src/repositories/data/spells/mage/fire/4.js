@@ -84,6 +84,7 @@ export default [
             "text": "L’armure des victimes ne fait plus que la moitié de la protection."
         },
         "damage": {
+            "rollFormula": "return '2d6';",
             "text": "2d6 par tour"
         },
         "dependsOnArcaneLevel": false

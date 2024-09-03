@@ -1,5 +1,54 @@
 export default [
     {
+        "id": "conductibilite",
+        "name": "Conductibilité",
+        "icon": "icons/magic/lightning/bolt-forked-large-green.webp",
+        "description": "Lorsque qu'un élémentaliste d'acide fait ce sort en premier sur la même cible qu'un élémentaliste d'air, les dégâts électriques sont doublés. Ce sort fonctionne aussi avec les sorts en baguette.",
+        "distance": {
+            "value": 40,
+            "unit": "mètre",
+            "text": "40 mètres"
+        },
+        "duration": {
+            "text": "Jusqu’à utilisation, maximum d’une scène."
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Double les dégâts des sorts d’électricité"
+        },
+        "criticalSuccess": {
+            "text": "Fait plein dommage."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "immuniteALacide",
+        "name": "Immunité à l’acide",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-acid.webp",
+        "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection complète contre l’acide. Le sort annule le dommage produit par l’acide, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Annule les dégâts causés par l’acide"
+        },
+        "criticalSuccess": {
+            "text": "Retourne la moitié des dégâts à celui qui les inflige."
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "nuageMeurtrier",
         "name": "Nuage meurtrier",
         "icon": "icons/magic/air/fog-gas-smoke-dense-green.webp",
@@ -34,6 +83,32 @@ export default [
         "dependsOnArcaneLevel": false
     },
     {
+        "id": "refluxRepetitif",
+        "name": "Reflux répétitif",
+        "icon": "icons/magic/unholy/beam-impact-green.webp",
+        "description": "En frappant le sol du pied, l’élémentaliste déclenche une réaction en chaîne qui fait apparaître un petit geyser de liquide acide sous les cibles qu’il choisit, en commençant par le première cible puis éclate sous d’autres cibles à moins de 60 mètres du magicien. Les geysers infligent 2d6 + (3 par victimes) points de dégâts à chacune des victimes (1 cible par niveau d’arcane de l’élémentaliste). Tous les sujets peuvent tenter des jets de résilience pour la moitié des dégâts. L’élémentaliste choisit les cibles, mais elles doivent toutes être à moins de 60 mètres au total (du magicien à la dernière cible), et aucune cible ne peut être touchée plus d’une fois. Le magicien peut choisir d’affecter moins de cibles que le maximum.",
+        "distance": {
+            "text": "60 mètres."
+        },
+        "duration": {
+            "text": "Instantané"
+        },
+        "area": {
+            "text": "Aucune"
+        },
+        "resilience": {
+            "text": "Divise le dommage par deux (plus haut) chaque victime doit faire un test"
+        },
+        "criticalSuccess": {
+            "text": "L’armure de la cible est détruite."
+        },
+        "damage": {
+            "element": "acid",
+            "text": "2d6 + (3 par victimes) sur chaque victime"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "tempeteDacide",
         "name": "Tempête d’acide",
         "icon": "icons/magic/acid/projectile-beams-salvo-green.webp",
@@ -64,6 +139,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
+            "rollFormula": "return '4d6';",
             "element": "acid",
             "text": "4d6 par tour"
         },

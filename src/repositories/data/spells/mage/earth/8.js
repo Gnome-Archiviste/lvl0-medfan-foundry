@@ -1,8 +1,8 @@
 export default [
     {
-        "id": "demonDePoussierekl",
-        "name": "Démon de poussière[k][l]",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "id": "demonDePoussiere",
+        "name": "Démon de poussière",
+        "icon": "icons/magic/air/wind-vortex-swirl-red.webp",
         "description": "L’élémentaliste crée un vortex tourbillonnant de sable et de gravats martelant une zone de 7x7 mètres, infligeant 1d6 dégâts par niveau d’arcane. Le sort se nomme ainsi à cause des vents rugissants qui l'accompagnent, donnant l’impression qu’un démon fou se marre au centre.  À cause des débris et du déplacement d’air, le déplacement est divisé par deux et les victimes ont un malus de 1 sur tout test demandant la statistique de Perception dans la zone pendant toute la durée du sort. L’élémentaliste peut  déplacer le Démon de poussière à une vitesse de 5 mètres par tour.",
         "distance": {
             "value": 20,
@@ -14,27 +14,23 @@ export default [
             "unit": "tours",
             "text": "2d6 tours"
         },
-        "bonus": {
-            "text": "Ralentit les cibles et donne un malus de Perception"
-        },
-        "resilience": {
-            "text": "Divise le dommage par deux (plus haut). Il faut faire le jet pour chaque tour qu’une"
-        },
-        "damage": {
-            "text": "1d6 dégâts par niveau d’arcane"
-        },
-        "dependsOnArcaneLevel": false
-    },
-    {
-        "id": "personneEstDansLaZoneDuDemonDePoussiere",
-        "name": "        personne est dans la zone du Démon de poussière.",
-        "icon": "icons/magic/air/wind-vortex-swirl-red.webp",
-        "description": "Succès remarquable : La cible ne peut pas faire de test de résilience",
         "area": {
             "width": 7,
             "height": 7,
             "text": "7x7 mètres",
             "comment": ""
+        },
+        "bonus": {
+            "text": "Ralentit les cibles et donne un malus de Perception"
+        },
+        "resilience": {
+            "text": "Divise le dommage par deux (plus haut). Il faut faire le jet pour chaque tour qu’une personne est dans la zone du Démon de poussière."
+        },
+        "criticalSuccess": {
+            "text": "La cible ne peut pas faire de test de résilience"
+        },
+        "damage": {
+            "text": "1d6 dégâts par niveau d’arcane"
         },
         "dependsOnArcaneLevel": false
     },
@@ -80,7 +76,22 @@ export default [
         "criticalSuccess": {
             "text": "Absorbe 100 points de dégâts"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "text": "Tant que les 50 points ne sont pas utilisés"
+                    },
+                    "effectName": "Peau de diamant",
+                    "magicArmor": {
+                        "formula": "return context.criticalSuccess ? 100 : 50"
+                    }
+                }
+            }
+        }
     },
     {
         "id": "terrierDuLapin",

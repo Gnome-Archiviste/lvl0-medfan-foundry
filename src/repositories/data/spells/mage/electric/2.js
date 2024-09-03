@@ -35,15 +35,18 @@ export default [
             "text": "5 mètres + 1 mètre par niveau."
         },
         "duration": {
-            "text": "1 tour/arcane"
+            "formula": "return (context.criticalSuccess ? 2 : 1) * 1 * context.arcaneLevel",
+            "unit": "tours",
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"
         },
         "criticalSuccess": {
+            "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "etherealSkates",

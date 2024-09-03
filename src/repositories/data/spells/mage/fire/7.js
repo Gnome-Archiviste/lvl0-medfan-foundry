@@ -106,7 +106,7 @@ export default [
         "icon": "icons/magic/fire/beam-jet-stream-embers.webp",
         "description": "L'élémentaliste crache un jet de feu devant lui tel un dragon. ",
         "distance": {
-            "text": "20 mètre de long a partir du magicien"
+            "text": "20 mètres de long a partir du magicien"
         },
         "duration": {
             "text": "Instantané"

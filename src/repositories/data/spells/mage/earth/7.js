@@ -71,7 +71,7 @@ export default [
     {
         "id": "retournerLesMouchesBourdonnantes",
         "name": "Retourner les mouches bourdonnantes",
-        "icon": "",
+        "icon": "icons/skills/ranged/projectile-spiral-gray.webp",
         "description": "La cible est immunisée contre les missiles (lancer/tir) non magiques qui rebondissent simplement sur elle, tels les projectiles de fronde, les flèches et les carreaux d’arbalète, mais elle n’est pas protégée contre les très gros projectiles tels que les rochers.",
         "distance": {
             "type": "touch",
@@ -93,8 +93,8 @@ export default [
     {
         "id": "terraeFusiona",
         "name": "Terrae fusiona",
-        "icon": "icons/magic/defensive/shield-barrier-blades-teal.web",
-        "description": "L’élémentaliste peut entrer dans la terre ou la roche et fusionner avec, afin de fuire un danger. L’élémentaliste ne peut pas étouffer, avoir faim ou se faire blesser, (pratiquement) indéfiniment mais il ne peut pas se déplacer car l’élémentaliste fait un avec le sol.",
+        "icon": "icons/magic/defensive/shield-barrier-blades-teal.webp",
+        "description": "L’élémentaliste peut entrer dans la terre ou la roche et fusionner avec, afin de fuir un danger. L’élémentaliste ne peut pas étouffer, avoir faim ou se faire blesser, (pratiquement) indéfiniment mais il ne peut pas se déplacer car l’élémentaliste fait un avec le sol.",
         "distance": {
             "text": "soi-même"
         },

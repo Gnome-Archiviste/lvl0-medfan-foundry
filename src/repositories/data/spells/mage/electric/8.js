@@ -54,5 +54,30 @@ export default [
             "text": "55"
         },
         "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "immuniteALelectricite",
+        "name": "Immunité à l’électricité",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
+        "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection complète contre l’électricité. Le sort annule le dommage produit par l'électricité, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Annule les dégâts causés par l’acide"
+        },
+        "criticalSuccess": {
+            "text": "Retourne la moitié des dégâts à celui qui les inflige."
+        },
+        "dependsOnArcaneLevel": false
     }
 ]

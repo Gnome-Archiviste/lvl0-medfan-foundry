@@ -93,7 +93,7 @@ export default [
             "text": "protection de 15 points de résistance, 2 attaques par tour"
         },
         "criticalSuccess": {
-            "text": "La cible ne peut pas faire de test de résilience[h][i]"
+            "text": "La cible ne peut pas faire de test de résilience"
         },
         "dependsOnArcaneLevel": false
     },
@@ -111,7 +111,7 @@ export default [
             "text": "1 scène ou jusqu'à destruction"
         },
         "area": {
-            "text": "x mètres de long"
+            "text": "2 x Arcane mètres de long"
         },
         "criticalSuccess": {
             "text": "Double la largeur"
@@ -134,7 +134,7 @@ export default [
             "text": "Une cible"
         },
         "criticalSuccess": {
-            "text": "Durée instantannée ?[j]"
+            "text": "Durée instantannée ?"
         },
         "dependsOnArcaneLevel": false
     }

@@ -90,6 +90,9 @@ export default [
         "area": {
             "text": "(1 + 2 par niveau d’arcane)x(1 + 2 par niveau d’arcane)"
         },
+        "bonus": {
+            "text": "Moitié du mouvement"
+        },
         "resilience": {
             "text": "moitié des dégâts"
         },
@@ -112,7 +115,7 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "text": "1 tour/arcane"
+            "text": "1  tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"

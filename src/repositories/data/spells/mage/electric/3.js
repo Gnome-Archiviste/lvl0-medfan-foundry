@@ -72,7 +72,7 @@ export default [
     },
     {
         "id": "recharge",
-        "name": "Recharge[a][b]",
+        "name": "Recharge",
         "icon": "icons/magic/control/silhouette-hold-change-blue.webp",
         "description": "Le sort capture une partie de l’énergie entrante, réduisant son effet sur vous et la stockant pour votre prochaine attaque de mêlée. Vous avez une résistance à l’électricité jusqu’au début de votre prochain tour. De plus, la première fois que vous frappez avec une attaque de mêlée lors de votre prochain tour, la cible subit 1d6 dégâts électriques supplémentaires, et le sort prend fin.",
         "distance": {

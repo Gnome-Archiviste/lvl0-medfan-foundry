@@ -1,5 +1,27 @@
 export default [
     {
+        "id": "bouclierEolien",
+        "name": "Bouclier éolien",
+        "icon": "icons/skills/defensive/barrier-shield-dome-deflect-teal.webp",
+        "description": "La cible est immunisée contre les missiles (lancer/tir) non magiques qui rebondissent simplement sur le bouclier d’air que l’élémentaliste a créé, tels les projectiles de fronde, les flèches et les carreaux d’arbalète, mais elle n’est pas protégée contre les très gros projectiles tels que les rochers.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "rollFormula": "return '2d6'",
+            "unit": "tours",
+            "text": "2d6 tours"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "criticalSuccess": {
+            "text": "Pleine durée (12 tours)"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
         "id": "creationMajeureDair",
         "name": "Création majeure d'air",
         "icon": "icons/magic/air/weather-wind-gust.webp",
@@ -63,6 +85,34 @@ export default [
         },
         "criticalSuccess": {
             "text": "Deux personnages peuvent passer de front"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "zoneDeHautePression",
+        "name": "Zone de haute pression",
+        "icon": "icons/magic/air/wind-swirl-gray-blue.webp",
+        "description": "L'élémentaliste aspire une grande quantité d’air qui modifie la pression de l’air, sous la forme d’un cône, autour des cibles. Cette pression excessive écrase les corps des cibles, leur infligeant 2d6+10. De plus, lorsque l’élémentaliste expire l’air, les cibles doivent réussir un jet de résilience ou être projeté loin du magicien sur 5 mètres et être projeté au sol.",
+        "distance": {
+            "text": "11 mètre à partir de l'élémentaliste"
+        },
+        "duration": {
+            "text": "Instantané"
+        },
+        "area": {
+            "text": "11x11"
+        },
+        "bonus": {
+            "text": "Envoie les cibles au sol et au loin (5 mètres)"
+        },
+        "resilience": {
+            "text": "Divise le dommage par deux"
+        },
+        "criticalSuccess": {
+            "text": "Aucun test de résilience possible."
+        },
+        "damage": {
+            "text": "2d6 + 10 (air)"
         },
         "dependsOnArcaneLevel": false
     }

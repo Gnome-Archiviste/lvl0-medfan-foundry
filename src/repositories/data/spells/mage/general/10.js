@@ -106,7 +106,7 @@ export default [
     {
         "id": "peauDeDiamant",
         "name": "Peau de diamant",
-        "icon": "icons/commodities/gems/gem-faceted-diamond-silver-.webp",
+        "icon": "icons/commodities/gems/gem-faceted-diamond-silver-.webp[d]",
         "description": "Permet d’absorber 50 points de dégâts. Le sort peut être fait sur le magicien ou un allié. Le magicien doit toucher la cible. Le sort ne peut pas s’additionner à d’autres sorts de protections qui absorbent les dégâts. ",
         "distance": {
             "type": "touch",

@@ -59,6 +59,7 @@ export default [
             "text": "L’armure des victimes ne fait plus que la moitié de la protection."
         },
         "damage": {
+            "rollFormula": "return '2d6';",
             "text": "2d6 par tour"
         },
         "dependsOnArcaneLevel": false
@@ -74,7 +75,9 @@ export default [
             "text": "20 mètres"
         },
         "duration": {
-            "text": "1 tour/arcane"
+            "formula": "return 1 * context.arcaneLevel;",
+            "unit": "tours",
+            "text": "1 tour par niveau d’arcane"
         },
         "area": {
             "text": "Une cible"
@@ -88,7 +91,7 @@ export default [
         "criticalSuccess": {
             "text": "La cible ne peut pas faire de test de résilience"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": true
     },
     {
         "id": "resistanceALacide",

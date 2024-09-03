@@ -20,7 +20,22 @@ export default [
         "criticalSuccess": {
             "text": "Double la durée du sort"
         },
-        "dependsOnArcaneLevel": false
+        "dependsOnArcaneLevel": false,
+        "actions": {
+            "addEffect": {
+                "name": "Ajouter l'effet",
+                "type": "addEffect",
+                "data": {
+                    "duration": {
+                        "text": "5 tours ou utilisation des 10 points de protection"
+                    },
+                    "effectName": "Armure citrique",
+                    "magicArmor": {
+                        "formula": "return 10"
+                    }
+                }
+            }
+        }
     },
     {
         "id": "causticBerries",

@@ -75,7 +75,7 @@ export default [
     {
         "id": "marcherSurLeau",
         "name": "Marcher sur l’eau",
-        "icon": "icons/magic/water/wave-waterve-teal.webp",
+        "icon": "icons/magic/water/wave-water-teal.webp",
         "description": "Ce sort permet à une cible de marcher sur un liquide comme si elle marchait sur un sol solide. Le sort dure 10 tours.\n\n\n\n",
         "distance": {
             "type": "touch",
@@ -99,7 +99,7 @@ export default [
     {
         "id": "separerLesEaux",
         "name": "Séparer les eaux",
-        "icon": "icons/magic/water/wave-water-teal.webp",
+        "icon": "icons/magic/water/barrier-ice-wall-snow.webp",
         "description": "Créer un passage dans un bassin d'eau (lac, rivière mais pas une mer) en repoussant l'eau de chaque côté.\n\n\n\n",
         "distance": {
             "text": "Devant l’élémentaliste"

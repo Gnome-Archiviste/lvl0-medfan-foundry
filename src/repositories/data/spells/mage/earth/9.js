@@ -85,7 +85,7 @@ export default [
     {
         "id": "petrification",
         "name": "Pétrification",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/earth/strike-body-stone-crumble.webp",
         "description": "L’élémentaliste pétrifie une cible, c’est-à-dire qu’il la transforme en pierre. La cible ne peut reprendre vie qu’avec une potion de dépétrification, un sort de Dépétrification ou un sort du Baiser de la princesse.",
         "distance": {
             "type": "touch",
@@ -94,6 +94,9 @@ export default [
         "duration": {
             "text": "Jusqu’à dépétrification"
         },
+        "area": {
+            "text": "Une cible"
+        },
         "bonus": {
             "text": "Pétrifie une cible"
         },
@@ -101,17 +104,7 @@ export default [
             "text": "La cible est pétrifiée seulement pour une scène."
         },
         "criticalSuccess": {
-            "text": "Il faut absolument le sort  du Baiser de la princesse des Champions pour briser"
-        },
-        "dependsOnArcaneLevel": false
-    },
-    {
-        "id": "leSortLaPotionOuLeSortDeDepetrificationNeFonctionnePas",
-        "name": "        le sort. La potion ou le sort de Dépétrification ne fonctionne pas.",
-        "icon": "icons/magic/earth/strike-body-stone-crumble.webp",
-        "description": "",
-        "area": {
-            "text": "Une cible"
+            "text": "Il faut absolument le sort  du Baiser de la princesse des Champions pour briser le sort. La potion ou le sort de Dépétrification ne fonctionne pas."
         },
         "dependsOnArcaneLevel": false
     }

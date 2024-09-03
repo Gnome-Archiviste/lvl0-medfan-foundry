@@ -55,7 +55,8 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
-            "text": "4d6 de dégâts"
+            "rollFormula": "return '4d6';",
+            "text": "4d6"
         },
         "dependsOnArcaneLevel": false
     },
@@ -88,7 +89,8 @@ export default [
             "text": "Double la durée du sort"
         },
         "damage": {
-            "text": "5d6 de dégâts"
+            "rollFormula": "return '5d6';",
+            "text": "5d6"
         },
         "dependsOnArcaneLevel": false
     },

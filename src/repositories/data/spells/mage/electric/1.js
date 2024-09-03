@@ -100,7 +100,7 @@ export default [
     {
         "id": "smug",
         "name": "Smug",
-        "icon": "icons/magic/symbols/question-stone-yellow.webp",
+        "icon": "icons/magic/air/fog-gas-smoke-brown.webp",
         "description": "Un épais nuage de poussière entoure l'élémentaliste, permettant de le cacher ainsi que ses coéquipiers. Donne 2 points de pénalité sur la perception de tous ceux dans la zone. Il faut faire un jet de perception pour trouver une nouvelle cible. ",
         "distance": {
             "type": "self",

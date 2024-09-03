@@ -30,6 +30,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience."
         },
         "damage": {
+            "rollFormula": "return '4d6';",
             "text": "4d6 par tour"
         },
         "dependsOnArcaneLevel": false

@@ -30,6 +30,7 @@ export default [
             "text": "La cible ne peut pas faire de test de résilience"
         },
         "damage": {
+            "rollFormula": "return '4d6';",
             "text": "4d6 par tour"
         },
         "dependsOnArcaneLevel": false
@@ -142,6 +143,31 @@ export default [
         "criticalSuccess": {
             "formula": "if (context.criticalSuccess) { return 'Double la durée du sort (pré-calculé)'; } return 'Double la durée du sort';",
             "text": "Double la durée du sort"
+        },
+        "dependsOnArcaneLevel": false
+    },
+    {
+        "id": "immuniteALeau",
+        "name": "Immunité à l’eau ",
+        "icon": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
+        "description": "La cible devient imprégnée d’énergies magiques protectrices offrant une protection complète contre l’eau. Le sort annule le dommage produit par l’eau, que la source des dégâts soit naturelle ou magique. L'élémentaliste doit toucher la cible.",
+        "distance": {
+            "type": "touch",
+            "text": "Toucher"
+        },
+        "duration": {
+            "value": 1,
+            "unit": "scène",
+            "text": "1 scène"
+        },
+        "area": {
+            "text": "Une cible"
+        },
+        "bonus": {
+            "text": "Annule les dégâts causés par l’eau"
+        },
+        "criticalSuccess": {
+            "text": "Retourne la moitié des dégâts à celui qui les inflige."
         },
         "dependsOnArcaneLevel": false
     }

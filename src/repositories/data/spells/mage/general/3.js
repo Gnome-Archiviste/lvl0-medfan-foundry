@@ -84,7 +84,7 @@ export default [
             "comment": ""
         },
         "criticalSuccess": {
-            "text": "Double la durée du sort"
+            "text": "Double la durée du sort[b]"
         },
         "dependsOnArcaneLevel": false
     },
