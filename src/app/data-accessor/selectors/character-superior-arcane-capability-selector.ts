@@ -8,7 +8,7 @@ export type SuperiorArcaneCapability = {
     sourceType: 'item';
     sourceId: string;
     label: string;
-    manaMultiplierPerLevel?: number;
+    manaMultiplier?: number;
     damagePerLevel?: number;
     usageCountPerSessions?: number;
     maximumArcaneLevel?: number;

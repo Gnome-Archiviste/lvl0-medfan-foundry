@@ -60,8 +60,8 @@ export class CharacterAvailableSpellsSelector {
                         }
                         let levelDiff = spellLevel - arcaneLevel;
                         let manaCost = spellLevel;
-                        if (superiorArcaneCapability.manaMultiplierPerLevel) {
-                            manaCost = (superiorArcaneCapability.manaMultiplierPerLevel * levelDiff) * manaCost;
+                        if (superiorArcaneCapability.manaMultiplier) {
+                            manaCost = (superiorArcaneCapability.manaMultiplier) * manaCost;
                         }
                         let damage = 0;
                         if (superiorArcaneCapability.damagePerLevel) {
