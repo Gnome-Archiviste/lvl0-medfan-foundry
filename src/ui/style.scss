@@ -1,7 +1,7 @@
-@import 'sheets/actor/lvl0-character-actor-sheet';
-@import 'sheets/item/lvl0-item-sheet';
+@use 'sheets/actor/lvl0-character-actor-sheet';
+@use 'sheets/item/lvl0-item-sheet';
 
-@import 'chat/chat';
+@use 'chat/chat';
 
 input[type=text] {
   border: 0;
