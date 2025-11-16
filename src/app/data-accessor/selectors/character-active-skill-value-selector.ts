@@ -35,7 +35,7 @@ export class CharacterActiveSkillValueSelector {
             successValue: totalValue
         };
         if (pendingSkillValue) {
-            let pendingSkillLevel = +pendingSkillValue.value ?? 0;
+            let pendingSkillLevel = +pendingSkillValue.value;
             activeSkillValue = {
                 ...activeSkillValue,
                 value: +activeSkillValue.value + pendingSkillLevel,

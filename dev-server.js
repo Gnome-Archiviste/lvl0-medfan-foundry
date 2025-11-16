@@ -3,7 +3,7 @@ import cors from "cors";
 
 const params = {
     port: 4278, // change to your preferred port
-    root: "./dist", // change to your output directory
+    root: "./dist/bnrowser", // change to your output directory
     open: false,
     file: "index.html",
     wait: 100,

@@ -112,7 +112,7 @@ export class CharacterSheetModifiersComponent implements OnInit {
 
     addActorModifier() {
         this.modifiers$.pipe(take(1)).subscribe(modifiers => {
-            let nextId = (modifiers.reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1) ?? 1;
+            let nextId = (modifiers.reduce((previousValue, currentValue) => Math.max(previousValue, +currentValue), 0) + 1);
             let modifier: CharacterModifierInfo = {name: '', isPermanent: false, stat: 'phy', value: 0};
             this.actorUpdaterService.updateActor(this.characterId, {system: {modifiers: {[nextId]: modifier}}});
         })
