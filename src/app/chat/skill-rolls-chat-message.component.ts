@@ -18,7 +18,8 @@ export type  SkillRollsChatMessageData = {
 @Component({
     selector: 'lvl0-skill-rolls-chat-message',
     templateUrl: './skill-rolls-chat-message.component.html',
-    styleUrl: './skill-rolls-chat-message.component.scss'
+    styleUrl: './skill-rolls-chat-message.component.scss',
+    standalone: false
 })
 export class SkillRollsChatMessageComponent {
     @Input() data!: SkillRollsChatMessageData;

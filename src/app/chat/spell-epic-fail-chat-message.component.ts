@@ -10,7 +10,8 @@ export type SpellEpicFailChatMessageData = {
 @Component({
     selector: 'lvl0-spell-epic-fail-chat-message',
     templateUrl: './spell-epic-fail-chat-message.component.html',
-    styleUrl: './spell-epic-fail-chat-message.component.scss'
+    styleUrl: './spell-epic-fail-chat-message.component.scss',
+    standalone: false
 })
 export class SpellEpicFailChatMessageComponent implements OnInit {
     @Input() data!: SpellEpicFailChatMessageData;

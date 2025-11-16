@@ -16,7 +16,8 @@ import {CdkMenu} from '@angular/cdk/menu';
 @Component({
     selector: 'lvl0-relative-value-editor',
     templateUrl: './relative-value-editor.component.html',
-    styleUrls: ['./relative-value-editor.component.scss']
+    styleUrls: ['./relative-value-editor.component.scss'],
+    standalone: false
 })
 export class RelativeValueEditorComponent implements OnInit, OnDestroy {
     @Output('onChange')

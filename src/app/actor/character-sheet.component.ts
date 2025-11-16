@@ -10,6 +10,7 @@ type TabNames = 'character' | 'equipment' | 'inventory' | 'modifiers' | 'notes';
     selector: 'lvl0-character-sheet-component',
     templateUrl: './character-sheet.component.html',
     styleUrls: ['./character-sheet.component.scss'],
+    standalone: false
 })
 export class CharacterSheetComponent implements OnInit {
     @Input('characterId')

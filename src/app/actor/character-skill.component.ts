@@ -25,7 +25,8 @@ import {UserService} from '../shared/user-service';
 @Component({
     selector: 'lvl0-character-skill',
     templateUrl: './character-skill.component.html',
-    styleUrls: ['./character-skill.component.scss']
+    styleUrls: ['./character-skill.component.scss'],
+    standalone: false
 })
 export class CharacterSkillComponent implements OnInit, OnDestroy {
     @Input() skillDefinition: SkillDefinition

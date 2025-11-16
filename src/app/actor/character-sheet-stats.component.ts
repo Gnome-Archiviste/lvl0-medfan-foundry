@@ -39,7 +39,8 @@ import {UserService} from '../shared/user-service';
 @Component({
     selector: 'lvl0-character-sheet-stats',
     templateUrl: './character-sheet-stats.component.html',
-    styleUrls: ['./character-sheet-stats.component.scss']
+    styleUrls: ['./character-sheet-stats.component.scss'],
+    standalone: false
 })
 export class CharacterSheetStatsComponent implements OnInit, OnDestroy {
     @Input('characterId')

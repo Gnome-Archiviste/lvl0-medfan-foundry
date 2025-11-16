@@ -16,7 +16,8 @@ export type ItemUseChatMessageData = {
 @Component({
     selector: 'lvl0-item-use-chat-message',
     templateUrl: './item-use-chat-message.component.html',
-    styleUrls: ['./item-use-chat-message.component.scss']
+    styleUrls: ['./item-use-chat-message.component.scss'],
+    standalone: false
 })
 export class ItemUseChatMessageComponent {
     @Input() data!: ItemUseChatMessageData;

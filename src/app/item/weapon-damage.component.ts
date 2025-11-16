@@ -6,7 +6,8 @@ import {ElementRepository} from '../../repositories';
 @Component({
     selector: 'lvl0-weapon-damage',
     templateUrl: './weapon-damage.component.html',
-    styleUrls: ['./weapon-damage.component.scss']
+    styleUrls: ['./weapon-damage.component.scss'],
+    standalone: false
 })
 export class WeaponDamageComponent {
     @Input('weapon')

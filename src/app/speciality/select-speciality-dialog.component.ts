@@ -13,7 +13,8 @@ export type SelectSpecialityDialogResult = {
 @Component({
     selector: 'lvl0-select-speciality-dialog',
     templateUrl: './select-speciality-dialog.component.html',
-    styleUrls: ['./select-speciality-dialog.component.scss']
+    styleUrls: ['./select-speciality-dialog.component.scss'],
+    standalone: false
 })
 export class SelectSpecialityDialogComponent {
     @Input('dialogDataId')

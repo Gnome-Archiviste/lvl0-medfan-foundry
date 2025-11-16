@@ -40,7 +40,8 @@ export type ArrowResultMessageData = {
 @Component({
     selector: 'lvl0-speciality-roll-chat-message',
     templateUrl: './speciality-roll-chat-message.component.html',
-    styleUrls: ['./speciality-roll-chat-message.component.scss']
+    styleUrls: ['./speciality-roll-chat-message.component.scss'],
+    standalone: false
 })
 export class SpecialityRollChatMessageComponent implements OnInit {
     @Input('data')

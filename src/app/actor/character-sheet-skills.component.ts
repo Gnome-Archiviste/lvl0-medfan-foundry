@@ -24,7 +24,8 @@ import {
 @Component({
     selector: 'lvl0-character-sheet-skills',
     templateUrl: './character-sheet-skills.component.html',
-    styleUrls: ['./character-sheet-skills.component.scss']
+    styleUrls: ['./character-sheet-skills.component.scss'],
+    standalone: false
 })
 export class CharacterSheetSkillsComponent implements OnInit, OnDestroy {
     @Input('characterId')

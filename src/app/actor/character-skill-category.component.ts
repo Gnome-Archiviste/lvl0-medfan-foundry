@@ -6,7 +6,8 @@ import {AvailableSkillPoint} from '../data-accessor/selectors/character-availabl
 @Component({
     selector: 'lvl0-skill-category',
     templateUrl: './character-skill-category.component.html',
-    styleUrls: ['./character-skill-category.component.scss']
+    styleUrls: ['./character-skill-category.component.scss'],
+    standalone: false
 })
 export class CharacterSkillCategoryComponent {
     @Input() skills: SkillDefinition[];

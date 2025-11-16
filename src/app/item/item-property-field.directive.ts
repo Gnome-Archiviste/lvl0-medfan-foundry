@@ -4,7 +4,8 @@ import {Lvl0Item} from '../data-accessor/models/lvl0-item';
 import {v4 as uuid} from 'uuid';
 
 @Directive({
-    selector: '[lvl0ItemPropertyField]'
+    selector: '[lvl0ItemPropertyField]',
+    standalone: false
 })
 export class ItemPropertyFieldDirective {
 

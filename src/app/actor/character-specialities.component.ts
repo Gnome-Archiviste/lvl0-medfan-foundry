@@ -18,7 +18,8 @@ import {UserService} from '../shared/user-service';
 @Component({
     selector: 'lvl0-character-specialities',
     templateUrl: './character-specialities.component.html',
-    styleUrls: ['./character-specialities.component.scss']
+    styleUrls: ['./character-specialities.component.scss'],
+    standalone: false
 })
 export class CharacterSpecialitiesComponent implements OnInit {
     @Input() characterId: string;

@@ -12,7 +12,8 @@ export type SpellRollChatMessageData = {
 @Component({
     selector: 'lvl0-spell-roll-chat-message',
     templateUrl: './spell-roll-chat-message.component.html',
-    styleUrls: ['./spell-roll-chat-message.component.scss']
+    styleUrls: ['./spell-roll-chat-message.component.scss'],
+    standalone: false
 })
 export class SpellRollChatMessageComponent implements OnInit {
     @Input() data!: SpellRollChatMessageData;

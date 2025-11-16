@@ -14,7 +14,8 @@ export type SkillRollResultData = {
 @Component({
     templateUrl: './skill-roll-result.component.html',
     styleUrls: ['./skill-roll-result.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SkillRollResultComponent implements OnInit {
     @Input('rawData')

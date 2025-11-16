@@ -4,7 +4,8 @@ import {RollableSpellValue} from './spell';
 @Component({
     selector: 'lvl0-spell-stat-value',
     templateUrl: './spell-stat-value.component.html',
-    styleUrls: ['./spell-stat-value.component.scss']
+    styleUrls: ['./spell-stat-value.component.scss'],
+    standalone: false
 })
 export class SpellStatValueComponent {
     @Input('value')

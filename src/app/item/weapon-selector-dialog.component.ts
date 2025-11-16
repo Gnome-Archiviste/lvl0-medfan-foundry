@@ -16,7 +16,8 @@ export type WeaponSelectorDialogResult = {
 @Component({
     selector: 'lvl0-weapon-selector-dialog',
     templateUrl: './weapon-selector-dialog.component.html',
-    styleUrls: ['./weapon-selector-dialog.component.scss']
+    styleUrls: ['./weapon-selector-dialog.component.scss'],
+    standalone: false
 })
 export class WeaponSelectorDialogComponent {
     @Input('dialogDataId')

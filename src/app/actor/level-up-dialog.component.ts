@@ -23,7 +23,8 @@ export type LevelUpDialogResult = {
 @Component({
     selector: 'lvl0-level-up-dialog',
     templateUrl: './level-up-dialog.component.html',
-    styleUrls: ['./level-up-dialog.component.scss']
+    styleUrls: ['./level-up-dialog.component.scss'],
+    standalone: false
 })
 export class LevelUpDialogComponent implements OnInit {
     @Input('dialogDataId')

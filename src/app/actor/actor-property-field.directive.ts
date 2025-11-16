@@ -4,7 +4,8 @@ import {v4 as uuid} from 'uuid';
 import {Lvl0Actor} from '../data-accessor/models/lvl0-actor';
 
 @Directive({
-    selector: '[lvl0ActorPropertyField]'
+    selector: '[lvl0ActorPropertyField]',
+    standalone: false
 })
 export class ActorPropertyFieldDirective {
 

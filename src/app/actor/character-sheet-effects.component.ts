@@ -9,7 +9,8 @@ import {ActorEffectService} from '../data-accessor/actor-effect.service';
 @Component({
     selector: 'lvl0-character-sheet-effects',
     templateUrl: './character-sheet-effects.component.html',
-    styleUrls: ['./character-sheet-effects.component.scss']
+    styleUrls: ['./character-sheet-effects.component.scss'],
+    standalone: false
 })
 export class CharacterSheetEffectsComponent implements OnInit {
     @Input() characterId!: string;

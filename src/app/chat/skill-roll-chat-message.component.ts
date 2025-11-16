@@ -56,7 +56,8 @@ export type SkillRollExtraDataItemInfoMessageData = {
 @Component({
     selector: 'lvl0-skill-roll-chat-message',
     templateUrl: './skill-roll-chat-message.component.html',
-    styleUrls: ['./skill-roll-chat-message.component.scss']
+    styleUrls: ['./skill-roll-chat-message.component.scss'],
+    standalone: false
 })
 export class SkillRollChatMessageComponent implements OnInit {
     @Input() data!: SkillRollChatMessageData;

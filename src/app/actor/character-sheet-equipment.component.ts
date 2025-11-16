@@ -24,7 +24,8 @@ type ArmorSlotNames = typeof armorSlots[number];
 @Component({
     selector: 'lvl0-character-sheet-equipment',
     templateUrl: './character-sheet-equipment.component.html',
-    styleUrls: ['./character-sheet-equipment.component.scss']
+    styleUrls: ['./character-sheet-equipment.component.scss'],
+    standalone: false
 })
 export class CharacterSheetEquipmentComponent implements OnInit {
     @Input() characterId!: string;

@@ -14,7 +14,8 @@ import {CharacterClutterData, selectCharacterClutter} from '../data-accessor/sel
 @Component({
     selector: 'lvl0-character-sheet-inventory',
     templateUrl: './character-sheet-inventory.component.html',
-    styleUrls: ['./character-sheet-inventory.component.scss']
+    styleUrls: ['./character-sheet-inventory.component.scss'],
+    standalone: false
 })
 export class CharacterSheetInventoryComponent implements OnInit {
     @Input() characterId!: string;

@@ -19,7 +19,8 @@ export interface GenerateMissingLevelUpDataDialogResult {
 @Component({
     selector: 'lvl0-generate-missing-level-up-data-dialog',
     templateUrl: './generate-missing-level-up-data-dialog.component.html',
-    styleUrls: ['./generate-missing-level-up-data-dialog.component.scss']
+    styleUrls: ['./generate-missing-level-up-data-dialog.component.scss'],
+    standalone: false
 })
 export class GenerateMissingLevelUpDataDialogComponent implements OnInit {
     @Input('dialogDataId')

@@ -7,7 +7,8 @@ import {ActorBasicStatValues} from '../data-accessor/selectors/character-basic-s
 @Component({
     selector: 'lvl0-character-initial-stat-roll-dialog',
     templateUrl: './character-initial-stat-roll-dialog.component.html',
-    styleUrls: ['./character-initial-stat-roll-dialog.component.scss']
+    styleUrls: ['./character-initial-stat-roll-dialog.component.scss'],
+    standalone: false
 })
 export class CharacterInitialStatRollDialogComponent implements OnInit {
     @Input('dialogDataId')

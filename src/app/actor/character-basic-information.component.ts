@@ -15,7 +15,8 @@ import {selectCharacterLevel} from '../data-accessor/selectors/character-selecto
 @Component({
     selector: 'lvl0-character-basic-information',
     templateUrl: './character-basic-information.component.html',
-    styleUrls: ['./character-basic-information.component.scss']
+    styleUrls: ['./character-basic-information.component.scss'],
+    standalone: false
 })
 export class CharacterBasicInformationComponent implements OnInit {
     @Input('characterId')

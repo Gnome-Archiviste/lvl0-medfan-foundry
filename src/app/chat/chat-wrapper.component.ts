@@ -3,7 +3,8 @@ import {Lvl0ChatMessage, Lvl0MessageTypes} from './lvl0-chat-message.types';
 
 @Component({
     templateUrl: './chat-wrapper.component.html',
-    styleUrls: ['./chat-wrapper.component.scss']
+    styleUrls: ['./chat-wrapper.component.scss'],
+    standalone: false
 })
 export class ChatWrapperComponent implements OnInit {
     @Input('type')

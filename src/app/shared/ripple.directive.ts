@@ -1,7 +1,8 @@
 import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
-    selector: '[lvl0Ripple]'
+    selector: '[lvl0Ripple]',
+    standalone: false
 })
 export class RippleDirective {
 

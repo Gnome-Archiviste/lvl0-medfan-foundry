@@ -21,7 +21,8 @@ type FilterModel = {
 @Component({
     selector: 'lvl0-spell-definition-selector',
     templateUrl: './spell-definition-selector.component.html',
-    styleUrls: ['./spell-definition-selector.component.scss']
+    styleUrls: ['./spell-definition-selector.component.scss'],
+    standalone: false
 })
 export class SpellDefinitionSelectorComponent implements OnInit, OnDestroy {
     @Input('dialogDataId')

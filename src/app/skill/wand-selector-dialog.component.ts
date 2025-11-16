@@ -18,7 +18,8 @@ export type WandSelectorDialogResult = {
 @Component({
     selector: 'lvl0-wand-selector-dialog',
     templateUrl: './wand-selector-dialog.component.html',
-    styleUrls: ['./wand-selector-dialog.component.scss']
+    styleUrls: ['./wand-selector-dialog.component.scss'],
+    standalone: false
 })
 export class WandSelectorDialogComponent {
     @Input('dialogDataId')

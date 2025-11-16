@@ -8,7 +8,8 @@ import {ActorUpdaterService} from '../data-accessor/actor-updater.service';
 @Component({
     selector: 'lvl0-character-sheet-notes',
     templateUrl: './character-sheet-notes.component.html',
-    styleUrls: ['./character-sheet-notes.component.scss']
+    styleUrls: ['./character-sheet-notes.component.scss'],
+    standalone: false
 })
 export class CharacterSheetNotesComponent implements OnInit {
     @Input() characterId!: string;

@@ -35,7 +35,8 @@ import {UserService} from '../shared/user-service';
 @Component({
     selector: 'lvl0-character-sheet-modifiers',
     templateUrl: './character-sheet-modifiers.component.html',
-    styleUrls: ['./character-sheet-modifiers.component.scss']
+    styleUrls: ['./character-sheet-modifiers.component.scss'],
+    standalone: false
 })
 export class CharacterSheetModifiersComponent implements OnInit {
     @Input() characterId!: string;

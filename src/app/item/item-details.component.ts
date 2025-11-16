@@ -7,7 +7,8 @@ import {ItemUpdaterService} from '../data-accessor/item-updater.service';
 @Component({
     selector: 'lvl0-item-details',
     templateUrl: './item-details.component.html',
-    styleUrl: './item-details.component.scss'
+    styleUrl: './item-details.component.scss',
+    standalone: false
 })
 export class ItemDetailsComponent {
     @Input() item!: Lvl0Item

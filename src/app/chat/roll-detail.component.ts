@@ -4,7 +4,8 @@ import {ChatRoll} from '../shared/roll';
 @Component({
     selector: 'lvl0-roll-detail',
     templateUrl: './roll-detail.component.html',
-    styleUrls: ['./roll-detail.component.scss']
+    styleUrls: ['./roll-detail.component.scss'],
+    standalone: false
 })
 export class RollDetailComponent {
     @Input('roll')

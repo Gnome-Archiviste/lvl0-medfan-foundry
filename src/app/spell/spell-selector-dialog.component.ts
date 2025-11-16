@@ -36,6 +36,7 @@ type FilterModel = {
     selector: 'lvl0-spell-selector',
     templateUrl: './spell-selector-dialog.component.html',
     styleUrls: ['./spell-selector-dialog.component.scss'],
+    standalone: false
 })
 export class SpellSelectorDialogComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription = new Subscription();
