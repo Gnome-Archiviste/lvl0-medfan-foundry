@@ -1,39 +1,51 @@
-<fieldset class="available-point" *ngIf="haveAvailableSkillPointsOrPendingPoints$ | async">
+@if (haveAvailableSkillPointsOrPendingPoints$ | async) {
+  <fieldset class="available-point">
     <legend>{{'Sheet.Skills.AvailableSkillPoints' | translate}}</legend>
     <ul>
-        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.job_combat; let availablePoints">
-            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.job_combat' | translate}}
+      @if ((characterAvailableSkillPoints$ | async)?.availableSkillPoints?.job_combat; as availablePoints) {
+        <li>
+          {{availablePoints}} {{'Sheet.Skills.AvailablePoint.job_combat' | translate}}
         </li>
-        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.general; let availablePoints">
-            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.general' | translate}}
+      }
+      @if ((characterAvailableSkillPoints$ | async)?.availableSkillPoints?.general; as availablePoints) {
+        <li>
+          {{availablePoints}} {{'Sheet.Skills.AvailablePoint.general' | translate}}
         </li>
-        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.all; let availablePoints">
-            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.all' | translate}}
+      }
+      @if ((characterAvailableSkillPoints$ | async)?.availableSkillPoints?.all; as availablePoints) {
+        <li>
+          {{availablePoints}} {{'Sheet.Skills.AvailablePoint.all' | translate}}
         </li>
-        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.master; let availablePoints">
-            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.master' | translate}}
+      }
+      @if ((characterAvailableSkillPoints$ | async)?.availableSkillPoints?.master; as availablePoints) {
+        <li>
+          {{availablePoints}} {{'Sheet.Skills.AvailablePoint.master' | translate}}
         </li>
-        <li *ngIf="(characterAvailableSkillPoints$ | async)?.availableSkillPoints?.prodigy; let availablePoints">
-            {{availablePoints}} {{'Sheet.Skills.AvailablePoint.prodigy' | translate}}
+      }
+      @if ((characterAvailableSkillPoints$ | async)?.availableSkillPoints?.prodigy; as availablePoints) {
+        <li>
+          {{availablePoints}} {{'Sheet.Skills.AvailablePoint.prodigy' | translate}}
         </li>
+      }
     </ul>
     <button (click)="validPendingPoints()">{{'Sheet.Skills.ConfirmSkillPoints' | translate}}</button>
-</fieldset>
+  </fieldset>
+}
 <div class="skills">
-    <div class="job-categories">
-        <ng-container *ngFor="let categoryId of orderedJobsSkillCategoryIds$ | async">
-            <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
-                                 [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
-                                 [skills]="skillsByCategories[categoryId]"/>
-        </ng-container>
-        <lvl0-character-specialities [characterId]="characterId" />
-    </div>
+  <div class="job-categories">
+    @for (categoryId of orderedJobsSkillCategoryIds$ | async; track categoryId) {
+      <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
+        [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
+        [skills]="skillsByCategories[categoryId]"/>
+    }
+    <lvl0-character-specialities [characterId]="characterId" />
+  </div>
 
-    <div class="common-categories">
-        <ng-container *ngFor="let categoryId of commonSkillCategoryIds">
-            <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
-                                 [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
-                                 [skills]="skillsByCategories[categoryId]"/>
-        </ng-container>
-    </div>
+  <div class="common-categories">
+    @for (categoryId of commonSkillCategoryIds; track categoryId) {
+      <lvl0-skill-category [characterId]="characterId" [categoryId]="categoryId"
+        [characterAvailableSkillPoints$] = characterAvailableSkillPoints$
+        [skills]="skillsByCategories[categoryId]"/>
+    }
+  </div>
 </div>

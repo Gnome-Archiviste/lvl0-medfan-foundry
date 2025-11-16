@@ -1,12 +1,14 @@
 <div class="category">
-    <h3>{{ 'Sheet.SkillCategory.' + categoryId + '.name' | translate }}</h3>
-    <div class="skills">
-        <ng-container *ngFor="let skill of skills; let i = index; let last = last; let first = first">
-            <lvl0-character-skill [characterId]="characterId"
-                                  [characterAvailableSkillPoints$]=characterAvailableSkillPoints$
-                                  [skillDefinition]="skill" />
-            <div *ngIf="i % 4 == 0 && !last && !first" class="separator"></div>
-        </ng-container>
-    </div>
+  <h3>{{ 'Sheet.SkillCategory.' + categoryId + '.name' | translate }}</h3>
+  <div class="skills">
+    @for (skill of skills; track skill; let i = $index; let last = $last; let first = $first) {
+      <lvl0-character-skill [characterId]="characterId"
+        [characterAvailableSkillPoints$]=characterAvailableSkillPoints$
+        [skillDefinition]="skill" />
+      @if (i % 4 == 0 && !last && !first) {
+        <div class="separator"></div>
+      }
+    }
+  </div>
 </div>
 <div class="separator"></div>

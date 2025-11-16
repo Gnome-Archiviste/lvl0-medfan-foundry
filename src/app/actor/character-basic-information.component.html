@@ -1,133 +1,135 @@
-<ng-container *ngIf="character$ | async as character">
-    <div class="name info">
-        @if(canChangeName$ | async) {
+@if (character$ | async; as character) {
+  <div class="name info">
+    @if(canChangeName$ | async) {
+      <label>
+        Nom
+        <input lvl0ActorPropertyField="name"
+          [lvl0Actor]="character"
+          [ngModel]="character.name"
+          type="text">
+      </label>
+    } @else {
+      <span class="label">Nom</span>
+      <span class="value">{{character.name}}</span>
+    }
+  </div>
+  <div class="race info">
+    <label>
+      Race
+    </label>
+    <div class="value">
+      @if (canChangeRace$ | async) {
+        <select lvl0ActorPropertyField="data.race.id"
+          [lvl0Actor]="character"
+          [ngModel]="(characterRace$ | async)?.id">
+          @for (raceCategory of raceDefinitionsByCategories | keyvalue; track raceCategory) {
+            <optgroup
+              [label]="raceCategory.key | translate:'RaceCategory'">
+              @for (race of raceCategory.value | keyvalue; track race) {
+                <option [value]="race.key">
+                  {{ race.value.name }}
+                </option>
+              }
+            </optgroup>
+          }
+        </select>
+        @if ((characterRace$ | async)?.hasRaceSpecifier) {
+          <div class="sub-race">
             <label>
-                Nom
-                <input lvl0ActorPropertyField="name"
-                       [lvl0Actor]="character"
-                       [ngModel]="character.name"
-                       type="text">
+              <input lvl0ActorPropertyField="data.race.type"
+                [lvl0Actor]="character"
+                [ngModel]="character.system.race.type"
+                type="text">
             </label>
-        } @else {
-            <span class="label">Nom</span>
-            <span class="value">{{character.name}}</span>
+          </div>
         }
+      } @else {
+        @if (characterRace$ | async; as characterRace) {
+          {{ characterRace.name }} @if (characterRace.hasRaceSpecifier) { - {{ character.system.race.type }}}
+        }
+      }
     </div>
-    <div class="race info">
-        <label>
-            Race
-        </label>
-        <div class="value">
-            @if (canChangeRace$ | async) {
-                <select lvl0ActorPropertyField="data.race.id"
-                        [lvl0Actor]="character"
-                        [ngModel]="(characterRace$ | async)?.id">
-                    <optgroup *ngFor="let raceCategory of raceDefinitionsByCategories | keyvalue"
-                              [label]="raceCategory.key | translate:'RaceCategory'">
-                        <option *ngFor="let race of raceCategory.value | keyvalue" [value]="race.key">
-                            {{ race.value.name }}
-                        </option>
-                    </optgroup>
-                </select>
-
-                <ng-container *ngIf="(characterRace$ | async)?.hasRaceSpecifier">
-                    <div class="sub-race">
-                        <label>
-                            <input lvl0ActorPropertyField="data.race.type"
-                                   [lvl0Actor]="character"
-                                   [ngModel]="character.system.race.type"
-                                   type="text">
-                        </label>
-                    </div>
-                </ng-container>
-            } @else {
-                @if (characterRace$ | async; as characterRace) {
-                    {{ characterRace.name }} @if (characterRace.hasRaceSpecifier) { - {{ character.system.race.type }}}
+  </div>
+  <div class="job info">
+    <label>
+      Classe
+    </label>
+    <div class="value">
+      @if(canChangeJob$ | async) {
+        <select lvl0ActorPropertyField="data.job.id"
+          class="job-selector"
+          [lvl0Actor]="character"
+          [ngModel]="(characterJob$ | async)?.id">
+          @for (jobCategoryId of jobCategoryIds; track jobCategoryId) {
+            <optgroup
+              [label]="jobCategoryId | translate:'JobCategory'">
+              @for (job of jobDefinitionsByCategories[jobCategoryId] | keyvalue; track job) {
+                <option [value]="job.key">
+                  {{job.value.name}}
+                </option>
+              }
+            </optgroup>
+          }
+        </select>
+        @if ((characterJob$ | async)?.hasJobSpecialization) {
+          <div class="job-specialization">
+            <label>
+              <input lvl0ActorPropertyField="data.job.specialization"
+                [lvl0Actor]="character"
+                [ngModel]="character.system.job.specialization"
+                type="text">
+            </label>
+          </div>
+        }
+        @if ((characterJob$ | async)?.maxSpecializations) {
+          <div class="job-specializations">
+            @for (characterSpecializationId of (characterJobSpecializations$ | async); track characterSpecializationId; let i = $index) {
+              <select [lvl0ActorPropertyArrayField]="'data.job.specializations'"
+                [lvl0Actor]="character"
+                [ngModel]="characterSpecializationId"
+                [array]="characterJobSpecializations$ | async"
+                [index]="i">
+                @for (specializationId of (characterJob$ | async)?.specializations; track specializationId) {
+                  <option
+                    [value]="specializationId">
+                    {{specializationId | translate:'Job.Speciality'}}
+                  </option>
                 }
+              </select>
             }
-        </div>
+          </div>
+        }
+      } @else {
+        @if(characterJob$ | async; as characterJob) {
+          {{ characterJob.name }}
+        }
+      }
     </div>
-
-    <div class="job info">
-        <label>
-            Classe
-        </label>
-        <div class="value">
-            @if(canChangeJob$ | async) {
-                <select lvl0ActorPropertyField="data.job.id"
-                        class="job-selector"
-                        [lvl0Actor]="character"
-                        [ngModel]="(characterJob$ | async)?.id">
-                    <optgroup *ngFor="let jobCategoryId of jobCategoryIds"
-                              [label]="jobCategoryId | translate:'JobCategory'">
-                        <option *ngFor="let job of jobDefinitionsByCategories[jobCategoryId] | keyvalue" [value]="job.key">
-                            {{job.value.name}}
-                        </option>
-                    </optgroup>
-                </select>
-                <ng-container *ngIf="(characterJob$ | async)?.hasJobSpecialization">
-                    <div class="job-specialization">
-                        <label>
-                            <input lvl0ActorPropertyField="data.job.specialization"
-                                   [lvl0Actor]="character"
-                                   [ngModel]="character.system.job.specialization"
-                                   type="text">
-                        </label>
-                    </div>
-                </ng-container>
-                <ng-container *ngIf="(characterJob$ | async)?.maxSpecializations">
-                    <div class="job-specializations">
-                        <ng-container
-                                *ngFor="let characterSpecializationId of (characterJobSpecializations$ | async); let i = index">
-                            <select [lvl0ActorPropertyArrayField]="'data.job.specializations'"
-                                    [lvl0Actor]="character"
-                                    [ngModel]="characterSpecializationId"
-                                    [array]="characterJobSpecializations$ | async"
-                                    [index]="i">
-                                <option *ngFor="let specializationId of (characterJob$ | async)?.specializations"
-                                        [value]="specializationId">
-                                    {{specializationId | translate:'Job.Speciality'}}
-                                </option>
-                            </select>
-                        </ng-container>
-                    </div>
-                </ng-container>
-            } @else {
-                @if(characterJob$ | async; as characterJob) {
-                    {{ characterJob.name }}
-                }
-            }
-        </div>
+  </div>
+  <div class="level info">
+    <span class="label">Niveau</span>
+    <span class="value">{{character.system.level.value}}</span>
+  </div>
+  <div class="age info">
+    <span class="label">Age</span>
+    <input lvl0ActorPropertyField="data.age.value"
+      [lvl0Actor]="character"
+      [ngModel]="character.system.age.value"
+      type="text">
+  </div>
+  <div class="size info">
+    <span class="label">Taille</span>
+    <input lvl0ActorPropertyField="data.size.value"
+      [lvl0Actor]="character"
+      [ngModel]="character.system.size.value"
+      type="text">
+  </div>
+  <div class="avatar" [class.clickable]="canSelectImage()" (click)="openSelectAvatarDialog()">
+    <div class="lvl0-logo">
+      <img alt="Logo LVL0 Médiéval-Fantastique" src="systems/lvl0mf-sheet/assets/logo/logo-character-sheet.png" />
     </div>
-
-    <div class="level info">
-        <span class="label">Niveau</span>
-        <span class="value">{{character.system.level.value}}</span>
+    <div class="character-face">
+      <img [src]="character.img" [alt]="character.name">
     </div>
-
-    <div class="age info">
-        <span class="label">Age</span>
-        <input lvl0ActorPropertyField="data.age.value"
-               [lvl0Actor]="character"
-               [ngModel]="character.system.age.value"
-               type="text">
-    </div>
-
-    <div class="size info">
-        <span class="label">Taille</span>
-        <input lvl0ActorPropertyField="data.size.value"
-               [lvl0Actor]="character"
-               [ngModel]="character.system.size.value"
-               type="text">
-    </div>
-
-    <div class="avatar" [class.clickable]="canSelectImage()" (click)="openSelectAvatarDialog()">
-        <div class="lvl0-logo">
-            <img alt="Logo LVL0 Médiéval-Fantastique" src="systems/lvl0mf-sheet/assets/logo/logo-character-sheet.png" />
-        </div>
-        <div class="character-face">
-            <img [src]="character.img" [alt]="character.name">
-        </div>
-    </div>
-
-</ng-container>
+  </div>
+}

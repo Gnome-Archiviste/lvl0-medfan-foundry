@@ -1,15 +1,19 @@
-<div *ngIf="data.itemSource" class="item-source">
+@if (data.itemSource) {
+  <div class="item-source">
     <h3>Utilisation d'objet</h3>
     <div class="item-detail">
-        <div class="icon"><img width="32" height="32" [src]="data.itemSource.icon"></div>
-        <div class="name">{{ data.itemSource.name }}</div>
+      <div class="icon"><img width="32" height="32" [src]="data.itemSource.icon"></div>
+      <div class="name">{{ data.itemSource.name }}</div>
     </div>
-</div>
-<div *ngIf="data.effect">
+  </div>
+}
+@if (data.effect) {
+  <div>
     <hr>
-    @switch (data.effect.type) {
+      @switch (data.effect.type) {
         @case ('cast-spell') {
-            <lvl0-spell-roll-chat-message [data]="data.effect.data" />
+          <lvl0-spell-roll-chat-message [data]="data.effect.data" />
         }
-    }
-</div>
+      }
+    </div>
+  }

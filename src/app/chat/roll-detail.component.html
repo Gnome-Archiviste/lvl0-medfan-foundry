@@ -1,16 +1,18 @@
 <div (click)="toggleDetails()" class="roll-with-details">
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>
-<div *ngIf="showDetails" class="roll-details" (click)="toggleDetails()">
+@if (showDetails) {
+  <div class="roll-details" (click)="toggleDetails()">
     <div class="close-button" (click)="toggleDetails()"><i class="fa fa-close"></i></div>
     <div class="formula">
-        {{roll.formula}}
+      {{roll.formula}}
     </div>
     <div class="terms">
-        <ng-container *ngFor="let term of roll.terms">
-            <ng-container *ngFor="let termResult of term.results">
-                <div [class]="'roll-dice ' + 'dice-d' + term.faces">{{termResult.result}}</div>
-            </ng-container>
-        </ng-container>
+      @for (term of roll.terms; track term) {
+        @for (termResult of term.results; track termResult) {
+          <div [class]="'roll-dice ' + 'dice-d' + term.faces">{{termResult.result}}</div>
+        }
+      }
     </div>
-</div>
+  </div>
+}

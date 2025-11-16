@@ -1,32 +1,42 @@
-<section class="sheet-effects" *ngIf="hasEffect$ | async">
+@if (hasEffect$ | async) {
+  <section class="sheet-effects">
     <h3>Modificateurs temporaires</h3>
     <div>
-        <div class="effect-values">
-            <div class="effect-value header">
-                <span></span>
-                <span>Nom</span>
-                <span>Durée</span>
-                <span>Effets</span>
-                <span></span>
-            </div>
-            <ng-container *ngFor="let characterEffect of characterEffects$ | async">
-                <div class="effect-value">
-                    <div><img [src]="characterEffect.icon"></div>
-                    <div>{{characterEffect.effectName}}</div>
-                    <div>{{characterEffect.duration}}</div>
-                    <div>
-                        <div *ngIf="characterEffect.magicArmor">
-                            Armure magique: {{characterEffect.magicArmor.remainingArmorPoint}} / {{characterEffect.magicArmor.totalArmorPoint}}
-                        </div>
-                        <div *ngFor="let modifier of characterEffect.modifiers">
-                            <div *ngIf="modifier.skill">{{modifier.skill.name}}: {{modifier.value}}</div>
-                            <div *ngIf="modifier.stat">{{modifier.stat | translate:'Misc.Stat' }}: {{modifier.value}}</div>
-                        </div>
-                    </div>
-                    <a title="Supprimer effet" (click)="removeEffect(characterEffect)"><i class="fas fa-trash"></i></a>
-                </div>
-                <div class="separator"></div>
-            </ng-container>
+      <div class="effect-values">
+        <div class="effect-value header">
+          <span></span>
+          <span>Nom</span>
+          <span>Durée</span>
+          <span>Effets</span>
+          <span></span>
         </div>
+        @for (characterEffect of characterEffects$ | async; track characterEffect) {
+          <div class="effect-value">
+            <div><img [src]="characterEffect.icon"></div>
+            <div>{{characterEffect.effectName}}</div>
+            <div>{{characterEffect.duration}}</div>
+            <div>
+              @if (characterEffect.magicArmor) {
+                <div>
+                  Armure magique: {{characterEffect.magicArmor.remainingArmorPoint}} / {{characterEffect.magicArmor.totalArmorPoint}}
+                </div>
+              }
+              @for (modifier of characterEffect.modifiers; track modifier) {
+                <div>
+                  @if (modifier.skill) {
+                    <div>{{modifier.skill.name}}: {{modifier.value}}</div>
+                  }
+                  @if (modifier.stat) {
+                    <div>{{modifier.stat | translate:'Misc.Stat' }}: {{modifier.value}}</div>
+                  }
+                </div>
+              }
+            </div>
+            <a title="Supprimer effet" (click)="removeEffect(characterEffect)"><i class="fas fa-trash"></i></a>
+          </div>
+          <div class="separator"></div>
+        }
+      </div>
     </div>
-</section>
+  </section>
+}

@@ -8,15 +8,15 @@
     "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@angular/animations": "^19.2.15",
-    "@angular/cdk": "^19.2.19",
-    "@angular/common": "^19.2.15",
-    "@angular/compiler": "^19.2.15",
-    "@angular/core": "^19.2.15",
-    "@angular/elements": "^19.2.15",
-    "@angular/forms": "^19.2.15",
-    "@angular/platform-browser": "^19.2.15",
-    "@angular/platform-browser-dynamic": "^19.2.15",
+    "@angular/animations": "^20.3.12",
+    "@angular/cdk": "^20.2.13",
+    "@angular/common": "^20.3.12",
+    "@angular/compiler": "^20.3.12",
+    "@angular/core": "^20.3.12",
+    "@angular/elements": "^20.3.12",
+    "@angular/forms": "^20.3.12",
+    "@angular/platform-browser": "^20.3.12",
+    "@angular/platform-browser-dynamic": "^20.3.12",
     "@sentry/browser": "^7.106.1",
     "@sentry/tracing": "^7.106.1",
     "fuzzysort": "^2.0.4",
@@ -27,9 +27,9 @@
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^19.2.19",
-    "@angular/cli": "~19.2.19",
-    "@angular/compiler-cli": "^19.2.15",
+    "@angular/build": "^20.3.10",
+    "@angular/cli": "~20.3.10",
+    "@angular/compiler-cli": "^20.3.12",
     "@league-of-foundry-developers/foundry-vtt-types": "League-of-Foundry-Developers/foundry-vtt-types#canvas-updates",
     "@types/jquery": "^3.5.33",
     "@types/lodash": "^4.17.0",
@@ -37,6 +37,6 @@
     "glob": "^10.4.5",
     "handlebars": "^4.7.8",
     "live-server": "^1.2.2",
-    "typescript": "~5.5.4"
+    "typescript": "~5.9.3"
   }
 }

@@ -1,64 +1,68 @@
-<ng-container *ngIf="data">
-    <section class="weapons">
-        <h2>Armes</h2>
-        <div class="weapon-line header">
-            <div class="name">Nom</div>
-            <div class="handCount">Nbre de main</div>
-            <div class="damage">Dégâts</div>
-        </div>
-        <div class="separator"></div>
-        <ng-container *ngFor="let item of data.weapons; let last = last">
-            <div class="weapon-line selectable-line" [class.selected]="selectedWeapon === item" (click)="selectWeapon(item)">
-                <div class="icon"><img src="{{item.img}}"/></div>
-                <div class="name">
-                    <div class="title">{{ item.name }}</div>
-                    <ng-container *ngIf="item.system.description">
-                        <div class="description" [innerHTML]="item.system.description | markdown"></div>
-                    </ng-container>
-                </div>
-                <div class="handCount">{{ item.system.handCount }}</div>
-                <div class="damage"><lvl0-weapon-damage [weapon]="item" [mode]="data.weaponType"/></div>
-            </div>
-            <div *ngIf="!last" class="separator"></div>
-        </ng-container>
-    </section>
-    @if (data.weaponType === 'range') {
-        <section class="ammunition">
-            <h2>Munitions</h2>
-            <div class="ammunition-line header">
-                <div class="name">Nom</div>
-                <div class="damage">Dégâts additionnel</div>
-                <div class="quantity">Quantité</div>
-            </div>
-            <div class="separator"></div>
-            <div class="ammunition-line selectable-line" [class.selected]="selectedAmmo === undefined" (click)="selectAmmo(undefined)">
-                <div class="name">
-                    <div class="title">Munition de base</div>
-                </div>
-                <div class="damage">0</div>
-                <div class="quantity">&infin;</div>
-            </div>
-            <div class="separator"></div>
-            <ng-container *ngFor="let item of data.ammunition; let last = last">
-                <div class="ammunition-line selectable-line" [class.selected]="selectedAmmo === item" (click)="selectAmmo(item)">
-                    <div class="icon"><img src="{{item.img}}"/></div>
-                    <div class="name">
-                        <div class="title">{{ item.name }}</div>
-                        <ng-container *ngIf="item.system.description">
-                            <div class="description" [innerHTML]="item.system.description | markdown"></div>
-                        </ng-container>
-                    </div>
-                    <div class="damage">{{ item.system.extraDamage }}
-                        <span>({{item.system.extraDamageEffect | translate: 'Element.NameForWeaponDamage'}})</span>
-                    </div>
-                    <div class="quantity">{{ item.system.quantity }}</div>
-                </div>
-                <div *ngIf="!last" class="separator"></div>
-            </ng-container>
-        </section>
-    }
-    <div class="actions">
-        <button data-dialog-action="cancel" (click)="cancel()">Annuler</button>
-        <button data-dialog-action="confirm" (click)="select()">Utiliser</button>
+@if (data) {
+  <section class="weapons">
+    <h2>Armes</h2>
+    <div class="weapon-line header">
+      <div class="name">Nom</div>
+      <div class="handCount">Nbre de main</div>
+      <div class="damage">Dégâts</div>
     </div>
-</ng-container>
+    <div class="separator"></div>
+    @for (item of data.weapons; track item; let last = $last) {
+      <div class="weapon-line selectable-line" [class.selected]="selectedWeapon === item" (click)="selectWeapon(item)">
+        <div class="icon"><img src="{{item.img}}"/></div>
+        <div class="name">
+          <div class="title">{{ item.name }}</div>
+          @if (item.system.description) {
+            <div class="description" [innerHTML]="item.system.description | markdown"></div>
+          }
+        </div>
+        <div class="handCount">{{ item.system.handCount }}</div>
+        <div class="damage"><lvl0-weapon-damage [weapon]="item" [mode]="data.weaponType"/></div>
+      </div>
+      @if (!last) {
+        <div class="separator"></div>
+      }
+    }
+  </section>
+  @if (data.weaponType === 'range') {
+    <section class="ammunition">
+      <h2>Munitions</h2>
+      <div class="ammunition-line header">
+        <div class="name">Nom</div>
+        <div class="damage">Dégâts additionnel</div>
+        <div class="quantity">Quantité</div>
+      </div>
+      <div class="separator"></div>
+      <div class="ammunition-line selectable-line" [class.selected]="selectedAmmo === undefined" (click)="selectAmmo(undefined)">
+        <div class="name">
+          <div class="title">Munition de base</div>
+        </div>
+        <div class="damage">0</div>
+        <div class="quantity">&infin;</div>
+      </div>
+      <div class="separator"></div>
+      @for (item of data.ammunition; track item; let last = $last) {
+        <div class="ammunition-line selectable-line" [class.selected]="selectedAmmo === item" (click)="selectAmmo(item)">
+          <div class="icon"><img src="{{item.img}}"/></div>
+          <div class="name">
+            <div class="title">{{ item.name }}</div>
+            @if (item.system.description) {
+              <div class="description" [innerHTML]="item.system.description | markdown"></div>
+            }
+          </div>
+          <div class="damage">{{ item.system.extraDamage }}
+            <span>({{item.system.extraDamageEffect | translate: 'Element.NameForWeaponDamage'}})</span>
+          </div>
+          <div class="quantity">{{ item.system.quantity }}</div>
+        </div>
+        @if (!last) {
+          <div class="separator"></div>
+        }
+      }
+    </section>
+  }
+  <div class="actions">
+    <button data-dialog-action="cancel" (click)="cancel()">Annuler</button>
+    <button data-dialog-action="confirm" (click)="select()">Utiliser</button>
+  </div>
+}

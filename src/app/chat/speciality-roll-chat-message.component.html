@@ -1,40 +1,46 @@
 <div class="speciality">
-    <div class="name">{{ speciality.name }}</div>
-    <img class="icon" width="48" height="48" src="{{speciality.icon}}">
-    <div class="mana-used">
-        Mana utilisé: {{ data.manaUsed }}
-    </div>
-    <div class="description">
-        <div>{{ speciality.description }}</div>
-    </div>
+  <div class="name">{{ speciality.name }}</div>
+  <img class="icon" width="48" height="48" src="{{speciality.icon}}">
+  <div class="mana-used">
+    Mana utilisé: {{ data.manaUsed }}
+  </div>
+  <div class="description">
+    <div>{{ speciality.description }}</div>
+  </div>
 </div>
 
 @switch (data.specialityId) {
-    @case ('arrow_volley') {
-        <div class="extra-data__arrow-volley" *ngIf="arrowVolleyData(data) as arrowVolleyData">
-            <div class="weapon">
-                <span class="icon"><img width="32" height="32" [src]="arrowVolleyData.weapon.icon"></span>
-                <span class="name">{{arrowVolleyData.weapon.name}}</span>
-            </div>
-            <div *ngFor="let arrow of arrowVolleyData.arrows" class="arrow">
-                <div>Flèche {{arrow.arrowNumber}}</div>
-                <div *ngIf="arrow.result == 'success' || arrow.result == 'criticalSuccess' && arrow.ammunition">{{arrow.ammunition?.name}}</div>
-                <div class="arrow-result">
-                    <div class="roll-result">
-                        <lvl0-roll-detail [roll]="arrow.testRoll">
-                            <i class="fa fa-dice"></i> {{arrow.testRoll.total}} / {{arrowVolleyData.skillSuccessValue}}
-                            (<span [class]="'roll-result-' + arrow.result">{{arrow.result | translate: 'Misc.RollResult'}}</span>)
-                        </lvl0-roll-detail>
-                    </div>
-                    <div class="damage">
-                        <ng-container *ngIf="arrow.result == 'success' || arrow.result == 'criticalSuccess'">
-                            <lvl0-roll-detail [roll]="arrow.damageRoll">
-                                Dégâts: {{ arrow.damage }} ({{ arrow.element | translate: 'Element.Name' }})
-                            </lvl0-roll-detail>
-                        </ng-container>
-                    </div>
-                </div>
-            </div>
+  @case ('arrow_volley') {
+    @if (arrowVolleyData(data); as arrowVolleyData) {
+      <div class="extra-data__arrow-volley">
+        <div class="weapon">
+          <span class="icon"><img width="32" height="32" [src]="arrowVolleyData.weapon.icon"></span>
+          <span class="name">{{arrowVolleyData.weapon.name}}</span>
         </div>
+        @for (arrow of arrowVolleyData.arrows; track arrow) {
+          <div class="arrow">
+            <div>Flèche {{arrow.arrowNumber}}</div>
+            @if (arrow.result == 'success' || arrow.result == 'criticalSuccess' && arrow.ammunition) {
+              <div>{{arrow.ammunition?.name}}</div>
+            }
+            <div class="arrow-result">
+              <div class="roll-result">
+                <lvl0-roll-detail [roll]="arrow.testRoll">
+                  <i class="fa fa-dice"></i> {{arrow.testRoll.total}} / {{arrowVolleyData.skillSuccessValue}}
+                  (<span [class]="'roll-result-' + arrow.result">{{arrow.result | translate: 'Misc.RollResult'}}</span>)
+                </lvl0-roll-detail>
+              </div>
+              <div class="damage">
+                @if (arrow.result == 'success' || arrow.result == 'criticalSuccess') {
+                  <lvl0-roll-detail [roll]="arrow.damageRoll">
+                    Dégâts: {{ arrow.damage }} ({{ arrow.element | translate: 'Element.Name' }})
+                  </lvl0-roll-detail>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
     }
+  }
 }

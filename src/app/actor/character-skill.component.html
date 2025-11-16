@@ -1,72 +1,85 @@
 <div class="skill" [class.has-additional-point]="hadAdditionalBasePoint$">
-    <span class="name">
-        <span class="open-menu" [cdkMenuTriggerFor]="menu">{{ skillDefinition.name }}</span>
-        <div class="visual-points" *ngIf="canEditPoint$ | async">
-            @for (point of activePoints$ | async; track $index) {
-                <span class="active-point basic-point"></span>
-            }
-            <span *ngIf="master$ | async" class="active-point master-point"></span>
-            <span *ngIf="prodigy$ | async" class="active-point prodigy-point"></span>
-        </div>
-    </span>
-    <span class="value" [class.manual-value]="manualMode$ | async">
-        <ng-container *ngIf="manualMode$ | async; else static">
-            <lvl0-relative-value-editor [editable]="true" [value$]="value$" (onChange)="setPoint($event)">
-                <span>{{ value$ | async }}</span>
-            </lvl0-relative-value-editor>
-        </ng-container>
-        <ng-template #static>
-            {{ value$ | async }}
-        </ng-template>
-    </span>
-    <span class="stat">
-        + <span [class]="'stat-' + skillDefinition.stat">{{ skillDefinition.stat | uppercase }}</span>
-    </span>
-    <span class="total-value">
-        {{ totalValue$ | async }}
-    </span>
-    <span class="master-prodigy">
-        @if (canEditPoint$ | async) {
-            <div class="add-remove-point">
-                <span>
-                    <button class="remove-point" *ngIf="canRemovePoint$ | async" (click)="removePoint()">
-                        -
-                    </button>
-                </span>
-                <span>
-                    <button class="add-point" *ngIf="canAddPoint$ | async" (click)="addPoint()">
-                        +
-                    </button>
-                </span>
-            </div>
-        } @else {
-            <input *ngIf="master$ | async" [checked]="masterUsed$ | async" (change)="toggleMasterUse($event)" type="checkbox" [disabled]="prodigyUsed$ | async">
-            <input *ngIf="prodigy$ | async" [checked]="prodigyUsed$ | async" (change)="toggleProdigyUse($event)" type="checkbox" [disabled]="!(masterUsed$ | async)">
+  <span class="name">
+    <span class="open-menu" [cdkMenuTriggerFor]="menu">{{ skillDefinition.name }}</span>
+    @if (canEditPoint$ | async) {
+      <div class="visual-points">
+        @for (point of activePoints$ | async; track $index) {
+          <span class="active-point basic-point"></span>
         }
-    </span>
+        @if (master$ | async) {
+          <span class="active-point master-point"></span>
+        }
+        @if (prodigy$ | async) {
+          <span class="active-point prodigy-point"></span>
+        }
+      </div>
+    }
+  </span>
+  <span class="value" [class.manual-value]="manualMode$ | async">
+    @if (manualMode$ | async) {
+      <lvl0-relative-value-editor [editable]="true" [value$]="value$" (onChange)="setPoint($event)">
+        <span>{{ value$ | async }}</span>
+      </lvl0-relative-value-editor>
+    } @else {
+      {{ value$ | async }}
+    }
+  </span>
+  <span class="stat">
+    + <span [class]="'stat-' + skillDefinition.stat">{{ skillDefinition.stat | uppercase }}</span>
+  </span>
+  <span class="total-value">
+    {{ totalValue$ | async }}
+  </span>
+  <span class="master-prodigy">
+    @if (canEditPoint$ | async) {
+      <div class="add-remove-point">
+        <span>
+          @if (canRemovePoint$ | async) {
+            <button class="remove-point" (click)="removePoint()">
+              -
+            </button>
+          }
+        </span>
+        <span>
+          @if (canAddPoint$ | async) {
+            <button class="add-point" (click)="addPoint()">
+              +
+            </button>
+          }
+        </span>
+      </div>
+    } @else {
+      @if (master$ | async) {
+        <input [checked]="masterUsed$ | async" (change)="toggleMasterUse($event)" type="checkbox" [disabled]="prodigyUsed$ | async">
+      }
+      @if (prodigy$ | async) {
+        <input [checked]="prodigyUsed$ | async" (change)="toggleProdigyUse($event)" type="checkbox" [disabled]="!(masterUsed$ | async)">
+      }
+    }
+  </span>
 </div>
 
 <ng-template #menu>
-    <div class="app window-app" cdkMenu #menuContent=cdkMenu>
-        <div class="window-content">
-            <div class="skill-info">
-               <div class="skill-info__title">{{skillDefinition.name}}</div>
-               <div class="skill-info__description">{{skillDefinition.description}}</div>
-               <div class="skill-info__icon"><img src="{{skillDefinition.icon}}" alt=""></div>
-               <div class="skill-info__actions">
-                   <button (click)="rollDice(menuContent)">
-                       <i class="fas fa-dice"></i> Lancer les dés
-                   </button>
-                   <button (click)="createMacro(menuContent)">
-                       <i class="fas fa-scroll"></i> Créer une macro
-                   </button>
-                   @if (isGm()) {
-                       <button (click)="toggleManualMode(menuContent)">
-                           <i class="fas fa-cog"></i> Changer la valeur sans limitation
-                       </button>
-                   }
-               </div>
-            </div>
+  <div class="app window-app" cdkMenu #menuContent=cdkMenu>
+    <div class="window-content">
+      <div class="skill-info">
+        <div class="skill-info__title">{{skillDefinition.name}}</div>
+        <div class="skill-info__description">{{skillDefinition.description}}</div>
+        <div class="skill-info__icon"><img src="{{skillDefinition.icon}}" alt=""></div>
+        <div class="skill-info__actions">
+          <button (click)="rollDice(menuContent)">
+            <i class="fas fa-dice"></i> Lancer les dés
+          </button>
+          <button (click)="createMacro(menuContent)">
+            <i class="fas fa-scroll"></i> Créer une macro
+          </button>
+          @if (isGm()) {
+            <button (click)="toggleManualMode(menuContent)">
+              <i class="fas fa-cog"></i> Changer la valeur sans limitation
+            </button>
+          }
         </div>
+      </div>
     </div>
+  </div>
 </ng-template>

@@ -1,14 +1,14 @@
-<ng-container *ngIf="value">
-    <span class="label">{{ name  | translate:'Spell.Label' }}:</span>
-    <ng-container *ngIf="$any(value).text">
-        <span class="value">{{ $any(value).text }}</span>
-    </ng-container>
-    <ng-container *ngIf="$any(value).roll">
-        <span class="value">
-            <lvl0-roll-detail [roll]="$any(value).roll">
-            <i class="fa fa-dice"></i>
-            {{ $any(value).roll.total }} {{$any(value).unit}} {{$any(value).suffix}}
-        </lvl0-roll-detail>
-        </span>
-    </ng-container>
-</ng-container>
+@if (value) {
+  <span class="label">{{ name  | translate:'Spell.Label' }}:</span>
+  @if ($any(value).text) {
+    <span class="value">{{ $any(value).text }}</span>
+  }
+  @if ($any(value).roll) {
+    <span class="value">
+      <lvl0-roll-detail [roll]="$any(value).roll">
+        <i class="fa fa-dice"></i>
+        {{ $any(value).roll.total }} {{$any(value).unit}} {{$any(value).suffix}}
+      </lvl0-roll-detail>
+    </span>
+  }
+}

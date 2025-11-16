@@ -1,38 +1,45 @@
-<ng-container *ngIf="character$ | async; let character">
-    <div class="tab-header">
-        <span><a class="tab" [class.active]="selectedTab === 'character'" (click)="selectTab('character')">{{'Sheet.Tab.Character.title' | translate}}</a></span>
-        <span><a class="tab" [class.active]="selectedTab === 'equipment'" (click)="selectTab('equipment')">{{'Sheet.Tab.Equipment.title' | translate}}</a></span>
-        <span><a class="tab" [class.active]="selectedTab === 'inventory'" (click)="selectTab('inventory')">{{'Sheet.Tab.Inventory.title' | translate}}</a></span>
-        <span><a class="tab" [class.active]="selectedTab === 'modifiers'" (click)="selectTab('modifiers')">{{'Sheet.Tab.Modifiers.title' | translate}}</a></span>
-        <span><a class="tab" [class.active]="selectedTab === 'notes'" (click)="selectTab('notes')">{{'Sheet.Tab.Notes.title' | translate}}</a></span>
-    </div>
-    <section class="character-tab" *ngIf="selectedTab === 'character'">
-        <section class="character-basic-information">
-            <lvl0-character-basic-information [characterId]="character.id"/>
-        </section>
-
-        <section class="character-stats">
-            <lvl0-character-sheet-stats [characterId]="character.id"/>
-        </section>
-
-        <section class="character-effects">
-            <lvl0-character-sheet-effects [characterId]="character.id"/>
-        </section>
-
-        <section class="character-skills">
-            <lvl0-character-sheet-skills [characterId]="character.id"/>
-        </section>
+@if (character$ | async; as character) {
+  <div class="tab-header">
+    <span><a class="tab" [class.active]="selectedTab === 'character'" (click)="selectTab('character')">{{'Sheet.Tab.Character.title' | translate}}</a></span>
+    <span><a class="tab" [class.active]="selectedTab === 'equipment'" (click)="selectTab('equipment')">{{'Sheet.Tab.Equipment.title' | translate}}</a></span>
+    <span><a class="tab" [class.active]="selectedTab === 'inventory'" (click)="selectTab('inventory')">{{'Sheet.Tab.Inventory.title' | translate}}</a></span>
+    <span><a class="tab" [class.active]="selectedTab === 'modifiers'" (click)="selectTab('modifiers')">{{'Sheet.Tab.Modifiers.title' | translate}}</a></span>
+    <span><a class="tab" [class.active]="selectedTab === 'notes'" (click)="selectTab('notes')">{{'Sheet.Tab.Notes.title' | translate}}</a></span>
+  </div>
+  @if (selectedTab === 'character') {
+    <section class="character-tab">
+      <section class="character-basic-information">
+        <lvl0-character-basic-information [characterId]="character.id"/>
+      </section>
+      <section class="character-stats">
+        <lvl0-character-sheet-stats [characterId]="character.id"/>
+      </section>
+      <section class="character-effects">
+        <lvl0-character-sheet-effects [characterId]="character.id"/>
+      </section>
+      <section class="character-skills">
+        <lvl0-character-sheet-skills [characterId]="character.id"/>
+      </section>
     </section>
-    <section class="equipment-tab" *ngIf="selectedTab === 'equipment'">
-        <lvl0-character-sheet-equipment [characterId]="character.id"></lvl0-character-sheet-equipment>
+  }
+  @if (selectedTab === 'equipment') {
+    <section class="equipment-tab">
+      <lvl0-character-sheet-equipment [characterId]="character.id"></lvl0-character-sheet-equipment>
     </section>
-    <section class="inventory-tab" *ngIf="selectedTab === 'inventory'">
-        <lvl0-character-sheet-inventory [characterId]="character.id"></lvl0-character-sheet-inventory>
+  }
+  @if (selectedTab === 'inventory') {
+    <section class="inventory-tab">
+      <lvl0-character-sheet-inventory [characterId]="character.id"></lvl0-character-sheet-inventory>
     </section>
-    <section class="notes-tab" *ngIf="selectedTab === 'modifiers'">
-        <lvl0-character-sheet-modifiers [characterId]="character.id"></lvl0-character-sheet-modifiers>
+  }
+  @if (selectedTab === 'modifiers') {
+    <section class="notes-tab">
+      <lvl0-character-sheet-modifiers [characterId]="character.id"></lvl0-character-sheet-modifiers>
     </section>
-    <section class="modifiers-tab" *ngIf="selectedTab === 'notes'">
-        <lvl0-character-sheet-notes [characterId]="character.id"></lvl0-character-sheet-notes>
+  }
+  @if (selectedTab === 'notes') {
+    <section class="modifiers-tab">
+      <lvl0-character-sheet-notes [characterId]="character.id"></lvl0-character-sheet-notes>
     </section>
-</ng-container>
+  }
+}

@@ -1,71 +1,81 @@
-<ng-container *ngIf="skillDefinition">
-    <div class="skill-name">{{ skillDefinition.name }}</div>
-    <div class="roll-result">
-        <lvl0-roll-detail [roll]="data.testRoll">
-            <i class="fa fa-dice"></i>
-            {{ data.testRoll.total }} / {{ data.successValue }}
-            (<span [class]="'roll-result-' + data.result">{{ data.result | translate: 'Misc.RollResult' }}</span>)
-        </lvl0-roll-detail>
-    </div>
-</ng-container>
+@if (skillDefinition) {
+  <div class="skill-name">{{ skillDefinition.name }}</div>
+  <div class="roll-result">
+    <lvl0-roll-detail [roll]="data.testRoll">
+      <i class="fa fa-dice"></i>
+      {{ data.testRoll.total }} / {{ data.successValue }}
+      (<span [class]="'roll-result-' + data.result">{{ data.result | translate: 'Misc.RollResult' }}</span>)
+    </lvl0-roll-detail>
+  </div>
+}
 @if(data.extraData) {
-    @switch (data.extraData.kind) {
-        @case ('cast-spell') {
-            <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="data.extraData.data"></lvl0-spell-roll-chat-message>
+  @switch (data.extraData.kind) {
+    @case ('cast-spell') {
+      <lvl0-spell-roll-chat-message [chatMessageId]=chatMessageId [data]="data.extraData.data"></lvl0-spell-roll-chat-message>
+    }
+    @case ('damage') {
+      <hr>
+        <div class="weapon">
+          <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
+          <span class="name">{{data.extraData.data.weapon.name}}</span>
+          <span class="details">{{data.extraData.data.weapon.damageRollFormula}}@if (data.extraData.data.weapon.element) {
+            <span> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span>
+          }</span>
+        </div>
+        @if (data.extraData.data.ammunition) {
+          <div class="weapon">
+            <span class="icon"><img width="32" height="32" [src]="data.extraData.data.ammunition.icon"></span>
+            <span class="name">{{data.extraData.data.ammunition.name}}</span>
+            <span class="details">{{data.extraData.data.ammunition.damageRollFormula}}@if (data.extraData.data.ammunition.element) {
+              <span> ({{data.extraData.data.ammunition.element | translate: 'Element.NameForWeaponDamage'}})</span>
+            }</span>
+          </div>
         }
-        @case ('damage') {
-            <hr>
-            <div class="weapon">
-                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
-                <span class="name">{{data.extraData.data.weapon.name}}</span>
-                <span class="details">{{data.extraData.data.weapon.damageRollFormula}}<span *ngIf="data.extraData.data.weapon.element"> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
-            </div>
-            <div class="weapon" *ngIf="data.extraData.data.ammunition">
-                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.ammunition.icon"></span>
-                <span class="name">{{data.extraData.data.ammunition.name}}</span>
-                <span class="details">{{data.extraData.data.ammunition.damageRollFormula}}<span *ngIf="data.extraData.data.ammunition.element"> ({{data.extraData.data.ammunition.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
-            </div>
-            <hr>
-            <div class="damage">
-                <ng-container *ngIf="data.result == 'success' || data.result == 'criticalSuccess'">
-                    <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
-                        Dégâts: <i class="fa fa-dice"></i> {{ data.extraData.data.damageRoll?.total }} @if(data.extraData.data.damageElement) {({{ data.extraData.data.damageElement | translate: 'Element.NameForWeaponDamage'}})}
-                    </lvl0-roll-detail>
-                </ng-container>
-            </div>
+        <hr>
+          <div class="damage">
+            @if (data.result == 'success' || data.result == 'criticalSuccess') {
+              <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
+                Dégâts: <i class="fa fa-dice"></i> {{ data.extraData.data.damageRoll?.total }} @if(data.extraData.data.damageElement) {({{ data.extraData.data.damageElement | translate: 'Element.NameForWeaponDamage'}})}
+              </lvl0-roll-detail>
+            }
+          </div>
         }
         @case ('hand-damage') {
-            <hr>
+          <hr>
             @if (data.extraData.data.weapon) {
-                <div class="weapon">
-                    <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
-                    <span class="name">{{data.extraData.data.weapon.name}}</span>
-                    <span class="details">Dégâts: {{data.extraData.data.weapon.damageRollFormula}}<span *ngIf="data.extraData.data.weapon.element"> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
-                </div>
+              <div class="weapon">
+                <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
+                <span class="name">{{data.extraData.data.weapon.name}}</span>
+                <span class="details">Dégâts: {{data.extraData.data.weapon.damageRollFormula}}@if (data.extraData.data.weapon.element) {
+                  <span> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span>
+                }</span>
+              </div>
             }
             <div class="damage">
-                <ng-container *ngIf="data.result == 'success' || data.result == 'criticalSuccess'">
-                    <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
-                        Dégâts: <i class="fa fa-dice"></i> {{ roundDamageUp(data.extraData.data.damageRoll?.total) }}
-                    </lvl0-roll-detail>
-                </ng-container>
+              @if (data.result == 'success' || data.result == 'criticalSuccess') {
+                <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
+                  Dégâts: <i class="fa fa-dice"></i> {{ roundDamageUp(data.extraData.data.damageRoll?.total) }}
+                </lvl0-roll-detail>
+              }
             </div>
-        }
-        @case ('shield-damage') {
+          }
+          @case ('shield-damage') {
             <hr>
-            <div class="weapon">
+              <div class="weapon">
                 <span class="icon"><img width="32" height="32" [src]="data.extraData.data.shield.icon"></span>
                 <span class="name">{{data.extraData.data.shield.name}}</span>
-                <span class="details">Dégâts: {{data.extraData.data.shield.damageRollFormula}}<span *ngIf="data.extraData.data.shield.element"> ({{data.extraData.data.shield.element | translate: 'Element.NameForWeaponDamage'}})</span></span>
-            </div>
-            <hr>
-            <div class="damage">
-                <ng-container *ngIf="data.result == 'success' || data.result == 'criticalSuccess'">
+                <span class="details">Dégâts: {{data.extraData.data.shield.damageRollFormula}}@if (data.extraData.data.shield.element) {
+                  <span> ({{data.extraData.data.shield.element | translate: 'Element.NameForWeaponDamage'}})</span>
+                }</span>
+              </div>
+              <hr>
+                <div class="damage">
+                  @if (data.result == 'success' || data.result == 'criticalSuccess') {
                     <lvl0-roll-detail [roll]="data.extraData.data.damageRoll!">
-                        Dégâts: <i class="fa fa-dice"></i> {{ roundDamageUp(data.extraData.data.damageRoll?.total) }}
+                      Dégâts: <i class="fa fa-dice"></i> {{ roundDamageUp(data.extraData.data.damageRoll?.total) }}
                     </lvl0-roll-detail>
-                </ng-container>
-            </div>
-        }
-    }
-}
+                  }
+                </div>
+              }
+            }
+          }

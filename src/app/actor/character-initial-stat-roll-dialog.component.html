@@ -1,53 +1,61 @@
 <div class="roll-stats-dialog">
-    <h2>Rouler les stats du personnage</h2>
-    @switch (state) {
-        @case ('modeSelection') {
-            <p>Vous pouvez choisir le mode utiliser pour rouler les stats:</p>
-            <ul>
-                <li>
-                    5 valeurs aléatoires, sans `1`
-                    <button (click)="selectMode('random-1')">Choisir</button>
-                </li>
-                <li>
-                    Choisir parmi 3 ensemble de valeur aléatoire
-                    <button (click)="selectMode('random-3')">Choisir</button>
-                </li>
-            </ul>
-        }
-        @case ('selectColumn') {
-            <p>
-                Choisir une colonne parmi les 3 suivantes. Vous pouvez choisir dans quel stat mettre chaque valeur ensuite.
-            </p>
-            <div class="select-column">
-                <div class="column" *ngFor="let roll of rolls; let index = index">
-                    <div class="dice" *ngFor="let value of roll">
-                        <span class="value">
-                            {{value}}
-                        </span>
-                    </div>
-                    <div class="actions">
-                        <button (click)="selectRoll(index)">Choisir</button>
-                    </div>
-                </div>
-            </div>
-        }
-        @case ('selectValues') {
-            <p>
-                Associer chaque statistique avec les valeurs roulés
-            </p>
-            <div class="select-values">
-                <div class="dice" *ngFor="let value of selectedValues; let index = index">
-                    <span class="value">
-                        {{value}}
-                    </span>
-                    <select [ngModel]="statForValue[index]" (ngModelChange)="selectStat(index, $event)">
-                        <option *ngFor="let statName of statNames" [value]="statName">{{'Misc.Stat.' + statName | translate}}</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <button (click)="valid()">Valider</button>
-            </div>
-        }
+  <h2>Rouler les stats du personnage</h2>
+  @switch (state) {
+    @case ('modeSelection') {
+      <p>Vous pouvez choisir le mode utiliser pour rouler les stats:</p>
+      <ul>
+        <li>
+          5 valeurs aléatoires, sans `1`
+          <button (click)="selectMode('random-1')">Choisir</button>
+        </li>
+        <li>
+          Choisir parmi 3 ensemble de valeur aléatoire
+          <button (click)="selectMode('random-3')">Choisir</button>
+        </li>
+      </ul>
     }
+    @case ('selectColumn') {
+      <p>
+        Choisir une colonne parmi les 3 suivantes. Vous pouvez choisir dans quel stat mettre chaque valeur ensuite.
+      </p>
+      <div class="select-column">
+        @for (roll of rolls; track roll; let index = $index) {
+          <div class="column">
+            @for (value of roll; track value) {
+              <div class="dice">
+                <span class="value">
+                  {{value}}
+                </span>
+              </div>
+            }
+            <div class="actions">
+              <button (click)="selectRoll(index)">Choisir</button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+    @case ('selectValues') {
+      <p>
+        Associer chaque statistique avec les valeurs roulés
+      </p>
+      <div class="select-values">
+        @for (value of selectedValues; track value; let index = $index) {
+          <div class="dice">
+            <span class="value">
+              {{value}}
+            </span>
+            <select [ngModel]="statForValue[index]" (ngModelChange)="selectStat(index, $event)">
+              @for (statName of statNames; track statName) {
+                <option [value]="statName">{{'Misc.Stat.' + statName | translate}}</option>
+              }
+            </select>
+          </div>
+        }
+      </div>
+      <div>
+        <button (click)="valid()">Valider</button>
+      </div>
+    }
+  }
 </div>

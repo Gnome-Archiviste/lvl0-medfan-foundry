@@ -1,16 +1,15 @@
-<ng-container *ngIf="itemsByType$ | async let itemsByType">
+@let itemsByType = itemsByType$ | async;
+@if (itemsByType) {
     @for (category of itemsByType | keyvalue; track category.key) {
         @if (category.value.length) {
-
             <h2>{{ category.key | translate: 'Misc.ItemType' }}</h2>
             <div class="item-line">
                 <div class="equiped">
-                    <ng-container *ngIf="itemTypesConfigs[category.key].canBeEquiped; else canBeUsedHeader">
+                    @if (itemTypesConfigs[category.key].canBeEquiped) {
                         <b>Équipé</b>
-                    </ng-container>
-                    <ng-template #canBeUsedHeader>
-                        <b>Utiliser</b>
-                    </ng-template>
+                    } @else {
+                    <b>Utiliser</b>
+                }
                 </div>
                 <div class="name"><b>Nom</b></div>
                 <div class="clutter"><b>Encombrement</b></div>
@@ -19,45 +18,48 @@
             @for (item of category.value; track item.id) {
                 <div class="item-line">
                     <div class="equiped">
-                        <ng-container *ngIf="itemTypesConfigs[category.key].canBeEquiped">
+                        @if (itemTypesConfigs[category.key].canBeEquiped) {
                             <input type="checkbox" [checked]="item.system.equiped" (change)="equipItem(item, $event)">
-                        </ng-container>
-                        <ng-container *ngIf="isItemActionnable(item)">
+                        }
+                        @if (isItemActionnable(item)) {
                             <a title="Utiliser" (click)="useItem(item)"><i class="fa fa-play"></i></a>
-                        </ng-container>
+                        }
                     </div>
-
                     <div class="icon">
                         <img src="{{item.img}}"/>
                     </div>
                     <div class="quantity">
-                        <ng-container *ngIf="item.system.quantifiable">
+                        @if (item.system.quantifiable) {
                             <lvl0-relative-value-editor [value]="item.system.quantity" [editable]="true" (onChange)="updateItemQuantity(item, $event)">
                                 {{item.system.quantity}}
                             </lvl0-relative-value-editor>
-                        </ng-container>
+                        }
                     </div>
                     <div class="name">
                         <div>
-                            <span class="title">
-                                {{item.name}}
-                                <ng-container *ngIf="item.type === 'wand' && item.system.charge > 0"> - {{item.system.charge}} charge(s)</ng-container>
-                            </span>
+              <span class="title">
+                {{item.name}}
+                  @if (item.type === 'wand' && item.system.charge > 0) {
+                      - {{item.system.charge}} charge(s)
+                  }
+              </span>
                         </div>
-                        <div *ngIf="item.system.description">
-                            <span class="description" [innerHTML]="item.system.description | markdown"></span>
-                        </div>
+                        @if (item.system.description) {
+                            <div>
+                                <span class="description" [innerHTML]="item.system.description | markdown"></span>
+                            </div>
+                        }
                         @if (item.type === 'shield') {
                             <div class="description">
                                 <strong>Dégât: </strong> {{item.system.damage}}
                                 <strong>Blocage: </strong> {{item.system.blockValue}}
                             </div>
                         }
-                        <ng-container *ngIf="item.system.restriction">
+                        @if (item.system.restriction) {
                             <div class="restriction">
                                 <strong>Limitation: </strong> {{item.system.restriction}}
                             </div>
-                        </ng-container>
+                        }
                     </div>
                     <div class="clutter">
                         {{item.system.clutter}}
@@ -71,30 +73,33 @@
             }
         }
     }
-</ng-container>
+}
 <section>
     <h2 [class.bag-full]="isBagFull$">
         Encombrement ({{ usedInventorySpace$ | async }} / {{ inventoryTotalSpace$ | async }})
     </h2>
-    <div class="clutter-table" *ngIf="usedCell$ | async as usedCell">
-        <div class="column">
-            <div class="cell"></div>
-            <ng-container *ngFor="let letter of inventoryLetters$ | async">
-                <div class="cell">{{letter}}</div>
-            </ng-container>
-        </div>
-        <ng-container *ngFor="let columnNumber of inventoryColumnNumbers$ | async; let columnIndex = index">
+    @if (usedCell$ | async; as usedCell) {
+        <div class="clutter-table">
             <div class="column">
-                <div class="cell">{{columnNumber}}</div>
-                <ng-container *ngFor="let letter of inventoryLetters$ | async; let rowIndex = index">
-                    <div class="cell" [attr.data-item-type]="usedCell[columnIndex + ',' + rowIndex]">
-                        <div class="description" *ngIf="usedCell[columnIndex + ',' + rowIndex]">
-                            {{usedCell[columnIndex + ',' + rowIndex] | translate: 'Misc.ItemType'}}
-                        </div>
-                    </div>
-                </ng-container>
+                <div class="cell"></div>
+                @for (letter of inventoryLetters$ | async; track letter) {
+                    <div class="cell">{{letter}}</div>
+                }
             </div>
-        </ng-container>
-
-    </div>
+            @for (columnNumber of inventoryColumnNumbers$ | async; track columnNumber; let columnIndex = $index) {
+                <div class="column">
+                    <div class="cell">{{columnNumber}}</div>
+                    @for (letter of inventoryLetters$ | async; track letter; let rowIndex = $index) {
+                        <div class="cell" [attr.data-item-type]="usedCell[columnIndex + ',' + rowIndex]">
+                            @if (usedCell[columnIndex + ',' + rowIndex]) {
+                                <div class="description">
+                                    {{usedCell[columnIndex + ',' + rowIndex] | translate: 'Misc.ItemType'}}
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
 </section>

@@ -1,20 +1,22 @@
 <div [cdkMenuTriggerFor]="editMenu" [class.editable-value]="true" (cdkMenuOpened)="startEdit()">
-    <ng-content />
+  <ng-content />
 </div>
 <ng-template #editMenu>
-    <div class="app window-app" cdkMenu #menuContent=cdkMenu>
-        <div class="window-content">
-            <div class="inline-form">
-                <input #editField type="text" [(ngModel)]="fieldValue" (keydown.enter)="validEditButton.click()">
-                <button (click)="validChange(menuContent)" #validEditButton>OK</button>
-            </div>
-            <div class="help-message">
-                <i class="fa fa-info-circle"></i>
-                <div>
-                    <div>Vous pouvez utiliser des valeur relative tel que '+3' ou '-5' pour augmenter ou réduire la valeur, ou mettre une nouvelle valeur absolue.</div>
-                    <div *ngIf="max">Vous pouvez utiliser <code>min</code> ou <code>max</code> pour mettre la valeur maximum ou minimum.</div>
-                </div>
-            </div>
+  <div class="app window-app" cdkMenu #menuContent=cdkMenu>
+    <div class="window-content">
+      <div class="inline-form">
+        <input #editField type="text" [(ngModel)]="fieldValue" (keydown.enter)="validEditButton.click()">
+        <button (click)="validChange(menuContent)" #validEditButton>OK</button>
+      </div>
+      <div class="help-message">
+        <i class="fa fa-info-circle"></i>
+        <div>
+          <div>Vous pouvez utiliser des valeur relative tel que '+3' ou '-5' pour augmenter ou réduire la valeur, ou mettre une nouvelle valeur absolue.</div>
+          @if (max) {
+            <div>Vous pouvez utiliser <code>min</code> ou <code>max</code> pour mettre la valeur maximum ou minimum.</div>
+          }
         </div>
+      </div>
     </div>
+  </div>
 </ng-template>

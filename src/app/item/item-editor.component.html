@@ -1,554 +1,577 @@
-<ng-container *ngIf="item$ | async; let item">
-    <div class="header">
-        <img [src]="item.img"
-             class="item-icon"
-             (click)="selectImage(item.id, item.img)"
-             [alt]="'Icône de l\'objet ' + item.name"
-        />
-        <input lvl0ItemPropertyField="name"
-               [lvl0Item]="item"
-               [ngModel]="item.name"
-               type="text">
+@if (item$ | async; as item) {
+  <div class="header">
+    <img [src]="item.img"
+      class="item-icon"
+      (click)="selectImage(item.id, item.img)"
+      [alt]="'Icône de l\'objet ' + item.name"
+      />
+    <input lvl0ItemPropertyField="name"
+      [lvl0Item]="item"
+      [ngModel]="item.name"
+      type="text">
+  </div>
+  <h2>Générale</h2>
+  <section class="editor-section generic">
+    <div class="editor-line">
+      <label class="one-line">
+        <span>Encombrement</span>
+        <input lvl0ItemPropertyField="system.clutter"
+          [lvl0Item]="item"
+          [ngModel]="item.system.clutter"
+          min="0"
+          type="number">
+      </label>
+      <label class="one-line">
+        <span>Prix</span>
+        <input lvl0ItemPropertyField="system.price"
+          [lvl0Item]="item"
+          [ngModel]="item.system.price"
+          min="0"
+          type="number">
+      </label>
+      <label class="one-line">
+        <input lvl0ItemPropertyField="system.quantifiable"
+          [lvl0Item]="item"
+          [ngModel]="item.system.quantifiable"
+          type="checkbox">
+        <span>Quantifiable</span>
+      </label>
+      @if (item.isOwned) {
+        <label class="one-line">
+          <span>Quantity</span>
+          <input lvl0ItemPropertyField="system.quantity"
+            [disabled]="!item.system.quantifiable"
+            [lvl0Item]="item"
+            [ngModel]="item.system.quantity"
+            min="0"
+            type="number">
+        </label>
+      }
     </div>
-
-    <h2>Générale</h2>
-    <section class="editor-section generic">
+    @if (canBeEquiped$ | async) {
+      <div>
+        <label class="one-line">
+          <input lvl0ItemPropertyField="system.equiped"
+            [lvl0Item]="item"
+            [ngModel]="item.system.equiped"
+            type="checkbox">
+          Équipé
+        </label>
+      </div>
+    }
+    <div class="editor-line">
+      <label class="multi-line">
+        Description
+        <textarea lvl0ItemPropertyField="system.description"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="10"
+          [lvl0Item]="item"
+        [ngModel]="item.system.description"></textarea>
+      </label>
+    </div>
+    <div class="editor-line">
+      <label class="multi-line">
+        Details
+        <textarea lvl0ItemPropertyField="system.details"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="10"
+          [lvl0Item]="item"
+        [ngModel]="item.system.details"></textarea>
+      </label>
+    </div>
+    <div class="editor-line">
+      <label class="multi-line">
+        Limitation
+        <input lvl0ItemPropertyField="system.restriction"
+          type="text"
+          [lvl0Item]="item"
+          [ngModel]="item.system.restriction">
+      </label>
+    </div>
+  </section>
+  <section class="editor-section specific">
+    @switch (item.type) {
+      @case ('ammunition') {
+        <h2>Munition / Projectile</h2>
         <div class="editor-line">
-            <label class="one-line">
-                <span>Encombrement</span>
-                <input lvl0ItemPropertyField="system.clutter"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.clutter"
-                       min="0"
-                       type="number">
-            </label>
-            <label class="one-line">
-                <span>Prix</span>
-                <input lvl0ItemPropertyField="system.price"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.price"
-                       min="0"
-                       type="number">
-            </label>
-            <label class="one-line">
-                <input lvl0ItemPropertyField="system.quantifiable"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.quantifiable"
-                       type="checkbox">
-                <span>Quantifiable</span>
-            </label>
-            <label class="one-line" *ngIf="item.isOwned">
-                <span>Quantity</span>
-                <input lvl0ItemPropertyField="system.quantity"
-                       [disabled]="!item.system.quantifiable"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.quantity"
-                       min="0"
-                       type="number">
-            </label>
+          <label class="one-line">
+            Type
+            <select lvl0ItemPropertyField="system.ammunitionType"
+              [lvl0Item]="item"
+              [ngModel]="item.system.ammunitionType">
+              @for (ammunitionType of ammunitionTypes | keyvalue; track ammunitionType) {
+                <option [value]="ammunitionType.key">{{ammunitionType.value}}</option>
+              }
+            </select>
+          </label>
         </div>
-
-        <div *ngIf="canBeEquiped$ | async">
-            <label class="one-line">
-                <input lvl0ItemPropertyField="system.equiped"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.equiped"
-                       type="checkbox">
-                Équipé
-            </label>
-        </div>
-
         <div class="editor-line">
-            <label class="multi-line">
-                Description
-                <textarea lvl0ItemPropertyField="system.description"
-                          cdkTextareaAutosize
-                          cdkAutosizeMinRows="1"
-                          cdkAutosizeMaxRows="10"
-                          [lvl0Item]="item"
-                          [ngModel]="item.system.description"></textarea>
-            </label>
+          <label class="one-line">
+            Dégâts additionnel
+            <input lvl0ItemPropertyField="system.extraDamage"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.extraDamage">
+            <select lvl0ItemPropertyField="system.extraDamageEffect"
+              [lvl0Item]="item"
+              [ngModel]="item.system.extraDamageEffect">
+              @for (element of elementIds; track element) {
+                <option [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
+              }
+            </select>
+          </label>
         </div>
-
         <div class="editor-line">
-            <label class="multi-line">
-                Details
-                <textarea lvl0ItemPropertyField="system.details"
-                          cdkTextareaAutosize
-                          cdkAutosizeMinRows="1"
-                          cdkAutosizeMaxRows="10"
-                          [lvl0Item]="item"
-                          [ngModel]="item.system.details"></textarea>
-            </label>
+          <label class="multi-line">
+            Bonus
+            <input lvl0ItemPropertyField="system.bonus"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.bonus">
+          </label>
         </div>
-
+      }
+      @case ('armor') {
+        <h2>Armure</h2>
         <div class="editor-line">
-            <label class="multi-line">
-                Limitation
-                <input lvl0ItemPropertyField="system.restriction"
-                       type="text"
-                       [lvl0Item]="item"
-                       [ngModel]="item.system.restriction">
-            </label>
+          <label class="one-line">
+            Protection
+            <input lvl0ItemPropertyField="system.protection"
+              type="number"
+              [lvl0Item]="item"
+              [ngModel]="item.system.protection">
+          </label>
+          <label class="one-line">
+            Malus dextérité
+            <input lvl0ItemPropertyField="system.dexMalus"
+              type="number"
+              [lvl0Item]="item"
+              [ngModel]="item.system.dexMalus">
+          </label>
         </div>
-
-    </section>
-
-    <section class="editor-section specific">
-        @switch (item.type) {
-            @case ('ammunition') {
-                <h2>Munition / Projectile</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Type
-                        <select lvl0ItemPropertyField="system.ammunitionType"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.ammunitionType">
-                            <option *ngFor="let ammunitionType of ammunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Dégâts additionnel
-                        <input lvl0ItemPropertyField="system.extraDamage"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.extraDamage">
-                        <select lvl0ItemPropertyField="system.extraDamageEffect"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.extraDamageEffect">
-                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Bonus
-                        <input lvl0ItemPropertyField="system.bonus"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.bonus">
-                    </label>
-                </div>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('bag') {
+        <h2>Sac</h2>
+        <div class="editor-line">
+          <label class="one-line">
+            Lignes supplémentaires
+            <input lvl0ItemPropertyField="system.extraRows"
+              type="number"
+              [lvl0Item]="item"
+              [disabled]="item.system.noLimit"
+              [ngModel]="item.system.extraRows">
+          </label>
+          <label class="one-line">
+            Colones supplémentaires
+            <input lvl0ItemPropertyField="system.extraColumns"
+              type="number"
+              [lvl0Item]="item"
+              [disabled]="item.system.noLimit"
+              [ngModel]="item.system.extraColumns">
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="one-line">
+            <input lvl0ItemPropertyField="system.noLimit"
+              [lvl0Item]="item"
+              [ngModel]="item.system.noLimit"
+              type="checkbox">
+            Taille infini
+          </label>
+        </div>
+      }
+      @case ('belt') {
+        <h2>Ceinture</h2>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('cloak') {
+        <h2>Cape</h2>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('hand') {
+        <h2>Avant-Bras / Mains</h2>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('handWeapon') {
+        <h2>Arme de pugilat</h2>
+        <div class="editor-line">
+          <label class="one-line">
+            Dégâts
+            <!-- FIXME: Add validation that the formula is valid -->
+            <input lvl0ItemPropertyField="system.damage"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.damage">
+            <select lvl0ItemPropertyField="system.element"
+              [lvl0Item]="item"
+              [ngModel]="item.system.element">
+              @for (element of elementIds; track element) {
+                <option [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
+              }
+            </select>
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="multi-line">
+            Bonus
+            <input lvl0ItemPropertyField="system.bonus"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.bonus">
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="one-line">
+            <input lvl0ItemPropertyField="system.canUseWeapon"
+              [lvl0Item]="item"
+              [ngModel]="item.system.canUseWeapon"
+              type="checkbox">
+            Peux utiliser une arme
+          </label>
+        </div>
+      }
+      @case ('head') {
+        <h2>Tête</h2>
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('magical') {
+      }
+      @case ('misc') {
+      }
+      @case ('necklace') {
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('potions') {
+      }
+      @case ('purse') {
+      }
+      @case ('ring') {
+        <div class="editor-line">
+          <label class="multi-line">
+            Immunités et Invulnérabilités
+            <input lvl0ItemPropertyField="system.immunity"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.immunity">
+          </label>
+        </div>
+      }
+      @case ('shield') {
+        <h2>Bouclier</h2>
+        <div class="editor-line">
+          <label class="one-line">
+            Dégâts
+            <input lvl0ItemPropertyField="system.damage"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.damage">
+          </label>
+          <label class="one-line">
+            Blocage
+            <input lvl0ItemPropertyField="system.blockValue"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.blockValue">
+          </label>
+        </div>
+      }
+      @case ('scroll') {
+        <h2>Parchemin</h2>
+        <h2>Sort</h2>
+        <div class="spell-selection">
+          <div class="actions">
+            <button (click)="openSpellSelector(item)"
+              type="button">
+              Choisir...
+            </button>
+            @if (relatedSpell$ | async; as spell) {
+              <button (click)="copySpellInfoToItem(item, spell)"
+                type="button">
+                Copier le nom et l'image du sort
+              </button>
             }
-            @case ('armor') {
-                <h2>Armure</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Protection
-                        <input lvl0ItemPropertyField="system.protection"
-                               type="number"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.protection">
-                    </label>
-                    <label class="one-line">
-                        Malus dextérité
-                        <input lvl0ItemPropertyField="system.dexMalus"
-                               type="number"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.dexMalus">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('bag') {
-                <h2>Sac</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Lignes supplémentaires
-                        <input lvl0ItemPropertyField="system.extraRows"
-                               type="number"
-                               [lvl0Item]="item"
-                               [disabled]="item.system.noLimit"
-                               [ngModel]="item.system.extraRows">
-                    </label>
-                    <label class="one-line">
-                        Colones supplémentaires
-                        <input lvl0ItemPropertyField="system.extraColumns"
-                               type="number"
-                               [lvl0Item]="item"
-                               [disabled]="item.system.noLimit"
-                               [ngModel]="item.system.extraColumns">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        <input lvl0ItemPropertyField="system.noLimit"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.noLimit"
-                               type="checkbox">
-                        Taille infini
-                    </label>
-                </div>
-            }
-            @case ('belt') {
-                <h2>Ceinture</h2>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('cloak') {
-                <h2>Cape</h2>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('hand') {
-                <h2>Avant-Bras / Mains</h2>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('handWeapon') {
-                <h2>Arme de pugilat</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Dégâts
-                        <!-- FIXME: Add validation that the formula is valid -->
-                        <input lvl0ItemPropertyField="system.damage"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.damage">
-                        <select lvl0ItemPropertyField="system.element"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.element">
-                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Bonus
-                        <input lvl0ItemPropertyField="system.bonus"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.bonus">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        <input lvl0ItemPropertyField="system.canUseWeapon"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.canUseWeapon"
-                               type="checkbox">
-                        Peux utiliser une arme
-                    </label>
-                </div>
-            }
-            @case ('head') {
-                <h2>Tête</h2>
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('magical') {
-            }
-            @case ('misc') {
-            }
-            @case ('necklace') {
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('potions') {
-            }
-            @case ('purse') {
-            }
-            @case ('ring') {
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Immunités et Invulnérabilités
-                        <input lvl0ItemPropertyField="system.immunity"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.immunity">
-                    </label>
-                </div>
-            }
-            @case ('shield') {
-                <h2>Bouclier</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Dégâts
-                        <input lvl0ItemPropertyField="system.damage"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.damage">
-                    </label>
-                    <label class="one-line">
-                        Blocage
-                        <input lvl0ItemPropertyField="system.blockValue"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.blockValue">
-                    </label>
-                </div>
-            }
-            @case ('scroll') {
-                <h2>Parchemin</h2>
-                <h2>Sort</h2>
-                <div class="spell-selection">
-                    <div class="actions">
-                        <button (click)="openSpellSelector(item)"
-                                type="button">
-                            Choisir...
-                        </button>
-                        <button *ngIf="relatedSpell$ | async; let spell" (click)="copySpellInfoToItem(item, spell)"
-                                type="button">
-                            Copier le nom et l'image du sort
-                        </button>
-                    </div>
-                    <div class="selected-spell" *ngIf="relatedSpell$ | async; let spell">
-                        <lvl0-spell [spell]="spell"></lvl0-spell>
-                    </div>
-                </div>
-            }
-            @case ('wand') {
-                <h2>Baguette</h2>
-                <div class="editor-line" *ngIf="item.isOwned">
-                    <label class="one-line">
-                        <input lvl0ItemPropertyField="system.blocked"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.blocked"
-                               type="checkbox">
-                        Bloqué ? (Échec critique lors du remplissage)
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        <span>Charge</span>
-                        <input lvl0ItemPropertyField="system.charge"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.charge"
-                               min="0"
-                               type="number">
-                    </label>
-                </div>
-
-                <h2>Sort</h2>
-                <div class="spell-selection">
-                    <div class="actions">
-                        <button (click)="openSpellSelector(item)"
-                                type="button">
-                            Choisir...
-                        </button>
-                        <button *ngIf="relatedSpell$ | async; let spell" (click)="copySpellInfoToItem(item, spell)"
-                                type="button">
-                            Copier le nom et l'image du sort
-                        </button>
-                    </div>
-                    <div class="selected-spell" *ngIf="relatedSpell$ | async; let spell">
-                        <lvl0-spell [spell]="spell"></lvl0-spell>
-                    </div>
-                </div>
-            }
-            @case ('weapon') {
-                <h2>Arme</h2>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Dégâts
-                        <input lvl0ItemPropertyField="system.damage"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.damage">
-                        <select lvl0ItemPropertyField="system.element"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.element">
-                            <option *ngFor="let element of elementIds" [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div class="editor-line">
-                    <label class="one-line">
-                        Type
-                        <select lvl0ItemPropertyField="system.weaponType"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.weaponType">
-                            <option *ngFor="let weaponType of weaponTypes | keyvalue" [value]="weaponType.key">{{weaponType.value}}</option>
-                        </select>
-                    </label>
-                    <label class="one-line" *ngIf="item.system.weaponType !== 'melee'">
-                        Type de munition
-                        <select lvl0ItemPropertyField="system.usedAmmunitionType"
-                                [lvl0Item]="item"
-                                [ngModel]="item.system.usedAmmunitionType">
-                            <option *ngFor="let ammunitionType of usedAmmunitionTypes | keyvalue" [value]="ammunitionType.key">{{ammunitionType.value}}</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        Nombre de main
-                        <input lvl0ItemPropertyField="system.handCount"
-                               type="number"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.handCount">
-                    </label>
-                </div>
-
-                <div class="editor-line">
-                    <label class="multi-line">
-                        Bonus
-                        <input lvl0ItemPropertyField="system.bonus"
-                               type="text"
-                               [lvl0Item]="item"
-                               [ngModel]="item.system.bonus">
-                    </label>
-                </div>
-            }
+          </div>
+          @if (relatedSpell$ | async; as spell) {
+            <div class="selected-spell">
+              <lvl0-spell [spell]="spell"></lvl0-spell>
+            </div>
+          }
+        </div>
+      }
+      @case ('wand') {
+        <h2>Baguette</h2>
+        @if (item.isOwned) {
+          <div class="editor-line">
+            <label class="one-line">
+              <input lvl0ItemPropertyField="system.blocked"
+                [lvl0Item]="item"
+                [ngModel]="item.system.blocked"
+                type="checkbox">
+              Bloqué ? (Échec critique lors du remplissage)
+            </label>
+          </div>
         }
-    </section>
-
-    <section *ngIf="canHaveModifier$ | async" class="editor-section modifiers">
-        <h2>Modificateurs</h2>
-        <ng-container *ngIf="modifiers$ | async; let modifiers">
-            <div *ngFor="let modifier of modifiers | keyvalue" class="editor-line">
-                <select [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.stat'"
-                        [lvl0Item]="item"
-                        [ngModel]="modifier.value.stat">
-                    <option *ngFor="let stat of stats" [value]="stat">
-                        {{stat | translate:'Misc.Stat' }}
-                    </option>
-                </select>
-                +
-                <input [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.value' "
-                       type="number"
-                       [lvl0Item]="item"
-                       [ngModel]="modifier.value.value">
-                <a title="Supprimer modificateur" (click)="removeModifier(item, modifier.key)"><i class="fas fa-trash"></i></a>
-            </div>
-        </ng-container>
-        <button (click)="addModifier(itemWithModifier$(item))">Ajouter un modificateur</button>
-
-    </section>
-
-    <section *ngIf="canHaveExtraSkills$ | async" class="editor-section extra-skills">
-        <h2>Compétences</h2>
-        <ng-container *ngIf="extraSkills$ | async; let extraSkills">
-            <div *ngFor="let extraSkill of extraSkills | keyvalue" class="editor-line">
-                <select [lvl0ItemPropertyField]="'data.extraSkills.' + extraSkill.key + '.id'"
-                        [lvl0Item]="item"
-                        [ngModel]="extraSkill.value.id">
-                    <ng-container *ngFor="let skillCategory of skillsByCategories | keyvalue">
-                        <optgroup [label]="skillCategory.key">
-                            <option *ngFor="let skill of skillCategory.value | keyvalue" [value]="skillCategory.key + '.' + skill.key">
-                                {{skill.value.name}}
-                            </option>
-                        </optgroup>
-                    </ng-container>
-                </select>
-                <a title="Supprimer compétence" (click)="removeExtraSkill(item, extraSkill.key)"><i class="fas fa-trash"></i></a>
-            </div>
-        </ng-container>
-        <button (click)="addExtraSkill(itemWithExtraSkills$(item))">Ajouter une compétence</button>
-    </section>
-
-
-    <section *ngIf="canHaveModifier$ | async" class="editor-section modifiers">
-        <h2>Capacité unique</h2>
-        <ng-container *ngIf="itemWithUniqueCapabilities$(item); let itemWithUniqueCapabilities">
-            <label class="one-line">
-                <input lvl0ItemPropertyField="system.superiorArcane.active"
-                       [lvl0Item]="item"
-                       [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.active"
-                       type="checkbox">
-                Permet de lancer des sorts de niveau supérieur
-            </label>
-            @if (itemWithUniqueCapabilities.system.superiorArcane?.active) {
-                <div class="editor-line">
-                    <label class="one-line">
-                        <span>Multiplicateur du cout du mana par niveau de difference</span>
-                        <input lvl0ItemPropertyField="system.superiorArcane.manaMultiplierPerLevel"
-                               [lvl0Item]="item"
-                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.manaMultiplierPerLevel"
-                               min="0"
-                               type="number">
-                    </label>
-                </div>
-
-                <div class="editor-line">
-                    <label class="one-line">
-                        <span>Dégat par niveau de difference</span>
-                        <input lvl0ItemPropertyField="system.superiorArcane.damagePerLevel"
-                               [lvl0Item]="item"
-                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.damagePerLevel"
-                               min="0"
-                               type="number">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        <span>Nombre d'utilisation par session</span>
-                        <input lvl0ItemPropertyField="system.superiorArcane.usageCountPerSessions"
-                               [lvl0Item]="item"
-                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.usageCountPerSessions"
-                               min="0"
-                               type="number">
-                    </label>
-                </div>
-                <div class="editor-line">
-                    <label class="one-line">
-                        <span>Niveau d'arcane maximum</span>
-                        <input lvl0ItemPropertyField="system.superiorArcane.maximumArcaneLevel"
-                               [lvl0Item]="item"
-                               [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.maximumArcaneLevel"
-                               min="0"
-                               type="number">
-                    </label>
-                </div>
-
+        <div class="editor-line">
+          <label class="one-line">
+            <span>Charge</span>
+            <input lvl0ItemPropertyField="system.charge"
+              [lvl0Item]="item"
+              [ngModel]="item.system.charge"
+              min="0"
+              type="number">
+          </label>
+        </div>
+        <h2>Sort</h2>
+        <div class="spell-selection">
+          <div class="actions">
+            <button (click)="openSpellSelector(item)"
+              type="button">
+              Choisir...
+            </button>
+            @if (relatedSpell$ | async; as spell) {
+              <button (click)="copySpellInfoToItem(item, spell)"
+                type="button">
+                Copier le nom et l'image du sort
+              </button>
             }
-        </ng-container>
-
+          </div>
+          @if (relatedSpell$ | async; as spell) {
+            <div class="selected-spell">
+              <lvl0-spell [spell]="spell"></lvl0-spell>
+            </div>
+          }
+        </div>
+      }
+      @case ('weapon') {
+        <h2>Arme</h2>
+        <div class="editor-line">
+          <label class="one-line">
+            Dégâts
+            <input lvl0ItemPropertyField="system.damage"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.damage">
+            <select lvl0ItemPropertyField="system.element"
+              [lvl0Item]="item"
+              [ngModel]="item.system.element">
+              @for (element of elementIds; track element) {
+                <option [value]="element">{{element | translate: 'Element.NameForWeaponDamage'}}</option>
+              }
+            </select>
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="one-line">
+            Type
+            <select lvl0ItemPropertyField="system.weaponType"
+              [lvl0Item]="item"
+              [ngModel]="item.system.weaponType">
+              @for (weaponType of weaponTypes | keyvalue; track weaponType) {
+                <option [value]="weaponType.key">{{weaponType.value}}</option>
+              }
+            </select>
+          </label>
+          @if (item.system.weaponType !== 'melee') {
+            <label class="one-line">
+              Type de munition
+              <select lvl0ItemPropertyField="system.usedAmmunitionType"
+                [lvl0Item]="item"
+                [ngModel]="item.system.usedAmmunitionType">
+                @for (ammunitionType of usedAmmunitionTypes | keyvalue; track ammunitionType) {
+                  <option [value]="ammunitionType.key">{{ammunitionType.value}}</option>
+                }
+              </select>
+            </label>
+          }
+        </div>
+        <div class="editor-line">
+          <label class="one-line">
+            Nombre de main
+            <input lvl0ItemPropertyField="system.handCount"
+              type="number"
+              [lvl0Item]="item"
+              [ngModel]="item.system.handCount">
+          </label>
+        </div>
+        <div class="editor-line">
+          <label class="multi-line">
+            Bonus
+            <input lvl0ItemPropertyField="system.bonus"
+              type="text"
+              [lvl0Item]="item"
+              [ngModel]="item.system.bonus">
+          </label>
+        </div>
+      }
+    }
+  </section>
+  @if (canHaveModifier$ | async) {
+    <section class="editor-section modifiers">
+      <h2>Modificateurs</h2>
+      @if (modifiers$ | async; as modifiers) {
+        @for (modifier of modifiers | keyvalue; track modifier) {
+          <div class="editor-line">
+            <select [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.stat'"
+              [lvl0Item]="item"
+              [ngModel]="modifier.value.stat">
+              @for (stat of stats; track stat) {
+                <option [value]="stat">
+                  {{stat | translate:'Misc.Stat' }}
+                </option>
+              }
+            </select>
+            +
+            <input [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.value' "
+              type="number"
+              [lvl0Item]="item"
+              [ngModel]="modifier.value.value">
+            <a title="Supprimer modificateur" (click)="removeModifier(item, modifier.key)"><i class="fas fa-trash"></i></a>
+          </div>
+        }
+      }
+      <button (click)="addModifier(itemWithModifier$(item))">Ajouter un modificateur</button>
     </section>
-
-</ng-container>
+  }
+  @if (canHaveExtraSkills$ | async) {
+    <section class="editor-section extra-skills">
+      <h2>Compétences</h2>
+      @if (extraSkills$ | async; as extraSkills) {
+        @for (extraSkill of extraSkills | keyvalue; track extraSkill) {
+          <div class="editor-line">
+            <select [lvl0ItemPropertyField]="'data.extraSkills.' + extraSkill.key + '.id'"
+              [lvl0Item]="item"
+              [ngModel]="extraSkill.value.id">
+              @for (skillCategory of skillsByCategories | keyvalue; track skillCategory) {
+                <optgroup [label]="skillCategory.key">
+                  @for (skill of skillCategory.value | keyvalue; track skill) {
+                    <option [value]="skillCategory.key + '.' + skill.key">
+                      {{skill.value.name}}
+                    </option>
+                  }
+                </optgroup>
+              }
+            </select>
+            <a title="Supprimer compétence" (click)="removeExtraSkill(item, extraSkill.key)"><i class="fas fa-trash"></i></a>
+          </div>
+        }
+      }
+      <button (click)="addExtraSkill(itemWithExtraSkills$(item))">Ajouter une compétence</button>
+    </section>
+  }
+  @if (canHaveModifier$ | async) {
+    <section class="editor-section modifiers">
+      <h2>Capacité unique</h2>
+      @if (itemWithUniqueCapabilities$(item); as itemWithUniqueCapabilities) {
+        <label class="one-line">
+          <input lvl0ItemPropertyField="system.superiorArcane.active"
+            [lvl0Item]="item"
+            [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.active"
+            type="checkbox">
+          Permet de lancer des sorts de niveau supérieur
+        </label>
+        @if (itemWithUniqueCapabilities.system.superiorArcane?.active) {
+          <div class="editor-line">
+            <label class="one-line">
+              <span>Multiplicateur du cout du mana par niveau de difference</span>
+              <input lvl0ItemPropertyField="system.superiorArcane.manaMultiplierPerLevel"
+                [lvl0Item]="item"
+                [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.manaMultiplierPerLevel"
+                min="0"
+                type="number">
+            </label>
+          </div>
+          <div class="editor-line">
+            <label class="one-line">
+              <span>Dégat par niveau de difference</span>
+              <input lvl0ItemPropertyField="system.superiorArcane.damagePerLevel"
+                [lvl0Item]="item"
+                [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.damagePerLevel"
+                min="0"
+                type="number">
+            </label>
+          </div>
+          <div class="editor-line">
+            <label class="one-line">
+              <span>Nombre d'utilisation par session</span>
+              <input lvl0ItemPropertyField="system.superiorArcane.usageCountPerSessions"
+                [lvl0Item]="item"
+                [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.usageCountPerSessions"
+                min="0"
+                type="number">
+            </label>
+          </div>
+          <div class="editor-line">
+            <label class="one-line">
+              <span>Niveau d'arcane maximum</span>
+              <input lvl0ItemPropertyField="system.superiorArcane.maximumArcaneLevel"
+                [lvl0Item]="item"
+                [ngModel]="itemWithUniqueCapabilities.system.superiorArcane?.maximumArcaneLevel"
+                min="0"
+                type="number">
+            </label>
+          </div>
+        }
+      }
+    </section>
+  }
+}

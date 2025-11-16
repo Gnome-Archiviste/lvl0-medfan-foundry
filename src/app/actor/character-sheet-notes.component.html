@@ -1,26 +1,25 @@
-<ng-container *ngIf="note$|async as notes">
-
-    <ng-container *ngIf="!editable">
-        <ng-container *ngIf="notes.mode == 'html'">
-            <div [innerHTML]="notes.content"></div>
-        </ng-container>
-        <ng-container *ngIf="notes.mode == 'markdown'">
-            <div [innerHTML]="notes.content | markdown"></div>
-        </ng-container>
-    </ng-container>
-    <ng-container *ngIf="editable">
-        <textarea #content cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="12"
-                  (change)="updateNoteContent(content.value)" [ngModel]="notes.content"></textarea>
-    </ng-container>
-    <div class="actions">
-        <button (click)="toggleEdit()">Edit</button>
-        <label>
-            Mode
-            <select [ngModel]="notes.mode" (ngModelChange)="updateNodeMode($event)">
-                <option [value]="'html'">html</option>
-                <option [value]="'markdown'">markdown</option>
-            </select>
-        </label>
-    </div>
-</ng-container>
+@if (note$|async; as notes) {
+  @if (!editable) {
+    @if (notes.mode == 'html') {
+      <div [innerHTML]="notes.content"></div>
+    }
+    @if (notes.mode == 'markdown') {
+      <div [innerHTML]="notes.content | markdown"></div>
+    }
+  }
+  @if (editable) {
+    <textarea #content cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="12"
+    (change)="updateNoteContent(content.value)" [ngModel]="notes.content"></textarea>
+  }
+  <div class="actions">
+    <button (click)="toggleEdit()">Edit</button>
+    <label>
+      Mode
+      <select [ngModel]="notes.mode" (ngModelChange)="updateNodeMode($event)">
+        <option [value]="'html'">html</option>
+        <option [value]="'markdown'">markdown</option>
+      </select>
+    </label>
+  </div>
+}
 
