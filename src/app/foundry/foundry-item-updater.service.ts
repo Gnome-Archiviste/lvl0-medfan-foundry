@@ -18,6 +18,7 @@ export class FoundryItemUpdaterService extends ItemUpdaterService {
         if (!foundryItem) {
             throw new Error('Foundry item not found: ' + itemId);
         }
+
         await foundryItem.update(diffObject, {diff: true});
     }
 
@@ -26,15 +27,18 @@ export class FoundryItemUpdaterService extends ItemUpdaterService {
         if (!foundryItem) {
             throw new Error('Foundry item not found: ' + item.id);
         }
-        await foundryItem.update(updater(this.foundryToLvl0Mapper.createLvl0ItemFromFoundryItem(foundryItem) as T), {diff: true});
+        // FIXME cast `as` should not be needed
+        await foundryItem.update(updater(this.foundryToLvl0Mapper.createLvl0ItemFromFoundryItem(foundryItem) as T) as Item.UpdateData, {diff: true});
     }
 
     async changeQuantity<T extends Lvl0Item>(item: T, relativeQuantityChange: number): Promise<void> {
         let foundryItem = this.foundryLvl0IdResolver.getItemFromLvl0Id(item.id);
+        if (!foundryItem)
+            return;
         if (item.system.quantity + relativeQuantityChange <= 0) {
             await foundryItem.delete();
         } else {
-            await foundryItem.update({data: {quantity: item.system.quantity + relativeQuantityChange}})
+            await foundryItem.update({system: {quantity: item.system.quantity + relativeQuantityChange}})
         }
     }
 }

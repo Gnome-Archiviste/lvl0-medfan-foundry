@@ -18,7 +18,8 @@ label {
         align-items: center;
         gap: 8px;
         input {
-            width: 100%
+            width: 100%;
+            min-width: 40px;
         }
     }
     &.multi-line {

@@ -1,44 +1,60 @@
-import {assertIsCharacter, Lvl0FoundryActor} from 'models/actor';
+import {assertIsCharacter} from 'models/actor';
 
-export interface Lvl0mfActorSheetData {
+export interface Lvl0mfActorSheetData extends foundry.applications.sheets.ActorSheetV2.RenderContext {
     lvl0CharacterId: string,
 }
 
-export class Lvl0CharacterActorSheet<Options extends ActorSheet.Options = ActorSheet.Options> extends ActorSheet<ActorSheet.Options> {
-    constructor(actor: Lvl0FoundryActor, options: Partial<Options>) {
-        super(actor, options);
-    }
+export class Lvl0CharacterActorSheet extends foundry.applications.sheets.ActorSheetV2<
+    Lvl0mfActorSheetData
+> {
+    static DEFAULT_OPTIONS = {
+        classes: ["lvl0mf", "sheet", "actor"],
+        position: {
+            width: 770,
+            height: 800,
+        },
+        actions: {},
+        window: {
+            resizable: true,
+        },
+        dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}],
+    };
 
-    async getData(options?: Partial<Options>): Promise<Lvl0mfActorSheetData> {
-        assertIsCharacter(this.actor);
+    async _prepareContext(
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions & { isFirstRender: boolean },
+    ): Promise<Lvl0mfActorSheetData> {
+        const context = await super._prepareContext(options);
 
-        const context = await super.getData(options);
+        let lvl0ActorId = this.document.lvl0Id;
+        if (!lvl0ActorId) {
+            throw new Error('Actor is not linked to LVL0 character ' + this.document.toJSON());
+        }
+
+        assertIsCharacter(this.document);
+
         return {
             ...context,
-            lvl0CharacterId: this.actor.lvl0Id,
-        } as Lvl0mfActorSheetData
-    }
-
-
-    override render(force?: boolean, options?: Application.RenderOptions<Options>): this {
-        if (this.rendered) {
-            return this;
-        }
-        return super.render(force, options);
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-    }
-
-    static get defaultOptions(): ActorSheet.Options {
-        return {
-            ...super.defaultOptions,
-            classes: ["lvl0mf", "sheet", "actor"],
-            template: "systems/lvl0mf-sheet/ui/sheets/actor/lvl0-character-actor-sheet.hbs",
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-            scrollY: [".stats", ".items", ".inventory"],
-            dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+            lvl0CharacterId: lvl0ActorId,
         };
+    }
+
+    protected override async _renderHTML(
+        context: Lvl0mfActorSheetData,
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions,
+    ): Promise<string> {
+        return `<form class="lvl0mf sheet actor" autocomplete="off">
+            <lvl0-character-sheet character-id="${context.lvl0CharacterId}"></lvl0-character-sheet>
+        </form>`
+    }
+
+    async _replaceHTML(
+        result: string,
+        content: HTMLElement,
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions,
+    ) {
+        if (options.isFirstRender) {
+            content.style.overflowY = 'auto';
+            content.innerHTML = result;
+        }
     }
 }

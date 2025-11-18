@@ -54,7 +54,7 @@ export class RollHandDamageSkillScript extends SkillScript<RollHandDamageSkillRe
         let actorBasicStatValues = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterBasicStats()));
         let baseDamageRollFormula = Math.ceil(actorBasicStatValues.phy / 2).toString();
         if (this.handWeapon) {
-            baseDamageRollFormula = this.handWeapon.system.damage.replace('phy', actorBasicStatValues.phy.toString())
+            baseDamageRollFormula = this.handWeapon.system.damage.replace('{phy}', actorBasicStatValues.phy.toString())
         }
 
         let characterEffects = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterEffects(this.systemDataDatabaseService)));

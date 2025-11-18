@@ -5,13 +5,12 @@
   "version": "0.6.41",
   "author": "Gnome Archiviste",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": "13",
+    "verified": "13.347",
+    "maximum": "13"
   },
   "esmodules": [
-    "vendor.js",
     "polyfills.js",
-    "runtime.js",
     "main.js"
   ],
   "scripts": [],
@@ -31,6 +30,35 @@
       "path": "lang/fr.json"
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+      },
+      "monster": {
+      }
+    },
+    "Item": {
+      "ammunition": {},
+      "armor": {},
+      "bag":  {},
+      "belt": {},
+      "cloak":  {},
+      "foot": {},
+      "hand":  {},
+      "head": {},
+      "magical":  {},
+      "misc": {},
+      "necklace":  {},
+      "potions": {},
+      "purse":  {},
+      "ring": {},
+      "shield":  {},
+      "wand": {},
+      "scroll":  {},
+      "handWeapon": {},
+      "weapon":  {}
+    }
+  },
   "gridDistance": 1,
   "gridUnits": "m",
   "primaryTokenAttribute": "health",

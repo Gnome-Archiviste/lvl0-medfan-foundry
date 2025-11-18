@@ -8,7 +8,6 @@ import {ItemUpdaterService} from '../../data-accessor/item-updater.service';
 import {RollFactory} from '../../shared/roll-factory';
 import {SkillRollChatExtraDataMessageData} from "app/chat/skill-roll-chat-message.component";
 import {SkillRollOutcome} from '../skill-roll-util';
-import {RollShieldDamageScriptResult} from './roll-shield-damage-skill-script';
 
 export type RollDamageSkillResult = {
     damageRollFormula: string;
@@ -80,14 +79,14 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
         let weaponElement = this.weapon.system.element;
         let damageElement = weaponElement;
         let damageRollFormula = weaponRollFormula;
-        if (this.ammunition) {
+        if (this.ammunition && this.ammunition.system.extraDamage) {
             ammunitionElement = this.ammunition.system.extraDamageEffect;
             damageElement = ammunitionElement || weaponElement;
             damageRollFormula = '(' + damageRollFormula + '+' + this.ammunition.system.extraDamage.split(' ').join() + ')'
         }
 
         if (this.data.charge) {
-            weaponRollFormula = '(' + weaponRollFormula + ')*2'
+            damageRollFormula = '(' + weaponRollFormula + ')*2'
         }
 
         let weaponInfo = {

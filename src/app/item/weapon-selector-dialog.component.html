@@ -50,8 +50,11 @@
               <div class="description" [innerHTML]="item.system.description | markdown"></div>
             }
           </div>
-          <div class="damage">{{ item.system.extraDamage }}
-            <span>({{item.system.extraDamageEffect | translate: 'Element.NameForWeaponDamage'}})</span>
+          <div class="damage">
+              @if (item.system.extraDamage) {
+                  {{ item.system.extraDamage }}
+                    <span>({{item.system.extraDamageEffect | translate: 'Element.NameForWeaponDamage'}})</span>
+              }
           </div>
           <div class="quantity">{{ item.system.quantity }}</div>
         </div>

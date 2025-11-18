@@ -21,7 +21,7 @@
           <div>Lancer/Tir: {{ item.system.rangeDamage }}</div>
         </div>
       } @else {
-        <div class="damage">{{ item.system.damage }} @if(item.system.element !== 'physic') {({{item.system.element | translate: 'Element.NameForWeaponDamage'}})}</div>
+        <div class="damage">{{ item.system.damage }} @if(item.system.element && item.system.element !== 'physic') {({{item.system.element | translate: 'Element.NameForWeaponDamage'}})}</div>
       }
 
       <div class="actions">
@@ -134,7 +134,7 @@
         </div>
         <div class="icon"><img src="{{item.img}}"/></div>
         <div class="name">
-          <div class="title">{{item.name}}</div>
+          <div class="title" (click)="selectMenuItem(item)" [cdkMenuTriggerFor]="itemDetailsMenu">{{ item.name }}</div>
           @if (item.system.description) {
             <div class="description" [innerHTML]="item.system.description | markdown"></div>
           }
@@ -177,7 +177,7 @@
 </section>
 
 <ng-template #itemDetailsMenu let-data>
-  <div class="app window-app" cdkMenu #menuContent=cdkMenu>
+  <div class="application window-app" cdkMenu #menuContent=cdkMenu>
     <div class="window-content">
       @if (menuItem) {
         <lvl0-item-details [item]="menuItem"></lvl0-item-details>

@@ -2,7 +2,7 @@
   <ng-content />
 </div>
 <ng-template #editMenu>
-  <div class="app window-app" cdkMenu #menuContent=cdkMenu>
+  <div class="application window-app" cdkMenu #menuContent=cdkMenu>
     <div class="window-content">
       <div class="inline-form">
         <input #editField type="text" [(ngModel)]="fieldValue" (keydown.enter)="validEditButton.click()">
@@ -13,7 +13,7 @@
         <div>
           <div>Vous pouvez utiliser des valeur relative tel que '+3' ou '-5' pour augmenter ou réduire la valeur, ou mettre une nouvelle valeur absolue.</div>
           @if (max) {
-            <div>Vous pouvez utiliser <code>min</code> ou <code>max</code> pour mettre la valeur maximum ou minimum.</div>
+            <div>Vous pouvez utiliser <em>min</em> ou <em>max</em> pour mettre la valeur maximum ou minimum.</div>
           }
         </div>
       </div>

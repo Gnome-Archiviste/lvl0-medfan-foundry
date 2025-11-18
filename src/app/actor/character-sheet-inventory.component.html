@@ -1,3 +1,9 @@
+@if (isBagFull$ | async) {
+    <div class="warning-message">
+        <i class="fa fa-warning"></i>
+        L'inventaire est plein !
+    </div>
+}
 @let itemsByType = itemsByType$ | async;
 @if (itemsByType) {
     @for (category of itemsByType | keyvalue; track category.key) {
@@ -37,12 +43,12 @@
                     </div>
                     <div class="name">
                         <div>
-              <span class="title">
-                {{item.name}}
-                  @if (item.type === 'wand' && item.system.charge > 0) {
-                      - {{item.system.charge}} charge(s)
-                  }
-              </span>
+                            <span class="title" (click)="selectMenuItem(item)" [cdkMenuTriggerFor]="itemDetailsMenu">
+                              {{item.name}}
+                                @if (item.type === 'wand' && item.system.charge > 0) {
+                                    - {{item.system.charge}} charge(s)
+                                }
+                            </span>
                         </div>
                         @if (item.system.description) {
                             <div>
@@ -74,8 +80,10 @@
         }
     }
 }
-<section>
-    <h2 [class.bag-full]="isBagFull$">
+
+@let inventoryTotalSpace = (inventoryTotalSpace$ | async) ?? 0;
+@if (inventoryTotalSpace >= 0) {
+    <h2 [class.bag-full]="isBagFull$ | async">
         Encombrement ({{ usedInventorySpace$ | async }} / {{ inventoryTotalSpace$ | async }})
     </h2>
     @if (usedCell$ | async; as usedCell) {
@@ -86,7 +94,7 @@
                     <div class="cell">{{letter}}</div>
                 }
             </div>
-            @for (columnNumber of inventoryColumnNumbers$ | async; track columnNumber; let columnIndex = $index) {
+            @for (columnNumber of inventoryColumnNumbers$ | async; track $index; let columnIndex = $index) {
                 <div class="column">
                     <div class="cell">{{columnNumber}}</div>
                     @for (letter of inventoryLetters$ | async; track letter; let rowIndex = $index) {
@@ -102,4 +110,20 @@
             }
         </div>
     }
-</section>
+} @else {
+    <h2>
+        Encombrement
+    </h2>
+    <p>
+        Inventaire de taille infini
+    </p>
+}
+<ng-template #itemDetailsMenu let-data>
+    <div class="application window-app" cdkMenu #menuContent=cdkMenu>
+        <div class="window-content">
+            @if (menuItem) {
+                <lvl0-item-details [item]="menuItem"></lvl0-item-details>
+            }
+        </div>
+    </div>
+</ng-template>

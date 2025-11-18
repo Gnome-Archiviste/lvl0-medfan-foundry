@@ -15,7 +15,7 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  color: #575757;
+  color: var(--color-text-secondary);
 }
 .editable-value {
     cursor: pointer;

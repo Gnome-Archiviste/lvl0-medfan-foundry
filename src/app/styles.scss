@@ -1,15 +1,30 @@
 @import '@angular/cdk/overlay-prebuilt.css';
 
 :root {
+  --color-critical-success: green;
+  --color-success: green;
+  --color-fail: darkred;
+  --color-epic-fail: darkred;
+}
+
+.theme-light {
   --color-stat-phy: #cf2541;
   --color-stat-dex: #3da610;
   --color-stat-int: #0633ff;
   --color-stat-cha: #ff9500;
   --color-stat-per: #ab31d8;
-  --color-critical-success: green;
-  --color-success: green;
-  --color-fail: darkred;
-  --color-epic-fail: darkred;
+}
+
+.theme-dark {
+  --color-stat-phy: #ff4d67;
+  --color-stat-dex: #33ad14;
+  --color-stat-int: #4d67ff;
+  --color-stat-cha: #c69c4f;
+  --color-stat-per: #ad57cc;
+}
+
+.cdk-menu.application {
+  position: relative;
 }
 
 .stat-phy {

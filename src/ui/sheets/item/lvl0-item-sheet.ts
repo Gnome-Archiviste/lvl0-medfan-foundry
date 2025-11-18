@@ -1,33 +1,60 @@
-import {Lvl0FoundryItem} from 'models/item';
+import {Lvl0mfActorSheetData} from '../actor/lvl0-character-actor-sheet';
 
-export class Lvl0ItemSheet extends ItemSheet {
-    constructor(item: Lvl0FoundryItem, options: Partial<DocumentSheetOptions<Item>>) {
-        super(item, options);
-    }
+export interface Lvl0mfItemSheetData extends foundry.applications.sheets.ItemSheetV2.RenderContext {
+    lvl0ItemId: string,
+}
 
-    override getData(options?: Partial<DocumentSheetOptions<Item>>) {
-        return {
-            ...super.getData(options),
-            lvl0ItemId: this.item.lvl0Id,
+export class Lvl0ItemSheet extends foundry.applications.sheets.ItemSheetV2<Lvl0mfItemSheetData> {
+
+    static DEFAULT_OPTIONS = {
+        classes: ["lvl0mf", "sheet", "item"],
+        position: {
+            width: 500,
+            height: 600,
+        },
+        actions: {},
+        window: {
+            resizable: true,
+        },
+    };
+
+    async _prepareContext(
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions & { isFirstRender: boolean }
+    ): Promise<Lvl0mfItemSheetData> {
+        const context = await super._prepareContext(options);
+
+        let lvl0ItemId = this.document.lvl0Id;
+        if (!lvl0ItemId) {
+            throw new Error('Item is not linked to LVL0 character ' + this.document.toJSON());
         }
-    }
 
-    override activateListeners(html: JQuery) {
-        super.activateListeners(html);
-    }
-
-    override render(force?: boolean, options?: Application.RenderOptions<DocumentSheetOptions<Item>>): this {
-        if (this.rendered)
-            return this;
-        return super.render(force, options);
-    }
-
-    static get defaultOptions(): DocumentSheetOptions<Item> {
         return {
-            ...super.defaultOptions,
-            classes: ["lvl0mf", "sheet", "item"],
-            template: "systems/lvl0mf-sheet/ui/sheets/item/lvl0-item-sheet.hbs",
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
+            ...context,
+            lvl0ItemId: lvl0ItemId,
         };
+    }
+
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+    }
+
+    protected override async _renderHTML(
+        context: Lvl0mfItemSheetData,
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions,
+    ): Promise<string> {
+        return `<form class="sheet-item" autocomplete="off">
+            <lvl0-item-editor item-id="${context.lvl0ItemId}"></lvl0-item-editor>
+        </form>`
+    }
+
+    async _replaceHTML(
+        result: string,
+        content: HTMLElement,
+        options: foundry.applications.sheets.ActorSheetV2.RenderOptions,
+    ) {
+        if (options.isFirstRender) {
+            content.style.overflowY = 'auto';
+            content.innerHTML = result;
+        }
     }
 }

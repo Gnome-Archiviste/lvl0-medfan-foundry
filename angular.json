@@ -30,7 +30,6 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "./src/system.json",
-                            "./src/template.json",
                             {
                                 "glob": "**/*",
                                 "input": "src/assets/",

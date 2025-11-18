@@ -11,7 +11,8 @@ export interface AmmunitionItemPropertiesData extends ItemPropertiesTemplateBase
     extraDamage: string;
     extraDamageEffect: string;
     bonus: string;
-    ammunitionType: AmmunitionType;
+    // FIXME: Replace with AmmunitionType
+    ammunitionType: 'arrow' | 'bolt' | 'dart' | 'marble';
 }
 
 export interface AmmunitionItemProperties {

@@ -9,7 +9,7 @@ export class FoundryFileSelectorService extends FileSelectorService {
     constructor(private ngZone: NgZone) {
         super();
 
-        Hooks.on('closeFilePicker', (fp, _) => {
+        Hooks.on('closeFilePicker', async  (fp: foundry.applications.apps.FilePicker) => {
             let filePickerWithSubscriberIndex = this._subscriberByFilePicker.findIndex(e => e.filePicker === fp);
             if (filePickerWithSubscriberIndex != -1) {
                 let {subscriber} = this._subscriberByFilePicker[filePickerWithSubscriberIndex];
@@ -25,7 +25,7 @@ export class FoundryFileSelectorService extends FileSelectorService {
 
     selectImage(currentPath?: string): Observable<string> {
         return new Observable((subscriber) => {
-            let fp = new FilePicker({
+            let fp = new foundry.applications.apps.FilePicker({
                 type: "image", // The type of files to display in the file picker
                 current: currentPath,
                 callback: (path) => {
@@ -35,7 +35,6 @@ export class FoundryFileSelectorService extends FileSelectorService {
                     })
                 },
             });
-            // @ts-ignore
             fp.browse();
             this._subscriberByFilePicker.push({filePicker: fp, subscriber: subscriber})
         });

@@ -14,6 +14,7 @@
     grid-column-gap: 8px;
     grid-template-areas: "icon name damage handCount";
     align-items: center;
+    margin-block: 2px;
 
     .icon {
       > img {
@@ -30,13 +31,14 @@
       }
 
       .description {
-        background: #23221d;
+        background: var(--background);
         top: 28px;
-        border: 1px solid #000;
-        border-radius: 5px;
-        color: #EEE;
+        border: 1px solid var(--color-text-primary);
+        color: var(--color-text-primary);
         z-index: 1;
         visibility: hidden;
+        width: 270px;
+        padding-inline: 0.5rem;
         position: absolute;
       }
 
@@ -69,6 +71,7 @@
     grid-column-gap: 8px;
     grid-template-areas: "icon name damage quantity";
     align-items: center;
+    margin-block: 2px;
 
     .icon {
       > img {
@@ -85,13 +88,14 @@
       }
 
       .description {
-        background: #23221d;
+        background: var(--background);
         top: 28px;
-        border: 1px solid #000;
-        border-radius: 5px;
-        color: #EEE;
+        border: 1px solid var(--color-text-primary);
+        color: var(--color-text-primary);
         z-index: 1;
         visibility: hidden;
+        width: 270px;
+        padding-inline: 0.5rem;
         position: absolute;
       }
 
@@ -125,11 +129,21 @@
 .actions {
   display: grid;
   column-gap: 8px;
-  margin-top: 8px;
+  margin-top: 16px;
   grid-template-columns: 1fr 1fr;
 }
 
 .selected {
-  background-color: #c0d7b6;
-  outline: 1px solid #4a9b26;
+  background-color: var(--lvl0-weapon-selector-selected-bg-color);
+  outline: 1px solid var(--lvl0-weapon-selector-selected-border-color);
+}
+
+::ng-deep .theme-light {
+  --lvl0-weapon-selector-selected-bg-color: #c0d7b6;
+  --lvl0-weapon-selector-selected-border-color: #a5a5a5;
+}
+
+::ng-deep .theme-dark {
+  --lvl0-weapon-selector-selected-bg-color: #91919152;
+  --lvl0-weapon-selector-selected-border-color: #a5a5a5;
 }

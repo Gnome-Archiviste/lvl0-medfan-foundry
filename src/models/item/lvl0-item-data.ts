@@ -17,9 +17,12 @@ import {
     ScrollItemProperties,
     ShieldItemProperties,
     WandItemProperties,
-    WeaponItemProperties
+    WeaponItemProperties,
 } from './properties';
+
 import {ItemModifierInfo} from './item-modifier-info';
+import {ItemPropertiesTemplateBaseSchema} from './schemas';
+import {isInteger} from 'lodash';
 
 export type Lvl0ItemData =
     AmmunitionItemProperties
@@ -101,4 +104,38 @@ export function getItemModifiersIfAvailable(data: Lvl0ItemData): { [id: string]:
     return undefined;
 }
 
+export abstract class FoundryItemSystemDataBase<DS extends ReturnType<typeof ItemPropertiesTemplateBaseSchema>>
+    extends foundry.abstract.TypeDataModel<DS, Item.Implementation> {
 
+    static migrateData(source: any) {
+        console.debug(`Migrating item with data`, source);
+        if ('arcane' in source && !isInteger(source.arcane)) {
+            if (source.spell) {
+                console.warn(`Fixing arcane level`, source);
+                source.arcane = parseInt(source.spell.split('.')[2]);
+            } else {
+                console.warn(`Reseting arcane level`, source);
+                source.arcane = 0;
+            }
+        }
+
+        if ('weaponType' in source) {
+            if (source.weaponType != 'melee' && source.weaponType != 'range' && source.weaponType != 'melee-range') {
+                console.warn(`Fixing weapon type`, source);
+                source.weaponType = 'melee';
+            }
+        }
+
+        if ('damage' in source && typeof source.damage === 'object') {
+            console.warn(`Fixing damage`, source.damage);
+            source.damage = '1';
+        }
+
+        if (source.ammunitionType && !source.extraDamageEffect) {
+            console.warn(`Fixing element`, source.extraDamageEffect);
+            source.extraDamageEffect = 'physic';
+        }
+
+        return super.migrateData(source);
+    }
+}

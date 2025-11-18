@@ -1,9 +1,9 @@
 export interface ItemPropertiesUniqueCapabilities {
-    superiorArcane?: {
+    superiorArcane: {
         active: boolean;
-        manaMultiplierPerLevel?: number;
-        damagePerLevel?: number;
-        usageCountPerSessions?: number;
-        maximumArcaneLevel?: number;
-    }
+        manaMultiplierPerLevel: number | undefined;
+        damagePerLevel: number | undefined;
+        usageCountPerSessions: number | undefined;
+        maximumArcaneLevel: number | undefined;
+    } | undefined
 }

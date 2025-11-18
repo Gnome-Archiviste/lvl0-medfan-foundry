@@ -7,13 +7,6 @@ import {Lvl0FoundryItem} from '../../models/item';
 import {FoundryToLvl0Mapper} from './foundry-to-lvl0-mapper';
 import {FoundryLvl0IdResolver} from './foundry-lvl0-id-resolver';
 
-// This allows `game` to be resolved
-declare global {
-    interface LenientGlobalVariableTypes {
-        game: never; // the type doesn't matter
-    }
-}
-
 @Injectable({
     providedIn: 'root'
 })
@@ -40,12 +33,12 @@ export class FoundryCharacterAccessorService extends CharacterAccessorService {
                 this.updateActor(item.actor);
             })
         })
-        Hooks.on('deleteItem', (item: Lvl0FoundryItem, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
+        Hooks.on('deleteItem', async (item, options, userId) => {
             this.ngZone.run(() => {
                 this.updateActor(item.actor);
             })
         })
-        Hooks.on('createItem', (item: Lvl0FoundryItem, _change: any, _options: { diff: boolean, render: boolean }, _userId: string) => {
+        Hooks.on('createItem', async (item, options, userId) => {
             this.ngZone.run(() => {
                 this.updateActor(item.actor);
             })

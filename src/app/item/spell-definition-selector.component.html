@@ -3,7 +3,7 @@
     <input [(ngModel)]="filterModel.filter" name="filter" type="text" [placeholder]="'Misc.Filter.PlaceHolder' | translate">
   </div>
 
-  <div class="arcane-levels tabs">
+  <div class="arcane-levels">
     Niveau d'arcane:
     @for (arcaneLevel of arcanesLevels; track arcaneLevel) {
       <a (click)="toggleArcaneLevel($event, arcaneLevel)" [class.active]="filterModel.arcaneLevels.includes(arcaneLevel)" class="level item">
@@ -35,6 +35,14 @@
           }
         </div>
       </div>
+    } @empty {
+        @if (!this.filterModel.arcaneLevels || this.filterModel.arcaneLevels.length === 0) {
+            Aucun sort trouvé
+        } @else if (this.filterModel.arcaneLevels.length === 1) {
+            Aucun sort trouvé pour le niveau d'arcane: {{this.filterModel.arcaneLevels.join(',')}}
+        } @else if (this.filterModel.arcaneLevels.length > 1) {
+            Aucun sort trouvé pour les niveaux d'arcanes: {{this.filterModel.arcaneLevels.join(',')}}
+        }
     }
   </div>
 }

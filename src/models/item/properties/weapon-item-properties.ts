@@ -1,6 +1,5 @@
 import {ItemPropertiesTemplateBase} from './item-properties-template-base';
 import {ItemPropertiesTemplateStatModifiers} from './item-properties-template-stat-modifiers';
-import {AmmunitionType} from './ammunition-item-properties';
 import {ItemPropertiesUniqueCapabilities} from './item-properties-unique-capabilities';
 
 export enum WeaponType {
@@ -10,13 +9,15 @@ export enum WeaponType {
 }
 
 export interface WeaponItemPropertiesData extends ItemPropertiesTemplateBase, ItemPropertiesTemplateStatModifiers, ItemPropertiesUniqueCapabilities {
-    damage?: string
-    rangeDamage?: string
+    damage: string | undefined;
+    rangeDamage: string | undefined;
     handCount: number;
     element: string;
     bonus: string;
-    usedAmmunitionType: AmmunitionType;
-    weaponType: WeaponType;
+    // FIXME: Replace with AmmunitionType
+    usedAmmunitionType: 'arrow' | 'bolt' | 'dart' | 'marble';
+    // FIXME: Replace with WeaponType
+    weaponType: 'melee' | 'range' | 'melee-range';
 }
 
 export interface WeaponItemProperties {

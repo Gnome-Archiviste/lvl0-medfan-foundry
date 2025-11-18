@@ -8,7 +8,7 @@
     <input type="checkbox" name="showHealSpells" [(ngModel)]="filterModel.showHealSpells" />
     <input type="checkbox" name="otherSpells" [(ngModel)]="filterModel.otherSpells" />
   </div>
-  <div class="arcane-levels tabs">
+  <div class="arcane-levels">
     Niveau d'arcane:
     @for (arcaneLevel of arcanesLevels$ | async; track arcaneLevel) {
       <a (click)="toggleArcaneLevel($event, arcaneLevel)" [class.active]="filterModel.arcaneLevels.includes(arcaneLevel)" class="level item">
@@ -22,7 +22,7 @@
 </form>
 
 <ng-template #menu>
-  <div class="app window-app" cdkMenu>
+  <div class="application window-app" cdkMenu>
     <div class="window-content">
       <div>
         <div class="filter-option">
@@ -55,4 +55,12 @@
       }
     </div>
   </div>
+} @empty {
+    @if (!this.filterModel.arcaneLevels || this.filterModel.arcaneLevels.length === 0) {
+        Aucun sort trouvé
+    } @else if (this.filterModel.arcaneLevels.length === 1) {
+        Aucun sort trouvé pour le niveau d'arcane: {{this.filterModel.arcaneLevels.join(',')}}
+    } @else if (this.filterModel.arcaneLevels.length > 1) {
+        Aucun sort trouvé pour les niveaux d'arcanes: {{this.filterModel.arcaneLevels.join(',')}}
+    }
 }

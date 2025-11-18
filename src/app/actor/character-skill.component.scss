@@ -40,6 +40,26 @@
   }
 }
 
+::ng-deep .theme-light {
+  --lvl0-add-skill-point-button-background-color: #bbdfab;
+  --lvl0-add-skill-point-button-border-color: #2fad44;
+  --lvl0-add-skill-point-button-shadow-color: #115c09;
+
+  --lvl0-remove-skill-point-button-background-color: #dfabab;
+  --lvl0-remove-skill-point-button-border-color: #ad2f2f;
+  --lvl0-remove-skill-point-button-shadow-color: #5c0909;
+}
+
+::ng-deep .theme-dark {
+  --lvl0-add-skill-point-button-background-color: #4a833a;
+  --lvl0-add-skill-point-button-border-color: #0b8e17;
+  --lvl0-add-skill-point-button-shadow-color: #3bb330;
+
+  --lvl0-remove-skill-point-button-background-color: #852929;
+  --lvl0-remove-skill-point-button-border-color: #c13131;
+  --lvl0-remove-skill-point-button-shadow-color: #6e0b0b;
+}
+
 .add-remove-point {
   margin-top: 8px;
   width: 52px;
@@ -60,22 +80,23 @@
   }
 
   .add-point {
-    background-color: #bbdfab;
-    border: 1px solid #2fad44;
+    background-color: var(--lvl0-add-skill-point-button-background-color);
+    border: 1px solid var(--lvl0-add-skill-point-button-border-color);
+    color: var(--color-text-primary);
 
     &:hover,
     &:focus {
-      box-shadow: 0 0 5px #115c09;
+      box-shadow: 0 0 5px var(--lvl0-add-skill-point-button-shadow-color);
     }
   }
 
   .remove-point {
-    background-color: #dfabab;
-    border: 1px solid #ad2f2f;
+    background-color: var(--lvl0-remove-skill-point-button-background-color);
+    border: 1px solid var(--lvl0-remove-skill-point-button-border-color);
 
     &:hover,
     &:focus {
-      box-shadow: 0 0 5px #5c0909;
+      box-shadow: 0 0 5px var(--lvl0-remove-skill-point-button-shadow-color);
     }
   }
 }

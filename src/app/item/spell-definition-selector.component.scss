@@ -9,6 +9,10 @@
 
         .level {
             flex: 1;
+            text-align: center;
+            &.active {
+                text-decoration: underline;
+            }
         }
     }
 

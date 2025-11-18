@@ -13,12 +13,12 @@ export class FoundryActorUpdaterService extends ActorUpdaterService {
         super();
     }
     async updateActor(actorId: string, diffObject: Partial<Lvl0Actor>) {
-
+        console.log('Updating actor: '  + JSON.stringify(diffObject));
         let foundryActor = this.foundryLvl0IdResolver.getActorFromLvl0Id(actorId);
         if (!foundryActor) {
             throw new Error('Foundry actor not found: ' + actorId);
         }
-        await foundryActor.update(diffObject, {diff: true});
+        await foundryActor.update(diffObject as Actor.UpdateData, {diff: true});
     }
 
     async updateActorFromCurrent(actorId: string, updater: (actor: Lvl0Actor) => RecursivePartial<Lvl0Actor>) {
@@ -26,6 +26,6 @@ export class FoundryActorUpdaterService extends ActorUpdaterService {
         if (!foundryActor) {
             throw new Error('Foundry actor not found: ' + actorId);
         }
-        await foundryActor.update(updater(this.foundryToLvl0Mapper.createLvl0CharacterFromFoundryActor(foundryActor)), {diff: true});
+        await foundryActor.update(updater(this.foundryToLvl0Mapper.createLvl0CharacterFromFoundryActor(foundryActor)) as Actor.UpdateData, {diff: true});
     }
 }

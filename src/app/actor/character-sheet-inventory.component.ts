@@ -51,7 +51,7 @@ export class CharacterSheetInventoryComponent implements OnInit {
         this.clutter$ = this.character$.pipe(selectCharacterClutter());
         this.usedInventorySpace$ = this.clutter$.pipe(map(x => x.usedSpace));
         this.inventoryTotalSpace$ = this.clutter$.pipe(map(x => x.totalSpace));
-        this.isBagFull$ = this.clutter$.pipe(map(x => x.totalSpace < x.usedSpace));
+        this.isBagFull$ = this.clutter$.pipe(map(x => x.totalSpace > 0 && x.totalSpace <= x.usedSpace));
         this.inventoryColumnNumbers$ = this.clutter$.pipe(map(x => x.columnsPhy));
         this.inventoryLetters$ = this.clutter$.pipe(map(x => Array.fromRange(x.rowCount).map(x => String.fromCharCode('A'.charCodeAt(0) + x))));
         this.usedCell$ = this.clutter$.pipe(map(x => x.usedCells));
@@ -97,8 +97,9 @@ export class CharacterSheetInventoryComponent implements OnInit {
         }
     }
 
-    // Workaround to fix typings in template
-    $items(items: Lvl0Item[]): Lvl0Item[] {
-        return items;
+    // We should be able to used cdkMenuTriggerData but it seems buggy for now
+    menuItem?: Lvl0Item
+    selectMenuItem(item: Lvl0Item) {
+        this.menuItem = item;
     }
 }

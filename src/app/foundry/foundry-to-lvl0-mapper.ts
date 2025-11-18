@@ -1,6 +1,5 @@
-import {CharacterProperties, Lvl0FoundryActor} from '../../models/actor';
 import {Lvl0Character} from '../data-accessor/models/lvl0-character';
-import {Lvl0FoundryItem, Lvl0ItemData, Lvl0ItemType, Lvl0ItemTypes} from '../../models/item';
+import {Lvl0FoundryItem, Lvl0ItemTypes} from '../../models/item';
 import {Lvl0Item} from '../data-accessor/models/lvl0-item';
 import {Injectable} from '@angular/core';
 import {GroupBy, groupBy} from '../shared/group-by';

@@ -1,4 +1,57 @@
 
+::ng-deep .theme-light {
+  --clutter-table-cell-bg-ammunition-color: #586fc2;
+  --clutter-table-cell-bg-armor-color: #58b6c2;
+  --clutter-table-cell-bg-bag-color: #58c29d;
+  --clutter-table-cell-bg-belt-color: #6bc258;
+  --clutter-table-cell-bg-cloak-color: #b2c258;
+  --clutter-table-cell-bg-foot-color: #c28658;
+  --clutter-table-cell-bg-hand-color: #c25858;
+  --clutter-table-cell-bg-head-color: #c258b0;
+  --clutter-table-cell-bg-magical-color: #a658c2;
+  --clutter-table-cell-bg-necklace-color: #6858c2;
+  --clutter-table-cell-bg-potions-color: #586ac2;
+  --clutter-table-cell-bg-ring-color: #99c258;
+  --clutter-table-cell-bg-shield-color: #c29b58;
+  --clutter-table-cell-bg-wand-color: #58c291;
+  --clutter-table-cell-bg-scroll-color: #516396;
+  --clutter-table-cell-bg-handWeapon-color: #7f9651;
+  --clutter-table-cell-bg-weapon-color: #c25858;
+  --clutter-table-cell-bg-money-color: #ecb52b;
+  --clutter-table-cell-bg-misc-color: #6f6f6f;
+  --clutter-table-cell-bg-purse-color: #896327;
+}
+
+::ng-deep .theme-dark {
+  --clutter-table-cell-bg-ammunition-color: #2d3761;
+  --clutter-table-cell-bg-armor-color: #2d5b61;
+  --clutter-table-cell-bg-bag-color: #2d614e;
+  --clutter-table-cell-bg-belt-color: #35612d;
+  --clutter-table-cell-bg-cloak-color: #59612d;
+  --clutter-table-cell-bg-foot-color: #61432d;
+  --clutter-table-cell-bg-hand-color: #612d2d;
+  --clutter-table-cell-bg-head-color: #612d58;
+  --clutter-table-cell-bg-magical-color: #532d61;
+  --clutter-table-cell-bg-necklace-color: #342d61;
+  --clutter-table-cell-bg-potions-color: #2d3561;
+  --clutter-table-cell-bg-ring-color: #4c612d;
+  --clutter-table-cell-bg-shield-color: #614e2d;
+  --clutter-table-cell-bg-wand-color: #2d6148;
+  --clutter-table-cell-bg-scroll-color: #28314b;
+  --clutter-table-cell-bg-handWeapon-color: #3f4b28;
+  --clutter-table-cell-bg-weapon-color: #612d2d;
+  --clutter-table-cell-bg-money-color: #765a15;
+  --clutter-table-cell-bg-misc-color: #373737;
+  --clutter-table-cell-bg-purse-color: #453113;
+}
+
+.warning-message {
+  padding: 8px;
+  background-color: var(--color-level-warning-bg);
+  border: 1px solid var(--color-level-warning);
+  text-align: center;
+}
+
 .item-line {
   display: grid;
   grid-gap: 8px;
@@ -35,6 +88,7 @@
 
     .title {
       font-weight: bold;
+      cursor: pointer;
     }
 
     .damage {
@@ -42,11 +96,11 @@
     }
 
     .description {
-      color: #555;
+      color: var(--color-text-secondary);
     }
 
     .restriction {
-      color: #555;
+      color: var(--color-text-secondary);
     }
   }
 
@@ -57,7 +111,7 @@
 }
 
 .bag-full {
-  color: #ba0000;
+  color: var(--color-warm-2);
 }
 
 .clutter-table {
@@ -70,12 +124,15 @@
 
     .cell {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .description {
-        background: #23221d;
-        border: 1px solid #000;
-        border-radius: 5px;
-        color: #EEE;
+        background: var(--background);
+        border: 1px solid var(--color-text-primary);
+        padding: 4px;
+        color: var(--color-text-primary);
         z-index: 1;
         visibility: hidden;
         position: absolute;
@@ -89,88 +146,88 @@
 
       width: 32px;
       height: 32px;
-      border: 1px solid black;
+      border: 1px solid var(--color-text-primary);
       margin-top: -1px;
       margin-left: -1px;
 
       &[data-item-type=ammunition] {
-        background: #586fc2;
+        background: var(--clutter-table-cell-bg-ammunition-color);
       }
 
       &[data-item-type=armor] {
-        background: #58b6c2;
+        background: var(--clutter-table-cell-bg-armor-color);
       }
 
       &[data-item-type=bag] {
-        background: #58c29d;
+        background: var(--clutter-table-cell-bg-bag-color);
       }
 
       &[data-item-type=belt] {
-        background: #6bc258;
+        background: var(--clutter-table-cell-bg-belt-color);
       }
 
       &[data-item-type=cloak] {
-        background: #b2c258;
+        background: var(--clutter-table-cell-bg-cloak-color);
       }
 
       &[data-item-type=foot] {
-        background: #c28658;
+        background: var(--clutter-table-cell-bg-foot-color);
       }
 
       &[data-item-type=hand] {
-        background: #c25858;
+        background: var(--clutter-table-cell-bg-hand-color);
       }
 
       &[data-item-type=head] {
-        background: #c258b0;
+        background: var(--clutter-table-cell-bg-head-color);
       }
 
       &[data-item-type=magical] {
-        background: #a658c2;
+        background: var(--clutter-table-cell-bg-magical-color);
       }
 
       &[data-item-type=necklace] {
-        background: #6858c2;
+        background: var(--clutter-table-cell-bg-necklace-color);
       }
 
       &[data-item-type=potions] {
-        background: #586ac2;
+        background: var(--clutter-table-cell-bg-potions-color);
       }
 
       &[data-item-type=ring] {
-        background: #99c258;
+        background: var(--clutter-table-cell-bg-ring-color);
       }
 
       &[data-item-type=shield] {
-        background: #c29b58;
+        background: var(--clutter-table-cell-bg-shield-color);
       }
 
       &[data-item-type=wand] {
-        background: #58c291;
+        background: var(--clutter-table-cell-bg-wand-color);
       }
 
       &[data-item-type=scroll] {
-        background: #516396;
+        background: var(--clutter-table-cell-bg-scroll-color);
       }
 
       &[data-item-type=handWeapon] {
-        background: #7f9651;
+        background: var(--clutter-table-cell-bg-handWeapon-color);
       }
 
       &[data-item-type=weapon] {
-        background: #c25858;
+        background: var(--clutter-table-cell-bg-weapon-color);
       }
 
       &[data-item-type=money] {
-        background: #ecb52b;
+        background: var(--clutter-table-cell-bg-money-color);
       }
 
       &[data-item-type=misc] {
-        background: #6f6f6f;
+        background: var(--clutter-table-cell-bg-misc-color);
       }
 
       &[data-item-type=purse] {
-        background: #896327;
+        background: var(--clutter-table-cell-bg-purse-color);
       }
     }
   }

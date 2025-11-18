@@ -1,5 +1,11 @@
 
 .modifier-values {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-bottom: 8px;
+
   .modifier-value {
     &.header {
       font-weight: bold;
@@ -52,7 +58,7 @@
 
 .separator {
   height: 1px;
-  background-color: black;
+  background-color: var(--color-text-primary);
   opacity: 0.25;
   width: 480px;
   margin-bottom: 4px;

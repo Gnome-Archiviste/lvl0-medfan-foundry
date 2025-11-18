@@ -1,7 +1,3 @@
-.category {
-  padding-inline: 16px;
-}
-
 .skills {
   display: flex;
   flex-direction: column;
@@ -9,7 +5,7 @@
 }
 .separator {
   height: 1px;
-  background-color: black;
+  background-color: var(--color-text-primary);
   opacity: 0.25;
   width: 80%;
   margin: 16px auto;

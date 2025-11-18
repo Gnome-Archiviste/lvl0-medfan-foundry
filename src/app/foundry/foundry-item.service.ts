@@ -30,7 +30,7 @@ export class FoundryItemService extends ItemService {
             let copy = await Item.create(item.toObject());
             if (copy) {
                 await ChatMessage.create({
-                    type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+                    style: CONST.CHAT_MESSAGE_STYLES.OTHER,
                     content: `@Item[${copy.id}]{${copy.name}}`
                 });
             }
@@ -53,15 +53,18 @@ export class FoundryItemService extends ItemService {
 
     async createItemFrom<T extends Lvl0Item>(baseItem: T, data: RecursivePartial<T>): Promise<T> {
         let item = this.foundryLvl0IdResolver.getItemFromLvl0Id(baseItem.id);
+        if (!item) {
+            throw new Error('Source item not found: ' + baseItem.id + ' with data: ' + JSON.stringify(data, null, ' '))
+        }
         let itemData = {
             ...item.toObject(),
             ...data
         }
 
         if (item.actor) {
-            let items = await item.actor.createEmbeddedDocuments('Item', [itemData]) as Lvl0FoundryItem[]
-            return this.foundryToLvl0Mapper.createLvl0ItemFromFoundryItem(items[0]) as T;
+            let items = await item.actor.createEmbeddedDocuments('Item', [itemData])
+            return this.foundryToLvl0Mapper.createLvl0ItemFromFoundryItem(items[0] as Lvl0FoundryItem) as T;
         }
-        throw new Error('Ereating item without actor is not supported yet')
+        throw new Error('Creating item without actor is not supported yet')
     }
 }

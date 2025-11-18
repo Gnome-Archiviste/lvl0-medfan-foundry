@@ -1,16 +1,6 @@
 import {Lvl0FoundryActor} from '../actor';
-import {
-    ItemDataConstructorData
-} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData';
 
-export class Lvl0FoundryItem extends Item {
-    constructor(
-        data: ItemDataConstructorData,
-        context: object
-    ) {
-        super(data, context);
-    }
-
+export class Lvl0FoundryItem<SubType extends Item.ConfiguredSubType = Item.ConfiguredSubType> extends Item<SubType> {
     get lvl0Id() {
         if (this.isEmbedded && this.parent) {
             if (this.parent instanceof Lvl0FoundryActor) {
@@ -23,9 +13,8 @@ export class Lvl0FoundryItem extends Item {
     }
 }
 
-Hooks.on("createItem", async (document: Lvl0FoundryItem, options: object, userId: string) => {
+Hooks.on("createItem", async (document, options, userId) => {
     if (document.system.quantifiable) {
         await document.update({system: {quantity: 1}});
     }
 });
-

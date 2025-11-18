@@ -39,6 +39,10 @@ export class SelectSpecialityDialogComponent {
         }
     }
 
+    cancel() {
+        this.close.emit(undefined);
+    }
+
     selectSpeciality(speciality: SpecialityDefinition) {
         this.close.emit({specialityId: speciality.id});
     }

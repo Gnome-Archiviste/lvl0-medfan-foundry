@@ -58,7 +58,7 @@ export class RollShieldDamageSkillScript extends SkillScript<RollShieldDamageScr
             throw new Error('Missing shield during postRoll');
 
         let actorBasicStatValues = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterBasicStats()));
-        let shieldDamageRollFormula = this.shield.system.damage.replace('phy', actorBasicStatValues.phy.toString());
+        let shieldDamageRollFormula = this.shield.system.damage.replace('{phy}', actorBasicStatValues.phy.toString());
 
         let characterEffects = await firstValueFrom(this.characterAccessorService.selectCharacter(this.actorId).pipe(selectCharacterEffects(this.systemDataDatabaseService)));
         let damageBonus = 0;

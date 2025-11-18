@@ -1,13 +1,6 @@
 import {Lvl0FoundryActor} from '../lvl0-foundry-actor';
-import {Lvl0ActorCharacter} from '../lvl0-actor-types';
-import {Lvl0CharacterData} from '../../../app/data-accessor/models/lvl0-character';
 
-export interface CharacterProperties {
-    type: 'character';
-    data: Lvl0CharacterData
-}
-
-export function assertIsCharacter(actor?: Lvl0FoundryActor | null): asserts actor is Lvl0ActorCharacter {
+export function assertIsCharacter(actor?: Lvl0FoundryActor | null): asserts actor is Lvl0FoundryActor<"character"> {
     if (!actor) {
         throw new Error('Actor is not defined');
     }

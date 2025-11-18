@@ -1,4 +1,3 @@
-import {MacroData} from '@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs';
 import {Injectable} from '@angular/core';
 import {MacroService} from '../shared/macro.service';
 import {SkillDefinition, SpecialityDefinition} from '../../repositories';
@@ -25,12 +24,12 @@ export class FoundryMacroService extends MacroService {
         })
     }
 
-    async createAndAssignMacroToFirstAvailableSlot(data: Partial<MacroData> & { name: string }): Promise<void> {
+    async createAndAssignMacroToFirstAvailableSlot(data: Macro.CreateData): Promise<void> {
         let macro = await Macro.create(data)
         if (!macro) {
             throw new Error('Failed to create macro');
         }
-        await game.user?.assignHotbarMacro(macro, '');
+        await game.user?.assignHotbarMacro(macro);
     }
 
     public guardScriptExecutionWithTokenCheck(script: string): string {

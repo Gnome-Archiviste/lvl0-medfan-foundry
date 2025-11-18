@@ -19,7 +19,7 @@
     </label>
     <div class="value">
       @if (canChangeRace$ | async) {
-        <select lvl0ActorPropertyField="data.race.id"
+        <select lvl0ActorPropertyField="system.race.id"
           [lvl0Actor]="character"
           [ngModel]="(characterRace$ | async)?.id">
           @for (raceCategory of raceDefinitionsByCategories | keyvalue; track raceCategory) {
@@ -36,7 +36,7 @@
         @if ((characterRace$ | async)?.hasRaceSpecifier) {
           <div class="sub-race">
             <label>
-              <input lvl0ActorPropertyField="data.race.type"
+              <input lvl0ActorPropertyField="system.race.type"
                 [lvl0Actor]="character"
                 [ngModel]="character.system.race.type"
                 type="text">
@@ -56,7 +56,7 @@
     </label>
     <div class="value">
       @if(canChangeJob$ | async) {
-        <select lvl0ActorPropertyField="data.job.id"
+        <select lvl0ActorPropertyField="system.job.id"
           class="job-selector"
           [lvl0Actor]="character"
           [ngModel]="(characterJob$ | async)?.id">
@@ -74,7 +74,7 @@
         @if ((characterJob$ | async)?.hasJobSpecialization) {
           <div class="job-specialization">
             <label>
-              <input lvl0ActorPropertyField="data.job.specialization"
+              <input lvl0ActorPropertyField="system.job.specialization"
                 [lvl0Actor]="character"
                 [ngModel]="character.system.job.specialization"
                 type="text">
@@ -84,7 +84,7 @@
         @if ((characterJob$ | async)?.maxSpecializations) {
           <div class="job-specializations">
             @for (characterSpecializationId of (characterJobSpecializations$ | async); track characterSpecializationId; let i = $index) {
-              <select [lvl0ActorPropertyArrayField]="'data.job.specializations'"
+              <select [lvl0ActorPropertyArrayField]="'system.job.specializations'"
                 [lvl0Actor]="character"
                 [ngModel]="characterSpecializationId"
                 [array]="characterJobSpecializations$ | async"
@@ -112,14 +112,14 @@
   </div>
   <div class="age info">
     <span class="label">Age</span>
-    <input lvl0ActorPropertyField="data.age.value"
+    <input lvl0ActorPropertyField="system.age.value"
       [lvl0Actor]="character"
       [ngModel]="character.system.age.value"
       type="text">
   </div>
   <div class="size info">
     <span class="label">Taille</span>
-    <input lvl0ActorPropertyField="data.size.value"
+    <input lvl0ActorPropertyField="system.size.value"
       [lvl0Actor]="character"
       [ngModel]="character.system.size.value"
       type="text">

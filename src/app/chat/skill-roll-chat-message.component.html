@@ -18,17 +18,21 @@
         <div class="weapon">
           <span class="icon"><img width="32" height="32" [src]="data.extraData.data.weapon.icon"></span>
           <span class="name">{{data.extraData.data.weapon.name}}</span>
-          <span class="details">{{data.extraData.data.weapon.damageRollFormula}}@if (data.extraData.data.weapon.element) {
-            <span> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span>
-          }</span>
+          <span class="details">{{data.extraData.data.weapon.damageRollFormula}}
+            @if (data.extraData.data.weapon.element) {
+              <span> ({{data.extraData.data.weapon.element | translate: 'Element.NameForWeaponDamage'}})</span>
+            }
+          </span>
         </div>
         @if (data.extraData.data.ammunition) {
           <div class="weapon">
             <span class="icon"><img width="32" height="32" [src]="data.extraData.data.ammunition.icon"></span>
             <span class="name">{{data.extraData.data.ammunition.name}}</span>
-            <span class="details">{{data.extraData.data.ammunition.damageRollFormula}}@if (data.extraData.data.ammunition.element) {
-              <span> ({{data.extraData.data.ammunition.element | translate: 'Element.NameForWeaponDamage'}})</span>
-            }</span>
+            <span class="details">{{data.extraData.data.ammunition.damageRollFormula}}
+              @if (data.extraData.data.ammunition.element) {
+                <span> ({{data.extraData.data.ammunition.element | translate: 'Element.NameForWeaponDamage'}})</span>
+              }
+            </span>
           </div>
         }
         <hr>
