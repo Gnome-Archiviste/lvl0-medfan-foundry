@@ -80,7 +80,6 @@ Hooks.on("renderChatMessageHTML", (message: ChatMessage, parent: HTMLElement, _d
         data: any;
     };
 
-    console.log(message.isContentVisible)
     if (customElement?.type && message.isContentVisible) {
         let element = document.createElement('lvl0-chat-message');
         element.setAttribute('type', customElement.type);
