@@ -82,7 +82,10 @@ export class RollDamageSkillScript extends SkillScript<RollDamageSkillResult> {
         if (this.ammunition && this.ammunition.system.extraDamage) {
             ammunitionElement = this.ammunition.system.extraDamageEffect;
             damageElement = ammunitionElement || weaponElement;
-            damageRollFormula = '(' + damageRollFormula + '+' + this.ammunition.system.extraDamage.split(' ').join() + ')'
+            let extraDamageRollFormula = this.ammunition.system.extraDamage.split(' ').join();
+            if (extraDamageRollFormula) {
+                damageRollFormula = '(' + damageRollFormula + '+' + extraDamageRollFormula + ')'
+            }
         }
 
         if (this.data.charge) {

@@ -23,7 +23,10 @@ export class WeaponDamageRollUtil {
 
         let damageRollWithAmmunition = '';
         if (ammunition) {
-            damageRollWithAmmunition = '(' + damageRollFormula + '+' + ammunition.system.extraDamage.split(' ').join() + ')';
+            let extraDamageRoll = ammunition.system.extraDamage.split(' ').join();
+            if (extraDamageRoll) {
+                damageRollWithAmmunition = '(' + damageRollFormula + '+' + extraDamageRoll + ')';
+            }
         }
         return [damageRollFormula, damageRollWithAmmunition];
     }
