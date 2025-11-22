@@ -57,8 +57,10 @@
       "weapon": {}
     }
   },
-  "gridDistance": 1,
-  "gridUnits": "m",
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "mana",
   "url": "https://github.com/Gnome-Archiviste/lvl0-medfan-foundry",
