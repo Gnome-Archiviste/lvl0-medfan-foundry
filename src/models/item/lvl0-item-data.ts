@@ -108,7 +108,8 @@ export abstract class FoundryItemSystemDataBase<DS extends ReturnType<typeof Ite
     extends foundry.abstract.TypeDataModel<DS, Item.Implementation> {
 
     static migrateData(source: any) {
-        console.debug(`Migrating item with data`, source);
+        if (window['logMigrateData'])
+            console.debug(`Migrating item with data`, source);
         if ('arcane' in source && !isInteger(source.arcane)) {
             if (source.spell) {
                 console.warn(`Fixing arcane level`, source);

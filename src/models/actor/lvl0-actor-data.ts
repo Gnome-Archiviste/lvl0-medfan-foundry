@@ -131,7 +131,8 @@ export class Lvl0FoundryCharacterSystemData extends FoundryActorSystemDataBase<R
     }
 
     static migrateData(source: any) {
-        console.debug(`Migrating actor with data`, JSON.parse(JSON.stringify(source, null, 2)));
+        if (window['logMigrateData'])
+            console.debug(`Migrating actor with data`, JSON.parse(JSON.stringify(source, null, 2)));
         return super.migrateData(source);
     }
 }
