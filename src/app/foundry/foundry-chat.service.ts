@@ -24,6 +24,7 @@ export class FoundryChatService extends ChatService {
             messageData.rolls = [roll];
             messageData.sound = CONFIG.sounds.dice;
         }
+        ChatMessage.applyRollMode(messageData, "roll");
         await ChatMessage.create({
             ...messageData,
             speaker,

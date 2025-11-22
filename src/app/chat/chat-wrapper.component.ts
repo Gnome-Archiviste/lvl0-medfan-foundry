@@ -9,7 +9,7 @@ import {Lvl0ChatMessage, Lvl0MessageTypes} from './lvl0-chat-message.types';
 export class ChatWrapperComponent implements OnInit {
     @Input('type')
     messageType: Lvl0MessageTypes;
-    @Input('int')
+    @Input('chatMessageId')
     chatMessageId: string;
 
     @Input('rawData')

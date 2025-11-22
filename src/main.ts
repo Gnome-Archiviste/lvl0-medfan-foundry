@@ -80,12 +80,16 @@ Hooks.on("renderChatMessageHTML", (message: ChatMessage, parent: HTMLElement, _d
         data: any;
     };
 
-    if (customElement?.type) {
+    console.log(message.isContentVisible)
+    if (customElement?.type && message.isContentVisible) {
         let element = document.createElement('lvl0-chat-message');
         element.setAttribute('type', customElement.type);
         element.setAttribute('chat-message-id', message.id!);
         element.setAttribute('raw-data', JSON.stringify(customElement?.data))
-        parent.innerHTML = element.outerHTML;
+        let messageContent = parent.querySelector('.message-content');
+        if (messageContent instanceof HTMLElement) {
+            messageContent.innerHTML = element.outerHTML;
+        }
     }
 });
 
