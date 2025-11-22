@@ -131,6 +131,10 @@ export abstract class FoundryItemSystemDataBase<DS extends ReturnType<typeof Ite
             source.damage = '1';
         }
 
+        if ('damage' in source && source.damage === '1d6 x2') {
+            source.damage = '(1d6)*2'
+        }
+
         if (source.ammunitionType && !source.extraDamageEffect) {
             console.warn(`Fixing element`, source.extraDamageEffect);
             source.extraDamageEffect = 'physic';
