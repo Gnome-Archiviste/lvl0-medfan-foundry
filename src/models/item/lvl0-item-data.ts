@@ -109,13 +109,15 @@ export abstract class FoundryItemSystemDataBase<DS extends ReturnType<typeof Ite
 
     static migrateData(source: any) {
         if (window['logMigrateData'])
-            console.debug(`Migrating item with data`, source);
+            console.debug(`Migrating item with data`, JSON.parse(JSON.stringify(source, null, 2)));
         if ('arcane' in source && !isInteger(source.arcane)) {
             if (source.spell) {
                 console.warn(`Fixing arcane level`, source);
+                source.migrated = true;
                 source.arcane = parseInt(source.spell.split('.')[2]);
             } else {
                 console.warn(`Reseting arcane level`, source);
+                source.migrated = true;
                 source.arcane = 0;
             }
         }
@@ -123,24 +125,48 @@ export abstract class FoundryItemSystemDataBase<DS extends ReturnType<typeof Ite
         if ('weaponType' in source) {
             if (source.weaponType != 'melee' && source.weaponType != 'range' && source.weaponType != 'melee-range') {
                 console.warn(`Fixing weapon type`, source);
+                source.migrated = true;
                 source.weaponType = 'melee';
             }
         }
 
         if ('damage' in source && typeof source.damage === 'object') {
             console.warn(`Fixing damage`, source.damage);
+            source.migrated = true;
             source.damage = '1';
         }
 
         if ('damage' in source && source.damage === '1d6 x2') {
             source.damage = '(1d6)*2'
+            source.migrated = true;
         }
 
         if (source.ammunitionType && !source.extraDamageEffect) {
             console.warn(`Fixing element`, source.extraDamageEffect);
+            source.migrated = true;
             source.extraDamageEffect = 'physic';
         }
 
         return super.migrateData(source);
     }
 }
+/*
+
+let items = game.items
+for (let item of items) {
+    if (item.system.migrated) {
+        console.log(item.name, item.system.migrated)
+        await item.update({ "==system": item.system.toObject() })
+    }
+}
+
+for (let actor of game.actors) {
+    for (let item of actor.items) {
+    if (item.system.migrated) {
+        console.log(item.name, item.system.migrated)
+        await item.update({ "==system": item.system.toObject() })
+        }
+    }
+}
+
+ */

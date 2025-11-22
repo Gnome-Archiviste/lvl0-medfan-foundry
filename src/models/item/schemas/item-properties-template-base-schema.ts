@@ -12,6 +12,7 @@ const {
 
 export const ItemPropertiesTemplateBaseSchema = () => ({
     equiped: new BooleanField({required: true}),
+    migrated: new BooleanField({required: false, initial: false, nullable: false}),
     price: new NumberField({required: true, nullable: false, initial: 0, integer: true}),
     description: new StringField({required: true, initial: ''}),
     details: new StringField({required: true, initial: ''}),
