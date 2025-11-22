@@ -182,6 +182,15 @@
           </label>
         </div>
         <div class="editor-line">
+
+          <label class="one-line">
+            Débloque jusqu'a la colonne
+            <input lvl0ItemPropertyField="system.unlockedColumnNumber"
+                   type="number"
+                   [lvl0Item]="item"
+                   [disabled]="item.system.noLimit"
+                   [ngModel]="item.system.unlockedColumnNumber">
+          </label>
           <label class="one-line">
             <input lvl0ItemPropertyField="system.noLimit"
               [lvl0Item]="item"

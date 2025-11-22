@@ -24,32 +24,47 @@ export class CharacterClutterSelector {
         staticInventoryData: StaticInventoryData,
     ): CharacterClutterData {
 
-        let totalSpace = 0;
         let columnsPhy: number[] = [];
         let columnPerPhy = [2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
-        let phy = basicStats.phy;
+        let columnNumberPerIndex: number[] = [];
+        for (let i = 0; i < columnPerPhy.length; i++) {
+            for (let j = 0; j < columnPerPhy[i]; j++)
+                columnNumberPerIndex.push(i+1);
+        }
+
+        let effectivePhy = basicStats.phy;
+        let bagExtraRows = 0;
+        let bagExtraColumns = 0;
+        let noLimit = false;
+
+        let activeBag = items.filter(item => item.type === 'bag').find(item => item.system.equiped);
+        if (activeBag) {
+            bagExtraRows = +activeBag.system.extraRows;
+            bagExtraColumns = +activeBag.system.extraColumns;
+            if (activeBag.system.unlockedColumnNumber) {
+                effectivePhy = activeBag.system.unlockedColumnNumber;
+            }
+            if (activeBag.system.noLimit) {
+                noLimit = true;
+            }
+        }
+
+        let usedSpacesByItemType: { [itemType: string]: number } = {};
+        let rowCount = 6 + bagExtraRows;
         let columnCount = 0;
-        for (let i = 0; i < phy && i < columnPerPhy.length; i++) {
+
+        for (let i = 0; i < effectivePhy && i < columnPerPhy.length; i++) {
             columnCount += columnPerPhy[i];
             for (let j = 0; j < columnPerPhy[i]; j++)
                 columnsPhy.push(i + 1);
         }
-        let rowCount = 6;
-        let noLimit = false;
-        let usedSpacesByItemType: { [itemType: string]: number } = {};
+
+        columnCount += bagExtraColumns;
+        for (let i = 0; i < bagExtraColumns; i++) {
+            columnsPhy.push(columnNumberPerIndex[columnsPhy.length]);
+        }
 
         for (let item of items) {
-            if (item.system.equiped) {
-                if (item.type === 'bag') {
-                    rowCount += +item.system.extraRows;
-                    columnCount += +item.system.extraColumns;
-                    if (item.system.noLimit) {
-                        noLimit = true;
-                    }
-                }
-                continue;
-            }
-
             let quantity = 1;
             if (item.system.quantifiable) {
                 quantity = item.system.quantity;
@@ -63,6 +78,7 @@ export class CharacterClutterSelector {
             + staticInventoryData.money500 * 0.1
             + staticInventoryData.money1000 * 0.1
 
+        let totalSpace = 0;
         if (noLimit) {
             totalSpace = -1;
         } else {

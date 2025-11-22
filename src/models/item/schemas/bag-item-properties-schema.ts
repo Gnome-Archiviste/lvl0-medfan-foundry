@@ -16,6 +16,7 @@ export const BagItemPropertiesSchema = () => ({
     ...ItemPropertiesTemplateBaseSchema(),
     extraRows: new NumberField({required: true, nullable: false, initial: 0, integer: true}),
     extraColumns: new NumberField({required: true, nullable: false, initial: 0, integer: true}),
+    unlockedColumnNumber: new NumberField({required: true, nullable: false, initial: 0, integer: true}),
     noLimit: new BooleanField({required: true, initial: false}),
 });
 
