@@ -31,6 +31,7 @@ import {
     Lvl0FoundryItemWeapon,
 } from './models/item/schemas';
 import {SYSTEM_NAME} from './constants';
+import {Lvl0Item} from './app/data-accessor/models/lvl0-item';
 
 Hooks.once("init", async function () {
     console.log(`${SYSTEM_NAME} | Initializing ${SYSTEM_NAME}`);
@@ -123,6 +124,7 @@ Hooks.once("ready", async () => {
         // canvas?.tokens?.get('ksI0ie2fQHaZADrN')?.actor?.items!.get('IEmnMakdAf4UNxGm').sheet?.render(true)
         // CONFIG.debug.hooks = true;
 
+        migrateAllItems();
     } catch (e) {
         console.error(e);
     }
@@ -143,3 +145,50 @@ if (environment.liveServer) {
     }
 }
 
+async function migrateItem(item: Lvl0FoundryItem) {
+    if (item.system.migrated) {
+        await item.update({ "==system": item.system.toObject() })
+        await item.update({ system: {migrated: false} })
+        return;
+    }
+    if (item.type === 'bag') {
+        if (item.system.extraRows == 10 && item.system.extraColumns == 1) {
+            console.warn('Migrating ', item);
+            item.update({
+                system: {
+                    extraRows: 1,
+                    extraColumns: 0,
+                    unlockedColumnNumber: 10,
+                    migrated: true
+                },
+            })
+        }
+        if (item.system.extraColumns == 12) {
+            console.warn('Migrating ', item);
+            item.update({
+                system: {
+                    extraColumns: 0,
+                    unlockedColumnNumber: 12,
+                    migrated: true
+                },
+            })
+        }
+    }
+}
+
+async function migrateAllItems() {
+    let items = game.items
+    for (let item of items) {
+        if (item.type === 'bag') {
+            await migrateItem(item)
+        }
+    }
+
+    for (let actor of game.actors) {
+        for (let item of actor.items) {
+            if (item.type === 'bag') {
+                await migrateItem(item)
+            }
+        }
+    }
+}
