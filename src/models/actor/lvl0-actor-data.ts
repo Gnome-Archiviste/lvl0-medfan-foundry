@@ -116,7 +116,7 @@ export const CharacterPropertiesSchema = () => ({
     specialities: new TypedObjectField(new StringField({required: true})),
     notes: new SchemaField({
         content: new StringField({required: true}),
-        mode: new StringField({required: true, choices: ["markdown", "html"]}),
+        mode: new StringField({required: true, choices: ["markdown", "html"], initial: "markdown"}),
     }),
 });
 
