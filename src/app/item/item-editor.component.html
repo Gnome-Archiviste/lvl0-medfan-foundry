@@ -507,7 +507,7 @@
       @if (extraSkills$ | async; as extraSkills) {
         @for (extraSkill of extraSkills | keyvalue; track extraSkill) {
           <div class="editor-line">
-            <select [lvl0ItemPropertyField]="'data.extraSkills.' + extraSkill.key + '.id'"
+            <select [lvl0ItemPropertyField]="'system.extraSkills.' + extraSkill.key + '.id'"
               [lvl0Item]="item"
               [ngModel]="extraSkill.value.id">
               @for (skillCategory of skillsByCategories | keyvalue; track skillCategory) {
