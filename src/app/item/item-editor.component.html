@@ -480,7 +480,7 @@
       @if (modifiers$ | async; as modifiers) {
         @for (modifier of modifiers | keyvalue; track modifier) {
           <div class="editor-line">
-            <select [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.stat'"
+            <select [lvl0ItemPropertyField]="'system.modifiers.' + modifier.key + '.stat'"
               [lvl0Item]="item"
               [ngModel]="modifier.value.stat">
               @for (stat of stats; track stat) {
@@ -490,7 +490,7 @@
               }
             </select>
             +
-            <input [lvl0ItemPropertyField]="'data.modifiers.' + modifier.key + '.value' "
+            <input [lvl0ItemPropertyField]="'system.modifiers.' + modifier.key + '.value' "
               type="number"
               [lvl0Item]="item"
               [ngModel]="modifier.value.value">
